@@ -1,18 +1,16 @@
 {
-  "name": "shopping_cart",
+  "name": "all",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "soap",
   "license": "ISC",
   "devDependencies": {
-    "angular": "^1.5.0",
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.5",
-    "gulp-reactify": "^3.0.1",
-    "jquery": "^2.2.1"
+    "gulp-reactify": "^3.0.1"
   }
 }

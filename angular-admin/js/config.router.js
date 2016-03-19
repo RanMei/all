@@ -27,7 +27,7 @@ angular.module('app')
 		templateUrl: 'tpl/app_dashboard_v1.html',
 		resolve: {
 			deps: ['$ocLazyLoad',function( $ocLazyLoad ){
-				return $ocLazyLoad.load(['js/controllers/chart.js']);
+				return $ocLazyLoad.load( ['js/controllers/chart.js'] );
 			}]
 		}
 	})
@@ -352,7 +352,8 @@ angular.module('app')
                   url: '/compose',
                   templateUrl: 'tpl/mail.new.html'
               })
-	//lockme
+	
+    //lockme
 	.state('lockme', {//lockme
 		url: '/lockme',
 		templateUrl: 'tpl/lockme.html',

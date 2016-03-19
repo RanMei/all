@@ -26,7 +26,7 @@ gulp.task( "less",function(){
 });
 
 gulp.task( "reactify",function(){
-	gulp.src( "./react/js/jsx/*.js" )
+	gulp.src( "./react/jsx/*.js" )
 		.pipe( reactify() )
 		.pipe( gulp.dest("./react/js/components") );
 });
@@ -34,6 +34,6 @@ gulp.task( "reactify",function(){
 gulp.task( "default", function(){
 	
 	gulp.watch( './angular/less/*.less',['less'] );
-	gulp.watch( "./react/js/jsx/*.js",['reactify'] );
+	gulp.watch( "./react/jsx/*.js",['reactify'] );
 	
 });
