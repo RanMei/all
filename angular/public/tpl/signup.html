@@ -1,0 +1,14 @@
+﻿<style>
+.error {border:1px solid red;}
+</style>
+
+<div id="main" ng-controller="c_register">
+	<div class="panel">
+		<input type="text" class="{{status.userID}}" name="user_ID" placeholder="用户名" ng-model="user.ID" ng-blur="check()">
+		<input type="password" name="password" placeholder="请输入密码" ng-model="user.password">
+		<input type="password" name="password2" placeholder="请再次输入密码" ng-model="user.password2">
+		<button ng-click="register()">注册</button>
+		<div>{{user.user_ID}}</div>
+		<div>{{user.password}}</div>
+	</div>
+</div>
