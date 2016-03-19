@@ -13,23 +13,23 @@
 		background:"white"
 	}
 	
-	var CommentList = React.createClass({displayName: "CommentList",
+	var CommentList = React.createClass({
 		render:function() {
 			function renderComment(comment) {
 				return (
-					React.createElement("li", {key: comment.id, style: CommentStyle}, 
-						comment.id, 
-						React.createElement("span", {style: {color:"blue"}}, comment.author), 
-						comment.time, React.createElement("br", null), 
-						comment.text
-					)
+					<li key={comment.id} style={CommentStyle}>
+						{comment.id}
+						<span style={{color:"blue"}}>{comment.author}</span>
+						{comment.time}<br/>
+						{comment.text}
+					</li>
 				);
 			};
-			return React.createElement("ul", null, this.props.comments.map(renderComment));
+			return <ul>{this.props.comments.map(renderComment)}</ul>;
 		}
 	});
 	//
-	var CommentBox = React.createClass({displayName: "CommentBox",
+	var CommentBox = React.createClass({
 		getInitialState: function() {
 			return {//MODEL //this.state={}
 				comments: [
@@ -69,20 +69,20 @@
 		},
 		render: function() {
 			return (//VIEW
-				React.createElement("div", {style: CommentBoxStyle}, 
-					React.createElement("h3", null, "CommentBox"), 
-					React.createElement(CommentList, {comments: this.state.comments}), 
-					React.createElement("form", {onSubmit: this.submitComment}, 
-						React.createElement("input", {value: this.state.text, onChange: this.handleChange, placeholder: "Your comment here..."}), 
-						React.createElement("button", null, "comment")
-					)
-				)
+				<div style={CommentBoxStyle}>
+					<h3>CommentBox</h3>
+					<CommentList comments={this.state.comments} />
+					<form onSubmit={this.submitComment}>
+						<input value={this.state.text} onChange={this.handleChange} placeholder="Your comment here..."/>
+						<button>{"comment"}</button>
+					</form>
+				</div>
 			);
 		}
 	});
 	
 	ReactDOM.render(
-		React.createElement(CommentBox, null),
+		<CommentBox />,
 		document.getElementById("CommentBox")
 	);
 
