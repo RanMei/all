@@ -12,6 +12,8 @@ var connection = mysql.createConnection({
 	password : ''
 });
 
+console.log( 'Database Connected' );
+
 //创建数据库
 connection.query('CREATE DATABASE '+TEST_DATABASE, function(err) {
   if (err && err.number != mysql.ERROR_DB_CREATE_EXISTS) {
@@ -42,7 +44,6 @@ var query = connection.query(
   ['nodejs2']
 );
 
-console.log(query);
 /*
 //查询，并设置回调函数
 connection.query(
