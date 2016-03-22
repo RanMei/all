@@ -27,3 +27,18 @@ angular.module("app")
 		templateUrl: 'tpl/signup.html'
 	})
 }]);
+
+angular.module("app").directive("hello",function(){
+	return {
+		controller: ["$scope",function($scope){
+			$scope.items = [
+				"stark",
+				"lannister",
+				"targaryen"
+			]
+		}],
+		template: "<p ng-repeat='item in items'>{{item}}</p>"
+		
+	}
+	
+});
