@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>dropdown</title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<style>
+.dropdown {position:relative;width:210px;margin:20px;overflow:hidden;}
+.dropdown-header {width:210px;height:40px;background:#144199;line-height:40px;text-indent:10px;color:white;cursor:pointer;}
+.dropdown-content {display:none;}
+.dropdown-content>li{width:210px;height:30px;line-height:30px;text-indent:10px;font-size:90%;background:#1350B1;color:white;cursor:pointer;}
+.dropdown-content>li:hover {background:#2C6BCC;}
+.dropdown .arrow {float:right;margin:0 20px 0 0;}
+</style>
+<script>
+$(document).ready(function(){
+	$(".dropdown-header").on("click",function(){
+		$(this).find(".arrow i").toggleClass("fa fa-angle-down");
+		$(this).find(".arrow i").toggleClass("fa fa-angle-up");
+		$(".dropdown-content").slideToggle();
+	});
+});
+</script>
+</head>
+
+<body>
+	<div class="dropdown">
+		<div class="dropdown-header">全部商品分类<div class="arrow"><i class="fa fa-angle-down"></i></div></div>
+		<ul class="dropdown-content">
+			<li><p>服饰<span class="arrow"><i class="fa fa-angle-right"></i></span></p></li>
+			<li><p>手表<span class="arrow"><i class="fa fa-angle-right"></i></span></p></li>
+			<li><p>钱包<span class="arrow"><i class="fa fa-angle-right"></i></span></p></li>
+			<li><p>耳机<span class="arrow"><i class="fa fa-angle-right"></i></span></p></li>
+			<li><p>运动鞋<span class="arrow"><i class="fa fa-angle-right"></i></span></p></li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>menu</title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="less/menu-triple.less" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<style>
+.menu {position:relative;width:140px;height:1000px;background:#34485E;overflow:hidden;}
+.menu>li {border-bottom:1px solid #324456;color:grey;cursor:pointer;}
+.menu>li:hover >p {color:white;}
+.menu>li>p {width:140px;height:60px;background:#34485E;line-height:60px;font-size:90%;}
+.menu .span-icon {margin:0 5px 0 10px;}
+.menu .span-arrow {float:right;margin-right:20px;}
+
+.menu .ulb {width:140px;display:none;}
+.menu .ulb>li {background:#2C3E50;}
+.menu .ulb>li>p {width:140px;height:40px;text-indent:20px;line-height:40px;font-size:80%;}
+.menu .ulb>li:hover >p {color:white;}
+
+.menu .ulc {width:140px;display:none;}
+.menu .ulc>li {height:25px;background:#1E2A38;font-size:80%;line-height:25px;text-indent:40px;}
+.menu .ulc>li:hover {color:white;background:#38A7F1;}
+</style>
+<script>
+$(document).ready(function(){
+	
+	$(".menu>li>p").click(function(){
+		$(this).parent().siblings().children(".ulb").slideUp(300);
+		$(this).siblings(".ulb").slideToggle(300);
+	});
+	$(".menu .ulb>li>p").click(function(){
+		$(this).siblings(".ulc").slideToggle(300);
+	});
+		
+});
+</script>
+</head>
+
+<body>
+	<ul class="menu">
+		<li>
+			<p>
+				<span class="span-icon"><i class="fa fa-eye"></i></span>
+				可视化监控<span class="span-arrow"><i class="fa fa-caret-right"></i></span>
+			</p>
+			<ul class="ulb">
+				<li>
+					<p>电站分布地图</p>
+					<ul class="ulc">
+						<li>三级列表1</li>
+						<li>三级列表2</li>
+					</ul>
+				</li>
+				<li>
+					<p>可视化电站监测</p>
+					<ul class="ulc">
+						<li>三级列表1</li>
+						<li>三级列表2</li>
+					</ul>
+				</li>
+				<li>
+					<p>逆变器监测</p>
+				</li>
+				<li>
+					<p>汇流槽监控</p>
+				</li>
+				<li>
+					<p>告警管理</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>
+				<span class="span-icon"><i class="fa fa-pie-chart"></i></span>
+				智能化分析<span class="span-arrow"><i class="fa fa-caret-right"></i></span>
+			</p>
+			<ul class="ulb">
+				<li>
+					<p>电站分布地图</p>
+					<ul class="ulc">
+						<li>三级列表1</li>
+						<li>三级列表2</li>
+					</ul>
+				</li>
+				<li>
+					<p>可视化电站监测</p>
+					<ul class="ulc">
+						<li>三级列表1</li>
+						<li>三级列表2</li>
+					</ul>
+				</li>
+				<li>
+					<p>逆变器监测</p>
+				</li>
+				<li>
+					<p>汇流槽监控</p>
+				</li>
+				<li>
+					<p>告警管理</p>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<p>
+				<span class="span-icon"><i class="fa fa-cogs"></i></span>
+				生产管理<span class="span-arrow"><i class="fa fa-caret-right"></i></span>
+			</p>
+		</li>
+		<li>
+			<p>
+				<span class="span-icon"><i class="fa fa-wrench"></i></span>
+				系统管理<span class="span-arrow"><i class="fa fa-caret-right"></i></span>
+			</p>
+		</li>
+	</ul>	
+</body>
+
+</html>

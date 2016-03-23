@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>tab</title>
+	<link href="font-awesome-4.4.0\css\font-awesome.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+<style>
+a:link {color:white;}
+a:visited {color:white;}
+a:hover {color:;}
+a:active {color:}
+body,ul,li,h1,h2,h3,h4,h5,p {margin:0;padding:0}
+ul {list-style:none}
+img {display:block;}
+body {font-family:微软雅黑;}
+
+.box .tab {width:1000px;height:60px;margin:auto;background:#2C2D2F;overflow:hidden;}
+.box .tab>li {float:left;margin:20px;color:white;cursor:pointer;}
+.box .tab>li:first-child {border-bottom:4px solid orange;}
+.box .content {position:relative;width:1000px;height:300px;margin:auto;overflow:hidden;}
+.box .content>ul {position:absolute;width:10000px;}
+.box .content>ul>li {float:left;width:1000px;height:300px;background:#2C2D2F;}
+</style>
+<script>
+$(document).ready(function(){	
+	
+	$(".box .tab>li").click(function(){
+		var n=$(this).index();
+		$(".box .tab>li").css({"border":"none"});
+		$(".box .tab>li").eq(n).css({"border-bottom":"4px solid orange"});
+		$(".box .content>ul").animate(  {"left":"-"+n*1000+"px"}  ,300);
+	});
+
+});
+</script>
+</head>
+
+
+
+
+
+
+<body>
+	<div class="box">
+		<ul class="tab">
+			<li>Stark</li>
+			<li>Lannister</li>
+			<li>Targaryen</li>
+			<li>Martell</li>
+			<li>Tyrell</li>
+			<li>Greyjoy</li>
+			<li>Arryn</li>
+		</ul>
+		<div class="content">
+			<ul>
+				<li>Stark</li>
+				<li>Lannister</li>
+				<li>Targaryen</li>
+				<li>Martell</li>
+				<li>Tyrell</li>
+				<li>Greyjoy</li>
+				<li>Arryn</li>
+			</ul>
+		</div>
+	</box>
+
+</body>
+
+</html>

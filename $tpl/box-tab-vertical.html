@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="common.css" rel="stylesheet">
+	
+	<script src="jquery.js"></script>
+<style>
+.box .tabs {float:left;width:200px;}
+.box .tabs>li {width:200px;cursor:pointer;}
+.box .content {position:relative;float:left;width:800px;}
+.box .content>li {position:absolute;width:800px;display:none;}
+.box .content>li:nth-child(1) {display:block}
+</style>
+<script>
+$(document).ready(function(){	
+	
+	$(".box .tabs>li").click(function(){
+		var n=$(this).index();
+		$(".box .content>li").hide();
+		$(".box .content>li").eq(n).show();
+	});
+
+});
+</script>
+</head>
+
+<body>
+	<!-- A box with a tab. -->
+	<div class="box container">
+		<ul class="tabs">
+			<li>苹果</li>
+			<li>三星</li>
+			<li>华为</li>
+			<li>中兴</li>
+			<li>天语</li>
+			<li>酷派</li>
+			<li>小米</li>
+		</ul>
+		<ul class="content">
+			<li>苹果</li>
+			<li>三星</li>
+			<li>华为</li>
+			<li>中兴</li>
+			<li>天语</li>
+			<li>酷派</li>
+			<li>小米</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

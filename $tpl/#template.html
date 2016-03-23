@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	
+	<title></title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<!--
+	<script src="js/jquery.js"></script>
+	-->
+<style>
+</style>
+<script>
+var y={};
+function f1(){
+	var x=1;
+	return x;
+};
+console.log( f1() );
+
+
+window.onload=function(){
+
+	var $topbar=document.getElementsByClassName('topbar')[0];
+	var $aaa=document.getElementById('aaa');
+	
+	function $(x){
+		x=x.substr(1,6);
+		return document.getElementsByClassName(x)[0];
+	};
+	
+	try{allaodgj}catch(e){console.error(1);};
+	
+	$(".topbar").onclick=function(){  fadeOut($aaa,500);  };
+	
+	function fadeOut(x,duration){
+		x.style.opacity=1;
+		var f=setInterval(function(){
+			x.style.opacity=x.style.opacity-10/duration;
+			console.log( x.style.opacity );
+			if(x.style.opacity<0){clearInterval(f)};
+		},10);
+	};
+	
+	var dog=function(){
+		this.name="dog";
+		this.bark=function(){console.log("Woof!");}
+	};
+	dog();
+	bark();
+};
+</script>
+</head>
+
+<body>
+	<!-- fixed -->
+	<!-- header -->
+	<div id="aaa">111</div>
+	<div class="topbar container">111
+	</div>
+	<div class="searchbar container">
+		<div class="searchbox">
+			<input type="text" name="search"><div class="search"></div>
+		</div>
+	</div>
+	<div class="banner container">
+	</div>
+	<div class="navbar container">
+		<ul class="tabs">
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- main -->
+	<div class="main wrapper">
+	</div>
+	<!-- footer -->
+	<div>
+	</div>
+	
+	
+</body>
+
+</html>

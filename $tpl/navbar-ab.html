@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>nav1</title>
+	<link href="font-awesome-4.4.0\css\font-awesome.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+<style>
+a:link {color:white;}
+a:visited {color:white;}
+a:hover {color:;}
+a:active {color:}
+body,ul,li,h1,h2,h3,h4,h5,p {margin:0;padding:0}
+ul {list-style:none}
+img {display:block;}
+body {font-family:微软雅黑;}
+
+.nav1 {width:1000px;height:50px;margin:auto;background:#2C2D2F;}
+.nav1>li {position:relative;float:left;width:100px;height:50px;line-height:50px;text-align:center;color:white;cursor:pointer;}
+.nav1>li:hover {background:orange;transition:0.5s;}
+.nav1>li:hover .nav1-b>li {display:block;transition:0.5s;}
+.nav1-b>li {width:100px;height:40px;line-height:40px;text-align:center;color:white;cursor:pointer;background:#2C2D2F;display:none;}
+.nav1-b>li:hover {background:lightgreen;}
+</style>
+<script>
+</script>
+</head>
+
+
+
+<body>
+
+	<ul class="nav1">
+		<li>Stark
+			<ul class="nav1-b">
+				<li>Ned</li>
+				<li>Robb</li>
+				<li>Jon</li>
+			</ul>
+		</li>
+		<li>Lannister
+			<ul class="nav1-b">
+				<li>Tywin</li>
+				<li>Jaime</li>
+				<li>Cersei</li>
+			</ul>
+		</li>
+		<li>Targaryen
+			<ul class="nav1-b">
+				<li>Raegar</li>
+				<li>Viserys</li>
+				<li>Daenerys</li>
+			</ul>
+		</li>
+		<li>Martell</li>
+		<li>Tyrell</li>
+		<li>Greyjoy</li>
+		<li>Arryn</li>
+	</ul>
+
+</body>
+
+</html>

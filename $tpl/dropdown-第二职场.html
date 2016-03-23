@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>menu</title>
+	<link href="font-awesome-4.4.0\css\font-awesome.css" rel="stylesheet">
+	<script src="jquery.js"></script>
+<style>
+a:link {color:white;}
+a:visited {color:white;}
+a:hover {color:;}
+a:active {color:}
+body,ul,li,h1,h2,h3,h4,h5,p {margin:0;padding:0}
+ul {list-style:none}
+img {display:block;}
+body {font-family:微软雅黑;}
+
+.menu {position:relative;width:210px;margin:20px;overflow:hidden;}
+.menu-header {width:210px;height:50px;background:#144199;line-height:50px;text-indent:10px;color:white;}
+.menu-header>p {float:left;}
+.menu .unfold {float:right;margin-right:10px;cursor:pointer;}
+.menu-content>li{width:210px;height:60px;background:white;cursor:pointer;}
+.menu-content p {float:left;}
+.menu .icon {width:60px;margin-top:10px;text-align:center;font-size:150%}
+.menu .classes {margin:5px;font-size:95%;}
+.menu span {font-size:80%;color:grey;}
+</style>
+<script>
+$(document).ready(function(){
+	$(".menu .unfold").click(function(){
+		$(".menu>.menu-content").slideToggle("normal");
+	});
+});
+</script>
+</head>
+
+<body>
+	<div class="menu">
+		<div class="menu-header"><p>人才搜索</p><p class="unfold"><i class="fa fa-th-list"></i></p></div>
+		<ul class="menu-content">
+			<li>
+				<p class="icon"><i class="fa fa-futbol-o"></i></p>
+				<p class="classes">球类教练类<br/><span>足球 篮球 乒乓球</span></p></li>
+			<li>
+				<p class="icon"><i class="fa fa-bicycle"></i></p>
+				<p class="classes">健身教练类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+			<li>
+				<p class="icon"><i class="fa fa-phone"></i></p>
+				<p class="classes">客户服务类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+			<li>
+				<p class="icon"><i class="fa fa-desktop"></i></p>
+				<p class="classes">程序开发类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+			<li>
+				<p class="icon"><i class="fa fa-plane"></i></p>
+				<p class="classes">出国留学类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+			<li>
+				<p class="icon"><i class="fa fa-plane"></i></p>
+				<p class="classes">出国留学类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+			<li>
+				<p class="icon"><i class="fa fa-plane"></i></p>
+				<p class="classes">出国留学类<br/><span>足球 篮球 乒乓球</span></p>
+			</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

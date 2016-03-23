@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<style>
+img {display:block;}
+.box-header {margin:auto;}
+.box-content {position:relative;width:1000px;height:350px;overflow:hidden;}
+.box-imgs {position:absolute;left:-200px;top:40px;width:1400px;height:350px;}
+.box-imgs>li {width:180px;height:250px;background:white;border:1px solid white;margin:0 9px 0 9px;float:left;box-shadow:0 0 3px grey;transition:transform 0.3s;}
+.box-imgs>li:hover {border-color:#B1191A;background:#B1191A;color:white;}
+.box-imgs>li:hover .price {color:white;}
+.box-imgs>li:hover .location {color:white;}
+.box-imgs>li>img {width:180px;}
+.box-imgs>li>p {width:180px;float:left;margin:0 0 3px 5px;font-size:80%;}
+.box .price {text-indent:55px;color:#B1191A;}
+.box .location {color:grey;}
+.box-reverse {position:absolute;left:10px;top:100px;cursor:pointer;font-size:300%;color:grey;z-index:2;}
+.box-reverse:hover {color:#B1191A;}
+.box-play {position:absolute;right:10px;top:100px;cursor:pointer;font-size:300%;color:grey;z-index:2;}
+.box-play:hover {color:#B1191A;}
+.shade {position:absolute;left:0;bottom:0;width:100%;box-shadow:0 0 50px 45px;}
+.runtime {position:absolute;left:0;bottom:0;width:0px;height:6px;background:orange;}
+</style>
+<script>
+$(document).ready(function(){
+	$(".box-imgs li").eq(3).css( {"transform":"scale(1.3)"} );
+
+	var switching=false;
+	var n=1;
+	function play(){
+		if( !switching ){
+			switching=true;
+			$(".box-imgs li").css( {"transform":"scale(1)","z-index":"0"} );
+			$(".box-imgs li").eq(4).css( {"transform":"scale(1.3)","z-index":"1"} );
+			$(".box-imgs").animate( {left:"-=200px"},500,function(){
+				$(".box-imgs li:last").after( $(".box-imgs li:first") );			
+				$(".box-imgs").css({left:"+=200px"});
+				if(n<5){n++}else{n=1};
+				$(".box-switch li").css({background:"white"});
+				$(".box-switch li").eq(n-1).css({background:"orange"});
+				switching=false;
+			});
+		};
+	};
+	function reverse(){
+		if( !switching ){
+			switching=true;
+			$(".box-imgs li").css( {"transform":"scale(1)","z-index":"0"} );
+			$(".box-imgs li").eq(2).css( {"transform":"scale(1.3)","z-index":"1"} );
+			$(".box-imgs").animate( {left:"+=200px"},500,function(){
+				var x=$(".box-imgs li:last");
+				$(".box-imgs li:last").remove();
+				$(".box-imgs li:first").before(x);
+				$(".box-imgs").css({left:"-200px"});
+				if(n>1){n--}else{n=5};console.log(n);
+				$(".box-switch li").css({background:"white"});
+				$(".box-switch li").eq(n-1).css({background:"orange"});
+				switching=false;
+			});
+		};
+	};
+
+
+	$(".box-play").click(play);
+	$(".box-reverse").click(reverse);	
+
+});
+</script>
+</head>
+
+<body>
+<div class="box container">
+	<img class="box-header" src="images/second/ace.png">
+	<div class="box-content">		
+		<ul class="box-imgs">
+			<li>
+				<img src="images/second/elite1.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite1.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite2.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite3.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite4.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite5.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+			<li>
+				<img src="images/second/elite1.jpg">
+				<p>张悦 瑜伽/健美操/私人教练</p>
+				<p class="price">￥579.00元/小时</p>
+				<p><span class="description">完美身材定制</span><span class="location"> [北京 海淀区]</span></p>
+			</li>
+		</ul>
+		<div class="box-reverse"><i class="fa fa-angle-left"></i></div>
+		<div class="box-play"><i class="fa fa-angle-right"></i></div>
+	</div>	
+</div>
+	
+</body>
+
+</html>

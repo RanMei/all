@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>slider</title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<style>
+.slider {position:relative;width:600px;height:400px;margin:20px auto 0 auto;overflow:hidden;}
+.slider-imgs {position:relative;margin-left:-600px;width:3000px;height:400px;}
+.slider-imgs>li {width:600px;height:400px;float:left;}
+.slider-imgs>li>p {position:absolute;bottom:10px;width:600px;font-size:150%;color:white;z-index:1;text-align:center;}
+.slider-tabs {position:absolute;left:0;top:0}
+.slider-tabs>li {width:20px;height:20px;border-radius:50%;background:white;float:left;margin-right:10px;opacity:0.5}
+.slider-tabs>li:first-child {background:orange;}
+.slider-reverse {position:absolute;left:10px;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;}
+.slider-reverse:hover {color:orange;}
+.slider-play {position:absolute;right:10px;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;}
+.slider-play:hover {color:orange;}
+.slider-shade {position:absolute;left:0;bottom:0;width:100%;box-shadow:0 0 50px 45px;}
+.slider-runtime {position:absolute;left:0;bottom:0;width:0;height:6px;background:orange;}
+</style>
+<script>
+$(document).ready(function(){
+
+	var x1,x2,dx=0,Dx=0;
+	var slider=document.getElementsByClassName("slider")[0];
+	slider.addEventListener("touchstart",function(e){
+		e.preventDefault();
+		x1=e.changedTouches[0].pageX;
+	});
+	slider.addEventListener("touchmove",function(e){
+		x2=e.changedTouches[0].pageX;
+		dx=x2-x1;
+		Dx+=dx;
+		x1=e.changedTouches[0].pageX;
+		$(".slider-imgs").animate( {"margin-left":"+="+dx+"px"},0 );
+	});
+	slider.addEventListener("touchend",function(e){
+		if(Dx<-100){
+			$(".slider-imgs").animate( {"margin-left":"-="+(600+Dx)+"px"},500,function(){
+				$(".slider-imgs>li").eq(0).appendTo( $(".slider-imgs") );
+				$(".slider-imgs").css( {"margin-left":"-600px"} );
+			});
+		}else if(Dx>100){
+			$(".slider-imgs").animate( {"margin-left":"+="+(600-Dx)+"px"},500,function(){
+				$(".slider-imgs>li").eq(-1).prependTo( $(".slider-imgs") );
+				$(".slider-imgs").css( {"margin-left":"-600px"} );
+			});			
+		}else{
+			$(".slider-imgs").animate( {"margin-left":"-="+Dx+"px"},100 );
+		};
+		Dx=0;
+	});
+
+});
+</script>
+</head>
+
+<body>
+	<!-- A slider. -->
+	<div class="slider">
+		<ul class="slider-imgs">
+			<li><img src="images/slider/5.jpg"><p>5 James Bond</p></li>
+			<li><img src="images/slider/1.jpg"><p>1 Ned Stark</p></li>
+			<li><img src="images/slider/2.jpg"><p>2 Jaime Lannister</p></li>
+			<li><img src="images/slider/3.jpg"><p>3 Winter Soldier</p></li>
+			<li><img src="images/slider/4.jpg"><p>4 Captain America</p></li>
+		</ul>
+		<div class="slider-reverse"><i class="fa fa-angle-left"></i></div>
+		<div class="slider-play"><i class="fa fa-angle-right"></i></div>
+		<div class="slider-shade"></div>
+		<div class="slider-runtime"></div>
+		<ul class="slider-tabs">
+			<li></li><li></li><li></li><li></li><li></li>
+		</ul>
+	</div>
+	
+</body>
+
+</html>

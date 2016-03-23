@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<style>
+.navbar {background:#3D455F;}
+.navbar .tabs {padding:10px 0 10px 0;overflow:hidden;}
+.navbar .tabs li {width:83px;height:28px;line-height:28px;text-align:center;float:left;font-size:15px;color:white;cursor:pointer;}
+.navbar .tabs li:hover {color:#00CCFF}
+.navbar .bar-wrapper {position:relative;height:3px;}
+.navbar .bar {position:absolute;width:83px;height:3px;background:#00CCFF;}
+</style>
+<script>
+$(document).ready(function(){	
+	
+	$(".navbar .tabs>li").mouseenter(function(){
+		var m=$(".navbar .bar").css("left")/83;
+		var n=$(this).index(".navbar .tabs>li");
+		$(".bar").stop().animate( {"left":n*83} ,200);
+		function f(){
+			$(".bar").animate( {"left":"-=20px"} ,50);
+		};
+	});
+
+});
+</script>
+</head>
+
+<body>
+	
+	<div class="navbar wrapper">
+		<div class="container">
+			<ul class="tabs">
+				<li>首页</li>
+				<li>新手</li>
+				<li>游戏</li>
+				<li>新闻</li>
+				<li>锋科技</li>
+				<li>锋观点</li>
+				<li>评测</li>
+				<li>论坛</li>
+				<li>威锋源</li>
+				<li>威锋游戏</li>
+				<li>威锋商城</li>
+				<li>兔兔助手</li>
+			</ul>
+			<div class="bar-wrapper">
+				<div class="bar"></div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

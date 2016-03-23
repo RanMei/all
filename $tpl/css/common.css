@@ -1,0 +1,17 @@
+a:link {color:;text-decoration:none;}
+a:visited {color:;}
+a:hover {color:;}
+a:active {color:}
+* {margin:0;padding:0}
+ul {list-style:none}
+input {display:block;}
+body {font-family:Î¢ÈíÑÅºÚ;}
+.wrapper {width:100%;min-width:1000px;}
+.container {width:1000px;margin:auto;}
+.row {width:1000px;margin:auto;}
+.mb_10 {margin-bottom:10px;}
+.z-title {padding:1em;border-bottom:1px solid grey;}
+.z_wrapper {width:100%;min-width:1000px;}
+.z_container {width:1000px;margin:auto;}
+.z_row {width:1000px;margin:auto;}
+/*-----------------------------------------------------------------------------------------------------------------------*/
