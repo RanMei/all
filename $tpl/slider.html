@@ -9,12 +9,12 @@
 	<script src="js/jquery.js"></script>
 <style>
 .slider {position:relative;width:600px;height:400px;margin:20px auto 0 auto;overflow:hidden;}
-.slider-imgs {position:absolute;left:-100%;width:500%;height:100%;}
-.slider-imgs>li {width:600px;height:400px;float:left;}
-.slider-imgs>li>p {position:absolute;bottom:10px;width:600px;font-size:150%;color:white;z-index:1;text-align:center;}
+.train {position:absolute;left:-100%;width:500%;height:100%;}
+.train>li {width:600px;height:400px;float:left;}
+.train>li>p {position:absolute;bottom:10px;width:600px;font-size:150%;color:white;z-index:1;text-align:center;}
 .slider-tabs {position:absolute;}
 .slider-tabs>li {width:20px;height:20px;border-radius:50%;background:white;float:left;margin-right:10px;opacity:0.5}
-.slider-tabs>li:first-child {background:orange;}
+.slider-tabs>li.active {background:orange;}
 .slider-reverse {position:absolute;left:10px;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;}
 .slider-reverse:hover {color:orange;}
 .slider-play {position:absolute;right:10px;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;}
@@ -37,14 +37,14 @@
 				switching=true;
 				function f(){
 					run();
-					$(".slider-imgs li").eq(-1).after( $(".slider-imgs li").eq(0) );
-					$(".slider-imgs").css( {left:"+="+$$width+"px"} );
+					$(".train li").eq(-1).after( $(".train li").eq(0) );
+					$(".train").css( {left:"+="+$$width+"px"} );
 					if( n<$$img_number ){n++}else{n=1};
-					$(".slider-tabs li").css({background:"white"});
-					$(".slider-tabs li").eq(n-1).css({background:"orange"});
+					$(".slider-tabs li").removeClass("active");
+					$(".slider-tabs li").eq(n-1).addClass("active");
 					switching=false;
 				};
-				$(".slider-imgs").animate(  {left:"-="+$$width+"px"},$$duration,f  );
+				$(".train").animate(  {left:"-="+$$width+"px"},$$duration,f  );
 				$(".slider-runtime").stop().animate(  {"width":"0px"},0  );
 			};
 		};
@@ -52,19 +52,22 @@
 			if( !switching ){
 				switching=true;
 				function f(){
-					$(".slider-imgs li").eq(0).before( $(".slider-imgs li").eq(-1) );
-					$(".slider-imgs").css({left:"-"+$$width+"px"});
+					$(".train li").eq(0).before( $(".train li").eq(-1) );
+					$(".train").css({left:"-"+$$width+"px"});
 					if(n>1){n--}else{n=$$img_number};console.log(n);
-					$(".slider-tabs li").css({background:"white"});
-					$(".slider-tabs li").eq(n-1).css({background:"orange"});
+					$(".slider-tabs li").removeClass("active");
+					$(".slider-tabs li").eq(n-1).addClass("active");
 					switching=false;
 				};
-				$(".slider-imgs").animate(  {left:"+="+$$width+"px"},$$duration,f  );
+				$(".train").animate(  {left:"+="+$$width+"px"},$$duration,f  );
 				$(".slider-runtime").stop().animate(  {"width":"0px"},0  );
 			};
 		};
 		function run(){
-			$(".slider-runtime").animate(  {"width":""+$$width+""},4500  ).delay(500).animate(  {"width":"0px"},0  );
+			$(".slider-runtime")
+				.animate(  {"width":""+$$width+""},4500  )
+				.delay(500)
+				.animate(  {"width":"0px"},0  );
 		};
 		//-------------------------------------------------------------
 		setInterval(play,$$interval);
@@ -83,7 +86,7 @@
 <body>
 	<!-- A slider. -->
 	<div class="slider">
-		<ul class="slider-imgs">
+		<ul class="train">
 			<li><img src="images/slider/5.jpg"><p>5 James Bond</p></li>
 			<li><img src="images/slider/1.jpg"><p>1 Ned Stark</p></li>
 			<li><img src="images/slider/2.jpg"><p>2 Jaime Lannister</p></li>
@@ -95,7 +98,7 @@
 		<div class="slider-shade"></div>
 		<div class="slider-runtime"></div>
 		<ul class="slider-tabs">
-			<li></li><li></li><li></li><li></li><li></li>
+			<li class="active"></li><li></li><li></li><li></li><li></li>
 		</ul>
 	</div>
 
