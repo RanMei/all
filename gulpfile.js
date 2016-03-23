@@ -1,6 +1,7 @@
 var gulp = require('gulp'); 
 var less = require('gulp-less');
 var reactify = require('gulp-reactify');
+var concat = require("gulp-concat");
 //var jshint = require('gulp-jshint');
 /*
 gulp.task('jshint', function() {
@@ -19,6 +20,13 @@ gulp.task('browserify',function(){
 
 });
 
+gulp.task( "concat",function(){
+	gulp.src( "./angular/public/js/controllers/*.js" )
+		.pipe( concat("controllers.js") )
+		.pipe( gulp.dest("./angular/public/js/") );
+});
+
+
 gulp.task( "less",function(){
 	gulp.src( "./angular/less/*.less" )
 		.pipe( less() )
@@ -33,7 +41,9 @@ gulp.task( "reactify",function(){
 
 gulp.task( "default", function(){
 	
+	gulp.watch( "./angular/public/js/controllers/*.js",['concat'] );
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
+
 	
 });

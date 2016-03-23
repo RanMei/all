@@ -1,4 +1,4 @@
-﻿app.controller( "c_register",function($scope){
+﻿app.controller( "c_register",function( $scope ){
 	
 	$scope.user={
 		ID:"",
@@ -8,7 +8,7 @@
 	
 	$scope.status={
 		userID:""
-	}
+	};
 	
 	$scope.register=function(){
 		

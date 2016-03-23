@@ -1,7 +1,29 @@
-﻿app.controller( "c_shopping_cart",function($scope){
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.controller( "c_shopping_cart",function( $scope,$http ){
 	
-	$scope.alert();
+	$scope.items = [];
+
+	$http({
+		url: "items.json",
+		method: "post"
+	}).then( function(r){
+		$scope.items = r.data;
+	});
 	
+	/*
 	$scope.items=[
 		{	id:"0001",
 			name:"苍溪猕猴桃",
@@ -22,6 +44,8 @@
 			quantity:1
 		}
 	];
+	*/
+	//console.log( JSON.stringify($scope.items) );
 	$scope.totalQuantity=function(){
 		var tq=0;
 		for( i=0;i<$scope.items.length;i++ ){

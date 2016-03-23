@@ -1,6 +1,6 @@
 (function( React,ReactDOM ){
 	
-	var x=0;
+	var x=3;
 	var CommentBoxStyle={
 		width:"300px",
 		padding:"15px",
