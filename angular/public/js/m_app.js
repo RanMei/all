@@ -31,7 +31,7 @@ angular.module("app")
 angular.module("app").directive("hello",function(){
 	return {
 
-		template: "<p ng-repeat='item in items'>{{item.name}}</p>",
+		template: "<p ng-repeat='item in items'>{{item.name}}</p>"
 		
 	}
 	
