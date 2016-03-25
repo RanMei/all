@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  width: 1000px;
+  margin: auto;
+}
+.nav-bar {
+  overflow: hidden;
+}
+.nav-bar img {
+  float: left;
+  height: 100px;
+  display: block;
+}
+.nav-bar .nav {
+  margin-top: 20px;
+  overflow: hidden;
+  float: right;
+}
+.nav-bar .nav a:link {
+  float: left;
+  height: 30px;
+  padding: 0 20px 0 20px;
+  line-height: 30px;
+  border-radius: 15px;
+  color: black;
+}
+.nav-bar .nav a:visited {
+  color: black;
+}
+.nav-bar .nav a:hover {
+  color: white;
+  background: orange;
+}
+.footer {
+  background: #008FD3;
+}
