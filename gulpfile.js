@@ -31,9 +31,9 @@ gulp.task( "less",function(){
 	gulp.src( "./angular/less/*.less" )
 		.pipe( less() )
 		.pipe( gulp.dest("./angular/public/css") );
-	gulp.src( "./caredaily/less/*.less" )
+	gulp.src( "./#wolf/less/*.less" )
 		.pipe( less() )
-		.pipe( gulp.dest("./caredaily/css") );
+		.pipe( gulp.dest("./#wolf/css") );
 
 });
 
@@ -48,7 +48,7 @@ gulp.task( "default", function(){
 	gulp.watch( "./angular/public/js/controllers/*.js",['concat'] );
 	
 	gulp.watch( './angular/less/*.less',['less'] );
-	gulp.watch( './caredaily/less/*.less',['less'] );
+	gulp.watch( './#wolf/less/*.less',['less'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
 
