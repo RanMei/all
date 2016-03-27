@@ -8,6 +8,9 @@ html {
 a {
   text-decoration: none;
 }
+img {
+  display: block;
+}
 .container {
   width: 1000px;
   margin: auto;

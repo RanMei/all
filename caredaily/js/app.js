@@ -22,6 +22,11 @@ angular.module(    "app")
 		templateUrl: 'tpl/index.html',
 		controller: 'indexCtrl'
 	})
+	.state(    'app.brand',{
+		url: '/brand',
+		templateUrl: 'tpl/brand.html',
+		controller: 'brandCtrl'
+	})
 	.state(    'app.joinUs',{
 		url: '/joinUs',
 		templateUrl: 'tpl/joinUs.html',
@@ -31,6 +36,11 @@ angular.module(    "app")
 		url: '/products',
 		templateUrl: 'tpl/products.html',
 		controller: 'productsCtrl'
+	})
+	.state(    'app.contactUs',{
+		url: '/contactUs',
+		templateUrl: 'tpl/contactUs.html',
+		controller: 'contactUsCtrl'
 	})
 }]);
 
