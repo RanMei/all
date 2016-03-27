@@ -27,14 +27,16 @@ gulp.task( "concat",function(){
 });
 
 
-gulp.task( "less",function(){
+gulp.task(    "less",function(){
 	gulp.src( "./angular/less/*.less" )
 		.pipe( less() )
 		.pipe( gulp.dest("./angular/public/css") );
 	gulp.src( "./#wolf/less/*.less" )
 		.pipe( less() )
 		.pipe( gulp.dest("./#wolf/css") );
-
+	gulp.src(    "./caredaily/less/*.less" )
+		.pipe( less() )
+		.pipe( gulp.dest(    "./caredaily/css") );
 });
 
 gulp.task( "reactify",function(){
@@ -49,6 +51,7 @@ gulp.task( "default", function(){
 	
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( './#wolf/less/*.less',['less'] );
+	gulp.watch(    './caredaily/less/*.less',['less'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
 
