@@ -7,36 +7,27 @@
 	<title>topbar</title>
 	<link href="common.css" rel="stylesheet">
 	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
-	<script src="js/zeta.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="js/mobiscroll.js"></script>
 <style>
-.card {width:150px;height:250px;border-radius:10px;background:grey;overflow:hidden;transition:1s;}
-.card:hover {transform:perspective(600px)translateX(100px)rotateY(45deg);transition:1s;}
+
 </style>
 <script>
 $( document ).ready(function(){
-	var card=document.getElementsByClassName("card");
-	
-		$( card ).slideUp(2000);
-	
-	
-
+	$('input:jqmData(role="datebox")').mobiscroll().date();
 });
 </script>
 </head>
 
 <body>
-	<!-- fixed -->
-	<!-- header -->
-	<!-- main -->
-	<div class="container">
-		<div class="card">
-			<img src="images/4.jpg">
-		</div>
-		
-	</div>
-	<!-- footer -->
-	<div>
-	</div>
+
+	<input type="date"/>
+
+<div data-role="frmMain_txt_SB_SERVERTIME">
+<label for="frmMain_txt_SB_SERVERTIME">购买时间*</label>
+<input type="text" data-role="datebox"   id="frmMain_txt_SB_SERVERTIME" name="frmMain_txt_SB_SERVERTIME"/>
+</div>
+
 	
 	
 </body>
