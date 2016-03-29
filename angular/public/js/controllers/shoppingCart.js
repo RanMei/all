@@ -3,7 +3,7 @@
 	$scope.items = [];
 
 	$http({
-		url: "items.json",
+		url: "API/items.json",
 		method: "post"
 	}).then( function(r){
 		$scope.items = r.data;

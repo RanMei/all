@@ -1,0 +1,16 @@
+<style>
+.commentBox p {
+	margin-bottom: 5px;
+	background: white;
+}
+
+</style>
+
+<div class="commentBox">
+	<h2 class='title'>comment box</h2>
+	<p class='commentItem' ng-repeat='x in comments'>
+		{{x.author}} {{x.comment}}
+	</p>
+	{{yourComment}}
+	<input ng-model="yourComment" placeholder="Your comment here..."/>
+</div>

@@ -1,24 +1,18 @@
-﻿angular.module("app").directive("commentbox",function(){
-	return {
+﻿angular.module("app").directive("commentbox",function( $http ){
 
-		template: 
-			"<h2 class='title'>comment box</h2>" +
-			"<p class='commentItem' ng-repeat='x in comments'>" + 
-				"{{x.author}} {{x.comment}}" +
-			"</p>",
+	return {
+		//template: "",
+		templateUrl: "tpl/commentBox.html",
 		replace: false,
 		link: function (scope,elem,attrs) {
-			console.log(elem.find("p"));
-			scope.comments = [
-				{
-					author: "Clark Kent",
-					comment: "If I wanted it, you've been dead already!"
-				},
-				{
-					author: "Bruce Wayne",
-					comment: "Do you bleed? You will."
-				}
-			];
+
+			$http({
+				url: "API/comments.json",
+				method: "post"
+			}).then( function(r){
+				scope.comments = r.data.comments;
+			});	
+			
 			elem.css({
 				width: "400px",
 				padding: "10px",
