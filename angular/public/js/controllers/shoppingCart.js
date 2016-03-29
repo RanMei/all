@@ -1,18 +1,4 @@
-﻿
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.controller( "c_shopping_cart",function( $scope,$http ){
+﻿app.controller( "shoppingCartCtrl",function( $scope,$http ){
 	
 	$scope.items = [];
 

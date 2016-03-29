@@ -10,17 +10,19 @@
 	<link href="css/signup.css" rel="stylesheet">
 	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
 	
-	<script src="js/vendor/angular.js"></script>
-	<script src="js/vendor/angular-ui-router.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="js/vendor/angular.js"></script>
+	<script type="text/javascript" src="js/vendor/angular-ui-router.js"></script>
 	
-	<script src="js/m_app.js"></script>
-	<script src="js/controllers/app.js"></script>
-	<script src="js/controllers/shopping_cart.js"></script>
-	<script src="js/controllers/signup.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/directives.js"></script>
+	<script type="text/javascript" src="js/controllers/appCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/shoppingCart.js"></script>
+	<script type="text/javascript" src="js/controllers/signup.js"></script>
 </head>
 
-<body ng-controller="c_app">
-	<hello></hello>
+<body ng-controller="appCtrl">
+	<div commentbox></div>
 	<span icon>{{heart}}</span>
 	<div id="app" ui-view>
 	</div>
