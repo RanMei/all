@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+li {
+	list-style: none;
+}
+
 html {
 	font-family: "微软雅黑";
 }
@@ -49,6 +53,37 @@ img {
 
 .app-content {
 
+}
+
+.showcase {
+	h1 {
+		text-align: center;
+	}
+	ul {
+		overflow: hidden;
+		li {
+			position: relative;
+			float: left;
+			width: 300px;
+			height: 150px;
+			margin: 10px;
+			border: 1px solid lightgrey;
+			overflow: hidden;
+			.veil {
+				position: absolute;
+				left: 0;
+				bottom: -60px;
+				width: 100%;
+				height: 60px;
+				background: black;
+				opacity: 0.5;
+				transition: 0.3s;
+			}
+		}
+		li:hover .veil {
+			bottom: 0;
+		}
+	}
 }
 
 .products {

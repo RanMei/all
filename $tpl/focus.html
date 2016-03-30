@@ -9,8 +9,17 @@
 	<script src="js/jquery.js"></script>
 <style>
 /* .focus */
-.focus {position:relative;height:500px;margin:auto;background:white;overflow:hidden;}
-.focus>li {position:absolute;display:none;}
+.focus {
+	position:relative;
+	height:500px;
+	margin:auto;
+	background:white;
+	overflow:hidden;
+}
+.focus>li {
+	position:absolute;
+	display:none;
+}
 .focus>li:first-child {display:block;}
 .focus-tabs {position:absolute;top:400px;}
 .focus-tabs>li {width:15px;height:15px;border-radius:50%;border:1px solid black;background:white;float:left;margin-right:10px;cursor:pointer;opacity:0.5;}
@@ -21,7 +30,7 @@
 .focus-next:hover {opacity:0.7}
 </style>
 <script>
-var focus=(function(){
+(function( $ ){
 	$(document).ready(function(){
 		var n=0;
 		//
@@ -65,7 +74,7 @@ var focus=(function(){
 		};
 		$(".focus-tabs>li").click(jump);
 	});
-})();
+})( jQuery );
 </script>
 </head>
 
