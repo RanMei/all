@@ -55,8 +55,8 @@ img {
 .showcase ul li {
   position: relative;
   float: left;
-  width: 300px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   margin: 10px;
   border: 1px solid lightgrey;
   overflow: hidden;

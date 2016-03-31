@@ -1,26 +1,118 @@
-<div class="focus">
-	<img src="images/focus0.jpg"/>
-</div>
+<style>
+/* .focus */
+.focus {
+	position:relative;
+	height:600px;
+	margin:auto;
+	background:white;
+	overflow:hidden;
+}
+.focus>li {
+	position:absolute;
+	display:none;
+}
+.focus>li:first-child {display:block;}
+.focus-tabs {position:absolute;top:400px;}
+.focus-tabs>li {width:15px;height:15px;border-radius:50%;border:1px solid black;background:white;float:left;margin-right:10px;cursor:pointer;opacity:0.5;}
+.focus-tabs>li:first-child {opacity:1}
+.focus-last {position:absolute;left:10px;top:200px;width:49px;height:104px;background:black;line-height:104px;text-align:center;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;opacity:0.5;border-top-left-radius:5px;border-bottom-left-radius:5px;}
+.focus-last:hover {opacity:0.7}
+.focus-next {position:absolute;right:10px;top:200px;width:49px;height:104px;background:black;line-height:104px;text-align:center;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;opacity:0.5;border-top-right-radius:5px;border-bottom-right-radius:5px;}
+.focus-next:hover {opacity:0.7}
+
+.showcase h1 {
+	padding: 1rem 0 1rem 0;
+}
+</style>
+<script>
+(function( $ ){
+	$(document).ready(function(){
+		var n=0;
+		//
+		function atCenter(){
+			var left=(1920-$(".focus").width())/2;
+			var leftOfTabs=($(".focus").width()-98)/2;
+			console.log(leftOfTabs);
+			$(".focus>li").css(  {left:-left}  );
+			$(".focus-tabs").css(  {left:leftOfTabs}  );
+		};
+		
+		function next(){
+			$(".focus>li").eq(n).fadeToggle(100);
+			if(n<3){n++}else{n=0};
+			$(".focus-tabs li").css(  {opacity:"0.5"}  );
+			$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
+			$(".focus>li").eq(n).fadeToggle(400);
+		};
+		
+		function last(){
+			$(".focus>li").eq(n).fadeToggle(100);
+			if(n>0){n--}else{n=3};
+			$(".focus-tabs li").css(  {opacity:"0.5"}  );
+			$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
+			$(".focus>li").eq(n).fadeToggle(400);
+		};
+		
+		function jump(){
+			var m=$(this).index();
+			if(m!==n){
+				$(".focus>li").eq(n).fadeToggle(100);
+				$(".focus>li").eq(m).fadeToggle(400);
+				n=m;
+				$(".focus-tabs li").css(  {opacity:"0.5"}  );
+				$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
+			};
+		};
+		//*********************************************************
+		atCenter();
+		window.onresize=atCenter;
+		setInterval(next,10000);
+		$(".focus-next").click(next);
+
+
+		$(".focus-last").click(last);
+		$(".focus-tabs>li").click(jump);
+	});
+})( jQuery );
+</script>
+<!-- focus --> 
+<ul class="focus wrapper">
+	<li><img src="images/focus0.jpg"><p>1</p></li>
+	<li><img src="images/focus1.jpg"><p>2</p></li>
+	<li><img src="images/focus2.jpg"><p>3</p></li>
+	<li><img src="images/focus1.jpg"><p>4</p></li>
+	<ul class="focus-tabs">
+		<li></li><li></li><li></li><li></li>
+	</ul>
+	<div class="focus-last"><i class="fa fa-angle-left"></i></div>
+	<div class="focus-next"><i class="fa fa-angle-right"></i></div>		
+</ul>
 
 <div class="showcase container">
 	<h1>产品中心</h1>
 	<ul>
 		<li>
+			<img src="images/diaper.jpg"/>
 			<div class="veil"></div>
 		</li>
 		<li>
+			<img src="images/pull-ups.jpg"/>
 			<div class="veil"></div>
 		</li>
 		<li>
+			<img src="images/pad.jpg"/>
 			<div class="veil"></div>
 		</li>
 		<li>
+			<img src="images/detergent.jpg"/>
 			<div class="veil"></div>
 		</li>
 		<li>
+			<img src="images/towel.jpg"/>
 			<div class="veil"></div>
 		</li>
 		<li>
+			<img src="images/diaper2.jpg"/>
 			<div class="veil"></div>
 		</li>
 	<ul>
