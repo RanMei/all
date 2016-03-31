@@ -18,31 +18,48 @@ img {
   width: 1000px;
   margin: auto;
 }
-.nav-bar {
+.clear {
+  clear: both;
+}
+.app-header {
+  background: #0F64C0;
+}
+.app-header .nav-bar {
+  height: 95px;
   overflow: hidden;
 }
-.nav-bar img {
+.app-header .nav-bar .logo {
   float: left;
-  height: 100px;
+  padding: 20px 0 0 0;
+  color: white;
   display: block;
 }
-.nav-bar .nav {
-  margin-top: 20px;
+.app-header .nav-bar .logo p:nth-child(1) {
+  font-size: 20px;
+}
+.app-header .nav-bar .logo p:nth-child(2) {
+  font-size: 16px;
+}
+.app-header .nav-bar .nav {
   overflow: hidden;
   float: right;
 }
-.nav-bar .nav a:link {
+.app-header .nav-bar .nav a:link {
   float: left;
-  height: 30px;
-  padding: 0 20px 0 20px;
-  line-height: 30px;
-  border-radius: 15px;
-  color: black;
+  width: 70px;
+  height: 80px;
+  padding: 15px 10px 0 10px;
+  text-align: center;
+  color: white;
 }
-.nav-bar .nav a:visited {
-  color: black;
+.app-header .nav-bar .nav a:link img {
+  height: 32px;
+  display: inline-block;
 }
-.nav-bar .nav a:hover {
+.app-header .nav-bar .nav a:visited {
+  color: white;
+}
+.app-header .nav-bar .nav a:hover {
   color: white;
   background: #0D9EED;
 }
@@ -74,15 +91,122 @@ img {
 .showcase ul li:hover .veil {
   bottom: 0;
 }
+.brand img {
+  margin: auto;
+}
+.brand .banner {
+  padding: 10px 0 10px 0;
+  font-size: 24px;
+  color: #0f64c0;
+  background: #E5E5E5;
+}
+.brand .title .chinese {
+  padding: 10px 0 10px 0;
+  font-size: 25px;
+  color: #0F64C0;
+}
+.brand .title .english {
+  padding-bottom: 20px;
+  font-size: 20px;
+  color: #0F64C0;
+}
+.brand .container > p {
+  font-size: 14px;
+  text-indent: 28px;
+}
 .products {
-  margin-top: 30px;
-  text-align: center;
-  box-shadow: 0 0 8px grey;
   overflow: hidden;
 }
-.footer {
-  padding: 15px 0 15px 0;
-  color: white;
+.products .banner {
+  padding: 10px 0 10px 0;
+  font-size: 24px;
+  color: #0f64c0;
+  background: #E5E5E5;
+}
+.products ul {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.products ul li {
+  padding: 20px 0 20px 0;
+  border-bottom: 1px dotted grey;
+  overflow: hidden;
+}
+.products ul li img {
+  float: left;
+  width: 300px;
+}
+.products ul li .right {
+  float: right;
+  width: 670px;
+}
+.products ul li .right .title {
+  margin-bottom: 15px;
+  font-size: 25px;
+  color: #0F64C0;
+  display: inline-block;
+}
+.contactUs .banner {
+  padding: 10px 0 10px 0;
+  font-size: 24px;
+  color: #0f64c0;
+  background: #E5E5E5;
+}
+.contactUs .main {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.contactUs .main .panel {
+  float: left;
+  width: 50%;
+}
+.joinUs {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.joinUs h1 {
+  color: #0F64C0;
   text-align: center;
-  background: #008FD3;
+}
+.footer {
+  font-size: 13px;
+  color: white;
+  background: #0F64C0;
+}
+.footer ul {
+  padding-top: 20px;
+}
+.footer ul li {
+  float: left;
+  margin-right: 60px;
+}
+.footer ul .title {
+  padding: 10px 0 20px 0;
+  font-size: 18px;
+}
+.footer ul .left {
+  width: 360px;
+}
+.footer ul .left .more:link {
+  float: left;
+  width: 130px;
+  height: 35px;
+  margin-top: 15px;
+  border: 1px solid white;
+  border-radius: 3px;
+  line-height: 35px;
+  font-size: 13px;
+  text-align: center;
+  display: block;
+}
+.footer ul .left .more:visited {
+  color: white;
+}
+.footer ul .footerImg {
+  float: right;
+}
+.footer .copyright {
+  padding: 10px 0 10px 0;
+  border-top: 1px solid white;
+  margin-top: 15px;
 }
