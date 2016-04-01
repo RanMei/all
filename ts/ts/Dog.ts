@@ -7,4 +7,4 @@ class Dog {
 	}
 }
 
-export {Dog};
+// export {Dog};

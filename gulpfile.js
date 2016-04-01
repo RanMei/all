@@ -3,6 +3,7 @@ var less = require('gulp-less');
 var reactify = require('gulp-reactify');
 var concat = require("gulp-concat");
 var tsc = require('gulp-tsc');
+var browserify =  require('browserify');
 
 //var jshint = require('gulp-jshint');
 /*
@@ -14,10 +15,10 @@ gulp.task('jshint', function() {
 */
 gulp.task('browserify',function(){
 	return(
-		browserify("src/main.js")
+		browserify('./ts/js/common.js')
 		.bundle()
-		.pipe(source('bundle.js'))
-		.pipe(gulp.dest('public/js'))
+		.pipe( source('./ts/js/bundle.js') )
+		.pipe( gulp.dest('./ts/js') )
 	)
 
 });

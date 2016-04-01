@@ -1,6 +1,16 @@
-import {Dog} from './Dog';
+// import {Dog} from './Dog';
 
-var Goofy = new Dog('hahaha');
+class Dog {
+	constructor(public name: string){
+		this.name = name;
+	}
+	bark(){
+		return( 'I am ' + this.name + '!' );
+	}
+}
+
+var Goofy = new Dog('Goofy');
     
 document.write( Goofy.bark() );
 document.write( "<br/>hahahahahahaahhah" );
+
