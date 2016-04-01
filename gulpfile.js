@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var reactify = require('gulp-reactify');
 var concat = require("gulp-concat");
+var tsc = require('gulp-tsc');
+
 //var jshint = require('gulp-jshint');
 /*
 gulp.task('jshint', function() {
@@ -45,6 +47,13 @@ gulp.task( "reactify",function(){
 		.pipe( gulp.dest("./react/js/components") );
 });
 
+gulp.task( 'tsc',function(){
+	gulp.src( './ts/ts/*.ts' )
+		.pipe( tsc() )
+		.pipe( gulp.dest('./ts/js/') );
+
+})
+
 gulp.task( "default", function(){
 	
 	gulp.watch( "./angular/public/js/controllers/*.js",['concat'] );
@@ -54,6 +63,8 @@ gulp.task( "default", function(){
 	gulp.watch(    './caredaily/less/*.less',['less'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
+
+	gulp.watch( './ts/ts/*.ts',['tsc'] )
 
 	
 });

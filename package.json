@@ -12,7 +12,8 @@
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-less": "^3.0.5",
-    "gulp-reactify": "^3.0.1"
+    "gulp-reactify": "^3.0.1",
+    "gulp-tsc": "^1.1.5"
   },
   "dependencies": {
     "express": "^4.13.4",
