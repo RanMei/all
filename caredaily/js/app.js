@@ -23,23 +23,19 @@ angular.module(    "app")
 	})
 	.state(    'app.brand',{
 		url: '/brand',
-		templateUrl: 'tpl/brand.html',
-		controller: 'brandCtrl'
+		templateUrl: 'tpl/brand.html'
 	})
 	.state(    'app.joinUs',{
 		url: '/joinUs',
-		templateUrl: 'tpl/joinUs.html',
-		controller: 'joinUsCtrl'
+		templateUrl: 'tpl/joinUs.html'
 	})
 	.state(    'app.products',{
 		url: '/products',
-		templateUrl: 'tpl/products.html',
-		controller: 'productsCtrl'
+		templateUrl: 'tpl/products.html'
 	})
 	.state(    'app.contactUs',{
 		url: '/contactUs',
-		templateUrl: 'tpl/contactUs.html',
-		controller: 'contactUsCtrl'
+		templateUrl: 'tpl/contactUs.html'
 	})
 }]);
 

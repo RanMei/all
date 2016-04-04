@@ -1,9 +1,10 @@
-// import {Dog} from './Dog';
+//import {Dog} from './Dog';
 
 class Dog {
 	constructor(public name: string){
 		this.name = name;
 	}
+	legNumber = "4";
 	bark(){
 		return( 'I am ' + this.name + '!' );
 	}
@@ -11,6 +12,6 @@ class Dog {
 
 var Goofy = new Dog('Goofy');
     
-document.write( Goofy.bark() );
+document.write( Goofy.legNumber,Goofy.bark() );
 document.write( "<br/>hahahahahahaahhah" );
 
