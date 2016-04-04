@@ -14,6 +14,30 @@ a {
 img {
   display: block;
 }
+@keyframes toLeft {
+  40% {
+    transform: translate3d(-700px, 100px, -300px);
+  }
+  100% {
+    transform: translate3d(-600px, 200px, -800px);
+    opacity: 0.5;
+  }
+}
+@keyframes toRight {
+  40% {
+    transform: translate3d(700px, 100px, -300px);
+  }
+  100% {
+    transform: translate3d(600px, 200px, -800px);
+    opacity: 0.5;
+  }
+}
+@keyframes toCenter {
+  100% {
+    transform: ;
+    opacity: 1;
+  }
+}
 .container {
   width: 1000px;
   margin: auto;
@@ -63,36 +87,161 @@ img {
   color: white;
   background: #0D9EED;
 }
-.showcase h1 {
-  text-align: center;
-}
-.showcase ul {
-  overflow: hidden;
-}
-.showcase ul li {
+.home .swiper {
   position: relative;
-  float: left;
-  width: 220px;
-  height: 220px;
-  margin: 10px;
-  border: 1px solid lightgrey;
+  width: 100%;
+  height: 481px;
   overflow: hidden;
 }
-.showcase ul li .veil {
+.home .swiper .train {
   position: absolute;
   left: 0;
-  bottom: -60px;
-  width: 100%;
-  height: 60px;
-  background: black;
-  opacity: 0.5;
-  transition: 0.3s;
+  top: 0;
+  width: 300%;
+  overflow: hidden;
 }
-.showcase ul li:hover .veil {
-  bottom: 0;
+.home .swiper .train li {
+  float: left;
+  width: 33.33333333%;
+  height: 481px;
+}
+.home .swiper .centered {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+}
+.home .swiper .centered .tabs {
+  margin-left: -40px;
+}
+.home .swiper .centered .tabs li {
+  float: left;
+  width: 14px;
+  height: 14px;
+  margin-right: 14px;
+  border-radius: 50%;
+  background: orange;
+  cursor: pointer;
+  display: inline;
+}
+.home .swiper .centered .tabs li.active {
+  background: #0F64C0;
+}
+.home .showcase {
+  overflow: hidden;
+}
+.home .showcase p {
+  padding: 30px 0 10px 0;
+  font-size: 20px;
+  color: #0F64C0;
+  font-weight: bold;
+}
+.home .showcase .pic {
+  position: relative;
+  float: left;
+  width: 400px;
+  padding: 10px;
+  margin: 20px 40px 20px 40px;
+  box-shadow: 0 0 8px grey;
+}
+.home .showcase .pic:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: rotate(4deg);
+  background: white;
+  box-shadow: 0 0 15px grey;
+}
+.home .showcase .pic:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  transform: rotate(-2deg);
+  background: white;
+  box-shadow: 0 0 15px grey;
+}
+.home .bottom h1 {
+  padding: 40px 0 40px 0;
+  text-align: center;
+  color: orange;
+}
+.home .bottom h3 {
+  text-align: center;
+  color: white;
+}
+.home .bottom .animation {
+  position: relative;
+  width: 465px;
+  height: 250px;
+  margin: 40px auto 60px auto;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.home .bottom .animation li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px;
+  background: orange;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.home .bottom .animation li p {
+  font-size: 20px;
+}
+.home .bottom .animation .i0 {
+  transform: translate3d(-600px, 50px, -800px);
+  opacity: 0.5;
+  z-index: -1;
+}
+.home .bottom .animation .i2 {
+  transform: translate3d(600px, 50px, -800px);
+  opacity: 0.5;
+  z-index: -1;
+}
+.home .bottom .panel {
+  width: 930px;
+  padding: 15px;
+  margin: auto;
+  background: white;
+}
+.home .bottom .panel .top {
+  overflow: hidden;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted grey;
+  margin-bottom: 15px;
+}
+.home .bottom .panel .bottom {
+  overflow: hidden;
+}
+.home .bottom .panel .left {
+  float: left;
+  width: 20%;
+}
+.home .bottom .panel .left p {
+  width: 114px;
+  height: 72px;
+  border-radius: 5px;
+  line-height: 72px;
+  text-align: center;
+  color: white;
+  background: orange;
+}
+.home .bottom .panel .right {
+  float: left;
+  width: 80%;
 }
 .brand img {
-  margin: auto;
+  margin: 5px auto;
+}
+.brand p {
+  padding: 5px 0 5px 0;
 }
 .brand .banner {
   padding: 10px 0 10px 0;

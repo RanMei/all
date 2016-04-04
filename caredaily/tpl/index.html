@@ -1,120 +1,72 @@
-<style>
-/* .focus */
-.focus {
-	position:relative;
-	height:600px;
-	margin:auto;
-	background:white;
-	overflow:hidden;
-}
-.focus>li {
-	position:absolute;
-	display:none;
-}
-.focus>li:first-child {display:block;}
-.focus-tabs {position:absolute;top:400px;}
-.focus-tabs>li {width:15px;height:15px;border-radius:50%;border:1px solid black;background:white;float:left;margin-right:10px;cursor:pointer;opacity:0.5;}
-.focus-tabs>li:first-child {opacity:1}
-.focus-last {position:absolute;left:10px;top:200px;width:49px;height:104px;background:black;line-height:104px;text-align:center;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;opacity:0.5;border-top-left-radius:5px;border-bottom-left-radius:5px;}
-.focus-last:hover {opacity:0.7}
-.focus-next {position:absolute;right:10px;top:200px;width:49px;height:104px;background:black;line-height:104px;text-align:center;bottom:0px;cursor:pointer;font-size:300%;color:white;z-index:1;opacity:0.5;border-top-right-radius:5px;border-bottom-right-radius:5px;}
-.focus-next:hover {opacity:0.7}
+<div class="home">
+	<div class="swiper">
+		<ul class="train">
+			<li style="background: url(images/swiper_0.jpg) center;"></li>
+			<li style="background: url(images/swiper_1.jpg) center;"></li>
+			<li style="background: url(images/swiper_2.jpg) center;"></li>
+		</ul>
+		<div class="centered">
+			<ul class="tabs">
+				<li class="active"></li><li></li><li></li>
+			</ul>
+		</div>
+	</div>
 
-.showcase h1 {
-	padding: 1rem 0 1rem 0;
-}
-</style>
-<script>
-(function( $ ){
-	$(document).ready(function(){
-		var n=0;
-		//
-		function atCenter(){
-			var left=(1920-$(".focus").width())/2;
-			var leftOfTabs=($(".focus").width()-98)/2;
-			console.log(leftOfTabs);
-			$(".focus>li").css(  {left:-left}  );
-			$(".focus-tabs").css(  {left:leftOfTabs}  );
-		};
+	<div class="showcase container">
+
+		<p>产品介绍 Diapers</p>
+		<img class="pic" src="images/pull-ups.jpg">
+		<img class="pic" src="images/diaper.jpg">
+		<img class="pic" src="images/wipes.jpg">
+		<img class="pic" src="images/detergent.jpg">
+	</div>
+	
+	<div class="bottom" style="background: url(images/home_bg.jpg) center;height:919px;">
+		<div class="container">
+			<h1>了解艾斯贝尔</h1>
+			<h3>以做食品的要求来做婴儿用品，进口原料，精益求精</h3>
+			<div class="animation">
+				<li class="i0">
+					<p>高弹性腰围</p>
+					<img src="images/i0.jpg"/>
+				</li>
+				<li class="i1">
+					<p>甜柔睡眠、娇柔肌肤</p>
+					<img src="images/i1.jpg"/>
+				</li>
+				<li class="i2">
+					<p>超柔软底膜</p>
+					<img src="images/i2.jpg"/>
+				</li>			
+			</div>
+			
+			
+			<div class="panel">
+				<div class="top">
+					<div class="left">
+						<p>优质的产品</p>
+					</div>
+					<div class="right">
+						 1、超薄CPU系统：特有全新超薄吸水芯体结构，零感丝薄，不起坨、不断层，犹如小内裤搬舒适透气；<br/>2、3D亲肤系统：精选上等面料，凸点立体透气设计，减少皮肤接触面，增加空气流通，同时为小屁屁不断轻柔按摩，促进血液循环，给宝宝双重舒适享受；<br/>
+						 3、魔力腰贴系统：新型魔术贴设计，亲肤不伤手，可反复粘贴，自由调节，有效呵护宝宝稚嫩肌肤；<br/>4、智能腰围系统：360度立体弹力腰围，自然贴合宝宝身体曲线，随呼吸智能伸缩，让宝宝更加自由探索世界；<br/>5、精准锁水系统：采用进口高分子吸水芯体，复合吸收结构，迅速均匀吸收尿液并牢牢锁住，不反渗，让宝宝肌肤干净舒爽。 
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="left">
+						<p>强大的团队</p>
+					</div>
+					<div class="right"> 凯儿得乐从上市五个月，已经有逾千位宝妈加入我们团队，而且这个数量正成倍增长。我们团队的宝妈，每个人都是亲身体验过凯儿得乐产品，每个宝宝都是妈妈的天使，没有人会拿自己的宝贝开玩笑，我们用的放心，才推荐给客户，我们的宝妈既是凯儿得乐的忠实客户，也是公司的业务员，将产品由厂家直接推广到各个母婴店，减少中间环节，最大的让利实体，回馈客户。   
+					</div>
+				</div>
+			</div>
 		
-		function next(){
-			$(".focus>li").eq(n).fadeToggle(100);
-			if(n<3){n++}else{n=0};
-			$(".focus-tabs li").css(  {opacity:"0.5"}  );
-			$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
-			$(".focus>li").eq(n).fadeToggle(400);
-		};
 		
-		function last(){
-			$(".focus>li").eq(n).fadeToggle(100);
-			if(n>0){n--}else{n=3};
-			$(".focus-tabs li").css(  {opacity:"0.5"}  );
-			$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
-			$(".focus>li").eq(n).fadeToggle(400);
-		};
 		
-		function jump(){
-			var m=$(this).index();
-			if(m!==n){
-				$(".focus>li").eq(n).fadeToggle(100);
-				$(".focus>li").eq(m).fadeToggle(400);
-				n=m;
-				$(".focus-tabs li").css(  {opacity:"0.5"}  );
-				$(".focus-tabs li").eq(n).css(  {opacity:"1"}  );
-			};
-		};
-		//*********************************************************
-		atCenter();
-		window.onresize=atCenter;
-		setInterval(next,10000);
-		$(".focus-next").click(next);
-
-
-		$(".focus-last").click(last);
-		$(".focus-tabs>li").click(jump);
-	});
-})( jQuery );
-</script>
-<!-- focus --> 
-<ul class="focus wrapper">
-	<li><img src="images/focus0.jpg"><p>1</p></li>
-	<li><img src="images/focus1.jpg"><p>2</p></li>
-	<li><img src="images/focus2.jpg"><p>3</p></li>
-	<li><img src="images/focus1.jpg"><p>4</p></li>
-	<ul class="focus-tabs">
-		<li></li><li></li><li></li><li></li>
-	</ul>
-	<div class="focus-last"><i class="fa fa-angle-left"></i></div>
-	<div class="focus-next"><i class="fa fa-angle-right"></i></div>		
-</ul>
-
-<div class="showcase container">
-	<h1>产品中心</h1>
-	<ul>
-		<li>
-			<img src="images/diaper.jpg"/>
-			<div class="veil"></div>
-		</li>
-		<li>
-			<img src="images/pull-ups.jpg"/>
-			<div class="veil"></div>
-		</li>
-		<li>
-			<img src="images/pad.jpg"/>
-			<div class="veil"></div>
-		</li>
-		<li>
-			<img src="images/detergent.jpg"/>
-			<div class="veil"></div>
-		</li>
-		<li>
-			<img src="images/towel.jpg"/>
-			<div class="veil"></div>
-		</li>
-		<li>
-			<img src="images/diaper2.jpg"/>
-			<div class="veil"></div>
-		</li>
-	<ul>
-
+		
+		</div>
+		
+		
+	</div>
 </div>
+
+<script type="text/javascript" src="js/carousel.js"></script>

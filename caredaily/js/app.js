@@ -19,8 +19,7 @@ angular.module(    "app")
 	})
 	.state(    'app.index',{
 		url: '/index',
-		templateUrl: 'tpl/index.html',
-		controller: 'indexCtrl'
+		templateUrl: 'tpl/index.html'
 	})
 	.state(    'app.brand',{
 		url: '/brand',
