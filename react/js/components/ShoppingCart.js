@@ -1,20 +1,20 @@
 (function(){
 	var NavbarS={width:"1000px",height:"60px",background:"red"};
 	
-	var Item=React.createClass({displayName: "Item",
+	var Item=React.createClass({
 		render:function(){
 			return (
-				React.createElement("li", null, 
-					this.state.items[0].name, 
-					this.state.items[0].quantity, 
-					React.createElement("button", {onClick: this.minusOne}, "-"), 
-					React.createElement("button", {onClick: this.plusOne}, "+")
-				)		
+				<li>
+					{this.state.items[0].name}
+					{this.state.items[0].quantity}
+					<button onClick={this.minusOne}>-</button>
+					<button onClick={this.plusOne}>+</button>
+				</li>		
 			);	
 		}
 	});
 	
-	var ShoppingCart=React.createClass({displayName: "ShoppingCart",
+	var ShoppingCart=React.createClass({
 		getInitialState:function(){
 			return {
 				items:[
@@ -40,11 +40,11 @@
 		},
 		render:function(){
 			return (
-				React.createElement("div", {className: "shopping_cart container"}, 
-					React.createElement("ul", {className: "items"}, 
-						React.createElement(Item, null)
-					)			
-				)
+				<div className="shopping_cart container">
+					<ul className="items">
+						<Item />
+					</ul>			
+				</div>
 			
 			);
 		}

@@ -1,15 +1,15 @@
 (function(){
 	//
-	var TodoList = React.createClass({displayName: "TodoList",
+	var TodoList = React.createClass({
 		render:function() {
 			function createItem(item) {
-				return React.createElement("li", {key: item.id}, item.todo);
+				return <li key={item.id}>{item.todo}</li>;
 			};
-			return React.createElement("ul", null, this.props.items.map(createItem));
+			return <ul>{this.props.items.map(createItem)}</ul>;
 		}
 	});
 	//
-	var Todo = React.createClass({displayName: "Todo",
+	var Todo = React.createClass({
 		getInitialState: function() {
 			return {//MODEL
 				items: [],
@@ -34,14 +34,14 @@
 		},
 		render: function() {
 			return (//VIEW
-				React.createElement("div", null, 
-					React.createElement("h3", null, "TODO"), 
-					React.createElement("form", {onSubmit: this.addNewItem}, 
-						React.createElement("input", {onChange: this.handleChange, value: this.state.text}), 
-						React.createElement("button", null, "Add")
-					), 
-					React.createElement(TodoList, {items: this.state.items})
-				)
+				<div>
+					<h3>TODO</h3>
+					<form onSubmit={this.addNewItem}>
+						<input onChange={this.handleChange} value={this.state.text} />
+						<button>{"Add"}</button>
+					</form>
+					<TodoList items={this.state.items} />
+				</div>
 			);
 		}
 	});

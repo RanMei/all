@@ -1,15 +1,8 @@
-//import {Dog} from './Dog';
-var Dog = (function () {
-    function Dog(name) {
-        this.name = name;
-        this.legNumber = "4";
-        this.name = name;
-    }
-    Dog.prototype.bark = function () {
-        return ('I am ' + this.name + '!');
-    };
-    return Dog;
-}());
-var Goofy = new Dog('Goofy');
-document.write(Goofy.legNumber, Goofy.bark());
+"use strict";
+var Dog_1 = require('./Dog');
+var Cat_1 = require('./Cat');
+var Goofy = new Dog_1.Dog('Goofy');
+var Judy = new Cat_1.Cat('Judy');
 document.write("<br/>hahahahahahaahhah");
+Goofy.bark();
+Judy.speak();

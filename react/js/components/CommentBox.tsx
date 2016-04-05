@@ -1,6 +1,9 @@
-(function( React,ReactDOM ){
+import React = require('react');
+import ReactDom = require('react-dom');
+
+//var CommentBox = (function( React,ReactDOM ){
 	
-	var x=3;
+	var x=4;
 	var CommentBoxStyle={
 		width:"300px",
 		padding:"15px",
@@ -86,5 +89,7 @@
 		<CommentBox />,
 		document.getElementById("CommentBox")
 	);
+	
+//	return CommentBox;
 
-})( React,ReactDOM );
+//})( React,ReactDOM );

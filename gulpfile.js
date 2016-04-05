@@ -4,6 +4,7 @@ var reactify = require('gulp-reactify');
 var concat = require("gulp-concat");
 var tsc = require('gulp-tsc');
 var browserify =  require('browserify');
+var source = require('vinyl-source-stream'); 
 
 //var jshint = require('gulp-jshint');
 /*
@@ -15,11 +16,11 @@ gulp.task('jshint', function() {
 */
 gulp.task('browserify',function(){
 	return(
-		browserify('./ts/js/common.js')
+		browserify('./ts/js/test.js')
 		.bundle()
-		.pipe( source('./ts/js/bundle.js') )
+		.pipe( source('bundle.js') )
 		.pipe( gulp.dest('./ts/js') )
-	)
+	);
 
 });
 
@@ -52,6 +53,11 @@ gulp.task( 'tsc',function(){
 	gulp.src( './ts/ts/*.ts' )
 		.pipe( tsc() )
 		.pipe( gulp.dest('./ts/js/') );
+		
+
+	//gulp.src( './react/js/components/*.tsx' )
+	//	.pipe( tsc() )
+	//	.pipe( gulp.dest('./react/js/components') );
 
 })
 
