@@ -15,10 +15,10 @@
 	<div class="showcase container">
 
 		<p>产品介绍 Diapers</p>
-		<img class="pic" src="images/pull-ups.jpg">
-		<img class="pic" src="images/diaper.jpg">
-		<img class="pic" src="images/wipes.jpg">
-		<img class="pic" src="images/detergent.jpg">
+		<a class="pic"><img src="images/pull-ups.jpg"/></a>
+		<a class="pic"><img src="images/diaper.jpg"/></a>
+		<a class="pic"><img src="images/wipes.jpg"/></a>
+		<a class="pic"><img src="images/detergent.jpg"/></a>
 	</div>
 	
 	<div class="bottom" style="background: url(images/home_bg.jpg) center;height:919px;">
@@ -69,4 +69,8 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="js/carousel.js"></script>
+<script type="text/javascript">
+	$(".swiper").swipe({
+		interval:2000
+	});
+</script>

@@ -138,10 +138,13 @@ img {
 .home .showcase .pic {
   position: relative;
   float: left;
-  width: 400px;
   padding: 10px;
   margin: 20px 40px 20px 40px;
   box-shadow: 0 0 8px grey;
+  background: white;
+}
+.home .showcase .pic img {
+  width: 400px;
 }
 .home .showcase .pic:before {
   position: absolute;
@@ -150,9 +153,10 @@ img {
   height: 100%;
   left: 0;
   top: 0;
-  transform: rotate(4deg);
+  transform: rotate(1deg);
   background: white;
-  box-shadow: 0 0 15px grey;
+  box-shadow: 0 0 8px grey;
+  z-index: -1;
 }
 .home .showcase .pic:after {
   position: absolute;
@@ -164,7 +168,8 @@ img {
   top: 0;
   transform: rotate(-2deg);
   background: white;
-  box-shadow: 0 0 15px grey;
+  box-shadow: 0 0 8px grey;
+  z-index: -2;
 }
 .home .bottom h1 {
   padding: 40px 0 40px 0;
@@ -345,6 +350,7 @@ img {
   border-radius: 3px;
   line-height: 35px;
   font-size: 13px;
+  color: white;
   text-align: center;
   display: block;
 }

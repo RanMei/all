@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>确认订单</title>
+	
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/confirm_order.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+
+	<script src="js/require.js" data-main="js/main_confirm_order"></script>
+</head>
+
+
+<body>
+	<div id="header"></div>
+	
+	<div class="veil">
+		<div class="bg">
+		</div>
+		<div class="panel">
+			<div class="close">
+				<i class="fa fa-remove"></i>
+			</div>
+			<input type="text" name="consignee" placeholder="收货人姓名">
+			<input type="text" name="phoneNumber" placeholder="请输入11位手机号码">
+			<textarea placeholder="请输入详细收货地址"></textarea>
+			<div class="date"></div>
+			<button class="save">保存收货信息</button>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="page-header">
+			<p class="title">收货信息</p>
+			<button class="add">添加收货信息</button>
+		</div>
+		<div class="deliveryInformation">
+			<div class="di">
+				<div class="content">
+					<p>收货人：<span class="consignee">--</span></p>
+					<p>联系电话：<span class="phoneNumber">--</span></p>
+					<p>收货地址：<span class="deliveryAddress">--</span></p>
+					<div class="operation">
+						<button class="remove">删除</button>
+						<button class="edit">编辑</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-header">
+			<p class="title">确认商品</p>
+		</div>
+		<ul class="items-header">
+			<li>商品信息</li>
+			<li>单价</li>
+			<li>数量</li>
+			<li>小计</li>
+		</ul>
+		<ul class="item">
+			<li>
+				<div class="thumbnail"></div>
+				<p class="information">	
+					<span class="name">{{item.name}}</span>
+					<span class="spec"></span>
+				</p>
+			</li>
+			<li><p class="price">{{item.price}}</p></li>
+			<li><p class="quantity">{{item.quantity}}</p></li>
+			<li><p class="subtotal">{{item.subtotal}}</p></li>
+		</ul>
+		<div style="padding:20px 0 60px 0;overflow:hidden;">
+			<div class="summary">
+				<p>共<span class="totalQuantity">{{totalQuantity}}</span>件商品，总价<span class="totalPrice">{{totalPrice}}</span></p>
+				<div class="submit">提交订单</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+	
+</body>
+
+</html>

@@ -142,7 +142,3 @@
 	};
 		
 })( jQuery );
-
-$(".swiper").swipe({
-	interval:2000
-});

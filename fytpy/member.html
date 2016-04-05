@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>会员中心</title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/require.js" data-main="js/main_member"></script>
+<style>
+.main {background:#F0F0F0;overflow:hidden;}
+.menu {float:left;width:158px;padding:10px;background:white;border:1px solid lightgrey;}
+.menu li {width:158px;padding:10px 0 10px 0;border-bottom:1px solid lightgrey;text-indent:10px;cursor:pointer;}
+.content {float:left;width:800px;padding-left:20px;}
+.content li {display:none;}
+.content .header {border-bottom:1px solid lightgrey;padding:10px 0 10px 10px;}
+</style>
+</head>
+
+<body>
+	<div id="header"></div>
+	
+	<div class="main">
+		<div class="container">
+			<ul class="menu">
+				<li>我的购物车</li>
+				<li>我的关注</li>
+				<li>修改密码</li>
+				<li>收货地址管理</li>				
+			</ul>
+			<ul class="content">
+				<li></li>
+				<li></li>
+				<li>
+					<div class="header">
+						<h3>修改密码</h3>
+					</div>
+					<form>
+						<p>请输入原密码</p><input type="password" name="oldPassword">
+						<p>请输入新密码(6-20位，只能包含数字、英文字母和下划线)</p><input type="password" name="password">
+						<p>再次输入新密码</p><input type="password" name="password2"><p>两次输入的新密码不一致</p>
+						<p>修改密码</p>
+					</form>
+				</li>
+				<li>
+					<div class="header">
+						<h3>收货信息管理</h3>
+					</div>
+					<h4>添加收货信息</h4>
+					<form>
+						<p>收货人</p><input type="text" name="consignee">
+						<p>联系电话</p><input type="text" name="phoneNumber">
+						<p>收货地址</p><input type="text" name="deliveryAddress">
+						<p>保存</p>
+					</form>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	
+	<div id="footer"></div>
+</body>
+
+</html>

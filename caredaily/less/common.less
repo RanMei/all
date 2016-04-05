@@ -155,21 +155,26 @@ img {
 		.pic {
 			position: relative;
 			float: left;
-			width: 400px;
 			padding: 10px;
 			margin: 20px 40px 20px 40px;
 			box-shadow: 0 0 8px grey;
+			background: white;
+			img {
+				width: 400px;
+			}
 		}
+		
 		.pic:before {
-			position:absolute;
+			position: absolute;
 			content:"";
 			width:100%;
 			height:100%;
 			left:0;
 			top:0;
-			transform:rotate(4deg);
+			transform:rotate(1deg);
 			background:white;
-			box-shadow:0 0 15px grey;
+			box-shadow:0 0 8px grey;
+			z-index: -1;
 		}
 		.pic:after {
 			position:absolute;
@@ -181,7 +186,8 @@ img {
 			top:0;
 			transform:rotate(-2deg);
 			background:white;
-			box-shadow:0 0 15px grey;
+			box-shadow:0 0 8px grey;
+			z-index: -2;
 		}
 	}
 	.bottom {

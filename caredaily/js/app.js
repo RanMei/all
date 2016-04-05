@@ -8,7 +8,7 @@ angular.module("app").controller(    "appCtrl",function(){
 angular.module(    "app")
 .config(    ['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 	//
-	$urlRouterProvider.otherwise(    '/app/index');
+	$urlRouterProvider.otherwise(    '/app/home');
 	//
 	$stateProvider
 	.state(    'app',{
@@ -17,9 +17,9 @@ angular.module(    "app")
 		templateUrl: 'tpl/app.html',
 		controller: 'appCtrl'
 	})
-	.state(    'app.index',{
-		url: '/index',
-		templateUrl: 'tpl/index.html'
+	.state(    'app.home',{
+		url: '/home',
+		templateUrl: 'tpl/home.html'
 	})
 	.state(    'app.brand',{
 		url: '/brand',

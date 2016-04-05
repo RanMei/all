@@ -1,0 +1,40 @@
+.main {background:#127BAB;overflow:hidden;}
+
+.itemID {display:none;}
+
+.item {background:white;overflow:hidden;padding:0 0 30px 0;margin-top:30px;}
+.item .header {margin:15px 20px 10px 20px;padding-bottom:10px;border-bottom:1px solid lightgrey;}
+.item .header a:link {color:black;}
+.item .header a:visited {color:black;}
+
+.images {float:left;margin:0 0 0 20px;}
+.thumbnail {width:464px;height:464px;padding:2px;border:1px solid lightgrey;}
+.thumbnail img {width:100%;}
+.tabs {width:256px;margin:auto;}
+.tabs li {float:left;width:54px;height:54px;margin:4px 2px 4px 2px;padding:2px;border:1px solid lightgrey;}
+.tabs li img {width:100%;}
+.tabs li:hover {background:#DD4A4D;}
+
+.information {float:left;width:470px;margin:0 0 0 20px;overflow:hidden;}
+.item .name {padding:15px 0 15px 0;font-size:200%}
+.item .priceWrapper {padding:10px 0 10px 0;border-bottom:1px solid lightgrey;color:#DD4A4D;font-size:40px;font-family:helvetica;}
+.price {font-size:50px;color:#DF4949;}
+.item .shuliang {padding:30px 0 30px 0;}
+.item .shuliang p {float:left;height:30px;vertical-align:top;line-height:30px;}
+.counter {overflow:hidden;}
+.minus,.plus {float:left;width:28px;height:28px;border:1px solid lightgrey;line-height:28px;text-align:center;background:#F4F4F4;cursor:pointer;}
+.quantity {float:left;width:49px;height:28px;border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;line-height:28px;text-align:center;}
+.buy {float:left;width:187px;height:45px;margin:0 20px 0 0;line-height:45px;text-align:center;background:#DD4A4D;cursor:pointer;color:white;border-radius:5px;}
+.toCart {float:left;width:183px;height:41px;line-height:41px;text-align:center;background:white;border:2px solid #DD4A4D;color:#DD4A4D;cursor:pointer;border-radius:5px;}
+.minus:hover,.plus:hover {border:1px solid #DD4A4D;color:#DD4A4D;}
+
+.box {margin:30px auto 40px auto;}
+.box-header {height:60px;background:white;overflow:hidden;border-bottom:1px solid #BABABA;}
+.box-header>h1 {float:left;margin:5px 20px 0 30px;color:white;}
+.box-header>p {float:right;margin:20px 20px 0 0;color:white;}
+.box .tab>li {float:left;margin:20px;color:#127BAB;cursor:pointer;}
+.box .tab>li:first-child {border-bottom:4px solid lightgrey;}
+.box .content {position:relative;}
+.box .content>li {width:960px;background:white;display:none;padding:20px;}
+.box .content>li:first-child {display:block;}
+.box img {margin-bottom:20px;}
