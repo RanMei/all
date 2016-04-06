@@ -14,7 +14,7 @@ gulp.task('jshint', function() {
 		.pipe( jshint.reporter('default') );
 });
 */
-gulp.task('browserify',function(){
+gulp.task('browserify',['tsc'],function(){
 	return(
 		browserify('./ts/js/test.js')
 		.bundle()
@@ -71,7 +71,7 @@ gulp.task( "default", function(){
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
 
-	gulp.watch( './ts/ts/*.ts',['tsc'] )
+	gulp.watch( './ts/ts/*.ts',['browserify'] )
 
 	
 });

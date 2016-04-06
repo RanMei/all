@@ -1,6 +1,7 @@
 class Cat {
-	constructor(public name: string){
+	constructor(public name:string,public hp:number){
 		this.name = name;
+		this.hp = hp;
 	}
 	legNumber = "4";
 	speak(){
