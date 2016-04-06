@@ -1,5 +1,5 @@
-import React = require('../vendor/react');
-import ReactDOM = require('../vendor/react-dom');
+import {React} from './react';
+import {ReactDOM} from './react-dom';
 	
 	var x=4;
 	var CommentBoxStyle={

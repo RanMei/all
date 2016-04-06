@@ -1,6 +1,6 @@
 var gulp = require('gulp'); 
 var less = require('gulp-less');
-var reactify = require('gulp-reactify');
+var react = require('gulp-react');
 var concat = require("gulp-concat");
 var tsc = require('gulp-tsc');
 var browserify = require('browserify');
@@ -42,20 +42,27 @@ gulp.task(    "less",function(){
 		.pipe( less() )
 		.pipe( gulp.dest(    "./caredaily/css") );
 });
-
-gulp.task( "reactify",function(){
-	gulp.src( "./react/js/components/*.jsx" )
-		.pipe( reactify() )
-		.pipe( gulp.dest("./react/js/components/js") );
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+gulp.task( "react",function(){
+	return gulp.src("./react/js/components/*.jsx")
+		.pipe(react())
+		.pipe(gulp.dest("./react/js/components/"));
 });
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( 'tsc',function(){
 	gulp.src( './ts/ts/*.ts' )
-		.pipe( tsc({sourcemap:true}) )
+		.pipe( tsc({
+			module: "CommonJS",
+			sourceMap: true
+		}) )
 		.pipe( gulp.dest('./ts/js/') );
-	// gulp.src( './react/js/components/*.tsx' )
-	// 	.pipe( tsc({additionalTscParameters: ['--jsx', 'react']}) )
-	// 	.pipe( gulp.dest('./react/js/components') );
+});
+gulp.task( 'tsxc',function(){
+	gulp.src( './react/js/components/*.tsx' )
+		.pipe( tsc({
+			additionalTscParameters: ['--jsx', 'react']
+		}) )
+		.pipe( gulp.dest('./react/js/components') );
 })
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( "default", function(){

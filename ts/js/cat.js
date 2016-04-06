@@ -12,3 +12,4 @@ var Cat = (function () {
     return Cat;
 }());
 exports.Cat = Cat;
+//# sourceMappingURL=cat.js.map

@@ -7,3 +7,4 @@ Goofy.bark();
 Judy.speak();
 Goofy.assault(Judy);
 Goofy.assault(Judy);
+//# sourceMappingURL=test.js.map

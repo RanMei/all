@@ -16,3 +16,4 @@ var Dog = (function () {
     return Dog;
 }());
 exports.Dog = Dog;
+//# sourceMappingURL=dog.js.map

@@ -1,5 +1,0 @@
-(function( CommentBox ){
-	
-
-	
-})( CommentBox );

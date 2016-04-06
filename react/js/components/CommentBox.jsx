@@ -84,7 +84,7 @@
 	
 	ReactDOM.render(
 		React.createElement(CommentBox, null),
-		document.getElementById("CommentBox")
+		document.getElementById("comment_box")
 	);
 
 })( React,ReactDOM );
