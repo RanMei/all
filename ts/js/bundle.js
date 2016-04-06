@@ -4,7 +4,6 @@ var Cat = (function () {
     function Cat(name, hp) {
         this.name = name;
         this.hp = hp;
-        this.legNumber = "4";
         this.name = name;
         this.hp = hp;
     }
@@ -21,12 +20,11 @@ var Dog = (function () {
     function Dog(name, attack) {
         this.name = name;
         this.attack = attack;
-        this.legNumber = "4";
         this.name = name;
         this.attack = attack;
     }
     Dog.prototype.bark = function () {
-        document.write('<br/>I am ' + this.name + '! I have ' + this.legNumber + 'legs!');
+        document.write('<br/>I am ' + this.name + '!');
     };
     Dog.prototype.assault = function (object) {
         object.hp -= this.attack;

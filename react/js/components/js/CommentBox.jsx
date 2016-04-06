@@ -1,6 +1,5 @@
-import React = require('../vendor/react');
-import ReactDOM = require('../vendor/react-dom');
-	
+(function( React,ReactDOM ){
+
 	var x=4;
 	var CommentBoxStyle={
 		width:"300px",
@@ -15,23 +14,23 @@ import ReactDOM = require('../vendor/react-dom');
 		background:"white"
 	}
 	
-	var CommentList = React.createClass({
+	var CommentList = React.createClass({displayName: "CommentList",
 		render:function() {
 			function renderComment(comment) {
 				return (
-					<li key={comment.id} style={CommentStyle}>
-						{comment.id}
-						<span style={{color:"blue"}}>{comment.author}</span>
-						{comment.time}<br/>
-						{comment.text}
-					</li>
+					React.createElement("li", {key: comment.id, style: CommentStyle}, 
+						comment.id, 
+						React.createElement("span", {style: {color:"blue"}}, comment.author), 
+						comment.time, React.createElement("br", null), 
+						comment.text
+					)
 				);
 			};
-			return <ul>{this.props.comments.map(renderComment)}</ul>;
+			return React.createElement("ul", null, this.props.comments.map(renderComment));
 		}
 	});
 	//
-	var CommentBox = React.createClass({
+	var CommentBox = React.createClass({displayName: "CommentBox",
 		getInitialState: function() {
 			return {//MODEL //this.state={}
 				comments: [
@@ -71,19 +70,21 @@ import ReactDOM = require('../vendor/react-dom');
 		},
 		render: function() {
 			return (//VIEW
-				<div style={CommentBoxStyle}>
-					<h3>CommentBox</h3>
-					<CommentList comments={this.state.comments} />
-					<form onSubmit={this.submitComment}>
-						<input value={this.state.text} onChange={this.handleChange} placeholder="Your comment here..."/>
-						<button>{"comment"}</button>
-					</form>
-				</div>
+				React.createElement("div", {style: CommentBoxStyle}, 
+					React.createElement("h3", null, "CommentBox"), 
+					React.createElement(CommentList, {comments: this.state.comments}), 
+					React.createElement("form", {onSubmit: this.submitComment}, 
+						React.createElement("input", {value: this.state.text, onChange: this.handleChange, placeholder: "Your comment here..."}), 
+						React.createElement("button", null, "comment")
+					)
+				)
 			);
 		}
 	});
 	
 	ReactDOM.render(
-		<CommentBox />,
+		React.createElement(CommentBox, null),
 		document.getElementById("CommentBox")
 	);
+
+})( React,ReactDOM );

@@ -3,9 +3,8 @@ class Dog {
 		this.name = name;
 		this.attack = attack;
 	}
-	legNumber = "4";
 	bark(){
-		document.write('<br/>I am ' + this.name + '! I have '+this.legNumber+'legs!' );
+		document.write('<br/>I am ' + this.name + '!' );
 	}
 	assault( object ){
 		object.hp -= this.attack;

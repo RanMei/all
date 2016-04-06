@@ -3,7 +3,6 @@ var Cat = (function () {
     function Cat(name, hp) {
         this.name = name;
         this.hp = hp;
-        this.legNumber = "4";
         this.name = name;
         this.hp = hp;
     }

@@ -3,7 +3,7 @@ var less = require('gulp-less');
 var reactify = require('gulp-reactify');
 var concat = require("gulp-concat");
 var tsc = require('gulp-tsc');
-var browserify =  require('browserify');
+var browserify = require('browserify');
 var source = require('vinyl-source-stream'); 
 
 //var jshint = require('gulp-jshint');
@@ -14,7 +14,7 @@ gulp.task('jshint', function() {
 		.pipe( jshint.reporter('default') );
 });
 */
-gulp.task('browserify',['tsc'],function(){
+gulp.task('browserify',/*['tsc'],*/function(){
 	return(
 		browserify('./ts/js/test.js')
 		.bundle()
@@ -44,34 +44,31 @@ gulp.task(    "less",function(){
 });
 
 gulp.task( "reactify",function(){
-	gulp.src( "./react/jsx/*.js" )
+	gulp.src( "./react/js/components/*.jsx" )
 		.pipe( reactify() )
-		.pipe( gulp.dest("./react/js/components") );
+		.pipe( gulp.dest("./react/js/components/js") );
 });
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( 'tsc',function(){
 	gulp.src( './ts/ts/*.ts' )
-		.pipe( tsc() )
+		.pipe( tsc({sourcemap:true}) )
 		.pipe( gulp.dest('./ts/js/') );
-		
-
-	//gulp.src( './react/js/components/*.tsx' )
-	//	.pipe( tsc() )
-	//	.pipe( gulp.dest('./react/js/components') );
-
+	// gulp.src( './react/js/components/*.tsx' )
+	// 	.pipe( tsc({additionalTscParameters: ['--jsx', 'react']}) )
+	// 	.pipe( gulp.dest('./react/js/components') );
 })
-
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( "default", function(){
 	
 	gulp.watch( "./angular/public/js/controllers/*.js",['concat'] );
 	
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( './#wolf/less/*.less',['less'] );
-	gulp.watch(    './caredaily/less/*.less',['less'] );
+	gulp.watch( './caredaily/less/*.less',['less'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
 
-	gulp.watch( './ts/ts/*.ts',['browserify'] )
+	gulp.watch( './ts/ts/*.ts',['tsc'] )
 
 	
 });
