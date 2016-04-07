@@ -11,3 +11,5 @@ Judy.speak();
 
 Goofy.assault(Judy);
 Goofy.assault(Judy);
+Goofy.assault(Judy);
+Goofy.assault(Judy);

@@ -1,9 +1,4 @@
-/// <reference path='../../../typings/tsd.d.ts' />
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-	
-var x=4;
 var CommentBoxStyle={
 	width:"300px",
 	padding:"15px",
@@ -17,8 +12,8 @@ var CommentStyle={
 	background:"white"
 }
 
-var CommentList = React.createClass({
-	render:function() {
+class CommentList extends React.Component {
+	render() {
 		function renderComment(comment) {
 			return (
 				<li key={comment.id} style={CommentStyle}>
@@ -31,11 +26,12 @@ var CommentList = React.createClass({
 		};
 		return <ul>{this.props.comments.map(renderComment)}</ul>;
 	}
-});
-//
-var CommentBox = React.createClass({
-	getInitialState: function() {
-		return {//MODEL //this.state={}
+}
+
+class CommentBox extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {//MODEL //this.state={}
 			comments: [
 				{
 					author:"Ned",
@@ -52,13 +48,13 @@ var CommentBox = React.createClass({
 			],
 			text: ""
 		};
-	},
-	handleChange: function(e) {
+	}
+	handleChange(e) {
 		this.setState({
 			text: e.target.value
 		});
-	},
-	submitComment: function(e) {
+	}
+	submitComment(e) {
 		e.preventDefault();
 		var updatedComments = this.state.comments.concat([{
 			author: "Jon",
@@ -70,22 +66,20 @@ var CommentBox = React.createClass({
 			comments: updatedComments,
 			text: ""
 		});
-	},
-	render: function() {
+	}
+	render() {
 		return (//VIEW
 			<div style={CommentBoxStyle}>
 				<h3>CommentBox</h3>
 				<CommentList comments={this.state.comments} />
-				<form onSubmit={this.submitComment}>
-					<input value={this.state.text} onChange={this.handleChange} placeholder="Your comment here..."/>
+				<form onSubmit={this.submitComment.bind(this)}>
+					<input value={this.state.text} onChange={this.handleChange.bind(this)} placeholder="Your comment here..."/>
 					<button>{"comment"}</button>
 				</form>
 			</div>
 		);
 	}
-});
+}
 
-ReactDOM.render(
-	<CommentBox />,
-	document.getElementById("CommentBox")
-);
+
+export {CommentBox};
