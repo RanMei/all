@@ -173,13 +173,19 @@ var Item = function (_React$Component) {
 	}
 
 	_createClass(Item, [{
+		key: "minusOne",
+		value: function minusOne() {
+			console.log(this.props);
+		}
+	}, {
 		key: "render",
 		value: function render() {
+			console.log(this.props);
 			return React.createElement(
 				"li",
 				null,
-				this.state.items[0].name,
-				this.state.items[0].quantity,
+				this.props.items[0].name,
+				this.props.items[0].quantity,
 				React.createElement(
 					"button",
 					{ onClick: this.minusOne },
@@ -230,13 +236,14 @@ var ShoppingCart = function (_React$Component2) {
 	}, {
 		key: "render",
 		value: function render() {
+			console.log(React);
 			return React.createElement(
 				"div",
 				{ className: "shopping_cart container" },
 				React.createElement(
 					"ul",
 					{ className: "items" },
-					React.createElement(Item, null)
+					React.createElement(Item, { items: this.state.items })
 				)
 			);
 		}
@@ -250,10 +257,12 @@ exports.ShoppingCart = ShoppingCart;
 },{}],3:[function(require,module,exports){
 'use strict';
 
-var _CommentBox = require('./CommentBox.es6');
+var _CommentBox = require('./CommentBox.jsx');
 
-var _ShoppingCart = require('./ShoppingCart.es6');
+var _ShoppingCart = require('./ShoppingCart.jsx');
 
-ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('comment_box'));
+ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('CommentBox'));
 
-},{"./CommentBox.es6":1,"./ShoppingCart.es6":2}]},{},[3]);
+ReactDOM.render(React.createElement(_ShoppingCart.ShoppingCart, null), document.getElementById('ShoppingCart'));
+
+},{"./CommentBox.jsx":1,"./ShoppingCart.jsx":2}]},{},[3]);

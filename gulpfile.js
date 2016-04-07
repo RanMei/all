@@ -15,18 +15,18 @@ gulp.task('jshint', function() {
 		.pipe( jshint.reporter('default') );
 });
 */
-gulp.task('browserify_tsc',function(){
+gulp.task( 'browserify_tsc',function(){
 	return(
-		browserify('./ts/ts/test.ts')
-		.transform( tsc )
+		browserify( './ts/js/test.js' )
+		//.transform( tsc )
 		.bundle()
 		.pipe( source('bundle.js') )
 		.pipe( gulp.dest('./ts/js') )
 	);
 });
-gulp.task('browserify_react',function(){
+gulp.task( 'browserify_react',function(){
 	return(
-		browserify('./react/es6/main.es6')
+		browserify( './react/es6/main.jsx' )
 		.transform( babel )
 		.bundle()
 		.pipe( source('bundle.js') )
@@ -85,10 +85,11 @@ gulp.task( "default", function(){
 	gulp.watch( './caredaily/less/*.less',['less'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
+	
+	gulp.watch( './react/es6/*.jsx',['browserify_react'] );
 
-	gulp.watch( './ts/ts/*.ts',['tsc'] )
-
-	gulp.watch('./react/es6/*.es6',['browserify_react']);
+	gulp.watch( './ts/ts/*.ts',['tsc'] );
+	gulp.watch( './ts/js/test.js',['browserify_tsc'] );
 
 	
 });

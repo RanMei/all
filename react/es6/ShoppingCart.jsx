@@ -2,11 +2,15 @@
 var NavbarS={width:"1000px",height:"60px",background:"red"};
 
 class Item extends React.Component {
+	minusOne() {
+		console.log(this.props);
+	}
 	render() {
+		console.log(this.props);
 		return (
 			<li>
-				{this.state.items[0].name}
-				{this.state.items[0].quantity}
+				{this.props.items[0].name}
+				{this.props.items[0].quantity}
 				<button onClick={this.minusOne}>-</button>
 				<button onClick={this.plusOne}>+</button>
 			</li>		
@@ -40,10 +44,11 @@ class ShoppingCart extends React.Component {
 		});
 	}
 	render() {
+		console.log(React);
 		return (
 			<div className="shopping_cart container">
 				<ul className="items">
-					<Item />
+					<Item items={this.state.items}/>
 				</ul>			
 			</div>
 		);
