@@ -1,3 +1,4 @@
+const title = 'I am read-only.';
 
 var CommentBoxStyle={
 	width:"300px",
