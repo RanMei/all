@@ -116,7 +116,7 @@ var CommentBox = function (_React$Component2) {
 	}, {
 		key: "render",
 		value: function render() {
-			return (//VIEW
+			return (//VIEW virtual DOM
 				React.createElement(
 					"div",
 					{ style: CommentBoxStyle },
@@ -163,44 +163,47 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var NavbarS = { width: "1000px", height: "60px", background: "red" };
 
-var Item = function (_React$Component) {
-	_inherits(Item, _React$Component);
+var ItemList = function (_React$Component) {
+	_inherits(ItemList, _React$Component);
 
-	function Item() {
-		_classCallCheck(this, Item);
+	function ItemList() {
+		_classCallCheck(this, ItemList);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Item).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ItemList).apply(this, arguments));
 	}
 
-	_createClass(Item, [{
-		key: "minusOne",
-		value: function minusOne() {
-			console.log(this.props);
-		}
-	}, {
+	_createClass(ItemList, [{
 		key: "render",
 		value: function render() {
-			console.log(this.props);
+			var that = this;
+			function renderItem(x, i) {
+				return React.createElement(
+					"li",
+					{ key: i },
+					i,
+					x.name,
+					x.quantity,
+					React.createElement(
+						"button",
+						null,
+						"-"
+					),
+					React.createElement(
+						"button",
+						null,
+						"+"
+					)
+				);
+			};
 			return React.createElement(
-				"li",
+				"ul",
 				null,
-				this.props.items[0].name,
-				this.props.items[0].quantity,
-				React.createElement(
-					"button",
-					{ onClick: this.minusOne },
-					"-"
-				),
-				React.createElement(
-					"button",
-					{ onClick: this.plusOne },
-					"+"
-				)
+				this.props.items.map(renderItem)
 			);
 		}
 	}]);
 
-	return Item;
+	return ItemList;
 }(React.Component);
 
 var ShoppingCart = function (_React$Component2) {
@@ -216,34 +219,37 @@ var ShoppingCart = function (_React$Component2) {
 				name: "猕猴桃",
 				price: 100,
 				quantity: 1
+			}, {
+				name: "草莓",
+				price: 200,
+				quantity: 1
 			}]
 		};
+		_this2.plusOne = _this2.plusOne.bind(_this2);
 		return _this2;
 	}
 
 	_createClass(ShoppingCart, [{
 		key: "plusOne",
-		value: function plusOne() {
-			var q = this.state.items[0].quantity + 1;
+		value: function plusOne(i) {
+			this.state.items[i].quantity++;
 			this.setState({
-				items: [{
-					name: "猕猴桃",
-					price: 100,
-					quantity: q
-				}]
+				items: this.state.items
 			});
 		}
 	}, {
 		key: "render",
 		value: function render() {
-			console.log(React);
+			//console.log(React);
+			console.log(Function);
 			return React.createElement(
 				"div",
 				{ className: "shopping_cart container" },
+				React.createElement(ItemList, { items: this.state.items, plusOne: this.plusOne }),
 				React.createElement(
-					"ul",
-					{ className: "items" },
-					React.createElement(Item, { items: this.state.items })
+					"button",
+					{ onClick: this.plusOne.bind(this, 1) },
+					"plus"
 				)
 			);
 		}

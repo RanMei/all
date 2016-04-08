@@ -1,0 +1,7 @@
+Virtual DOM
+
+
+The classes you defined will inherit the class of ReactComponent.
+
+this.setState
+This function will inform React which part of your model is changed.

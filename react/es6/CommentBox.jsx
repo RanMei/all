@@ -69,7 +69,7 @@ class CommentBox extends React.Component {
 		});
 	}
 	render() {
-		return (//VIEW
+		return (//VIEW virtual DOM
 			<div style={CommentBoxStyle}>
 				<h3>CommentBox</h3>
 				<CommentList comments={this.state.comments} />
