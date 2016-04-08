@@ -163,6 +163,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var NavbarS = { width: "1000px", height: "60px", background: "red" };
 
+var ItemStyle = { borderBottom: '1px solid grey' };
+var LiStyle = { float: 'left', width: '20%' };
+
 var ItemList = function (_React$Component) {
 	_inherits(ItemList, _React$Component);
 
@@ -179,26 +182,72 @@ var ItemList = function (_React$Component) {
 			function renderItem(x, i) {
 				return React.createElement(
 					"li",
-					{ key: i },
-					i,
-					x.name,
-					x.quantity,
+					{ className: "item", key: i, style: ItemStyle },
 					React.createElement(
-						"button",
-						null,
-						"-"
-					),
-					React.createElement(
-						"button",
-						null,
-						"+"
+						"ul",
+						{ style: { overflow: 'hidden' } },
+						React.createElement(
+							"li",
+							{ style: LiStyle },
+							i,
+							React.createElement("input", { type: "checkbox" })
+						),
+						React.createElement(
+							"li",
+							{ className: "name", style: LiStyle },
+							x.name
+						),
+						React.createElement(
+							"li",
+							{ className: "price", style: LiStyle },
+							"￥",
+							x.price
+						),
+						React.createElement(
+							"li",
+							{ className: "counter", style: LiStyle },
+							React.createElement(
+								"button",
+								{ onClick: that.props.minusOne.bind(that, i) },
+								"-"
+							),
+							React.createElement(
+								"span",
+								{ className: "quantity" },
+								x.quantity
+							),
+							React.createElement(
+								"button",
+								{ onClick: that.props.plusOne.bind(that, i) },
+								"+"
+							)
+						),
+						React.createElement(
+							"li",
+							{ className: "subtotal", style: LiStyle },
+							"￥",
+							x.price * x.quantity
+						),
+						React.createElement(
+							"li",
+							{ className: "operations" },
+							React.createElement(
+								"button",
+								{ onClick: that.props.remove.bind(that, i) },
+								"删除"
+							)
+						)
 					)
 				);
 			};
 			return React.createElement(
-				"ul",
+				"div",
 				null,
-				this.props.items.map(renderItem)
+				React.createElement(
+					"ul",
+					null,
+					that.props.items.map(renderItem)
+				)
 			);
 		}
 	}]);
@@ -225,11 +274,20 @@ var ShoppingCart = function (_React$Component2) {
 				quantity: 1
 			}]
 		};
-		_this2.plusOne = _this2.plusOne.bind(_this2);
 		return _this2;
 	}
 
 	_createClass(ShoppingCart, [{
+		key: "minusOne",
+		value: function minusOne(i) {
+			if (this.state.items[i].quantity > 1) {
+				this.state.items[i].quantity--;
+				this.setState({
+					items: this.state.items
+				});
+			};
+		}
+	}, {
 		key: "plusOne",
 		value: function plusOne(i) {
 			this.state.items[i].quantity++;
@@ -238,14 +296,41 @@ var ShoppingCart = function (_React$Component2) {
 			});
 		}
 	}, {
+		key: "remove",
+		value: function remove(i) {
+			this.state.items.splice(i, 1);
+			this.setState({
+				items: this.state.items
+			});
+		}
+	}, {
+		key: "getTotalPrice",
+		value: function getTotalPrice() {
+			var totalPrice = 0;
+			for (var i = 0; i < this.state.items.length; i++) {
+				totalPrice += this.state.items[i].price * this.state.items[i].quantity;
+			}
+			return totalPrice;
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			//console.log(React);
-			console.log(Function);
+			//console.log(Function);
 			return React.createElement(
 				"div",
-				{ className: "shopping_cart container" },
-				React.createElement(ItemList, { items: this.state.items, plusOne: this.plusOne }),
+				{ className: "shoppingCart container" },
+				React.createElement(ItemList, {
+					items: this.state.items,
+					plusOne: this.plusOne.bind(this),
+					minusOne: this.minusOne.bind(this),
+					remove: this.remove.bind(this) }),
+				React.createElement(
+					"p",
+					null,
+					"￥",
+					this.getTotalPrice()
+				),
 				React.createElement(
 					"button",
 					{ onClick: this.plusOne.bind(this, 1) },
