@@ -4,6 +4,10 @@ var NavbarS={width:"1000px",height:"60px",background:"red"};
 const ItemStyle = {borderBottom:'1px solid grey'};
 const LiStyle = {float:'left',width:'20%'};
 
+// async function getItems(){
+// 	var items = await
+// }
+
 class ItemList extends React.Component {
 	render(){
 		var that = this;

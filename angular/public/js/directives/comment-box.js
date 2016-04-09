@@ -1,4 +1,4 @@
-﻿angular.module("app").directive("commentbox",function( $http ){
+﻿angular.module("app").directive("commentBox",function( $http ){
 
 	return {
 		//template: "",
@@ -25,18 +25,6 @@
 			})
 		}
 		
-	}
-	
-});
-
-angular.module("app").directive("icon",function(){
-
-	return {
-		template: "",
-		controller: function($scope){
-			$scope.heart = "\f004";
-			$scope.plane = "plane";
-		}		
 	}
 	
 });

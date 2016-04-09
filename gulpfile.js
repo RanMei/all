@@ -1,3 +1,4 @@
+//var jshint = require('gulp-jshint');
 var gulp = require('gulp'); 
 var less = require('gulp-less');
 var react = require('gulp-react');
@@ -7,7 +8,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var babel = require('babelify');
 
-//var jshint = require('gulp-jshint');
+
 /*
 gulp.task('jshint', function() {
 	gulp.src( './js/*.js' )
@@ -34,9 +35,12 @@ gulp.task( 'browserify_react',function(){
 	);
 });
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-gulp.task( "concat",function(){
-	gulp.src( "./angular/public/js/controllers/*.js" )
-		.pipe( concat("controllers.js") )
+gulp.task( "concat_angular",function(){
+	gulp.src([
+			'./angular/public/js/controllers/*.js',
+			'./angular/public/js/directives/*.js',
+		])
+		.pipe( concat("bundle.js") )
 		.pipe( gulp.dest("./angular/public/js/") );
 });
 
@@ -83,7 +87,7 @@ gulp.task( 'tsxc',function(){
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( "default", function(){
 	
-	gulp.watch( "./angular/public/js/controllers/*.js",['concat'] );
+	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
 	
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( './#wolf/less/*.less',['less'] );

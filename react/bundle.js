@@ -166,6 +166,10 @@ var NavbarS = { width: "1000px", height: "60px", background: "red" };
 var ItemStyle = { borderBottom: '1px solid grey' };
 var LiStyle = { float: 'left', width: '20%' };
 
+// async function getItems(){
+// 	var items = await
+// }
+
 var ItemList = function (_React$Component) {
 	_inherits(ItemList, _React$Component);
 

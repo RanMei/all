@@ -1,9 +1,11 @@
 (function(){
 	
 	//This is a factory function.
+	//@param {elem} document.getElementById("foo")
 	var zeta = function( elem ){
 		return new zeta.prototype.init( elem );
 	};
+	
 	var init = zeta.prototype.init = function( elem ){
 		this.elem = elem;
 		this.inAnimation = false;
