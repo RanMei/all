@@ -52,6 +52,11 @@ gulp.task(    "less",function(){
 		.pipe( less() )
 		.pipe( gulp.dest(    "./caredaily/css") );
 });
+gulp.task( 'less_react',function(){
+	gulp.src( './react/less/*.less')
+		.pipe( less() )
+		.pipe( gulp.dest('./react/css') );
+});
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 gulp.task( "react",function(){
 	return gulp.src("./react/js/components/*.jsx")
@@ -83,6 +88,7 @@ gulp.task( "default", function(){
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( './#wolf/less/*.less',['less'] );
 	gulp.watch( './caredaily/less/*.less',['less'] );
+	gulp.watch( './react/less/*.less',['less_react'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
 	

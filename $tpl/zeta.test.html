@@ -24,6 +24,7 @@
 </style>
 <script>
 (function(){
+	
 	$( document ).ready(function(){
 		var slider=document.getElementsByClassName("slider")[0];
 		var imgs=document.getElementsByClassName("imgs")[0];
@@ -31,6 +32,7 @@
 		var prev=document.getElementsByClassName("prev")[0];
 		var next=document.getElementsByClassName("next")[0];
 		var switching=false;
+		
 		$( prev ).on("click",function(){
 			if( !switching ){
 				switching=true;
@@ -49,8 +51,13 @@
 				});
 			};
 		});
-	
-	
+	});
+
+	$(document).ready(function(){
+		var square = document.getElementsByClassName("square")[0];
+		$(square).on("click",function(){
+			$(square).fadeOut(500);
+		});
 	});
 
 
@@ -78,7 +85,7 @@
 		</ul>
 	</div>
 
-	
+	<div class="square" style="width: 200px;height: 200px;background: blue;"></div>
 	
 	
 	

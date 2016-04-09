@@ -11,18 +11,18 @@ class ItemList extends React.Component {
 			return (
 				<li className='item' key={i} style={ItemStyle}>
 					<ul style={{overflow:'hidden'}}>
-						<li style={LiStyle}>
+						<li>
 							{i}
-							<input type='checkbox'/>
+							<input type='checkbox' checked={that.props.items[i].checked} onChange={that.props.checkThis.bind(that,i)}/>
 						</li>
-						<li className='name' style={LiStyle}>{x.name}</li>
-						<li className='price' style={LiStyle}>￥{x.price}</li>
-						<li className='counter' style={LiStyle}>
+						<li className='name'>{x.name}</li>
+						<li className='price'>￥{x.price}</li>
+						<li className='counter'>
 							<button onClick={that.props.minusOne.bind(that,i)}>-</button>
 							<span className='quantity'>{x.quantity}</span>
 							<button onClick={that.props.plusOne.bind(that,i)}>+</button>
 						</li>
-						<li className='subtotal' style={LiStyle}>￥{x.price*x.quantity}</li>
+						<li className='subtotal'>￥{x.price*x.quantity}</li>
 						<li className='operations'>
 							<button onClick={that.props.remove.bind(that,i)}>删除</button>
 						</li>
@@ -46,15 +46,60 @@ class ShoppingCart extends React.Component {
 				{
 					name:"猕猴桃",
 					price:100,
-					quantity:1
+					quantity:1,
+					checked:false
 				},
 				{
 					name:"草莓",
 					price:200,
-					quantity:1
+					quantity:1,
+					checked:false
+				},
+				{
+					name:"竹笋",
+					price:166,
+					quantity:1,
+					checked:false
 				}
 			]
+		};
+	}
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	allChecked(){
+		for(var i=0;i<this.state.items.length;i++){
+			if( !this.state.items[i].checked ){
+				return false;
+			};
+		};
+		return true;
+	}
+	getTotalPrice(){
+		var totalPrice = 0;
+		for(var i=0;i<this.state.items.length;i++){
+			if(this.state.items[i].checked===true){
+				totalPrice+=this.state.items[i].price*this.state.items[i].quantity;
+			};
 		}
+		return totalPrice;
+	}
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	checkAll(){
+		if( this.allChecked() ){
+			for(var i=0;i<this.state.items.length;i++){
+				this.state.items[i].checked=false;
+			};
+		}else{
+			for(var i=0;i<this.state.items.length;i++){
+				this.state.items[i].checked=true;
+			};
+		};
+		this.setState({
+			items:this.state.items
+		});
+	}
+	checkThis(i){
+		this.state.items[i].checked = this.state.items[i].checked?false:true;
+		this.setState({items:this.state.items});
 	}
 	minusOne(i) {
 		if( this.state.items[i].quantity>1 ){
@@ -76,25 +121,32 @@ class ShoppingCart extends React.Component {
 			items: this.state.items
 		});
 	}
-	getTotalPrice(){
-		var totalPrice = 0;
-		for(var i=0;i<this.state.items.length;i++){
-			totalPrice+=this.state.items[i].price*this.state.items[i].quantity;
-		}
-		return totalPrice;
-	}
 	render() {
 		//console.log(React);
 		//console.log(Function);
 		return (
 			<div className="shoppingCart container">
+				<ul className="sc-header">
+					<li>
+						序号
+						<input type='checkbox' checked={this.allChecked()} onChange={this.checkAll.bind(this)}/>
+					</li>
+					<li>商品名称</li>
+					<li>单价</li>
+					<li>数量</li>
+					<li>小计</li>
+					<li>操作</li>
+				</ul>
 				<ItemList 
 					items={this.state.items} 
+					checkThis={this.checkThis.bind(this)}
 					plusOne={this.plusOne.bind(this)}
 					minusOne={this.minusOne.bind(this)}
 					remove={this.remove.bind(this)}/>
-				<p>￥{this.getTotalPrice()}</p>
-				<button onClick={this.plusOne.bind(this,1)}>plus</button>
+				<p className='summary'>
+					共选中件商品 总价：￥{this.getTotalPrice()}
+					<button>去结算</button>
+				</p>
 			</div>
 		);
 	}

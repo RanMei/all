@@ -1,0 +1,16 @@
+.shoppingCart .sc-header {
+  padding: 15px 0 15px 0;
+  background: lightblue;
+  overflow: hidden;
+}
+.shoppingCart .sc-header li {
+  float: left;
+  width: 15%;
+}
+.shoppingCart .item {
+  padding: 15px 0 15px 0;
+}
+.shoppingCart .item ul li {
+  float: left;
+  width: 15%;
+}

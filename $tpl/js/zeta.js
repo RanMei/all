@@ -1,45 +1,54 @@
 (function(){
 	
-	var zeta=function( elem ){
+	//This is a factory function.
+	var zeta = function( elem ){
 		return new zeta.prototype.init( elem );
 	};
-	//-----------------------------------------------------------
-	zeta.fn=zeta.prototype;
-	var init=zeta.prototype.init=function( elem ){
-		this.elem=elem;
+	var init = zeta.prototype.init = function( elem ){
+		this.elem = elem;
+		this.inAnimation = false;
 	};
-	init.prototype=zeta.prototype;
-	//-----------------------------------------------------------
-	zeta.prototype.ready=function(f){
-		if( document.readyState=="complete" ){
-			f();
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	zeta.fn = zeta.prototype;
+	init.prototype = zeta.prototype;
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	zeta.prototype.ready = function(callback){
+		if( document.readyState==="complete" ){
+			callback();
 		}else{
-			document.onreadystatechange=function(){
-				if( document.readyState=="complete" ){
-					f();
+			document.addEventListener( "readystatechange",function(){
+				if( document.readyState==="complete" ){
+					callback();
 				};
-			};
+			});
 		};		
 	};
-	//-----------------------------------------------------------
-	zeta.prototype.on=function( event,f ){
-		var elem=this.elem;
-		elem.addEventListener( event,f );	
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	zeta.prototype.on = function( event,callback ){
+		var elem = this.elem;
+		elem.addEventListener( event,callback );	
 	};
-	zeta.prototype.fadeOut=function( time,callback ){
-		var elem=this.elem;
-		if( elem.style.opacity==""||elem.style.opacity==1 ){
-			var p=1;
-			var dp=1/(time/10);
-			elem.style.opacity=1;
-			var interval=setInterval(function(){
+	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	zeta.prototype.fadeOut = function( time,callback ){
+		var elem = this.elem;
+		var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
+		var opacity = elem.style.opacity;
+		console.log(currentOpacity);
+		if( (!this.inAnimation)&&currentOpacity!==0 ){
+			this.inAnimation = true;
+			var p = 1;
+			var dp = 1/(time/10);
+			var interval = setInterval(function(){
 				if( p-dp>0 ){		
 					p-=dp;
-					elem.style.opacity=p;
+					elem.style.opacity = p;
 				}else{
 					clearInterval( interval );
-					elem.style.opacity=0;
-					if(callback){callback();};
+					elem.style.opacity = 0;
+					this.inAnimation = false;
+					if( callback ){
+						callback();
+					};
 				};
 			},10);
 		};
@@ -133,14 +142,14 @@
 		};
 	};
 	//-----------------------------------------------------------
-	zeta.ajax=function(o){
-		var xhr=new XMLHttpRequest();
-		xhr.open( o.type,o.url );
-		xhr.send( o.data||null );
-		xhr.onreadystatechange=function(){
-			var data=xhr.responseText;
-			if(xhr.status===200){
-				o.success(data);
+	zeta.ajax = function( params ){
+		var xhr = new XMLHttpRequest();
+		xhr.open( params.type,params.url );
+		xhr.send( params.data||null );
+		xhr.onreadystatechange = function(){
+			var data = xhr.responseText;
+			if( xhr.status===200 ){
+				params.success(data);
 			};
 		};		
 	};

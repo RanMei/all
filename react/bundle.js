@@ -188,24 +188,24 @@ var ItemList = function (_React$Component) {
 						{ style: { overflow: 'hidden' } },
 						React.createElement(
 							"li",
-							{ style: LiStyle },
+							null,
 							i,
-							React.createElement("input", { type: "checkbox" })
+							React.createElement("input", { type: "checkbox", checked: that.props.items[i].checked, onChange: that.props.checkThis.bind(that, i) })
 						),
 						React.createElement(
 							"li",
-							{ className: "name", style: LiStyle },
+							{ className: "name" },
 							x.name
 						),
 						React.createElement(
 							"li",
-							{ className: "price", style: LiStyle },
+							{ className: "price" },
 							"￥",
 							x.price
 						),
 						React.createElement(
 							"li",
-							{ className: "counter", style: LiStyle },
+							{ className: "counter" },
 							React.createElement(
 								"button",
 								{ onClick: that.props.minusOne.bind(that, i) },
@@ -224,7 +224,7 @@ var ItemList = function (_React$Component) {
 						),
 						React.createElement(
 							"li",
-							{ className: "subtotal", style: LiStyle },
+							{ className: "subtotal" },
 							"￥",
 							x.price * x.quantity
 						),
@@ -267,17 +267,71 @@ var ShoppingCart = function (_React$Component2) {
 			items: [{
 				name: "猕猴桃",
 				price: 100,
-				quantity: 1
+				quantity: 1,
+				checked: false
 			}, {
 				name: "草莓",
 				price: 200,
-				quantity: 1
+				quantity: 1,
+				checked: false
+			}, {
+				name: "竹笋",
+				price: 166,
+				quantity: 1,
+				checked: false
 			}]
 		};
 		return _this2;
 	}
+	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 	_createClass(ShoppingCart, [{
+		key: "allChecked",
+		value: function allChecked() {
+			for (var i = 0; i < this.state.items.length; i++) {
+				if (!this.state.items[i].checked) {
+					return false;
+				};
+			};
+			return true;
+		}
+	}, {
+		key: "getTotalPrice",
+		value: function getTotalPrice() {
+			var totalPrice = 0;
+			for (var i = 0; i < this.state.items.length; i++) {
+				if (this.state.items[i].checked === true) {
+					totalPrice += this.state.items[i].price * this.state.items[i].quantity;
+				};
+			}
+			return totalPrice;
+		}
+		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+	}, {
+		key: "checkAll",
+		value: function checkAll() {
+			if (this.allChecked()) {
+				for (var i = 0; i < this.state.items.length; i++) {
+					this.state.items[i].checked = false;
+				};
+			} else {
+				for (var i = 0; i < this.state.items.length; i++) {
+					this.state.items[i].checked = true;
+				};
+			};
+			this.setState({
+				items: this.state.items
+			});
+		}
+	}, {
+		key: "checkThis",
+		value: function checkThis(i) {
+			this.state.items[i].checked = this.state.items[i].checked ? false : true;
+			this.setState({ items: this.state.items });
+		}
+	}, {
 		key: "minusOne",
 		value: function minusOne(i) {
 			if (this.state.items[i].quantity > 1) {
@@ -304,15 +358,6 @@ var ShoppingCart = function (_React$Component2) {
 			});
 		}
 	}, {
-		key: "getTotalPrice",
-		value: function getTotalPrice() {
-			var totalPrice = 0;
-			for (var i = 0; i < this.state.items.length; i++) {
-				totalPrice += this.state.items[i].price * this.state.items[i].quantity;
-			}
-			return totalPrice;
-		}
-	}, {
 		key: "render",
 		value: function render() {
 			//console.log(React);
@@ -320,21 +365,57 @@ var ShoppingCart = function (_React$Component2) {
 			return React.createElement(
 				"div",
 				{ className: "shoppingCart container" },
+				React.createElement(
+					"ul",
+					{ className: "sc-header" },
+					React.createElement(
+						"li",
+						null,
+						"序号",
+						React.createElement("input", { type: "checkbox", checked: this.allChecked(), onChange: this.checkAll.bind(this) })
+					),
+					React.createElement(
+						"li",
+						null,
+						"商品名称"
+					),
+					React.createElement(
+						"li",
+						null,
+						"单价"
+					),
+					React.createElement(
+						"li",
+						null,
+						"数量"
+					),
+					React.createElement(
+						"li",
+						null,
+						"小计"
+					),
+					React.createElement(
+						"li",
+						null,
+						"操作"
+					)
+				),
 				React.createElement(ItemList, {
 					items: this.state.items,
+					checkThis: this.checkThis.bind(this),
 					plusOne: this.plusOne.bind(this),
 					minusOne: this.minusOne.bind(this),
 					remove: this.remove.bind(this) }),
 				React.createElement(
 					"p",
-					null,
-					"￥",
-					this.getTotalPrice()
-				),
-				React.createElement(
-					"button",
-					{ onClick: this.plusOne.bind(this, 1) },
-					"plus"
+					{ className: "summary" },
+					"共选中件商品 总价：￥",
+					this.getTotalPrice(),
+					React.createElement(
+						"button",
+						null,
+						"去结算"
+					)
 				)
 			);
 		}
