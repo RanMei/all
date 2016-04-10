@@ -75,7 +75,10 @@ define( ["jquery"],function($){
 			url:"http://localhost/fytpy/php/logout.php",
 			type:"post"
 		}).done(
-			function(){alert("注销成功！");location.href=""}
+			function(){
+				alert("注销成功！");
+				location.href=""
+			}
 		);
 	};
 	//-------------------------------------------------------------------------------------------------------------------

@@ -170,6 +170,17 @@ var LiStyle = { float: 'left', width: '20%' };
 // 	var items = await
 // }
 
+// var p = new Promise(function(){
+// 	$.ajax({
+// 		url: './database/items.json',
+// 		type: 'POST'
+// 	})
+// });
+// p.then(function(){
+// 	console.log('fulfilled');
+// })
+// console.log(p);
+
 var ItemList = function (_React$Component) {
 	_inherits(ItemList, _React$Component);
 
@@ -259,6 +270,9 @@ var ItemList = function (_React$Component) {
 	return ItemList;
 }(React.Component);
 
+// <ShoppingCart items={} />
+
+
 var ShoppingCart = function (_React$Component2) {
 	_inherits(ShoppingCart, _React$Component2);
 
@@ -268,22 +282,7 @@ var ShoppingCart = function (_React$Component2) {
 		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
 
 		_this2.state = {
-			items: [{
-				name: "猕猴桃",
-				price: 100,
-				quantity: 1,
-				checked: false
-			}, {
-				name: "草莓",
-				price: 200,
-				quantity: 1,
-				checked: false
-			}, {
-				name: "竹笋",
-				price: 166,
-				quantity: 1,
-				checked: false
-			}]
+			items: _this2.props.items
 		};
 		return _this2;
 	}
@@ -300,6 +299,8 @@ var ShoppingCart = function (_React$Component2) {
 			};
 			return true;
 		}
+		// @return {}
+
 	}, {
 		key: "getTotalPrice",
 		value: function getTotalPrice() {
@@ -310,6 +311,17 @@ var ShoppingCart = function (_React$Component2) {
 				};
 			}
 			return totalPrice;
+		}
+	}, {
+		key: "getTotalQuantity",
+		value: function getTotalQuantity() {
+			var totalQuantity = 0;
+			for (var i = 0; i < this.state.items.length; i++) {
+				if (this.state.items[i].checked === true) {
+					totalQuantity++;
+				};
+			}
+			return totalQuantity;
 		}
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -413,7 +425,9 @@ var ShoppingCart = function (_React$Component2) {
 				React.createElement(
 					"p",
 					{ className: "summary" },
-					"共选中件商品 总价：￥",
+					"共选中",
+					this.getTotalQuantity(),
+					"件商品 总价：￥",
 					this.getTotalPrice(),
 					React.createElement(
 						"button",
@@ -437,8 +451,14 @@ var _CommentBox = require('./CommentBox.jsx');
 
 var _ShoppingCart = require('./ShoppingCart.jsx');
 
-ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('CommentBox'));
+$.ajax({
+	url: './database/items.json',
+	type: 'POST',
+	dataType: 'json'
+}).then(function (data) {
+	ReactDOM.render(React.createElement(_ShoppingCart.ShoppingCart, { items: data.items }), document.getElementById('ShoppingCart'));
+});
 
-ReactDOM.render(React.createElement(_ShoppingCart.ShoppingCart, null), document.getElementById('ShoppingCart'));
+ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('CommentBox'));
 
 },{"./CommentBox.jsx":1,"./ShoppingCart.jsx":2}]},{},[3]);

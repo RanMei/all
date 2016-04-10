@@ -1,12 +1,20 @@
 import {CommentBox} from './CommentBox.jsx';
 import {ShoppingCart} from './ShoppingCart.jsx';
 
-ReactDOM.render(
-	<CommentBox />,
-	document.getElementById('CommentBox')
+$.ajax({
+	url: './database/items.json',
+	type: 'POST',
+	dataType: 'json'
+}).then(
+	function(data){
+		ReactDOM.render(
+			<ShoppingCart items={data.items} />,
+			document.getElementById('ShoppingCart')
+		);
+	}
 );
 
 ReactDOM.render(
-	<ShoppingCart />,
-	document.getElementById('ShoppingCart')
+	<CommentBox />,
+	document.getElementById('CommentBox')
 );

@@ -8,6 +8,19 @@ const LiStyle = {float:'left',width:'20%'};
 // 	var items = await
 // }
 
+
+
+// var p = new Promise(function(){
+// 	$.ajax({
+// 		url: './database/items.json',
+// 		type: 'POST'
+// 	})
+// });
+// p.then(function(){
+// 	console.log('fulfilled');
+// })
+// console.log(p);
+
 class ItemList extends React.Component {
 	render(){
 		var that = this;
@@ -42,30 +55,12 @@ class ItemList extends React.Component {
 	}
 }
 
+// <ShoppingCart items={} />
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
 		this.state = {
-			items:[
-				{
-					name:"猕猴桃",
-					price:100,
-					quantity:1,
-					checked:false
-				},
-				{
-					name:"草莓",
-					price:200,
-					quantity:1,
-					checked:false
-				},
-				{
-					name:"竹笋",
-					price:166,
-					quantity:1,
-					checked:false
-				}
-			]
+			items: this.props.items
 		};
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -77,6 +72,7 @@ class ShoppingCart extends React.Component {
 		};
 		return true;
 	}
+	// @return {}
 	getTotalPrice(){
 		var totalPrice = 0;
 		for(var i=0;i<this.state.items.length;i++){
@@ -85,6 +81,15 @@ class ShoppingCart extends React.Component {
 			};
 		}
 		return totalPrice;
+	}
+	getTotalQuantity(){
+		var totalQuantity = 0;
+		for(var i=0;i<this.state.items.length;i++){
+			if( this.state.items[i].checked===true ){
+				totalQuantity++;
+			};
+		}
+		return totalQuantity;
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	checkAll(){
@@ -148,7 +153,7 @@ class ShoppingCart extends React.Component {
 					minusOne={this.minusOne.bind(this)}
 					remove={this.remove.bind(this)}/>
 				<p className='summary'>
-					共选中件商品 总价：￥{this.getTotalPrice()}
+					共选中{this.getTotalQuantity()}件商品 总价：￥{this.getTotalPrice()}
 					<button>去结算</button>
 				</p>
 			</div>
