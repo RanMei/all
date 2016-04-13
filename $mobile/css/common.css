@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 1000px;
+  margin: auto;
+}
+ul {
+  list-style: none;
+}
+@media (min-width: 320px) {
+  html {
+    font-size: 30px;
+  }
+}
+@media (min-width: 375px) {
+  html {
+    font-size: 40px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}

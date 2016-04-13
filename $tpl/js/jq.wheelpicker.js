@@ -11,9 +11,14 @@
 			$$itemHeight	= params.itemHeight || 30,
 			$$wheelNumber	= params.wheelNumber || 3;
 
+		var $$itemWidth = (1/$$names.length)*100+'%';
+
 		// Set ".wheelPicker"'s style.
 		$$wheelPicker.css({
-			position:"relative",
+			//position:"fixed",
+			left:0,
+			bottom:0,
+			width:"100%",
 			overflow:"hidden"
 		});
 
@@ -24,10 +29,6 @@
 				'<div class="parts" style="position:relative;width:100%;position:relative;overflow:hidden;"></div>'
 			);
 			thisParts = $$wheelPicker.find(".parts");
-			thisParts.append(
-				'<div style="position:absolute;left:0;top:42%;width:100%;height:1px;background:black;z-index:5"></div>'+
-				'<div style="position:absolute;left:0;top:58%;width:100%;height:1px;background:black;z-index:5"></div>'
-			);
 		})();
 
 		// Constructor
@@ -44,15 +45,16 @@
 			// @state
 			THIS.isMouseDown = false;
 			
-			var originalY,y1,t1,t2;
-			var interval;
 
 			// Function to render the template on the page.
 			function render(){
 				thisParts.append(
-					'<div class="part '+ name +'" style="float:left;width:33.333333%;">'+
+					'<div class="part '+ name +'" style="float:left;width:'+ $$itemWidth +';">'+
 						'<div class="partHeader" style="height:30px;text-align:center;"></div>'+
 						'<div class="window" style="position:relative;height:'+(5*$$itemHeight)+'px;background:lightgrey;overflow:hidden;">'+
+							'<div style="position:absolute;left:0;top:0;width:100%;height:80px;background:linear-gradient(white,transparent);z-index:5"></div>'+
+							'<div style="position:absolute;left:0;top:36%;width:100%;height:1px;background:black;z-index:5"></div>'+
+							'<div style="position:absolute;left:0;top:60%;width:100%;height:1px;background:black;z-index:5"></div>'+
 							'<ul class="wheel" style="background:lightgrey;">'+
 							'</ul>'+
 						'</div>'+
@@ -69,9 +71,12 @@
 			THIS.renderItems = function( items ){
 				$$wheelPicker.find("."+name).find(".wheel").html('');
 				for(var i=0;i<items.length;i++){
+					items[i] = items[i] + (THIS.name==='years'?'年':'');
+					items[i] = items[i] + (THIS.name==='months'?'月':'');
+					items[i] = items[i] + (THIS.name==='days'?'日':'');
 					$$wheelPicker.find("."+name).find(".wheel").append(
 						'<li style="height:'+$$itemHeight+'px;line-height:30px;text-align:center">'+
-							items[i]+(THIS.name==='months'?'月':'')+
+							items[i]+
 						'</li>'
 					);
 				}
@@ -79,8 +84,8 @@
 			// Render the items.
 			THIS.renderItems( THIS.items );
 
-			// This function will 
-			function setPosition() {
+			// Function to adjust the items' position.
+			function adjustPosition() {
 				var marginTop = thisWheel.css("marginTop").replace(/px/,'');
 				var marginTopMax = (2*$$itemHeight);
 				var marginTopMin = -(THIS.items.length-3)*$$itemHeight;
@@ -107,24 +112,25 @@
 					THIS.itemPicked = ( 2 - (thisWheel.css("marginTop").replace(/px/,'')/$$itemHeight) );
 					//console.log(THIS.itemPicked);
 					THIS.partHeader.html( THIS.items[THIS.itemPicked] );
-					THIS.setDays( days );	
+					THIS.rerenderDays( $$parts["days"] );
 				}
 			}
 
 			THIS.pick = function (i){
 				thisWheel.css({
-					marginTop:(i+2)*$$itemHeight
+					marginTop:(2-i)*$$itemHeight
 				});
 				THIS.itemPicked = i;
 				THIS.partHeader.html( THIS.items[i] );
 			}
 			
 			THIS.init = function(){
+				//var thisMonth = new Date().getMonth();
 				THIS.pick( 0 );
 			}
 			THIS.init();
 
-			THIS.setDays = function( days ){
+			THIS.rerenderDays = function( days ){
 				if( THIS.name==='months' ){
 					if(
 						THIS.itemPicked===3||
@@ -142,17 +148,19 @@
 				};
 			}
 
+			// Add event-listeners.
+			var originalY,y1,t1,t2;
+			var interval;
 			thisWindow.on("mousedown touchstart",function(e){
 				e.preventDefault();
 				//console.log(e);
 				clearInterval(interval);
-				setPosition();
+				adjustPosition();
 				THIS.isMouseDown = true;
 				originalY = e.pageY || e.originalEvent.changedTouches[0].pageY;
 				y1 = e.pageY||e.originalEvent.changedTouches[0].pageY;
 				t1 = new Date().getTime();
 			});
-
 			thisWindow.on("mousemove touchmove",function(e){
 				if( THIS.isMouseDown ){
 					var currentY = e.pageY || e.originalEvent.changedTouches[0].pageY;
@@ -162,43 +170,42 @@
 					thisWheel.animate({marginTop:"+="+distance+"px"},0);
 				};
 			});
-
-			thisWindow.on("mouseup touchend",function(e){
+			thisWindow.on("mouseup mouseleave touchend",function(e){
 				THIS.isMouseDown = false;
 				t2 = new Date().getTime();
 				var marginTop = thisWheel.css("marginTop").replace(/px/,'');
 				var currentY = e.pageY||e.originalEvent.changedTouches[0].pageY;
 				if( t2-t1<120 ){
 					//console.log(t2-t1);
-					if(currentY-originalY>0){
+					if( currentY-originalY>0 ){
 						interval = setInterval(function(){
 							thisWheel.css({marginTop:"+=4px"});
 							if( thisWheel.css("marginTop").replace(/px/,'')>=(2*$$itemHeight) ){
 								clearInterval(interval);
-								setPosition();
+								adjustPosition();
 							}
 						},10);
-					}else if(currentY-originalY<0){
+					}else if( currentY-originalY<0 ){
 						interval = setInterval(function(){
 							thisWheel.css({marginTop:"-=4px"});
 							if( thisWheel.css("marginTop").replace(/px/,'')<=-(THIS.items.length-3)*$$itemHeight ){
 								clearInterval(interval);
-								setPosition();
+								adjustPosition();
 							}
 						},10);
 					}
 				}else{
-					setPosition();
+					adjustPosition();
 				}
 			});
 		};
 
-		// Create two buttons. 
+		// Create two buttons.
 		(function(){
 			$$wheelPicker.prepend(
-				'<div style="height:30px;">'+
-					'<div class="confirm" style="float:left;width:50%;text-align:center;">确定</div>'+
-					'<div style="float:left;width:50%;text-align:center;">取消</div>'+
+				'<div style="overflow:hidden;">'+
+					'<div class="confirm" style="float:left;width:50%;height:88px;line-height:88px;text-align:center;">确定</div>'+
+					'<div class="cancel" style="float:left;width:50%;height:88px;line-height:88px;text-align:center;">取消</div>'+
 				'</div>'
 			);
 			$$wheelPicker.find(".confirm").on("click",function(){
@@ -206,14 +213,16 @@
 			});
 		})();
 
-		var parts = [];
-		for( var i=0;i<$$names.length;i++ ){
-			parts[i] = new Part( $$names[i],$$items[i] );
+		var $$parts = {
+			years: null,
+			months: null,
+			days: null,
+			provinces: null
 		};
-		console.log(parts);
-		var months = parts[0];
-		var days = parts[1];
-		var provinces = parts[2];
+		// Create the parts of this wheelpicker.
+		for( var i=0;i<$$names.length;i++ ){
+			$$parts[ $$names[i] ] = new Part( $$names[i],$$items[i] );
+		};
 
 	};
 

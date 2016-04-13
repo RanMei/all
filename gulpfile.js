@@ -56,6 +56,11 @@ gulp.task(    "less",function(){
 		.pipe( less() )
 		.pipe( gulp.dest(    "./caredaily/css") );
 });
+gulp.task( 'less_$mobile',function(){
+	gulp.src( './$mobile/less/*.less')
+		.pipe( less() )
+		.pipe( gulp.dest('./$mobile/css') );
+});
 gulp.task( 'less_react',function(){
 	gulp.src( './react/less/*.less')
 		.pipe( less() )
@@ -88,10 +93,12 @@ gulp.task( 'tsxc',function(){
 gulp.task( "default", function(){
 	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
-	
+
+	// less-tasks	
 	gulp.watch( './angular/less/*.less',['less'] );
 	gulp.watch( './#wolf/less/*.less',['less'] );
 	gulp.watch( './caredaily/less/*.less',['less'] );
+	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
 	gulp.watch( './react/less/*.less',['less_react'] );
 
 	gulp.watch( "./react/jsx/*.js",['reactify'] );
