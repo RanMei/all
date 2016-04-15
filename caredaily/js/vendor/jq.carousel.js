@@ -16,7 +16,7 @@
 */
 
 	
-	$.fn.swipe = function( params ){
+	$.fn.swipe = function( opts ){
 			
 		var $$swiper = this;
 		
@@ -25,11 +25,11 @@
 			var n			= 0;
 			var switching	= false;
 			// $$width is the width of this swiper.
-			var $$mode			= params.mode			|| "slider",
-				$$width			= params.width			|| $$swiper.width(),
-				$$slideNumber	= params.slideNumber	|| 3,
-				$$interval		= params.interval		|| 4000,
-				$$duration		= params.duration		|| 300;
+			var $$mode			= opts.mode			|| "slider",
+				$$width			= opts.width			|| $$swiper.width(),
+				$$slideNumber	= opts.slideNumber	|| 3,
+				$$interval		= opts.interval		|| 4000,
+				$$duration		= opts.duration		|| 300;
 
 			$$swiper.css({
 				position:"relative",

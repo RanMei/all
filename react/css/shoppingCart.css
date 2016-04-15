@@ -1,3 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.container {
+  width: 1000px;
+  margin: auto;
+}
+.navbar {
+  background: #3B5B98;
+}
 .shoppingCart .sc-header {
   padding: 15px 0 15px 0;
   background: lightblue;

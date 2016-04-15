@@ -6,11 +6,10 @@ class Dog {
 	bark(){
 		document.write('<br/>I am ' + this.name + '!' );
 	}
-	assault( object ){
-		object.hp -= this.attack;
-		console.log( this.name + " assaulted " + object.name + ". " + object.name + "'s hp is now "+object.hp+".");
+	assault( obj: any ){
+		obj.hp -= this.attack;
+		console.log( this.name + " assaulted " + obj.name + ". " + obj.name + "'s hp is now "+obj.hp+".");
 	}
 }
-
 
 export {Dog};

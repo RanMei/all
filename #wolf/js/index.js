@@ -1,14 +1,14 @@
 $(document).ready(function(){
 	
-	var $$height=$(window).height();
-	var $$duration=500;
-	var $$i=0;
-	var $$n=5;
-	var pageSwitching=false;
-	var $$steps=0;
-	var $$X=[40,140,240,380,500,600,690];
-	var $$Y=[40,60,70,80,70,60,40];
-	var cardSwitching=false;
+	var $$height = $(window).height();
+	var $$duration = 500;
+	var $$i = 0;
+	var $$n = 5;
+	var pageSwitching = false;
+	var $$steps = 0;
+	var $$X = [40,140,240,380,500,600,690];
+	var $$Y = [40,60,70,80,70,60,40];
+	var cardSwitching = false;
 	
 	function init(){
 		$$i=0;

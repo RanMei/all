@@ -119,21 +119,25 @@ var CommentBox = function (_React$Component2) {
 			return (//VIEW virtual DOM
 				React.createElement(
 					"div",
-					{ style: CommentBoxStyle },
+					{ className: "container" },
 					React.createElement(
-						"h3",
-						null,
-						"CommentBox"
-					),
-					React.createElement(CommentList, { comments: this.state.comments }),
-					React.createElement(
-						"form",
-						{ onSubmit: this.submitComment.bind(this) },
-						React.createElement("input", { value: this.state.text, onChange: this.handleChange.bind(this), placeholder: "Your comment here..." }),
+						"div",
+						{ style: CommentBoxStyle },
 						React.createElement(
-							"button",
+							"h3",
 							null,
-							"comment"
+							"CommentBox"
+						),
+						React.createElement(CommentList, { comments: this.state.comments }),
+						React.createElement(
+							"form",
+							{ onSubmit: this.submitComment.bind(this) },
+							React.createElement("input", { value: this.state.text, onChange: this.handleChange.bind(this), placeholder: "Your comment here..." }),
+							React.createElement(
+								"button",
+								null,
+								"comment"
+							)
 						)
 					)
 				)
@@ -147,6 +151,59 @@ var CommentBox = function (_React$Component2) {
 exports.CommentBox = CommentBox;
 
 },{}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Navbar = function (_React$Component) {
+	_inherits(Navbar, _React$Component);
+
+	function Navbar() {
+		_classCallCheck(this, Navbar);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
+	}
+
+	_createClass(Navbar, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				{ className: "navbar" },
+				React.createElement(
+					"ul",
+					{ className: "container" },
+					React.createElement(
+						"a",
+						{ href: "" },
+						"Home"
+					),
+					React.createElement(
+						"a",
+						{ href: "" },
+						"News"
+					)
+				)
+			);
+		}
+	}]);
+
+	return Navbar;
+}(React.Component);
+
+exports.Navbar = Navbar;
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -444,13 +501,16 @@ var ShoppingCart = function (_React$Component2) {
 
 exports.ShoppingCart = ShoppingCart;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var _CommentBox = require('./CommentBox.jsx');
 
 var _ShoppingCart = require('./ShoppingCart.jsx');
 
+var _Navbar = require('./Navbar.jsx');
+
+// Get data.
 $.ajax({
 	url: './database/items.json',
 	type: 'POST',
@@ -459,6 +519,8 @@ $.ajax({
 	ReactDOM.render(React.createElement(_ShoppingCart.ShoppingCart, { items: data.items }), document.getElementById('ShoppingCart'));
 });
 
+ReactDOM.render(React.createElement(_Navbar.Navbar, null), document.getElementById('navbar'));
+
 ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('CommentBox'));
 
-},{"./CommentBox.jsx":1,"./ShoppingCart.jsx":2}]},{},[3]);
+},{"./CommentBox.jsx":1,"./Navbar.jsx":2,"./ShoppingCart.jsx":3}]},{},[4]);

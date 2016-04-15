@@ -1,135 +1,130 @@
-﻿require( ["jquery","session","common"],function($,session){
-	
-	$(document).ready(function(){	
-		var item={};
-		var itemID=get_item_ID();//获取itemID。
-		console.log(window.location.search);
-		//-------------------------------------------------------------------------------------------------------------------------
-		function get_item_ID(){
-			/*
-			var x=window.location.href;
-			x=x.split("/");
-			x=x[x.length-1];
-			x=x.replace(".html","");
-			return x;
-			*/
-			var x=window.location.search;
-			x=x.split("=");
-			x=x[1];
-			return x;
-		};
-		function init(){
+define(['./session', './common'], function (_session, _common) {
+	'use strict';
+
+	$(document).ready(function () {
+		$(".welcome").attr("href", "../index.html");
+
+		var item = {};
+
+		// Get itemID。
+		// console.log(window.location.search);
+		var itemID = function () {
+			return window.location.search.split("=")[1];
+		}();
+
+		function init() {
 			//获取模板
 			$.ajax({
-				url:"../tpl/item.html",
-				type:"post",
-				async:false,
-				success:function(data){
+				url: "../tpl/item.html",
+				type: "post",
+				async: false,
+				success: function success(data) {
 					$("#main").html(data);
 				}
 			});
 			$.ajax({
-				url:"../php/item.php",
-				type:"post",
-				async:false,
-				data:{itemID:itemID},
-				success:function(data){item=eval('('+data+')');}
+				url: "../php/item.php",
+				type: "post",
+				async: false,
+				data: { itemID: itemID },
+				success: function success(data) {
+					item = eval('(' + data + ')');
+				}
 			});
 			/*
-			item={
-				itemID:"",
-				name:"",
-				description:"",
-				specification:"",
-				
-			*/
+   item={
+   	itemID:"",
+   	name:"",
+   	description:"",
+   	specification:"",
+   	
+   */
 			$(".item .name").html(item.name);
 			$(".item .description").html(item.description);
 			$(".item .price").html(item.price);
-			$(".thumbnail img").attr("src","./"+itemID+"/0.jpg");
+			$(".thumbnail img").attr("src", "./" + itemID + "/0.jpg");
 			$(".item_class").html(item.class_);
 			$(".sub_class").html(item.sub_class);
-			for( i=0;i<4;i++ ){
-				$(".tabs img").eq(i).attr("src","./"+itemID+"/"+i+".jpg");
+			for (var i = 0; i < 4; i++) {
+				$(".tabs img").eq(i).attr("src", "./" + itemID + "/" + i + ".jpg");
 			};
-			for( i=0;i<3;i++ ){
-				$(".imgs_detailed img").eq(i).attr("src","./"+itemID+"/d"+i+".jpg");
+			for (var i = 0; i < 3; i++) {
+				$(".imgs_detailed img").eq(i).attr("src", "./" + itemID + "/d" + i + ".jpg");
 			};
-			
-			$(".tabs li").mouseenter(function(){
-				var i=$(this).index(".tabs li");
-				$(".thumbnail img").attr("src","./"+itemID+"/"+i+".jpg");
+
+			$(".tabs li").mouseenter(function () {
+				var i = $(this).index(".tabs li");
+				$(".thumbnail img").attr("src", "./" + itemID + "/" + i + ".jpg");
 			});
-		};		
+		};
 		//
-		function minusOne(){
-			if(item.quantity>1){
+		function minusOne() {
+			if (item.quantity > 1) {
 				item.quantity--;
 				$(".quantity").html(item.quantity);
 			};
 		};
-		
+
 		//
-		function plusOne(){
+		function plusOne() {
 			item.quantity++;
 			$(".quantity").html(item.quantity);
 		};
-		
+
 		//
-		function buyNow(){
+		function buyNow() {
 			$(".buy").html("订单生成中...");
-			var order={
-				items:[item],
-				totalPrice:item.price*item.quantity
+			var order = {
+				items: [item],
+				totalPrice: item.price * item.quantity
 			};
 			$.ajax({
-				url:"../php/generate-order.php",
-				type:"post",
-				async:false,
-				data:{order:JSON.stringify(order)},
-				success:function(){location.href="../confirm_order.html";}
+				url: "../php/generate-order.php",
+				type: "post",
+				async: false,
+				data: { order: JSON.stringify(order) },
+				success: function success() {
+					location.href = "../confirm_order.html";
+				}
 			});
 		};
-		
+
 		//
-		function toCart(){
-			var itemToCart={
-				itemID:item.itemID,
-				quantity:item.quantity,
-				to_cart:true
+		function toCart() {
+			var itemToCart = {
+				itemID: item.itemID,
+				quantity: item.quantity,
+				to_cart: true
 			};
 			console.log(JSON.stringify(itemToCart));
 			$.ajax({
-				url:"../php/insert.php",
-				type:"post",
-				async:true,
-				data:{data:JSON.stringify(itemToCart)},
-				success:function(data){
+				url: "../php/insert.php",
+				type: "post",
+				async: true,
+				data: { data: JSON.stringify(itemToCart) },
+				success: function success(data) {
 					console.log(data);
-					if(data==true){
+					if (data == true) {
 						$(".toCart").html("已加入购物车");
-					}else{
+					} else {
 						$(".toCart").html("请先登录");
 					};
 				}
-			});	
+			});
 		};
 		//
 		init();
-		$(".minus").on("click",minusOne);
-		$(".plus").on("click",plusOne);
-		$(".buy").on("click",buyNow);
-		$(".toCart").on("click",toCart);
-	
-		$(".box .tab>li").click(function(){
-			var n=$(this).index();
-			$(".box .tab>li").css({"border":"none"});
-			$(".box .tab>li").eq(n).css({"border-bottom":"4px solid lightgrey"});
+		$(".minus").on("click", minusOne);
+		$(".plus").on("click", plusOne);
+		$(".buy").on("click", buyNow);
+		$(".toCart").on("click", toCart);
+
+		$(".box .tab>li").click(function () {
+			var n = $(this).index();
+			$(".box .tab>li").css({ "border": "none" });
+			$(".box .tab>li").eq(n).css({ "border-bottom": "4px solid lightgrey" });
 			$(".box .content>li").hide();
 			$(".box .content>li").eq(n).show();
 		});
-		
-	
 	});
-
 });

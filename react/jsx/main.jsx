@@ -1,6 +1,8 @@
 import {CommentBox} from './CommentBox.jsx';
 import {ShoppingCart} from './ShoppingCart.jsx';
+import {Navbar} from './Navbar.jsx';
 
+// Get data.
 $.ajax({
 	url: './database/items.json',
 	type: 'POST',
@@ -12,6 +14,11 @@ $.ajax({
 			document.getElementById('ShoppingCart')
 		);
 	}
+);
+
+ReactDOM.render(
+	<Navbar />,
+	document.getElementById('navbar')
 );
 
 ReactDOM.render(

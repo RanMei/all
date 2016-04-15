@@ -26,9 +26,9 @@ var Dog = (function () {
     Dog.prototype.bark = function () {
         document.write('<br/>I am ' + this.name + '!');
     };
-    Dog.prototype.assault = function (object) {
-        object.hp -= this.attack;
-        console.log(this.name + " assaulted " + object.name + ". " + object.name + "'s hp is now " + object.hp + ".");
+    Dog.prototype.assault = function (obj) {
+        obj.hp -= this.attack;
+        console.log(this.name + " assaulted " + obj.name + ". " + obj.name + "'s hp is now " + obj.hp + ".");
     };
     return Dog;
 }());
@@ -42,7 +42,6 @@ var Goofy = new Dog_1.Dog('Goofy', 5);
 var Judy = new Cat_1.Cat('Judy', 500);
 Goofy.bark();
 Judy.speak();
-Goofy.assault(Judy);
 Goofy.assault(Judy);
 Goofy.assault(Judy);
 Goofy.assault(Judy);

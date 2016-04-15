@@ -1,10 +1,9 @@
-/*
-API needed: $(".back_to_top")
-*/
+define([], function () {
+  "use strict";
 
-require( ['jquery','jq.backToTop'],function($){
-	
-	$(".back_to_top").backToTop();
-	
-	
+  /*
+  API needed: $(".back_to_top")
+  */
+
+  $(".back_to_top").backToTop();
 });

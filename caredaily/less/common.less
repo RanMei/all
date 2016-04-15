@@ -70,6 +70,9 @@ img {
 			p:nth-child(2) {
 				font-size: 16px;
 			}
+			.queen {
+				font-size: 10px;
+			}
 		}
 		.nav {
 			overflow: hidden;
@@ -346,6 +349,25 @@ img {
 		.panel {
 			float: left;
 			width: 50%;
+			.top {
+				overflow: hidden;
+				.left {
+					float: left;
+					width: 40%;
+				}
+				.right {
+					float: left;
+					width: 60%;
+					img {
+						width: 50%;
+						display: block;
+					}
+				}
+			}
+			.photo {
+				margin-top: 20px;
+				display: block;
+			}
 		}
 	}
 }

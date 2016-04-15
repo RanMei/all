@@ -2,20 +2,20 @@
 	"items": [
 		{
 			"name":"猕猴桃",
-			"price":"100",
-			"quantity":"1",
+			"price":100,
+			"quantity":1,
 			"checked":false
 		},
 		{
 			"name":"草莓",
-			"price":"200",
-			"quantity":"1",
+			"price":200,
+			"quantity":1,
 			"checked":false
 		},
 		{
 			"name":"竹笋",
-			"price":"166",
-			"quantity":"1",
+			"price":166,
+			"quantity":1,
 			"checked":false
 		}
 	]

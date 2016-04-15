@@ -6,15 +6,19 @@
 	<title>slider</title>
 	<link href="css/common.css" rel="stylesheet">
 	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
-	<script src="js/zeal.js"></script>
+	<script src="../js/zeal.js"></script>
 <style>
 </style>
 <script>
 (function(){
 
-	window.onload = function(){
-		console.log( $(".img").getSelector() );
-	}
+	$(document).ready(function(){
+		console.log("ready");
+		console.log( $(".img") );
+		$(".img").on("click",function(e){
+			console.log(e)
+		})
+	})
 
 })();
 </script>

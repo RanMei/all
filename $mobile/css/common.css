@@ -9,18 +9,18 @@
 ul {
   list-style: none;
 }
-@media (min-width: 320px) {
+@media (max-width: 350px) {
   html {
-    font-size: 30px;
-  }
-}
-@media (min-width: 375px) {
-  html {
-    font-size: 40px;
+    font-size: 8px;
   }
 }
 @media (max-width: 768px) {
   html {
     font-size: 10px;
   }
+}
+.text {
+  padding: 2rem;
+  font-size: 1.8rem;
+  background: grey;
 }

@@ -1,15 +1,30 @@
 (function(){
 	
-	// This is a factory function.
+	// This is a factory function to create a Zeal object.
 	// @param {string} selector
-	var zeta = function( selector ){
-		return new zeta.prototype.init( selector );
+	var Zeal = function( selector ){
+		return new Zeal.prototype.init( selector );
 	};
+
+	Zeal.fn = Zeal.prototype = {
+		eq: function(i){
+			// Create a Zeal object.
+			var x = Zeal('');
+			x[0] = this[i];
+			return x;
+		}
+	};
+
 	// This is a constructor.
-	var init = zeta.prototype.init = function( selector ){
+	// @param {string} selector
+	var init = Zeal.prototype.init = function( selector ){
 		var elems;
 		this.selector = selector;
-		this.inAnimation = false;
+		// $(document)
+		if( selector===document ){
+			this[0] = document;
+		};
+		// $(".className")
 		if( (typeof selector==='string')&&(/^\./.test(selector)) ){
 			var string = selector.replace(/\./,'');
 			elems = document.getElementsByClassName( string );
@@ -18,33 +33,46 @@
 			}
 			this.length = elems.length;
 		};
+		if( (selector==='') ){
+			this.length = 1;
+		};
 	};
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	zeta.fn = zeta.prototype;
-	init.prototype = zeta.prototype;
+	Zeal.fn = Zeal.prototype;
+	init.prototype = Zeal.prototype;
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	zeta.prototype.getSelector = function(){
-		return this.selector;
-	};
+	
+	// @param {string} string
+	Zeal.prototype.html = function( string ){
+		for( var i=0;i<this.length;i++ ){
+			this[i].innerHTML = string;
+		}
+	}
 
-	zeta.prototype.ready = function(callback){
-		if( document.readyState==="complete" ){
+	Zeal.prototype.css = function( params ){
+		console.log(params)
+	}
+
+	// $(document).ready()
+	Zeal.prototype.ready = function( callback ){
+		// this[0] is actually document.
+		var elem = this[0];
+		if( elem.readyState==="complete" ){
 			callback();
 		}else{
-			document.addEventListener( "readystatechange",function(){
-				if( document.readyState==="complete" ){
+			elem.addEventListener( "readystatechange",function(){
+				if( elem.readyState==="complete" ){
 					callback();
 				};
 			});
 		};		
 	};
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	zeta.prototype.on = function( event,callback ){
-		var elem = this.elem;
-		elem.addEventListener( event,callback );	
+	Zeal.prototype.on = function( event,callback ){
+		this[0].addEventListener( event,callback );	
 	};
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	zeta.prototype.fadeOut = function( time,callback ){
+	Zeal.prototype.fadeOut = function( time,callback ){
 		var elem = this.elem;
 		var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
 		var opacity = elem.style.opacity;
@@ -68,7 +96,7 @@
 			},10);
 		};
 	};
-	zeta.prototype.fadeIn=function( time ){
+	Zeal.prototype.fadeIn=function( time ){
 		var elem=this.elem;
 		if( elem.style.opacity==0 ){
 			var p=0;
@@ -85,12 +113,12 @@
 			},10);
 		};
 	};
-	zeta.prototype.fadeToggle=function( time ){
+	Zeal.prototype.fadeToggle=function( time ){
 		this.fadeOut(time);
 		this.fadeIn(time);
 	};
 	//-----------------------------------------------------------
-	zeta.prototype.slideUp=function( time ){
+	Zeal.prototype.slideUp=function( time ){
 		var elem=this.elem;
 		elem.style.overflow="hidden";
 		var p=elem.offsetHeight;
@@ -107,7 +135,7 @@
 		},10);
 	};
 	//-----------------------------------------------------------
-	zeta.prototype.css=function( o,time ){
+	Zeal.prototype.css=function( o,time ){
 		var elem=this.elem;
 	
 	
@@ -118,7 +146,7 @@
 	
 	};	
 	//-----------------------------------------------------------
-	zeta.prototype.animate=function( o,time,callback ){
+	Zeal.prototype.animate=function( o,time,callback ){
 		var elem=this.elem;
 		var p=document.defaultView.getComputedStyle(elem).marginLeft;
 		p=p.replace(/px/,"");
@@ -157,7 +185,7 @@
 		};
 	};
 	//-----------------------------------------------------------
-	zeta.ajax = function( params ){
+	Zeal.ajax = function( params ){
 		var xhr = new XMLHttpRequest();
 		xhr.open( params.type,params.url );
 		xhr.send( params.data||null );
@@ -169,6 +197,6 @@
 		};		
 	};
 	//-----------------------------------------------------------
-	window.$=zeta;
+	window.$=Zeal;
 	
 })();

@@ -1,4 +1,12 @@
-.tabs {overflow:hidden;}
-.tabs li {float:left;}
-
-.order_header {width:900px;padding:10px 0 10px 0;background:#F5F5F5;border:1px solid lightgrey;}
+.tabs {
+  overflow: hidden;
+}
+.tabs li {
+  float: left;
+}
+.order_header {
+  width: 900px;
+  padding: 10px 0 10px 0;
+  background: #F5F5F5;
+  border: 1px solid lightgrey;
+}

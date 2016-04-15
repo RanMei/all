@@ -64,6 +64,9 @@ img {
 .app-header .nav-bar .logo p:nth-child(2) {
   font-size: 16px;
 }
+.app-header .nav-bar .logo .queen {
+  font-size: 10px;
+}
 .app-header .nav-bar .nav {
   overflow: hidden;
   float: right;
@@ -313,6 +316,25 @@ img {
 .contactUs .main .panel {
   float: left;
   width: 50%;
+}
+.contactUs .main .panel .top {
+  overflow: hidden;
+}
+.contactUs .main .panel .top .left {
+  float: left;
+  width: 40%;
+}
+.contactUs .main .panel .top .right {
+  float: left;
+  width: 60%;
+}
+.contactUs .main .panel .top .right img {
+  width: 50%;
+  display: block;
+}
+.contactUs .main .panel .photo {
+  margin-top: 20px;
+  display: block;
 }
 .joinUs {
   margin-top: 50px;

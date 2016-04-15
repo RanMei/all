@@ -70,13 +70,15 @@ class CommentBox extends React.Component {
 	}
 	render() {
 		return (//VIEW virtual DOM
-			<div style={CommentBoxStyle}>
-				<h3>CommentBox</h3>
-				<CommentList comments={this.state.comments} />
-				<form onSubmit={this.submitComment.bind(this)}>
-					<input value={this.state.text} onChange={this.handleChange.bind(this)} placeholder="Your comment here..."/>
-					<button>{"comment"}</button>
-				</form>
+			<div className="container">
+				<div style={CommentBoxStyle}>
+					<h3>CommentBox</h3>
+					<CommentList comments={this.state.comments} />
+					<form onSubmit={this.submitComment.bind(this)}>
+						<input value={this.state.text} onChange={this.handleChange.bind(this)} placeholder="Your comment here..."/>
+						<button>{"comment"}</button>
+					</form>
+				</div>
 			</div>
 		);
 	}

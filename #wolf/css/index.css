@@ -77,32 +77,88 @@ body {
   position: relative;
   overflow: hidden;
 }
-.first .logo {
-  width: 162px;
-  margin: 80px auto 20px auto;
-}
-.navbar {
+.first .navbar {
   position: relative;
   height: 90px;
   overflow: hidden;
 }
-.navbar .top_logo {
+.first .navbar .top_logo {
   float: left;
   height: 70px;
   margin: 10px 60px 0 60px;
   display: block;
 }
-.nav {
+.first .navbar .nav {
   float: right;
   margin: 30px 30px 0 0;
 }
-.nav li {
+.first .navbar .nav li {
   width: ;
   height: 90px;
   text-align: right;
   float: left;
   color: balck;
   margin-right: 30px;
+}
+.first .line {
+  height: 5px;
+}
+.first .logo {
+  width: 162px;
+  margin: 80px auto 20px auto;
+}
+.first .animation {
+  position: relative;
+  width: 960px;
+  height: 100px;
+  margin: auto;
+}
+.first .animation .round {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  opacity: 0.8;
+}
+.first .animation .blue {
+  left: 100px;
+  background: #225796;
+}
+.first .animation .lightblue {
+  left: 200px;
+  background: #5FAFB7;
+}
+.first .animation .yellow {
+  left: 300px;
+  background: #D5A02B;
+}
+.first .animation .red {
+  left: 452px;
+  background: #C63921;
+  z-index: 4;
+}
+.first .animation .violet {
+  right: 300px;
+  background: #B92D47;
+  z-index: 3;
+}
+.first .animation .green {
+  right: 200px;
+  background: #73AC56;
+  z-index: 2;
+}
+.first .animation .purple {
+  right: 100px;
+  background: #463981;
+  z-index: 1;
+}
+.first p {
+  text-align: center;
+}
+.first .title {
+  margin: 0 0 20px 0;
+  font-size: 2rem;
 }
 .nav a:link {
   color: black;
@@ -116,62 +172,6 @@ body {
 .nav span {
   font-size: 10px;
 }
-.line {
-  height: 5px;
-}
-.first .animation {
-  position: relative;
-  width: 960px;
-  height: 100px;
-  margin: auto;
-}
-.round {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid white;
-  opacity: 0.8;
-}
-.blue {
-  left: 100px;
-  background: #225796;
-}
-.lightblue {
-  left: 200px;
-  background: #5FAFB7;
-}
-.yellow {
-  left: 300px;
-  background: #D5A02B;
-}
-.red {
-  left: 452px;
-  background: #C63921;
-  z-index: 4;
-}
-.violet {
-  right: 300px;
-  background: #B92D47;
-  z-index: 3;
-}
-.green {
-  right: 200px;
-  background: #73AC56;
-  z-index: 2;
-}
-.purple {
-  right: 100px;
-  background: #463981;
-  z-index: 1;
-}
-.first p {
-  text-align: center;
-}
-.first .title {
-  margin: 0 0 20px 0;
-  font-size: 2rem;
-}
 /*-----------------------------------------------------------------------------------------------------------------------*/
 .second .title {
   margin: 50px 0 20px 0;
@@ -184,7 +184,7 @@ body {
   color: white;
   text-align: center;
 }
-.warrior {
+.second .warrior {
   width: 500px;
   margin: 60px auto auto auto;
 }
