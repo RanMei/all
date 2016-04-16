@@ -7,6 +7,11 @@
 	};
 
 	Zeal.fn = Zeal.prototype = {
+		each: function( f ){
+			for( var i=0;i<this.length;i++ ){
+				f();
+			}
+		},
 		eq: function(i){
 			// Create a Zeal object.
 			var x = Zeal('');
@@ -42,17 +47,6 @@
 	init.prototype = Zeal.prototype;
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	
-	// @param {string} string
-	Zeal.prototype.html = function( string ){
-		for( var i=0;i<this.length;i++ ){
-			this[i].innerHTML = string;
-		}
-	}
-
-	Zeal.prototype.css = function( params ){
-		console.log(params)
-	}
-
 	// $(document).ready()
 	Zeal.prototype.ready = function( callback ){
 		// this[0] is actually document.
@@ -67,11 +61,24 @@
 			});
 		};		
 	};
-	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	// $().on()
 	Zeal.prototype.on = function( event,callback ){
 		this[0].addEventListener( event,callback );	
 	};
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+	// @param {string} string
+	Zeal.prototype.html = function( string ){
+		for( var i=0;i<this.length;i++ ){
+			this[i].innerHTML = string;
+		}
+		return this;
+	}
+
+	Zeal.prototype.css = function( params ){
+		console.log(params)
+	}
+
+	// 
 	Zeal.prototype.fadeOut = function( time,callback ){
 		var elem = this.elem;
 		var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;

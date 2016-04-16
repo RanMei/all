@@ -1,0 +1,61 @@
+.menu {
+  position: relative;
+  width: 140px;
+  height: 1000px;
+  background: #34485E;
+  overflow: hidden;
+}
+.menu li {
+  border-bottom: 1px solid #324456;
+  color: grey;
+  cursor: pointer;
+}
+.menu li:hover > p {
+  color: white;
+}
+.menu > li > p {
+  width: 140px;
+  height: 60px;
+  background: #34485E;
+  line-height: 60px;
+  font-size: 90%;
+}
+.menu .span-icon {
+  margin: 0 5px 0 10px;
+}
+.menu .span-arrow {
+  float: right;
+  margin-right: 20px;
+}
+.menu .ulb {
+  width: 140px;
+  display: none;
+}
+.menu .ulb > li {
+  background: #2C3E50;
+}
+.menu .ulb > li > p {
+  width: 140px;
+  height: 40px;
+  text-indent: 20px;
+  line-height: 40px;
+  font-size: 80%;
+}
+.menu .ulb > li:hover > p {
+  color: white;
+}
+.menu .ulc {
+  width: 140px;
+  display: none;
+}
+.menu .ulc > li {
+  height: 25px;
+  background: #1E2A38;
+  font-size: 80%;
+  line-height: 25px;
+  text-indent: 40px;
+}
+.menu .ulc > li:hover {
+  color: white;
+  background: #38A7F1;
+}

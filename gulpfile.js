@@ -59,7 +59,12 @@ gulp.task( "concat_angular",function(){
 });
 
 // less
-gulp.task(    "less",function(){
+gulp.task( 'less_$tpl',function(){
+	gulp.src( './$tpl/less/*.less' )
+		.pipe( less() )
+		.pipe( gulp.dest("./$tpl/css") );
+});
+gulp.task( "less",function(){
 	gulp.src( "./angular/less/*.less" )
 		.pipe( less() )
 		.pipe( gulp.dest("./angular/public/css") );
@@ -100,7 +105,7 @@ gulp.task( "default", function(){
 	gulp.watch( './#wolf/less/*.less',['less_#wolf'] );
 	gulp.watch( './caredaily/less/*.less',['less'] );
 	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
-	
+	gulp.watch( './$tpl/less/*.less',['less_$tpl'] );
 
 	// fytpy
 	gulp.watch( './fytpy/less/*.less',['less_fytpy'] );
