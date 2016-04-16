@@ -8,19 +8,6 @@ const LiStyle = {float:'left',width:'20%'};
 // 	var items = await
 // }
 
-
-
-// var p = new Promise(function(){
-// 	$.ajax({
-// 		url: './database/items.json',
-// 		type: 'POST'
-// 	})
-// });
-// p.then(function(){
-// 	console.log('fulfilled');
-// })
-// console.log(p);
-
 class ItemList extends React.Component {
 	render(){
 		var that = this;
@@ -59,9 +46,24 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
+
+		var items;
+		// Get data.
+		$.ajax({
+			url: './database/items.json',
+			type: 'POST',
+			dataType: 'json',
+			async: false
+		}).then(
+			function(data){
+				items = data.items;
+			}
+		);
+
 		this.state = {
-			items: this.props.items
+			items: items
 		};
+
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	allChecked(){

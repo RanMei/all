@@ -11,6 +11,17 @@ ul {
 }
 .navbar {
   background: #3B5B98;
+  overflow: hidden;
+}
+.navbar li {
+  float: left;
+  padding: 10px;
+}
+.navbar li a:link {
+  color: white;
+}
+.navbar li a:visited {
+  color: white;
 }
 .shoppingCart .sc-header {
   padding: 15px 0 15px 0;

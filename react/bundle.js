@@ -165,59 +165,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Navbar = function (_React$Component) {
-	_inherits(Navbar, _React$Component);
-
-	function Navbar() {
-		_classCallCheck(this, Navbar);
-
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
-	}
-
-	_createClass(Navbar, [{
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
-				{ className: "navbar" },
-				React.createElement(
-					"ul",
-					{ className: "container" },
-					React.createElement(
-						"a",
-						{ href: "" },
-						"Home"
-					),
-					React.createElement(
-						"a",
-						{ href: "" },
-						"News"
-					)
-				)
-			);
-		}
-	}]);
-
-	return Navbar;
-}(React.Component);
-
-exports.Navbar = Navbar;
-
-},{}],3:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var NavbarS = { width: "1000px", height: "60px", background: "red" };
 
 var ItemStyle = { borderBottom: '1px solid grey' };
@@ -226,17 +173,6 @@ var LiStyle = { float: 'left', width: '20%' };
 // async function getItems(){
 // 	var items = await
 // }
-
-// var p = new Promise(function(){
-// 	$.ajax({
-// 		url: './database/items.json',
-// 		type: 'POST'
-// 	})
-// });
-// p.then(function(){
-// 	console.log('fulfilled');
-// })
-// console.log(p);
 
 var ItemList = function (_React$Component) {
 	_inherits(ItemList, _React$Component);
@@ -338,9 +274,21 @@ var ShoppingCart = function (_React$Component2) {
 
 		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
 
+		var items;
+		// Get data.
+		$.ajax({
+			url: './database/items.json',
+			type: 'POST',
+			dataType: 'json',
+			async: false
+		}).then(function (data) {
+			items = data.items;
+		});
+
 		_this2.state = {
-			items: _this2.props.items
+			items: items
 		};
+
 		return _this2;
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -501,26 +449,126 @@ var ShoppingCart = function (_React$Component2) {
 
 exports.ShoppingCart = ShoppingCart;
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _CommentBox = require('./CommentBox.jsx');
 
 var _ShoppingCart = require('./ShoppingCart.jsx');
 
-var _Navbar = require('./Navbar.jsx');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// Get data.
-$.ajax({
-	url: './database/items.json',
-	type: 'POST',
-	dataType: 'json'
-}).then(function (data) {
-	ReactDOM.render(React.createElement(_ShoppingCart.ShoppingCart, { items: data.items }), document.getElementById('ShoppingCart'));
-});
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-ReactDOM.render(React.createElement(_Navbar.Navbar, null), document.getElementById('navbar'));
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 
-ReactDOM.render(React.createElement(_CommentBox.CommentBox, null), document.getElementById('CommentBox'));
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Link = ReactRouter.Link;
+var hashHistory = ReactRouter.hashHistory;
 
-},{"./CommentBox.jsx":1,"./Navbar.jsx":2,"./ShoppingCart.jsx":3}]},{},[4]);
+// The root component of our app.
+
+var App = function (_React$Component) {
+	_inherits(App, _React$Component);
+
+	function App() {
+		_classCallCheck(this, App);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	}
+
+	_createClass(App, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'div',
+					{ className: 'navbar' },
+					React.createElement(
+						'ul',
+						{ className: 'container' },
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								Link,
+								{ to: '/home' },
+								'Home'
+							)
+						),
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								Link,
+								{ to: '/comment_box' },
+								'CommentBox'
+							)
+						),
+						React.createElement(
+							'li',
+							null,
+							React.createElement(
+								Link,
+								{ to: '/shopping_cart' },
+								'ShoppingCart'
+							)
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					this.props.children
+				)
+			);
+		}
+	}]);
+
+	return App;
+}(React.Component);
+
+var Home = function (_React$Component2) {
+	_inherits(Home, _React$Component2);
+
+	function Home() {
+		_classCallCheck(this, Home);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+	}
+
+	_createClass(Home, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				null,
+				'Home'
+			);
+		}
+	}]);
+
+	return Home;
+}(React.Component);
+
+// The router.
+
+
+ReactDOM.render(React.createElement(
+	Router,
+	{ history: hashHistory },
+	React.createElement(
+		Route,
+		{ path: '/', component: App },
+		React.createElement(Route, { path: '/home', component: Home }),
+		React.createElement(Route, { path: '/comment_box', component: _CommentBox.CommentBox }),
+		React.createElement(Route, { path: '/shopping_cart', component: _ShoppingCart.ShoppingCart })
+	)
+), document.getElementById('app'));
+
+},{"./CommentBox.jsx":1,"./ShoppingCart.jsx":2}]},{},[3]);
