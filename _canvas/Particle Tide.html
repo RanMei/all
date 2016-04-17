@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+	<meta name="viewport" content="width=device-width">
+<style>
+* {margin:0;padding:0;}
+html,body {background: #000000;}
+#outContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1px;
+	height: 1px;
+	overflow: visible;
+}
+#innerContainer {
+	position: absolute;
+	width: 1000px;
+	height: 560px;
+	top: -280px;
+	left: -500px;
+}
+canvas {border: 1px solid #333333;}
+</style>
+<script type="text/javascript">
+(function(){
+	
+	//variables
+	var D=2*Math.PI,//角度：2PI
+		width= 1000,//画布宽度
+		height		= 560,//画布高度
+		$$length	= 60,//粒子数目
+		B=0.96,
+		P=[],//包含所有粒子的数组
+		$canvas,//画布
+		z,//画笔
+		$outContainer,//
+		$innerContainer,//
+		cx,//光标当前位置的横坐标
+		cy,//光标当前位置的纵坐标
+		currentX,//上一帧上光标的横坐标
+		currentY,//上一帧上光标的纵坐标
+		dcx,//光标目前位置相对于光标上一位置在横轴上的偏移量
+		dcy,//光标目前位置相对于光标上一位置在纵轴上的偏移量
+		mouseDown;//鼠标键是否按下
+	
+	//functions	
+	function render(){
+		//z为画笔
+		z.globalCompositeOperation="source-over";
+		z.fillStyle="rgba(8,8,12,0.65)";
+		z.fillRect(0,0,width,height);
+		z.globalCompositeOperation="lighter";
+		dcx=cx-currentX;//光标目前位置相对于光标上一位置在横轴上的偏移量
+		dcy=cy-currentY;//光标目前位置相对于光标上一位置在纵轴上的偏移量
+		currentX=cx;
+		currentY=cy;
+		//l为光标,d为光标的引力范围,m为鼠标点击所产生的斥力范围
+		for(var l=0.125*width,m=0.5*width,d=0.86*width,t=Math.random,i=$$length;i--;){
+			var p=P[i],
+				x=p.x,
+				y=p.y,
+				dx=p.dx,
+				dy=p.dy,
+				r,
+				c=x-cx,//获得x轴方向上粒子距光标的距离
+				k=y-cy,//获得y轴方向上粒子距光标的距离
+				g=Math.sqrt(c*c+k*k)||0.001,//获得粒子距光标的距离
+				c=c/g,//余弦
+				k=k/g,//正弦
+				s;
+			//通过计算得出粒子在这一帧上的坐标和半径
+			//如果粒子在指针的斥力范围内
+			if( mouseDown&&g<m ){s=14*(1-g/m), dx+=s*c+0.5-t(), dy+=s*k+0.5-t();};
+			//如果粒子在指针的引力范围内
+			if( g<d ){s=1.4*(1-g/d), dx-=s*c, dy-=s*k;};
+			//如果粒子在指针的影响范围内
+			if( g<l ){s=0.26*(1-g/l), dx+=dcx*s, dy+=dcy*s;};
+			dx*=B;
+			dy*=B;
+			c=Math.abs(dx);
+			k=Math.abs(dy);
+			g=0.5*(c+k);
+			if(c<0.1){dx*=3*t();};//如果dx的绝对值小于0.1
+			if(k<0.1){dy*=3*t();};//如果dy的绝对值小于0.1
+			r=0.45*g;//粒子半径的大小与dx的绝对值与dy的绝对值有关。
+			r=Math.max( Math.min(r,3.5),0.4 );//确保粒子半径在0.4到3.5之间
+			x+=dx;//得到粒子在这一帧的横坐标
+			y+=dy;//得到粒子在这一帧的纵坐标
+			if( x>width ){
+				x=width,dx*=-1
+			}else if(x<0){
+				x=0,dx*=-1
+			};
+			if( y>height ){
+				y=height,dy*=-1
+			}else if(y<0){
+				y=0,dy*=-1
+			};
+			p.dx=dx;
+			p.dy=dy;
+			p.x=x;//更新粒子的横坐标
+			p.y=y;//更新粒子的纵坐标
+			z.fillStyle=p.color;
+			z.beginPath();
+			z.arc(x,y,r,0,D,true);
+			z.closePath();
+			z.fill();
+		}
+	}
+	//获取光标的位置
+	function getCursor(e){
+		e = e || window.event;
+		cx = e.clientX-$outContainer.offsetLeft-$innerContainer.offsetLeft;
+		cy = e.clientY-$outContainer.offsetTop-$innerContainer.offsetTop;
+	}
+	//粒子的构造函数
+	function Particle(){
+		this.color="#1350B1";
+		this.x;
+		this.y;
+		this.dx;
+		this.dy;
+	}
+	
+	function init(){
+		$canvas=document.getElementById("mainCanvas");
+		if($canvas.getContext){
+			$outContainer=document.getElementById("outContainer");
+			$innerContainer=document.getElementById("innerContainer");
+			z=$canvas.getContext("2d");
+			for(var i=$$length;i--;){//创造600个粒子
+				var p = new Particle;
+				p.x=0.5*width;//粒子出现在画布中心
+				p.y=0.5*height;//粒子出现在画布中心
+				p.dx=34*Math.random()*Math.cos(i);
+				p.dy=34*Math.random()*Math.sin(i);
+				P[i]=p
+			}
+			cx=currentX=0.5*width;//光标的初始位置的横坐标在画布中心
+			cy=currentY=0.5*height;//光标的初始位置的纵坐标在画布中心
+			document.onmousedown=function(){mouseDown=true;};
+			document.onmouseup=function(){mouseDown=false;};
+			document.onmousemove=getCursor;//鼠标移动时获取光标在画布内的坐标
+			setInterval(render,33);//每隔33毫秒重绘画布
+		}else{
+		};	
+	};
+	
+	window.onload=function(){
+		init();
+	};
+})();
+</script>
+</head>
+  
+<body>
+
+	<div id="outContainer">
+		<div id="innerContainer">
+			<canvas id="mainCanvas" width="1000" height="560">
+			</canvas>
+		</div>
+	</div>
+
+</body>
+
+</html>

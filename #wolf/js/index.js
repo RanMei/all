@@ -1,27 +1,30 @@
 $(document).ready(function(){
 	
+	var $$items = $(".slider>li");
+	var $$tabs = $(".side_tabs li");
+
 	var $$height = $(window).height();
 	var $$duration = 500;
-	var $$i = 0;
-	var $$n = 5;
-	var pageSwitching = false;
+	var $$currentOne = 0;
+	var $$target = 0;
+	var $$length = 5;
+	var $$pageSwitching = false;
 	var $$steps = 0;
 	var $$X = [40,140,240,380,500,600,690];
 	var $$Y = [40,60,70,80,70,60,40];
-	var cardSwitching = false;
+	var $$cardSwitching = false;
 	
 	function init(){
-		$$i=0;
-		$$height=$(window).height();
-		$(".slider>li").height( $$height );
-		$("html").animate( {scrollTop:0},0 );
-		$("body").animate( {scrollTop:0},0 );
+		$$currentOne = 0;
+		$$height = $(window).height();
+		$$items.height( $$height );
+		$("html,body").animate( {scrollTop:0},0 );
 		pop();
 		firstAnimate();
 	};	
 	function handleResize(){
-		$$height=$(window).height();
-		$(".slider>li").height( $$height );
+		$$height = $(window).height();
+		$$items.height( $$height );
 	};	
 	function firstAnimate(){
 		var duration=700;
@@ -89,8 +92,8 @@ $(document).ready(function(){
 		m_prev();
 	}
 	function nextCard(){
-		if(!cardSwitching){
-			cardSwitching=true;
+		if(!$$cardSwitching){
+			$$cardSwitching=true;
 			$$steps++;
 			if($$steps===7){$$steps=0};
 			for(i=0;i<7;i++){
@@ -99,7 +102,7 @@ $(document).ready(function(){
 				$(".card").eq(i).css( {animation:"to_"+target+" 0.5s forwards"} );
 			};
 			m_next();
-			setTimeout(function(){cardSwitching=false},500);
+			setTimeout(function(){$$cardSwitching=false},500);
 		};
 	}
 	function m_prev(){
@@ -117,79 +120,80 @@ $(document).ready(function(){
 	}
 	//--------------------------------------------------------------
 	function callback(){
-		if( $$i===0 ){
+		if( $$currentOne===0 ){
 			firstAnimate();		
 		}else
-		if( $$i===1 ){
+		if( $$currentOne===1 ){
 			$(".warrior").css( {"animation":"dash 1s forwards"} );
 		}else
-		if( $$i===2 ){
+		if( $$currentOne===2 ){
 			pop();
 		}else
-		if( $$i===4 ){
+		if( $$currentOne===4 ){
 			$(".footer").animate( {bottom:0},400 );		
 		};	
 	};
-	function restore(){
-		if( $$i===0 ){
+	function $$restore( i ){
+		if( i===0 ){
 			restoreBalls();		
 		}else
-		if( $$i===1 ){
+		if( i===1 ){
 			$(".warrior").css( {"animation":"back 0.3s forwards"} );
 		}else
-		if( $$i===4 ){
+		if( i===4 ){
 			$(".footer").animate( {bottom:-106},400 );		
 		};	
 	};	
+	function $$renderTabs(){
+		$$tabs.removeClass("selected");
+		$$tabs.eq( $$currentOne ).addClass("selected");
+	}
+	function $$to(){
+		$$renderTabs();
+		$("html,body")
+			.animate( {scrollTop:"-=15px"},200 )
+			.animate( {scrollTop:$$currentOne*$$height},$$duration-200 );	
+		setTimeout(function(){
+			$$pageSwitching=false;
+			callback();
+		},$$duration);
+	}
 	function nextPage(){
-		if(	$$i<$$n-1 ){
-			pageSwitching=true;
-			restore();
-			$(".side_tabs li").removeClass("selected");
-			$(".side_tabs li").eq($$i+1).addClass("selected");
-			$("html").animate( {"scrollTop":($$i+1)*$$height},$$duration );
-			$("body").animate( {"scrollTop":($$i+1)*$$height},$$duration );
-			$$i++;
-			setTimeout(function(){
-				pageSwitching=false;
-				callback();
-			},$$duration);
+		if(	$$currentOne<$$length-1 ){
+			// Update states.
+			$$pageSwitching=true;
+			$$restore( $$currentOne );
+			$$currentOne++;
+			$$to();
 		};
 	};
-	function prev(){
-		if( $$i>0 ){
-			pageSwitching=true;
-			restore();
-			$(".side_tabs li").removeClass("selected");
-			$(".side_tabs li").eq($$i-1).addClass("selected");
-			$("html").animate( {"scrollTop":($$i-1)*$$height},$$duration );
-			$("body").animate( {"scrollTop":($$i-1)*$$height},$$duration );
-			$$i--;
-			setTimeout(function(){
-				pageSwitching=false;
-				callback();
-			},$$duration);
-		}else{};
+	function prevPage(){
+		if( $$currentOne>0 ){
+			// Update states.
+			$$pageSwitching=true;
+			$$restore( $$currentOne );
+			$$currentOne--;
+			$$to();
+		};
 	};
 	function handle_scroll(e){
-		if( !pageSwitching && $$i>=0 && $$i<=$$n-1 ){
+		if( !$$pageSwitching && $$currentOne>=0 && $$currentOne<=$$length-1 ){
 			e.preventDefault();
-			if( e.detail ){//for FireFox
-				if( e.detail>0 ){
-					nextPage();
-				}else{
-					prev();
-				};
-			};
-			if( e.wheelDelta ){
-				if( e.wheelDelta<0 ){
-					nextPage();
-				}else{
-					prev();
-				};		
+			if( e.detail>0||e.wheelDelta<0 ){
+				nextPage();
+			}else{
+				prevPage();
 			};
 		};
 	}
+	$$tabs.each(function(i){
+		$(this).on("click",function(){
+			$$pageSwitching = true;
+			$$restore( $$currentOne );
+			$$currentOne = i;
+			$$to();
+		});
+	});
 	//--------------------------------------------------------------
 	init();
 	$(window).on("resize",handleResize);

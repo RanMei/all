@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>slider</title>
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<script src="js/zeal.js"></script>
+<style>
+.dog {
+	width: 100px;
+	height: 100px;
+	margin: 15px;
+	background: orange;
+}
+</style>
+<script>
+
+$(document).ready(function(){
+	console.log( $(".dog") );
+	$(".dog").html("fuck").addClass("fuck");
+	$(".dog").on("click",function(e){
+		console.log($(this));
+		var o = {
+			name: "Judy",
+			age: 11
+		}
+		for( x in o ){
+			console.log(x+':'+o[x])
+		}
+		$(this).fadeOut(1000);
+	});
+})
+
+</script>
+</head>
+
+<body>	
+	<div class="dog"></div>
+	<div class="dog"></div>
+	<div class="dog"></div>
+
+	
+</body>
+
+</html>

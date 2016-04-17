@@ -1,37 +1,49 @@
 ﻿<!DOCTYPE html>
-
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<link href="common.css" rel="stylesheet">
+	<link href="css/common.css" rel="stylesheet">
 	
-	<script src="jquery.js"></script>
+	<script src="js/jquery.js"></script>
 <style>
-.box .tabs {float:left;width:200px;}
-.box .tabs>li {width:200px;cursor:pointer;}
-.box .content {position:relative;float:left;width:800px;}
-.box .content>li {position:absolute;width:800px;display:none;}
-.box .content>li:nth-child(1) {display:block}
+.tab-header {
+	float:left;
+	width:15%;}
+.tab-header>li {
+	height:50px;
+	line-height: 50px;
+	text-align: center;
+	background: lightblue;
+	cursor:pointer;
+}
+.tab-body {
+	position:relative;
+	float:left;
+	width:80%;
+}
+.tab-body>li {position:absolute;width:800px;display:none;}
+.tab-body>li:nth-child(1) {display:block}
 </style>
 <script>
 $(document).ready(function(){	
-	
-	$(".box .tabs>li").click(function(){
-		var n=$(this).index();
-		$(".box .content>li").hide();
-		$(".box .content>li").eq(n).show();
-	});
-
+	$tabs = $(".tab-header>li");
+	$tabs.on("mouseenter",function(){
+		var target = $(this).index();
+		$tabs.css({background:"lightblue"});
+		$tabs.eq(target).css({background:"orange"});
+		$(".tab-body>li").hide();
+		$(".tab-body>li").eq(target).show();
+	})
 });
 </script>
 </head>
 
 <body>
 	<!-- A box with a tab. -->
-	<div class="box container">
-		<ul class="tabs">
+	<div class="tabpane container">
+		<ul class="tab-header">
 			<li>苹果</li>
 			<li>三星</li>
 			<li>华为</li>
@@ -40,7 +52,7 @@ $(document).ready(function(){
 			<li>酷派</li>
 			<li>小米</li>
 		</ul>
-		<ul class="content">
+		<ul class="tab-body">
 			<li>苹果</li>
 			<li>三星</li>
 			<li>华为</li>

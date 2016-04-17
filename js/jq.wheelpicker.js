@@ -18,7 +18,7 @@
 			//position:"fixed",
 			left:0,
 			bottom:0,
-			width:"100%",
+			width:"400px",
 			overflow:"hidden"
 		});
 
@@ -41,7 +41,7 @@
 			THIS.name = name;
 			THIS.items = items;
 			// @state
-			THIS.itemPicked = 0;
+			THIS.currentOne = 0;
 			// @state
 			THIS.isMouseDown = false;
 			
@@ -52,7 +52,8 @@
 					'<div class="part '+ name +'" style="float:left;width:'+ $$itemWidth +';">'+
 						'<div class="partHeader" style="height:30px;text-align:center;"></div>'+
 						'<div class="window" style="position:relative;height:'+(5*$$itemHeight)+'px;background:lightgrey;overflow:hidden;">'+
-							'<div style="position:absolute;left:0;top:0;width:100%;height:80px;background:linear-gradient(white,transparent);z-index:5"></div>'+
+							'<div style="position:absolute;left:0;top:0;width:100%;height:80px;background:linear-gradient(#EFEFEF,transparent);z-index:5"></div>'+
+							'<div style="position:absolute;left:0;bottom:0;width:100%;height:80px;background:linear-gradient(transparent,#EFEFEF);z-index:5"></div>'+
 							'<div style="position:absolute;left:0;top:36%;width:100%;height:1px;background:black;z-index:5"></div>'+
 							'<div style="position:absolute;left:0;top:60%;width:100%;height:1px;background:black;z-index:5"></div>'+
 							'<ul class="wheel" style="background:lightgrey;">'+
@@ -109,9 +110,9 @@
 					);
 				}
 				function callback() {
-					THIS.itemPicked = ( 2 - (thisWheel.css("marginTop").replace(/px/,'')/$$itemHeight) );
-					//console.log(THIS.itemPicked);
-					THIS.partHeader.html( THIS.items[THIS.itemPicked] );
+					THIS.currentOne = ( 2 - (thisWheel.css("marginTop").replace(/px/,'')/$$itemHeight) );
+					//console.log(THIS.currentOne);
+					THIS.partHeader.html( THIS.items[THIS.currentOne] );
 					THIS.rerenderDays( $$parts["days"] );
 				}
 			}
@@ -120,7 +121,7 @@
 				thisWheel.css({
 					marginTop:(2-i)*$$itemHeight
 				});
-				THIS.itemPicked = i;
+				THIS.currentOne = i;
 				THIS.partHeader.html( THIS.items[i] );
 			}
 			
@@ -133,13 +134,13 @@
 			THIS.rerenderDays = function( days ){
 				if( THIS.name==='months' ){
 					if(
-						THIS.itemPicked===3||
-						THIS.itemPicked===5||
-						THIS.itemPicked===8||
-						THIS.itemPicked===10
+						THIS.currentOne===3||
+						THIS.currentOne===5||
+						THIS.currentOne===8||
+						THIS.currentOne===10
 					){
 						days.items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-					} else if ( THIS.itemPicked===1 ) {
+					} else if ( THIS.currentOne===1 ) {
 						days.items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29];
 					} else {
 						days.items = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
@@ -202,10 +203,10 @@
 
 		// Create two buttons.
 		(function(){
-			$$wheelPicker.prepend(
+			$$wheelPicker.append(
 				'<div style="overflow:hidden;">'+
-					'<div class="confirm" style="float:left;width:50%;height:88px;line-height:88px;text-align:center;">确定</div>'+
-					'<div class="cancel" style="float:left;width:50%;height:88px;line-height:88px;text-align:center;">取消</div>'+
+					'<div class="confirm" style="float:left;width:50%;height:40px;line-height:40px;text-align:center;">确定</div>'+
+					'<div class="cancel" style="float:left;width:50%;height:40px;line-height:40px;text-align:center;">取消</div>'+
 				'</div>'
 			);
 			$$wheelPicker.find(".confirm").on("click",function(){

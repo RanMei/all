@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>slider</title>
+	
+	<link href="css/common.css" rel="stylesheet">
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/carousel.css">
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jq.swiper.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.swiper').swipe({
+			mode: 'slider',
+			direction: 'horizontal'
+		});
+	});
+	</script>
+	<!-- A slider. -->
+	<div class="swiper">
+		<ul class="train">
+			<li style="background: url(images/slider/1.jpg) center;"><p>1 Ned Stark</p></li>
+			<li style="background: url(images/slider/2.jpg) center;"><p>2 Jaime Lannister</p></li>
+			<li style="background: url(images/slider/3.jpg) center;"><p>3 Winter Soldier</p></li>
+			<li style="background: url(images/slider/4.jpg) center;"><p>4 Captain America</p></li>
+			<li style="background: url(images/slider/5.jpg) center;"><p>5 James Bond</p></li>
+		</ul>
+		<div class="prev"><i class="fa fa-angle-left"></i></div>
+		<div class="next"><i class="fa fa-angle-right"></i></div>
+		<div class="shade"></div>
+		<div class="runtime"></div>
+		<ul class="tabs">
+			<li class="active"></li><li></li><li></li><li></li><li></li>
+		</ul>
+	</div>
+
+	
+	
+	
+	
+	
+	
+	
+</body>
+
+</html>

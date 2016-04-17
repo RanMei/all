@@ -18,16 +18,17 @@
 </style>
 <script>
 $(document).ready(function(){	
-	
-	$(".navbar .tabs>li").mouseenter(function(){
-		var m=$(".navbar .bar").css("left")/83;
-		var n=$(this).index(".navbar .tabs>li");
-		$(".bar").stop().animate( {"left":n*83} ,200);
-		function f(){
-			$(".bar").animate( {"left":"-=20px"} ,50);
-		};
+	$$tabs = $(".tabs>li");
+	$$bar = $(".bar");
+	$$width = $$tabs.width();
+	$$currentOne = 0;
+	$$target = 0;
+	$$tabs.mouseenter(function(){
+		var $$target = $(this).index();
+		$$bar.stop().animate( {left:$$target*$$width} ,200,function(){
+			$$currentOne = $$target;
+		});
 	});
-
 });
 </script>
 </head>

@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<title></title>
+	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/data.js"></script>
+<style>
+* {margin:0;padding:0;}
+img {display:block;}
+html {font-family:"宋体"}
+ul {list-style:none;}
+.container {position:relative;width:950px;height:640px;background:#D32929;}
+.top_right {position:absolute;top:10px;right:10px;}
+.top_right li {float:left;margin-left:10px;cursor:pointer}
+.code_large {position:absolute;right:0;top:40px;z-index:1;display:none;}
+
+.lower {height:520px;overflow:hidden;}
+.content {float:left;width:325px;}
+.number {position:relative;width:216px;margin:20px 0 0 40px;}
+.number .bg {width:216px;display:block;}
+.number ul {position:absolute;left:50px;top:0;height:72px;}
+.number ul li {float:left;width:38px;height:72px;overflow:hidden;}
+.number ul li img {height:72px;display:block;margin-left:-545px;}
+.desc {position:relative;width:257px;margin:auto;}
+.title {width:240px;height:60px;line-height:60px;color:white;z-index:1;text-align:center;font-size:20px;font-weight:bold}
+.detail {width:180px;padding:20px 30px 0 30px;color:white;line-height:25px;text-indent:30px;}
+/*------------------------------------------------------------*/
+.anime {position:relative;float:left;width:300px;height:520px;}
+.what {position:absolute;left:100px;bottom:0;}
+.pillar {width:70px;height:250px;background:#EDE6DC;border-top-left-radius:10px;border-top-right-radius:10px;}
+.cloud {display:block;}
+.girl {position:relative;left:-64px;width:200px;height:180px;overflow:hidden;}
+.girl img {height:180px;}
+/*------------------------------------------------------------*/
+.list {position:relative;float:left;width:225px;height:500px;overflow:hidden;}
+.list .veil {position:absolute;top:0;width:225px;height:500px;display:block}
+.list .pointer {position:absolute;top:190px;}
+.list>ul {height:500px;color:white;text-align:center;font-size:18px;line-height:50px;overflow:hidden;}
+.list>ul>li {height:50px;}
+.scroll {float:right;width:100px;}
+.scroll img {margin:180px auto auto auto;display:block}
+</style>
+<script>
+$(document).ready(function(){
+	var n=4;
+	var $$list=document.getElementsByClassName("list")[0];
+	var interval;
+	var N=[24,80,132,188,248,308,367,425,485,545];
+	var audio_on=true;
+	var code_show=false;
+	var y1,y2;
+	//----------------------------------------------------------------
+	function render(){
+		$(".title").html( A[n].title );
+		$(".detail").html( A[n].desc );
+		$(".pillar").animate( {"height":""+2*(150-A[n].number[0]*100-A[n].number[1]*10-A[n].number[2])+"px"},200 );
+		for(var i=0;i<3;i++){
+			$(".number ul li img").eq(i).css( {"margin-left":"-"+N[A[n].number[i]]+"px"} );		
+		};
+		clearInterval( interval );
+		$(".girl").html( A[n].img );
+		var i=0;
+		interval=setInterval(function(){
+			$(".girl img").css( {"margin-left":"-"+i*258*180/230+"px"} );
+			i++;
+			if( i===A[n].frames ){i=0};
+		},100);	
+	};
+	function toggleCode(){
+		if(code_show){
+			code_show=false;
+			$(".code_large").hide();
+		}else{
+			code_show=true;
+			$(".code_large").show();
+		};
+	}
+	function toggleAudio(){
+		if(audio_on){
+			audio_on=false;
+			$(".audio").attr( "src","images/20.png" );
+		}else{
+			audio_on=true;
+			$(".audio").attr( "src","images/19.png" );
+		};	
+	}
+	function init(){
+		$(".list>ul>li").eq(4).css( {"font-size":"23px","font-weight":"bold"} );
+		render();	
+	};	
+	function next(){
+		$(".list>ul").animate( {"margin-top":"-=50px"},200,function(){
+			$(".list>ul>li:first").appendTo( $(".list>ul") );
+			$(".list>ul").css( {"margin-top":"+=50px"},0 );			
+			$(".list>ul>li").eq(4).css( {"font-size":"23px","font-weight":"bold"} );
+			$(".list>ul>li").eq(3).css( {"font-size":"18px","font-weight":"normal"} );
+		});						
+		n++;
+		if(n===A.length){n=0};
+		render();	
+	};
+	function prev(){
+		$(".list>ul").animate( {"margin-top":"+=50px"},200,function(){
+			$(".list>ul>li:last").prependTo( $(".list>ul") );
+			$(".list>ul").css( {"margin-top":"-=50px"},0 );
+			$(".list>ul>li").eq(4).css( {"font-size":"23px","font-weight":"bold"} );
+			$(".list>ul>li").eq(5).css( {"font-size":"18px","font-weight":"normal"} );
+		});
+		n--;
+		if(n===-1){n=A.length-1};
+		render();	
+	};	
+	function handleScroll(e){
+		e.preventDefault();
+		if( e.detail ){//for FireFox
+			if( e.detail>0 ){
+				next();
+			}else{
+				prev();
+			};
+		};
+		if( e.wheelDelta ){
+			if( e.wheelDelta<0 ){
+				next();
+			}else{
+				prev();
+			};		
+		};
+	}
+	function get_y1(e){
+		e.preventDefault();
+		y1=e.changedTouches[0].pageY;
+	};
+	function handle_touch(e){
+		e.preventDefault();
+		y2=e.changedTouches[0].pageY;
+		if(y1>y2){
+			next();
+		}else{
+			prev();
+		};	
+	};
+	//-----------------------------------------------------------------
+	init();
+	$(".code").on("click",toggleCode);
+	$(".audio").on("click",toggleAudio);
+	$$list.addEventListener("DOMMouseScroll",handleScroll);
+	$$list.addEventListener("mousewheel",handleScroll);
+	$$list.addEventListener("touchstart",get_y1);
+	$$list.addEventListener("touchend",handle_touch);
+});
+</script>
+</head>
+
+<body>
+	<div class="container">
+		<ul class="top_right">
+			<li class="code">
+				<img src="images/18.png">
+				<img class="code_large" src="images/21.png">
+			</li>
+			<li>
+				<img class="audio" src="images/19.png">
+			</li>
+		</ul>
+		<img src="images/12.png">
+		<div class="lower">
+			<div class="content">
+				<div class="number">
+					<img class="bg" src="images/7.png"><br/>
+					<ul>
+						<li><img src="images/number.png"></li>
+						<li><img src="images/number.png"></li>
+						<li><img src="images/number.png"></li>
+					<ul>
+				</div>
+				<div class="desc">
+					<p class="title">食品安全指数</p>
+					<p class="detail"></p>
+					<img src="images/15.png" style="position:absolute;left:0;top:0;">
+				</div>
+			</div>
+			<div class="anime">
+				<div class="what">
+					<div class="girl">
+						<img src="images/n7.jpg">
+					</div>
+					<div class="pillar"></div>
+					<img class="cloud" src="images/2.jpg">
+				</div>
+			</div>
+			<div class="list">
+				<img class="veil" src="images/mayer.png">
+				<img class="pointer" src="images/13.png">
+				<ul>
+					<li>英语水平</li>
+					<li>“网瘾”大国</li>
+					<li>网络资费价格</li>
+					<li>足球球员收入</li>
+					<li>食品安全指数</li>
+					<li>电影票房</li>
+					<li>“护照力”排名</li>
+					<li>全球福利排名</li>
+					<li>最佳出生地</li>
+					<li>2018世界杯赔率</li>
+					<li>4G网速排名</li>
+					<!--
+					<li>同性恋幸福排行</li>
+					<li>最佳商业环境</li>
+					<li>幸福排名</li>
+					<li>睡眠质量</li>
+					<li>人力资源利用率</li>
+					<li>高校在校生规模</li>
+					<li>脆弱国家排行</li>
+					<li>生活费指数</li>
+					<li>人造美脸数量</li>
+					<li>FIFA排名</li>
+					<li>全球繁荣指数</li>
+					<li>遭恐袭风险</li>
+					<li>死亡质量</li>
+					<li>6s全球售价</li>
+					<li>男女差异指数</li>
+					<li>男女比例失调</li>
+					<li>全球清廉度</li>
+					<li>发明创造力</li>
+					<li>全年网民增速</li>
+					<li>胖子的数量</li>
+					<li>全球声誉度</li>
+					<li>足球联赛上座率</li>
+					<li>军队战斗系数</li>
+					<li>程序员薪资</li>
+					<li>电影票房</li>
+					<li>游客首选地</li>
+					<li>泡面销售量</li>
+					<li>全球竞争力</li>
+					<li>最富经济体</li>
+					-->
+				</ul>
+			</div>
+			<div class="scroll">
+				<img src="images/16.png">
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
