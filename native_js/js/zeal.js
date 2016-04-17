@@ -75,63 +75,70 @@
 		}
 		return this;
 	}
-	// @param {string} string
+	// @param {string} className
 	Zeal.prototype.addClass = function( className ){
 		for( var i=0;i<this.length;i++ ){
 			this[i].classList.add( className );
 		}
 		return this;
 	}
-
-	Zeal.prototype.css = function( params ){
-		console.log(params)
+	// @param {object} opts
+	Zeal.prototype.css = function( opts ){
+		for( var i=0;i<this.length;i++ ){
+			for( prop in opts ){
+				this[i].style[prop] = opts[prop];
+			};
+		};
 	}
 
 	// 
 	Zeal.prototype.fadeOut = function( time,callback ){
+
+			var elem = this[0];
+			var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
+			if( currentOpacity!==0 ){
+				var p = currentOpacity;
+				var dp = p/(time/10);
+				var interval = setInterval(function(){
+					if( p-dp>0 ){		
+						p-=dp;
+						elem.style.opacity = p;
+					}else{
+						clearInterval( interval );
+						elem.style.opacity = 0;
+						if( callback ){
+							callback();
+						};
+					};
+				},10);
+			};
+
+	};
+	Zeal.prototype.fadeIn = function( time ){
 		var elem = this[0];
 		var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
-		var opacity = elem.style.opacity;
-		//console.log(currentOpacity);
-		if( (!this.inAnimation)&&currentOpacity!==0 ){
-			this.inAnimation = true;
-			var p = 1;
-			var dp = 1/(time/10);
-			var interval = setInterval(function(){
-				if( p-dp>0 ){		
-					p-=dp;
-					elem.style.opacity = p;
-				}else{
-					clearInterval( interval );
-					elem.style.opacity = 0;
-					this.inAnimation = false;
-					if( callback ){
-						callback();
-					};
-				};
-			},10);
-		};
-	};
-	Zeal.prototype.fadeIn=function( time ){
-		var elem=this.elem;
-		if( elem.style.opacity==0 ){
-			var p=0;
-			var dp=1/(time/10);
-			var interval=setInterval(function(){
-				if( p+dp<1 ){		
-					p+=dp;
-					elem.style.opacity=p;
-				}else{
-					clearInterval( interval );
-					elem.style.opacity=1;
-					console.log( elem.style.opacity );
-				};
-			},10);
-		};
+		var p = Number(currentOpacity);
+		console.log(p);
+		var dp = (1-p)/(time/10);
+		var interval = setInterval(function(){
+			if( p+dp<1 ){		
+				p+=dp;
+				elem.style.opacity = p;
+			}else{
+				clearInterval( interval );
+				elem.style.opacity = 1;
+			};
+		},10);
+
 	};
 	Zeal.prototype.fadeToggle=function( time ){
-		this.fadeOut(time);
-		this.fadeIn(time);
+		var elem = this[0];
+		var currentOpacity = Number(document.defaultView.getComputedStyle(elem).opacity);
+		if( currentOpacity===1 ){
+			this.fadeOut( time );
+		}else if( currentOpacity===0 ){
+			this.fadeIn(time);
+		};
 	};
 	//-----------------------------------------------------------
 	Zeal.prototype.slideUp=function( time ){
@@ -150,65 +157,41 @@
 			};
 		},10);
 	};
-	//-----------------------------------------------------------
-	Zeal.prototype.css=function( o,time ){
-		var elem=this.elem;
-	
-	
-	
-	
-	
-	
-	
-	};	
-	//-----------------------------------------------------------
-	Zeal.prototype.animate=function( o,time,callback ){
-		var elem=this.elem;
-		var p=document.defaultView.getComputedStyle(elem).marginLeft;
-		p=p.replace(/px/,"");
-		p=Number(p);
-		console.log(p);
-		if( o["margin-left"] ){
-			var dp=o["margin-left"]/(time/10);
-			var tar=p+o["margin-left"];
-			if( o["margin-left"]>=0 ){
-				var interval=setInterval(function(){
-					if( p+dp<=tar ){
+
+	// @param {object} opts
+	// @param {number} time
+	// @param {function} callback
+	Zeal.prototype.animate=function( opts,time,callback ){
+
+			var elem = this[0];
+			for ( prop in opts ){
+				var p = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
+				console.log(p);
+				var dp = (opts[prop]-p)/(time/10);
+				var interval = setInterval(function(){
+					if( p+dp<opts[prop] ){
 						p+=dp;
-						elem.style.marginLeft=p+"px";
+						elem.style[prop] = p + "px";
 					}else{
 						clearInterval( interval );
-						elem.style.marginLeft=tar;
+						elem.style[prop] = opts[prop];
 						if( callback ){
 							callback();					
 						};
 					};
 				},10);
-			}else{
-				var interval=setInterval(function(){
-					if( p+dp>=tar ){
-						p+=dp;
-						elem.style.marginLeft=p+"px";
-					}else{
-						clearInterval( interval );
-						elem.style.marginLeft=tar;
-						if( callback ){
-							callback();					
-						};
-					};
-				},10);			
 			};
-		};
+
 	};
 	//-----------------------------------------------------------
-	Zeal.ajax = function( params ){
+	Zeal.ajax = function( obj ){
 		var xhr = new XMLHttpRequest();
-		xhr.open( params.type,params.url );
-		xhr.send( params.data||null );
+		xhr.open( obj.type,obj.url );
+		xhr.send( obj.data||null );
 		xhr.onreadystatechange = function(){
 			var data = xhr.responseText;
 			if( xhr.status===200 ){
-				params.success(data);
+				obj.success(data);
 			};
 		};		
 	};

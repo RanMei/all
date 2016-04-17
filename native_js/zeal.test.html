@@ -20,16 +20,17 @@
 $(document).ready(function(){
 	console.log( $(".dog") );
 	$(".dog").html("fuck").addClass("fuck");
+	$(".dog").css({
+		width: "300px",
+		height: "300px",
+		opacity: 0.8,
+		background: "red",
+		paddingLeft: "50px"
+	});
 	$(".dog").on("click",function(e){
-		console.log($(this));
-		var o = {
-			name: "Judy",
-			age: 11
-		}
-		for( x in o ){
-			console.log(x+':'+o[x])
-		}
-		$(this).fadeOut(1000);
+		$(this).animate({
+			width: 500
+		},200);
 	});
 })
 
@@ -37,7 +38,7 @@ $(document).ready(function(){
 </head>
 
 <body>	
-	<div class="dog"></div>
+	<div class="dog" style="opacity: 0.5;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
 
