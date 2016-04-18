@@ -164,16 +164,20 @@
 	Zeal.prototype.animate=function( opts,time,callback ){
 
 			var elem = this[0];
+			var p = {};
+			var dp = {};
+			var interval = {};
 			for ( prop in opts ){
-				var p = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
+				p[prop] = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
 				console.log(p);
-				var dp = (opts[prop]-p)/(time/10);
-				var interval = setInterval(function(){
-					if( p+dp<opts[prop] ){
-						p+=dp;
-						elem.style[prop] = p + "px";
+				dp[prop] = (opts[prop]-p[prop])/(time/10);
+				console.log(dp)
+				interval[prop] = setInterval(function(){
+					if( p[prop]+dp[prop]<opts[prop] ){
+						p[prop]+=dp[prop];
+						elem.style[prop] = p[prop] + "px";
 					}else{
-						clearInterval( interval );
+						clearInterval( interval[prop] );
 						elem.style[prop] = opts[prop];
 						if( callback ){
 							callback();					
