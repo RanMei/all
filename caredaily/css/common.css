@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+p {
+  margin: 0;
+  padding: 0;
+}
 li {
   list-style: none;
 }
@@ -9,6 +13,9 @@ html {
   font-family: "微软雅黑";
 }
 a {
+  text-decoration: none;
+}
+a:hover {
   text-decoration: none;
 }
 img {
@@ -38,6 +45,11 @@ img {
     opacity: 1;
   }
 }
+@media (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}
 .clear {
   clear: both;
 }
@@ -45,6 +57,7 @@ img {
   background: #0F64C0;
 }
 .app-header ._navbar {
+  height: 90px;
   overflow: hidden;
 }
 .app-header ._navbar .logo {
@@ -69,8 +82,8 @@ img {
 .app-header ._navbar ._nav a:link {
   float: left;
   width: 80px;
-  height: 80px;
-  padding: 15px 10px 0 10px;
+  height: 90px;
+  padding: 15px 10px 10px 10px;
   text-align: center;
   color: white;
 }
@@ -136,13 +149,15 @@ img {
 .home .showcase .pic {
   position: relative;
   float: left;
+  width: 90%;
   padding: 10px;
-  margin: 20px 40px 20px 40px;
+  margin: auto;
+  margin: 20px auto 20px auto;
   box-shadow: 0 0 8px grey;
   background: white;
 }
 .home .showcase .pic img {
-  width: 400px;
+  width: 100%;
 }
 .home .showcase .pic:before {
   position: absolute;
@@ -169,16 +184,16 @@ img {
   box-shadow: 0 0 8px grey;
   z-index: -2;
 }
-.home .bottom h1 {
+.home .knowUs h1 {
   padding: 40px 0 40px 0;
   text-align: center;
   color: orange;
 }
-.home .bottom h3 {
+.home .knowUs h3 {
   text-align: center;
   color: white;
 }
-.home .bottom .animation {
+.home .knowUs .animation {
   position: relative;
   width: 465px;
   height: 250px;
@@ -186,7 +201,7 @@ img {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
-.home .bottom .animation li {
+.home .knowUs .animation li {
   position: absolute;
   left: 0;
   top: 0;
@@ -195,39 +210,39 @@ img {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-.home .bottom .animation li p {
+.home .knowUs .animation li p {
   font-size: 20px;
 }
-.home .bottom .animation .i0 {
+.home .knowUs .animation .i0 {
   transform: translate3d(-600px, 50px, -800px);
   opacity: 0.5;
   z-index: -1;
 }
-.home .bottom .animation .i2 {
+.home .knowUs .animation .i2 {
   transform: translate3d(600px, 50px, -800px);
   opacity: 0.5;
   z-index: -1;
 }
-.home .bottom .panel {
+.home .knowUs ._panel {
   width: 930px;
   padding: 15px;
   margin: auto;
   background: white;
 }
-.home .bottom .panel .top {
+.home .knowUs ._panel .top {
   overflow: hidden;
   padding-bottom: 15px;
   border-bottom: 1px dotted grey;
   margin-bottom: 15px;
 }
-.home .bottom .panel .bottom {
+.home .knowUs ._panel .bottom {
   overflow: hidden;
 }
-.home .bottom .panel .left {
+.home .knowUs ._panel .left {
   float: left;
   width: 20%;
 }
-.home .bottom .panel .left p {
+.home .knowUs ._panel .left p {
   width: 114px;
   height: 72px;
   border-radius: 5px;
@@ -236,7 +251,7 @@ img {
   color: white;
   background: orange;
 }
-.home .bottom .panel .right {
+.home .knowUs ._panel .right {
   float: left;
   width: 80%;
 }
@@ -252,19 +267,26 @@ img {
   color: #0f64c0;
   background: #E5E5E5;
 }
+.brand .title p {
+  margin: 0;
+  padding: 0;
+}
 .brand .title .chinese {
-  padding: 10px 0 10px 0;
-  font-size: 25px;
+  padding: 1rem 0 0 0;
+  font-size: 2.4rem;
   color: #0F64C0;
 }
 .brand .title .english {
-  padding-bottom: 20px;
-  font-size: 20px;
+  padding-bottom: 1rem;
+  font-size: 1.8rem;
   color: #0F64C0;
 }
 .brand .container > p {
   font-size: 14px;
   text-indent: 28px;
+}
+.brand .main img {
+  width: 100%;
 }
 .products {
   overflow: hidden;
@@ -280,20 +302,21 @@ img {
   margin-bottom: 50px;
 }
 .products ul li {
-  padding: 20px 0 20px 0;
+  padding: 15px 0 15px 0;
   border-bottom: 1px dotted grey;
   overflow: hidden;
 }
 .products ul li img {
   float: left;
-  width: 300px;
+  width: 30%;
 }
 .products ul li .right {
   float: right;
-  width: 670px;
+  width: 70%;
+  padding-left: 15px;
 }
 .products ul li .right .title {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 25px;
   color: #0F64C0;
   display: inline-block;
@@ -310,7 +333,6 @@ img {
 }
 .contactUs .main .panel {
   float: left;
-  width: 50%;
 }
 .contactUs .main .panel .top {
   overflow: hidden;
@@ -345,14 +367,19 @@ img {
   background: #0F64C0;
 }
 .footer ul {
+  overflow: hidden;
   padding-bottom: 15px;
 }
 .footer ul li {
-  float: left;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .footer ul .title {
   padding: 10px 0 10px 0;
   font-size: 18px;
+}
+.footer ul .left .bottom {
+  overflow: hidden;
 }
 .footer ul .left .more:link {
   float: left;
@@ -370,8 +397,11 @@ img {
 .footer ul .left .more:visited {
   color: white;
 }
+.footer ul .right .footerImg {
+  margin: 15px auto 0 auto;
+}
 .footer .copyright {
-  padding: 10px 0 10px 0;
+  padding: 15px 0 15px 0;
   border-top: 1px solid white;
   margin-top: 15px;
 }

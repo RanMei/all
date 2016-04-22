@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+
+</head>
+
+<script type="text/javascript">
+	document.cookie = 'name=John';
+	document.cookie = 'id=123';
+	console.log( document.cookie );
+
+	console.log(localStorage);
+
+	localStorage.userID = "111";
+	console.log(localStorage);
+	console.log(document.domain);
+
+	var elem = document.createElement("div");
+	elem = document.getElementsByTagName("a");
+	console.log(elem);
+
+	function f(s){
+		var r = /^\s+/;
+		s = s.replace( r ,"2" );
+		if( r.test(s) ){
+			f(s);
+		}else{
+			console.log(s);
+		}
+	}
+	f("   11  111   1111   ");
+</script>
+
+<body>
+	<a href="./fytpy">fytpy</a>
+	<a href="./caredaily">caredaily</a>
+	<a href="./_wolf">_wolf</a>
+	<a href="./qm">qm</a>
+	<a href="./react">react</a>
+</body>
+
+</html>

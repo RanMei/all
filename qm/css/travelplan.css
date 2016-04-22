@@ -1,0 +1,472 @@
+.plan_list {
+  width: 100%;
+  height: auto;
+  font-size: 1.2rem;
+}
+.plan_list .list_tab {
+  position: relative;
+  width: 100%;
+  height: 4.4rem;
+  z-index: 99;
+}
+.plan_list .list_tab .line {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  width: 1px;
+  height: 2rem;
+  background: #FFFFFF;
+}
+.plan_list .list_tab .dropdown {
+  width: 50%;
+  float: left;
+}
+.plan_list .list_tab .dropdown .dropdown-header {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3CA5F6;
+}
+.plan_list .list_tab .dropdown .dropdown-header .icon {
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+.plan_list .list_tab .dropdown .dropdown-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+.plan_list .list_tab .dropdown .dropdown-menu li {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  text-align: center;
+  border-bottom: 1px #E5E5E5 solid;
+  background: #FFFFFF;
+  font-size: 1.8rem;
+}
+.plan_list .list_tab .dropdown .dropdown-menu li.active {
+  background: #E5E5E5 !important;
+}
+.plan_list .list_content.bg_white {
+  background: white!important;
+}
+.plan_list .list_content {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.plan_list .list_content .veil {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1000px;
+  background: #4A4A4A;
+  opacity: 0.3;
+  display: none;
+  z-index: 10;
+}
+.plan_list .list_content .item .item-main {
+  padding: 1rem;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+.plan_list .list_content .item .item-main .item-left {
+  float: left;
+  width: 60%;
+}
+.plan_list .list_content .item .item-main .item-left .top {
+  height: 2.2rem;
+  line-height: 2.2rem;
+  margin-bottom: 1rem;
+}
+.plan_list .list_content .item .item-main .item-left .top span {
+  font-size: 1.8rem;
+  color: #4A4A4A;
+}
+.plan_list .list_content .item .item-main .item-left .top .journey {
+  position: relative;
+  max-width: 70%;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.plan_list .list_content .item .item-main .item-left .top .icon,
+.plan_list .list_content .item .item-main .item-left .top i {
+  font-size: 1.8rem;
+  vertical-align: top;
+  line-height: 2.2rem;
+  color: #C5C5C5;
+}
+.plan_list .list_content .item .item-main .item-left .bottom {
+  height: 4rem;
+  line-height: 2rem;
+}
+.plan_list .list_content .item .item-main .item-left .bottom p {
+  font-size: 1.4rem;
+  color: #9B9B9B;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.plan_list .list_content .item .item-main .item-right {
+  float: left;
+  width: 40%;
+  text-align: right;
+}
+.plan_list .list_content .item .item-main .item-right .top {
+  height: 2.2rem;
+  line-height: 2.2rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.plan_list .list_content .item .item-main .item-right .bottom {
+  position: relative;
+  height: 4rem;
+  line-height: 2rem;
+}
+.plan_list .list_content .item .item-main .item-right .bottom .budget {
+  color: #EB5434;
+  font-size: 1.4rem;
+}
+.plan_list .list_content .item .item-main .item-right .bottom .budget span {
+  font-size: 1.8rem;
+}
+.plan_list .list_content .item .item-main .item-right .bottom .points {
+  font-size: 1.2rem;
+}
+.plan_list .list_content .item .item-main .item-right .bottom .points span {
+  font-size: 1.8rem;
+}
+.plan_list .list_content .item .complete {
+  position: relative;
+  padding: 0.3rem 1rem;
+  border-top: 2px solid #F1F1F1;
+  background: white;
+  overflow: hidden;
+}
+.plan_list .list_content .item .complete li {
+  float: left;
+  position: relative;
+  width: 33.333333%;
+  text-align: center;
+}
+.plan_list .list_content .item .complete li .number {
+  font-size: 1.8rem !important;
+}
+.plan_list .list_content .item .complete li .name {
+  font-size: 1.2rem;
+}
+.plan_list .list_content .item .complete li .name.withDeficit {
+  color: #F23B3B !important;
+}
+.plan_list .list_content .item .complete li .bar {
+  position: absolute;
+  right: 0;
+  top: 0.8rem;
+  width: 2px;
+  height: 20px;
+  background: #F1F1F1;
+}
+.plan_list .list_content .item .complete .withBalance {
+  color: #3CA5F6 !important;
+}
+.plan_list .list_content .item .complete .withDeficit {
+  color: #F23B3B !important;
+}
+.plan_list .list_content .tips {
+  padding: 0 0 15px 0;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.plan_list .list_content .tips .noRecord {
+  padding: 80px 0 30px 0;
+  color: #4A4A4A;
+  font-size: 1.8rem;
+}
+.plan_list .list_content .tips .seeOtherRecords {
+  color: #9B9B9B;
+  font-size: 1.4rem;
+}
+.plan_detail {
+  width: 100%;
+  height: auto;
+  padding-bottom: 5rem;
+}
+.plan_detail .HEADER {
+  height: auto;
+  color: #FFFFFF;
+  padding-bottom: 1rem;
+  background: -webkit-linear-gradient(#2190E5, #64BBFF);
+  background: -o-linear-gradient(#2190E5, #64BBFF);
+  background: -moz-linear-gradient(#2190E5, #64BBFF);
+  background: linear-gradient(#2190E5, #64BBFF);
+}
+.plan_detail .HEADER .timeStamp {
+  height: 3rem;
+  line-height: 3rem;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+.plan_detail .HEADER .totalBudget {
+  height: 4.8rem;
+  line-height: 4.8rem;
+  text-align: center;
+}
+.plan_detail .HEADER .totalBudget span {
+  font-size: 3.6rem;
+}
+.plan_detail .HEADER .text {
+  height: auto;
+  text-align: center;
+}
+.plan_detail .HEADER .text span {
+  font-size: 1.5rem;
+}
+.plan_detail .COMPLETE {
+  position: relative;
+  height: 5rem;
+  line-height: 2rem;
+  background: #FFFFFF;
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+.plan_detail .COMPLETE li {
+  position: relative;
+  float: left;
+  width: 33.3333333%;
+  text-align: center;
+  font-size: 1.8rem !important;
+}
+.plan_detail .COMPLETE li .bar {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  width: 1px;
+  height: 1.5rem;
+  border: 1px #E5E5E5 solid;
+}
+.plan_detail .COMPLETE li .number {
+  font-size: 1.8rem !important;
+  color: #4A4A4A;
+}
+.plan_detail .COMPLETE li span {
+  color: #355167;
+}
+.plan_detail .project {
+  height: auto;
+  line-height: 2.2rem;
+  color: #4A4A4A;
+  background: #F1F1F1;
+  padding: 1rem;
+}
+.plan_detail .CONTENT {
+  height: auto;
+}
+.plan_detail .CONTENT li {
+  border-bottom: 1px #E5E5E5 solid;
+  background: #FFFFFF;
+  padding: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+.plan_detail .CONTENT li .list_top {
+  overflow: hidden;
+}
+.plan_detail .CONTENT li .list_top .top_left {
+  float: left;
+  width: 60%;
+}
+.plan_detail .CONTENT li .list_top .top_left p {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.plan_detail .CONTENT li .list_top .top_left .icon {
+  font-size: 1.6rem;
+  color: #C8C8C8;
+}
+.plan_detail .CONTENT li .list_top .top_left .description {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+.plan_detail .CONTENT li .list_top .top_left .description span {
+  color: #3CA5F6;
+  padding: 0 0.5rem;
+}
+.plan_detail .CONTENT li .list_top .top_left .time {
+  color: #A3A3A3;
+  float: left;
+}
+.plan_detail .CONTENT li .list_top .top_left .time span {
+  font-size: 1.2rem;
+}
+.plan_detail .CONTENT li .list_top .top_right {
+  float: left;
+  width: 40%;
+}
+.plan_detail .CONTENT li .list_top .top_right p {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: right;
+}
+.plan_detail .CONTENT li .list_top .top_right .budget {
+  font-size: 1rem;
+  color: #EBBC18;
+}
+.plan_detail .CONTENT li .list_top .top_right .budget .number {
+  font-size: 1.5rem !important;
+}
+.plan_detail .CONTENT li .list_top .top_right .expenditure {
+  font-size: 1rem;
+  color: black;
+}
+.plan_detail .CONTENT li .list_top .top_right .expenditure .number {
+  font-size: 1.5rem !important;
+}
+.plan_detail .CONTENT li .list_bottom {
+  height: 4.3rem;
+  border-top: 1px #E5E5E5 solid;
+  /*
+        .smallbtn {
+          width: 7.2rem;
+          height: 2.5rem;
+          border: 1px @border-color solid;
+          border-radius: 0.2rem;
+          background: @color-theme5;
+          margin: 0.9rem 0 0 1rem;
+          float: right;
+        }
+        */
+}
+.plan_detail .CONTENT li .list_bottom .status {
+  height: 4.3rem;
+  line-height: 4.3rem;
+  float: left;
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.plan_detail .CONTENT li .list_bottom .status.rejected {
+  color: #EB5434!important;
+}
+.plan_detail .CONTENT li .list_bottom .status.complete {
+  color: #4A4A4A!important;
+}
+.plan_detail .CONTENT li .list_bottom .buttons {
+  float: right;
+  overflow: hidden;
+}
+.plan_detail .CONTENT li .list_bottom .buttons .BTN {
+  position: relative;
+  width: 7.2rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border: 1px #CDCDCD solid;
+  border-radius: 0.2rem;
+  background: #FFFFFF;
+  margin: 0.9rem 0 0 1rem;
+  text-align: center;
+  float: left;
+  font-size: 1.3rem;
+}
+.plan_detail .CONTENT li .list_bottom .buttons input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+}
+.plan_detail .BUTTON.active {
+  background: #3CA5F6;
+}
+.invoice {
+  background-color: #fff;
+  padding-top: 0.5rem;
+}
+.invoice .i_detail {
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+.invoice .i_detail .i_type {
+  font-size: 1.6rem;
+}
+.invoice .i_detail .i_type .web-icon-font3 {
+  color: #9b9b9b;
+  padding-right: 0.5rem;
+  float: left;
+  font-size: 2rem;
+}
+.invoice .i_detail .i_type .i_typedetail {
+  float: left;
+  font-size: 1.6rem;
+}
+.invoice .i_detail .i_type .i_typedetail .arr {
+  position: relative;
+  width: 3.5rem;
+  height: 1.5rem;
+  display: inline-block;
+}
+.invoice .i_detail .i_type .i_typedetail .arr .out_img {
+  background: url(../images/arr.png) bottom no-repeat;
+  background-size: 2.5rem;
+  display: inline-block;
+  height: 2.1rem;
+  width: 2.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  position: absolute;
+  top: -0.5rem;
+  color: #3CA5F6;
+  font-style: normal;
+  text-align: center;
+}
+.invoice .i_detail .i_type .i_typedetail .arr .back_img {
+  background: url(../images/back_traffic.png) no-repeat;
+  background-size: 2.5rem;
+  display: inline-block;
+  height: 1.1rem;
+  width: 2.5rem;
+  margin: 0 0.5rem;
+}
+.invoice .i_box {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding-left: 0.5rem;
+  background: #fff;
+}
+.invoice .i_box .i_status {
+  float: right;
+  padding-right: 1rem;
+}
+.invoice .time_font {
+  font-size: 1.2rem;
+  color: #9b9b9b;
+}
+.invoice .i_images img {
+  width: 100%;
+}
+.arrt {
+  position: relative;
+  width: 3.5rem;
+  height: 1.5rem;
+  display: inline-block;
+}
+.arrt .out_img {
+  background: url(../images/arr.png) bottom no-repeat;
+  background-size: 2.5rem;
+  display: inline-block;
+  height: 2.1rem;
+  width: 2.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  position: absolute;
+  top: -0.5rem;
+  color: #3CA5F6;
+  font-style: normal;
+  text-align: center;
+}

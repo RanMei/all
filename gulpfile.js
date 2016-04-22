@@ -59,6 +59,11 @@ gulp.task( "concat_angular",function(){
 });
 
 // less
+gulp.task( 'less_qm',function(){
+	gulp.src( './qm/less/*.less' )
+		.pipe( less() )
+		.pipe( gulp.dest("./qm/css") );
+});
 gulp.task( 'less_$tpl',function(){
 	gulp.src( './$tpl/less/*.less' )
 		.pipe( less() )
@@ -107,6 +112,8 @@ gulp.task( "default", function(){
 	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
 	gulp.watch( './$tpl/less/*.less',['less_$tpl'] );
 
+	// qm
+	gulp.watch( './qm/less/*.less',['less_qm'] );
 	// fytpy
 	gulp.watch( './fytpy/less/*.less',['less_fytpy'] );
 	gulp.watch( './fytpy/es6/*.es6',['babel_fytpy'] );

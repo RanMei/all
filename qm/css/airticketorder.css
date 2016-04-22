@@ -1,0 +1,910 @@
+/*  */
+.order_list {
+  width: 100%;
+  height: auto;
+  font-size: 1.2rem;
+}
+.order_list .list_tab {
+  position: relative;
+  width: 100%;
+  height: 4.4rem;
+  z-index: 99;
+}
+.order_list .list_tab .line {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  width: 1px;
+  height: 2rem;
+  background: #9B9B9B;
+}
+.order_list .list_tab .dropdown {
+  width: 50%;
+  float: left;
+}
+.order_list .list_tab .dropdown .dropdown-header {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #4A4A4A;
+  background: #FFFFFF;
+}
+.order_list .list_tab .dropdown .dropdown-header .icon {
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+.order_list .list_tab .dropdown .dropdown-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+.order_list .list_tab .dropdown .dropdown-menu li {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  text-align: center;
+  border-bottom: 1px #E5E5E5 solid;
+  background: #FFFFFF;
+  font-size: 1.8rem;
+}
+.order_list .list_tab .dropdown .dropdown-menu li.active {
+  background: #E5E5E5 !important;
+}
+.order_list .list_content.bg_white {
+  background: white;
+}
+.order_list .list_content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+.order_list .list_content .item {
+  background: #FFFFFF;
+}
+.order_list .list_content .item .item_main {
+  padding: 0 1rem;
+  overflow: hidden;
+}
+.order_list .list_content .item .item_main .item_left {
+  float: left;
+  height: 8.5rem;
+  width: 73%;
+}
+.order_list .list_content .item .item_main .item_left .plane_icon {
+  width: 2.6rem;
+  height: 5.5rem;
+  line-height: 5.5rem;
+  float: left;
+}
+.order_list .list_content .item .item_main .item_left .plane_icon i {
+  font-size: 2.1rem;
+  color: #9B9B9B;
+}
+.order_list .list_content .item .item_main .item_left .starttime {
+  width: 5.5rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #4A4A4A;
+  padding-top: 1.2rem;
+  float: left;
+}
+.order_list .list_content .item .item_main .item_left .starttime span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.order_list .list_content .item .item_main .item_left .line1 {
+  width: 6rem;
+  height: 5.5rem;
+  padding-top: 2.6rem;
+  float: left;
+}
+.order_list .list_content .item .item_main .item_left .line1 img {
+  width: 5.5rem;
+  float: left;
+}
+.order_list .list_content .item .item_main .item_left .line1 span {
+  font-size: 1.2rem;
+  color: #3CA5F6;
+  margin-left: 1.5rem;
+  float: left;
+}
+.order_list .list_content .item .item_main .item_left .endtime {
+  width: 7rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #4A4A4A;
+  padding-top: 1.2rem;
+  float: left;
+  position: relative;
+}
+.order_list .list_content .item .item_main .item_left .endtime span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.order_list .list_content .item .item_main .item_left .endtime i {
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  left: 4.1rem;
+  font-style: normal;
+}
+.order_list .list_content .item .item_main .item_left .airline {
+  width: 100%;
+  height: 2.7rem;
+}
+.order_list .list_content .item .item_main .item_left .airline .left {
+  width: 3rem;
+  height: 2.7rem;
+  line-height: 2.7rem;
+  padding-top: 0.2rem;
+}
+.order_list .list_content .item .item_main .item_left .airline .left img {
+  width: 2.3rem;
+}
+.order_list .list_content .item .item_main .item_left .airline .right {
+  height: 2.7rem;
+  line-height: 2.7rem;
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.order_list .list_content .item .item_main .item_right {
+  width: 7.5rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #EB5434;
+  text-align: right;
+  padding-top: 1.2rem;
+  float: right;
+}
+.order_list .list_content .item .item_bottom {
+  height: 5rem;
+  border-top: 1px solid #E5E5E5;
+}
+.order_list .list_content .item .item_bottom .order_status {
+  float: left;
+  line-height: 5rem;
+  margin-left: 1rem;
+  color: #3CA5F6;
+}
+.order_list .list_content .item .item_bottom a {
+  float: right;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+.order_list .list_content .item .complete {
+  position: relative;
+  padding: 0.3rem 1rem;
+  border-top: 2px solid #F1F1F1;
+  background: white;
+  overflow: hidden;
+}
+.order_list .list_content .item .complete li {
+  float: left;
+  position: relative;
+  width: 33.333333%;
+  text-align: center;
+}
+.order_list .list_content .item .complete li .number {
+  font-size: 1.8rem !important;
+}
+.order_list .list_content .item .complete li .name {
+  font-size: 1.2rem;
+}
+.order_list .list_content .item .complete li .name.withDeficit {
+  color: #F23B3B !important;
+}
+.order_list .list_content .item .complete li .bar {
+  position: absolute;
+  right: 0;
+  top: 0.8rem;
+  width: 2px;
+  height: 20px;
+  background: #F1F1F1;
+}
+.order_list .list_content .item .complete .withBalance {
+  color: #3CA5F6 !important;
+}
+.order_list .list_content .item .complete .withDeficit {
+  color: #F23B3B !important;
+}
+.order_list .list_content .tips {
+  padding: 0 0 15px 0;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.order_list .list_content .tips .noRecord {
+  padding: 80px 0 30px 0;
+  color: #4A4A4A;
+  font-size: 1.8rem;
+}
+.order_list .list_content .tips .seeOtherRecords {
+  color: #9B9B9B;
+  font-size: 1.4rem;
+}
+/*机票预订信息填写 2016/4/9 添加 ch */
+.cmask {
+  background: #000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  transition: display 2s;
+  -moz-transition: display 2s;
+  /* Firefox 4 */
+  -webkit-transition: display 2s;
+  /* Safari 和 Chrome */
+  -o-transition: display 2s;
+  /* Opera */
+  display: none;
+}
+.cmask.mask_show {
+  display: block;
+}
+.bookariticket .middle .row1 {
+  padding: 1.1rem;
+  background: white;
+  border-bottom: 1px solid #E5E5E5;
+}
+.bookariticket .middle .row1 .instructions {
+  float: right;
+  color: #3CA5F6;
+}
+.bookariticket .middle .thisHeader {
+  height: 2.7rem;
+  line-height: 2.7rem;
+  padding-left: 1rem;
+  color: #9B9B9B;
+}
+.bookariticket .middle .passengerInfoContent {
+  padding: 1.1rem;
+  background: white;
+}
+.bookariticket .middle .passengerInfoContent .passengerName {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+.bookariticket .middle .passengerInfoContent .identity {
+  font-size: 1.2rem;
+}
+.bookariticket .middle .passengerInfoContent .arrow {
+  float: right;
+  line-height: 3rem;
+}
+.bookariticket .middle .charges {
+  padding: 1.1rem;
+  overflow: hidden;
+  background: white;
+  border-top: 1px solid #E5E5E5;
+}
+.bookariticket .middle .charges li {
+  position: relative;
+  float: left;
+  width: 33.3333%;
+  text-align: center;
+}
+.bookariticket .middle .charges li .number {
+  font-size: 1.4rem;
+}
+.bookariticket .middle .charges li .text {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.bookariticket .middle .charges li .bar {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  width: 1px;
+  height: 1rem;
+  background: grey;
+}
+.bookariticket .middle .contacts {
+  background: #fff;
+  margin-bottom: 1rem;
+}
+.bookariticket .middle .contacts p {
+  height: 4.3rem;
+  line-height: 4.3rem;
+  padding-left: 1rem;
+}
+.bookariticket .middle .contacts p:nth-child(2) {
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+.bookariticket .middle .contacts p span {
+  width: 6rem;
+  font-size: 1.3rem;
+  display: inline-block;
+}
+.bookariticket .middle .contacts p input {
+  font-size: 1.5rem;
+  width: 70%;
+}
+.bookariticket .middle .contacts p input:focus {
+  outline: none;
+}
+.bookariticket .dropdown {
+  margin-bottom: 1rem;
+  background: white;
+}
+.bookariticket .dropdown .dropdown-header {
+  padding: 1rem;
+}
+.bookariticket .dropdown .dropdown-header .arrow {
+  float: right;
+}
+.bookariticket .dropdown .dropdown-content {
+  padding: 1rem;
+  border-top: 1px solid #E5E5E5;
+}
+.bookariticket .dropdown .dropdown-content .name {
+  font-size: 1.6rem;
+}
+.bookariticket .dropdown .dropdown-content .address {
+  font-size: 1.2rem;
+}
+.bookariticket .needinvoice {
+  background: #fff;
+  padding-left: 1rem;
+  height: 4.3rem;
+  line-height: 4.3rem;
+  border-bottom: 1px solid #E5E5E5;
+}
+.bookariticket .needinvoice .button {
+  float: right;
+}
+.bookariticket .needinvoice .button a {
+  border: 1px solid #E5E5E5;
+  float: right;
+  margin: 1rem 1rem 0 0;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  width: 7.2rem;
+  border-radius: 2px;
+  color: #4A4A4A;
+  text-align: center;
+  background: #fff;
+  position: relative;
+}
+.bookariticket .needinvoice .button a.need {
+  border: 1px solid #3CA5F6;
+}
+.bookariticket .needinvoice .button a.need .checkthis {
+  display: block;
+}
+.bookariticket .needinvoice .button a .checkthis {
+  position: absolute;
+  left: 0;
+  top: -3px;
+  font-size: 2rem;
+  color: #3CA5F6;
+  display: none;
+}
+.bookariticket .mails {
+  background: #fff;
+  padding-left: 1.5rem;
+}
+.bookariticket .mails p {
+  height: 4.3rem;
+  line-height: 4.3rem;
+}
+.bookariticket .mails p:nth-child(2) {
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+.bookariticket .mails p span {
+  width: 4rem;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: right;
+  margin-right: 1rem;
+}
+.bookariticket .mails p input {
+  font-size: 1.5rem;
+  width: 70%;
+}
+.bookariticket .mails p input:focus {
+  outline: none;
+}
+.bookariticket .mails .mailaddress {
+  height: 6.1rem;
+  padding-right: 1rem;
+}
+.bookariticket .mails .mailaddress .addressdetail {
+  float: left;
+  padding-left: 1rem;
+  margin-top: 1.3rem;
+  width: 85%;
+}
+.bookariticket .mails .mailaddress .addressdetail .passengerName {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.bookariticket .mails .mailaddress .addressdetail .arrow {
+  float: right;
+  line-height: 3rem;
+}
+.bookariticket .mails .mailaddress div:nth-child(1) {
+  width: 4rem;
+  font-size: 1rem;
+  float: left;
+  height: 4.3rem;
+  line-height: 4.3rem;
+}
+.bookariticket .attention {
+  height: 6rem;
+  padding: 1rem;
+  color: #9B9B9B;
+}
+.bookariticket .shadow-buttons {
+  width: 100%;
+  height: 4.9rem;
+}
+.bookariticket .price_detail {
+  position: fixed;
+  bottom: -17.6rem;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 6;
+  transition: bottom 0.5s;
+  -moz-transition: bottom 0.5s;
+  /* Firefox 4 */
+  -webkit-transition: bottom 0.5s;
+  /* Safari 和 Chrome */
+  -o-transition: bottom 0.5s;
+  /* Opera */
+}
+.bookariticket .price_detail.detail_show {
+  bottom: 4.9rem;
+}
+.bookariticket .price_detail p {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-bottom: 1px solid #E5E5E5;
+  color: #4A4A4A;
+}
+.bookariticket .price_detail p .title {
+  font-size: 1.4rem;
+  padding-left: 1rem;
+}
+.bookariticket .price_detail p .right {
+  float: right;
+  width: 7rem;
+  height: 4.4rem;
+  font-size: 1.6rem;
+}
+.bookariticket .buttons {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4.9rem;
+  background: white;
+  overflow: hidden;
+  line-height: 4.9rem;
+  padding-left: 1rem;
+  font-size: 1.6rem;
+  z-index: 6;
+}
+.bookariticket .buttons .allprice {
+  font-size: 1.6rem;
+  color: #EB5434;
+}
+.bookariticket .buttons .topay {
+  float: right;
+  width: 36%;
+  background: #3CA5F6;
+  height: 4.9rem;
+  line-height: 4.9rem;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+}
+.bookariticket .buttons .paydetail {
+  float: right;
+  width: 4rem;
+  height: 4.9rem;
+  line-height: 4.9rem;
+  font-size: 1.2rem;
+  color: #9B9B9B;
+  margin-right: 2rem;
+  text-align: center;
+}
+.bookariticket .buttons .paydetail .arrowtop {
+  font-size: 1rem;
+}
+/* 机票订单详情页的样式 */
+.airTicketOrderDetails .top {
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+  background: white;
+}
+.airTicketOrderDetails .top .top-top {
+  padding-bottom: 1.5rem;
+}
+.airTicketOrderDetails .top .top-top .status {
+  font-size: 1.4rem;
+  color: #3CA5F6;
+}
+.airTicketOrderDetails .top .top-top .top-right {
+  float: right;
+  font-size: 0.9rem;
+  color: #9B9B9B;
+}
+.airTicketOrderDetails .top .top-top .number {
+  font-size: 1.4rem;
+  color: #EB5434;
+}
+.airTicketOrderDetails .top .top-top .time {
+  font-size: 1.1rem;
+}
+.airTicketOrderDetails .top .row {
+  padding: 0.5rem 0 0.5rem 0;
+}
+.airTicketOrderDetails .top .row span {
+  font-size: 1.1rem;
+}
+.airTicketOrderDetails .top .row .text {
+  color: #9B9B9B;
+}
+.airTicketOrderDetails .middle .row1 {
+  padding: 1.1rem;
+  background: white;
+  border-bottom: 1px solid #E5E5E5;
+}
+.airTicketOrderDetails .middle .row1 .instruction {
+  float: right;
+  border: 2px solid #3CA5F6;
+  border-radius: 3px;
+  color: #3CA5F6;
+}
+.airTicketOrderDetails .middle .row1 .instructions {
+  float: right;
+  color: #3CA5F6;
+}
+.airTicketOrderDetails .middle .row2 {
+  padding: 1.4rem 1rem 1.9rem 1rem;
+  background: white;
+}
+.airTicketOrderDetails .middle .row2 .briefing {
+  padding-bottom: 2.3rem;
+}
+.airTicketOrderDetails .middle .row2 ul {
+  overflow: hidden;
+}
+.airTicketOrderDetails .middle .row2 ul li {
+  float: left;
+  width: 33.333333%;
+  text-align: center;
+}
+.airTicketOrderDetails .middle .row2 ul li .time {
+  padding-bottom: 0.6rem;
+  font-size: 2.4rem;
+}
+.airTicketOrderDetails .middle .row2 ul li .airport {
+  color: #9B9B9B;
+}
+.airTicketOrderDetails .middle .row2 ul li .timeSpan {
+  font-size: 1.2rem;
+}
+.airTicketOrderDetails .middle .row2 ul li .arrow_with_dot {
+  width: 8.4rem;
+  margin: auto;
+}
+.airTicketOrderDetails .middle .row2 ul li .transferStation {
+  color: #3CA5F6;
+}
+.airTicketOrderDetails .middle .thisHeader {
+  padding: 1.1rem;
+  color: #9B9B9B;
+}
+.airTicketOrderDetails .middle .passengerInfoContent {
+  padding: 1.1rem;
+  background: white;
+}
+.airTicketOrderDetails .middle .passengerInfoContent .passengerName {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+.airTicketOrderDetails .middle .passengerInfoContent .identity {
+  font-size: 1.2rem;
+}
+.airTicketOrderDetails .middle .price .total {
+  float: right;
+  color: black;
+}
+.airTicketOrderDetails .middle .price .total .totalPrice {
+  color: #EB5434;
+}
+.airTicketOrderDetails .middle .charges {
+  margin-bottom: 1rem;
+  padding: 1.1rem;
+  overflow: hidden;
+  background: white;
+}
+.airTicketOrderDetails .middle .charges li {
+  position: relative;
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.airTicketOrderDetails .middle .charges li .number {
+  font-size: 1.4rem;
+}
+.airTicketOrderDetails .middle .charges li .text {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.airTicketOrderDetails .middle .charges li .bar {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  width: 1px;
+  height: 1rem;
+  background: grey;
+}
+.airTicketOrderDetails .dropdown {
+  margin-bottom: 1rem;
+  background: white;
+}
+.airTicketOrderDetails .dropdown .dropdown-header {
+  padding: 1rem;
+}
+.airTicketOrderDetails .dropdown .dropdown-header .arrow {
+  float: right;
+}
+.airTicketOrderDetails .dropdown .dropdown-content {
+  padding: 1rem;
+  border-top: 1px solid #E5E5E5;
+}
+.airTicketOrderDetails .dropdown .dropdown-content .name {
+  font-size: 1.6rem;
+}
+.airTicketOrderDetails .dropdown .dropdown-content .address {
+  font-size: 1.2rem;
+}
+.airTicketOrderDetails .shadow-buttons {
+  width: 100%;
+  height: 4.9rem;
+}
+.airTicketOrderDetails .buttons {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4.9rem;
+  background: white;
+  overflow: hidden;
+}
+.airTicketOrderDetails .buttons .delete,
+.airTicketOrderDetails .buttons .right_button {
+  float: left;
+  width: 50%;
+  height: 100%;
+  line-height: 4.9rem;
+  font-size: 1.8rem;
+  text-align: center;
+  display: block;
+}
+.airTicketOrderDetails .buttons .right_button {
+  background: #3CA5F6;
+  color: white;
+}
+.airTicketOrderDetails .buttons .rebook {
+  width: 100%;
+  height: 100%;
+  line-height: 4.9rem;
+  font-size: 1.8rem;
+  text-align: center;
+  display: block;
+  background: #3CA5F6;
+  color: white;
+}
+/* 乘客信息编辑页的样式 */
+.infoEditing .veil {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #4A4A4A;
+  opacity: 0.3;
+  z-index: 5;
+}
+.infoEditing .options {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #FFFFFF;
+  z-index: 10;
+}
+.infoEditing .options li {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+}
+.infoEditing .options li:first-child {
+  border-bottom: 1px solid #E5E5E5;
+}
+.infoEditing .options li.active {
+  color: #3CA5F6;
+}
+.infoEditing .top {
+  padding-left: 1.1rem;
+  background: #FFFFFF;
+}
+.infoEditing .top .row {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-bottom: 1px solid #E5E5E5;
+  background: white;
+  overflow: hidden;
+}
+.infoEditing .top .row .row-left {
+  float: left;
+  width: 30%;
+  font-size: 1.4rem;
+}
+.infoEditing .top .row .row-right {
+  float: right;
+  width: 70%;
+  padding-right: 1.1rem;
+  font-size: 1.6rem;
+}
+.infoEditing .top .row .row-right input {
+  border: none;
+  height: 100%;
+  line-height: 4.4rem;
+  font-size: 1.6rem;
+}
+.infoEditing .button {
+  height: 4.4rem;
+  margin-left: 2.75rem;
+  margin-right: 2.75rem;
+  border-radius: 3px;
+  line-height: 4.4rem;
+  text-align: center;
+  font-size: 1.8rem;
+  color: white;
+  display: block;
+}
+.infoEditing .save {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  background: #CCCCCC;
+}
+.infoEditing .save.active {
+  background: #3CA5F6;
+}
+.infoEditing .cancel {
+  color: #3CA5F6;
+  background: white;
+}
+.add_address {
+  width: 100%;
+  padding: 0 0 0 1rem;
+  border-bottom: 0.1rem solid #E5E5E5;
+  background-color: #FFFFFF;
+}
+.add_address div {
+  border-bottom: 0.1rem solid #e5e5e5;
+  text-align: left;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  color: #4a4a4a;
+}
+.add_address div:last-child {
+  border: none;
+  height: 8.4rem;
+  padding-right: 1rem;
+}
+.add_address div:last-child span {
+  line-height: 8.4rem;
+}
+.add_address div:last-child textarea {
+  width: 72%;
+  height: 6rem;
+  margin: 1.1rem 0.3rem;
+  outline: medium;
+  resize: none;
+}
+.add_address div span {
+  display: block;
+  width: 20%;
+  float: left;
+}
+.add_address div input {
+  outline: medium;
+}
+.little_change {
+  width: 80%;
+  height: 4.3rem!important;
+  float: left;
+  margin-left: 0;
+  padding-left: 0;
+}
+.little_change input {
+  margin-left: 0;
+  color: #4a4a4a!important;
+}
+.ma_t10 {
+  margin-top: 1rem;
+}
+.ma_t25 {
+  margin-top: 2.5rem;
+}
+.text::-ms-clear {
+  display: none;
+}
+.clear_text {
+  float: right;
+  color: #9b9b9b;
+  font-size: 1.6rem;
+  display: none;
+  line-height: 8.4rem;
+}
+.text:valid + .clear_text {
+  display: inline;
+}
+.choose_address {
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.4rem;
+  color: #4A4A4A;
+  text-align: center;
+}
+.choose_address i {
+  color: #3CA5F6;
+}
+.address_style {
+  width: 100%;
+  border-bottom: 0.1rem solid #E5E5E5;
+  padding-left: 1rem;
+  height: auto;
+  background-color: #FFFFFF;
+  position: relative;
+}
+.address_style ul li {
+  display: block;
+  float: left;
+  padding: 1rem 0.5rem;
+}
+.address_style ul li:first-child {
+  line-height: 6rem;
+  width: 10%;
+  text-align: center;
+  padding: 0;
+}
+.address_style ul li:nth-child(2) {
+  width: 78%;
+}
+.address_style ul li:nth-child(2) p:first-child {
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+.address_style ul li:nth-child(2) p:last-child {
+  font-size: 1.2rem;
+}
+.address_style ul li:nth-child(3) {
+  line-height: 2.4rem;
+  width: 10%;
+  text-align: center;
+  float: right;
+  padding: 0;
+  border-left: 0.1rem solid #E5E5E5;
+  height: 2.4rem;
+  margin-top: 1.8rem;
+  color: #3CA5F6;
+}

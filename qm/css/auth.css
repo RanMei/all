@@ -1,0 +1,62 @@
+.blue {
+  color: #3CA5F6 !important;
+}
+.blue_bc {
+  background-color: #3CA5F6 !important;
+}
+.user_photo {
+  width: 8rem;
+  height: 8rem;
+  margin: 6rem auto 3rem;
+}
+.user_photo img {
+  width: 100%;
+  height: 100%;
+}
+.fr {
+  float: right;
+}
+.corp_mail i,
+.corp_pwd i {
+  color: #9B9B9B;
+}
+.corp_mail {
+  margin: 0 auto;
+  border: 0.1rem solid #E5E5E5;
+  border-radius: 0.2rem 0.2rem 0 0;
+  border-bottom: 0!important;
+}
+.corp_pwd {
+  margin: 0 auto;
+  border: 0.1rem solid #E5E5E5;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+.lock {
+  font-size: 1.6rem;
+  padding-left: 0.2rem;
+  padding-right: 0.3rem;
+}
+.login {
+  display: block;
+  margin: 2rem auto;
+  color: #FFFFFF;
+  border-radius: 0.2rem;
+}
+.input {
+  margin-left: 0.5rem;
+  width: 90%;
+  outline: medium;
+  color: #9b9b9b;
+}
+.input::-ms-clear {
+  display: none;
+}
+.clear_input {
+  float: right;
+  color: #9b9b9b;
+  font-size: 1.6rem;
+  display: none;
+}
+.input:valid + .clear_input {
+  display: inline;
+}

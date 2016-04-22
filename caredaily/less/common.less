@@ -5,6 +5,12 @@
 	padding: 0;
 }
 
+// Overwrite the style of p defined by Bootstrap.
+p {
+	margin: 0;
+	padding: 0;
+}
+
 li {
 	list-style: none;
 }
@@ -14,6 +20,7 @@ html {
 }
 
 a {text-decoration: none;}
+a:hover {text-decoration: none;}
 
 img {
 	display: block;
@@ -44,6 +51,10 @@ img {
 	}
 }
 
+@media (max-width:768px) {
+	html {font-size: 10px;}
+}
+
 .clear {
 	clear: both;
 }
@@ -51,6 +62,7 @@ img {
 .app-header {
 	background: #0F64C0;
 	._navbar {
+		height: 90px;
 		overflow: hidden;
 		.logo {
 			float: left;
@@ -73,8 +85,9 @@ img {
 			a:link {
 				float: left;
 				width: 80px;
-				height: 80px;
-				padding: 15px 10px 0 10px;
+				// "box-sizing:border-box;" was set in Bootstrap.
+				height: 90px;
+				padding: 15px 10px 10px 10px;
 				text-align: center;
 				color: white;
 				img {
@@ -151,12 +164,14 @@ img {
 		.pic {
 			position: relative;
 			float: left;
+			width: 90%;
 			padding: 10px;
-			margin: 20px 40px 20px 40px;
+			margin: auto;
+			margin: 20px auto 20px auto;
 			box-shadow: 0 0 8px grey;
 			background: white;
 			img {
-				width: 400px;
+				width: 100%;	
 			}
 		}
 		
@@ -186,7 +201,7 @@ img {
 			z-index: -2;
 		}
 	}
-	.bottom {
+	.knowUs {
 		h1 {
 			padding: 40px 0 40px 0;
 			text-align: center;
@@ -229,7 +244,7 @@ img {
 				z-index: -1;
 			}
 		}
-		.panel {
+		._panel {
 			width: 930px;
 			padding: 15px;
 			margin: auto;
@@ -279,20 +294,27 @@ img {
 		background: #E5E5E5;
 	}
 	.title {
+		p {
+			margin: 0;
+			padding: 0;
+		}
 		.chinese {
-			padding: 10px 0 10px 0;
-			font-size: 25px;
+			padding: 1rem 0 0 0;
+			font-size: 2.4rem;
 			color: @deep-blue;
 		}
 		.english {
-			padding-bottom: 20px;
-			font-size: 20px;
+			padding-bottom: 1rem;
+			font-size: 1.8rem;
 			color: @deep-blue;
 		}
 	}
 	.container>p {
 		font-size: 14px;
 		text-indent: 28px;
+	}
+	.main img {
+		width: 100%;
 	}
 }
 
@@ -308,18 +330,19 @@ img {
 		margin-top: 50px;
 		margin-bottom: 50px;
 		li {
-			padding: 20px 0 20px 0;
+			padding: 15px 0 15px 0;
 			border-bottom: 1px dotted grey;
 			overflow: hidden;
 			img {
 				float: left;
-				width: 300px;
+				width: 30%;
 			}
 			.right {
 				float: right;
-				width: 670px;
+				width: 70%;
+				padding-left: 15px;
 				.title {
-					margin-bottom: 15px;
+					margin-bottom: 10px;
 					font-size: 25px;
 					color: @deep-blue;
 					display: inline-block;
@@ -341,7 +364,6 @@ img {
 		margin-bottom: 100px;
 		.panel {
 			float: left;
-			width: 50%;
 			.top {
 				overflow: hidden;
 				.left {
@@ -379,15 +401,20 @@ img {
 	color: white;
 	background: #0F64C0;
 	ul {
+		overflow: hidden;
 		padding-bottom: 15px;
 		li {
-			float: left;
+			padding-top: 15px;
+			padding-bottom: 15px;
 		}
 		.title {
 			padding: 10px 0 10px 0;
 			font-size: 18px;
 		}
 		.left {
+			.bottom {
+				overflow: hidden;
+			}
 			.more:link {
 				float: left;
 				width: 130px;
@@ -406,11 +433,13 @@ img {
 			}
 		}
 		.right {
-			
+			.footerImg {
+				margin: 15px auto 0 auto;
+			}
 		}
 	}
 	.copyright {
-		padding: 10px 0 10px 0;
+		padding: 15px 0 15px 0;
 		border-top: 1px solid white;
 		margin-top: 15px;
 	}

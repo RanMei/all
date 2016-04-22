@@ -1,5 +1,5 @@
-define(["exports"], function (exports) {
-	"use strict";
+define(['exports'], function (exports) {
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -23,33 +23,38 @@ define(["exports"], function (exports) {
  }
  */
 
-	console.log(location.hostname);
+	var $$root = 'http://' + location.hostname + '/fytpy/';
+
+	console.log('---root_directory', $$root);
+
 	function insertHeaderFooter() {
 		$.ajax({
-			url: "../tpl/header.html",
-			type: "post",
-			async: false
+			url: $$root + "tpl/header.html",
+			type: "post"
 		}).done(function (data) {
 			$(document).ready(function () {
 				$("#header").prepend(data);
+				$(".a-search").attr("href", $$root + "search.html");
+				$(".a_home").attr("href", $$root + "index.html");
+				$(".a-cart").attr("href", $$root + "shopping_cart.html");
+				$(".a_my_orders").attr("href", $$root + "orders.html");
+				console.log($(".a_my_orders").attr("href"));
 			});
-		});
+		}).done(getUser);
 		$.ajax({
-			url: "../tpl/footer.html",
-			type: "post",
-			async: false,
-			success: function success(data) {
-				$(document).ready(function () {
-					$("#footer").prepend(data);
-				});
-			}
+			url: $$root + "tpl/footer.html",
+			type: "post"
+		}).done(function (data) {
+			$(document).ready(function () {
+				$("#footer").prepend(data);
+			});
 		});
 	};
 	// @return {object}
 	function getUser() {
 		var user;
 		$.ajax({
-			url: "../php/session.php",
+			url: $$root + "php/session.php",
 			type: "post",
 			async: false
 		}).done(function (data) {
@@ -61,6 +66,8 @@ define(["exports"], function (exports) {
 					$(".register").replaceWith("<li class='logout'>注销</li>");
 					$(".quantityIn").html("" + user.shoppingCart.length + "");
 				});
+				document.cookie = "userID:" + user.username;
+				console.log(document.cookie);
 			};
 		});
 		return user;
@@ -68,12 +75,11 @@ define(["exports"], function (exports) {
 
 	// Get and insert header and footer into the page.
 	insertHeaderFooter();
-	getUser();
 
 	//
 	function logout() {
 		$.ajax({
-			url: "../php/logout.php",
+			url: $$root + "php/logout.php",
 			type: "post"
 		}).done(function () {
 			alert("注销成功！");
@@ -86,6 +92,7 @@ define(["exports"], function (exports) {
 	});
 
 	var session = {
+		root: $$root,
 		getUser: getUser
 	};
 

@@ -4,7 +4,7 @@ define(['./session', './common'], function (_session, _common) {
 	$(document).ready(function () {
 		$(".welcome").attr("href", "../index.html");
 
-		var item = {};
+		var $$item = {};
 
 		// Get itemID。
 		// console.log(window.location.search);
@@ -17,10 +17,9 @@ define(['./session', './common'], function (_session, _common) {
 			$.ajax({
 				url: "../tpl/item.html",
 				type: "post",
-				async: false,
-				success: function success(data) {
-					$("#main").html(data);
-				}
+				async: false
+			}).done(function (data) {
+				$("#main").html(data);
 			});
 			$.ajax({
 				url: "../php/item.php",
@@ -28,7 +27,7 @@ define(['./session', './common'], function (_session, _common) {
 				async: false,
 				data: { itemID: itemID },
 				success: function success(data) {
-					item = eval('(' + data + ')');
+					$$item = eval('(' + data + ')');
 				}
 			});
 			/*
@@ -39,12 +38,12 @@ define(['./session', './common'], function (_session, _common) {
    	specification:"",
    	
    */
-			$(".item .name").html(item.name);
-			$(".item .description").html(item.description);
-			$(".item .price").html(item.price);
+			$(".item .name").html($$item.name);
+			$(".item .description").html($$item.description);
+			$(".item .price").html(Number($$item.price).toFixed(2));
 			$(".thumbnail img").attr("src", "./" + itemID + "/0.jpg");
-			$(".item_class").html(item.class_);
-			$(".sub_class").html(item.sub_class);
+			$(".item_class").html($$item.class_);
+			$(".sub_class").html($$item.sub_class);
 			for (var i = 0; i < 4; i++) {
 				$(".tabs img").eq(i).attr("src", "./" + itemID + "/" + i + ".jpg");
 			};
@@ -59,24 +58,24 @@ define(['./session', './common'], function (_session, _common) {
 		};
 		//
 		function minusOne() {
-			if (item.quantity > 1) {
-				item.quantity--;
-				$(".quantity").html(item.quantity);
+			if ($$item.quantity > 1) {
+				$$item.quantity--;
+				$(".quantity").html($$item.quantity);
 			};
 		};
 
 		//
 		function plusOne() {
-			item.quantity++;
-			$(".quantity").html(item.quantity);
+			$$item.quantity++;
+			$(".quantity").html($$item.quantity);
 		};
 
 		//
 		function buyNow() {
 			$(".buy").html("订单生成中...");
 			var order = {
-				items: [item],
-				totalPrice: item.price * item.quantity
+				items: [$$item],
+				totalPrice: $$item.price * $$item.quantity
 			};
 			$.ajax({
 				url: "../php/generate-order.php",
@@ -92,8 +91,8 @@ define(['./session', './common'], function (_session, _common) {
 		//
 		function toCart() {
 			var itemToCart = {
-				itemID: item.itemID,
-				quantity: item.quantity,
+				itemID: $$item.itemID,
+				quantity: $$item.quantity,
 				to_cart: true
 			};
 			console.log(JSON.stringify(itemToCart));

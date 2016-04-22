@@ -1,0 +1,453 @@
+.flight_list {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.flight_list .top_nav {
+  width: 100%;
+  height: 4.8rem;
+  background: #FFFFFF;
+}
+.flight_list .top_nav dt {
+  height: 4.8rem;
+  line-height: 4.8rem;
+  font-size: 1.4rem;
+  color: #3CA5F6;
+}
+.flight_list .top_nav dt i {
+  font-size: 1.1rem;
+}
+.flight_list .top_nav dd {
+  width: 1px;
+  height: 1.4rem;
+  background: #E5E5E5;
+  position: absolute;
+  top: 1.7rem;
+}
+.flight_list .city_content {
+  width: 100%;
+  height: 3.3rem;
+  line-height: 3.3rem;
+  padding: 0 1rem;
+}
+.flight_list .city_content .city_name {
+  font-size: 1.2rem;
+  color: #4A4A4A;
+  padding-right: 1rem;
+  display: inline-block;
+}
+.flight_list .city_content .budget {
+  font-size: 1.2rem;
+  color: #3CA5F6;
+  padding-right: 1rem;
+  display: inline-block;
+}
+.flight_list .city_content .budget span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_list .city_content .number {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+  display: inline-block;
+  float: right;
+}
+.flight_list ul {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+}
+.flight_list ul li {
+  width: 100%;
+  height: 8.5rem;
+  border-bottom: 1px #E5E5E5 solid;
+  padding: 0 1rem;
+}
+.flight_list ul li .top_content {
+  width: 100%;
+  height: 5.5rem;
+}
+.flight_list ul li .top_content .plane_icon {
+  width: 3.6rem;
+  height: 5.5rem;
+  line-height: 5.5rem;
+  float: left;
+}
+.flight_list ul li .top_content .plane_icon i {
+  font-size: 2.1rem;
+  color: #9B9B9B;
+}
+.flight_list ul li .top_content .starttime {
+  width: 6rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #4A4A4A;
+  padding-top: 1.2rem;
+  float: left;
+}
+.flight_list ul li .top_content .starttime span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_list ul li .top_content .line1 {
+  width: 7rem;
+  height: 5.5rem;
+  padding-top: 2.6rem;
+  float: left;
+}
+.flight_list ul li .top_content .line1 img {
+  width: 5.5rem;
+  float: left;
+}
+.flight_list ul li .top_content .line1 span {
+  font-size: 1.2rem;
+  color: #3CA5F6;
+  margin-left: 1.5rem;
+  float: left;
+}
+.flight_list ul li .top_content .endtime {
+  width: 10rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #4A4A4A;
+  padding-top: 1.2rem;
+  float: left;
+  position: relative;
+}
+.flight_list ul li .top_content .endtime span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_list ul li .top_content .endtime i {
+  font-size: 1rem;
+  position: absolute;
+  top: 1rem;
+  left: 4.8rem;
+}
+.flight_list ul li .top_content .price {
+  width: 8.5rem;
+  height: 5.5rem;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  color: #EB5434;
+  text-align: right;
+  padding-top: 1.2rem;
+  float: right;
+  position: relative;
+}
+.flight_list ul li .top_content .price span {
+  font-size: 1.2rem;
+}
+.flight_list ul li .top_content .price .ticketnum {
+  width: 3.5rem;
+  height: 1.2rem;
+  text-align: left;
+  color: #3CA5F6;
+  display: inline-block;
+}
+.flight_list ul li .top_content .price .salenum {
+  width: 3.5rem;
+  height: 1.2rem;
+  display: inline-block;
+}
+.flight_list ul li .top_content .price .line {
+  width: 1px;
+  height: 1rem;
+  background: #E5E5E5;
+  position: absolute;
+  top: 4rem;
+  right: 3.3rem;
+}
+.flight_list ul li .bottom_content {
+  width: 100%;
+  height: 2.7rem;
+}
+.flight_list ul li .bottom_content .left {
+  width: 3rem;
+  height: 2.7rem;
+  line-height: 2.7rem;
+  padding-top: 0.2rem;
+}
+.flight_list ul li .bottom_content .left img {
+  width: 2.3rem;
+}
+.flight_list ul li .bottom_content .right {
+  height: 2.7rem;
+  line-height: 2.7rem;
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_list .bottom_nav {
+  width: 100%;
+  height: 4.8rem;
+  background: #FFFFFF;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.flight_list .bottom_nav dt {
+  height: 4.8rem;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 0.8rem;
+}
+.flight_list .bottom_nav dt i {
+  font-size: 1.6rem;
+}
+.flight_list .bottom_nav dd {
+  width: 1px;
+  height: 1.4rem;
+  background: #E5E5E5;
+  position: absolute;
+  top: 1.7rem;
+}
+.flight_list .bottom_nav .active {
+  color: #3CA5F6;
+}
+.flight_list .city_content {
+  width: 100%;
+  height: 3.3rem;
+  line-height: 3.3rem;
+  padding: 0 1rem;
+}
+.flight_list .city_content .city_name {
+  font-size: 1.2rem;
+  color: #4A4A4A;
+  padding-right: 1rem;
+  display: inline-block;
+}
+.flight_list .city_content .budget {
+  font-size: 1.2rem;
+  color: #3CA5F6;
+  padding-right: 1rem;
+  display: inline-block;
+}
+.flight_list .city_content .budget span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_list .city_content .number {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+  display: inline-block;
+  float: right;
+}
+.shaixuan_bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  display: none;
+}
+.shaixuan_bg .shaixuan_box {
+  width: 100%;
+  height: 30rem;
+  background: #FFFFFF;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_top {
+  width: 100%;
+  height: 4.5rem;
+  background: #355167;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_top .elasticbox_one {
+  height: 4.5rem;
+  line-height: 4.5rem;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_top .cancel {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  text-align: left;
+  padding-left: 1.6rem;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_top .name {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_top .determine {
+  font-size: 1.4rem;
+  color: #3CA5F6;
+  text-align: right;
+  padding-right: 1.6rem;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom {
+  width: 100%;
+  height: auto;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom dl {
+  width: 8rem;
+  height: auto;
+  background: #F3F3F3;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom dl dt {
+  width: 100%;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-right: 1px #E5E5E5 solid;
+  padding-left: 1rem;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom dl .active {
+  border-right: 1px #FFFFFF solid;
+  background: #FFFFFF;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom dl dd {
+  width: 100%;
+  height: 12.3rem;
+  border-right: 1px #E5E5E5 solid;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom ul {
+  height: 25.5rem;
+  padding: 0 1.3rem;
+  overflow-y: scroll;
+}
+.shaixuan_bg .shaixuan_box .shaixuan_bottom ul li {
+  height: 4.4rem;
+  line-height: 4.4rem;
+  border-bottom: 1px #E5E5E5 solid;
+  padding-left: 1.3rem;
+}
+.flight_details {
+  width: 100%;
+  height: auto;
+}
+.flight_details .city_content {
+  width: 100%;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  background: #FFFFFF;
+  border-bottom: 1px #E5E5E5 solid;
+  padding: 0 1rem;
+}
+.flight_details .city_content .city_name {
+  font-size: 1.4rem;
+  color: #4A4A4A;
+  display: inline-block;
+}
+.flight_details .city_content .budget {
+  font-size: 1.4rem;
+  color: #3CA5F6;
+  display: inline-block;
+  float: right;
+}
+.flight_details .city_content .budget span {
+  font-size: 1.2rem;
+  color: #9B9B9B;
+}
+.flight_details .flight_content {
+  width: 100%;
+  height: 8rem;
+  background: #FFFFFF;
+}
+.flight_details #economy_class .down {
+  display: none;
+}
+.flight_details #first_class dd {
+  display: none;
+}
+.flight_details #first_class .up {
+  display: none;
+}
+.flight_details dl {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+  margin-top: 1rem;
+}
+.flight_details dl dt {
+  width: 100%;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  text-align: right;
+  border-bottom: 1px #E5E5E5 solid;
+  padding: 0 1rem;
+}
+.flight_details dl dt span {
+  font-size: 1.6rem;
+  float: left;
+}
+.flight_details dl dd {
+  width: 100%;
+  height: 5.4rem;
+  border-bottom: 1px #E5E5E5 solid;
+  padding: 0 1rem;
+}
+.flight_details dl dd .price {
+  width: 8rem;
+  height: 5.4rem;
+  line-height: 5.4rem;
+  font-size: 1.8rem;
+  color: #EB5434;
+  display: inline-block;
+}
+.flight_details dl dd .explain {
+  height: 1.6rem;
+  line-height: 1.4rem;
+  font-size: 1.2rem;
+  color: #3CA5F6;
+  border: 1px #3CA5F6 solid;
+  border-radius: 2px;
+  padding: 0 0.5rem;
+  margin-bottom: 100px;
+  display: inline-block;
+}
+.flight_details dl dd .salenum {
+  height: 5.4rem;
+  line-height: 5.4rem;
+  font-size: 1.2rem;
+  color: #EB5434;
+  margin-right: 1.2rem;
+  float: right;
+}
+.flight_details dl dd .btn1 {
+  width: 7.3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  border: 1px #3CA5F6 solid;
+  border-radius: 0.2rem;
+  background: #3CA5F6;
+  margin-top: 1.2rem;
+  display: inline-block;
+  float: right;
+}
+.flight_details dl dd .btn2 {
+  width: 7.3rem;
+  height: 3.8rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  border: 1px #3CA5F6 solid;
+  border-radius: 0.2rem;
+  background: #3CA5F6;
+  margin-top: 0.8rem;
+  display: inline-block;
+  float: right;
+  overflow: hidden;
+}
+.flight_details dl dd .btn2 .asd {
+  width: 7.3rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  display: inline-block;
+  float: left;
+}
+.flight_details dl dd .btn2 .qwe {
+  width: 7.3rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  color: #3CA5F6;
+  background: #FFFFFF;
+  display: inline-block;
+  float: left;
+}

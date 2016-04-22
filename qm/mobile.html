@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title ng-bind="pageTitle || '全麦商旅'">全麦商旅</title>
+
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/font/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/icomoon.css">
+	<link rel="stylesheet" type="text/css" href="css/upload.css">
+	<link rel="stylesheet" type="text/css" href="css/businesstravel.css">
+	<link rel="stylesheet" type="text/css" href="css/travelplan.css">
+	<link rel="stylesheet" type="text/css" href="css/auth.css">
+	<link rel="stylesheet" type="text/css" href="css/usercenter.css">
+    <link rel="stylesheet" type="text/css" href="css/airticketorder.css">
+    <link rel="stylesheet" type="text/css" href="css/airticket.css">
+	<link rel="stylesheet" type="text/css" href="css/mobiscroll.css">
+	<link rel="stylesheet" type="text/css" href="css/mobiscroll-qm.css">
+<body>
+    <div class="mask_loading" id="loading">
+        <div class="loading_m">
+        </div>
+        全麦商旅
+    </div>
+	<div ui-view></div>
+</body>
+<script type="text/javascript" src="js/vendor/angular.js"></script>
+<script type="text/javascript" src="js/vendor/angular-ui-router.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers/orderDetails.js"></script>
+</html>

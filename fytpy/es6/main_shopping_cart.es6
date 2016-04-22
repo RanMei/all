@@ -17,7 +17,7 @@ $(document).ready(function(){
 	var user = session.getUser();
 	var items = user.shoppingCart;
 	//VIEW.
-	var x=$(".item");
+	var x = $(".item");
 	//-------------------------------------------------------------------------
 	//CONTROLLER.
 	function init(){
@@ -96,17 +96,17 @@ $(document).ready(function(){
 				url:"php/remove.php",
 				type:"post",
 				async:false,
-				data:{data:data},
-				success:function(data){
-					user=getUser();
-					items=user.shoppingCart;
-					console.log(items);
-					showItems();
-					summaryQuantity.refresh();		
-					sum.refresh();
-				},
-				error:function(){alert("删除失败！");}
-			});	
+				data:{data:data}
+			}).done(function(data){
+				user=getUser();
+				items=user.shoppingCart;
+				console.log(items);
+				showItems();
+				summaryQuantity.refresh();		
+				sum.refresh();
+			}).fail(function(){
+				alert("删除失败！");
+			});
 		};
 	};
 	function getItemsSelected(){

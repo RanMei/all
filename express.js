@@ -9,9 +9,9 @@ fs.exists('./expres.js',function(r){
 });
 
 
-app.use( express.static(__dirname+'/fytpy') );
+app.use( express.static(__dirname) );
 console.log( 'Server running at 8888.' );
-app.listen(8888);
+app.listen(8080);
 
 var connection = mysql.createConnection({
 	host : 'localhost',
