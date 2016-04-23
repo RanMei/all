@@ -76,13 +76,15 @@ $(document).ready(function(){
 			items: [$$item],
 			totalPrice: $$item.price*$$item.quantity
 		};
-		$.ajax({
-			url:"../php/generate-order.php",
-			type:"post",
-			async:false,
-			data:{order:JSON.stringify(order)},
-			success:function(){location.href="../confirm_order.html";}
-		});
+		// $.ajax({
+		// 	url:"../php/generate-order.php",
+		// 	type:"post",
+		// 	async:false,
+		// 	data:{order:JSON.stringify(order)},
+		// 	success:function(){location.href="../confirm_order.html";}
+		// });
+		localStorage.order = JSON.stringify( order );
+		location.href="../confirm_order.html";
 	};
 	
 	//

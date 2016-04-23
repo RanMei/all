@@ -3,7 +3,12 @@
   padding: 0;
 }
 p,
-ul {
+ul,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
 }
@@ -55,6 +60,9 @@ img {
   }
 }
 @media (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
 }
 .clear {
   clear: both;
@@ -181,13 +189,13 @@ img {
 }
 .home .showcase .pic {
   position: relative;
-  float: left;
   width: 90%;
   padding: 10px;
   margin: auto;
   margin: 20px auto 20px auto;
   box-shadow: 0 0 8px grey;
   background: white;
+  display: block;
 }
 .home .showcase .pic img {
   width: 100%;
@@ -221,13 +229,18 @@ img {
   overflow: hidden;
 }
 .home .knowUs h1 {
-  padding: 40px 0 40px 0;
+  padding: 20px 0 20px 0;
+  margin: 0;
   text-align: center;
   color: orange;
+  font-size: 3rem;
 }
 .home .knowUs h3 {
+  margin: 0;
+  padding: 10px 0 10px 0;
   text-align: center;
   color: white;
+  font-size: 1.5rem;
 }
 .home .knowUs .animation {
   position: relative;
@@ -265,30 +278,27 @@ img {
   margin: auto;
   background: white;
 }
+.home .knowUs ._panel p {
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: white;
+  background: orange;
+  text-align: center;
+}
+.home .knowUs ._panel .__text {
+  padding: 0.5rem 0 0.5rem 0;
+}
 .home .knowUs ._panel .top {
   overflow: hidden;
-  padding-bottom: 15px;
-  border-bottom: 1px dotted grey;
-  margin-bottom: 15px;
 }
 .home .knowUs ._panel .bottom {
   overflow: hidden;
 }
 .home .knowUs ._panel .left {
   float: left;
-  width: 20%;
-}
-.home .knowUs ._panel .left p {
-  width: 114px;
-  border-radius: 5px;
-  line-height: 72px;
-  text-align: center;
-  color: white;
-  background: orange;
 }
 .home .knowUs ._panel .right {
   float: left;
-  width: 80%;
 }
 .brand img {
   margin: 5px auto;

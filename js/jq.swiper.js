@@ -11,7 +11,7 @@
 
 		// $$width is the width of this swiper.
 		var $$width		= $$swiper.width(),
-			$$height	= $$swiper.height(),
+			$$height	= $$items.height();//$$swiper.height(),
 			$$length	= $$items.length;
 		
 		$(document).ready(function(){
@@ -24,22 +24,21 @@
 				$$autoplay		= opts.autoplay		|| true,
 				$$carousel		= opts.carousel		|| false,
 				$$interval		= opts.interval		|| 4000,
-				$$duration		= opts.duration		|| 300;
-
-				$$swiper.css({
-					position:"relative",
-					width: $$width+"px"
-				});
-				$$train.css({
-					position:"absolute",
-					left:0,
-					top:0
-				});		
+				$$duration		= opts.duration		|| 300;	
 
 			function $$renderTabs(){
 				$$tabs.removeClass("active");
 				$$tabs.eq( $$currentOne ).addClass("active");
 			}
+
+			$$swiper.css({
+				position:"relative"
+			});
+			$$train.css({
+				position:"absolute",
+				left:0,
+				top:0
+			});	
 			
 			if( $$mode==="slider" ){
 				if( $$direction==="horizontal" ){
@@ -56,14 +55,15 @@
 
 				//-------------------------------------------------------------------
 				function init(){
-					$$currentOne			= 0;
+					$$currentOne= 0;
 					$$switching	= false;
 					$$width		= $$swiper.width();
+					$$height	= $$items.height();
+					$$swiper.height( $$height );
 					$$train.css({
 						left: 0
 					});
 					$$renderTabs();
-					
 				}
 				
 				// @param {number} i			
@@ -178,6 +178,7 @@
 						});
 				};
 
+				init();
 				setInterval(next,$$interval);
 				$$swiper.find(".next").on("click",next);
 				$$swiper.find(".prev").on("click",prev);

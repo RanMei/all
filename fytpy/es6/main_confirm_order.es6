@@ -16,14 +16,15 @@ $(document).ready(function(){
 	function init(){
 		//Get the order information from SESSION and assign it to the variable "$$order".
 		//$$order={items:[],totalPrice:0};	
-		$.ajax({
-			url:"php/confirm-order.php",
-			type:"post",
-			async:false
-		}).done(function(data){
-			$$order = JSON.parse(data);
-		});
-		console.log( $$order );
+		// $.ajax({
+		// 	url:"php/confirm-order.php",
+		// 	type:"post",
+		// 	async:false
+		// }).done(function(data){
+		// 	$$order = JSON.parse(data);
+		// });
+		$$order = JSON.parse( localStorage.getItem("order") );
+		console.log( localStorage );
 		//	
 		$(".summary .totalQuantity").html( $$order.items.length );
 		$(".summary .totalPrice").html( "￥"+$$order.totalPrice );	
