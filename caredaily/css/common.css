@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
 }
-p {
+p,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -12,10 +13,13 @@ li {
 html {
   font-family: "微软雅黑";
 }
-a {
+a:link {
   text-decoration: none;
 }
 a:hover {
+  text-decoration: none;
+}
+a:active {
   text-decoration: none;
 }
 img {
@@ -50,6 +54,8 @@ img {
     font-size: 10px;
   }
 }
+@media (min-width: 769px) {
+}
 .clear {
   clear: both;
 }
@@ -81,9 +87,9 @@ img {
 }
 .app-header ._navbar ._nav a:link {
   float: left;
-  width: 80px;
+  width: 70px;
   height: 90px;
-  padding: 15px 10px 10px 10px;
+  padding: 15px 0 10px 0;
   text-align: center;
   color: white;
 }
@@ -98,10 +104,32 @@ img {
   color: white;
   background: #0D9EED;
 }
+.app-header ._navbar ._toggle {
+  float: right;
+  margin-top: 25px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+._dropdown-menu {
+  display: none;
+}
+._dropdown-menu a:link {
+  padding: 10px 15px 10px 15px;
+  border-top: 1px solid white;
+  background: #1C66C5;
+  color: white;
+  display: block;
+}
+._dropdown-menu a:hover {
+  background: lightblue;
+}
+._dropdown-menu a:visited {
+  color: white;
+}
 .home .swiper {
   position: relative;
   width: 100%;
-  height: 481px;
   overflow: hidden;
 }
 .home .swiper .train {
@@ -114,7 +142,12 @@ img {
 .home .swiper .train li {
   float: left;
   width: 33.33333333%;
-  height: 481px;
+  overflow: hidden;
+}
+.home .swiper .train li img {
+  width: 180%;
+  margin-left: -40%;
+  display: block;
 }
 .home .swiper .centered {
   position: absolute;
@@ -184,6 +217,9 @@ img {
   box-shadow: 0 0 8px grey;
   z-index: -2;
 }
+.home .knowUs {
+  overflow: hidden;
+}
 .home .knowUs h1 {
   padding: 40px 0 40px 0;
   text-align: center;
@@ -224,7 +260,7 @@ img {
   z-index: -1;
 }
 .home .knowUs ._panel {
-  width: 930px;
+  width: 95%;
   padding: 15px;
   margin: auto;
   background: white;
@@ -244,7 +280,6 @@ img {
 }
 .home .knowUs ._panel .left p {
   width: 114px;
-  height: 72px;
   border-radius: 5px;
   line-height: 72px;
   text-align: center;

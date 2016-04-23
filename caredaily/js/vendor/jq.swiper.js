@@ -11,7 +11,7 @@
 
 		// $$width is the width of this swiper.
 		var $$width		= $$swiper.width(),
-			$$height	= $$swiper.height(),
+			$$height	= $$items.height(),
 			$$length	= $$items.length;
 		
 		$(document).ready(function(){
@@ -26,10 +26,10 @@
 				$$interval		= opts.interval		|| 4000,
 				$$duration		= opts.duration		|| 300;
 
-				$$swiper.css({
-					position:"relative",
-					width: $$width+"px"
-				});
+				// $$swiper.css({
+				// 	position:"relative",
+				// 	width: $$width+"px"
+				// });
 				$$train.css({
 					position:"absolute",
 					left:0,
@@ -59,12 +59,14 @@
 					$$currentOne			= 0;
 					$$switching	= false;
 					$$width		= $$swiper.width();
+					$$height	= $$items.height();
+					$$swiper.height( $$height );
 					$$train.css({
 						left: 0
 					});
 					$$renderTabs();
-					
 				}
+				init();
 				
 				// @param {number} i			
 				function to( i ){

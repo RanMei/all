@@ -4,7 +4,7 @@
 			<p>香港凯儿得乐有限公司<span class="queen">Queen团</span></p>
 			<p>ASPIRE(HK)COMPANYLIMITED</p>
 		</div>
-		<ul class="_nav">
+		<ul class="_nav hidden-xs">
 			<a href="#/app/index">
 				<img src="images/home.png"><br/>
 				首页
@@ -30,8 +30,21 @@
 				联系我们
 			</a>
 		</ul>
+		<div class="_toggle visible-xs">
+			<i class="fa fa-navicon"></i>
+		</div>
 	</div>
 </div>
+<div class="visible-xs">
+	<ul class="_dropdown-menu">
+		<a href="#/app/index">首页</a>
+		<a href="#/app/brand">品牌介绍</a>
+		<a href="#/app/products">产品介绍</a>
+		<a href="#/app/joinUs">招商加盟</a>
+		<a href="#/app/contactUs">联系我们</a>
+	</ul>
+</div>
+
 
 <div class="app-content" ui-view>
 </div>
@@ -73,3 +86,11 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("._toggle").on("click",function(){
+			$("._dropdown-menu").slideToggle();
+		});
+	});
+</script>

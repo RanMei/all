@@ -6,7 +6,7 @@
 }
 
 // Overwrite the style of p defined by Bootstrap.
-p {
+p,ul {
 	margin: 0;
 	padding: 0;
 }
@@ -19,8 +19,9 @@ html {
 	font-family: "微软雅黑";
 }
 
-a {text-decoration: none;}
+a:link {text-decoration: none;}
 a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
 
 img {
 	display: block;
@@ -55,6 +56,10 @@ img {
 	html {font-size: 10px;}
 }
 
+@media (min-width:769px) {
+	//.swiper img {height: 481px!important;}	
+}
+
 .clear {
 	clear: both;
 }
@@ -84,10 +89,10 @@ img {
 			float: right;
 			a:link {
 				float: left;
-				width: 80px;
+				width: 70px;
 				// "box-sizing:border-box;" was set in Bootstrap.
 				height: 90px;
-				padding: 15px 10px 10px 10px;
+				padding: 15px 0 10px 0;
 				text-align: center;
 				color: white;
 				img {
@@ -103,9 +108,32 @@ img {
 				background: #0D9EED;
 			}
 		}
+		._toggle {
+			float: right;
+			margin-top: 25px;
+			font-size: 25px;
+			color: white;
+			cursor: pointer;
+		}
 	}
-
 }
+._dropdown-menu {
+	display: none;
+	a:link {
+		padding: 10px 15px 10px 15px;
+		border-top: 1px solid white;
+		background: #1C66C5;
+		color: white;
+		display: block;
+	}
+	a:hover {
+		background: lightblue;
+	}
+	a:visited {
+		color: white;
+	}
+}
+
 
 
 
@@ -117,7 +145,6 @@ img {
 	.swiper {
 		position: relative;
 		width: 100%;
-		height: 481px;
 		overflow: hidden;
 		.train {
 			position: absolute;
@@ -128,7 +155,13 @@ img {
 			li {
 				float: left;
 				width: 33.33333333%;
-				height: 481px;
+				overflow: hidden;
+				img {
+					width:180%;
+					margin-left:-40%;
+					display: block;
+				}
+
 			}
 		}
 		.centered {
@@ -202,6 +235,7 @@ img {
 		}
 	}
 	.knowUs {
+		overflow: hidden;
 		h1 {
 			padding: 40px 0 40px 0;
 			text-align: center;
@@ -245,7 +279,7 @@ img {
 			}
 		}
 		._panel {
-			width: 930px;
+			width: 95%;
 			padding: 15px;
 			margin: auto;
 			background: white;
@@ -263,7 +297,6 @@ img {
 				width: 20%;
 				p {
 					width: 114px;
-					height: 72px;
 					border-radius: 5px;
 					line-height: 72px;
 					text-align: center;
