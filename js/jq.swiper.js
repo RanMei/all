@@ -17,6 +17,7 @@
 		$(document).ready(function(){
 			
 			var $$currentOne	= 0;
+			var $$target;
 			var $$switching		= false;
 			// Configuration.
 			var $$mode			= opts.mode			|| "slider",
@@ -56,6 +57,7 @@
 				//-------------------------------------------------------------------
 				function init(){
 					$$currentOne= 0;
+					$$target	= 0;
 					$$switching	= false;
 					$$width		= $$swiper.width();
 					$$height	= $$items.height();
@@ -79,12 +81,22 @@
 						$$duration,
 						callback
 					);
+					// $$currentOne = $$target;
 				}
 
 				function next(){
 					if( !$$switching ){
 						$$switching=true;
 						if( $$mode==="slider" ){
+							
+							// $$target = $$currentOne + 1;
+							// if( $$target<=$$length-1 ){
+							// 	to( $$target );
+							// };
+							// if( $$target===$$length ){
+							// 	$$target = 0;
+							// };
+							
 							$$runtime.stop().css(  {width:0}  );
 							run();
 							if( $$currentOne<$$length-1 ){
