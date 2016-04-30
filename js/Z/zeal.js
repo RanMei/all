@@ -9,16 +9,21 @@
 	Zeal.fn = Zeal.prototype = {
 		each: function( f ){
 			for( var i=0;i<this.length;i++ ){
-				f();
+				f( this[i] );
 			}
 		},
 		eq: function(i){
 			// Create a Zeal object.
-			var x = Zeal('');
-			x[0] = this[i];
-			return x;
+			var zeo = Zeal('');
+			zeo[0] = this[i];
+			return zeo;
+		},
+		toArray: function(){
+			return [].slice.call( this );
 		}
 	};
+
+	Zeal.extend = Zeal.fn.extend = _.extend;
 
 	// This is a constructor.
 	// @param {string} selector
@@ -28,6 +33,7 @@
 		// $(document), $(this)
 		if( typeof selector==='object' ){
 			this[0] = selector;
+			this.length = 1;
 		};
 		// $(".className")
 		if( (typeof selector==='string')&&(/^\./.test(selector)) ){
@@ -70,22 +76,53 @@
 
 	// @param {string} string
 	Zeal.prototype.html = function( string ){
-		for( var i=0;i<this.length;i++ ){
-			this[i].innerHTML = string;
-		}
+		this.each(function(elem){
+			elem.innerHTML = string;
+		});
 		return this;
 	}
-	// @param {string} className
-	Zeal.prototype.addClass = function( className ){
-		for( var i=0;i<this.length;i++ ){
-			this[i].classList.add( className );
+
+	Zeal.fn.extend({
+		// @param {string} className
+		addClass: function( className ){
+			this.each(function(elem){
+				elem.classList.add( className );
+			});
+			return this;
+		},
+		removeClass: function( className ){
+			this.each(function(elem){
+				elem.classList.remove( className );
+			});
+			return this;
+		},
+		append: function( obj ){
+			this.each(function(elem){
+				for( var i=0;i<obj.length;i++ ){
+					elem.appendChild( obj[i] );
+				}
+			});
+		},
+		prepend: function( obj ){
+			this.each(function(elem){
+				for( var i=0;i<obj.length;i++ ){
+					elem.insertBefore( obj[i],elem.childNodes[0] );
+				}
+			});
+		},
+		remove: function(){
+			this.each(function(elem){
+				elem.parentNode.removeChild(elem);
+			})
 		}
-		return this;
-	}
+
+	});
+	
+
 	// @param {object} opts
 	Zeal.prototype.css = function( opts ){
 		for( var i=0;i<this.length;i++ ){
-			for( prop in opts ){
+			for( var prop in opts ){
 				this[i].style[prop] = opts[prop];
 			};
 		};
@@ -167,7 +204,7 @@
 			var p = {};
 			var dp = {};
 			var interval = {};
-			for ( prop in opts ){
+			for ( var prop in opts ){
 				p[prop] = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
 				console.log(p);
 				dp[prop] = (opts[prop]-p[prop])/(time/10);
@@ -188,6 +225,11 @@
 
 	};
 	//-----------------------------------------------------------
+	Zeal.extend({
+		copy: _.copy,
+		camelCase: _.camelCase
+	});
+
 	Zeal.ajax = function( obj ){
 		var xhr = new XMLHttpRequest();
 		xhr.open( obj.type,obj.url );

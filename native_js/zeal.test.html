@@ -6,7 +6,9 @@
 	<title>slider</title>
 	<link href="css/common.css" rel="stylesheet">
 	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
-	<script src="js/zeal.js"></script>
+	
+	<script type="text/javascript" src="../js/Z/_.js"></script>
+	<script type="text/javascript" src="../js/Z/Zeal.js"></script>
 <style>
 .dog {
 	width: 100px;
@@ -19,7 +21,7 @@
 
 $(document).ready(function(){
 	console.log( $(".dog") );
-	$(".dog").html("fuck").addClass("fuck");
+	$(".dog").html("fuck").addClass("fuck").removeClass("fuck");
 	$(".dog").css({
 		width: "100px",
 		height: "50px",
@@ -37,9 +39,34 @@ $(document).ready(function(){
 			width: 500,
 			height: 120
 		},200);
-	console.log(Object)
-})
+	console.log(Object);
+	console.log( $(".dog").toArray() );
 
+
+// var a = {
+// 	name:"Vincent",
+// 	age:"20",
+// 	parents:{
+// 		dad:"dad",
+// 		mom:"mom"
+// 	}
+// };
+
+// var b = $.copy(a,true);
+
+// b.name = "John";
+// b.parents.dad = "fuck";
+
+// console.log(a);
+
+console.log( $ );
+
+console.log( $.camelCase("fuck-you-all_piece_of-shit") );
+
+	// $(".dog").remove();
+	console.log( Object.prototype )
+	console.log( _.bubbleSort( [2,5,7,8,4,5,111] ) );
+});
 </script>
 </head>
 
@@ -47,6 +74,9 @@ $(document).ready(function(){
 	<div class="dog" style="opacity: 0.5;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
+
+	<div class="cat"></div>
+	<div class="cat"></div>
 
 	
 </body>

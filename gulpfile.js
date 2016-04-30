@@ -19,6 +19,15 @@ gulp.task( 'babel_fytpy', function () {
 });
 
 // browserify
+gulp.task( 'browserify_Z', function(){
+	return(
+		browserify( './js/Z/zangular.js' )
+		.transform( babelify )
+		.bundle(  )
+		.pipe( source('z.js') )
+		.pipe( gulp.dest('./js') )
+	);
+});
 gulp.task( 'browserify_ts',function(){
 	return(
 		browserify( './ts/ts/test.ts' )
@@ -111,6 +120,9 @@ gulp.task( "default", function(){
 	gulp.watch( './caredaily/less/*.less',['less'] );
 	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
 	gulp.watch( './$tpl/less/*.less',['less_$tpl'] );
+
+	// z
+	// gulp.watch( './js/Z/*.js',['browserify_Z'] );
 
 	// qm
 	gulp.watch( './qm/less/*.less',['less_qm'] );

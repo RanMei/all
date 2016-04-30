@@ -1,0 +1,10 @@
+
+function $rootScopeProvider () {
+	...
+}
+
+function publishExternalAPI(angular){
+	extend(angular,{...});
+}
+
+bindJQury();

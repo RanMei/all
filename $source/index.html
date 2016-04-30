@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+	<script type="text/javascript" src="jqueryModified.js"></script>
+</head>
+
+<script type="text/javascript">
+window.onload = function(){
+	console.log( jQuery );
+	var arr = [0,1,2,3];
+	console.log( arr.slice(1,3) );
+	var u;
+	console.log( 'fun' + u );
+
+	console.log( $("a").toArray() );
+	console.log( [].slice.call(document.getElementsByTagName("a")) );
+	console.log( $.camelCase("fuck-you-all-cheap") );
+
+	var a = [0,1];
+	var b = a;
+	b[1] = 111;
+	console.log(a);
+};
+</script>
+
+<body>
+	<a href="./fytpy">fytpy</a>
+	<a href="./caredaily">caredaily</a>
+	<a href="./_wolf">_wolf</a>
+	<a href="./qm">qm</a>
+	<a href="./react">react</a>
+</body>
+
+</html>
