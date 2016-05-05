@@ -9,13 +9,13 @@
         <div class="top-top">
             <span class="status">{{renderStatus()}}</span>
             <span class="top-right" ng-if=" order.status==='unpaid' ">剩余时间: <span class="number">{{time_left}}</span></span>
-            <span class="top-right" ng-if=" order.status==='REFUNDING'||order.status==='REFUND' ">退款金额: <span class="number">￥{{order.refund_money||0}}</span></span>
+            <span class="top-right" ng-if=" order.status==='REFUNDING'||order.status==='REFUND' ">退款金额: <span class="number">￥{{order.refund||0}}</span></span>
         </div>
         <div class="row">
             <span class="text">订单时间：</span><span>{{order.create_at}}</span>
         </div>
         <div class="row">
-            <span class="text">订单编号：</span><span>{{order.order_no}}</span>
+            <span class="text">订单编号：</span><span>{{order.id}}</span>
         </div>
     </div>
 

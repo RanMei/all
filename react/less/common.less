@@ -1,9 +1,47 @@
 @blue: #3B5B98;
+@maroon: #AF0000;
+@maroon-active: #c40000;
 
 * {margin:0;padding:0}
+* {
+	box-sizing: border-box;
+}
+
 ul {list-style:none;}
 
 .container {
 	width:1000px;
 	margin:auto;
+}
+
+.clear {
+	clear: both;
+}
+
+.signinBox {
+	float: left;
+	padding: 20px;
+	border: 1px solid grey;
+	input {
+		width: 300px;
+		height: 42px;
+		border: 1px solid grey;
+		margin-bottom: 20px;
+		line-height: 42px;
+		text-indent: 10px;
+		display: block;
+	}
+	.a_login {
+		width: 300px;
+		height: 42px;
+		border-radius: 3px;
+		background: @maroon;
+		color: white;
+		line-height: 42px;
+		text-align: center;
+		display: block;
+	}
+	.a_login:hover {
+		background: @maroon-active;
+	}
 }

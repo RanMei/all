@@ -1,54 +1,49 @@
-﻿var app=
-angular.module(    "app",['ui.router'] );
+﻿var app = angular.module("app",['ui.router']);
 
-angular.module("app").controller(    "appCtrl",function(){
+app.controller("appCtrl",function(){
 
 })
 
-angular.module(    "app")
-.config(    ['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+app.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
 	//
-	$urlRouterProvider.otherwise(    '/app/home');
+	$urlRouterProvider.otherwise('/app/home');
 	//
 	$stateProvider
-	.state(    'app',{
+	.state( 'app',{
 		abstract: true,
 		url: '/app',
 		templateUrl: 'tpl/app.html',
 		controller: 'appCtrl'
 	})
-	.state(    'app.home',{
+	.state( 'app.home',{
 		url: '/home',
 		templateUrl: 'tpl/home.html'
 	})
-	.state(    'app.brand',{
+	.state( 'app.brand',{
 		url: '/brand',
 		templateUrl: 'tpl/brand.html'
 	})
-	.state(    'app.joinUs',{
+	.state( 'app.joinUs',{
 		url: '/joinUs',
 		templateUrl: 'tpl/joinUs.html'
 	})
-	.state(    'app.products',{
+	.state( 'app.products',{
 		url: '/products',
 		templateUrl: 'tpl/products.html'
 	})
-	.state(    'app.contactUs',{
+	.state( 'app.contactUs',{
 		url: '/contactUs',
 		templateUrl: 'tpl/contactUs.html'
 	})
 }]);
 
-angular.module("app").directive("hello",function(){
+app.directive("zList",function(){
 	return {
-
-		template: "<p ng-repeat='item in items'>{{item.name}}</p>"
-		
+		template: "<p ng-repeat='item in items'>{{item.name}}</p>"	
 	}
-	
 });
 
-angular.module("app").directive("icon",function(){
+app.directive("icon",function(){
 
 	return {
 		template: "",

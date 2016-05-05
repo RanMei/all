@@ -3,6 +3,8 @@ var NavbarS={width:"1000px",height:"60px",background:"red"};
 const ItemStyle = {borderBottom:'1px solid grey'};
 const LiStyle = {float:'left',width:'20%'};
 
+const $$rootDir = "http://localhost/react/";
+
 class ItemList extends React.Component {
 	render(){
 		var that = this;
@@ -41,24 +43,25 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
-
+	}
+	componentWillMount(){
+		var self = this;
 		var items;
 		// Get data.
 		$.ajax({
-			url: './database/items.json',
+			url: $$rootDir+'database/items.json',
 			type: 'POST',
 			dataType: 'json',
 			async: false
-		}).then(
+		}).done(
 			function(data){
+				console.log(data);
 				items = data.items;
+				self.state = {
+					items: items
+				};
 			}
 		);
-
-		this.state = {
-			items: items
-		};
-
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	allChecked(){

@@ -4,7 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>index</title>
-	<script type="text/javascript" src="jqueryModified.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -23,15 +24,29 @@ window.onload = function(){
 	var b = a;
 	b[1] = 111;
 	console.log(a);
+
 };
+	console.log( angular );
+	var app = angular.module("app",[]);
+	app.config(function($rootScopeProvider){
+		console.log($rootScopeProvider);
+	})
+	angular.module("app").controller("appCtrl",function($scope,$rootScope,$injector){
+		$scope.name = "fuck";
+		$scope.fuck = 5;
+		console.log( $scope );
+		console.log( $rootScope );
+		console.log( $injector )
+	})
+	console.log( angular.injector() );
+$(document).ready(function(){
+	console.log( angular.bootstrap( document,['app'],{} ) );
+});
 </script>
 
-<body>
-	<a href="./fytpy">fytpy</a>
-	<a href="./caredaily">caredaily</a>
-	<a href="./_wolf">_wolf</a>
-	<a href="./qm">qm</a>
-	<a href="./react">react</a>
+<body ng-controller="appCtrl">
+	<input type="text" ng-model="name"/>
+	<div>{{name}} {{name}}</div>
 </body>
 
 </html>

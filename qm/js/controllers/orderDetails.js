@@ -98,16 +98,18 @@
 
     // 获取当前员工信息和机票订单信息。
     $scope.order = {
+        id: '31856983561',
     	status: 'unpaid',
     	ontimeRatio: 0.95,
-    	create_at: 2016,
+    	create_at: '2016-08-09',
     	totalPrice: 1000,
     	deliveryFee: 15,
     	deliveryInfo: {
     		consignee: '李明月',
     		phone: '13011111111',
     		address: '海淀区学院路'
-    	}
+    	},
+        refund: 1000
     }
 		
 });

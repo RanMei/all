@@ -132,7 +132,7 @@ gulp.task( "default", function(){
 
 	// react
 	gulp.watch( './react/less/*.less',['less_react'] );
-	gulp.watch( './react/jsx/*.jsx',['browserify_react'] );
+	gulp.watch( ['./react/jsx/*.jsx','./react/jsx/*/*.jsx'],['browserify_react'] );
 
 	// ts
 	gulp.watch( './ts/ts/*.ts',['browserify_ts'] );
