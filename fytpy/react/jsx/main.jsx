@@ -2,11 +2,12 @@
 import {createStore,combineReducers} from 'redux';
 import {Provider,connect} from 'react-redux';
 
-import {Topbar,Navbar,List,SearchBox,Footer} from './components/App.jsx';
+import {SearchBar,Topbar,Navbar,List,SearchBox,Footer} from './components/App.jsx';
+import {Home} from './components/Home.jsx';
 import {CommentBox} from './components/CommentBox.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
 import {Counter} from './components/Counter.jsx';
-import {SigninBox} from './components/SigninBox.jsx';
+import {Signin} from './components/Signin.jsx';
 
 import {$$reducer} from './reducers/reducer.jsx';
 
@@ -17,43 +18,54 @@ var Route = ReactRouter.Route;
 var Link = ReactRouter.Link;
 var hashHistory = ReactRouter.hashHistory;
 
+class Sidebar extends React.Component {
+	render(){
+		return (
+			<div className="sidebar">
+				<div>购物车</div>
+				<ul>
+					<li><i className="fa fa-home"></i>1111111111</li>
+				</ul>
+			</div>
+		)
+	}
+}
+
 // The root component of our app.
 class App extends React.Component {
 	constructor(){
 		super();
-		this.state = {
-			userID: null
-		}
-		console.log(this);
-	}
-	login(id,password){
-		if( id==='111'&&password==='111111' ){
-			this.setState({
-				userID: id
-			});
-		};
 	}
 	render() {
 		return (
 			<div>
-				<_Topbar/>
+				<SearchBar/>
+				<div className="line"></div>
+				<Sidebar/>
+				<_Topbar userID={$$store.getState().app.userID}/>
 				<Navbar/>
-				<List list={[0,1,2,3,4]}/>
-				<div className="container">
+				<div>
 					{this.props.children}
 					<div className="clear"></div>
 				</div>
+				<div className="line"></div>
 				<Footer/>
 			</div>
 		);
 	}
 }
 
-
-
-class Home extends React.Component {
-	render() {
-		return <div>Home</div>;
+class Item extends React.Component {
+	componentWillMount(){
+		var itemID = location.hash.match(/\?id=(\w+)/)[1];
+		console.log( itemID );
+	}
+	render(){
+		return (
+			<div className="item">
+				ladjgladjgljdl
+			</div>
+		)
 	}
 }
 
@@ -76,9 +88,6 @@ const $$store = createStore( $$reducer );
 console.log( 'state---',$$store.getState() )
 
 // Connect the state in $$store with props of a component.
-var _App = connect(function(state){
-	return {userID:state.app.userID}
-})(App);
 
 var _Counter = connect(function(state){
 	return {value:state.counter.num}
@@ -97,10 +106,10 @@ class $$Counter extends React.Component {
 		)
 	}
 }
-class $$SigninBox extends React.Component {
+class $$Signin extends React.Component {
 	render(){
 		return (
-			<SigninBox onLogin={ (action)=> $$store.dispatch( action ) }/>
+			<Signin onLogin={ (action)=> $$store.dispatch( action ) }/>
 		)
 	}
 }
@@ -110,11 +119,12 @@ ReactDOM.render(
 		<Provider store={$$store}>		
 			<Router history={ hashHistory } >
 				<Route path="/" component={App}>
-					<Route path="/signin" component={$$SigninBox} />
+					<Route path="/signin" component={$$Signin} />
 					<Route path="/home" component={Home} />
 					<Route path="/comment_box" component={CommentBox} />
 					<Route path="/shopping_cart" component={ShoppingCart} />
 					<Route path="/counter" component={$$Counter}/>
+					<Route path="/item" component={Item}/>
 				</Route>
 			</Router>
 		</Provider>

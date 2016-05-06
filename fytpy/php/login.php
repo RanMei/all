@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 require "connect.php";
-$user=json_decode("{$_POST["data"]}",true)or die("3");
+$user=json_decode("{$_POST["data"]}",true)or die("Failed to parse JSON.");
 
-$x1=mysql_query("select * from users where username='{$user["username"]}' and password='{$user["password"]}'")or die("4");
-$x2=mysql_num_rows($x1);
+$rows=mysql_query("select * from users where username='{$user["username"]}' and password='{$user["password"]}'")or die("Failed to query.");
+$rowsNumber=mysql_num_rows($rows);
 
-if($x2!=0){
+if($rowsNumber!=0){
 	session_start();
 	$_SESSION["username"]=$user["username"];
 	echo true;

@@ -15,6 +15,15 @@ ul {
 .clear {
   clear: both;
 }
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 100%;
+  background: black;
+  color: white;
+}
 .signinBox {
   float: left;
   padding: 20px;
@@ -41,34 +50,4 @@ ul {
 }
 .signinBox .a_login:hover {
   background: #c40000;
-}
-.navbar {
-  background: #3B5B98;
-  overflow: hidden;
-}
-.navbar li {
-  float: left;
-  padding: 10px;
-}
-.navbar li a:link {
-  color: white;
-}
-.navbar li a:visited {
-  color: white;
-}
-.shoppingCart .sc-header {
-  padding: 15px 0 15px 0;
-  background: lightblue;
-  overflow: hidden;
-}
-.shoppingCart .sc-header li {
-  float: left;
-  width: 15%;
-}
-.shoppingCart .item {
-  padding: 15px 0 15px 0;
-}
-.shoppingCart .item ul li {
-  float: left;
-  width: 15%;
 }

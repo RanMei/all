@@ -1,9 +1,9 @@
+import {$$rootDir} from '../common.jsx';
+
 var NavbarS={width:"1000px",height:"60px",background:"red"};
 
 const ItemStyle = {borderBottom:'1px solid grey'};
 const LiStyle = {float:'left',width:'20%'};
-
-const $$rootDir = "http://localhost/react/";
 
 class ItemList extends React.Component {
 	render(){
@@ -47,6 +47,7 @@ class ShoppingCart extends React.Component {
 	componentWillMount(){
 		var self = this;
 		var items;
+		console.log($$rootDir);
 		// Get data.
 		$.ajax({
 			url: $$rootDir+'database/items.json',

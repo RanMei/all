@@ -39,12 +39,12 @@ gulp.task( 'browserify_ts',function(){
 });
 gulp.task( 'browserify_react',function(){
 	return(
-		browserify( './react/jsx/main.jsx' )
+		browserify( './fytpy/react/jsx/main.jsx' )
 		// './.babelrc' will be used.
 		.transform( babelify )
 		.bundle()
 		.pipe( source('bundle.js') )
-		.pipe( gulp.dest('./react') )
+		.pipe( gulp.dest('./fytpy/react') )
 	);
 });
 gulp.task( 'browserify_fytpy',function(){
@@ -132,7 +132,7 @@ gulp.task( "default", function(){
 
 	// react
 	gulp.watch( './react/less/*.less',['less_react'] );
-	gulp.watch( ['./react/jsx/*.jsx','./react/jsx/*/*.jsx'],['browserify_react'] );
+	gulp.watch( ['./fytpy/react/jsx/*.jsx','./fytpy/react/jsx/*/*.jsx'],['browserify_react'] );
 
 	// ts
 	gulp.watch( './ts/ts/*.ts',['browserify_ts'] );
