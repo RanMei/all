@@ -12,7 +12,7 @@ class Signin extends React.Component {
 	}
 	login(){
 		if( this.state.userID&&this.state.password ){
-			this.props.onLogin({
+			this.props.act({
 				type:'LOGIN',
 				data:this.state
 			});

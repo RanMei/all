@@ -1,9 +1,10 @@
 //import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
-import {createStore,combineReducers} from 'redux';
-import {Provider,connect} from 'react-redux';
+//import {createStore,combineReducers} from 'redux';
+//import {Provider,connect} from 'react-redux';
 
-import {SearchBar,Topbar,Navbar,List,SearchBox,Footer} from './components/App.jsx';
+import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
 import {Home} from './components/Home.jsx';
+import {Item} from './components/Item.jsx';
 import {CommentBox} from './components/CommentBox.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
 import {Counter} from './components/Counter.jsx';
@@ -17,6 +18,12 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var Link = ReactRouter.Link;
 var hashHistory = ReactRouter.hashHistory;
+
+var createStore = Redux.createStore;
+var combineReducers =  Redux.combineReducers;
+
+var Provider = ReactRedux.Provider;
+var connect = ReactRedux.connect;
 
 class Sidebar extends React.Component {
 	render(){
@@ -41,31 +48,19 @@ class App extends React.Component {
 			<div>
 				<SearchBar/>
 				<div className="line"></div>
-				<Sidebar/>
-				<_Topbar userID={$$store.getState().app.userID}/>
-				<Navbar/>
+				<_Topbar 
+					user={$$store.getState().user}
+					onLogout={()=>$$store.dispatch({type:'LOGOUT'})}
+				/>
 				<div>
 					{this.props.children}
 					<div className="clear"></div>
 				</div>
 				<div className="line"></div>
 				<Footer/>
+				<BackToTop/>
 			</div>
 		);
-	}
-}
-
-class Item extends React.Component {
-	componentWillMount(){
-		var itemID = location.hash.match(/\?id=(\w+)/)[1];
-		console.log( itemID );
-	}
-	render(){
-		return (
-			<div className="item">
-				ladjgladjgljdl
-			</div>
-		)
 	}
 }
 
@@ -85,17 +80,20 @@ var DECREMENT = {type:'DECREMENT'};
 
 // store
 const $$store = createStore( $$reducer );
-console.log( 'state---',$$store.getState() )
+console.log( 'initial state',$$store.getState() )
 
 // Connect the state in $$store with props of a component.
-
 var _Counter = connect(function(state){
 	return {value:state.counter.num}
 })(Counter);
 
 var _Topbar = connect(function(state){
-	return {userID:state.app.userID}
+	return {user:state.user}
 })(Topbar);
+
+var _ShoppingCart = connect(function(state){
+	return {user:state.user}
+})(ShoppingCart);
 
 class $$Counter extends React.Component {
 	render(){
@@ -109,10 +107,28 @@ class $$Counter extends React.Component {
 class $$Signin extends React.Component {
 	render(){
 		return (
-			<Signin onLogin={ (action)=> $$store.dispatch( action ) }/>
+			<Signin act={ (action)=> $$store.dispatch( action ) }/>
 		)
 	}
 }
+class $$ShoppingCart extends React.Component {
+	render(){
+		return (
+			<_ShoppingCart 
+				user={$$store.getState().user}
+				act={ (action)=>$$store.dispatch(action) }/>
+		)
+	}
+}
+class $$Item extends React.Component {
+	render(){
+		return (
+			<Item
+				act={ (action)=>$$store.dispatch(action) }/>
+		)
+	}
+}
+
 // The router.
 ReactDOM.render(
 	(
@@ -122,9 +138,9 @@ ReactDOM.render(
 					<Route path="/signin" component={$$Signin} />
 					<Route path="/home" component={Home} />
 					<Route path="/comment_box" component={CommentBox} />
-					<Route path="/shopping_cart" component={ShoppingCart} />
+					<Route path="/shopping_cart" component={$$ShoppingCart} />
 					<Route path="/counter" component={$$Counter}/>
-					<Route path="/item" component={Item}/>
+					<Route path="/item" component={$$Item}/>
 				</Route>
 			</Router>
 		</Provider>

@@ -1,4 +1,4 @@
-import {$$rootDir} from '../common.jsx';
+import {$$rootDir,$$phpDir,$$itemDir} from '../common.jsx';
 
 var NavbarS={width:"1000px",height:"60px",background:"red"};
 
@@ -8,32 +8,31 @@ const LiStyle = {float:'left',width:'20%'};
 class ItemList extends React.Component {
 	render(){
 		var that = this;
-		function renderItem(x,i) {
-			return (
-				<li className='item' key={i} style={ItemStyle}>
-					<ul style={{overflow:'hidden'}}>
-						<li>
-							{i}
-							<input type='checkbox' checked={that.props.items[i].checked} onChange={that.props.checkThis.bind(that,i)}/>
-						</li>
-						<li className='name'>{x.name}</li>
-						<li className='price'>￥{x.price}</li>
-						<li className='counter'>
-							<button onClick={that.props.minusOne.bind(that,i)}>-</button>
-							<span className='quantity'>{x.quantity}</span>
-							<button onClick={that.props.plusOne.bind(that,i)}>+</button>
-						</li>
-						<li className='subtotal'>￥{x.price*x.quantity}</li>
-						<li className='operations'>
-							<button onClick={that.props.remove.bind(that,i)}>删除</button>
-						</li>
-					</ul>
-				</li>		
-			);
-		};
 		return (
 			<div>
-				<ul>{that.props.items.map(renderItem)}</ul>
+				<ul>
+				{that.props.items.map(function(x,i){
+					return(
+					<li className='item' key={i}>
+						<input className="check" type="checkbox" checked={that.props.items[i].checked} onChange={that.props.checkThis.bind(that,i)}/>
+						<div className="thumbnail"><img src={$$itemDir+x.itemID+'/0.jpg'}/></div>
+						<p className="name">{x.name}</p>
+						<p className="spec">{x.description}</p>
+						<p className="price">￥{x.price}</p>
+						<div className="counter">
+							<div className="minus" onClick={that.props.minusOne.bind(that,i)}>-</div>
+							<div className="quantity">{x.quantity}</div>
+							<div className="plus" onClick={that.props.plusOne.bind(that,i)}>+</div>
+						</div>
+						<div className="subtotal">￥{x.price*x.quantity}</div>
+						<p className="manipulation">
+							<span className="delete" onClick={that.props.remove.bind(that,i)}>删除</span><br/>
+							<span className="concern">移到我的关注</span>
+						</p>
+					</li>
+					);
+				})}
+				</ul>
 			</div>
 		)
 	}
@@ -43,26 +42,20 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
+		console.log('ShoppingCart props',this.props)
+		this.state = {
+			items: this.props.user.shoppingCart||[]
+		}
+	}
+	componentWillReceiveProps(newProps){
+		this.setState({
+			items: {}
+		})
+		this.setState({
+			items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
+		})
 	}
 	componentWillMount(){
-		var self = this;
-		var items;
-		console.log($$rootDir);
-		// Get data.
-		$.ajax({
-			url: $$rootDir+'database/items.json',
-			type: 'POST',
-			dataType: 'json',
-			async: false
-		}).done(
-			function(data){
-				console.log(data);
-				items = data.items;
-				self.state = {
-					items: items
-				};
-			}
-		);
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	allChecked(){
@@ -125,38 +118,43 @@ class ShoppingCart extends React.Component {
 			items: this.state.items
 		});
 	}
-	remove(i){
-		this.state.items.splice(i,1);
-		this.setState({
-			items: this.state.items
-		});
+	removeItem(i){
+		this.props.act({
+			type:'REMOVE_ITEM',
+			itemID:this.state.items[i].itemID
+		})
 	}
 	render() {
 		//console.log(React);
 		//console.log(Function);
 		return (
-			<div className="shoppingCart container">
-				<ul className="sc-header">
-					<li>
-						序号
-						<input type='checkbox' checked={this.allChecked()} onChange={this.checkAll.bind(this)}/>
-					</li>
-					<li>商品名称</li>
-					<li>单价</li>
-					<li>数量</li>
-					<li>小计</li>
-					<li>操作</li>
-				</ul>
-				<ItemList 
-					items={this.state.items} 
-					checkThis={this.checkThis.bind(this)}
-					plusOne={this.plusOne.bind(this)}
-					minusOne={this.minusOne.bind(this)}
-					remove={this.remove.bind(this)}/>
-				<p className='summary'>
-					共选中{this.getTotalQuantity()}件商品 总价：￥{this.getTotalPrice()}
-					<button>去结算</button>
-				</p>
+			<div className="shopping-cart wrapper">
+				<div className="container">
+					<div className="shopping-cart-header1">我的购物车</div>
+					<div className="shopping-cart-header2">
+						<input className="check" type="checkbox" checked={this.allChecked()} onChange={this.checkAll.bind(this)}/>
+						<div className="thumbnail">全选</div>
+						<p className="name">商品</p>
+						<p className="spec">规格</p>
+						<p className="price">单价(元)</p>
+						<div className="counter">数量</div>
+						<div className="subtotal">小计(元)</div>
+						<p className="manipulation">操作</p>
+					</div>
+					<ItemList 
+						items={this.state.items} 
+						checkThis={this.checkThis.bind(this)}
+						plusOne={this.plusOne.bind(this)}
+						minusOne={this.minusOne.bind(this)}
+						remove={this.removeItem.bind(this)}/>
+					<div style={{overflow:"hidden",background:"white"}}>
+						<ul className="summary">
+							<li>已选择<span className="totalQuantity">{this.getTotalQuantity()}</span>件商品</li>
+							<li>总价（不含运费）：<span className="note">￥</span><span className="totalPrice">{this.getTotalPrice()}</span></li>
+							<li className="checkout">去结算</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		);
 	}

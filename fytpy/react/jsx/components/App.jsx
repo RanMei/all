@@ -24,20 +24,28 @@ class SearchBar extends React.Component {
 
 class Topbar extends React.Component {
 	render(){
+		console.log('Topbar props',this.props);
+		var user = this.props.user;
 		return(
 			<div className="topbar wrapper">
 				<div className="container">
 					<p><Link to="/home" className="a_home">欢迎来到飞越太平洋海淘网站</Link></p>
 					<ul>
 						<li>
-							{this.props.userID||<Link to="/signin" className="a-signin login">登录</Link>}
+							{user.username||<Link to="/signin" className="a-signin login">登录</Link>}
 						</li><span className="separator">|</span>
 						<li>
-							<Link to="/signin" className="a-signup register">注册</Link>
+							{user.username?
+							<a onClick={this.props.onLogout.bind(this)}>注销</a>:
+							<a href="#/signin" className="a-signup register">注册</a>}
 						</li><span className="separator">|</span>
 						<li><i className="fa fa-file"></i> <a className="a_my_orders" href="./orders.html">我的订单</a></li><span className="separator">|</span>
 						<li className="my_cart">
-							<i className="fa fa-shopping-cart"></i> <Link to="/shopping_cart" className="a-cart">我的购物车(<span className="quantityIn">0</span>)</Link>
+							<i className="fa fa-shopping-cart"></i> 
+							<span> </span>
+							<Link to="/shopping_cart" className="a-cart">
+								我的购物车(<span className="quantityIn">{user.username?user.shoppingCart.length:0}</span>)
+							</Link>
 							<div className="cart_panel">
 								我的购物车
 							</div>
@@ -49,21 +57,7 @@ class Topbar extends React.Component {
 		)
 	}
 }
-class Navbar extends React.Component {
 
-	render(){
-		return(
-			<div className="navbar">
-				<ul className="container">
-					<li><Link to="/home">Home</Link></li>
-					<li><Link to="/comment_box">CommentBox</Link></li>
-					<li><Link to="/shopping_cart">ShoppingCart</Link></li>
-					<li><Link to="/counter">Counter</Link></li>
-				</ul>
-			</div>
-		)
-	}
-}
 class List extends React.Component {
 	render(){
 		return (
@@ -131,4 +125,20 @@ class Footer extends React.Component {
 	}
 }
 
-export {SearchBar,Topbar,Navbar,List,SearchBox,Footer};
+class BackToTop extends React.Component {
+	toTop(){
+		$(document).ready(function(){
+			$("html,body").animate(  {"scrollTop":"0"}  ,500);
+		});
+		console.log(this);
+	}
+	render(){
+		return (
+			<div className="back_to_top" onClick={this.toTop.bind(this)}>
+				<i className="fa fa-angle-up"></i>
+			</div>
+		);
+	}
+}
+
+export {SearchBar,Topbar,List,SearchBox,Footer,BackToTop};

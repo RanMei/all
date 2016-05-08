@@ -51,8 +51,8 @@ class Showcase extends React.Component {
 					</ul>
 					<div className="col2">
 						<dl>
-							<dt><a href="items/item.html?id=1602091546"><img src={$$imgDir+"index/1602091546.jpg"}/></a></dt>
-							<dt><a href=""><img src={$$imgDir+"144118.jpg"}/></a></dt>
+							<dt><a href="#/item?id=1602091546"><img src={$$imgDir+"index/1602091546.jpg"}/></a></dt>
+							<dt><a href="#/item?id=1602091458"><img src={$$imgDir+"144118.jpg"}/></a></dt>
 							<dd><a href=""><img src={$$imgDir+"144233.jpg"}/></a></dd>
 							<dd><a href=""><img src={$$imgDir+"144245.jpg"}/></a></dd>
 							<dd><a href=""><img src={$$imgDir+"144256.jpg"}/></a></dd>

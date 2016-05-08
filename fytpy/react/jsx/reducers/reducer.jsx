@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 
 import {counter} from './counter.jsx';
-import {app} from './app.jsx';
+import {user} from './app.jsx';
 
-var $$reducer = combineReducers({app,counter});
+var $$reducer = combineReducers({user,counter});
 
 export {$$reducer};

@@ -40,8 +40,7 @@ body {
   width: 50px;
   height: 50px;
   background: lightgrey;
-  z-index: 1;
-  display: none;
+  z-index: 100;
   font-size: 30px;
   line-height: 50px;
   text-align: center;
@@ -89,7 +88,7 @@ body {
 .searchbar .search_box .search_btn:hover {
   background: #ECE9D8;
 }
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/**/
 .line {
   height: 4px;
   background: linear-gradient(to right, #D2AB1A, #337FAB);
@@ -99,7 +98,7 @@ body {
   min-width: 1000px;
   box-shadow: 0 0 40px 35px grey;
 }
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/**/
 .topbar {
   position: relative;
   background: #2378BA;
@@ -135,13 +134,13 @@ body {
 .topbar .quantityIn {
   color: #D2291E;
 }
-.my_cart {
+.topbar .my_cart {
   position: relative;
 }
-.my_cart:hover .cart_panel {
+.topbar .my_cart:hover .cart_panel {
   display: block;
 }
-.cart_panel {
+.topbar .cart_panel {
   position: absolute;
   right: 0;
   top: 30px;
@@ -153,7 +152,7 @@ body {
   display: none;
   z-index: 99;
 }
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/**/
 #main {
   z-index: -1;
 }
