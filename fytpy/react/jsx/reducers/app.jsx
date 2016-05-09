@@ -9,6 +9,7 @@ function getUser (){
 	}).done(function(data){
 		user = eval('('+data+')');
 		//console.log(user);
+		sessionStorage.userID = user.username;
 	});
 	return user;
 }
@@ -43,13 +44,15 @@ function user (state={},action){
 			}
 		case 'LOGOUT':
 			location = "#/home";
+			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
 			action.to_cart = true;
 			$.ajax({
 				type:'post',
 				url:$$phpDir+'/insert.php',
-				data:{data:JSON.stringify(action)}
+				data:{data:JSON.stringify(action)},
+				async:false
 			}).done(function(){
 				alert('成功加入购物车');
 			});
@@ -58,12 +61,17 @@ function user (state={},action){
 			$.ajax({
 				type:'post',
 				url:$$phpDir+'/remove.php',
-				data:{data:JSON.stringify(action)}
+				data:{data:JSON.stringify(action)},
+				async:false
 			}).done(function(){
 			});
 			return getUser();
 		default:
-			return state;
+			if( sessionStorage.userID ){
+				return getUser();
+			}else{
+				return state;
+			}
 	}
 }
 

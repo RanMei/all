@@ -83,6 +83,7 @@ const $$store = createStore( $$reducer );
 console.log( 'initial state',$$store.getState() )
 
 // Connect the state in $$store with props of a component.
+// Create Smart Components.
 var _Counter = connect(function(state){
 	return {value:state.counter.num}
 })(Counter);
@@ -111,7 +112,7 @@ class $$Signin extends React.Component {
 		)
 	}
 }
-class $$ShoppingCart extends React.Component {
+class ShoppingCartContainer extends React.Component {
 	render(){
 		return (
 			<_ShoppingCart 
@@ -120,7 +121,7 @@ class $$ShoppingCart extends React.Component {
 		)
 	}
 }
-class $$Item extends React.Component {
+class ItemContainer extends React.Component {
 	render(){
 		return (
 			<Item
@@ -138,9 +139,9 @@ ReactDOM.render(
 					<Route path="/signin" component={$$Signin} />
 					<Route path="/home" component={Home} />
 					<Route path="/comment_box" component={CommentBox} />
-					<Route path="/shopping_cart" component={$$ShoppingCart} />
+					<Route path="/shopping_cart" component={ShoppingCartContainer} />
 					<Route path="/counter" component={$$Counter}/>
-					<Route path="/item" component={$$Item}/>
+					<Route path="/item" component={ItemContainer}/>
 				</Route>
 			</Router>
 		</Provider>

@@ -13,7 +13,7 @@ class ItemList extends React.Component {
 				<ul>
 				{that.props.items.map(function(x,i){
 					return(
-					<li className='item' key={i}>
+					<li className='item' key={x.name}>
 						<input className="check" type="checkbox" checked={that.props.items[i].checked} onChange={that.props.checkThis.bind(that,i)}/>
 						<div className="thumbnail"><img src={$$itemDir+x.itemID+'/0.jpg'}/></div>
 						<p className="name">{x.name}</p>

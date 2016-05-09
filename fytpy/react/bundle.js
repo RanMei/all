@@ -1378,7 +1378,7 @@ var ItemList = function (_React$Component) {
 					that.props.items.map(function (x, i) {
 						return React.createElement(
 							"li",
-							{ className: "item", key: i },
+							{ className: "item", key: x.name },
 							React.createElement("input", { className: "check", type: "checkbox", checked: that.props.items[i].checked, onChange: that.props.checkThis.bind(that, i) }),
 							React.createElement(
 								"div",
@@ -1985,6 +1985,7 @@ var $$store = createStore(_reducer.$$reducer);
 console.log('initial state', $$store.getState());
 
 // Connect the state in $$store with props of a component.
+// Create Smart Components.
 var _Counter = connect(function (state) {
 	return { value: state.counter.num };
 })(_Counter2.Counter);
@@ -2043,16 +2044,16 @@ var $$Signin = function (_React$Component4) {
 	return $$Signin;
 }(React.Component);
 
-var $$ShoppingCart = function (_React$Component5) {
-	_inherits($$ShoppingCart, _React$Component5);
+var ShoppingCartContainer = function (_React$Component5) {
+	_inherits(ShoppingCartContainer, _React$Component5);
 
-	function $$ShoppingCart() {
-		_classCallCheck(this, $$ShoppingCart);
+	function ShoppingCartContainer() {
+		_classCallCheck(this, ShoppingCartContainer);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf($$ShoppingCart).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCartContainer).apply(this, arguments));
 	}
 
-	_createClass($$ShoppingCart, [{
+	_createClass(ShoppingCartContainer, [{
 		key: 'render',
 		value: function render() {
 			return React.createElement(_ShoppingCart, {
@@ -2063,19 +2064,19 @@ var $$ShoppingCart = function (_React$Component5) {
 		}
 	}]);
 
-	return $$ShoppingCart;
+	return ShoppingCartContainer;
 }(React.Component);
 
-var $$Item = function (_React$Component6) {
-	_inherits($$Item, _React$Component6);
+var ItemContainer = function (_React$Component6) {
+	_inherits(ItemContainer, _React$Component6);
 
-	function $$Item() {
-		_classCallCheck(this, $$Item);
+	function ItemContainer() {
+		_classCallCheck(this, ItemContainer);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf($$Item).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ItemContainer).apply(this, arguments));
 	}
 
-	_createClass($$Item, [{
+	_createClass(ItemContainer, [{
 		key: 'render',
 		value: function render() {
 			return React.createElement(_Item.Item, {
@@ -2085,7 +2086,7 @@ var $$Item = function (_React$Component6) {
 		}
 	}]);
 
-	return $$Item;
+	return ItemContainer;
 }(React.Component);
 
 // The router.
@@ -2103,9 +2104,9 @@ ReactDOM.render(React.createElement(
 			React.createElement(Route, { path: '/signin', component: $$Signin }),
 			React.createElement(Route, { path: '/home', component: _Home.Home }),
 			React.createElement(Route, { path: '/comment_box', component: _CommentBox.CommentBox }),
-			React.createElement(Route, { path: '/shopping_cart', component: $$ShoppingCart }),
+			React.createElement(Route, { path: '/shopping_cart', component: ShoppingCartContainer }),
 			React.createElement(Route, { path: '/counter', component: $$Counter }),
-			React.createElement(Route, { path: '/item', component: $$Item })
+			React.createElement(Route, { path: '/item', component: ItemContainer })
 		)
 	)
 ), document.getElementById('app'));
@@ -2129,6 +2130,7 @@ function getUser() {
 	}).done(function (data) {
 		user = eval('(' + data + ')');
 		//console.log(user);
+		sessionStorage.userID = user.username;
 	});
 	return user;
 }
@@ -2166,13 +2168,15 @@ function user() {
 			}
 		case 'LOGOUT':
 			location = "#/home";
+			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
 			action.to_cart = true;
 			$.ajax({
 				type: 'post',
 				url: _common.$$phpDir + '/insert.php',
-				data: { data: JSON.stringify(action) }
+				data: { data: JSON.stringify(action) },
+				async: false
 			}).done(function () {
 				alert('成功加入购物车');
 			});
@@ -2181,11 +2185,16 @@ function user() {
 			$.ajax({
 				type: 'post',
 				url: _common.$$phpDir + '/remove.php',
-				data: { data: JSON.stringify(action) }
+				data: { data: JSON.stringify(action) },
+				async: false
 			}).done(function () {});
 			return getUser();
 		default:
-			return state;
+			if (sessionStorage.userID) {
+				return getUser();
+			} else {
+				return state;
+			}
 	}
 }
 
@@ -2236,7 +2245,7 @@ var $$reducer = (0, _redux.combineReducers)({ user: _app.user, counter: _counter
 
 exports.$$reducer = $$reducer;
 
-},{"./app.jsx":10,"./counter.jsx":11,"redux":19}],13:[function(require,module,exports){
+},{"./app.jsx":10,"./counter.jsx":11,"redux":23}],13:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2246,9 +2255,6 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -2333,6 +2339,148 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],14:[function(require,module,exports){
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetPrototype = Object.getPrototypeOf;
+
+/**
+ * Gets the `[[Prototype]]` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {null|Object} Returns the `[[Prototype]]`.
+ */
+function getPrototype(value) {
+  return nativeGetPrototype(Object(value));
+}
+
+module.exports = getPrototype;
+
+},{}],15:[function(require,module,exports){
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+module.exports = isHostObject;
+
+},{}],16:[function(require,module,exports){
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+},{}],17:[function(require,module,exports){
+var getPrototype = require('./_getPrototype'),
+    isHostObject = require('./_isHostObject'),
+    isObjectLike = require('./isObjectLike');
+
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = Function.prototype.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object,
+ *  else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!isObjectLike(value) ||
+      objectToString.call(value) != objectTag || isHostObject(value)) {
+    return false;
+  }
+  var proto = getPrototype(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return (typeof Ctor == 'function' &&
+    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+}
+
+module.exports = isPlainObject;
+
+},{"./_getPrototype":14,"./_isHostObject":15,"./isObjectLike":16}],18:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2391,7 +2539,7 @@ function applyMiddleware() {
     };
   };
 }
-},{"./compose":17}],15:[function(require,module,exports){
+},{"./compose":21}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2443,7 +2591,7 @@ function bindActionCreators(actionCreators, dispatch) {
   }
   return boundActionCreators;
 }
-},{}],16:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2573,7 +2721,7 @@ function combineReducers(reducers) {
   };
 }
 }).call(this,require('_process'))
-},{"./createStore":18,"./utils/warning":20,"_process":13,"lodash/isPlainObject":24}],17:[function(require,module,exports){
+},{"./createStore":22,"./utils/warning":24,"_process":13,"lodash/isPlainObject":17}],21:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -2614,7 +2762,7 @@ function compose() {
     if (typeof _ret === "object") return _ret.v;
   }
 }
-},{}],18:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2877,7 +3025,7 @@ function createStore(reducer, initialState, enhancer) {
     replaceReducer: replaceReducer
   }, _ref2[_symbolObservable2["default"]] = observable, _ref2;
 }
-},{"lodash/isPlainObject":24,"symbol-observable":25}],19:[function(require,module,exports){
+},{"lodash/isPlainObject":17,"symbol-observable":25}],23:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2926,7 +3074,7 @@ exports.bindActionCreators = _bindActionCreators2["default"];
 exports.applyMiddleware = _applyMiddleware2["default"];
 exports.compose = _compose2["default"];
 }).call(this,require('_process'))
-},{"./applyMiddleware":14,"./bindActionCreators":15,"./combineReducers":16,"./compose":17,"./createStore":18,"./utils/warning":20,"_process":13}],20:[function(require,module,exports){
+},{"./applyMiddleware":18,"./bindActionCreators":19,"./combineReducers":20,"./compose":21,"./createStore":22,"./utils/warning":24,"_process":13}],24:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2952,149 +3100,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-},{}],21:[function(require,module,exports){
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetPrototype = Object.getPrototypeOf;
-
-/**
- * Gets the `[[Prototype]]` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {null|Object} Returns the `[[Prototype]]`.
- */
-function getPrototype(value) {
-  return nativeGetPrototype(Object(value));
-}
-
-module.exports = getPrototype;
-
-},{}],22:[function(require,module,exports){
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
-function isHostObject(value) {
-  // Many host objects are `Object` objects that can coerce to strings
-  // despite having improperly defined `toString` methods.
-  var result = false;
-  if (value != null && typeof value.toString != 'function') {
-    try {
-      result = !!(value + '');
-    } catch (e) {}
-  }
-  return result;
-}
-
-module.exports = isHostObject;
-
-},{}],23:[function(require,module,exports){
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-},{}],24:[function(require,module,exports){
-var getPrototype = require('./_getPrototype'),
-    isHostObject = require('./_isHostObject'),
-    isObjectLike = require('./isObjectLike');
-
-/** `Object#toString` result references. */
-var objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = Function.prototype.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to infer the `Object` constructor. */
-var objectCtorString = funcToString.call(Object);
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object,
- *  else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */
-function isPlainObject(value) {
-  if (!isObjectLike(value) ||
-      objectToString.call(value) != objectTag || isHostObject(value)) {
-    return false;
-  }
-  var proto = getPrototype(value);
-  if (proto === null) {
-    return true;
-  }
-  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return (typeof Ctor == 'function' &&
-    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-}
-
-module.exports = isPlainObject;
-
-},{"./_getPrototype":21,"./_isHostObject":22,"./isObjectLike":23}],25:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
