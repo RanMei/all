@@ -10,12 +10,16 @@ fs.exists('./expres.js',function(r){
 
 
 app.use( express.static(__dirname) );
-console.log( 'Server running at 80.' );
-app.listen(80);
 
-app.post(__dirname+'/react',function(req,res){
+app.get('/',function(req,res){
 	res.send("fuck");
 })
+
+app.listen(80,function(){
+	console.log( 'Server running at 80.' );
+});
+
+
 
 var connection = mysql.createConnection({
 	host : 'localhost',

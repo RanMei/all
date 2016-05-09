@@ -5,3 +5,8 @@ The classes you defined will inherit the class of ReactComponent.
 
 this.setState
 This function will inform React which part of your model is changed.
+
+
+Object.assign( target,src1,src2 )
+
+class > componentWillReceiveProps (newProps) {}

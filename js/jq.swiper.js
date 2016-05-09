@@ -129,9 +129,7 @@
 									callback 
 								);
 							}
-						};
-
-						
+						};				
 					};
 				};
 				
@@ -320,6 +318,7 @@
 
 			//
 			if( $$mode==='fade' ){
+				// init
 				$$train.css({
 					width: "100%"
 				});
@@ -328,9 +327,11 @@
 					display: "none"
 				});
 				$$items.eq( $$currentOne ).show();
-				function to(){
-					$$items.eq( $$currentOne ).siblings().fadeOut(100);
-					$$items.eq( $$currentOne ).fadeIn(400);
+				
+				// functions
+				function to(i){
+					$$items.eq( i ).siblings().fadeOut(100);
+					$$items.eq( i ).fadeIn(400);
 					$$renderTabs();
 				}
 				function next(){
@@ -340,12 +341,22 @@
 					};
 					to( $$currentOne );
 				}
+				function prev(){
+					$$currentOne--;
+					if( $$currentOne===-1 ){
+						$$currentOne = $$length-1;
+					};
+					to( $$currentOne );
+				}
+
+				// actions
 				setInterval(next,3000);
-				$$swiper.find(".tabs>li").on("click",function(){
+				$$tabs.on("click",function(){
 					$$currentOne = $(this).index();
 					to( $$currentOne );
 				});
 				$$swiper.find(".next").on("click",next);
+				$$swiper.find(".prev").on("click",prev);
 			};
 
 		});
