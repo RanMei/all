@@ -42,10 +42,10 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
-		console.log('ShoppingCart props',this.props)
 		this.state = {
 			items: this.props.user.shoppingCart||[]
 		}
+		console.log('<ShoppingCart/> creating',this.props,this.state)
 	}
 	componentWillReceiveProps(newProps){
 		this.setState({
@@ -55,7 +55,8 @@ class ShoppingCart extends React.Component {
 			items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
 		})
 	}
-	componentWillMount(){
+	componentDidUpdate(){
+		console.log('<ShoppingCart/> updated',this.props,this.state);
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	allChecked(){

@@ -9,4 +9,13 @@ This function will inform React which part of your model is changed.
 
 Object.assign( target,src1,src2 )
 
-class > componentWillReceiveProps (newProps) {}
+class > 
+
+getDefaultProps ()
+componentWillMount ()
+componentDidMount ()
+componentWillReceiveProps (newProps) {}
+shouldComponentUpdate ()
+componentWillUpdate ()
+componentDidUpdate ()
+componentWillUnmount ()

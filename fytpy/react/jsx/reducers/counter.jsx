@@ -10,7 +10,7 @@ function counter(state = {num:0}, action) {
 		default:
 			break;
 	}
-	console.log(_state);
+	//console.log(_state);
 	return _state;
 }
 

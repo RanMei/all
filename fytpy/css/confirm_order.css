@@ -246,13 +246,13 @@ body {
   width: 100%;
   display: none;
 }
-.bg {
+.veil .bg {
   position: absolute;
   width: 100%;
   background: black;
   opacity: 0.5;
 }
-.panel {
+.veil .panel {
   position: relative;
   width: 300px;
   padding: 20px;
@@ -260,7 +260,7 @@ body {
   background: white;
   margin: 300px auto;
 }
-.close {
+.veil .close {
   position: absolute;
   top: -20px;
   right: -20px;
@@ -274,28 +274,28 @@ body {
   color: white;
   font-size: 30px;
 }
-.panel input {
+.veil .panel input {
   width: 298px;
   height: 33px;
   border: 1px solid grey;
   text-indent: 15px;
   margin-bottom: 15px;
 }
-textarea {
+.veil textarea {
   width: 298px;
   border: 1px solid grey;
   text-indent: 15px;
   padding: 10px 0 10px 0;
   font-size: 14px;
 }
-.date {
+.veil .date {
   display: ;
 }
-.error {
+.veil .error {
   border: 1px solid red!important;
   box-shadow: 0 0 3px #DF4949;
 }
-.save {
+.veil .save {
   width: 130px;
   height: 40px;
   margin: 15px auto 0 auto;
@@ -303,7 +303,7 @@ textarea {
   background: #DF4949;
   border-radius: 3px;
 }
-.save:hover {
+.veil .save:hover {
   background: #CC3134;
 }
 .CONFIRM_ORDER .page-header {

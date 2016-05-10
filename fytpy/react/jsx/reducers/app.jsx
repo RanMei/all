@@ -37,6 +37,7 @@ function user (state={},action){
 			if( ok ){
 				alert("登录成功！");
 				location = "#/home";
+				console.log('state updated by LOGIN');
 				return getUser();
 			}else{
 				alert("您输入的用户名或密码有误！");

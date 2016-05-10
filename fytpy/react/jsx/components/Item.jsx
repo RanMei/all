@@ -4,7 +4,7 @@ import {CommentBox} from './CommentBox.jsx';
 function getItem(){
 	var itemID = location.hash.match(/\?id=(\w+)/)[1];
 	var item;
-	console.log( 'itemID',itemID );
+	//console.log( 'itemID',itemID );
 	$.ajax({
 		type:'post',
 		url:$$phpDir+'item.php',
@@ -12,7 +12,7 @@ function getItem(){
 		async:false
 	}).done(function(data){
 		//console.log('typeof data---',typeof data);
-		console.log(data);
+		console.log('item received');
 		item = eval('('+data+')');
 	}).error(function(e){
 		console.log(e);
@@ -28,7 +28,7 @@ class Item extends React.Component {
 			tabPanel: 0,
 			thumbnail: 0
 		};
-		console.log('Item state',this.state);
+		console.log('<Item/> creating',this.props,this.state);
 	}
 	componentWillMount(){
 	}

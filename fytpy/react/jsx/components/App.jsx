@@ -23,8 +23,11 @@ class SearchBar extends React.Component {
 }
 
 class Topbar extends React.Component {
+	componentWillReceiveProps(newProps){
+		console.log('<Topbar/> updating',newProps,this.state);
+	}
 	render(){
-		console.log('Topbar props',this.props);
+		console.log('<Topbar/> rendering',this.props,this.state);
 		var user = this.props.user;
 		return(
 			<div className="topbar wrapper">

@@ -87,9 +87,14 @@ var Topbar = function (_React$Component2) {
 	}
 
 	_createClass(Topbar, [{
+		key: "componentWillReceiveProps",
+		value: function componentWillReceiveProps(newProps) {
+			console.log('<Topbar/> updating', newProps, this.state);
+		}
+	}, {
 		key: "render",
 		value: function render() {
-			console.log('Topbar props', this.props);
+			console.log('<Topbar/> rendering', this.props, this.state);
 			var user = this.props.user;
 			return React.createElement(
 				"div",
@@ -638,10 +643,31 @@ var ConfirmOrder = function (_React$Component) {
 		_this.state = {
 			items: JSON.parse(sessionStorage.items)
 		};
+		console.log('<ConfirmOrder/> creating', _this.props, _this.state);
 		return _this;
 	}
 
 	_createClass(ConfirmOrder, [{
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(newProps) {
+			console.log('<ConfirmOrder/> updating', newProps, this.state);
+			this.setState({ DI: newProps.DI });
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			console.log(this.props);
+			this.setState({
+				user: this.props.user
+			});
+		}
+	}, {
+		key: 'componentDidUpdate',
+		value: function componentDidUpdate() {
+			//console.log('<ConfirmOrder/> state'),this.state);
+			//console.log('<ConfirmOrder/> props',this.props);
+		}
+	}, {
 		key: 'getTotal',
 		value: function getTotal() {
 			var total = 0;
@@ -655,7 +681,9 @@ var ConfirmOrder = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var items = this.state.items;
-			var DI = this.props.DI;
+			var DI = this.props.user.deliveryInformation;
+			//console.log(this.props);
+			//console.log(this.state);
 			return React.createElement(
 				'div',
 				{ className: 'CONFIRM_ORDER' },
@@ -679,58 +707,60 @@ var ConfirmOrder = function (_React$Component) {
 					React.createElement(
 						'div',
 						{ className: 'deliveryInformation' },
-						React.createElement(
-							'div',
-							{ className: 'di' },
-							React.createElement(
+						DI.map(function (elem) {
+							return React.createElement(
 								'div',
-								{ className: 'content' },
-								React.createElement(
-									'p',
-									null,
-									'收货人：',
-									React.createElement(
-										'span',
-										{ className: 'consignee' },
-										'--'
-									)
-								),
-								React.createElement(
-									'p',
-									null,
-									'联系电话：',
-									React.createElement(
-										'span',
-										{ className: 'phoneNumber' },
-										'--'
-									)
-								),
-								React.createElement(
-									'p',
-									null,
-									'收货地址：',
-									React.createElement(
-										'span',
-										{ className: 'deliveryAddress' },
-										'--'
-									)
-								),
+								{ className: 'di' },
 								React.createElement(
 									'div',
-									{ className: 'operation' },
+									{ className: 'content' },
 									React.createElement(
-										'button',
-										{ className: 'remove' },
-										'删除'
+										'p',
+										null,
+										'收货人：',
+										React.createElement(
+											'span',
+											{ className: 'consignee' },
+											elem.consignee
+										)
 									),
 									React.createElement(
-										'button',
-										{ className: 'edit' },
-										'编辑'
+										'p',
+										null,
+										'联系电话：',
+										React.createElement(
+											'span',
+											{ className: 'phoneNumber' },
+											elem.phoneNumber
+										)
+									),
+									React.createElement(
+										'p',
+										null,
+										'收货地址：',
+										React.createElement(
+											'span',
+											{ className: 'deliveryAddress' },
+											elem.deliveryAddress
+										)
+									),
+									React.createElement(
+										'div',
+										{ className: 'operation' },
+										React.createElement(
+											'button',
+											{ className: 'remove' },
+											'删除'
+										),
+										React.createElement(
+											'button',
+											{ className: 'edit' },
+											'编辑'
+										)
 									)
 								)
-							)
-						)
+							);
+						})
 					),
 					React.createElement(
 						'div',
@@ -1276,7 +1306,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function getItem() {
 	var itemID = location.hash.match(/\?id=(\w+)/)[1];
 	var item;
-	console.log('itemID', itemID);
+	//console.log( 'itemID',itemID );
 	$.ajax({
 		type: 'post',
 		url: _common.$$phpDir + 'item.php',
@@ -1284,7 +1314,7 @@ function getItem() {
 		async: false
 	}).done(function (data) {
 		//console.log('typeof data---',typeof data);
-		console.log(data);
+		console.log('item received');
 		item = eval('(' + data + ')');
 	}).error(function (e) {
 		console.log(e);
@@ -1305,7 +1335,7 @@ var Item = function (_React$Component) {
 			tabPanel: 0,
 			thumbnail: 0
 		};
-		console.log('Item state', _this.state);
+		console.log('<Item/> creating', _this.props, _this.state);
 		return _this;
 	}
 
@@ -1719,10 +1749,10 @@ var ShoppingCart = function (_React$Component2) {
 
 		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
 
-		console.log('ShoppingCart props', _this2.props);
 		_this2.state = {
 			items: _this2.props.user.shoppingCart || []
 		};
+		console.log('<ShoppingCart/> creating', _this2.props, _this2.state);
 		return _this2;
 	}
 
@@ -1737,8 +1767,10 @@ var ShoppingCart = function (_React$Component2) {
 			});
 		}
 	}, {
-		key: "componentWillMount",
-		value: function componentWillMount() {}
+		key: "componentDidUpdate",
+		value: function componentDidUpdate() {
+			console.log('<ShoppingCart/> updated', this.props, this.state);
+		}
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	}, {
@@ -2191,7 +2223,7 @@ var _Counter2 = require('./components/Counter.jsx');
 
 var _Signin = require('./components/Signin.jsx');
 
-var _ConfirmOrder = require('./components/ConfirmOrder.jsx');
+var _ConfirmOrder2 = require('./components/ConfirmOrder.jsx');
 
 var _reducer = require('./reducers/reducer.jsx');
 
@@ -2313,7 +2345,7 @@ var DECREMENT = { type: 'DECREMENT' };
 
 // store
 var $$store = createStore(_reducer.$$reducer);
-console.log('initial state', $$store.getState());
+console.log('state initialized', $$store.getState());
 
 // Connect the state in $$store with props of a component.
 // Create Smart Components.
@@ -2328,6 +2360,10 @@ var _Topbar = connect(function (state) {
 var _ShoppingCart = connect(function (state) {
 	return { user: state.user };
 })(_ShoppingCart2.ShoppingCart);
+
+var _ConfirmOrder = connect(function (state) {
+	return { user: state.user };
+})(_ConfirmOrder2.ConfirmOrder);
 
 var $$Counter = function (_React$Component3) {
 	_inherits($$Counter, _React$Component3);
@@ -2432,7 +2468,7 @@ var ConfirmOrderContainer = function (_React$Component7) {
 	_createClass(ConfirmOrderContainer, [{
 		key: 'render',
 		value: function render() {
-			return React.createElement(_ConfirmOrder.ConfirmOrder, { DI: {} });
+			return React.createElement(_ConfirmOrder, { user: $$store.getState().user });
 		}
 	}]);
 
@@ -2512,6 +2548,7 @@ function user() {
 			if (ok) {
 				alert("登录成功！");
 				location = "#/home";
+				console.log('state updated by LOGIN');
 				return getUser();
 			} else {
 				alert("您输入的用户名或密码有误！");
@@ -2577,7 +2614,7 @@ function counter() {
 		default:
 			break;
 	}
-	console.log(_state);
+	//console.log(_state);
 	return _state;
 }
 
@@ -2601,7 +2638,7 @@ var $$reducer = (0, _redux.combineReducers)({ user: _app.user, counter: _counter
 
 exports.$$reducer = $$reducer;
 
-},{"./app.jsx":11,"./counter.jsx":12,"redux":20}],14:[function(require,module,exports){
+},{"./app.jsx":11,"./counter.jsx":12,"redux":24}],14:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2611,9 +2648,6 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -2698,6 +2732,148 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],15:[function(require,module,exports){
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetPrototype = Object.getPrototypeOf;
+
+/**
+ * Gets the `[[Prototype]]` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {null|Object} Returns the `[[Prototype]]`.
+ */
+function getPrototype(value) {
+  return nativeGetPrototype(Object(value));
+}
+
+module.exports = getPrototype;
+
+},{}],16:[function(require,module,exports){
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+module.exports = isHostObject;
+
+},{}],17:[function(require,module,exports){
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+},{}],18:[function(require,module,exports){
+var getPrototype = require('./_getPrototype'),
+    isHostObject = require('./_isHostObject'),
+    isObjectLike = require('./isObjectLike');
+
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = Function.prototype.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object,
+ *  else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!isObjectLike(value) ||
+      objectToString.call(value) != objectTag || isHostObject(value)) {
+    return false;
+  }
+  var proto = getPrototype(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return (typeof Ctor == 'function' &&
+    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+}
+
+module.exports = isPlainObject;
+
+},{"./_getPrototype":15,"./_isHostObject":16,"./isObjectLike":17}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2756,7 +2932,7 @@ function applyMiddleware() {
     };
   };
 }
-},{"./compose":18}],16:[function(require,module,exports){
+},{"./compose":22}],20:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2808,7 +2984,7 @@ function bindActionCreators(actionCreators, dispatch) {
   }
   return boundActionCreators;
 }
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2938,7 +3114,7 @@ function combineReducers(reducers) {
   };
 }
 }).call(this,require('_process'))
-},{"./createStore":19,"./utils/warning":21,"_process":14,"lodash/isPlainObject":25}],18:[function(require,module,exports){
+},{"./createStore":23,"./utils/warning":25,"_process":14,"lodash/isPlainObject":18}],22:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -2979,7 +3155,7 @@ function compose() {
     if (typeof _ret === "object") return _ret.v;
   }
 }
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3242,7 +3418,7 @@ function createStore(reducer, initialState, enhancer) {
     replaceReducer: replaceReducer
   }, _ref2[_symbolObservable2["default"]] = observable, _ref2;
 }
-},{"lodash/isPlainObject":25,"symbol-observable":26}],20:[function(require,module,exports){
+},{"lodash/isPlainObject":18,"symbol-observable":26}],24:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -3291,7 +3467,7 @@ exports.bindActionCreators = _bindActionCreators2["default"];
 exports.applyMiddleware = _applyMiddleware2["default"];
 exports.compose = _compose2["default"];
 }).call(this,require('_process'))
-},{"./applyMiddleware":15,"./bindActionCreators":16,"./combineReducers":17,"./compose":18,"./createStore":19,"./utils/warning":21,"_process":14}],21:[function(require,module,exports){
+},{"./applyMiddleware":19,"./bindActionCreators":20,"./combineReducers":21,"./compose":22,"./createStore":23,"./utils/warning":25,"_process":14}],25:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3317,149 +3493,7 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
-},{}],22:[function(require,module,exports){
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetPrototype = Object.getPrototypeOf;
-
-/**
- * Gets the `[[Prototype]]` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {null|Object} Returns the `[[Prototype]]`.
- */
-function getPrototype(value) {
-  return nativeGetPrototype(Object(value));
-}
-
-module.exports = getPrototype;
-
-},{}],23:[function(require,module,exports){
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
-function isHostObject(value) {
-  // Many host objects are `Object` objects that can coerce to strings
-  // despite having improperly defined `toString` methods.
-  var result = false;
-  if (value != null && typeof value.toString != 'function') {
-    try {
-      result = !!(value + '');
-    } catch (e) {}
-  }
-  return result;
-}
-
-module.exports = isHostObject;
-
-},{}],24:[function(require,module,exports){
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-},{}],25:[function(require,module,exports){
-var getPrototype = require('./_getPrototype'),
-    isHostObject = require('./_isHostObject'),
-    isObjectLike = require('./isObjectLike');
-
-/** `Object#toString` result references. */
-var objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = Function.prototype.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to infer the `Object` constructor. */
-var objectCtorString = funcToString.call(Object);
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object,
- *  else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */
-function isPlainObject(value) {
-  if (!isObjectLike(value) ||
-      objectToString.call(value) != objectTag || isHostObject(value)) {
-    return false;
-  }
-  var proto = getPrototype(value);
-  if (proto === null) {
-    return true;
-  }
-  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return (typeof Ctor == 'function' &&
-    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-}
-
-module.exports = isPlainObject;
-
-},{"./_getPrototype":22,"./_isHostObject":23,"./isObjectLike":24}],26:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';

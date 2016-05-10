@@ -7,6 +7,21 @@ class ConfirmOrder extends React.Component {
 		this.state = {
 			items: JSON.parse( sessionStorage.items )
 		}
+		console.log('<ConfirmOrder/> creating',this.props,this.state);
+	}
+	componentWillReceiveProps(newProps){
+		console.log('<ConfirmOrder/> updating',newProps,this.state);
+		this.setState({DI:newProps.DI});
+	}
+	componentWillMount(){
+		console.log(this.props);
+		this.setState({
+			user: this.props.user
+		})
+	}
+	componentDidUpdate(){
+		//console.log('<ConfirmOrder/> state'),this.state);
+		//console.log('<ConfirmOrder/> props',this.props);
 	}
 	getTotal(){
 		var total = 0;
@@ -18,7 +33,9 @@ class ConfirmOrder extends React.Component {
 	}
 	render(){
 		var items = this.state.items;
-		var DI = this.props.DI;
+		var DI = this.props.user.deliveryInformation;
+		//console.log(this.props);
+		//console.log(this.state);
 		return (
 			<div className="CONFIRM_ORDER">
 				<div className="container">
@@ -27,17 +44,21 @@ class ConfirmOrder extends React.Component {
 						<button className="add">添加收货信息</button>
 					</div>
 					<div className="deliveryInformation">
-						<div className="di">
-							<div className="content">
-								<p>收货人：<span className="consignee">--</span></p>
-								<p>联系电话：<span className="phoneNumber">--</span></p>
-								<p>收货地址：<span className="deliveryAddress">--</span></p>
-								<div className="operation">
-									<button className="remove">删除</button>
-									<button className="edit">编辑</button>
+						{DI.map(function(elem){
+							return (
+								<div className="di">
+									<div className="content">
+										<p>收货人：<span className="consignee">{elem.consignee}</span></p>
+										<p>联系电话：<span className="phoneNumber">{elem.phoneNumber}</span></p>
+										<p>收货地址：<span className="deliveryAddress">{elem.deliveryAddress}</span></p>
+										<div className="operation">
+											<button className="remove">删除</button>
+											<button className="edit">编辑</button>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
+							);
+						})}
 					</div>
 					<div className="page-header">
 						<p className="title">确认商品</p>

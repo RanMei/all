@@ -81,7 +81,7 @@ var DECREMENT = {type:'DECREMENT'};
 
 // store
 const $$store = createStore( $$reducer );
-console.log( 'initial state',$$store.getState() )
+console.log( 'state initialized',$$store.getState() )
 
 // Connect the state in $$store with props of a component.
 // Create Smart Components.
@@ -96,6 +96,10 @@ var _Topbar = connect(function(state){
 var _ShoppingCart = connect(function(state){
 	return {user:state.user}
 })(ShoppingCart);
+
+var _ConfirmOrder = connect(function(state){
+	return {user:state.user}
+})(ConfirmOrder);
 
 class $$Counter extends React.Component {
 	render(){
@@ -133,7 +137,7 @@ class ItemContainer extends React.Component {
 class ConfirmOrderContainer extends React.Component {
 	render(){
 		return (
-			<ConfirmOrder DI={{}}/>
+			<_ConfirmOrder user={$$store.getState().user}/>
 		)
 	}
 }

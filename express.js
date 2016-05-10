@@ -25,7 +25,14 @@ var connection = mysql.createConnection({
 	host : 'localhost',
 	port : 3306,
 	user : 'root',
-	password : ''
+	password : '',
+	database:'fytpy'
 });
+
+console.log(connection);
+
+connection.query('SELECT * FROM users where username = ?',['15911111111'],function(e,res){
+	console.log(e,res);
+})
 
 console.log( 'Database Connected' );
