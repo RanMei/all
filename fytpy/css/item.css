@@ -328,6 +328,9 @@ body {
   color: white;
   border-radius: 5px;
 }
+#ITEM .information .buy:hover {
+  background: #CC3134;
+}
 #ITEM .information .toCart {
   float: left;
   width: 183px;
@@ -340,20 +343,24 @@ body {
   cursor: pointer;
   border-radius: 5px;
 }
-#ITEM .item .shuliang {
+#ITEM .information .toCart:hover {
+  color: #CC3134;
+  border: 2px solid #CC3134;
+}
+#ITEM .shuliang {
   padding: 30px 0 30px 0;
 }
-#ITEM .item .shuliang p {
+#ITEM .shuliang p {
   float: left;
   height: 30px;
   vertical-align: top;
   line-height: 30px;
 }
-#ITEM .counter {
+#ITEM .shuliang .counter {
   overflow: hidden;
 }
-#ITEM .minus,
-#ITEM .plus {
+#ITEM .shuliang .counter .minus,
+#ITEM .shuliang .counter .plus {
   float: left;
   width: 28px;
   height: 28px;
@@ -363,7 +370,7 @@ body {
   background: #F4F4F4;
   cursor: pointer;
 }
-#ITEM .quantity {
+#ITEM .shuliang .counter .quantity {
   float: left;
   width: 49px;
   height: 28px;
@@ -372,8 +379,8 @@ body {
   line-height: 28px;
   text-align: center;
 }
-#ITEM .minus:hover,
-#ITEM .plus:hover {
+#ITEM .shuliang .counter .minus:hover,
+#ITEM .shuliang .counter .plus:hover {
   border: 1px solid #DD4A4D;
   color: #DD4A4D;
 }
@@ -403,7 +410,7 @@ body {
   cursor: pointer;
 }
 #ITEM .box .tab > li.active {
-  border-bottom: 4px solid lightgrey;
+  border-bottom: 4px solid orange;
 }
 #ITEM .box .content {
   position: relative;

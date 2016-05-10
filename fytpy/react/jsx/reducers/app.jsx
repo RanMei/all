@@ -44,6 +44,11 @@ function user (state={},action){
 			}
 		case 'LOGOUT':
 			location = "#/home";
+			$.ajax({
+				url:$$phpDir+'/logout.php',
+				type:'post',
+				async:false
+			})
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':

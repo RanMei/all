@@ -12,7 +12,10 @@ function getItem(){
 		async:false
 	}).done(function(data){
 		//console.log('typeof data---',typeof data);
+		console.log(data);
 		item = eval('('+data+')');
+	}).error(function(e){
+		console.log(e);
 	})
 	return item;
 }
@@ -59,6 +62,11 @@ class Item extends React.Component {
 			quantity: this.state.item.quantity
 		});
 	}
+	buyNow(){
+		console.log( JSON.stringify([this.state.item]) );
+		sessionStorage.items = JSON.stringify([this.state.item]);
+		location.hash = 'confirm_order';
+	}
 	render(){
 		var item = this.state.item;
 		var self = this;
@@ -84,7 +92,7 @@ class Item extends React.Component {
 					<div className="information">
 						<p className="name">{item.name}</p>
 						<p className="description">{item.description}</p>
-						<p className="priceWrapper"><b>￥<span className="price">{item.price}</span></b></p>
+						<p className="priceWrapper"><b>￥<span className="price">{Number(item.price).toFixed(2)}</span></b></p>
 						<div className="shuliang">
 							<p>数量：</p>
 							<div className="counter">
@@ -93,7 +101,7 @@ class Item extends React.Component {
 								<div className="plus" onClick={this.increase.bind(this)}>+</div>
 							</div>
 						</div>
-						<div className="buy">立即购买</div>
+						<div className="buy" onClick={this.buyNow.bind(this)}>立即购买</div>
 						<div className="toCart" onClick={this.toCart.bind(this)}>放入购物车</div>
 						
 					</div>

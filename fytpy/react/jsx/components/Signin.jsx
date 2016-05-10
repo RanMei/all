@@ -1,7 +1,12 @@
 class Signin extends React.Component {
 	constructor(){
 		super();
-		this.state = {};
+		this.state = {
+			user:{
+				userID: '',
+				password:''
+			}
+		};
 	}
 	getID(e){
 		this.setState({userID:e.target.value});
@@ -14,10 +19,51 @@ class Signin extends React.Component {
 		if( this.state.userID&&this.state.password ){
 			this.props.act({
 				type:'LOGIN',
-				data:this.state
+				data:{
+					userID:this.state.userID,
+					password:this.state.password
+				}
 			});
 		}else{
 			alert('Invalid username or password.');
+		}
+	}
+	setUserID(e){
+		var user = this.state.user;
+		this.state.user.userID = e.target.value;
+		this.setState({
+			user: user
+		});
+	}
+	setPassword(e){
+		var user = this.state.user;
+		this.state.user.password = e.target.value;
+		this.setState({
+			user: user
+		});
+	}
+	checkPassword(){
+		if( !this.state.user.password ){
+			return '';
+		}else{
+			return (/^\w{6,20}$/.test(this.state.user.password))?'success':'error';
+		};
+	}
+	checkUserID(){
+		if( !this.state.user.userID ){
+			return ''
+		}else{
+			return (/^\d{11}$/.test(this.state.user.userID))?'success':'error';
+		};
+	}
+	register(){
+		if( this.checkUserID()==='success'&&this.checkPassword()==='success' ){
+			this.props.act({
+				type:'REGISTER',
+				user:this.state.user
+			})
+		}else{
+			alert("您输入的信息有误！")
 		}
 	}
 	render(){
@@ -33,16 +79,30 @@ class Signin extends React.Component {
 								<h1>新会员注册</h1>
 							</div>
 							<form className='register-form'>
-								<input type="text" name="username" placeholder="请输入11位手机号"/>
+								<input 
+									type="text" 
+									name="username" 
+									placeholder="请输入11位手机号" 
+									onChange={this.setUserID.bind(this)} 
+									className={this.checkUserID()}/>
 								<p className="info"></p>
-								<input type="password" name="password" placeholder="密码（6-20位字母、数字与符号的组合）"/>
+								<input 
+									type="password" 
+									name="password" 
+									placeholder="密码（6-20位字母、数字与符号的组合）" 
+									onChange={this.setPassword.bind(this)}
+									className={this.checkPassword()}/>
 								<p className="info"></p>
-								<input type="password" name="password2" placeholder="确认密码"/>
+								<input 
+									type="password" 
+									name="password2" 
+									placeholder="确认密码"
+									/>
 								<p className="info"></p>
 								<input type="text" name="verif" placeholder="请输入验证码"/>
 								<p className="info"></p>
 								<input type="checkbox" name="agree"/><span>已同意《飞越太平洋服务条款》</span>
-								<div className="register-button">注 册</div>
+								<div className="register-button" onClick={this.register.bind(this)}>注 册</div>
 							</form>
 						</div>
 					</div>

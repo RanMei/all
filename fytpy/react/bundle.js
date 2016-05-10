@@ -611,6 +611,253 @@ exports.CommentBox = CommentBox;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.ConfirmOrder = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _common = require('../common.jsx');
+
+var _CommentBox = require('./CommentBox.jsx');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ConfirmOrder = function (_React$Component) {
+	_inherits(ConfirmOrder, _React$Component);
+
+	function ConfirmOrder() {
+		_classCallCheck(this, ConfirmOrder);
+
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ConfirmOrder).call(this));
+
+		_this.state = {
+			items: JSON.parse(sessionStorage.items)
+		};
+		return _this;
+	}
+
+	_createClass(ConfirmOrder, [{
+		key: 'getTotal',
+		value: function getTotal() {
+			var total = 0;
+			var items = this.state.items;
+			for (var i = 0; i < items.length; i++) {
+				total += Number(items[i].price) * Number(items[i].quantity);
+			}
+			return total.toFixed(2);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var items = this.state.items;
+			var DI = this.props.DI;
+			return React.createElement(
+				'div',
+				{ className: 'CONFIRM_ORDER' },
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					React.createElement(
+						'div',
+						{ className: 'page-header' },
+						React.createElement(
+							'p',
+							{ className: 'title' },
+							'收货信息'
+						),
+						React.createElement(
+							'button',
+							{ className: 'add' },
+							'添加收货信息'
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'deliveryInformation' },
+						React.createElement(
+							'div',
+							{ className: 'di' },
+							React.createElement(
+								'div',
+								{ className: 'content' },
+								React.createElement(
+									'p',
+									null,
+									'收货人：',
+									React.createElement(
+										'span',
+										{ className: 'consignee' },
+										'--'
+									)
+								),
+								React.createElement(
+									'p',
+									null,
+									'联系电话：',
+									React.createElement(
+										'span',
+										{ className: 'phoneNumber' },
+										'--'
+									)
+								),
+								React.createElement(
+									'p',
+									null,
+									'收货地址：',
+									React.createElement(
+										'span',
+										{ className: 'deliveryAddress' },
+										'--'
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'operation' },
+									React.createElement(
+										'button',
+										{ className: 'remove' },
+										'删除'
+									),
+									React.createElement(
+										'button',
+										{ className: 'edit' },
+										'编辑'
+									)
+								)
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'page-header' },
+						React.createElement(
+							'p',
+							{ className: 'title' },
+							'确认商品'
+						)
+					),
+					React.createElement(
+						'ul',
+						{ className: 'items-header' },
+						React.createElement(
+							'li',
+							null,
+							'商品信息'
+						),
+						React.createElement(
+							'li',
+							null,
+							'单价'
+						),
+						React.createElement(
+							'li',
+							null,
+							'数量'
+						),
+						React.createElement(
+							'li',
+							null,
+							'小计'
+						)
+					),
+					items.map(function (item) {
+						return React.createElement(
+							'ul',
+							{ className: 'item' },
+							React.createElement(
+								'li',
+								null,
+								React.createElement('div', { className: 'thumbnail' }),
+								React.createElement(
+									'p',
+									{ className: 'information' },
+									React.createElement(
+										'span',
+										{ className: 'name' },
+										item.name
+									),
+									React.createElement('span', { className: 'spec' })
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'p',
+									{ className: 'price' },
+									'￥',
+									item.price
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'p',
+									{ className: 'quantity' },
+									item.quantity
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'p',
+									{ className: 'subtotal' },
+									item.subtotal
+								)
+							)
+						);
+					}),
+					React.createElement(
+						'div',
+						{ className: 'summary' },
+						React.createElement(
+							'div',
+							{ className: 'right_' },
+							React.createElement(
+								'p',
+								null,
+								'共',
+								React.createElement(
+									'span',
+									{ className: 'totalQuantity' },
+									items.length
+								),
+								'件商品，总价',
+								React.createElement(
+									'span',
+									{ className: 'totalPrice' },
+									'￥',
+									this.getTotal()
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'submit' },
+								'提交订单'
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return ConfirmOrder;
+}(React.Component);
+
+exports.ConfirmOrder = ConfirmOrder;
+
+},{"../common.jsx":1,"./CommentBox.jsx":3}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -699,7 +946,7 @@ var Counter = function (_React$Component) {
 
 exports.Counter = Counter;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1006,7 +1253,7 @@ var Showcase = function (_React$Component2) {
 
 exports.Home = Home;
 
-},{"../common.jsx":1}],6:[function(require,module,exports){
+},{"../common.jsx":1}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1037,7 +1284,10 @@ function getItem() {
 		async: false
 	}).done(function (data) {
 		//console.log('typeof data---',typeof data);
+		console.log(data);
 		item = eval('(' + data + ')');
+	}).error(function (e) {
+		console.log(e);
 	});
 	return item;
 }
@@ -1101,6 +1351,13 @@ var Item = function (_React$Component) {
 				itemID: this.state.item.itemID,
 				quantity: this.state.item.quantity
 			});
+		}
+	}, {
+		key: 'buyNow',
+		value: function buyNow() {
+			console.log(JSON.stringify([this.state.item]));
+			sessionStorage.items = JSON.stringify([this.state.item]);
+			location.hash = 'confirm_order';
 		}
 	}, {
 		key: 'render',
@@ -1182,7 +1439,7 @@ var Item = function (_React$Component) {
 								React.createElement(
 									'span',
 									{ className: 'price' },
-									item.price
+									Number(item.price).toFixed(2)
 								)
 							)
 						),
@@ -1216,7 +1473,7 @@ var Item = function (_React$Component) {
 						),
 						React.createElement(
 							'div',
-							{ className: 'buy' },
+							{ className: 'buy', onClick: this.buyNow.bind(this) },
 							'立即购买'
 						),
 						React.createElement(
@@ -1331,7 +1588,7 @@ var Item = function (_React$Component) {
 
 exports.Item = Item;
 
-},{"../common.jsx":1,"./CommentBox.jsx":3}],7:[function(require,module,exports){
+},{"../common.jsx":1,"./CommentBox.jsx":3}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1679,7 +1936,7 @@ var ShoppingCart = function (_React$Component2) {
 
 exports.ShoppingCart = ShoppingCart;
 
-},{"../common.jsx":1}],8:[function(require,module,exports){
+},{"../common.jsx":1}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1702,7 +1959,12 @@ var Signin = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
 
-		_this.state = {};
+		_this.state = {
+			user: {
+				userID: '',
+				password: ''
+			}
+		};
 		return _this;
 	}
 
@@ -1723,10 +1985,63 @@ var Signin = function (_React$Component) {
 			if (this.state.userID && this.state.password) {
 				this.props.act({
 					type: 'LOGIN',
-					data: this.state
+					data: {
+						userID: this.state.userID,
+						password: this.state.password
+					}
 				});
 			} else {
 				alert('Invalid username or password.');
+			}
+		}
+	}, {
+		key: 'setUserID',
+		value: function setUserID(e) {
+			var user = this.state.user;
+			this.state.user.userID = e.target.value;
+			this.setState({
+				user: user
+			});
+		}
+	}, {
+		key: 'setPassword',
+		value: function setPassword(e) {
+			var user = this.state.user;
+			this.state.user.password = e.target.value;
+			this.setState({
+				user: user
+			});
+		}
+	}, {
+		key: 'checkPassword',
+		value: function checkPassword() {
+			if (!this.state.user.password) {
+				return '';
+			} else {
+				return (/^\w{6,20}$/.test(this.state.user.password) ? 'success' : 'error'
+				);
+			};
+		}
+	}, {
+		key: 'checkUserID',
+		value: function checkUserID() {
+			if (!this.state.user.userID) {
+				return '';
+			} else {
+				return (/^\d{11}$/.test(this.state.user.userID) ? 'success' : 'error'
+				);
+			};
+		}
+	}, {
+		key: 'register',
+		value: function register() {
+			if (this.checkUserID() === 'success' && this.checkPassword() === 'success') {
+				this.props.act({
+					type: 'REGISTER',
+					user: this.state.user
+				});
+			} else {
+				alert("您输入的信息有误！");
 			}
 		}
 	}, {
@@ -1761,11 +2076,25 @@ var Signin = function (_React$Component) {
 							React.createElement(
 								'form',
 								{ className: 'register-form' },
-								React.createElement('input', { type: 'text', name: 'username', placeholder: '请输入11位手机号' }),
+								React.createElement('input', {
+									type: 'text',
+									name: 'username',
+									placeholder: '请输入11位手机号',
+									onChange: this.setUserID.bind(this),
+									className: this.checkUserID() }),
 								React.createElement('p', { className: 'info' }),
-								React.createElement('input', { type: 'password', name: 'password', placeholder: '密码（6-20位字母、数字与符号的组合）' }),
+								React.createElement('input', {
+									type: 'password',
+									name: 'password',
+									placeholder: '密码（6-20位字母、数字与符号的组合）',
+									onChange: this.setPassword.bind(this),
+									className: this.checkPassword() }),
 								React.createElement('p', { className: 'info' }),
-								React.createElement('input', { type: 'password', name: 'password2', placeholder: '确认密码' }),
+								React.createElement('input', {
+									type: 'password',
+									name: 'password2',
+									placeholder: '确认密码'
+								}),
 								React.createElement('p', { className: 'info' }),
 								React.createElement('input', { type: 'text', name: 'verif', placeholder: '请输入验证码' }),
 								React.createElement('p', { className: 'info' }),
@@ -1777,7 +2106,7 @@ var Signin = function (_React$Component) {
 								),
 								React.createElement(
 									'div',
-									{ className: 'register-button' },
+									{ className: 'register-button', onClick: this.register.bind(this) },
 									'注 册'
 								)
 							)
@@ -1843,7 +2172,7 @@ var Signin = function (_React$Component) {
 
 exports.Signin = Signin;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1861,6 +2190,8 @@ var _ShoppingCart2 = require('./components/ShoppingCart.jsx');
 var _Counter2 = require('./components/Counter.jsx');
 
 var _Signin = require('./components/Signin.jsx');
+
+var _ConfirmOrder = require('./components/ConfirmOrder.jsx');
 
 var _reducer = require('./reducers/reducer.jsx');
 
@@ -2089,6 +2420,25 @@ var ItemContainer = function (_React$Component6) {
 	return ItemContainer;
 }(React.Component);
 
+var ConfirmOrderContainer = function (_React$Component7) {
+	_inherits(ConfirmOrderContainer, _React$Component7);
+
+	function ConfirmOrderContainer() {
+		_classCallCheck(this, ConfirmOrderContainer);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ConfirmOrderContainer).apply(this, arguments));
+	}
+
+	_createClass(ConfirmOrderContainer, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(_ConfirmOrder.ConfirmOrder, { DI: {} });
+		}
+	}]);
+
+	return ConfirmOrderContainer;
+}(React.Component);
+
 // The router.
 
 
@@ -2106,12 +2456,13 @@ ReactDOM.render(React.createElement(
 			React.createElement(Route, { path: '/comment_box', component: _CommentBox.CommentBox }),
 			React.createElement(Route, { path: '/shopping_cart', component: ShoppingCartContainer }),
 			React.createElement(Route, { path: '/counter', component: $$Counter }),
-			React.createElement(Route, { path: '/item', component: ItemContainer })
+			React.createElement(Route, { path: '/item', component: ItemContainer }),
+			React.createElement(Route, { path: '/confirm_order', component: ConfirmOrderContainer })
 		)
 	)
 ), document.getElementById('app'));
 
-},{"./components/App.jsx":2,"./components/CommentBox.jsx":3,"./components/Counter.jsx":4,"./components/Home.jsx":5,"./components/Item.jsx":6,"./components/ShoppingCart.jsx":7,"./components/Signin.jsx":8,"./reducers/reducer.jsx":12}],10:[function(require,module,exports){
+},{"./components/App.jsx":2,"./components/CommentBox.jsx":3,"./components/ConfirmOrder.jsx":4,"./components/Counter.jsx":5,"./components/Home.jsx":6,"./components/Item.jsx":7,"./components/ShoppingCart.jsx":8,"./components/Signin.jsx":9,"./reducers/reducer.jsx":13}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2168,6 +2519,11 @@ function user() {
 			}
 		case 'LOGOUT':
 			location = "#/home";
+			$.ajax({
+				url: _common.$$phpDir + '/logout.php',
+				type: 'post',
+				async: false
+			});
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
@@ -2200,7 +2556,7 @@ function user() {
 
 exports.user = user;
 
-},{"../common.jsx":1}],11:[function(require,module,exports){
+},{"../common.jsx":1}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2227,7 +2583,7 @@ function counter() {
 
 exports.counter = counter;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2245,7 +2601,7 @@ var $$reducer = (0, _redux.combineReducers)({ user: _app.user, counter: _counter
 
 exports.$$reducer = $$reducer;
 
-},{"./app.jsx":10,"./counter.jsx":11,"redux":23}],13:[function(require,module,exports){
+},{"./app.jsx":11,"./counter.jsx":12,"redux":20}],14:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2255,6 +2611,9 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -2338,149 +2697,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],14:[function(require,module,exports){
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetPrototype = Object.getPrototypeOf;
-
-/**
- * Gets the `[[Prototype]]` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {null|Object} Returns the `[[Prototype]]`.
- */
-function getPrototype(value) {
-  return nativeGetPrototype(Object(value));
-}
-
-module.exports = getPrototype;
-
 },{}],15:[function(require,module,exports){
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
-function isHostObject(value) {
-  // Many host objects are `Object` objects that can coerce to strings
-  // despite having improperly defined `toString` methods.
-  var result = false;
-  if (value != null && typeof value.toString != 'function') {
-    try {
-      result = !!(value + '');
-    } catch (e) {}
-  }
-  return result;
-}
-
-module.exports = isHostObject;
-
-},{}],16:[function(require,module,exports){
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-},{}],17:[function(require,module,exports){
-var getPrototype = require('./_getPrototype'),
-    isHostObject = require('./_isHostObject'),
-    isObjectLike = require('./isObjectLike');
-
-/** `Object#toString` result references. */
-var objectTag = '[object Object]';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = Function.prototype.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to infer the `Object` constructor. */
-var objectCtorString = funcToString.call(Object);
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object,
- *  else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */
-function isPlainObject(value) {
-  if (!isObjectLike(value) ||
-      objectToString.call(value) != objectTag || isHostObject(value)) {
-    return false;
-  }
-  var proto = getPrototype(value);
-  if (proto === null) {
-    return true;
-  }
-  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-  return (typeof Ctor == 'function' &&
-    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-}
-
-module.exports = isPlainObject;
-
-},{"./_getPrototype":14,"./_isHostObject":15,"./isObjectLike":16}],18:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2539,7 +2756,7 @@ function applyMiddleware() {
     };
   };
 }
-},{"./compose":21}],19:[function(require,module,exports){
+},{"./compose":18}],16:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2591,7 +2808,7 @@ function bindActionCreators(actionCreators, dispatch) {
   }
   return boundActionCreators;
 }
-},{}],20:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -2721,7 +2938,7 @@ function combineReducers(reducers) {
   };
 }
 }).call(this,require('_process'))
-},{"./createStore":22,"./utils/warning":24,"_process":13,"lodash/isPlainObject":17}],21:[function(require,module,exports){
+},{"./createStore":19,"./utils/warning":21,"_process":14,"lodash/isPlainObject":25}],18:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -2762,7 +2979,7 @@ function compose() {
     if (typeof _ret === "object") return _ret.v;
   }
 }
-},{}],22:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3025,7 +3242,7 @@ function createStore(reducer, initialState, enhancer) {
     replaceReducer: replaceReducer
   }, _ref2[_symbolObservable2["default"]] = observable, _ref2;
 }
-},{"lodash/isPlainObject":17,"symbol-observable":25}],23:[function(require,module,exports){
+},{"lodash/isPlainObject":25,"symbol-observable":26}],20:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -3074,7 +3291,7 @@ exports.bindActionCreators = _bindActionCreators2["default"];
 exports.applyMiddleware = _applyMiddleware2["default"];
 exports.compose = _compose2["default"];
 }).call(this,require('_process'))
-},{"./applyMiddleware":18,"./bindActionCreators":19,"./combineReducers":20,"./compose":21,"./createStore":22,"./utils/warning":24,"_process":13}],24:[function(require,module,exports){
+},{"./applyMiddleware":15,"./bindActionCreators":16,"./combineReducers":17,"./compose":18,"./createStore":19,"./utils/warning":21,"_process":14}],21:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3100,7 +3317,149 @@ function warning(message) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
+},{}],22:[function(require,module,exports){
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetPrototype = Object.getPrototypeOf;
+
+/**
+ * Gets the `[[Prototype]]` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {null|Object} Returns the `[[Prototype]]`.
+ */
+function getPrototype(value) {
+  return nativeGetPrototype(Object(value));
+}
+
+module.exports = getPrototype;
+
+},{}],23:[function(require,module,exports){
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+module.exports = isHostObject;
+
+},{}],24:[function(require,module,exports){
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
 },{}],25:[function(require,module,exports){
+var getPrototype = require('./_getPrototype'),
+    isHostObject = require('./_isHostObject'),
+    isObjectLike = require('./isObjectLike');
+
+/** `Object#toString` result references. */
+var objectTag = '[object Object]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = Function.prototype.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Used to infer the `Object` constructor. */
+var objectCtorString = funcToString.call(Object);
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * Checks if `value` is a plain object, that is, an object created by the
+ * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.8.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a plain object,
+ *  else `false`.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ * }
+ *
+ * _.isPlainObject(new Foo);
+ * // => false
+ *
+ * _.isPlainObject([1, 2, 3]);
+ * // => false
+ *
+ * _.isPlainObject({ 'x': 0, 'y': 0 });
+ * // => true
+ *
+ * _.isPlainObject(Object.create(null));
+ * // => true
+ */
+function isPlainObject(value) {
+  if (!isObjectLike(value) ||
+      objectToString.call(value) != objectTag || isHostObject(value)) {
+    return false;
+  }
+  var proto = getPrototype(value);
+  if (proto === null) {
+    return true;
+  }
+  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+  return (typeof Ctor == 'function' &&
+    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+}
+
+module.exports = isPlainObject;
+
+},{"./_getPrototype":22,"./_isHostObject":23,"./isObjectLike":24}],26:[function(require,module,exports){
 (function (global){
 /* global window */
 'use strict';
@@ -3108,7 +3467,7 @@ function warning(message) {
 module.exports = require('./ponyfill')(global || window || this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./ponyfill":26}],26:[function(require,module,exports){
+},{"./ponyfill":27}],27:[function(require,module,exports){
 'use strict';
 
 module.exports = function symbolObservablePonyfill(root) {
@@ -3129,4 +3488,4 @@ module.exports = function symbolObservablePonyfill(root) {
 	return result;
 };
 
-},{}]},{},[9]);
+},{}]},{},[10]);

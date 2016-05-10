@@ -13,7 +13,7 @@
 		.header {
 			margin:15px 20px 10px 20px;
 			padding-bottom:10px;
-			border-bottom:1px solid lightgrey;
+			border-bottom:1px solid @grey-border;
 			a:link {color:black;}
 			a:visited {color:black;}
 		}
@@ -24,7 +24,7 @@
 				width:464px;
 				height:464px;
 				padding:2px;
-				border:1px solid lightgrey;
+				border:1px solid @grey-border;
 				img {width:100%;}
 			}
 			.tabs {
@@ -36,7 +36,7 @@
 					height:54px;
 					margin:4px 2px 4px 2px;
 					padding:2px;
-					border:1px solid lightgrey;
+					border:1px solid @grey-border;
 					img {width:100%;}
 				}
 				li:hover {background:@pink;}
@@ -73,6 +73,9 @@
 			color:white;
 			border-radius:5px;
 		}
+		.buy:hover {
+			background: @pink-active;
+		}
 		.toCart {
 			float:left;
 			width:183px;
@@ -85,14 +88,22 @@
 			cursor:pointer;
 			border-radius:5px;
 		}
+		.toCart:hover {
+			color: @pink-active;
+			border: 2px solid @pink-active;
+		}
 	}
 	
-	.item .shuliang {padding:30px 0 30px 0;}
-	.item .shuliang p {float:left;height:30px;vertical-align:top;line-height:30px;}
-	.counter {overflow:hidden;}
-	.minus,.plus {float:left;width:28px;height:28px;border:1px solid lightgrey;line-height:28px;text-align:center;background:#F4F4F4;cursor:pointer;}
-	.quantity {float:left;width:49px;height:28px;border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;line-height:28px;text-align:center;}
-	.minus:hover,.plus:hover {border:1px solid @pink;color:@pink;}
+	.shuliang {
+		padding:30px 0 30px 0;
+		p {float:left;height:30px;vertical-align:top;line-height:30px;}
+		.counter {
+			overflow:hidden;
+			.minus,.plus {float:left;width:28px;height:28px;border:1px solid lightgrey;line-height:28px;text-align:center;background:#F4F4F4;cursor:pointer;}
+			.quantity {float:left;width:49px;height:28px;border-top:1px solid lightgrey;border-bottom:1px solid lightgrey;line-height:28px;text-align:center;}
+			.minus:hover,.plus:hover {border:1px solid @pink;color:@pink;}
+		}
+	}	
 
 	.box {
 		margin:30px auto 40px auto;
@@ -101,7 +112,7 @@
 		.box-header>h1 {float:left;margin:5px 20px 0 30px;color:white;}
 		.box-header>p {float:right;margin:20px 20px 0 0;color:white;}
 		.tab>li {float:left;margin:20px;color:#127BAB;cursor:pointer;}
-		.tab>li.active {border-bottom:4px solid lightgrey;}
+		.tab>li.active {border-bottom:4px solid orange;}
 		.content {
 			position:relative;
 			>li {width:960px;background:white;padding:20px;}

@@ -9,6 +9,7 @@ import {CommentBox} from './components/CommentBox.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
 import {Counter} from './components/Counter.jsx';
 import {Signin} from './components/Signin.jsx';
+import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 
 import {$$reducer} from './reducers/reducer.jsx';
 
@@ -129,6 +130,13 @@ class ItemContainer extends React.Component {
 		)
 	}
 }
+class ConfirmOrderContainer extends React.Component {
+	render(){
+		return (
+			<ConfirmOrder DI={{}}/>
+		)
+	}
+}
 
 // The router.
 ReactDOM.render(
@@ -142,6 +150,7 @@ ReactDOM.render(
 					<Route path="/shopping_cart" component={ShoppingCartContainer} />
 					<Route path="/counter" component={$$Counter}/>
 					<Route path="/item" component={ItemContainer}/>
+					<Route path="/confirm_order" component={ConfirmOrderContainer} />
 				</Route>
 			</Router>
 		</Provider>
