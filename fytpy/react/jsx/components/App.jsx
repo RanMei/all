@@ -24,7 +24,9 @@ class SearchBar extends React.Component {
 
 class Topbar extends React.Component {
 	componentWillReceiveProps(newProps){
-		console.log('<Topbar/> updating',newProps,this.state);
+	}
+	componentDidUpdate(){
+		console.log('<Topbar/> updated',this.props,this.state);
 	}
 	render(){
 		console.log('<Topbar/> rendering',this.props,this.state);

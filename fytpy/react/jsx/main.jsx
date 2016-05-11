@@ -10,6 +10,7 @@ import {ShoppingCart} from './components/ShoppingCart.jsx';
 import {Counter} from './components/Counter.jsx';
 import {Signin} from './components/Signin.jsx';
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
+//import {Veil} from './components/Veil.jsx';
 
 import {$$reducer} from './reducers/reducer.jsx';
 
@@ -137,7 +138,9 @@ class ItemContainer extends React.Component {
 class ConfirmOrderContainer extends React.Component {
 	render(){
 		return (
-			<_ConfirmOrder user={$$store.getState().user}/>
+			<_ConfirmOrder 
+				user={$$store.getState().user}
+				act={ (action)=>$$store.dispatch(action) }/>
 		)
 	}
 }

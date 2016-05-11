@@ -129,7 +129,7 @@ class ShoppingCart extends React.Component {
 		//console.log(React);
 		//console.log(Function);
 		return (
-			<div className="shopping-cart wrapper">
+			<div className="shopping-cart wrapper ka-fadeIn">
 				<div className="container">
 					<div className="shopping-cart-header1">我的购物车</div>
 					<div className="shopping-cart-header2">

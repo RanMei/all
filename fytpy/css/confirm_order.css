@@ -241,14 +241,15 @@ body {
   text-align: center;
 }
 .veil {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
-  display: none;
+  height: 100%;
 }
 .veil .bg {
   position: absolute;
   width: 100%;
+  height: 100%;
   background: black;
   opacity: 0.5;
 }
@@ -260,19 +261,22 @@ body {
   background: white;
   margin: 300px auto;
 }
-.veil .close {
+.veil .panel .close {
   position: absolute;
   top: -20px;
   right: -20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #0081BC;
+  background: #2B9DD5;
   cursor: pointer;
   line-height: 40px;
   text-align: center;
   color: white;
   font-size: 30px;
+}
+.veil .panel .close:hover {
+  background: #0379C8;
 }
 .veil .panel input {
   width: 298px;
@@ -281,21 +285,21 @@ body {
   text-indent: 15px;
   margin-bottom: 15px;
 }
-.veil textarea {
+.veil .panel textarea {
   width: 298px;
   border: 1px solid grey;
   text-indent: 15px;
   padding: 10px 0 10px 0;
   font-size: 14px;
 }
-.veil .date {
+.veil .panel .date {
   display: ;
 }
-.veil .error {
+.veil .panel .error {
   border: 1px solid red!important;
   box-shadow: 0 0 3px #DF4949;
 }
-.veil .save {
+.veil .panel .save {
   width: 130px;
   height: 40px;
   margin: 15px auto 0 auto;
@@ -303,18 +307,18 @@ body {
   background: #DF4949;
   border-radius: 3px;
 }
-.veil .save:hover {
+.veil .panel .save:hover {
   background: #CC3134;
 }
 .CONFIRM_ORDER .page-header {
   padding: 15px 0 15px 0;
   overflow: hidden;
 }
-.CONFIRM_ORDER .title {
+.CONFIRM_ORDER .page-header .title {
   float: left;
   font-size: 25px;
 }
-.CONFIRM_ORDER .add {
+.CONFIRM_ORDER .page-header .add {
   float: left;
   padding: 5px;
   color: white;
@@ -322,13 +326,16 @@ body {
   margin-left: 10px;
   margin-top: 3px;
 }
-.CONFIRM_ORDER .deliveryInformation {
+.CONFIRM_ORDER .page-header .add:hover {
+  background: #CC3134;
+}
+.CONFIRM_ORDER .deliveryInformation .di-content {
   padding: 15px 0 20px 0;
   border-bottom: 1px solid lightgrey;
   border-top: 1px solid lightgrey;
   overflow: hidden;
 }
-.CONFIRM_ORDER .di {
+.CONFIRM_ORDER .deliveryInformation .di {
   float: left;
   width: 270px;
   padding: 15px;
@@ -336,97 +343,97 @@ body {
   border: 1px solid lightgrey;
   cursor: pointer;
 }
-.CONFIRM_ORDER .hover {
+.CONFIRM_ORDER .deliveryInformation .di:hover {
   border: 3px solid pink;
   margin: 8px;
 }
-.CONFIRM_ORDER .selected {
+.CONFIRM_ORDER .deliveryInformation .selected {
   border: 3px solid #CC3134;
   margin: 8px;
 }
-.CONFIRM_ORDER .operation {
+.CONFIRM_ORDER .deliveryInformation .operation {
   margin-top: 10px;
   overflow: hidden;
 }
-.CONFIRM_ORDER .edit,
-.CONFIRM_ORDER .remove {
+.CONFIRM_ORDER .deliveryInformation .edit,
+.CONFIRM_ORDER .deliveryInformation .remove {
   float: right;
   width: 76px;
   height: 28px;
   border: 1px solid lightgrey;
   margin-left: 10px;
 }
-.CONFIRM_ORDER .edit:hover,
-.CONFIRM_ORDER .remove:hover {
+.CONFIRM_ORDER .deliveryInformation .edit:hover,
+.CONFIRM_ORDER .deliveryInformation .remove:hover {
   background: #DF4949;
   color: white;
 }
-.CONFIRM_ORDER .items-header {
+.CONFIRM_ORDER .itemsInfo .items-header {
   width: 100%;
   border-bottom: 1px solid lightgrey;
   border-top: 1px solid lightgrey;
   overflow: hidden;
 }
-.CONFIRM_ORDER .items-header li {
+.CONFIRM_ORDER .itemsInfo .items-header li {
   float: left;
   font-size: 14px;
   padding: 10px 0 10px 0;
 }
-.CONFIRM_ORDER .items-header li:nth-child(1) {
+.CONFIRM_ORDER .itemsInfo .items-header li:nth-child(1) {
   width: 400px;
   text-align: center;
 }
-.CONFIRM_ORDER .items-header li:nth-child(2) {
+.CONFIRM_ORDER .itemsInfo .items-header li:nth-child(2) {
   width: 200px;
 }
-.CONFIRM_ORDER .items-header li:nth-child(3) {
+.CONFIRM_ORDER .itemsInfo .items-header li:nth-child(3) {
   width: 200px;
 }
-.CONFIRM_ORDER .items-header li:nth-child(4) {
+.CONFIRM_ORDER .itemsInfo .items-header li:nth-child(4) {
   width: 200px;
 }
-.CONFIRM_ORDER .item {
+.CONFIRM_ORDER .itemsInfo .item {
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid lightgrey;
 }
-.CONFIRM_ORDER .item li {
+.CONFIRM_ORDER .itemsInfo .item li {
   float: left;
 }
-.CONFIRM_ORDER .item li:nth-child(1) {
+.CONFIRM_ORDER .itemsInfo .item li:nth-child(1) {
   width: 400px;
 }
-.CONFIRM_ORDER .item li:nth-child(2) {
+.CONFIRM_ORDER .itemsInfo .item li:nth-child(2) {
   width: 200px;
 }
-.CONFIRM_ORDER .item li:nth-child(3) {
+.CONFIRM_ORDER .itemsInfo .item li:nth-child(3) {
   width: 200px;
 }
-.CONFIRM_ORDER .item li:nth-child(4) {
+.CONFIRM_ORDER .itemsInfo .item li:nth-child(4) {
   width: 200px;
 }
-.CONFIRM_ORDER .item .thumbnail {
+.CONFIRM_ORDER .itemsInfo .item .thumbnail {
   float: left;
   width: 100px;
   height: 100px;
   margin: 10px;
   border: 1px solid lightgrey;
 }
-.CONFIRM_ORDER .item .thumbnail img {
+.CONFIRM_ORDER .itemsInfo .item .thumbnail img {
   width: 100%;
 }
-.CONFIRM_ORDER .item .information {
+.CONFIRM_ORDER .itemsInfo .item .information {
   margin: 20px 0 0 0;
   text-indent: 20px;
 }
-.CONFIRM_ORDER .item .price {
+.CONFIRM_ORDER .itemsInfo .item .price {
   font-weight: bold;
   margin-top: 20px;
 }
-.CONFIRM_ORDER .item .quantity {
+.CONFIRM_ORDER .itemsInfo .item .quantity {
   margin-top: 20px;
 }
-.CONFIRM_ORDER .item .subtotal {
+.CONFIRM_ORDER .itemsInfo .item .subtotal {
   color: #DF4949;
   font-weight: bold;
   margin-top: 20px;
