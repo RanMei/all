@@ -99,11 +99,12 @@
     // 获取当前员工信息和机票订单信息。
     $scope.order = {
         id: '31856983561',
-    	status: 'unpaid',
+    	status: 'refunding',
     	ontimeRatio: 0.95,
     	create_at: '2016-08-09',
     	totalPrice: 1000,
     	deliveryFee: 15,
+        airCompany: '中国联航',
     	deliveryInfo: {
     		consignee: '李明月',
     		phone: '13011111111',

@@ -723,7 +723,7 @@ var ConfirmOrder = function (_React$Component) {
 			//console.log(this.state);
 			return React.createElement(
 				'div',
-				{ className: 'CONFIRM_ORDER' },
+				{ className: 'CONFIRM_ORDER ka-slideDown' },
 				this.state.veilVisible ? React.createElement(
 					'div',
 					{ className: 'veil' },
@@ -1084,7 +1084,7 @@ var Home = function (_React$Component) {
 		value: function render() {
 			return React.createElement(
 				"div",
-				{ id: "home" },
+				{ id: "home", className: "ka-slideDown" },
 				React.createElement(Showcase, null)
 			);
 		}
@@ -1473,7 +1473,7 @@ var Item = function (_React$Component) {
 			var thumbnail = this.state.thumbnail;
 			return React.createElement(
 				'div',
-				{ id: 'ITEM' },
+				{ id: 'ITEM', className: 'ka-slideDown' },
 				React.createElement(
 					'div',
 					{ className: 'item container' },
@@ -1823,21 +1823,27 @@ var ShoppingCart = function (_React$Component2) {
 	function ShoppingCart(props) {
 		_classCallCheck(this, ShoppingCart);
 
-		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
-
-		_this2.state = {
-			items: _this2.props.user.shoppingCart || []
-		};
-		console.log('<ShoppingCart/> creating', _this2.props, _this2.state);
-		return _this2;
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
 	}
 
 	_createClass(ShoppingCart, [{
+		key: "getInitialState",
+		value: function getInitialState() {}
+	}, {
+		key: "componentWillMount",
+		value: function componentWillMount() {
+			this.setState({
+				items: this.props.user.shoppingCart || []
+			});
+		}
+	}, {
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			console.log('<ShoppingCart/> mount', this.props, this.state);
+		}
+	}, {
 		key: "componentWillReceiveProps",
 		value: function componentWillReceiveProps(newProps) {
-			this.setState({
-				items: {}
-			});
 			this.setState({
 				items: _typeof(newProps.user.shoppingCart) === 'object' ? newProps.user.shoppingCart : []
 			});
@@ -1940,7 +1946,7 @@ var ShoppingCart = function (_React$Component2) {
 			//console.log(Function);
 			return React.createElement(
 				"div",
-				{ className: "shopping-cart wrapper ka-fadeIn" },
+				{ className: "shopping-cart wrapper ka-slideDown" },
 				React.createElement(
 					"div",
 					{ className: "container" },
@@ -2319,6 +2325,7 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var Link = ReactRouter.Link;
 var hashHistory = ReactRouter.hashHistory;
+var IndexRoute = ReactRouter.IndexRoute;
 
 var createStore = Redux.createStore;
 var combineReducers = Redux.combineReducers;
@@ -2575,7 +2582,8 @@ ReactDOM.render(React.createElement(
 			React.createElement(Route, { path: '/shopping_cart', component: ShoppingCartContainer }),
 			React.createElement(Route, { path: '/counter', component: $$Counter }),
 			React.createElement(Route, { path: '/item', component: ItemContainer }),
-			React.createElement(Route, { path: '/confirm_order', component: ConfirmOrderContainer })
+			React.createElement(Route, { path: '/confirm_order', component: ConfirmOrderContainer }),
+			React.createElement(IndexRoute, { path: '/home', component: _Home.Home })
 		)
 	)
 ), document.getElementById('app'));

@@ -63,7 +63,7 @@ class ConfirmOrder extends React.Component {
 		//console.log(this.props);
 		//console.log(this.state);
 		return (
-			<div className="CONFIRM_ORDER">
+			<div className="CONFIRM_ORDER ka-slideDown">
 				{this.state.veilVisible?
 				<div className="veil">
 					<div className="bg">

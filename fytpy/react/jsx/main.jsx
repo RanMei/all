@@ -20,6 +20,7 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var Link = ReactRouter.Link;
 var hashHistory = ReactRouter.hashHistory;
+var IndexRoute = ReactRouter.IndexRoute;
 
 var createStore = Redux.createStore;
 var combineReducers =  Redux.combineReducers;
@@ -158,6 +159,7 @@ ReactDOM.render(
 					<Route path="/counter" component={$$Counter}/>
 					<Route path="/item" component={ItemContainer}/>
 					<Route path="/confirm_order" component={ConfirmOrderContainer} />
+					<IndexRoute path="/home" component={Home} />
 				</Route>
 			</Router>
 		</Provider>

@@ -3,7 +3,7 @@ import {$$imgDir} from '../common.jsx';
 class Home extends React.Component {
 	render() {
 		return (
-			<div id="home">
+			<div id="home" className="ka-slideDown">
 				<Showcase/>
 			</div>
 		);

@@ -87,10 +87,10 @@ gulp.task( "less",function(){
 		.pipe( less() )
 		.pipe( gulp.dest(    "./caredaily/css") );
 });
-gulp.task( 'less_#wolf',function(){
-	gulp.src( "./#wolf/less/*.less" )
+gulp.task( 'less_wolf',function(){
+	gulp.src( "./_wolf/less/*.less" )
 		.pipe( less() )
-		.pipe( gulp.dest("./#wolf/css") );
+		.pipe( gulp.dest("./_wolf/css") );
 });
 gulp.task( 'less_fytpy',function(){
 	gulp.src( './fytpy/less/*.less')
@@ -116,7 +116,7 @@ gulp.task( "default", function(){
 
 	// less-tasks	
 	gulp.watch( './angular/less/*.less',['less'] );
-	gulp.watch( './#wolf/less/*.less',['less_#wolf'] );
+	gulp.watch( './_wolf/less/*.less',['less_wolf'] );
 	gulp.watch( './caredaily/less/*.less',['less'] );
 	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
 	gulp.watch( './$tpl/less/*.less',['less_$tpl'] );

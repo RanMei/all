@@ -9,7 +9,7 @@
         <div class="top-top">
             <span class="status">{{renderStatus()}}</span>
             <span class="top-right" ng-if=" order.status==='unpaid' ">剩余时间: <span class="number">{{time_left}}</span></span>
-            <span class="top-right" ng-if=" order.status==='REFUNDING'||order.status==='REFUND' ">退款金额: <span class="number">￥{{order.refund||0}}</span></span>
+            <span class="top-right" ng-if=" order.status==='refunding'||order.status==='REFUND' ">退款金额: <span class="number">￥{{order.refund||0}}</span></span>
         </div>
         <div class="row">
             <span class="text">订单时间：</span><span>{{order.create_at}}</span>
@@ -26,7 +26,7 @@
         </div>
         <div class="row2">
             <p class="briefing">
-                中国联行{{order.ticket_info.flight_no}}({{order.ticket_info.aircraft_type}}) | 准点率{{renderPercentage()}}<span ng-if="order.flight_list.meal"> | 含餐</span>
+                {{order.airCompany}}{{order.ticket_info.flight_no}}({{order.ticket_info.aircraft_type}}) | 准点率{{renderPercentage()}}<span ng-if="order.flight_list.meal"> | 含餐</span>
             </p>
             <ul>
                 <li>
@@ -36,7 +36,7 @@
                 <li>
                     <p class="timeSpan">{{order.flight_list.fly_time.split(":")[0]}}时{{order.flight_list.fly_time.split(":")[1]}}分</p>
                     <img class="arrow_with_dot" src="./mobile/images/arrow_with_dot.png"/>
-                    <p class="transferStation">_经停呼和浩特</p>
+                    <p class="transferStation">经停呼和浩特</p>
                 </li>
                 <li>
                     <p class="time">{{order.end_time | date:"HH:mm" ||"null"}}</p>
@@ -55,7 +55,7 @@
         </div>
 
         <div class="price thisHeader">
-            <symbol name="icon-fare"/> 票价信息<span class="total">合计：<span class="totalPrice">￥{{order.totalPrice}}</span></span>
+            <symbol name="icon-fare"/> 票价信息<span class="total">合计：<span class="totalPrice">￥{{order.totalPrice.toFixed(2)}}</span></span>
         </div>
 
         <ul class="charges">

@@ -72,7 +72,7 @@ class Item extends React.Component {
 		var self = this;
 		var thumbnail = this.state.thumbnail;
 		return (
-			<div id="ITEM">
+			<div id="ITEM" className="ka-slideDown">
 				<div className="item container">
 					<div className="header">
 						<p>

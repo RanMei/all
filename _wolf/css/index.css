@@ -36,7 +36,7 @@ body {
 .clear {
   clear: both;
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* Media Queries */
 @media (min-width: 780px) {
   html {
     font-size: 16px;
@@ -52,7 +52,7 @@ body {
     font-size: 20px;
   }
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* */
 .side_tabs {
   position: fixed;
   top: 40%;
@@ -72,10 +72,19 @@ body {
 .side_tabs li.selected {
   background: none;
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* */
 .slider > li {
   position: relative;
   overflow: hidden;
+}
+.first .container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 600px;
 }
 .first .navbar {
   position: relative;
@@ -172,7 +181,7 @@ body {
 .nav span {
   font-size: 10px;
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* */
 .second .title {
   margin: 50px 0 20px 0;
   font-size: 2rem;
@@ -188,38 +197,38 @@ body {
   width: 500px;
   margin: 60px auto auto auto;
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* */
 .third .title {
   margin: 100px 0 20px 0;
   font-size: 25px;
   color: grey;
   text-align: center;
 }
-.culture {
+.third .culture {
   width: 876px;
   margin: 80px auto 0 auto;
   overflow: hidden;
 }
-.culture > li {
+.third .culture > li {
   float: left;
   width: 280px;
   border-left: 2px solid #CA3028;
   padding-left: 10px;
 }
-.culture > li > p:nth-child(1) {
+.third .culture > li > p:nth-child(1) {
   font-size: 28px;
 }
-.culture > li > p:nth-child(2) {
+.third .culture > li > p:nth-child(2) {
   font-size: 14px;
   color: grey;
 }
-.gallery {
+.third .gallery {
   position: absolute;
   bottom: 0;
   width: 992px;
   height: 220px;
 }
-.gallery a {
+.third .gallery a {
   position: relative;
   width: 120px;
   height: 220px;
@@ -229,36 +238,36 @@ body {
   transition: 2s;
   display: block;
 }
-.gallery img {
+.third .gallery img {
   position: absolute;
   width: 100%;
   display: block;
 }
-.p1 {
+.third .gallery .p1 {
   bottom: -160px;
 }
-.p2 {
+.third .gallery .p2 {
   bottom: -110px;
 }
-.p3 {
+.third .gallery .p3 {
   bottom: -70px;
 }
-.p4 {
+.third .gallery .p4 {
   bottom: -130px;
 }
-.p5 {
+.third .gallery .p5 {
   bottom: -200px;
 }
-.p6 {
+.third .gallery .p6 {
   bottom: -100px;
 }
-.p7 {
+.third .gallery .p7 {
   bottom: -130px;
 }
-.p8 {
+.third .gallery .p8 {
   bottom: -80px;
 }
-/*-----------------------------------------------------------------------------------------------------------------------*/
+/* */
 .fourth .title {
   padding: 30px 0 20px 0;
   text-align: center;
@@ -303,31 +312,31 @@ body {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
-.card {
+.cards .card {
   position: absolute;
   width: 214px;
   opacity: 0.9;
   transform-origin: 50% 50%;
 }
-.card1 {
+.cards .card1 {
   transform: translateX(-360px) translateZ(-360px) rotateY(40deg);
 }
-.card2 {
+.cards .card2 {
   transform: translateX(-240px) translateZ(-240px) rotateY(40deg);
 }
-.card3 {
+.cards .card3 {
   transform: translateX(-120px) translateZ(-120px) rotateY(40deg);
 }
-.card4 {
+.cards .card4 {
   z-index: 1;
 }
-.card5 {
+.cards .card5 {
   transform: translateX(120px) translateZ(-120px) rotateY(-40deg);
 }
-.card6 {
+.cards .card6 {
   transform: translateX(240px) translateZ(-240px) rotateY(-40deg);
 }
-.card7 {
+.cards .card7 {
   transform: translateX(360px) translateZ(-360px) rotateY(-40deg);
 }
 .month {

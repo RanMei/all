@@ -42,15 +42,19 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
-		this.state = {
+	}
+	getInitialState(){
+
+	}
+	componentWillMount(){
+		this.setState({
 			items: this.props.user.shoppingCart||[]
-		}
-		console.log('<ShoppingCart/> creating',this.props,this.state)
+		})
+	}
+	componentDidMount(){
+		console.log('<ShoppingCart/> mount',this.props,this.state)
 	}
 	componentWillReceiveProps(newProps){
-		this.setState({
-			items: {}
-		})
 		this.setState({
 			items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
 		})
@@ -129,7 +133,7 @@ class ShoppingCart extends React.Component {
 		//console.log(React);
 		//console.log(Function);
 		return (
-			<div className="shopping-cart wrapper ka-fadeIn">
+			<div className="shopping-cart wrapper ka-slideDown">
 				<div className="container">
 					<div className="shopping-cart-header1">我的购物车</div>
 					<div className="shopping-cart-header2">

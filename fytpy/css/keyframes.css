@@ -6,6 +6,30 @@
     opacity: 1;
   }
 }
+@keyframes fadeInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: ;
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%) scale(0.5);
+  }
+  100% {
+    transform: ;
+  }
+}
 .ka-fadeIn {
   animation: fadeIn 0.8s forwards;
+}
+.ka-fadeInFromBottom {
+  animation: fadeInFromBottom 0.4s forwards;
+}
+.ka-slideDown {
+  animation: slideDown 0.3s forwards;
 }
