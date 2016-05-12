@@ -25,10 +25,9 @@ define(['./session', './common'], function (_session, _common) {
 				url: "../php/item.php",
 				type: "post",
 				async: false,
-				data: { itemID: itemID },
-				success: function success(data) {
-					$$item = eval('(' + data + ')');
-				}
+				data: { itemID: itemID }
+			}).done(function (data) {
+				$$item = eval('(' + data + ')');
 			});
 			/*
    item={
@@ -91,24 +90,22 @@ define(['./session', './common'], function (_session, _common) {
 		//
 		function toCart() {
 			var itemToCart = {
+				type: 'ADD_TO_CART',
 				itemID: $$item.itemID,
-				quantity: $$item.quantity,
-				to_cart: true
+				quantity: $$item.quantity
 			};
 			console.log(JSON.stringify(itemToCart));
 			$.ajax({
 				url: "../php/insert.php",
 				type: "post",
-				async: true,
-				data: { data: JSON.stringify(itemToCart) },
-				success: function success(data) {
-					console.log(data);
-					if (data == true) {
-						$(".toCart").html("已加入购物车");
-					} else {
-						$(".toCart").html("请先登录");
-					};
-				}
+				data: { data: JSON.stringify(itemToCart) }
+			}).done(function (data) {
+				console.log(data);
+				if (data) {
+					$(".toCart").html("已加入购物车");
+				} else {
+					$(".toCart").html("请先登录");
+				};
 			});
 		};
 		//

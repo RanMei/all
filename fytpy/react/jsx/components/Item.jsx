@@ -13,7 +13,7 @@ function getItem(){
 	}).done(function(data){
 		//console.log('typeof data---',typeof data);
 		console.log('item received');
-		item = eval('('+data+')');
+		item = JSON.parse(data);
 	}).error(function(e){
 		console.log(e);
 	})

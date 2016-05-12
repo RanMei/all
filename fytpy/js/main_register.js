@@ -17,7 +17,7 @@ define([], function () {
 					type: "post",
 					data: { data: username },
 					success: function success(data) {
-						if (data == true) {
+						if (data) {
 							$(".info").eq(0).html("");
 							$('.register-form input[name=username]').removeClass("error").addClass("success");
 							n1 = true;
@@ -124,15 +124,14 @@ define([], function () {
 			$.ajax({
 				url: "./php/login.php",
 				type: "post",
-				data: { data: JSON.stringify(user) },
-				success: function success(a) {
-					if (a == true) {
-						alert("登录成功！");
-						location.href = "index.html";
-					} else {
-						alert("您输入的用户名或密码有误！");
-						$('.login-button').html("登 录");
-					}
+				data: { data: JSON.stringify(user) }
+			}).done(function (data) {
+				if (data) {
+					alert("登录成功！");
+					location.href = "index.html";
+				} else {
+					alert("您输入的用户名或密码有误！");
+					$('.login-button').html("登 录");
 				}
 			});
 		};

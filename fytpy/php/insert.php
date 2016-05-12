@@ -19,12 +19,16 @@ if( isset($_SESSION["username"]) ){
 		mysqli_query($connection,"insert into orders(orderID,username,consignee,phoneNumber,deliveryAddress,totalPrice,date)values('{$data["orderID"]}','{$data["username"]}','{$data["consignee"]}','{$data["phoneNumber"]}','{$data["deliveryAddress"]}','{$data["totalPrice"]}','{$data["date"]}')");
 	};
 
-	if( isset($data["to_cart"]) ){
-		$rows=mysqli_query($connection,"select * from shoppingCart where username='{$_SESSION["username"]}' and itemID='{$data["itemID"]}'");
+	function addToCart($connection,$data){
+		$rows = mysqli_query($connection,"select * from shoppingCart where username='{$_SESSION["username"]}' and itemID='{$data["itemID"]}'");
 		if(mysqli_num_rows($rows)==0){
 			mysqli_query($connection,"insert into shoppingCart(username,itemID,quantity)values('{$_SESSION["username"]}','{$data["itemID"]}','{$data["quantity"]}')");
 		};
 		echo true;
+	}
+	
+	if( $data["type"]==='ADD_TO_CART' ){
+		addToCart($connection,$data);
 	};
 
 }else{

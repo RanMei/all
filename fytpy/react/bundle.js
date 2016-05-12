@@ -1391,7 +1391,7 @@ function getItem() {
 	}).done(function (data) {
 		//console.log('typeof data---',typeof data);
 		console.log('item received');
-		item = eval('(' + data + ')');
+		item = JSON.parse(data);
 	}).error(function (e) {
 		console.log(e);
 	});
@@ -2605,7 +2605,8 @@ function getUser() {
 		url: 'http://localhost/fytpy/php/session.php',
 		async: false
 	}).done(function (data) {
-		user = eval('(' + data + ')');
+		//user = eval('('+data+')');
+		user = JSON.parse(data);
 		//console.log(user);
 		sessionStorage.userID = user.username;
 	});
@@ -2654,7 +2655,6 @@ function user() {
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
-			action.to_cart = true;
 			$.ajax({
 				type: 'post',
 				url: _common.$$phpDir + '/insert.php',

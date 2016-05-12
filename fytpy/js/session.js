@@ -25,7 +25,7 @@ define(['exports'], function (exports) {
 
 	var $$root = 'http://' + location.hostname + '/fytpy/';
 
-	console.log('---root_directory', $$root);
+	console.log('$$root', $$root);
 
 	function insertHeaderFooter() {
 		$.ajax({
@@ -35,11 +35,12 @@ define(['exports'], function (exports) {
 			$(document).ready(function () {
 				$("#header").prepend(data);
 				$(".a-search").attr("href", $$root + "search.html");
-				$(".a_home").attr("href", $$root + "index.html");
+				$(".a_home").attr("href", $$root);
 				$(".a-cart").attr("href", $$root + "shopping_cart.html");
 				$(".a_my_orders").attr("href", $$root + "orders.html");
 				console.log($(".a_my_orders").attr("href"));
 			});
+			console.log('Header inserted.');
 		}).done(getUser);
 		$.ajax({
 			url: $$root + "tpl/footer.html",
@@ -47,6 +48,7 @@ define(['exports'], function (exports) {
 		}).done(function (data) {
 			$(document).ready(function () {
 				$("#footer").prepend(data);
+				console.log('Footer inserted.');
 			});
 		});
 	};
@@ -59,14 +61,15 @@ define(['exports'], function (exports) {
 			async: false
 		}).done(function (data) {
 			if (data == false) {} else {
-				console.log(data);
-				user = eval('(' + data + ')');
+				//console.log(data,typeof data);
+				user = JSON.parse(data);
 				$(document).ready(function () {
 					$(".login").html("<li class='welcome'><a href='./member.html'>" + user.username + "</a></li>");
 					$(".register").replaceWith("<li class='logout'>注销</li>");
 					$(".quantityIn").html("" + user.shoppingCart.length + "");
 				});
 				document.cookie = "userID:" + user.username;
+				console.log('User got.', user);
 				console.log(document.cookie);
 			};
 		});

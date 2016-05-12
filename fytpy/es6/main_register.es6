@@ -14,7 +14,7 @@ $(document).ready(function(){
 				type:"post",
 				data:{data:username},
 				success:function(data){
-					if(data==true){
+					if( data ){
 						$(".info").eq(0).html("");
 						$('.register-form input[name=username]').removeClass("error").addClass("success");
 						n1=true;
@@ -117,15 +117,14 @@ $(document).ready(function(){
 		$.ajax({
 			url:"./php/login.php",
 			type:"post",
-			data:{  data:JSON.stringify(user)  },
-			success:function(a){
-				if(a==true){
-					alert("登录成功！");
-					location.href="index.html";
-				}else{
-					alert("您输入的用户名或密码有误！");
-					$('.login-button').html("登 录");
-				}
+			data:{  data:JSON.stringify(user)  }
+		}).done(function(data){
+			if( data ){
+				alert("登录成功！");
+				location.href="index.html";
+			}else{
+				alert("您输入的用户名或密码有误！");
+				$('.login-button').html("登 录");
 			}
 		});
 	};

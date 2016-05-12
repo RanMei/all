@@ -7,7 +7,8 @@ function getUser (){
 		url: 'http://localhost/fytpy/php/session.php',
 		async: false
 	}).done(function(data){
-		user = eval('('+data+')');
+		//user = eval('('+data+')');
+		user = JSON.parse(data);
 		//console.log(user);
 		sessionStorage.userID = user.username;
 	});
@@ -53,7 +54,6 @@ function user (state={},action){
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
-			action.to_cart = true;
 			$.ajax({
 				type:'post',
 				url:$$phpDir+'/insert.php',
