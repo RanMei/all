@@ -1,0 +1,59 @@
+@keyframes londing1 {
+  0% {
+    stroke-dashoffset: -900;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@keyframes stroke {
+  0% {
+    stroke-dasharray: 50;
+    stroke-dashoffset: -50;
+  }
+  50% {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+  }
+}
+.test {
+  width: 1000px;
+  height: 500px;
+  background: black;
+}
+.test .a_circle {
+  cx: 100;
+  cy: 50;
+  r: 10;
+  stroke: black;
+  stroke-width: 2;
+  fill: orange;
+}
+.test .red_circle {
+  stroke: red;
+  stroke-width: 2;
+  animation: stroke 1s linear 0s infinite;
+}
+.test .square {
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 900;
+  transition: 0.3s;
+  animation: loading1 4s linear 0s infinite;
+}
+.spiral {
+  stroke: red;
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  transition: 0.5s;
+  animation: londing1 4s linear 0s infinite;
+}

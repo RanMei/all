@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title></title>
 	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="./css/test.css">
 </head>
 
 <script>
@@ -13,13 +14,13 @@ window.onload = function(){
 	console.log(svg);
 }
 </script>
-
 <body>
 	<div>
-		<svg width="1000" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
-			<circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" background="black"/>
+		<svg class="test" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<circle class="a_circle"cx="100" cy="50" r="10"/>
+			<circle class="red_circle" cx="400" cy="200" r="100"/>
 
-			<path d="M153 334
+			<path class="spiral" d="M153 334
 			C153 334 151 334 151 334
 			C151 339 153 344 156 344
 			C164 344 171 339 171 334
@@ -32,7 +33,8 @@ window.onload = function(){
 			C111 361 131 384 156 384
 			C186 384 211 361 211 334
 			C211 300 186 274 156 274"
-			style="fill:white;stroke:red;stroke-width:2"/>
+			/>
+			<path class="square" d="M160,0.5C212.9,53.4,319.5,160,319.5,160 L160,319.5L0.5,160L160,0.5z"></path>
 			<image id="img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://gtms01.alicdn.com/tps/i1/TB14M5SHXXXXXcTXVXX9R.DIpXX-97-119.png" width="64" height="79" x="100" y="100"></image>
 		</svg>
 	</div>

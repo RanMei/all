@@ -68,6 +68,11 @@ gulp.task( "concat_angular",function(){
 });
 
 // less
+gulp.task( 'less_svg',function(){
+	gulp.src( './_svg/less/*.less' )
+		.pipe( less() )
+		.pipe( gulp.dest("./_svg/css") );
+});
 gulp.task( 'less_qm',function(){
 	gulp.src( './qm/less/*.less' )
 		.pipe( less() )
@@ -123,6 +128,9 @@ gulp.task( "default", function(){
 
 	// z
 	// gulp.watch( './js/Z/*.js',['browserify_Z'] );
+
+	// svg
+	gulp.watch( './_svg/less/*.less',['less_svg'] );
 
 	// qm
 	gulp.watch( './qm/less/*.less',['less_qm'] );
