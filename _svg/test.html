@@ -6,19 +6,74 @@
     <title></title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="./css/test.css">
+
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="./vendor/TweenMax.min.js"></script>
 </head>
 
 <script>
-window.onload = function(){
-	var svg = document.getElementsByTagName("svg")[0];
-	console.log(svg);
-}
+$(document).ready(function(){
+	$$img = $("image");
+	$$line1 = $(".line1");
+	// $$img.on("mousedown",function(e){
+	// 	e.preventDefault();
+	// })
+	
+	function init(){
+
+	}
+
+	(function(){
+		var imgX,imgY,
+			currentX,
+			currentY,
+			targetX,
+			targetY;
+		var mouseDown = false;
+		$$img.on("mousedown",function(e){
+			e.preventDefault();
+			mouseDown = true;
+			currentX = e.pageX;
+			currentY = e.pageY;
+		})
+		$$img.on("mousemove",function(e){
+			e.preventDefault();
+			if( mouseDown ){
+				targetX = e.pageX;
+				targetY = e.pageY;
+				diffX = targetX - currentX;
+				diffY = targetY - currentY;
+				console.log( diffX,diffY )
+				imgX = Number( $$img.attr("x") );
+				imgY = Number( $$img.attr("y") );
+				$$img.attr( "x",imgX+diffX );
+				$$img.attr( "y",imgY+diffY );
+				$$line1.attr( "x1",imgX+32+diffX );
+				$$line1.attr( "y1",imgY+39.5+diffY );
+				currentX = targetX;
+				currentY = targetY;
+
+			};
+		})
+		$$img.on("mouseup",function(e){
+			mouseDown = false;
+		})
+	})();
+
+	// setInterval(function(){
+	// 	var currentX2 = Number( $$line1.attr("x2") );
+	// 	var currentY2 = Number( $$line1.attr("y2") );
+	// 	$$line1.attr("x2",currentX2+3);
+	// 	$$line1.attr("y2",currentY2+5)
+	// },10);
+})
 </script>
 <body>
 	<div>
-		<svg class="test" version="1.1" xmlns="http://www.w3.org/2000/svg">
-			<circle class="a_circle"cx="100" cy="50" r="10"/>
-			<circle class="red_circle" cx="400" cy="200" r="100"/>
+		<svg class="test" pointer-events="all" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<circle class="circle-1"cx="100" cy="50" r="10"/>
+			<circle class="circle-red" cx="400" cy="200" r="100"/>
+			<line class="line1" x1="0" y1="0" x2="100" y2="100"/>
 
 			<path class="spiral" d="M153 334
 			C153 334 151 334 151 334
@@ -35,9 +90,22 @@ window.onload = function(){
 			C211 300 186 274 156 274"
 			/>
 			<path class="square" d="M160,0.5C212.9,53.4,319.5,160,319.5,160 L160,319.5L0.5,160L160,0.5z"></path>
-			<image id="img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://gtms01.alicdn.com/tps/i1/TB14M5SHXXXXXcTXVXX9R.DIpXX-97-119.png" width="64" height="79" x="100" y="100"></image>
+			
+			<image id="img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://gtms01.alicdn.com/tps/i1/TB14M5SHXXXXXcTXVXX9R.DIpXX-97-119.png" width="64" height="79" x="0" y="0"></image>
+			<symbol><text class="text-lannister">LANNISTER</text></symbol>
+			<polyline points="200,200 250,300 275,456"/>
 		</svg>
 	</div>
+	<svg class="svg-square">
+		<path 
+			class="square-1" 
+			d="M0,0 L100,0 L100,100 L0,100 L0,0"/>		
+	</svg>
+	<svg class="gameboy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 395 649" width="200">
+	  <g fill="none">
+	    <path d="M60 161C63.9 161 67 157.9 67 154 67 150.1 63.9 147 60 147 56.1 147 53 150.1 53 154 53 157.9 56.1 161 60 161ZM12 2C6.5 2 2 6.5 2 12L2 637C2 642.5 6.5 647 12 647L333 647C366.1 647 393 620.1 393 587L393 12C393 6.5 388.5 2 383 2L12 2ZM12 2C6.5 2 2 6.5 2 12L2 37 393 37 393 12C393 6.5 388.5 2 383 2L12 2ZM12 2C6.5 2 2 6.5 2 12L2 37 35 37 35 2 12 2ZM360 2L360 37 393 37 393 12C393 6.5 388.5 2 383 2L360 2ZM52.5 10C47.2 10 43 14.3 43 19.5L43 19.5C43 24.7 47.3 29 52.5 29L101.5 29C106.8 29 111 24.7 111 19.5L111 19.5C111 14.3 106.7 10 101.5 10L52.5 10ZM72.5 444L95 444M72.5 452L95 452M72.5 460L95 460M72.5 383L95 383M72.5 391L95 391M72.5 399L95 399M121.5 411L121.5 433.5M113.5 411L113.5 433.5M105.5 411L105.5 433.5M60.5 411L60.5 433.5M52.5 411L52.5 433.5M44.5 411L44.5 433.5M83 436C90.7 436 97 429.7 97 422 97 414.3 90.7 408 83 408 75.3 408 69 414.3 69 422 69 429.7 75.3 436 83 436ZM349.8 522.7L378.4 576.6C379.5 578.6 378.7 581.1 376.7 582.2 374.7 583.2 372.2 582.5 371.1 580.4L342.5 526.6C341.4 524.6 342.2 522.1 344.2 521 346.2 520 348.7 520.7 349.8 522.7ZM326.2 530.5C324.2 531.5 323.4 534 324.5 536.1L353.1 589.9C354.2 591.9 356.7 592.7 358.7 591.6L358.7 591.6C360.7 590.5 361.4 588 360.4 586L331.7 532.2C330.7 530.2 328.2 529.4 326.2 530.5L326.2 530.5 326.2 530.5ZM313.7 542.2L342.4 596C343.4 598 342.7 600.5 340.7 601.6 338.7 602.7 336.2 601.9 335.1 599.9L306.5 546.1C305.4 544 306.2 541.5 308.2 540.5 310.2 539.4 312.7 540.2 313.7 542.2ZM290.2 550.5C288.2 551.5 287.4 554 288.5 556.1L317.1 609.9C318.2 611.9 320.7 612.7 322.7 611.6L322.7 611.6C324.7 610.5 325.4 608 324.4 606L295.7 552.2C294.7 550.2 292.2 549.4 290.2 550.5L290.2 550.5 290.2 550.5ZM277.7 562.2L306.4 616C307.4 618 306.7 620.5 304.7 621.6 302.7 622.7 300.2 621.9 299.1 619.9L270.5 566.1C269.4 564 270.2 561.5 272.2 560.5 274.2 559.4 276.7 560.2 277.7 562.2ZM254.2 569C252.2 570.1 251.4 572.6 252.5 574.6L281.1 628.4C282.2 630.5 284.7 631.2 286.7 630.2L286.7 630.2C288.7 629.1 289.5 626.6 288.4 624.6L259.8 570.7C258.7 568.7 256.2 568 254.2 569L254.2 569 254.2 569ZM193 536.1C190.3 537.5 189.3 540.8 190.7 543.5L190.7 543.5C192.2 546.2 195.5 547.2 198.2 545.8L232.3 527.7C235 526.2 236 522.9 234.6 520.2L234.6 520.2C233.1 517.5 229.8 516.5 227.1 517.9L193 536.1 193 536.1ZM133 536.1C130.3 537.5 129.3 540.8 130.7 543.5L130.7 543.5C132.2 546.2 135.5 547.2 138.2 545.8L172.3 527.7C175 526.2 176 522.9 174.6 520.2L174.6 520.2C173.1 517.5 169.8 516.5 167.1 517.9L133 536.1 133 536.1ZM342.9 428.3C356.1 427.4 366.1 415.9 365.2 402.7 364.3 389.4 352.8 379.5 339.6 380.4 326.3 381.3 316.4 392.8 317.3 406 318.2 419.2 329.7 429.2 342.9 428.3L342.9 428.3ZM282.3 459.2C295.5 458.2 305.5 446.8 304.6 433.5 303.7 420.3 292.2 410.3 279 411.3 265.8 412.2 255.8 423.7 256.7 436.9 257.6 450.1 269.1 460.1 282.3 459.2L282.3 459.2ZM264.3 407.6C248.6 415.6 242.3 434.9 250.4 450.6L250.4 450.6C258.4 466.4 277.6 472.7 293.4 464.6L356.7 432.4C372.4 424.4 378.7 405.1 370.6 389.4L370.6 389.4C362.6 373.6 343.4 367.3 327.6 375.4L264.3 407.6ZM64 403L64 378C64 375.2 66.2 373 69 373L97 373C99.8 373 102 375.2 102 378L102 403 127 403C129.8 403 132 405.2 132 408L132 436C132 438.8 129.8 441 127 441L102 441 102 466C102 468.8 99.8 471 97 471L69 471C66.2 471 64 468.8 64 466L64 441 39 441C36.2 441 34 438.8 34 436L34 408C34 405.2 36.2 403 39 403L64 403 64 403ZM96 88C94.3 88 93 89.3 93 91L93 272C93 273.7 94.3 275 96 275L297 275C298.7 275 300 273.7 300 272L300 91C300 89.3 298.7 88 297 88L96 88ZM348 57C352.4 57 356 60.6 356 65L356 268C356 290.1 338.1 308 316 308L42 308C37.6 308 34 304.4 34 300L34 65C34 60.6 37.6 57 42 57L348 57ZM200.5 638.6L200.5 645.6M189.5 638.6L189.5 645.6M178.5 638.6L178.5 645.6M148 617C142.5 617 138 621.5 138 627L138 627C138 632.5 142.5 637 148 637L201 637C206.5 637 211 632.5 211 627L211 627C211 621.5 206.5 617 201 617L148 617ZM77.5 1.6L77.5 8.6M66.5 1.6L66.5 8.6M256 66.9L343.5 67M256 76.9L343.5 77M46 76.9L133.5 77M46 66.9L133.5 67M55.5 1.6L55.5 8.6"/>
+	  </g>
+	</svg>
 
 </body>
 
