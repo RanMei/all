@@ -3,10 +3,15 @@ import {$$rootDir,$$phpDir} from '../common.jsx';
 function getUser (){
 	var user;
 	$.ajax({
-		type: 'POST',
+		type: 'post',
 		url: 'http://localhost/fytpy/php/session.php',
-		async: false
+		// url: '/session',
+		async: false,
+		beforeSend: function(xhr){
+			console.log(xhr);
+		}
 	}).done(function(data){
+		console.log(data);
 		//user = eval('('+data+')');
 		user = JSON.parse(data);
 		//console.log(user);
@@ -27,13 +32,20 @@ function user (state={},action){
 			var ok = false;
 			//console.log($$phpDir,dataSent);
 			$.ajax({
-				type: 'POST',
-				url: 'http://localhost/fytpy/php/login.php',
-				data: {data:dataSent},
+				// type: 'POST',
+				// url: 'http://localhost/fytpy/php/login.php',
+				// data: {data:dataSent},				
+				headers:{
+					'Content-type': 'application/json'
+				},			
+				url: '/login',
+				data: dataSent,
 				async: false
 			}).done(function(data){
 				//console.log(data);
-				ok = (data)?true:false;
+				ok = (data==="true")?true:false;
+				//document.cookie = 'userID='+action.data.userID;
+				console.log( 'cookies:',document.cookie );
 			});
 			if( ok ){
 				alert("登录成功！");
@@ -54,15 +66,26 @@ function user (state={},action){
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
+			var successful = false;
 			$.ajax({
 				type:'post',
 				url:$$phpDir+'/insert.php',
 				data:{data:JSON.stringify(action)},
+				dataType: 'text',
 				async:false
-			}).done(function(){
-				alert('成功加入购物车');
+			}).done(function(data){
+				if(data==='true'){
+					alert('成功加入购物车！');
+					successful = true;
+				}else{
+					alert('请先登录！');
+				}
 			});
-			return getUser();
+			if( successful ){
+				return getUser();
+			}else{
+				return state;
+			};
 		case 'REMOVE_ITEM':
 			$.ajax({
 				type:'post',

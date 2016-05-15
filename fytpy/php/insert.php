@@ -24,7 +24,7 @@ if( isset($_SESSION["username"]) ){
 		if(mysqli_num_rows($rows)==0){
 			mysqli_query($connection,"insert into shoppingCart(username,itemID,quantity)values('{$_SESSION["username"]}','{$data["itemID"]}','{$data["quantity"]}')");
 		};
-		echo true;
+		echo 'true';
 	}
 	
 	if( $data["type"]==='ADD_TO_CART' ){
@@ -32,6 +32,6 @@ if( isset($_SESSION["username"]) ){
 	};
 
 }else{
-	echo false;
+	echo 'false';
 };
 ?>

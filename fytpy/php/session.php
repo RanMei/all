@@ -8,7 +8,7 @@ if( isset($_SESSION["username"]) ){
 	function getShoppingCart($connection){
 		$rows=mysqli_query($connection,"select * from shoppingCart where username='{$_SESSION["username"]}'")or die("读取购物车信息失败！");
 		if(mysqli_num_rows($rows)==0){
-			return [];
+			return array();
 		}else{
 			for($i=0;$i<mysqli_num_rows($rows);$i++){
 				$item=mysqli_fetch_object($rows);
@@ -27,7 +27,7 @@ if( isset($_SESSION["username"]) ){
 	function getDeliveryInformation($connection){
 		$x=mysqli_query($connection,"select * from deliveryInformation where username='{$_SESSION["username"]}'")or die("读取收货信息失败！");
 		if(mysqli_num_rows($x)==0){
-			return [];
+			return array();
 		}else{
 			for($i=0;$i<mysqli_num_rows($x);$i++){
 				$y=mysqli_fetch_object($x);

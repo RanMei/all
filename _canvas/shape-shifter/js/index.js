@@ -14,23 +14,23 @@
 
 
 var S = {
-	init: function () {
-		var action = window.location.href,
-            i = action.indexOf('?a=');
+  init: function () {
+    var action = window.location.href,
+        i = action.indexOf('?a=');
 
-        S.Drawing.init('.canvas');
-        document.body.classList.add('body--ready');
+    S.Drawing.init('.canvas');
+    document.body.classList.add('body--ready');
 
-        if (i !== -1) {
-            S.UI.simulate(decodeURI(action).substring(i + 3));
-        } else {
-            S.UI.simulate('Shape|Shifter|Type|to start|#rectangle|#countdown 3||');
-        }
-
-        S.Drawing.loop(function () {
-            S.Shape.render();
-        });
+    if (i !== -1) {
+      S.UI.simulate(decodeURI(action).substring(i + 3));
+    } else {
+      S.UI.simulate('Shape|Shifter|Type|to start|#rectangle|#countdown 3||');
     }
+
+    S.Drawing.loop(function () {
+      S.Shape.render();
+    });
+  }
 };
 
 

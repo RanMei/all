@@ -1,4 +1,6 @@
 <?php
+header("Content-type:application/json;charset=utf-8");
+
 require "connect.php";
 
 $rows = mysqli_query($connection,"select * from items where itemID='{$_POST["itemID"]}'")or die("读取商品信息失败！");

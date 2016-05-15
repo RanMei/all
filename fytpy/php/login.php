@@ -1,4 +1,6 @@
 <?php
+header("Content-type:text/plain;charset=utf-8");
+
 require "connect.php";
 $user=json_decode("{$_POST["data"]}",true)or die("Failed to parse JSON.");
 
@@ -8,8 +10,8 @@ $rowsNumber=mysqli_num_rows($rows);
 if($rowsNumber!=0){
 	session_start();
 	$_SESSION["username"]=$user["username"];
-	echo true;
+	echo 'true';
 }else{
-	echo false;
+	echo 'false';
 };
 ?>

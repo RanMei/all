@@ -4,45 +4,90 @@
 <head>
 	<meta charset="utf-8">
 	<title>index</title>
-
+	<script type="text/javascript" src="js/jquery.js"></script>
 </head>
 
 <script type="text/javascript">
-	document.cookie = 'name=John';
-	document.cookie = 'id=123';
-	console.log( document.cookie );
+// 	document.cookie = 'name=John';
+// 	document.cookie = 'id=123';
+// 	console.log( document.cookie );
 
-	console.log(localStorage);
+// 	console.log(localStorage);
 
-	localStorage.userID = "111";
-	console.log(localStorage);
-	console.log(document.domain);
+// 	localStorage.userID = "111";
+// 	console.log(localStorage);
+// 	console.log(document.domain);
 
-	var elem = document.createElement("div");
-	elem = document.getElementsByTagName("a");
-	console.log(elem);
+// 	var elem = document.createElement("div");
+// 	elem = document.getElementsByTagName("a");
+// 	console.log(elem);
 
-	function f(s){
-		var r = /^\s+/;
-		s = s.replace( r ,"2" );
-		if( r.test(s) ){
-			f(s);
-		}else{
-			console.log(s);
-		}
-	}
-	f("   11  111   1111   ");
-	function Dog(){
+// 	function f(s){
+// 		var r = /^\s+/;
+// 		s = s.replace( r ,"2" );
+// 		if( r.test(s) ){
+// 			f(s);
+// 		}else{
+// 			console.log(s);
+// 		}
+// 	}
+// 	f("   11  111   1111   ");
+// 	function Dog(){
 
-	}
-	var dog1 = new Dog();
-	console.log( Dog.prototype.constructor );
-window.onload = function(){
-	console.log( document.getElementsByTagName("a") );
-};
+// 	}
+// 	var dog1 = new Dog();
+// 	console.log( Dog.prototype.constructor );
+// window.onload = function(){
+// 	console.log( document.getElementsByTagName("a") );
+// };
+$(document).ready(function(){
+	console.log('Cookies before login:',document.cookie)
+	$.ajax({
+		headers:{
+			'Content-type': 'application/json'
+		},	
+		url: '/login',
+		type: 'post',
+		data: JSON.stringify({
+			username: '15911111111',
+			password: '111111'
+		}),
+		async: false
+	}).done(function(data){
+		console.log(data);
+		console.log('Cookies:',document.cookie);
+	});
+	$.ajax({
+		url: '/getUser',
+		type: 'post',
+	}).done(function(data){
+		console.log(data);
+	})
+	$.ajax({
+		headers:{
+			'Content-type': 'application/json'
+		},	
+		url: '/getItem',
+		type: 'post',
+		data: JSON.stringify({
+			itemID: '1602091546'
+		})
+	}).done(function(data){
+		console.log(data);
+	});
+	$(".a-logout").on("click",function(){
+		$.ajax({
+			type: 'post',
+			url: '/logout'
+		}).done(function(){
+			console.log('Cookies:',document.cookie)
+		});
+	})
+});
 </script>
 
 <body>
+	<a class="a-logout">注销</a>
 	<a href="./_svg/">_svg</a>
 	<a href="./fytpy">fytpy</a>
 	<a href="./caredaily">caredaily</a>

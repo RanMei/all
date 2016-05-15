@@ -1,6 +1,7 @@
 var gulp = require('gulp'); 
 var less = require('gulp-less');
 var concat = require("gulp-concat");
+var shell = require('gulp-shell');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
@@ -9,6 +10,11 @@ var babel = require('gulp-babel');
 var babelify = require('babelify');
 
 var tsify = require('tsify');
+
+// shell
+gulp.task( 'restart_server',shell.task([
+	'node express.js'
+]));
 
 // babel
 gulp.task( 'babel_fytpy', function () {
@@ -116,6 +122,9 @@ gulp.task( 'less_react',function(){
 
 gulp.task( "default", function(){
 	
+	gulp.run( ['restart_server'] );
+	gulp.watch( './express.js',['restart_server']);
+
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
 

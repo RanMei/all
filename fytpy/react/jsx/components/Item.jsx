@@ -6,16 +6,22 @@ function getItem(){
 	var item;
 	//console.log( 'itemID',itemID );
 	$.ajax({
+		// headers:{
+		// 	'Content-type': 'application/json'
+		// },
 		type:'post',
-		url:$$phpDir+'item.php',
-		data:{itemID:itemID},
+		dataType:'json',
+		// url:'/getItem',
+		// data: JSON.stringify({itemID:itemID}),
+		url: $$phpDir+'item.php',
+		data: {itemID:itemID},
 		async:false
 	}).done(function(data){
-		//console.log('typeof data---',typeof data);
+		//console.log( data );
 		console.log('item received');
-		item = JSON.parse(data);
-	}).error(function(e){
-		console.log(e);
+		item = data;
+	}).error(function(e,f,g){
+		console.log(e,f,g);
 	})
 	return item;
 }
