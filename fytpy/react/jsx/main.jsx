@@ -23,10 +23,26 @@ var hashHistory = ReactRouter.hashHistory;
 var IndexRoute = ReactRouter.IndexRoute;
 
 var createStore = Redux.createStore;
+var compose = Redux.compose;
 var combineReducers =  Redux.combineReducers;
 
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
+
+import { createDevTools } from 'redux-devtools';
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
+var DevTools = createDevTools(
+	<DockMonitor 
+		toggleVisibilityKey='ctrl-h'
+		changePositionKey='ctrl-q'>
+		<LogMonitor />
+	</DockMonitor>
+);
+const enhancer = compose(
+	DevTools.instrument()
+);
+
 
 class Sidebar extends React.Component {
 	render(){
@@ -62,6 +78,7 @@ class App extends React.Component {
 				<div className="line"></div>
 				<Footer/>
 				<BackToTop/>
+				
 			</div>
 		);
 	}
@@ -82,7 +99,7 @@ var DECREMENT = {type:'DECREMENT'};
 // reducers
 
 // store
-const $$store = createStore( $$reducer );
+const $$store = createStore( $$reducer,enhancer );
 console.log( 'state initialized',$$store.getState() )
 
 // Connect the state in $$store with props of a component.

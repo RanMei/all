@@ -42,6 +42,7 @@
 // };
 $(document).ready(function(){
 	console.log('Cookies before login:',document.cookie)
+	
 	$.ajax({
 		headers:{
 			'Content-type': 'application/json'
@@ -61,7 +62,7 @@ $(document).ready(function(){
 		url: '/getUser',
 		type: 'post',
 	}).done(function(data){
-		console.log(data);
+		console.log('User:',data);
 	})
 	$.ajax({
 		headers:{
@@ -73,7 +74,7 @@ $(document).ready(function(){
 			itemID: '1602091546'
 		})
 	}).done(function(data){
-		console.log(data);
+		console.log('Item received:',data);
 	});
 	$(".a-logout").on("click",function(){
 		$.ajax({
@@ -87,6 +88,7 @@ $(document).ready(function(){
 </script>
 
 <body>
+	<a class="a-login">登录</a>
 	<a class="a-logout">注销</a>
 	<a href="./_svg/">_svg</a>
 	<a href="./fytpy">fytpy</a>

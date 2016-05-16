@@ -11,6 +11,8 @@ var babelify = require('babelify');
 
 var tsify = require('tsify');
 
+var Promise = require('bluebird');
+
 // shell
 gulp.task( 'restart_server',shell.task([
 	'node express.js'

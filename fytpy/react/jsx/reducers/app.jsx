@@ -11,9 +11,7 @@ function getUser (){
 			console.log(xhr);
 		}
 	}).done(function(data){
-		console.log(data);
-		//user = eval('('+data+')');
-		user = JSON.parse(data);
+		user = data;
 		//console.log(user);
 		sessionStorage.userID = user.username;
 	});
@@ -32,14 +30,14 @@ function user (state={},action){
 			var ok = false;
 			//console.log($$phpDir,dataSent);
 			$.ajax({
-				// type: 'POST',
-				// url: 'http://localhost/fytpy/php/login.php',
-				// data: {data:dataSent},				
-				headers:{
-					'Content-type': 'application/json'
-				},			
-				url: '/login',
-				data: dataSent,
+				type: 'POST',
+				url: 'http://localhost/fytpy/php/login.php',
+				data: {data:dataSent},				
+				// headers:{
+				// 	'Content-type': 'application/json'
+				// },			
+				// url: '/login',
+				// data: dataSent,
 				async: false
 			}).done(function(data){
 				//console.log(data);

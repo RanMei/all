@@ -23,10 +23,14 @@
     "gulp-reactify": "^3.0.1",
     "gulp-shell": "^0.5.2",
     "gulp-tsc": "^1.1.5",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.0.11",
     "tsify": "^0.14.7",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "bluebird": "^3.3.5",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",

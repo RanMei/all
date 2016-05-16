@@ -52,7 +52,7 @@ app.post('/login',function(req,res){
 
 app.post('/logout',function(req,res){
 	res.clearCookie('userID',{path:'/'});
-	res.end();
+	res.send('');
 });
 
 app.post('/getUser',function(req,res){
@@ -61,14 +61,22 @@ app.post('/getUser',function(req,res){
 	var user = {
 		uesrID: userID
 	};
-	console.log(
-	connection.query('SELECT * FROM shoppingCart where username = ?',[userID],function(err,rows,fiels){
-		console.log(err,rows,fiels);
-		//
-		return '111';
-	})
-	)
-	res.send( JSON.stringify(user) );
+
+	var p1 = new Promise(function(resolve,reject){
+		connection.query('SELECT * FROM shoppingCart where username = ?',[userID],function(err,rows,fiels){
+			user.shoppingCart = rows;
+			resolve();
+		})
+	});
+	var p2 = new Promise(function(resolve,reject){
+		connection.query('SELECT * FROM deliveryInformation where username = ?',[userID],function(err,rows,fiels){
+			user.deliveryInformation = rows;
+			resolve();
+		})
+	});
+	Promise.all([p1,p2]).then(function(){
+		res.send( JSON.stringify(user) );
+	});
 })
 
 app.post('/getItem',function(req,res){

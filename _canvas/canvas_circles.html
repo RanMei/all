@@ -8,20 +8,22 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<style>
 	* {margin:0;padding:0}
-	canvas {width:1000px;height:600px;margin:20px auto auto auto;border:5px solid green;display:block;}
 	</style>
 	<script>
 	window.onload=function(){
 		
 		var $canvas = document.getElementById("mycanvas");
-		var $w = 1000;
-		var $h = 600; 
+		var $w = $canvas.width = window.innerWidth;
+		var $h = $canvas.height = window.innerHeight; 
 		var z = $canvas.getContext("2d");
 		var $hue = 360;
 		var $tick = 0;
 		var circles = [];
 		
-		z.lineWidth=2;
+		$canvas.style.cssText = 'position:absolute;left:0;top:0;';
+		console.log([$canvas]);
+
+		z.lineWidth=5;
 		z.lineCap="round";
 		z.lineJoin="round";
 		
@@ -53,14 +55,14 @@
 		}
 		
 		function render(){
-
-			if( circles.length<500 ){
+			window.requestAnimationFrame(render);
+			if( circles.length<50 ){
 				circles.push( new Circle( $w/2,$h/2/*Math.random()*$w,Math.random()*$h*/ ) );
 			};
-			//z.globalCompositeOperation = 'source-over';
+			z.globalCompositeOperation = 'source-over';
 			z.fillStyle = 'rgba(0,0,0,0.5)';
 			z.fillRect( 0,0,$w,$h );
-			//z.globalCompositeOperation = 'lighter';
+			z.globalCompositeOperation = 'lighter';
 
 			circles.map(function(elem,i){
 				elem.step();
@@ -70,8 +72,8 @@
 			});
 			$tick++;
 		}
-		
-		setInterval(render,10);
+		render();
+		//setInterval(render,10);
 
 		mycanvas.addEventListener("mousedown",function(e){
 			circles.push( new Circle( e.offsetX,e.offsetY ) );
@@ -86,7 +88,7 @@
 
 <body>
 
-	<canvas id="mycanvas" width="1000px" height="600px">
+	<canvas id="mycanvas">
 
 	</canvas>
 

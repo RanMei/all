@@ -1,5 +1,6 @@
 <?php
 header("Content-type:text/plain;charset=utf-8");
+header("Access-Control-Allow-Origin:http://localhost:3000");
 
 require "connect.php";
 $user=json_decode("{$_POST["data"]}",true)or die("Failed to parse JSON.");
