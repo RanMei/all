@@ -21,10 +21,8 @@ canvas {
 
 <body>
 
-<script src='http://cdnjs.cloudflare.com/ajax/libs/matter-js/0.9.3/matter.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+<script src='../vendor/matter.min.js'></script>
+<script src='../vendor/jquery.js'></script>
 <script type="text/javascript">
 /*
 Bodies.polygon
@@ -44,6 +42,7 @@ var Constraint = Matter.Constraint;
 var Composite = Matter.Composite;
 var Composites = Matter.Composites;
 var MouseConstraint = Matter.MouseConstraint;
+var Events = Matter.Events;
 
 // create a Matter.js engine
 var engine = Engine.create({
@@ -53,13 +52,25 @@ var engine = Engine.create({
       width: w,
       height: h,
       wireframes: false,
-      background: '#1A54FE'
+      background: 'black'||'#1A54FE'
     }
   }
 });
+engine.world.gravity.y = 0;
+engine.world.gravity.x = 0;
+engine.world.gravity.isPoint = true;
 
 // add a mouse controlled constraint
-var mouseConstraint = MouseConstraint.create(engine);
+var mouseConstraint = MouseConstraint.create(engine,{
+	constraint: {
+		stiffness: 1,
+		render: {
+			lineWidth: 15,
+			strokeStyle: 'orange',
+			visible: true
+		}
+	}
+});
 World.add(engine.world, mouseConstraint);
 
 var addToWorld = [];
@@ -70,18 +81,139 @@ var ropeRenderStyle = {
   lineWidth: 1
 }
 
-var ballA = Bodies.polygon(100,100,12,50,{
-	render: {
-      fillStyle: 'orange',
-      strokeStyle: 'white',
-      lineWidth: 3
-    },
-    density: Math.random() * 0.1,
-    isStatic: false,
-    restitution: Math.random() * 1
-})
-addToWorld.push(ballA);
+function hah(){
+	var trip = Bodies.polygon(w/2,h/2,100,70,{
+		render: {
+			fillStyle: makePattern(),
+			strokeStyle: 'white',
+			lineWidth: 3,
+			opacity: 0.8,
+			sprite: {
+				texture: './DriftingBalls/trip.png',
+				xScale: 0.8,
+				yScale: 0.8
+			}
+	    },
+	    id: 'trip',
+	    density: Math.random() * 0.1,
+	    isStatic: false,
+	    restitution: Math.random() * 1
+	})
+	Events.on(mouseConstraint, 'startdrag', function(e) {
+		if( e.body.id==='trip' ){
+			console.log('yeah!!!')
+		};
+	});
+	var Prague = Bodies.polygon(500,100,100,50,{
+		render: {
+			fillStyle: makePattern(),
+			strokeStyle: 'white',
+			lineWidth: 3,
+			sprite: {
+				texture: './DriftingBalls/Prague.png'
+			}
+	    },
+	    density: Math.random() * 0.1,
+	    isStatic: false,
+	    restitution: Math.random() * 1
+	})
+	var Yunnan = Bodies.polygon(500,100,100,50,{
+		render: {
+	      fillStyle: makePattern(),
+	      strokeStyle: 'white',
+	      lineWidth: 3,
+	      sprite: {
+	      	texture: './DriftingBalls/Yunnan.png'
+	      }
+	    },
+	    density: Math.random() * 0.1,
+	    isStatic: false,
+	    restitution: Math.random() * 1
+	})
+	var France = Bodies.polygon(500,100,100,50,{
+		render: {
+	      fillStyle: makePattern(),
+	      strokeStyle: 'white',
+	      lineWidth: 3,
+	      sprite: {
+	      	texture: './DriftingBalls/France.png'
+	      }
+	    },
+	    density: Math.random() * 0.1,
+	    isStatic: false,
+	    restitution: Math.random() * 1
+	})
+	addToWorld.push(trip);
+	addToWorld.push(Prague);
+	addToWorld.push(Yunnan);
+	addToWorld.push(France);
 
+	var chain1 = Constraint.create({
+		bodyA: trip,
+		bodyB: Prague,
+		stiffness: 0.001,
+		length: 300,
+		render: {
+			strokeStyle: '#50BDD9',
+			lineWidth: 1
+		}
+	});
+	var chain2 = Constraint.create({
+		bodyA: trip,
+		bodyB: Yunnan,
+		stiffness: 0.01,
+		length: 400,
+		render: {
+			strokeStyle: '#50BDD9',
+			lineWidth: 1
+		}
+	});
+	var chain3 = Constraint.create({
+		bodyA: Yunnan,
+		bodyB: France,
+		stiffness: 0.01,
+		length: 400,
+		render: {
+			strokeStyle: '#50BDD9',
+			lineWidth: 1
+		}
+	});
+
+	addToWorld.push(chain1);
+	addToWorld.push(chain2);
+	addToWorld.push(chain3);
+
+	console.log(trip);
+	console.log(chain1);
+
+	setInterval(function(){
+		trip.angle = 0;
+		Prague.angle = 0;
+		Yunnan.angle = 0;
+		France.angle = 0;
+	},10);
+	// var group = Body.nextGroup(true);
+
+ //    var segments = Math.random() * 10 + 5 >> 0;
+ //    var ropeA = Composites.stack(trip.position.x, trip.bounds.max.y, 1, segments, 20, 20, function(x, y) {
+ //      return Bodies.rectangle(x, y, 4, 4, {
+ //        collisionFilter: {
+ //          group: group
+ //        },
+ //        render: ropeRenderStyle
+ //      });
+ //    });
+ //    Composites.chain(ropeA, 0.5, 0, -0.5, 0, {
+ //      stiffness: 0.8,
+ //      length: 20,
+ //      render: ropeRenderStyle
+ //    });
+
+
+}
+hah();
+
+/*
 // create random poly's and a ground
 // polygons count
 var polygonsNumber = Math.random() * 10 + 5 >> 0;
@@ -106,11 +238,11 @@ for (var i = 0; i < polygonsNumber; i++) {
   });
   addToWorld.push(poly);
 
-  // add rope if last poly was static
+  //add rope if last poly was static
   if (prevPoly && prevPoly.isStatic && !isStatic) {
     var group = Body.nextGroup(true);
 
-    var segments = Math.random() * 10 + 5 >> 0;
+    var segments = 1||Math.random() * 10 + 5 >> 0;
     var ropeA = Composites.stack(prevPoly.position.x, prevPoly.bounds.max.y, 1, segments, 20, 20, function(x, y) {
       return Bodies.rectangle(x, y, 4, 4, {
         collisionFilter: {
@@ -120,7 +252,7 @@ for (var i = 0; i < polygonsNumber; i++) {
       });
     });
     Composites.chain(ropeA, 0.5, 0, -0.5, 0, {
-      stiffness: 0.8,
+      stiffness: 1.6,
       length: 20,
       render: ropeRenderStyle
     });
@@ -157,6 +289,7 @@ for (var i = 0; i < polygonsNumber; i++) {
 
   prevPoly = poly;
 }
+*/
 
 // add borders
 var border = 50;
@@ -200,12 +333,12 @@ World.add(engine.world, addToWorld);
 runner = Engine.run(engine)
 
 // gravity variety
-function ranGrav() {
-  engine.world.gravity.y = Math.random() * 2 - 1;
-  engine.world.gravity.x = Math.random() * 2 - 1;
-  var nextRanInc = Math.random() * 2000 + 1000;
-  setTimeout(ranGrav, nextRanInc);
-}
+// function ranGrav() {
+//   engine.world.gravity.y = Math.random() * 2 - 1;
+//   engine.world.gravity.x = Math.random() * 2 - 1;
+//   var nextRanInc = Math.random() * 2000 + 1000;
+//   setTimeout(ranGrav, nextRanInc);
+// }
 // setTimeout(ranGrav, 2000);
 
 // patterns please
