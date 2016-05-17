@@ -13,7 +13,6 @@ canvas {
   display: block;
   margin: 0;
   padding: 0;
-  border: 1px solid blue;
   background: black;
 }
 </style>
@@ -30,8 +29,8 @@ Bodies.rectangle
 World.add
 */
 
-var w = $(window).width() * window.devicePixelRatio;
-var h = $(window).height() * window.devicePixelRatio;
+var $w = $(window).width() * window.devicePixelRatio;
+var $h = $(window).height() * window.devicePixelRatio;
 
 // Matter.js module aliases
 var Engine = Matter.Engine;
@@ -49,8 +48,8 @@ var engine = Engine.create({
   render: {
     element: document.body,
     options: {
-      width: w,
-      height: h,
+      width: $w,
+      height: $h,
       wireframes: false,
       background: 'black'||'#1A54FE'
     }
@@ -82,7 +81,7 @@ var ropeRenderStyle = {
 }
 
 function hah(){
-	var trip = Bodies.polygon(w/2,h/2,100,70,{
+	var trip = Bodies.polygon($w/2,$h/2,100,70,{
 		render: {
 			fillStyle: makePattern(),
 			strokeStyle: 'white',
@@ -295,28 +294,28 @@ for (var i = 0; i < polygonsNumber; i++) {
 var border = 50;
 var halfBorder = border / 2;
 var borders = [
-  Bodies.rectangle(w / 2, halfBorder, w + border, border, {
+  Bodies.rectangle( $w/2, halfBorder, $w + border, border, {
     isStatic: true,
     render: {
       fillStyle: '#0134CB',
       strokeStyle: 'transparent'
     }
   }),
-  Bodies.rectangle(w / 2, h - halfBorder, w + border, border, {
+  Bodies.rectangle($w / 2, $h - halfBorder, $w + border, border, {
     isStatic: true,
     render: {
       fillStyle: '#0134CB',
       strokeStyle: 'transparent'
     }
   }),
-  Bodies.rectangle(halfBorder, h / 2, border, h + border, {
+  Bodies.rectangle(halfBorder, $h / 2, border, $h + border, {
     isStatic: true,
     render: {
       fillStyle: '#0134CB',
       strokeStyle: 'transparent'
     }
   }),
-  Bodies.rectangle(w - halfBorder, h / 2, border, h + border, {
+  Bodies.rectangle($w - halfBorder, $h / 2, border, $h + border, {
     isStatic: true,
     render: {
       fillStyle: '#0134CB',
@@ -361,8 +360,10 @@ function makePattern(pWidth) {
 }
 
 $(engine.render.canvas).css({
-  width: w * 1 / window.devicePixelRatio + 'px',
-  height: h * 1 / window.devicePixelRatio + 'px'
+  width: '100%',
+  height: '100%'
+  //width: w * 1 / window.devicePixelRatio + 'px',
+  //height: h * 1 / window.devicePixelRatio + 'px'
 })
 </script>  
 </body>
