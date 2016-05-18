@@ -24,6 +24,7 @@ class SearchBar extends React.Component {
 
 class Topbar extends React.Component {
 	componentWillReceiveProps(newProps){
+		console.log('<Topbar/> newProps',this.props,this.state);
 	}
 	componentDidUpdate(){
 		console.log('<Topbar/> updated',this.props,this.state);
@@ -31,6 +32,7 @@ class Topbar extends React.Component {
 	render(){
 		console.log('<Topbar/> rendering',this.props,this.state);
 		var user = this.props.user;
+		var shoppingCart = this.props.user.shoppingCart;
 		return(
 			<div className="topbar wrapper">
 				<div className="container">
@@ -49,7 +51,7 @@ class Topbar extends React.Component {
 							<i className="fa fa-shopping-cart"></i> 
 							<span> </span>
 							<Link to="/shopping_cart" className="a-cart">
-								我的购物车(<span className="quantityIn">{user.username?user.shoppingCart.length:0}</span>)
+								我的购物车(<span className="quantityIn">{user.username?shoppingCart.length:0}</span>)
 							</Link>
 							<div className="cart_panel">
 								我的购物车

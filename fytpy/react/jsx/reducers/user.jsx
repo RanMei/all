@@ -64,35 +64,46 @@ function user (state={},action){
 			delete sessionStorage.userID;
 			return {};
 		case 'ADD_TO_CART':
+			var shoppingCart = [];
 			var successful = false;
+			console.log( JSON.stringify(action) )
 			$.ajax({
 				type:'post',
-				url:$$phpDir+'/insert.php',
+				url:$$phpDir+'/shoppingCart.php',
 				data:{data:JSON.stringify(action)},
-				dataType: 'text',
+				//dataType: 'text',
 				async:false
 			}).done(function(data){
-				if(data==='true'){
+				if( data ){
+					shoppingCart = JSON.parse(data);
 					alert('成功加入购物车！');
 					successful = true;
+					//state.shoppingCart = shoppingCart;
 				}else{
 					alert('请先登录！');
 				}
 			});
-			if( successful ){
-				return getUser();
-			}else{
-				return state;
-			};
+			//console.log(state);
+			//console.log( shoppingCart );
+			return Object.assign({},state,{shoppingCart});
 		case 'REMOVE_ITEM':
+			var shoppingCart = [];
+			var successful = false;
 			$.ajax({
 				type:'post',
-				url:$$phpDir+'/remove.php',
+				url:$$phpDir+'/shoppingCart.php',
 				data:{data:JSON.stringify(action)},
 				async:false
-			}).done(function(){
+			}).done(function(data){
+				if( data ){
+					shoppingCart = JSON.parse(data);
+					successful = true;
+					//state.shoppingCart = shoppingCart;
+				}else{
+				}				
 			});
-			return getUser();
+			//console.log(state);
+			return Object.assign({},state,{shoppingCart});
 		case 'SAVE_NEW_DI':
 			var successful = false;
 			$.ajax({

@@ -1,9 +1,11 @@
 <?php
-header("Content-type:application/json;charset=utf-8");
+//header("Content-type:application/json;charset=utf-8");
 header("Access-Control-Allow-Origin:http://localhost:3000");
 
 require "connect.php";
 session_start();
+
+$data = json_decode($_POST["data"],true);
 
 // Function to get shopping-cart infomation.
 function getShoppingCart($connection){
@@ -24,11 +26,11 @@ function getShoppingCart($connection){
 }
 
 function addToCart($connection,$data){
-	$rows = mysqli_query($connection,"select * from shoppingCart where username='{$_SESSION["username"]}' and itemID='{$data["itemID"]}'");
+	$rows = mysqli_query($connection,"select * from shoppingCart where username='{$_SESSION["username"]}' and itemID='{$data["itemID"]}'")or die('Failed to select!');
 	if(mysqli_num_rows($rows)==0){
-		mysqli_query($connection,"insert into shoppingCart(username,itemID,quantity)values('{$_SESSION["username"]}','{$data["itemID"]}','{$data["quantity"]}')");
+		mysqli_query($connection,"insert into shoppingCart(username,itemID,quantity)values('{$_SESSION["username"]}','{$data["itemID"]}','{$data["quantity"]}')")or die('Failed to insert!');
 	};
-	echo 'true';
+	echo json_encode( getShoppingCart($connection) );
 }
 
 if( isset($_SESSION["username"]) ){

@@ -63,12 +63,14 @@ class App extends React.Component {
 		super();
 	}
 	render() {
+		//console.log( $$store.getState() );
 		return (
 			<div>
 				<SearchBar/>
 				<div className="line"></div>
 				<_Topbar 
 					user={$$store.getState().user}
+					shoppingCart={$$store.getState().user.shoppingCart}
 					onLogout={()=>$$store.dispatch({type:'LOGOUT'})}
 				/>
 				<div>
@@ -109,11 +111,15 @@ var _Counter = connect(function(state){
 })(Counter);
 
 var _Topbar = connect(function(state){
-	return {user:state.user}
+	return {
+		user:state.user
+	}
 })(Topbar);
 
 var _ShoppingCart = connect(function(state){
-	return {user:state.user}
+	return {
+		user:state.user
+	}
 })(ShoppingCart);
 
 var _ConfirmOrder = connect(function(state){
