@@ -22,6 +22,7 @@
 @red-price: #EB5434;
 @grey-text: #4A4A4A;
 @grey-border: #E5E5E5;
+@grey-bg: #F3F3F3;
 
 /*Reset CSS*/
 *{ margin:0; padding:0; border: none; list-style: none; font-size: 1.4rem; font-family: "Microsoft Yahei","Helvetial","Rotobo", "Pingfang SC", "Noto Sans Han", "HeiTi SC", "Droid Sans Fallback"; box-sizing: border-box;}
@@ -60,29 +61,26 @@ img { display: block;}
   }
 }
 
-/*统一rem,适配手机和Ipad*/
-@media (max-width: 767px) {
-  html,body{
-    font-size: 10px;
-    color: @default-text-color;
-    background: @background-color-default;
-  }
-  /*宽度小于768px,默认1rem=10像素*/
-}
-@media (max-width: 320px) {
+/* Media Queries */
+@media (min-width: 0px) {
   html,body{
     font-size: 8px;
-    color: @default-text-color;
-    background: @background-color-default;
+    color: @grey-text;
+    background: @grey-bg;
   }
-  /*宽度小于320px,默认1rem=8像素*/
+}
+@media (min-width: 320px) {
+  html,body{
+    font-size: 10px;
+    color: @grey-text;
+    background: @grey-bg;
+  }
 }
 @media (min-width: 768px) {
   html,body {
     font-size: 14px;
-    color: @default-text-color;
-    background: @background-color-default;
-    /*宽度大于768px,默认1rem=14像素*/
+    color: @grey-text;
+    background: @grey-bg;
   }
 }
 //@media (device-width:375px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone 6 */

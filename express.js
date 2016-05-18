@@ -12,14 +12,18 @@ app.use( express.static(__dirname) );
 app.use( bodyParser.json() );
 app.use( cookieParser() );
 
-var connection = mysql.createConnection({
-	host : 'localhost',
-	port : 3306,
-	user : 'root',
-	password : '',
-	database:'fytpy'
-});
-connection.connect();
+try{
+	var connection = mysql.createConnection({
+		host : 'localhost',
+		port : 3306,
+		user : 'root',
+		password : '',
+		database:'fytpy'
+	});
+	connection.connect();
+}catch(e){
+	console.log(e);
+}
 
 app.post('/login',function(req,res){
 	console.log(req.body);

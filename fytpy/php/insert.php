@@ -5,12 +5,16 @@ $data=json_decode($_POST["data"],true) or die("解析JSON失败！");
 
 if( isset($_SESSION["username"]) ){
 	
-	if( isset($data["DI"]) ){
-		$rows=mysqli_query($connection,"select * from deliveryInformation where username='{$_SESSION["username"]}' and date='{$data["date"]}'");
-		if(mysqli_num_rows($rows)==0){
-			mysqli_query($connection,"insert into deliveryInformation(username,consignee,phoneNumber,deliveryAddress,date)values('{$data["username"]}','{$data["consignee"]}','{$data["phoneNumber"]}','{$data["deliveryAddress"]}','{$data["date"]}')");
+	function saveNewDI($connection,$data){
+		$rows = 
+			mysqli_query($connection,"select * from deliveryInformation where username='{$_SESSION["username"]}' and date='{$data["date"]}'")
+			or die('Failed to select!');
+		if( mysqli_num_rows($rows)==0 ){
+			mysqli_query($connection,"insert into deliveryInformation(username,consignee,phoneNumber,deliveryAddress,date,status)values('{$_SESSION["username"]}','{$data["consignee"]}','{$data["phoneNumber"]}','{$data["deliveryAddress"]}','{$data["date"]}','')")or die('Failed.');
+			echo 'true';
 		}else{
 			mysqli_query($connection,"update deliveryInformation set consignee='{$data["consignee"]}', phoneNumber='{$data["phoneNumber"]}', deliveryAddress='{$data["deliveryAddress"]}' where username='{$_SESSION["username"]}' and date='{$data["date"]}'");
+			echo 'true';
 		};
 	};
 
@@ -29,6 +33,9 @@ if( isset($_SESSION["username"]) ){
 	
 	if( $data["type"]==='ADD_TO_CART' ){
 		addToCart($connection,$data);
+	};
+	if( $data["type"]==='SAVE_NEW_DI' ){
+		saveNewDI($connection,$data);
 	};
 
 }else{

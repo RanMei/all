@@ -20,8 +20,8 @@ canvas {
 
 <body>
 
-<script src='../vendor/matter.min.js'></script>
-<script src='../vendor/jquery.js'></script>
+<script src='../../vendor/matter.min.js'></script>
+<script src='../../vendor/jquery.js'></script>
 <script type="text/javascript">
 /*
 Bodies.polygon
@@ -31,6 +31,7 @@ World.add
 
 var $w = $(window).width() * window.devicePixelRatio;
 var $h = $(window).height() * window.devicePixelRatio;
+var $imgDir = './image/';
 
 // Matter.js module aliases
 var Engine = Matter.Engine;
@@ -88,7 +89,7 @@ function hah(){
 			lineWidth: 3,
 			opacity: 0.8,
 			sprite: {
-				texture: './DriftingBalls/trip.png',
+				texture: $imgDir+'trip.png',
 				xScale: 0.8,
 				yScale: 0.8
 			}
@@ -109,7 +110,7 @@ function hah(){
 			strokeStyle: 'white',
 			lineWidth: 3,
 			sprite: {
-				texture: './DriftingBalls/Prague.png'
+				texture: $imgDir+'Prague.png'
 			}
 	    },
 	    density: Math.random() * 0.1,
@@ -122,7 +123,7 @@ function hah(){
 	      strokeStyle: 'white',
 	      lineWidth: 3,
 	      sprite: {
-	      	texture: './DriftingBalls/Yunnan.png'
+	      	texture: $imgDir+'Yunnan.png'
 	      }
 	    },
 	    density: Math.random() * 0.1,
@@ -135,7 +136,7 @@ function hah(){
 	      strokeStyle: 'white',
 	      lineWidth: 3,
 	      sprite: {
-	      	texture: './DriftingBalls/France.png'
+	      	texture: $imgDir+'France.png'
 	      }
 	    },
 	    density: Math.random() * 0.1,

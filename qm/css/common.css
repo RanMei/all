@@ -87,24 +87,22 @@ img {
 .elasticbox .elasticbox_five {
   -webkit-box-flex: 5;
 }
-/*统一rem,适配手机和Ipad*/
-@media (max-width: 767px) {
-  html,
-  body {
-    font-size: 10px;
-    color: #4A4A4A;
-    background: #F3F3F3;
-  }
-  /*宽度小于768px,默认1rem=10像素*/
-}
-@media (max-width: 320px) {
+/* Media Queries */
+@media (min-width: 0px) {
   html,
   body {
     font-size: 8px;
     color: #4A4A4A;
     background: #F3F3F3;
   }
-  /*宽度小于320px,默认1rem=8像素*/
+}
+@media (min-width: 320px) {
+  html,
+  body {
+    font-size: 10px;
+    color: #4A4A4A;
+    background: #F3F3F3;
+  }
 }
 @media (min-width: 768px) {
   html,
@@ -112,7 +110,6 @@ img {
     font-size: 14px;
     color: #4A4A4A;
     background: #F3F3F3;
-    /*宽度大于768px,默认1rem=14像素*/
   }
 }
 /*默认文本框样式*/

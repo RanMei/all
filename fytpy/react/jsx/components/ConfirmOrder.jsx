@@ -6,7 +6,9 @@ class ConfirmOrder extends React.Component {
 		super();
 		this.state = {
 			items: JSON.parse( sessionStorage.items ),
-			veilVisible: false
+			veilVisible: false,
+			targetDI: {},
+			deliveryInformation: []
 		}
 		console.log('<ConfirmOrder/> creating',this.props,this.state);
 	}
@@ -17,7 +19,9 @@ class ConfirmOrder extends React.Component {
 		console.log('<ConfirmOrder/> will mount',this.props,this.state);
 	}
 	componentWillReceiveProps(newProps){
-		this.setState({DI:newProps.DI});
+		this.setState({
+			deliveryInformation:newProps.DI
+		});
 	}
 	componentDidUpdate(){
 		console.log('<ConfirmOrder/> updated',this.props,this.state);
@@ -30,36 +34,63 @@ class ConfirmOrder extends React.Component {
 		}
 		return total.toFixed(2);
 	}
+	setConsignee(e){
+		var targetDI = this.state.targetDI||{};
+		targetDI.consignee = e.target.value;
+		this.setState({
+			targetDI: targetDI
+		})
+	}
+	setPhoneNumber(e){
+		var targetDI = this.state.targetDI||{};
+		targetDI.phoneNumber = e.target.value;
+		this.setState({
+			targetDI: targetDI
+		})
+	}
+	setDeliveryAddress(e){
+		var targetDI = this.state.targetDI||{};
+		targetDI.deliveryAddress = e.target.value;
+		this.setState({
+			targetDI: targetDI
+		})
+	}
 	addDI(){
 		this.setState({
 			veilVisible: true
 		})
 	}
-	setConsignee(e){
-		var newDI = this.state.newDI||{};
-		newDI.consignee = e.target.value;
+	editDI(i){
 		this.setState({
-			newDI: newDI
+			veilVisible: true,
+			targetDI: this.props.user.deliveryInformation[i]
 		})
 	}
-	setPhoneNumber(e){
-		var newDI = this.state.newDI||{};
-		newDI.phoneNumber = e.target.value;
-		this.setState({
-			newDI: newDI
+	deleteDI(i){
+		this.props.act({
+			type: 'DELETE_DI',
+			date: this.props.user.deliveryInformation[i].date
 		})
 	}
-	saveNewDI(){
-
+	savetargetDI(){
+		this.props.act({
+			type: 'SAVE_NEW_DI',
+			consignee: this.state.targetDI.consignee,
+			phoneNumber: this.state.targetDI.phoneNumber,
+			deliveryAddress: this.state.targetDI.deliveryAddress,
+			date: new Date()
+		})
 	}
 	hideVeil(){
 		this.setState({
-			veilVisible: false
+			veilVisible: false,
+			targetDI: {}
 		})
 	}
 	render(){
+		var self = this;
 		var items = this.state.items;
-		var DI = this.props.user.deliveryInformation||[];
+		var deliveryInformation = this.props.user.deliveryInformation||[];
 		//console.log(this.props);
 		//console.log(this.state);
 		return (
@@ -76,15 +107,20 @@ class ConfirmOrder extends React.Component {
 							type="text" 
 							name="consignee" 
 							placeholder="收货人姓名"
+							value={this.state.targetDI.consignee||''}
 							onChange={this.setConsignee.bind(this)}/>
 						<input 
 							type="text" 
 							name="phoneNumber" 
 							placeholder="请输入11位手机号码"
+							value={this.state.targetDI.phoneNumber||''}
 							onChange={this.setPhoneNumber.bind(this)}/>
-						<textarea placeholder="请输入详细收货地址"></textarea>
+						<textarea 
+							placeholder="请输入详细收货地址"
+							value={this.state.targetDI.deliveryAddress||''}
+							onChange={this.setDeliveryAddress.bind(this)}></textarea>
 						<div className="date"></div>
-						<button className="save" onClick={this.saveNewDI.bind(this)}>保存收货信息</button>
+						<button className="save" onClick={this.savetargetDI.bind(this)}>保存收货信息</button>
 					</div>
 				</div>:''
 				}
@@ -95,7 +131,7 @@ class ConfirmOrder extends React.Component {
 							<button className="add" onClick={this.addDI.bind(this)}>添加收货信息</button>
 						</div>
 						<div className="di-content">
-							{DI.map(function(elem){
+							{deliveryInformation.map(function(elem,i){
 								return (
 									<div className="di">
 										<div className="content">
@@ -103,8 +139,8 @@ class ConfirmOrder extends React.Component {
 											<p>联系电话：<span className="phoneNumber">{elem.phoneNumber}</span></p>
 											<p>收货地址：<span className="deliveryAddress">{elem.deliveryAddress}</span></p>
 											<div className="operation">
-												<button className="remove">删除</button>
-												<button className="edit">编辑</button>
+												<button className="remove" onClick={self.deleteDI.bind(self,i)}>删除</button>
+												<button className="edit" onClick={self.editDI.bind(self,i)}>编辑</button>
 											</div>
 										</div>
 									</div>

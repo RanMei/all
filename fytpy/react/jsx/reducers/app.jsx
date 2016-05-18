@@ -93,6 +93,39 @@ function user (state={},action){
 			}).done(function(){
 			});
 			return getUser();
+		case 'SAVE_NEW_DI':
+			var successful = false;
+			$.ajax({
+				type:'post',
+				url:$$phpDir+'/insert.php',
+				data:{data:JSON.stringify(action)},
+				dataType: 'text',
+				async:false
+			}).done(function(data){
+				if(data==='true'){
+					alert('成功添加收货信息！');
+					successful = true;
+				}else{
+					alert('请先登录！');
+				}
+			});
+			return getUser();
+		case 'DELETE_DI':
+			var successful = false;
+			$.ajax({
+				type:'post',
+				url:$$phpDir+'/remove.php',
+				data:{data:JSON.stringify(action)},
+				dataType: 'text',
+				async:false
+			}).done(function(data){
+				if(data==='true'){
+					successful = true;
+				}else{
+					alert('请先登录！');
+				}
+			});
+			return getUser();
 		default:
 			if( sessionStorage.userID ){
 				return getUser();

@@ -54,14 +54,25 @@ img {
     opacity: 1;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 0px) {
   html {
-    font-size: 10px;
+    font-size: 12px;
+  }
+  .swiper .train li {
+    height: 300px!important;
   }
 }
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   html {
     font-size: 16px;
+  }
+  .swiper .train li {
+    height: 400px!important;
+  }
+}
+@media (min-width: 992px) {
+  .swiper .train li {
+    height: 481px!important;
   }
 }
 .clear {
@@ -150,12 +161,8 @@ img {
 .home .swiper .train li {
   float: left;
   width: 33.33333333%;
+  height: 481px;
   overflow: hidden;
-}
-.home .swiper .train li img {
-  width: 180%;
-  margin-left: -40%;
-  display: block;
 }
 .home .swiper .centered {
   position: absolute;
@@ -318,12 +325,12 @@ img {
 }
 .brand .title .chinese {
   padding: 1rem 0 0 0;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #0F64C0;
 }
 .brand .title .english {
   padding-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #0F64C0;
 }
 .brand .container > p {
@@ -343,7 +350,7 @@ img {
   background: #E5E5E5;
 }
 .products ul {
-  margin-top: 50px;
+  margin-top: 45px;
   margin-bottom: 50px;
 }
 .products ul li {
@@ -362,7 +369,7 @@ img {
 }
 .products ul li .right .title {
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 1.5rem;
   color: #0F64C0;
   display: inline-block;
 }
