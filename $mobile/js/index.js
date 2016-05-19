@@ -60,6 +60,11 @@ $(document).ready(function(){
 		$('.currentPanel').find('ul>li').eq(i).html( $questions[current][i] );
 	};
 
+	$('.start').on('click',function(){
+		$('.page0').hide();
+		$('.page1').show();
+	})
+
 	function toNext(){
 		if( !$switching ){
 			console.log( $(this).index() );
