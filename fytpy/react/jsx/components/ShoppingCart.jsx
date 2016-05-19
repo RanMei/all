@@ -52,7 +52,7 @@ class ShoppingCart extends React.Component {
 		})
 	}
 	componentDidMount(){
-		console.log('<ShoppingCart/> mount',this.props,this.state)
+		//console.log('<ShoppingCart/> mount',this.props,this.state)
 	}
 	componentWillReceiveProps(newProps){
 		this.setState({
@@ -60,7 +60,7 @@ class ShoppingCart extends React.Component {
 		})
 	}
 	componentDidUpdate(){
-		console.log('<ShoppingCart/> updated',this.props,this.state);
+		//console.log('<ShoppingCart/> updated',this.props,this.state);
 	}
 	//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	allChecked(){
@@ -132,6 +132,7 @@ class ShoppingCart extends React.Component {
 	render() {
 		//console.log(React);
 		//console.log(Function);
+		console.log('<ShoppingCart/> rendering',this.props,this.state)
 		return (
 			<div className="shopping-cart wrapper ka-slideDown">
 				<div className="container">

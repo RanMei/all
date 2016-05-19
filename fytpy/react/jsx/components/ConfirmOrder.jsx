@@ -10,13 +10,13 @@ class ConfirmOrder extends React.Component {
 			targetDI: {},
 			deliveryInformation: []
 		}
-		console.log('<ConfirmOrder/> creating',this.props,this.state);
+		//console.log('<ConfirmOrder/> creating',this.props,this.state);
 	}
 	componentWillMount(){
 		this.setState({
 			user: this.props.user
 		})
-		console.log('<ConfirmOrder/> will mount',this.props,this.state);
+		//console.log('<ConfirmOrder/> will mount',this.props,this.state);
 	}
 	componentWillReceiveProps(newProps){
 		this.setState({
@@ -24,7 +24,7 @@ class ConfirmOrder extends React.Component {
 		});
 	}
 	componentDidUpdate(){
-		console.log('<ConfirmOrder/> updated',this.props,this.state);
+		//console.log('<ConfirmOrder/> updated',this.props,this.state);
 	}
 	getTotal(){
 		var total = 0;
@@ -73,13 +73,22 @@ class ConfirmOrder extends React.Component {
 		})
 	}
 	savetargetDI(){
-		this.props.act({
-			type: 'SAVE_NEW_DI',
-			consignee: this.state.targetDI.consignee,
-			phoneNumber: this.state.targetDI.phoneNumber,
-			deliveryAddress: this.state.targetDI.deliveryAddress,
-			date: new Date()
-		})
+		if( 
+			!this.state.targetDI.consignee||
+			!this.state.targetDI.phoneNumber||
+			!this.state.targetDI.deliveryAddress
+		){
+			alert('您输入的信息不完整！');
+		}else{
+			this.props.act({
+				type: 'SAVE_NEW_DI',
+				consignee: this.state.targetDI.consignee,
+				phoneNumber: this.state.targetDI.phoneNumber,
+				deliveryAddress: this.state.targetDI.deliveryAddress,
+				date: new Date()
+			})
+			this.hideVeil();
+		};
 	}
 	hideVeil(){
 		this.setState({
@@ -91,8 +100,7 @@ class ConfirmOrder extends React.Component {
 		var self = this;
 		var items = this.state.items;
 		var deliveryInformation = this.props.user.deliveryInformation||[];
-		//console.log(this.props);
-		//console.log(this.state);
+		console.log('<ConfirmOrder/> rendering',this.props,this.state);
 		return (
 			<div className="CONFIRM_ORDER ka-slideDown">
 				{this.state.veilVisible?

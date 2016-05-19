@@ -1,31 +1,100 @@
+@blue: #2CA0FD;
+
 * {
 	margin: 0;
 	padding: 0;
 }
 .container {
-	width: 1000px;
-	margin: auto;
+
 }
 ul {
 	list-style: none;
 }
 
-// Media Queries
-@media (max-width:350px) {
-	html {
-		font-size: 8px;
-	}
+/* Media Queries */
+@media (min-width: 0px) {
+  html,body{
+    font-size: 8px;
+  }
 }
-// The resolution of iPhone6 is 1334*750.
-@media (max-width:768px) {
-	html {
-		font-size: 10px;
-	}
+@media (min-width: 320px) {
+  html,body{
+    font-size: 10px;
+  }
+}
+@media (min-width: 768px) {
+  html,body {
+    font-size: 14px;
+  }
 }
 
+body {
+	overflow: hidden;
+}
 .text {
 	padding: 2rem;
 	font-size: 1.8rem;
 	background: grey;
 }
+.space {
+	position: relative;
+	width: 80%;
+	height: 1px;
+	margin: 4rem auto;
+	.panel {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: 0 0 15px grey;
+		font-size: 2rem;
+		overflow: hidden;
+		.title {
+			padding: 2rem 1.5rem 2rem 1.5rem;
+			background: @blue;
+			color: white;
+		}
+		ul li {
+			padding: 1rem 1.5rem 1rem 1.5rem;
+			font-size: 1.6rem;
+		}
+		ul li:hover {
+			background: lightgrey;
+		}
+	}
+	.nextPanel {
+		opacity: 0;
+		z-index: -10;
+	}
+}
 
+@keyframes moveOut {
+	0% {transform: ;}
+	100% {
+		transform: translate(-1600px,150px) rotate(-90deg);
+	}
+}
+@keyframes moveIn {
+	0% {
+		transform: translate(1600px,150px) rotate(90deg);
+	}
+	40% {
+		transform: translate(-10px,0) rotate(-3deg);
+	}
+	60% {
+		transform: translate(10px,0) rotate(5deg);
+	}
+	100% {
+		transform: ;
+		opacity: 1;
+	}
+}
+.moveOut {
+	transform-origin: 50% 100%;
+	animation: moveOut 0.8s forwards;
+}
+.moveIn {
+	transform-origin: 50% 100%;
+	animation: moveIn 1s forwards;
+}

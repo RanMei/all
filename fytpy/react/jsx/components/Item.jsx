@@ -34,7 +34,7 @@ class Item extends React.Component {
 			tabPanel: 0,
 			thumbnail: 0
 		};
-		console.log('<Item/> creating',this.props,this.state);
+		//console.log('<Item/> creating',this.props,this.state);
 	}
 	componentWillMount(){
 	}
@@ -77,6 +77,7 @@ class Item extends React.Component {
 		var item = this.state.item;
 		var self = this;
 		var thumbnail = this.state.thumbnail;
+		console.log('<Item/> rendering',this.props,this.state);
 		return (
 			<div id="ITEM" className="ka-slideDown">
 				<div className="item container">

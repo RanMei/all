@@ -5,7 +5,9 @@ header("Access-Control-Allow-Origin:http://localhost:3000");
 require "connect.php";
 session_start();
 
-$data = json_decode($_POST["data"],true);
+if( isset($_POST["data"]) ){
+	$data = json_decode($_POST["data"],true);
+};
 
 // Function to get shopping-cart infomation.
 function getShoppingCart($connection){
@@ -30,12 +32,12 @@ function addToCart($connection,$data){
 	if(mysqli_num_rows($rows)==0){
 		mysqli_query($connection,"insert into shoppingCart(username,itemID,quantity)values('{$_SESSION["username"]}','{$data["itemID"]}','{$data["quantity"]}')")or die('Failed to insert!');
 	};
-	echo json_encode( getShoppingCart($connection) );
 }
 
-if( isset($_SESSION["username"]) ){
+if( isset($_SESSION["username"])&&isset($data) ){
 	if( $data["type"]==='ADD_TO_CART' ){
 		addToCart($connection,$data);
+		echo json_encode( getShoppingCart($connection) );
 	};
 
 	if( $data["type"]==='REMOVE_ITEM' ){

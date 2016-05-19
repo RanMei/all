@@ -7,7 +7,6 @@ import {Home} from './components/Home.jsx';
 import {Item} from './components/Item.jsx';
 import {CommentBox} from './components/CommentBox.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
-import {Counter} from './components/Counter.jsx';
 import {Signin} from './components/Signin.jsx';
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 //import {Veil} from './components/Veil.jsx';
@@ -63,14 +62,14 @@ class App extends React.Component {
 		super();
 	}
 	render() {
-		//console.log( $$store.getState() );
+		console.log( '<App/> rendering, State:',$$store.getState() );
 		return (
 			<div>
 				<SearchBar/>
 				<div className="line"></div>
 				<_Topbar 
 					user={$$store.getState().user}
-					shoppingCart={$$store.getState().user.shoppingCart}
+					/*shoppingCart={$$store.getState().user.shoppingCart}*/
 					onLogout={()=>$$store.dispatch({type:'LOGOUT'})}
 				/>
 				<div>
@@ -80,7 +79,6 @@ class App extends React.Component {
 				<div className="line"></div>
 				<Footer/>
 				<BackToTop/>
-				
 			</div>
 		);
 	}
@@ -106,9 +104,6 @@ console.log( 'state initialized',$$store.getState() )
 
 // Connect the state in $$store with props of a component.
 // Create Smart Components.
-var _Counter = connect(function(state){
-	return {value:state.counter.num}
-})(Counter);
 
 var _Topbar = connect(function(state){
 	return {
@@ -126,15 +121,6 @@ var _ConfirmOrder = connect(function(state){
 	return {user:state.user}
 })(ConfirmOrder);
 
-class $$Counter extends React.Component {
-	render(){
-		return (
-			<_Counter value={ $$store.getState().counter.num }
-				onIncrement={ function(){$$store.dispatch( INCREMENT )} }
-				onDecrement={ () => $$store.dispatch( DECREMENT ) }/>
-		)
-	}
-}
 class $$Signin extends React.Component {
 	render(){
 		return (
@@ -179,7 +165,6 @@ ReactDOM.render(
 					<Route path="/home" component={Home} />
 					<Route path="/comment_box" component={CommentBox} />
 					<Route path="/shopping_cart" component={ShoppingCartContainer} />
-					<Route path="/counter" component={$$Counter}/>
 					<Route path="/item" component={ItemContainer}/>
 					<Route path="/confirm_order" component={ConfirmOrderContainer} />
 					<IndexRoute path="/home" component={Home} />

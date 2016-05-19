@@ -87,13 +87,17 @@ img {
 .elasticbox .elasticbox_five {
   -webkit-box-flex: 5;
 }
+html,
+body {
+  background: red;
+}
 /* Media Queries */
 @media (min-width: 0px) {
   html,
   body {
     font-size: 8px;
     color: #4A4A4A;
-    background: #F3F3F3;
+    background: #E5E5E5;
   }
 }
 @media (min-width: 320px) {
@@ -101,7 +105,7 @@ img {
   body {
     font-size: 10px;
     color: #4A4A4A;
-    background: #F3F3F3;
+    background: #E5E5E5;
   }
 }
 @media (min-width: 768px) {
@@ -109,7 +113,7 @@ img {
   body {
     font-size: 14px;
     color: #4A4A4A;
-    background: #F3F3F3;
+    background: #E5E5E5;
   }
 }
 /*默认文本框样式*/

@@ -30,24 +30,24 @@ class Signin extends React.Component {
 	}
 	setUserID(e){
 		var user = this.state.user;
-		this.state.user.userID = e.target.value;
+		user.userID = e.target.value;
 		this.setState({
 			user: user
 		});
 	}
 	setPassword(e){
 		var user = this.state.user;
-		this.state.user.password = e.target.value;
+		user.password = e.target.value;
 		this.setState({
 			user: user
 		});
 	}
-	checkPassword(){
-		if( !this.state.user.password ){
-			return '';
-		}else{
-			return (/^\w{6,20}$/.test(this.state.user.password))?'success':'error';
-		};
+	setPassword2(e){
+		var user = this.state.user;
+		user.password2 = e.target.value;
+		this.setState({
+			user: user
+		});
 	}
 	checkUserID(){
 		if( !this.state.user.userID ){
@@ -56,8 +56,26 @@ class Signin extends React.Component {
 			return (/^\d{11}$/.test(this.state.user.userID))?'success':'error';
 		};
 	}
+	checkPassword(){
+		if( !this.state.user.password ){
+			return '';
+		}else{
+			return (/^\w{6,20}$/.test(this.state.user.password))?'success':'error';
+		};
+	}
+	checkPassword2(){
+		if( !this.state.user.password2 ){
+			return '';
+		}else{
+			return (/^\w{6,20}$/.test(this.state.user.password2))&&(this.state.user.password===this.state.user.password2)?'success':'error';
+		};
+	}
 	register(){
-		if( this.checkUserID()==='success'&&this.checkPassword()==='success' ){
+		if( 
+			this.checkUserID()==='success'&&
+			this.checkPassword()==='success'&&
+			this.checkPassword2()==='success'&&
+			this.verif ){
 			this.props.act({
 				type:'REGISTER',
 				user:this.state.user
@@ -97,6 +115,8 @@ class Signin extends React.Component {
 									type="password" 
 									name="password2" 
 									placeholder="确认密码"
+									onChange={this.setPassword2.bind(this)}
+									className={this.checkPassword2()}
 									/>
 								<p className="info"></p>
 								<input type="text" name="verif" placeholder="请输入验证码"/>
