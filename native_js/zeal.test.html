@@ -7,8 +7,8 @@
 	<link href="css/common.css" rel="stylesheet">
 	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
 	
-	<script type="text/javascript" src="../js/Z/_.js"></script>
-	<script type="text/javascript" src="../js/Z/Zeal.js"></script>
+	<script type="text/javascript" src="../js/_.js"></script>
+	<script type="text/javascript" src="../js/zeal.js"></script>
 <style>
 .dog {
 	width: 100px;
@@ -20,27 +20,24 @@
 <script>
 
 $(document).ready(function(){
-	console.log( $(".dog") );
-	$(".dog").html("fuck").addClass("fuck").removeClass("fuck");
+
 	$(".dog").css({
 		width: "100px",
 		height: "50px",
-		opacity: 0.8,
 		background: "red",
-		paddingLeft: "50px"
-	});
+		'padding-left': "50px"
+	}).html("fuck").addClass("fuck").removeClass("fuck");
+
+	$(".dog").eq(0).css({background:'orange'});
+	
 	$(".dog").on("click",function(e){
 		$(this).animate({
 			width: 500,
 			height: 500
 		},200);
 	});
-	$(".dog").animate({
-			width: 500,
-			height: 120
-		},200);
 	console.log(Object);
-	console.log( $(".dog").toArray() );
+	console.log( $('div') );
 
 
 // var a = {
@@ -71,7 +68,7 @@ console.log( $.camelCase("fuck-you-all_piece_of-shit") );
 </head>
 
 <body>	
-	<div class="dog" style="opacity: 0.5;"></div>
+	<div class="dog" style="opacity: 0;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
 

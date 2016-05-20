@@ -7,16 +7,13 @@
 	};
 
 	Zeal.fn = Zeal.prototype = {
-		each: function( f ){
+		each: function( callback ){
 			for( var i=0;i<this.length;i++ ){
-				f( this[i] );
+				callback( this[i],i );
 			}
 		},
 		eq: function(i){
-			// Create a Zeal object.
-			var zeo = Zeal('');
-			zeo[0] = this[i];
-			return zeo;
+			return Zeal( this[i] );
 		},
 		toArray: function(){
 			return [].slice.call( this );
@@ -35,10 +32,16 @@
 			this[0] = selector;
 			this.length = 1;
 		};
-		// $(".className")
-		if( (typeof selector==='string')&&(/^\./.test(selector)) ){
-			var string = selector.replace(/\./,'');
-			elems = document.getElementsByClassName( string );
+		
+		if( (typeof selector==='string') ){
+			// $(".className")
+			if( /^\./.test(selector) ){
+				var string = selector.replace(/\./,'');
+				elems = document.getElementsByClassName( string );
+			// $('tagName')
+			}else{
+				elems = document.getElementsByTagName( selector );
+			}
 			for( var i=0;i<elems.length;i++ ){
 				this[i] = elems[i];
 			}
@@ -69,9 +72,9 @@
 	};
 	// $().on()
 	Zeal.prototype.on = function( event,callback ){
-		for( var i=0;i<this.length;i++ ){
-			this[i].addEventListener( event,callback );	
-		};
+		this.each(function(elem){
+			elem.addEventListener( event,callback );	
+		});
 	};
 
 	// @param {string} string
@@ -121,108 +124,120 @@
 
 	// @param {object} opts
 	Zeal.prototype.css = function( opts ){
-		for( var i=0;i<this.length;i++ ){
+		this.each(function(elem){
+			var cssText = '';
 			for( var prop in opts ){
-				this[i].style[prop] = opts[prop];
+				cssText += prop+':'+opts[prop]+';';
+				//this[i].style[prop] = opts[prop];
 			};
-		};
+			elem.style.cssText += cssText;
+		});
+		return this;
 	}
 
 	// 
-	Zeal.prototype.fadeOut = function( time,callback ){
-
-			var elem = this[0];
-			var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
-			if( currentOpacity!==0 ){
-				var p = currentOpacity;
-				var dp = p/(time/10);
+	Zeal.fn.extend({
+		fadeOut: function( duration,callback ){
+			this.each(function( elem ){
+				var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
+				if( currentOpacity!==0 ){
+					var p = currentOpacity;
+					var dp = p/(duration/10);
+					var interval = setInterval(function(){
+						if( p-dp>0 ){		
+							p-=dp;
+							elem.style.opacity = p;
+						}else{
+							clearInterval( interval );
+							elem.style.opacity = 0;
+							if( callback ){
+								callback();
+							};
+						};
+					},10);
+				};	
+			})
+		},
+		fadeIn: function( duration ){
+			this.each( function(elem){
+				var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
+				var p = Number(currentOpacity);
+				console.log(p);
+				var dp = (1-p)/(duration/10);
 				var interval = setInterval(function(){
-					if( p-dp>0 ){		
-						p-=dp;
+					if( p+dp<1 ){		
+						p+=dp;
 						elem.style.opacity = p;
 					}else{
 						clearInterval( interval );
-						elem.style.opacity = 0;
-						if( callback ){
-							callback();
-						};
+						elem.style.opacity = 1;
 					};
 				},10);
-			};
+			});
+		},
+		fadeToggle: function( duration ){
+			this.each( function(elem,i){
+				var currentOpacity = Number(document.defaultView.getComputedStyle(elem).opacity);
+				console.log(currentOpacity);
+				if( currentOpacity===1 ){
+					Zeal(elem).fadeOut( duration );
+				}else if( currentOpacity===0 ){
+					Zeal(elem).fadeIn( duration );
+				};
+			});
+		}
+	})
 
-	};
-	Zeal.prototype.fadeIn = function( time ){
-		var elem = this[0];
-		var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
-		var p = Number(currentOpacity);
-		console.log(p);
-		var dp = (1-p)/(time/10);
-		var interval = setInterval(function(){
-			if( p+dp<1 ){		
-				p+=dp;
-				elem.style.opacity = p;
-			}else{
-				clearInterval( interval );
-				elem.style.opacity = 1;
-			};
-		},10);
-
-	};
-	Zeal.prototype.fadeToggle=function( time ){
-		var elem = this[0];
-		var currentOpacity = Number(document.defaultView.getComputedStyle(elem).opacity);
-		if( currentOpacity===1 ){
-			this.fadeOut( time );
-		}else if( currentOpacity===0 ){
-			this.fadeIn(time);
-		};
-	};
 	//-----------------------------------------------------------
-	Zeal.prototype.slideUp=function( time ){
-		var elem=this.elem;
-		elem.style.overflow="hidden";
-		var p=elem.offsetHeight;
-		var dp=p/(time/10);			
-		var interval=setInterval(function(){
-			if( p-dp>0 ){
-				p-=dp;
-				elem.style.height=p+"px";
-			}else{
-				clearInterval( interval );
-				elem.style.height=0;
-				console.log( elem.offsetHeight );
-			};
-		},10);
+	Zeal.prototype.slideUp=function( duration ){
+		this.each(function(elem){
+			elem.style.overflow = 'hidden';
+			var originalHeight,p;
+			originalHeight = p = Number(document.defaultView.getComputedStyle(elem).height.replace(/px/,''));
+			var dp = p/(duration/10);			
+			var interval=setInterval(function(){
+				if( p-dp>0 ){
+					p -= dp;
+					elem.style.cssText += 'height:'+p+'px;';
+				}else{
+					clearInterval( interval );
+					elem.style.cssText += 'height:0;';
+				};
+			},10);
+		});
 	};
 
 	// @param {object} opts
 	// @param {number} time
 	// @param {function} callback
-	Zeal.prototype.animate=function( opts,time,callback ){
-
-			var elem = this[0];
+	Zeal.prototype.animate=function( opts,duration,callback ){
+		this.each(function(elem){
 			var p = {};
 			var dp = {};
 			var interval = {};
+			var iteration = Math.ceil(duration/10);
+			var i = 0;
+			console.log(iteration);
 			for ( var prop in opts ){
 				p[prop] = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
-				console.log(p);
-				dp[prop] = (opts[prop]-p[prop])/(time/10);
-				console.log(dp)
-				interval[prop] = setInterval(function(){
-					if( p[prop]+dp[prop]<opts[prop] ){
+				dp[prop] = (opts[prop]-p[prop])/(duration/10);
+			}
+			interval = setInterval(function(){
+				if( i<iteration ){
+					for( var prop in opts ){
 						p[prop]+=dp[prop];
 						elem.style[prop] = p[prop] + "px";
-					}else{
-						clearInterval( interval[prop] );
-						elem.style[prop] = opts[prop];
-						if( callback ){
-							callback();					
-						};
 					};
-				},10);
-			};
-
+					i++;
+				}else{
+					clearInterval( interval );
+					elem.style[prop] = opts[prop];
+					if( callback ){
+						callback();					
+					};
+				};
+			},10);
+		});
 	};
 	//-----------------------------------------------------------
 	Zeal.extend({

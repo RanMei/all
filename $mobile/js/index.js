@@ -49,44 +49,75 @@ $(document).ready(function(){
 			answer: 1
 		}
 	];
-	var current = 0;
-	var $switching = false;
-	var $score = 0;
 	
 
 
-	$('.currentPanel').find('.title').html( $questions[current].question );
+	var $current = 0;
+	var $switching = false;
+	var $score = 0;
+	var $mask = $('.mask');
+	var $page0 = $('.page0');
+	var $page1 = $('.page1');
+	var $result = $('.result');
+	
+	function init(){
+		$current = 0;
+		$switching = false;
+		$score = 0;
+		$page0.show();
+		$page1.hide();
+		$result.hide();
+	}
+
+	$('.currentPanel').find('.title').html( $questions[$current].question );
 	for( var i=0;i<4;i++ ){
-		$('.currentPanel').find('ul>li').eq(i).html( $questions[current][i] );
+		$('.currentPanel').find('ul>li').eq(i).html( $questions[$current][i] );
 	};
 
 	$('.start').on('click',function(){
-		$('.page0').hide();
-		$('.page1').show();
+		$page0.hide();
+		$page1.show();
 	})
 
 	function toNext(){
 		if( !$switching ){
-			console.log( $(this).index() );
-			$switching = true;
-			$('.nextPanel').find('.title').html( $questions[current+1].question );
-			for( var i=0;i<4;i++ ){
-				$('.nextPanel').find('ul>li').eq(i).html( $questions[current+1][i] );
+			if( $current<$questions.length-1 ){
+				console.log( $(this).index() );
+				$score += $(this).index()===$questions[$current].answer?1:0;
+				$switching = true;
+				$('.nextPanel').find('.title').html( $questions[$current+1].question );
+				for( var i=0;i<4;i++ ){
+					$('.nextPanel').find('ul>li').eq(i).html( $questions[$current+1][i] );
+				}
+				$('.currentPanel').addClass('moveOut');
+				$('.nextPanel').addClass('moveIn');
+				setTimeout(function(){
+					var _next = $('.nextPanel');
+					var _current = $('.currentPanel');
+					_next.removeClass('nextPanel moveIn moveOut').addClass('currentPanel');
+					_current.removeClass('currentPanel moveIn moveOut').addClass('nextPanel');
+					$current++;
+					$switching = false;
+				},1000);
+			}else{
+				$score += $(this).index()===$questions[$current].answer?1:0;
+				$('.score').html($score);
+				$page1.hide();
+				$result.show();
 			}
-			$('.currentPanel').addClass('moveOut');
-			$('.nextPanel').addClass('moveIn');
-			setTimeout(function(){
-				_next = $('.nextPanel');
-				_current = $('.currentPanel');
-				_next.removeClass('nextPanel moveIn moveOut').addClass('currentPanel');
-				_current.removeClass('currentPanel moveIn moveOut').addClass('nextPanel');
-				current++;
-				$switching = false;
-			},1000);
 		};
 	};
 
 	$('.options').on('click','li',toNext);
-
+	
+	$('.getNow').on('click',function(){
+		$mask.show();
+	})
+	$('.close').on('click',function(){
+		$mask.hide();
+	})
+	$('.tryAgain').on('click',function(){
+		init();
+	})
 	
 });
