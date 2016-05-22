@@ -1,11 +1,13 @@
 (function(){
 
 	var _ = {
-		forEach: forEach,
 		bubbleSort: bubbleSort,
 		camelCase: camelCase,
+		copy: copy,
+		//each
 		extend: extend,
-		copy: copy
+		forEach: forEach
+		//map
 	};
 
 	// Functions to process strings.
@@ -17,9 +19,9 @@
 	}
 
 	// Functions to process arrays.
-	function forEach(arr,f){
+	function forEach( arr,callback ){
 		for( var i=0;i<arr.length;i++ ){
-			f( arr[i] );
+			callback( arr[i],i );
 		}
 	}
 	function bubbleSort(arr){

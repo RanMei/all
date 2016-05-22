@@ -15,6 +15,9 @@
 		eq: function(i){
 			return Zeal( this[i] );
 		},
+		siblings: function(){
+
+		},
 		toArray: function(){
 			return [].slice.call( this );
 		}
@@ -72,8 +75,12 @@
 	};
 	// $().on()
 	Zeal.prototype.on = function( event,callback ){
+		var events = event.split(' ');
+		console.log(events);
 		this.each(function(elem){
-			elem.addEventListener( event,callback );	
+			for( var i=0;i<events.length;i++ ){
+				elem.addEventListener( events[i],callback );
+			};	
 		});
 	};
 
@@ -135,50 +142,59 @@
 		return this;
 	}
 
+	// @param {object} opts
+	// @param {number} time
+	// @param {function} callback
+	Zeal.prototype.animate=function( opts,duration,callback ){
+		this.each(function(elem){
+			var p = {};
+			var target = {};
+			var dp = {};
+			var interval;
+			var iteration = Math.ceil(duration/10);
+			var i = 0;
+			//console.log(iteration);
+			for ( var prop in opts ){
+				p[prop] = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,''));
+				if( /\+|\-/.test( opts[prop] ) ){
+					target[prop] = 
+						p[prop]+
+						Number( opts[prop].replace(/(px)|\+|\=/g,'') );
+				}else{
+					target[prop] = opts[prop];
+				}
+				dp[prop] = (target[prop]-p[prop])/(duration/10);
+			}
+			interval = setInterval(function(){
+				if( i<iteration ){
+					for( var prop in opts ){
+						p[prop]+=dp[prop];
+						elem.style[prop] = p[prop] + (prop==='opacity'?0:"px");
+					};
+					i++;
+				}else{
+					clearInterval( interval );
+					for( var prop in opts ){
+						elem.style[prop] = target[prop];
+					};
+					if( callback ){
+						callback();					
+					};
+				};
+			},10);
+		});
+	};
 	// 
 	Zeal.fn.extend({
 		fadeOut: function( duration,callback ){
-			this.each(function( elem ){
-				var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
-				if( currentOpacity!==0 ){
-					var p = currentOpacity;
-					var dp = p/(duration/10);
-					var interval = setInterval(function(){
-						if( p-dp>0 ){		
-							p-=dp;
-							elem.style.opacity = p;
-						}else{
-							clearInterval( interval );
-							elem.style.opacity = 0;
-							if( callback ){
-								callback();
-							};
-						};
-					},10);
-				};	
-			})
+			this.animate({opacity:0},duration,callback);
 		},
 		fadeIn: function( duration ){
-			this.each( function(elem){
-				var currentOpacity = document.defaultView.getComputedStyle(elem).opacity;
-				var p = Number(currentOpacity);
-				console.log(p);
-				var dp = (1-p)/(duration/10);
-				var interval = setInterval(function(){
-					if( p+dp<1 ){		
-						p+=dp;
-						elem.style.opacity = p;
-					}else{
-						clearInterval( interval );
-						elem.style.opacity = 1;
-					};
-				},10);
-			});
+			this.animate({opacity:1},duration);
 		},
 		fadeToggle: function( duration ){
 			this.each( function(elem,i){
 				var currentOpacity = Number(document.defaultView.getComputedStyle(elem).opacity);
-				console.log(currentOpacity);
 				if( currentOpacity===1 ){
 					Zeal(elem).fadeOut( duration );
 				}else if( currentOpacity===0 ){
@@ -190,55 +206,10 @@
 
 	//-----------------------------------------------------------
 	Zeal.prototype.slideUp=function( duration ){
-		this.each(function(elem){
-			elem.style.overflow = 'hidden';
-			var originalHeight,p;
-			originalHeight = p = Number(document.defaultView.getComputedStyle(elem).height.replace(/px/,''));
-			var dp = p/(duration/10);			
-			var interval=setInterval(function(){
-				if( p-dp>0 ){
-					p -= dp;
-					elem.style.cssText += 'height:'+p+'px;';
-				}else{
-					clearInterval( interval );
-					elem.style.cssText += 'height:0;';
-				};
-			},10);
-		});
+		this.css({overflow:'hidden'});
+		this.animate({height:0},duration);
 	};
 
-	// @param {object} opts
-	// @param {number} time
-	// @param {function} callback
-	Zeal.prototype.animate=function( opts,duration,callback ){
-		this.each(function(elem){
-			var p = {};
-			var dp = {};
-			var interval = {};
-			var iteration = Math.ceil(duration/10);
-			var i = 0;
-			console.log(iteration);
-			for ( var prop in opts ){
-				p[prop] = Number(document.defaultView.getComputedStyle(elem)[prop].replace(/px/,""));
-				dp[prop] = (opts[prop]-p[prop])/(duration/10);
-			}
-			interval = setInterval(function(){
-				if( i<iteration ){
-					for( var prop in opts ){
-						p[prop]+=dp[prop];
-						elem.style[prop] = p[prop] + "px";
-					};
-					i++;
-				}else{
-					clearInterval( interval );
-					elem.style[prop] = opts[prop];
-					if( callback ){
-						callback();					
-					};
-				};
-			},10);
-		});
-	};
 	//-----------------------------------------------------------
 	Zeal.extend({
 		copy: _.copy,

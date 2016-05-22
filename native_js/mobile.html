@@ -25,15 +25,15 @@ ul li:nth-child(5) {background:#C94D91;}
 .next>div {margin:-10px 0 0 -30px;}
 .icons {margin: 100px auto;display:block;opacity:0}
 </style>
-<script src="js/zeta.js"></script>
+<script type="text/javascript" src="../js/_.js"></script>
+<script src="../js/zeal.js"></script>
 <script>
 $( document ).ready(function(){
 	//---------------------------------------------------------------------------------------------------------------
 	//variables
 	var w,h;
-	var $html=document.getElementsByTagName("html")[0],
-		$container=document.getElementsByClassName("container")[0],
-		$pages=document.getElementsByClassName("pages")[0],
+	var 
+		$train=document.getElementsByClassName("train")[0],
 		$page=document.getElementsByClassName("page"),
 		$next=document.getElementsByClassName("next")[0],
 		icons=document.getElementsByClassName("icons")[0],
@@ -44,51 +44,37 @@ $( document ).ready(function(){
 	function init(){
 		w=window.innerWidth;
 		h=window.innerHeight;
-		$container.style.width=w+"px";
-		$container.style.height=h+"px";
-		for(var i=0;i<$page.length;i++){
-			$page[i].style.height=h+"px";
-		};
-		$html.style.fontSize=10*(w/320)+"px";
-		$pages.style.marginTop="-"+n*h+"px";
+		$('.container').css({
+			width: w+'px',
+			height: h+'px'
+		})
+		$('.page').css({
+			height: h+'px'
+		})
+		$('html').css({
+			fontSize:10*(w/320)+"px"
+		});
+		$('.train').css({
+			marginTop:'-'+n*h+'px'
+		})
 	};
-	function scrollDown( height,time ){
-		var dy=height/(time/10);
-		var y=0;
-		if(scrolling===false&&n>=0&&n<$page.length-1){
-			scrolling=true;
-			var interval=setInterval(function(){
-				if(y+dy<height){
-					y+=dy;
-					$pages.style.marginTop="-"+(n*height+y)+"px";
-				}else{
-					$pages.style.marginTop="-"+(n*height+height)+"px";
-					clearInterval( interval );
-					scrolling=false;
-					n++;
-					reset();
-				};
-			},10);
+	function toNext(){
+		if( !scrolling&&n<$page.length-1 ){
+			scrolling = true;
+			$('.train').animate({marginTop:'-='+h},200,function(){
+				n++;
+				scrolling = false;
+			});
 		};
 	};
-	function scrollUp( height,time,callback ){
-		var dy=height/(time/10);
-		var y=0;
-		if(scrolling===false&&n>0&&n<$page.length){
-			scrolling=true;
-			var interval=setInterval(function(){
-				if(y+dy<height){
-					y+=dy;
-					$pages.style.marginTop="-"+(n*height-y)+"px";
-				}else{
-					$pages.style.marginTop="-"+(n*height-height)+"px";
-					clearInterval( interval );
-					scrolling=false;
-					n--;
-					animate();
-				};
-			},10);
-		};
+	function toPrev(){
+		if( !scrolling&&n>0 ){
+			scrolling = true;
+			$('.train').animate({marginTop:'+='+h},200,function(){
+				n--;
+				scrolling = false;
+			});
+		};		
 	};
 	function reset(){
 		icons.style.animation="";
@@ -105,23 +91,18 @@ $( document ).ready(function(){
 	window.onresize=init;
 	$next.style.animation="poping 1s infinite";
 	animate();
-	$( $next ).on("click",function(){
-		scrollDown( h,200 );
+
+	$('.next').on("click",function(){
+		toNext( h,200 );
 	});
-	$( window ).on("mousewheel",function(e){
+
+	$( window ).on("DOMMouseScroll mousewhell keydown",function(e){
 		e=e || window.event;
-		if( e.wheelDelta<0 ){
-			scrollDown( h,200 );
-		}else{
-			scrollUp( h,200,animate );
-		};
-	});
-	//FIREFOX
-	$( window ).on("DOMMouseScroll",function(e){
-		if( e.detail>0 ){
-			scrollDown( h,200 );
-		}else{
-			scrollUp( h,200 );
+		if( e.detail>0||e.wheelDelta<0||e.keyCode===40 ){
+			toNext();
+		}else
+		if( e.detail<0||e.wheelDelta>0||e.keyCode===38 ){
+			toPrev();
 		};
 	});
 	
@@ -132,7 +113,7 @@ $( document ).ready(function(){
 <body>
 	<div class="next"><div><i class="fa fa-angle-down"></i></div></div>
 	<div class="container">
-		<ul class="pages">
+		<ul class="train">
 			<li class="page">
 				<img class="icons" src="png/banner3_txt_4.png">
 				<img class="sina" src="png/sina_icon.png">

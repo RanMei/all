@@ -55,6 +55,8 @@ $(document).ready(function(){
 	var $current = 0;
 	var $switching = false;
 	var $score = 0;
+	var $cover = $('.cover');
+	var $world = $('.world');
 	var $mask = $('.mask');
 	var $page0 = $('.page0');
 	var $page1 = $('.page1');
@@ -64,18 +66,24 @@ $(document).ready(function(){
 		$current = 0;
 		$switching = false;
 		$score = 0;
-		$page0.show();
+		$cover.show();
+		$world.hide();
+		$('body').css({overflow:'visible'});
 		$page1.hide();
 		$result.hide();
+		$('.currentPanel').find('.title').html( $questions[$current].question );
+		for( var i=0;i<4;i++ ){
+			$('.currentPanel').find('ul>li').eq(i).html( $questions[$current][i] );
+		};
 	}
 
-	$('.currentPanel').find('.title').html( $questions[$current].question );
-	for( var i=0;i<4;i++ ){
-		$('.currentPanel').find('ul>li').eq(i).html( $questions[$current][i] );
-	};
+	init();
 
 	$('.start').on('click',function(){
-		$page0.hide();
+		$('html').animate(  {"scrollTop":"0"}  ,0);
+		$cover.hide();
+		$('body').css({overflow:'hidden'});
+		$world.show();
 		$page1.show();
 	})
 

@@ -3,12 +3,10 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>slider</title>
-	<link href="css/common.css" rel="stylesheet">
-	<link href="font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet">
+	<title></title>
 	
-	<script type="text/javascript" src="../js/_.js"></script>
-	<script type="text/javascript" src="../js/zeal.js"></script>
+	<script type="text/javascript" src="../_.js"></script>
+	<script type="text/javascript" src="./zeal.js"></script>
 <style>
 .dog {
 	width: 100px;
@@ -28,13 +26,10 @@ $(document).ready(function(){
 		'padding-left': "50px"
 	}).html("fuck").addClass("fuck").removeClass("fuck");
 
-	$(".dog").eq(0).css({background:'orange'});
+	$(".dog").eq(0).fadeIn(500);
 	
 	$(".dog").on("click",function(e){
-		$(this).animate({
-			width: 500,
-			height: 500
-		},200);
+		$(this).animate({width:'-50',height:'100'},200);
 	});
 	console.log(Object);
 	console.log( $('div') );
@@ -68,7 +63,7 @@ console.log( $.camelCase("fuck-you-all_piece_of-shit") );
 </head>
 
 <body>	
-	<div class="dog" style="opacity: 0;"></div>
+	<div class="dog" style="opacity: 0.2;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
 
