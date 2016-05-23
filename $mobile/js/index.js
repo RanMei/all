@@ -79,6 +79,10 @@ $(document).ready(function(){
 
 	init();
 
+	$('.start').on('mouseenter',function(){
+		$(this).addClass('toRect');
+	})
+
 	$('.start').on('click',function(){
 		$('html').animate(  {"scrollTop":"0"}  ,0);
 		$cover.hide();

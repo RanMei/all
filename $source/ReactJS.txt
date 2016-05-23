@@ -1,12 +1,3 @@
-immutable data
-elem.getAttribute()
-document.querySelector(['ng-app']);
-
-
-
-
-
-
 Virtual DOM
 
 

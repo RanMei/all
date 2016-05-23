@@ -6,12 +6,22 @@ var shell = require('gulp-shell');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 
+var webpack = require('webpack-stream');
+
 var babel = require('gulp-babel');
 var babelify = require('babelify');
 
 var tsify = require('tsify');
 
 var Promise = require('bluebird');
+
+// webpack-test
+gulp.task('webpack-test',function(){
+	return gulp.src('./webpack-test/jsx/entry.jsx')
+	    .pipe( webpack( require('./webpack-test/webpack.config.js') ) )
+    	.pipe( gulp.dest('./webpack-test/') );
+});
+
 
 // shell
 gulp.task( 'restart_server',shell.task([

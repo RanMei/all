@@ -22,8 +22,12 @@
 	var jqLite = $;
 
 	function angularInit(){
-		var appElement = document.querySelector('[ng-app]');
-		var module = appElement.getAttribute('ng-app');
+		var appElement,
+			module;
+		if( !appElement ){
+			appElement = document.querySelector('[ng-app]');
+			module = appElement.getAttribute('ng-app');
+		}
 		console.log(appElement,module);
 	}
 
