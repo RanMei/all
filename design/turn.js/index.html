@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="../../vendor/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/turn.min.js"></script>
+</head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#magazine').turn({
+		gradients: true,
+		duration: 1500,
+		elevation: 10,
+		acceleration: false,
+		autoCenter: false
+	});
+	$(document).on('click',function(){
+		$('#magazine').turn('next');
+	});
+});
+</script>
+
+<style type="text/css">
+.CONTAINER, #magazine{
+    width: 800px;
+    height: 400px;
+}
+#magazine{
+	margin-left: -400px;
+}
+#magazine .turn-page{
+    background-color:#ccc;
+}
+</style>
+
+<body>
+	<div class="CONTAINER">
+		<div id="magazine">
+		    <div><img src="../bookblock/images/demo1/1.jpg"/><span class="text">Page 1</span></div>
+		    <div><span class="text">Page 2</span></div>
+		    <div><span class="text">Page 3</span></div>
+		    <div><span class="text">Page 4</span></div>
+		    <div><span class="text">Page 5</span></div>
+		    <div><span class="text">Page 6</span></div>
+		</div>
+	</div>
+</body>
+
+</html>
