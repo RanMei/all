@@ -25,9 +25,30 @@ ul {
   }
 }
 .cover {
+  position: relative;
   width: 100%;
-  height: 1000px;
   background: lightgrey;
+}
+.cover .background {
+  width: 100%;
+  display: block;
+}
+.cover .title {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.cover .start__ {
+  position: absolute;
+  left: 10%;
+  top: 56%;
+  width: 80%;
+  overflow: hidden;
+}
+.cover .start__ .btn-start {
+  width: 200%;
+  display: block;
 }
 .cover .start {
   position: absolute;
@@ -114,50 +135,4 @@ ul {
 .world .result p {
   text-align: center;
   font-size: 2rem;
-}
-@keyframes toRect {
-  0% {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-  }
-  100% {
-    width: 200px;
-    height: 50px;
-    border-radius: 3px;
-  }
-}
-.toRect {
-  animation: toRect 1s forwards;
-}
-@keyframes moveOut {
-  0% {
-    transform: ;
-  }
-  100% {
-    transform: translate(-1600px, 150px) rotate(-90deg);
-  }
-}
-@keyframes moveIn {
-  0% {
-    transform: translate(1600px, 150px) rotate(90deg);
-  }
-  40% {
-    transform: translate(-10px, 0) rotate(-3deg);
-  }
-  60% {
-    transform: translate(10px, 0) rotate(5deg);
-  }
-  100% {
-    transform: ;
-    opacity: 1;
-  }
-}
-.moveOut {
-  transform-origin: 50% 100%;
-  animation: moveOut 0.8s forwards;
-}
-.moveIn {
-  transform-origin: 50% 100%;
-  animation: moveIn 1s forwards;
 }

@@ -13,6 +13,8 @@ button {
 }
 
 .button {
+	width: 500px;
+	height: 500px;
 	padding: 1.5em 3em;
 	margin: 0;
 	position: relative;
@@ -32,18 +34,17 @@ button {
 	background: #EC407A;
 }
 
-.ripple-obj {
-	height: 100%;
-	pointer-events: none;
+.RIPPLE {
 	position: absolute;
 	top: 0;
-	left: 0;
-	z-index: 0;
+	left: 0;	
 	width: 100%;
-	fill: #AD1457;
+	height: 100%;
+	pointer-events: none;
+	z-index: 0;
 }
 
-.ripple-obj use {
+.RIPPLE use {
 	opacity: 0;
 }
 

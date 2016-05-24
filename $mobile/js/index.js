@@ -61,6 +61,25 @@ $(document).ready(function(){
 	var $page0 = $('.page0');
 	var $page1 = $('.page1');
 	var $result = $('.result');
+
+	var $start = $('.btn-start');
+
+	// (function(){
+	// 	var $frame = 0;
+	// 	setInterval(function(){
+	// 		if( $frame===0 ){
+	// 			$start.css({
+	// 				marginLeft:'-100%'
+	// 			});
+	// 			$frame = 1;
+	// 		}else{
+	// 			$start.css({
+	// 				marginLeft:0
+	// 			});
+	// 			$frame = 0;
+	// 		}
+	// 	},200);
+	// })();
 	
 	function init(){
 		$current = 0;
@@ -83,8 +102,9 @@ $(document).ready(function(){
 		$(this).addClass('toRect');
 	})
 
-	$('.start').on('click',function(){
-		$('html').animate(  {"scrollTop":"0"}  ,0);
+	$start.on('click',function(){
+		$('html').animate( {scrollTop:0},0 );
+		$('body').animate( {scrollTop:0},0 );
 		$cover.hide();
 		$('body').css({overflow:'hidden'});
 		$world.show();

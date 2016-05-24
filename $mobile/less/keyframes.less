@@ -43,3 +43,23 @@
 	transform-origin: 50% 100%;
 	animation: moveIn 1s forwards;
 }
+
+@keyframes twinkle {
+	0% {opacity:0.5}
+	50% {opacity: 1}
+	100% {opacity: 0.5}
+}
+
+.ka-twinkle {
+	animation: twinkle 2s infinite;
+}
+
+@keyframes shake {
+	0% {transform: ;}
+	50% {transform: translateX(-50%);}
+	100% {transform: ;}
+}
+
+.ka-shake {
+	animation: shake 0.5s steps(1) infinite;
+}
