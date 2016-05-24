@@ -1,6 +1,19 @@
-/* Component styles */
+*, *:after, *:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.clearfix:before, .clearfix:after {display: table;  content: ''; }
+.clearfix:after { clear: both; }
 
-button {
+body {
+	font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+	color: #3C4954;
+	background: #fff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -13,13 +26,14 @@ button {
 }
 
 .button {
-	width: 500px;
-	height: 500px;
-	padding: 1.5em 3em;
-	margin: 0;
 	position: relative;
-	min-width: 250px;
+	width: 300px;
+	height: 100px;
+	margin: 15px;
+	line-height: 100px;
+	text-align: center;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .button.styl-material {
@@ -67,6 +81,6 @@ button {
 	background: #26A69A;
 }
 
-.theme-3 .ripple-obj {
+.theme-3 .RIPPLE {
 	fill: #00695C;
 }
