@@ -11,8 +11,7 @@
 	<meta name="author" content="Dennis Gaebel for Codrops" />
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<link rel="stylesheet" type="text/css" href="css/SVGRipples.css" />
 	<!--[if IE]>
 	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -33,6 +32,29 @@
 			</div>
 		</div>
 
+		<div class="theme-2">
+			<button class="button styl-material">
+				Click for Ripple
+				<svg class="RIPPLE">
+					<defs>
+						<radialGradient id="gradient">
+							<stop offset="0" stop-color="#0868BB" />
+							<stop offset="0.25" stop-color="#0075D8" />
+							<stop offset="0.35" stop-color="#0868BB" />
+							<stop offset="0.50" stop-color="#0075D8" />
+							<stop offset="0.60" stop-color="#0868BB" />
+							<stop offset="0.85" stop-color="#0075D8" />
+							<stop offset="1" stop-color="#0868BB" />
+						</radialGradient>
+					</defs>
+					<symbol id="ripple-circles" viewBox="0 0 100 100">
+						<circle fill="url(#gradient)" cx="1" cy="1" r="1" />
+					</symbol>
+					<use height="100" width="100" xlink:href="#ripple-circles" class="ripple"></use>
+				</svg>
+			</button>
+		</div>
+
 		<div class="theme-3">
 			<div class="button styl-material">
 				Click for Ripple
@@ -47,6 +69,40 @@
 					<use width="4" height="4" xlink:href="#ripple-polygon" class="ripple"></use>
 				</svg>
 			</div>
+		</div>
+
+		<div class="theme-2">
+			<button class="button styl-material">
+				Click for Ripple
+				<svg class="RIPPLE">
+					<defs>
+						<linearGradient id="gradient2" gradientTransform="rotate(0)">
+							<stop offset="0" stop-color="#0868BB" />
+							<stop offset="0.15" stop-color="#0075D8" />
+							<stop offset="0.2" stop-color="#0868BB" />
+							<stop offset="0.25" stop-color="#0075D8" />
+							<stop offset="0.3" stop-color="#0868BB" />
+							<stop offset="0.35" stop-color="#0075D8" />
+							<stop offset="0.4" stop-color="#0868BB" />
+							<stop offset="0.45" stop-color="#0075D8" />
+							<stop offset="0.5" stop-color="#0868BB" />
+							<stop offset="0.6" stop-color="#0075D8" />
+							<stop offset="0.65" stop-color="#0868BB" />
+							<stop offset="0.7" stop-color="#0075D8" />
+							<stop offset="0.75" stop-color="#0868BB" />
+							<stop offset="0.8" stop-color="#0075D8" />
+							<stop offset="0.85" stop-color="#0868BB" />
+							<stop offset="0.9" stop-color="#0075D8" />
+							<stop offset="0.95" stop-color="#0868BB" />
+							<stop offset="1" stop-color="#0075D8" />
+						</linearGradient>
+					</defs>
+					<symbol id="ripply-scott" viewBox="0 0 120 120">
+						<rect width="5" height="5" fill="url(#gradient2)" />
+					</symbol>
+					<use height="100" width="100" xlink:href="#ripply-scott" class="ripple"></use>
+				</svg>
+			</button>
 		</div>
 
 	</div>
