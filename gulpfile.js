@@ -1,4 +1,6 @@
 var gulp = require('gulp'); 
+var nodemon = require('gulp-nodemon');
+
 var less = require('gulp-less');
 var concat = require("gulp-concat");
 var shell = require('gulp-shell');
@@ -14,6 +16,16 @@ var babelify = require('babelify');
 var tsify = require('tsify');
 
 var Promise = require('bluebird');
+
+gulp.task( 'express',function(){
+	nodemon({
+		script: 'express.js',
+		ext: 'js html',
+		env: {
+			'NODE_ENV': 'development'
+		}
+	});
+});
 
 // webpack-test
 gulp.task('webpack-test',function(){
@@ -132,10 +144,10 @@ gulp.task( 'less_react',function(){
 });
 
 
-gulp.task( "default", function(){
+gulp.task( "default",['express'],function(){
 	
-	gulp.run( ['restart_server'] );
-	gulp.watch( './express.js',['restart_server']);
+	//gulp.run( ['restart_server'] );
+	//gulp.watch( './express.js',['restart_server']);
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
