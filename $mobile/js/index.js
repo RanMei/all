@@ -1,4 +1,9 @@
 $(document).ready(function(){
+	
+	var $w = $(window).width();
+	
+
+
 	var $questions = [
 		{
 			question: '0以下哪本书是俄国作家的作品？',
