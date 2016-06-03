@@ -6,24 +6,6 @@ ul {
   list-style: none;
 }
 /* Media Queries */
-@media (min-width: 0px) {
-  html,
-  body {
-    font-size: 8px;
-  }
-}
-@media (min-width: 320px) {
-  html,
-  body {
-    font-size: 10px;
-  }
-}
-@media (min-width: 768px) {
-  html,
-  body {
-    font-size: 14px;
-  }
-}
 .cover {
   position: relative;
   width: 100%;
@@ -100,7 +82,7 @@ ul {
   position: relative;
   width: 80%;
   height: 1px;
-  margin: 4rem auto;
+  margin: 0.6rem auto;
 }
 .world .page1 .space .panel {
   position: absolute;
@@ -109,18 +91,18 @@ ul {
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 15px grey;
-  font-size: 2rem;
+  font-size: 0.36rem;
   overflow: hidden;
   z-index: 20;
 }
 .world .page1 .space .panel .title {
-  padding: 2rem 1.5rem 2rem 1.5rem;
+  padding: 0.2rem;
   background: #2CA0FD;
   color: white;
 }
 .world .page1 .space .panel ul li {
-  padding: 1rem 1.5rem 1rem 1.5rem;
-  font-size: 1.6rem;
+  padding: 0.1rem;
+  font-size: 0.26rem;
 }
 .world .page1 .space .panel ul li:hover {
   background: lightgrey;
