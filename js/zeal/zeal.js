@@ -106,6 +106,18 @@
 			});
 			return this;
 		},
+		hide: function(){
+			this.each(function(elem){
+				elem.style.display = 'none';
+			});
+			return this;			
+		},
+		show: function(){
+			this.each(function(elem){
+				elem.style.display = 'block';
+			});
+			return this;			
+		},
 		append: function( obj ){
 			this.each(function(elem){
 				for( var i=0;i<obj.length;i++ ){
