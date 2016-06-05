@@ -14,123 +14,43 @@ ul {
 /* Media Queries */
 
 html {
-
+	font-size: 100px;
 }
 
 body {
-
-}
-
-.cover {
-	position: relative;
-	width: 100%;
-	background: lightgrey;
-	.background {
-		width: 100%;
-		display: block;
-	}
-	.title {
-		position: absolute;
-		width: 100%;
-		left: 0;
-		top: 0;
-	}
-	.start__ {
-		position: absolute;
-		left: 10%;
-		top: 56%;
-		width: 80%;
-		overflow: hidden;
-		.btn-start {
-			width: 200%;
-			display: block;
-		}
-	}
-	.start {
-		position: absolute;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		margin: auto;
-		width: 100px;
-		height: 100px;
-		text-align: center;
-		line-height: 6rem;
-		font-size: 3rem;
-		border-radius: 50px;
-		background: @blue;
-		color: white;
-		box-shadow: 0 0 3px @blue;
-	}
-}
-
-.world {
-	position: relative;
-	width: 100%;
-	height: 3000px;
-	background: #E5E5E5;
-	display: none;
 	overflow: hidden;
-	.mask {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background: black;
-		opacity: 0.5;
-		z-index: 100;
-		display: none;
-		.confirmPanel {
-			width: 200px;
-			height: 200px;
-			background: white;
-			margin: 150px auto 0 auto;
-			z-index: 102;
-		}
-	}
-	.page1 {
-		display: none;
-		.space {
-			position: relative;
-			width: 80%;
-			height: 1px;
-			margin: 0.6rem auto;
-			.panel {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				border-radius: 8px;
-				box-shadow: 0 0 15px grey;
-				font-size: 0.36rem;
-				overflow: hidden;
-				z-index:20;
-				.title {
-					padding: 0.2rem;
-					background: @blue;
-					color: white;
-				}
-				ul li {
-					padding: 0.1rem;
-					font-size: 0.26rem;
-				}
-				ul li:hover {
-					background: lightgrey;
+}
+.bar {
+	width: 100%;
+}
+.frame {
+	font-size: 0.3rem;
+	.swiper {
+		position: relative;
+		width: 70%;
+		height: 400px;
+		margin: 20px auto 0 auto;
+		background: red;
+		.train {
+			position: absolute;
+			width: 500%;
+			height: 100%;
+			>li {
+				position: relative;
+				width:600px;
+				height: 100%;
+				float:left;
+				p {
+					position: absolute;
+					left: 0;
+					bottom: 10px;
+					width: 100%;
+					font-size:150%;
+					color:white;
+					z-index:1;
+					text-align:center;
 				}
 			}
-			.nextPanel {
-				opacity: 0;
-				z-index: 10;
-			}
-		}
-	}
-	.result {
-		display: none;
-		p {
-			text-align: center;
-			font-size: 2rem;
 		}
 	}
 }

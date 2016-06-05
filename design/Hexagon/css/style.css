@@ -1,0 +1,50 @@
+html,body {
+  font-family: 'Microsoft Yahei';
+}
+body {
+  background-color: silver;
+}
+.clearfix {
+  clear: both;
+}
+
+.honeycomb {
+  width: 500px;
+  height: 300px;
+  margin: 100px auto;
+  padding-top: 18px;
+  background: silver;
+}
+.row {
+  display: block;
+  margin-bottom: 22px;
+}
+.row1 {
+  padding-left: 33px;
+}
+.HEXAGON {
+  position: relative;
+  float: left;
+  margin-right: 4px;
+  display: block;
+  width: 62px;
+  height: 36px;
+  background-color: #ffffff;
+  text-align: center;
+  line-height: 36px;
+}
+.HEXAGON:before, .HEXAGON:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  border-left: 31px solid transparent;
+  border-right: 31px solid transparent;
+}
+.HEXAGON:before {
+  border-bottom: 18px solid #ffffff;
+  top: -18px;
+}
+.HEXAGON:after {
+  border-top: 18px solid #ffffff;
+  bottom: -18px;
+}

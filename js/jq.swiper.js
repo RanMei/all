@@ -32,6 +32,13 @@
 				$$tabs.eq( $$currentOne ).addClass("active");
 			}
 
+			function $$handleResize(){
+				var w = $$swiper.width();
+				$$items.width( w );
+			}
+			$$handleResize();
+			$(window).on('resize',$$handleResize);
+
 			$$swiper.css({
 				position:"relative"
 			});
