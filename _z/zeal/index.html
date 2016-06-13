@@ -5,11 +5,16 @@
 	<meta charset="utf-8">
 	<title></title>
 	
-	<script type="text/javascript" src="../_.js"></script>
-	<script type="text/javascript" src="./zeal.js"></script>
+	<script type="text/javascript" src="../zeal.js"></script>
 <style>
 .dog {
 	width: 100px;
+	height: 100px;
+	margin: 15px;
+	background: orange;
+}
+.cat {
+	width: 200px;
 	height: 100px;
 	margin: 15px;
 	background: orange;
@@ -51,7 +56,13 @@ $(document).ready(function(){
 
 // console.log(a);
 
-console.log( $ );
+$('.animal').find('.cat').on('click',function(e){
+	console.log(e);
+	console.log('fuck');
+});
+console.log( $('.animal').find('.cat') )
+console.log( $('.animal>.cat') )
+//console.log( $('#jim') );
 
 console.log( $.camelCase("fuck-you-all_piece_of-shit") );
 
@@ -66,10 +77,11 @@ console.log( $.camelCase("fuck-you-all_piece_of-shit") );
 	<div class="dog" style="opacity: 0.2;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
-
-	<div class="cat"></div>
-	<div class="cat"></div>
-
+	<div class="animal">
+		<div class="cat"></div>
+		<div class="cat"></div>
+		<div id="jim"></div>
+	</div>
 	
 </body>
 

@@ -138,7 +138,7 @@ function getPageName() {
 }
 // 对象为空判断
 function nl(obj) {
-	return $.trim(obj) == false;
+	//return $.trim(obj) == false;
 }
 
 /**

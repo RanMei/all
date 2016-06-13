@@ -27,6 +27,12 @@ gulp.task( 'express',function(){
 	});
 });
 
+gulp.task('webpack-z',function(){
+	return gulp.src('./_z/modules/zeal.es6')
+		.pipe( webpack( require('./_z/webpack.config.js') ) )
+		.pipe( gulp.dest('./_z') );
+});
+
 // webpack-test
 gulp.task('webpack-test',function(){
 	return gulp.src('./webpack-test/jsx/entry.jsx')
@@ -148,6 +154,8 @@ gulp.task( "default",['express'],function(){
 	
 	//gulp.run( ['restart_server'] );
 	//gulp.watch( './express.js',['restart_server']);
+
+	gulp.watch( './_z/modules/*.es6',['webpack-z'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
