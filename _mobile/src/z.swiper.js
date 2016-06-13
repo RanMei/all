@@ -351,7 +351,7 @@ $.fn.swipe = function( opts ){
 								$$currentOne = $$carousel?0:($$length-1);
 							}else{
 								//通知服务器用户浏览了哪张卡片。
-								forceLog( param('act_f'),'card-'+$$currentOne );
+								//forceLog( param('act_f'),'card-'+$$currentOne );
 								//$$statistics.cards.push( $$currentOne );
 								console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
 							}
@@ -361,7 +361,7 @@ $.fn.swipe = function( opts ){
 								$$currentOne = $$carousel?($$length-1):0;
 							}else{
 								//通知服务器用户浏览了哪张卡片。
-								forceLog( param('act_f'),'card-'+$$currentOne );
+								//forceLog( param('act_f'),'card-'+$$currentOne );
 								//$$statistics.cards.push( $$currentOne );
 								console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
 							}
@@ -413,8 +413,8 @@ $.fn.swipe = function( opts ){
 					//for jQuery
 					var i = $(this).index('.HEXAGON');
 					//通知服务器用户点击了哪个六边形。
-					forceLog( param('act_f'),'hexagon-'+i );
-					$$statistics.hexagons.push(i);
+					//forceLog( param('act_f'),'hexagon-'+i );
+					//$$statistics.hexagons.push(i);
 					console.log( i,'hexagon-'+i );
 					hexagons.removeClass('active');
 					$(this).addClass('active');

@@ -64,8 +64,8 @@
 	var ABook = window.ABook;
 	var $ = window.$;
 
-	//Local.init(); //注册客户端方法
-	//forceLog(param('act_f'));
+	//Local.init();//注册客户端方法
+	//forceLog( param('act_f') );
 
 	var $$statistics = {
 		cards: [],
@@ -90,17 +90,18 @@
 		$('.toDetails').on('click', function () {
 			var i = $(this).index('.toDetails');
 			//通知服务器用户进入了哪本书的详情页。
-			//forceLog(param('act_f'), 'details-' + _data.arr[i].bid);
+			//forceLog( param('act_f'),'details-'+arr[i].bid );
 			console.log(i, 'details-' + _data.arr[i].bid);
-			//ABook.gotoReading(_data.arr[i].bid);
+			//ABook.gotoReading( arr[i].bid );
 		});
 
-		window.onbeforeunload = function () {
-			//forceLog(param('act_f'), JSON.stringify($$statistics));
-		};
+		window.onbeforeunload = function () {}
+		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
+
 		// $('.card').css({
 		// 	transition:'0.3s';
 		// })
+		;
 	});
 
 /***/ },
@@ -109,18 +110,15 @@
 
 	'use strict';
 
-	var $ = window.jQuery||window.$;
+	var $ = window.jQuery;
 
 	$(document).ready(function () {
 
 		function setRem() {
 			var w = $('.bar').width();
-			console.log(w)
-			console.log( $('html')[0] )
 			$('html').css({
-				'font-size': 100 * w / 720 + 'px'
+				fontSize: 100 * w / 720 + 'px'
 			});
-			console.log(  )
 		}
 		setRem();
 		$(window).on('resize', setRem);
@@ -485,7 +483,7 @@
 										$$currentOne = $$carousel ? 0 : $$length - 1;
 									} else {
 										//通知服务器用户浏览了哪张卡片。
-										forceLog(param('act_f'), 'card-' + $$currentOne);
+										//forceLog( param('act_f'),'card-'+$$currentOne );
 										//$$statistics.cards.push( $$currentOne );
 										console.log($$currentOne, 'card-' + _data.arr[$$currentOne].bid);
 									}
@@ -495,7 +493,7 @@
 										$$currentOne = $$carousel ? $$length - 1 : 0;
 									} else {
 										//通知服务器用户浏览了哪张卡片。
-										forceLog(param('act_f'), 'card-' + $$currentOne);
+										//forceLog( param('act_f'),'card-'+$$currentOne );
 										//$$statistics.cards.push( $$currentOne );
 										console.log($$currentOne, 'card-' + _data.arr[$$currentOne].bid);
 									}
@@ -531,7 +529,7 @@
 							//for jQuery
 							var i = $(this).index('.HEXAGON');
 							//通知服务器用户点击了哪个六边形。
-							//forceLog(param('act_f'), 'hexagon-' + i);
+							//forceLog( param('act_f'),'hexagon-'+i );
 							//$$statistics.hexagons.push(i);
 							console.log(i, 'hexagon-' + i);
 							hexagons.removeClass('active');

@@ -7,8 +7,8 @@ var param = window.param;
 var ABook = window.ABook;
 var $ = window.$;
 
-Local.init();//注册客户端方法
-forceLog( param('act_f') );
+//Local.init();//注册客户端方法
+//forceLog( param('act_f') );
 
 var $$statistics = {
 	cards: [],
@@ -46,13 +46,13 @@ $(document).ready(function(){
 	$('.toDetails').on('click',function(){
 		var i = $(this).index('.toDetails');
 		//通知服务器用户进入了哪本书的详情页。
-		forceLog( param('act_f'),'details-'+arr[i].bid );
+		//forceLog( param('act_f'),'details-'+arr[i].bid );
 		console.log( i,'details-'+arr[i].bid );
-		ABook.gotoReading( arr[i].bid );
+		//ABook.gotoReading( arr[i].bid );
 	});
 
 	window.onbeforeunload = function(){
-		forceLog( param('act_f'), JSON.stringify( $$statistics ) );
+		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
 	}
 	// $('.card').css({
 	// 	transition:'0.3s';

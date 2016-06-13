@@ -3,6 +3,7 @@ var nodemon = require('gulp-nodemon');
 
 var less = require('gulp-less');
 var concat = require("gulp-concat");
+var autoprefixer = require('gulp-autoprefixer');
 var shell = require('gulp-shell');
 
 var browserify = require('browserify');
@@ -27,6 +28,20 @@ gulp.task( 'express',function(){
 	});
 });
 
+// _mobile
+gulp.task( 'less_mobile',function(){
+	gulp.src( './_mobile/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/css") );
+});
+gulp.task( 'webpack_mobile',function(){
+	return gulp.src('./_mobile/src/index.js')
+	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
+    	.pipe( gulp.dest('./_mobile/') );
+});
+
+// _z
 gulp.task('webpack-z',function(){
 	return gulp.src('./_z/modules/zeal.es6')
 		.pipe( webpack( require('./_z/webpack.config.js') ) )
@@ -154,6 +169,10 @@ gulp.task( "default",['express'],function(){
 	
 	//gulp.run( ['restart_server'] );
 	//gulp.watch( './express.js',['restart_server']);
+
+	// _mobile
+	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
+	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
 
 	gulp.watch( './_z/modules/*.es6',['webpack-z'] );
 

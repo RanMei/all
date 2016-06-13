@@ -1,7 +1,10 @@
 module.exports = {
-    entry: "./_z/modules/zeal.es6",
+    entry: {
+        zeal: './_z/modules/zeal.es6',
+        'z.angular': './_z/modules/z.angular.es6'
+    },
     output: {
-        filename: "zeal.js"
+        filename: '[name].js'
     },
     module: {
         loaders: [
