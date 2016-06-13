@@ -30,7 +30,7 @@ gulp.task( 'express',function(){
 gulp.task('webpack-z',function(){
 	return gulp.src('./_z/modules/zeal.es6')
 		.pipe( webpack( require('./_z/webpack.config.js') ) )
-		.pipe( gulp.dest('./_z') );
+		.pipe( gulp.dest('./_z/dist') );
 });
 
 // webpack-test

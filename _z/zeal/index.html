@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title></title>
 	
-	<script type="text/javascript" src="../zeal.js"></script>
+	<script type="text/javascript" src="../dist/zeal.js"></script>
 <style>
 .dog {
 	width: 100px;
@@ -56,8 +56,8 @@ $(document).ready(function(){
 
 // console.log(a);
 
-$('.animal').find('.cat').on('click',function(e){
-	console.log(e);
+$('.animal').find('.cat').attr('fuck','shit').on('click',function(e){
+	console.log( $(this) );
 	console.log('fuck');
 });
 console.log( $('.animal').find('.cat') )

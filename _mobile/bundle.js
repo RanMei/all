@@ -109,15 +109,18 @@
 
 	'use strict';
 
-	var $ = window.jQuery;
+	var $ = window.jQuery||window.$;
 
 	$(document).ready(function () {
 
 		function setRem() {
 			var w = $('.bar').width();
+			console.log(w)
+			console.log( $('html')[0] )
 			$('html').css({
-				fontSize: 100 * w / 720 + 'px'
+				'font-size': 100 * w / 720 + 'px'
 			});
+			console.log(  )
 		}
 		setRem();
 		$(window).on('resize', setRem);
@@ -528,8 +531,8 @@
 							//for jQuery
 							var i = $(this).index('.HEXAGON');
 							//通知服务器用户点击了哪个六边形。
-							forceLog(param('act_f'), 'hexagon-' + i);
-							$$statistics.hexagons.push(i);
+							//forceLog(param('act_f'), 'hexagon-' + i);
+							//$$statistics.hexagons.push(i);
 							console.log(i, 'hexagon-' + i);
 							hexagons.removeClass('active');
 							$(this).addClass('active');

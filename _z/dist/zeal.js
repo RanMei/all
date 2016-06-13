@@ -52,6 +52,8 @@
 
 	//var _ = require('./_.js');
 
+	var arr = [];
+
 	// This is a factory function to create a Zeal object.
 	// @param {string} selector
 	var Zeal = function Zeal(selector, context) {
@@ -67,6 +69,17 @@
 		eq: function eq(i) {
 			return Zeal(this[i]);
 		},
+		index: function index(selector) {
+			var theOne = this[0];
+			var match = Zeal(selector);
+			var _index = -1;
+			match.each(function (elem, i) {
+				if (theOne === elem) {
+					_index = i;
+				}
+			});
+			return _index;
+		},
 		siblings: function siblings() {},
 		toArray: function toArray() {
 			return [].slice.call(this);
@@ -74,6 +87,11 @@
 	};
 
 	Zeal.extend = Zeal.fn.extend = _2._.extend;
+
+	Zeal.extend({
+		copy: _2._.copy,
+		camelCase: _2._.camelCase
+	});
 
 	// This is a constructor.
 	// @param {string} selector
@@ -97,8 +115,7 @@
 			} else if (/^#/.test(selector)) {
 				// $('#id')
 				var string = selector.replace(/#/, '');
-				elems = [];
-				elems[0] = context.getElementById(string);
+				elems = context.getElementById(string);
 			} else if (/^\./.test(selector)) {
 				// $('.className')
 				var string = selector.replace(/\./, '');
@@ -107,8 +124,12 @@
 				// $('tagName')
 				elems = context.getElementsByTagName(selector);
 			}
-			for (var i = 0; i < elems.length; i++) {
-				this[i] = elems[i];
+			if (elems.length) {
+				for (var i = 0; i < elems.length; i++) {
+					this[i] = elems[i];
+				}
+			} else {
+				this[0] = elems;
 			}
 			this.length = elems.length;
 		};
@@ -124,7 +145,7 @@
 	};
 
 	// $(document).ready()
-	Zeal.prototype.ready = function (callback) {
+	Zeal.fn.ready = function (callback) {
 		// this[0] is actually document.
 		var elem = this[0];
 		if (elem.readyState === "complete") {
@@ -138,7 +159,7 @@
 		};
 	};
 	// $().on()
-	Zeal.prototype.on = function (events, callback) {
+	Zeal.fn.on = function (events, callback) {
 		events = events.split(' ');
 		console.log(events);
 		this.each(function (elem) {
@@ -148,18 +169,10 @@
 					event.originalEvent = e;
 					event.preventDefault = e.preventDefault;
 					event.stopPropagation = e.stopPropagation;
-					callback(event);
+					callback.call(e.currentTarget, event);
 				});
 			};
 		});
-	};
-
-	// @param {string} string
-	Zeal.prototype.html = function (string) {
-		this.each(function (elem) {
-			elem.innerHTML = string;
-		});
-		return this;
 	};
 
 	Zeal.fn.extend({
@@ -176,15 +189,23 @@
 			});
 			return this;
 		},
-		hide: function hide() {
+		attr: function attr(name, value) {
+			if (arguments.length === 1) {
+				return this[0].getAttribute(name);
+			} else {
+				this.each(function (elem) {
+					elem.setAttribute(name, value);
+				});
+				return this;
+			}
+		}
+	});
+
+	Zeal.fn.extend({
+		// @param {string} string
+		html: function html(string) {
 			this.each(function (elem) {
-				elem.style.display = 'none';
-			});
-			return this;
-		},
-		show: function show() {
-			this.each(function (elem) {
-				elem.style.display = 'block';
+				elem.innerHTML = string;
 			});
 			return this;
 		},
@@ -214,23 +235,55 @@
 
 	});
 
-	// @param {object} opts
-	Zeal.prototype.css = function (opts) {
-		this.each(function (elem) {
-			var cssText = '';
-			for (var prop in opts) {
-				cssText += prop + ':' + opts[prop] + ';';
-				//this[i].style[prop] = opts[prop];
-			};
-			elem.style.cssText += cssText;
-		});
-		return this;
-	};
+	// Module: css
+	Zeal.fn.extend({
+		// @param {object} opts
+		css: function css(opts) {
+			if (arguments.length === 1) {
+				if (typeof arguments[0] === 'string') {
+					// css( name )
+					var elem = this[0] || this;
+					var name = arguments[0];
+					return document.defaultView.getComputedStyle(elem)[name];
+				} else {
+					// typeof arguments[0]==='object'
+					this.each(function (elem) {
+						var cssText = '';
+						for (var prop in opts) {
+							cssText += prop + ':' + opts[prop] + ';';
+							//this[i].style[prop] = opts[prop];
+						};
+						elem.style.cssText += cssText;
+					});
+					return this;
+				}
+			}
+		},
+		width: function width() {
+			return Zeal.fn.css.call(this, 'width');
+		},
+		height: function height() {
+			return Zeal.fn.css.call(this, 'height');
+		},
+		hide: function hide() {
+			this.each(function (elem) {
+				elem.style.display = 'none';
+			});
+			return this;
+		},
+		show: function show() {
+			this.each(function (elem) {
+				elem.style.display = 'block';
+			});
+			return this;
+		}
+	});
 
+	// Module: animate
 	// @param {object} opts
 	// @param {number} time
 	// @param {function} callback
-	Zeal.prototype.animate = function (opts, duration, callback) {
+	Zeal.fn.animate = function (opts, duration, callback) {
 		this.each(function (elem) {
 			var p = {};
 			var target = {};
@@ -269,6 +322,10 @@
 	};
 	//
 	Zeal.fn.extend({
+		slideUp: function slideUp(duration, callback) {
+			this.css({ overflow: 'hidden' });
+			this.animate({ height: 0 }, duration, callback);
+		},
 		fadeOut: function fadeOut(duration, callback) {
 			this.animate({ opacity: 0 }, duration, callback);
 		},
@@ -287,18 +344,7 @@
 		}
 	});
 
-	//-----------------------------------------------------------
-	Zeal.prototype.slideUp = function (duration) {
-		this.css({ overflow: 'hidden' });
-		this.animate({ height: 0 }, duration);
-	};
-
-	//-----------------------------------------------------------
-	Zeal.extend({
-		copy: _2._.copy,
-		camelCase: _2._.camelCase
-	});
-
+	// Module: ajax
 	Zeal.ajax = function (obj) {
 		var xhr = new XMLHttpRequest();
 		xhr.open(obj.type, obj.url);
