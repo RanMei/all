@@ -40,6 +40,12 @@ gulp.task( 'webpack_mobile',function(){
 	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
     	.pipe( gulp.dest('./_mobile/') );
 });
+gulp.task( 'less-mobile-exam',function(){
+	gulp.src( './_mobile/exam/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/exam/css") );
+});
 
 // _z
 gulp.task('webpack-z',function(){
@@ -173,6 +179,7 @@ gulp.task( "default",['express'],function(){
 	// _mobile
 	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
 	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
+	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
 
 	gulp.watch( './_z/modules/*.es6',['webpack-z'] );
 

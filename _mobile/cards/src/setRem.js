@@ -1,11 +1,11 @@
-var $ = window.jQuery;
+var $ = window.jQuery || window.$;
 
 $(document).ready(function(){
 
 	function setRem (){
 		var w = $('.bar').width();
 		$('html').css({
-			fontSize: 100*w/720+'px'
+			'font-size': 100*w/720+'px'
 		});
 	}
 	setRem();

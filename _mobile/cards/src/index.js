@@ -18,7 +18,7 @@ var $$statistics = {
 $(document).ready(function(){
 	for( var i=0;i<arr.length;i++ ){
 		var item = 
-			'<li class="item '+(i!==0?'inactive':'')+'">'+
+			'<li class="item">'+
 				'<div class="card">'+
 					'<img class="card-img" src="img/card_'+i+'.png"/>'+
 					'<img class="banner" src="img/banner.png"/>'+

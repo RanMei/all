@@ -1,6 +1,8 @@
 import {_} from './_.es6';
 //var _ = require('./_.js');
 
+
+// Module: core
 var arr = [];
 
 // This is a factory function to create a Zeal object.
@@ -109,6 +111,8 @@ Zeal.fn.ready = function( callback ){
 		});
 	};		
 };
+
+// Module: events
 // $().on()
 Zeal.fn.on = function( events,callback ){
 	events = events.split(' ');
@@ -118,8 +122,8 @@ Zeal.fn.on = function( events,callback ){
 			elem.addEventListener( events[i],function(e){
 				var event = {};
 				event.originalEvent = e;
-				event.preventDefault = e.preventDefault;
-				event.stopPropagation = e.stopPropagation;
+				event.preventDefault = e.preventDefault.bind(e);
+				event.stopPropagation = e.stopPropagation.bind(e);
 				callback.call( e.currentTarget,event )
 			} );
 		};	
@@ -152,6 +156,8 @@ Zeal.fn.extend({
 	}
 })
 
+
+// Module: DOM manipulation
 Zeal.fn.extend({
 	// @param {string} string
 	html: function( string ){
@@ -211,10 +217,10 @@ Zeal.fn.extend({
 		}
 	},
 	width: function(){
-		return Zeal.fn.css.call( this,'width' );
+		return Number( Zeal.fn.css.call( this,'width' ).replace(/px/,'') );
 	},
 	height: function(){
-		return Zeal.fn.css.call( this,'height' );
+		return Number( Zeal.fn.css.call( this,'height' ).replace(/px/,'') );
 	},
 	hide: function(){
 		this.each(function(elem){

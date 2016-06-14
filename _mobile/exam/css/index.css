@@ -1,0 +1,9 @@
+.cover img {
+  width: 100%;
+}
+.container {
+  background: orange;
+}
+.container .swiper {
+  font-size: 0.2rem;
+}

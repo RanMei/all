@@ -24,16 +24,21 @@ $.fn.swipe = function( opts ){
 		// Configuration.
 		var $$mode			= opts.mode			|| "slider",
 			$$direction		= opts.direction	|| "horizontal",
-			$$autoplay		= opts.autoplay		|| true,
+			$$autoplay		= opts.autoplay		|| false,
 			$$carousel		= opts.carousel		|| false,
+			$$sticky		= opts.sticky		|| true,
 			$$interval		= opts.interval		|| 4000,
-			$$duration		= opts.duration		|| 150;	
+			$$duration		= opts.duration		|| 300;
+
+		var $$keyControll 	= opts.keyControll  || true,
+			$$wheelControll = opts.wheelControll|| true;
 
 		function $$init(){
 			$$currentOne= 0;
 			$$target	= 0;
 			$$switching	= false;
 			$$width		= $$swiper.width();
+			$$items.width( $$width );
 			$$height	= $$items.height();
 			$$swiper.height( $$height );
 			$$train.css({
@@ -42,20 +47,12 @@ $.fn.swipe = function( opts ){
 			});
 			$$renderTabs();
 		}
-		$(window).on('resize',$$init);
+		$(window).on( 'resize',$$init );
 
 		function $$renderTabs(){
 			$$tabs.removeClass("active");
 			$$tabs.eq( $$currentOne ).addClass("active");
 		}
-
-		function $$handleResize(){
-			$$width = $$swiper.width();
-			var w = $$swiper.width();
-			$$items.width( w );
-		}
-		$$handleResize();
-		$(window).on('resize',$$handleResize);
 
 		$$swiper.css({
 			position:"relative"
@@ -242,32 +239,37 @@ $.fn.swipe = function( opts ){
 			var otherItemScale = 0.8;
 			var isDown = false;
 			var originalX;
-			var X;
+			var prevX;
 			var currentX;
-			var t1,t2;
+			var touchStartTime,touchEndTime;
+
+			$$items.addClass('inactive');
+			$$items.eq(0).removeClass('inactive');
+
 			function toCard( i ){
 				//console.log($$width);
-				$$items.css({transition:'0.3s'});
+				$$items.css({transition:$$duration/1000+'s'});
 				$$items.addClass('inactive');
 				$$items.eq(i).removeClass('inactive');
-
+				$$train.css({
+					transition: '0.3s',
+					transform: 'translate3d('+(-i*$$width)+'px,0,0)'
+				});
+				// $$items.eq( $$currentOne ).css({
+				// 	transform: ''
+				// });
+				// $$items.eq( $$currentOne-1 ).css({
+				// 	transition: '0.3s',
+				// 	transform: 'scale(0.8)'
+				// })
+				$('.HEXAGON').removeClass('active');
+				$('.HEXAGON').eq( $$currentOne ).addClass('active');
+				$$renderTabs();
 				setTimeout(function(){
-					$$train.css({
-						transition: '0.3s',
-						transform: 'translate3d('+(-i*$$width)+'px,0,0)'
-					});
-					// $$items.eq( $$currentOne ).css({
-
-					// });
-					// $$items.eq( $$currentOne-1 ).css({
-					// 	transition: '0.3s',
-					// 	transform: 'scale(0.8)'
-					// })
-					$('.HEXAGON').removeClass('active');
-					$('.HEXAGON').eq( $$currentOne ).addClass('active');
-					$$renderTabs();
+					currentItemScale = 1;
+					otherItemScale = 0.8;				
 					$$switching = false;
-				},0);
+				},$$duration);
 				// $$train.animate( {
 				// 	left:(-i*$$width)
 				// },$$duration,function(){
@@ -282,16 +284,14 @@ $.fn.swipe = function( opts ){
 			$$train.on("mousedown touchstart",function(e){
 
 				if( true ){
-					currentItemScale = 1;
-					otherItemScale = 0.8;
 					trainOffsetX = -$$currentOne*$$width;
 					$$switching = true;
 					//e.preventDefault();
 					isDown = true;
-					t1 = new Date().getTime();
+					touchStartTime = new Date().getTime();
 					//console.log(e.changedTouches[0].pageX)
 					originalX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-					X = originalX;
+					prevX = originalX;
 					if( $$carousel===true ){
 						if( $$currentOne===$$length-1 ){
 							$$items.eq(0).appendTo($$train);
@@ -304,47 +304,50 @@ $.fn.swipe = function( opts ){
 				
 				if( isDown ){
 					currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-					var distance = currentX - X;
-					X = currentX;
-					
+					var distance = currentX - prevX;
+					prevX = currentX;
+					console.log(distance)
 					trainOffsetX += distance;
 					itemOffsetX += distance;
-					currentItemScale = (currentItemScale!==0.8)?(1-( 0.2*Math.abs(itemOffsetX)/$$width )):0.8;
+					currentItemScale += 0.2*distance/$$width;
 					otherItemScale = (otherItemScale!==1)?(0.8+( 0.2*Math.abs(itemOffsetX)/$$width )):1;
-					console.log(currentItemScale)
+					//console.log(currentItemScale)
 
-					if( Math.abs(distance)<4 ){
+					if( Math.abs(distance)<8 ){
 					}else{
 						e.preventDefault();
 					}
-					// The train will move.
-					// $$train.css({
-					// 	transition: '0s',
-					// 	transform: 'translate3d('+trainOffsetX+'px,0,100px)'
-					// })
-					// $$items.eq( $$currentOne ).css({
-					// 	transition: '0s',
-					// 	transform: 'scale('+currentItemScale+') rotate3d(0,1,0,60deg)'
-					// })
-					// $$items.eq( $$currentOne-1 ).css({
-					// 	transition: '0s',
-					// 	transform: 'scale('+otherItemScale+')'
-					// })
-					// $$items.eq( $$currentOne+1 ).css({
-					// 	transition: '0s',
-					// 	transform: 'scale('+otherItemScale+')'
-					// })
+					if( $$sticky ){
+						//The train will move.
+						$$train.css({
+							transition: '0s',
+							transform: 'translate3d('+trainOffsetX+'px,0,0)'
+						})
+						// $$items.eq( $$currentOne ).css({
+						// 	transition: '0s',
+						// 	transform: 'scale('+currentItemScale+')'
+						// })
+						// // $$items.eq( $$currentOne-1 ).css({
+						// // 	transition: '0s',
+						// // 	transform: 'scale('+otherItemScale+')'
+						// // })
+						// $$items.eq( $$currentOne+1 ).css({
+						// 	transition: '0s',
+						// 	transform: 'scale('+otherItemScale+')'
+						// })
+					};
 
 					// // $$train.css( {left:"+="+distance+"px"},0 );
 				};
 			});
 			$$train.on("mouseup mouseleave touchend",function(e){
 				if( isDown ){
-					t2 = new Date().getTime();
-					//console.log(t2-t1);
+					touchEndTime = new Date().getTime();
+					var timeSpan = touchEndTime - touchStartTime;
+					//console.log( timeSpan );
 					currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
 					var distance = currentX - originalX;
-					if( true||( t2-t1<200||distance<-0.25*$$width||distance>0.25*$$width ) ){
+					if( ( timeSpan<200||distance<-0.25*$$width||distance>0.25*$$width ) ){
 						if( distance<0 ){
 							$$currentOne++;
 							if( $$currentOne===$$length ){
@@ -402,7 +405,26 @@ $.fn.swipe = function( opts ){
 				};
 				toCard( $$currentOne );
 			}
-			//$$autoplay?setInterval(next,4000):'';
+
+			if( $$keyControll ){
+				$(document).on('keydown',function(){
+
+				})
+			}
+			// if( $$wheelControll ){
+			// 	$$train.on("mousewheel DOMMouseScroll",function(e){
+			// 		e.preventDefault();
+			// 		console.log(e.originalEvent.detail)
+			// 		if( e.originalEvent.detail>0 ){
+			// 			next();
+			// 		}else{
+			// 			prev();
+			// 		};
+			// 	});
+			// }
+			if( $$autoplay ){
+				setInterval( next,4000 );
+			}
 			$$swiper.find(".next").on("click",next);
 			$$swiper.find(".prev").on("click",prev);
 

@@ -52,6 +52,7 @@
 
 	//var _ = require('./_.js');
 
+	// Module: core
 	var arr = [];
 
 	// This is a factory function to create a Zeal object.
@@ -158,6 +159,8 @@
 			});
 		};
 	};
+
+	// Module: events
 	// $().on()
 	Zeal.fn.on = function (events, callback) {
 		events = events.split(' ');
@@ -167,8 +170,8 @@
 				elem.addEventListener(events[i], function (e) {
 					var event = {};
 					event.originalEvent = e;
-					event.preventDefault = e.preventDefault;
-					event.stopPropagation = e.stopPropagation;
+					event.preventDefault = e.preventDefault.bind(e);
+					event.stopPropagation = e.stopPropagation.bind(e);
 					callback.call(e.currentTarget, event);
 				});
 			};
@@ -201,6 +204,7 @@
 		}
 	});
 
+	// Module: DOM manipulation
 	Zeal.fn.extend({
 		// @param {string} string
 		html: function html(string) {
@@ -260,10 +264,10 @@
 			}
 		},
 		width: function width() {
-			return Zeal.fn.css.call(this, 'width');
+			return Number(Zeal.fn.css.call(this, 'width').replace(/px/, ''));
 		},
 		height: function height() {
-			return Zeal.fn.css.call(this, 'height');
+			return Number(Zeal.fn.css.call(this, 'height').replace(/px/, ''));
 		},
 		hide: function hide() {
 			this.each(function (elem) {
