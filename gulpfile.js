@@ -2,9 +2,7 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 
 var less = require('gulp-less');
-var concat = require("gulp-concat");
 var autoprefixer = require('gulp-autoprefixer');
-var shell = require('gulp-shell');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
@@ -16,9 +14,10 @@ var babelify = require('babelify');
 
 var tsify = require('tsify');
 
-var Promise = require('bluebird');
+// var concat = require("gulp-concat");
+// var shell = require('gulp-shell');
 
-gulp.task( 'express',function(){
+gulp.task( 'start_server',function(){
 	nodemon({
 		script: 'express.js',
 		ext: 'js html',
@@ -170,12 +169,7 @@ gulp.task( 'less_react',function(){
 		.pipe( gulp.dest('./react/css') );
 });
 
-
-gulp.task( "default",['express'],function(){
-	
-	//gulp.run( ['restart_server'] );
-	//gulp.watch( './express.js',['restart_server']);
-
+gulp.task('watch',function(){
 	// _mobile
 	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
 	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
@@ -211,7 +205,17 @@ gulp.task( "default",['express'],function(){
 
 	// ts
 	gulp.watch( './ts/ts/*.ts',['browserify_ts'] );
+})
+
+gulp.task('express',['watch','start_server'],function(){
+
+});
+
+gulp.task( 'default',['watch'],function(){
 	
+	//gulp.run( ['restart_server'] );
+	//gulp.watch( './express.js',['restart_server']);
+
 });
 
 /*

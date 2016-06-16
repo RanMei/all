@@ -81,7 +81,25 @@ var ropeRenderStyle = {
   lineWidth: 1
 }
 
-function hah(){
+/**
+ * @return {[type]}
+ */
+function createObjects(){
+    var button = Bodies.rectangle($w/2,$h/2,200,50,{
+        render: {
+            fillStyle: 'orange',
+            //strokeStyle: 'blue',
+            lineWidth: 0
+        },
+        density: 100000,
+        isStatic: false,
+        friction: 1,
+        frictionStatic: 100,
+        frictionAir: 1,
+        restitution: 1
+    })
+    addToWorld.push(button);
+
 	var trip = Bodies.polygon($w/2,$h/2,100,70,{
 		render: {
 			fillStyle: makePattern(),
@@ -211,7 +229,7 @@ function hah(){
 
 
 }
-hah();
+createObjects();
 
 /*
 // create random poly's and a ground
