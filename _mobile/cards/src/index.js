@@ -16,6 +16,7 @@ var $$statistics = {
 }
 
 $(document).ready(function(){
+	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){
 		var item = 
 			'<li class="item">'+

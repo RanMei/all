@@ -1,3 +1,7 @@
+// document.addEventListener('DOMContentLoaded',function(){
+	
+// });
+
 $(document).ready(function(){
 	$('body').prepend(
 		'<div class="screen"></div>'+
