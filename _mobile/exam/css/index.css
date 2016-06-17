@@ -1,9 +1,39 @@
+.cover {
+  position: relative;
+}
 .cover img {
   width: 100%;
+}
+.cover .content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.cover .content .btnStart {
+  width: 3rem;
+  height: 0.7rem;
+  margin: auto;
+  margin-top: 9.5rem;
+  line-height: 0.7rem;
+  font-size: 0.3rem;
+  display: block;
 }
 .container {
   background: orange;
 }
 .container .swiper {
-  font-size: 0.2rem;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+}
+.container .swiper .train {
+  width: 100%;
+  height: 200%;
+}
+.container .swiper .train li {
+  width: 100%;
+  height: 50%;
 }

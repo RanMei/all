@@ -62,9 +62,9 @@ gulp.task('webpack-test',function(){
 
 
 // shell
-gulp.task( 'restart_server',shell.task([
-	'node express.js'
-]));
+// gulp.task( 'restart_server',shell.task([
+// 	'node express.js'
+// ]));
 
 // babel
 gulp.task( 'babel_fytpy', function () {

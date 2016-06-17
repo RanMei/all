@@ -1,7 +1,3 @@
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
 * {
   margin: 0;
   padding: 0;
@@ -18,14 +14,6 @@ img {
   display: block;
 }
 /* Utility Classes */
-.bar {
-  width: 100%;
-}
-.screen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
 .container {
   background: orange;
   overflow: hidden;

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>canvas</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<style>
+	* {margin:0;padding:0}
+	.canvasContainer {
+		margin: auto;
+		width: 5rem;
+		height: 3rem;
+		display: block;
+	}
+	canvas {
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/rem.js"></script>
+	<script>
+	window.onload=function(){
+		
+		var $canvas = document.getElementById("mycanvas");
+		var z = $canvas.getContext("2d");
+
+		var $w,$h;
+		function initCanvas(){
+			$w = $canvas.width = 1000;
+			$h = $canvas.height = 600;
+			z.lineWidth=5;
+		};
+		initCanvas();
+		$(window).on('resize',initCanvas);
+		
+		var $hue = 360;
+		var $tick = 0;
+		var circles = [];
+		
+		//$canvas.style.cssText = 'position:absolute;left:0;top:0;';
+		console.log([$canvas]);
+
+		z.lineCap="round";
+		z.lineJoin="round";
+		
+		function Circle( x,y ){
+			this.x = x;
+			this.y = y;
+			this.r = Math.round(400*Math.random());
+			this.alpha = 1;
+			this.color = 'rgba(200,30,200,1)';
+			this.tick = 0;
+		};
+		Circle.prototype = {
+			step: function(){
+				this.x+= Math.random()*6-3;
+				this.y+= Math.random()*6-3;
+				this.alpha = 1 - 0.008*this.tick;
+				this.color = 'rgba(10,30,200,'+this.alpha+')';
+				this.tick++;
+				this.draw();
+			},
+			draw: function(){
+				//console.log( this );
+				
+				z.beginPath();
+				z.strokeStyle = this.color;
+				z.arc( this.x,this.y,this.r,0,2*Math.PI );
+				z.stroke();
+			}
+		}
+		
+		function render(){
+			window.requestAnimationFrame(render);
+			if( circles.length<10 ){
+				circles.push( new Circle( $w/2,$h/2/*Math.random()*$w,Math.random()*$h*/ ) );
+			};
+			z.globalCompositeOperation = 'source-over';
+			z.fillStyle = 'rgba(0,0,0,0.5)';
+			z.fillRect( 0,0,$w,$h );
+			z.globalCompositeOperation = 'lighter';
+
+			circles.map(function(elem,i){
+				elem.step();
+				if( elem.alpha<=0 ){
+					circles.splice(i,1);
+				}
+			});
+			$tick++;
+		}
+		render();
+		//setInterval(render,10);
+
+		mycanvas.addEventListener("mousedown",function(e){
+			circles.push( new Circle( e.offsetX,e.offsetY ) );
+		});
+			
+	};
+		
+
+	</script>
+</head>
+
+
+<body>
+	<div class="canvasContainer">
+		<canvas id="mycanvas">
+
+		</canvas>
+	</div>
+
+
+</body>
+
+</html>
