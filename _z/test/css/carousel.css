@@ -1,9 +1,13 @@
+* {margin: 0;padding: 0;}
+ul {list-style: none;}
+
 .swiper {
   position: relative;
   width: 600px;
   height: 400px;
   margin: 20px auto 0 auto;
   overflow: hidden;
+  box-shadow: 15px 15px 35px grey;
 }
 .swiper .train {
   position: absolute;

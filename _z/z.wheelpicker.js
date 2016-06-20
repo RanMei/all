@@ -90,24 +90,43 @@
 				var marginTop = thisWheel.css("marginTop").replace(/px/,'');
 				var marginTopMax = (2*$$itemHeight);
 				var marginTopMin = -(THIS.items.length-3)*$$itemHeight;
+
+				var offsetYMin = -(THIS.items.length-3)*$$itemHeight;
+
+
 				if( marginTop>marginTopMax ){
 					thisWheel.animate(
 						{marginTop:marginTopMax},
 						200,
 						callback
 					);
+					// thisWheel.css({
+					// 	transition: '0.2s',
+					// 	transform: 'translate3d(0,-'+marginTopMax+'px,0)'
+					// });
+					// setTimeout(callback,200);
 				}else if( marginTop<marginTopMin ){
 					thisWheel.animate(
 						{marginTop:marginTopMin},
 						200,
 						callback
 					);
+					// thisWheel.css({
+					// 	transition: '0.2s',
+					// 	transform: 'translate3d(0,-'+marginTopMin+'px,0)'
+					// });
+					// setTimeout(callback,200);
 				}else{
 					thisWheel.animate(
 						{marginTop:Math.round( marginTop/$$itemHeight )*$$itemHeight},
 						100,
 						callback
 					);
+					// thisWheel.css({
+					// 	transition: '0.1s',
+					// 	transform: 'translate3d(0,-'+Math.round( marginTop/$$itemHeight )*$$itemHeight+'px,0)'
+					// });
+					// setTimeout(callback,100);
 				}
 				function callback() {
 					THIS.currentOne = ( 2 - (thisWheel.css("marginTop").replace(/px/,'')/$$itemHeight) );
@@ -151,7 +170,9 @@
 
 			// Add event-listeners.
 			var originalY,y1,t1,t2;
+			var translateY = 0;
 			var interval;
+
 			thisWindow.on("mousedown touchstart",function(e){
 				e.preventDefault();
 				//console.log(e);
@@ -166,9 +187,14 @@
 				if( THIS.isMouseDown ){
 					var currentY = e.pageY || e.originalEvent.changedTouches[0].pageY;
 					var distance = currentY - y1;
+					translateY += distance;
 					y1 = currentY;
 					//console.log(distance);
-					thisWheel.animate({marginTop:"+="+distance+"px"},0);
+					//thisWheel.animate({marginTop:"+="+distance+"px"},0);
+					thisWheel.css({
+						transition: '0s',
+						transform: 'translate3d(0,'+translateY+'px,0)'
+					})
 				};
 			});
 			thisWindow.on("mouseup mouseleave touchend",function(e){
