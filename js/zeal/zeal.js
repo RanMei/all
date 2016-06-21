@@ -82,6 +82,7 @@
 				elem.addEventListener( events[i],callback );
 			};	
 		});
+		return this;
 	};
 
 	// @param {string} string
@@ -140,19 +141,37 @@
 
 	});
 	
-
-	// @param {object} opts
-	Zeal.prototype.css = function( opts ){
-		this.each(function(elem){
-			var cssText = '';
-			for( var prop in opts ){
-				cssText += prop+':'+opts[prop]+';';
-				//this[i].style[prop] = opts[prop];
-			};
-			elem.style.cssText += cssText;
-		});
-		return this;
-	}
+	Zeal.fn.extend({
+		// @param {object} opts
+		css: function( opts ){
+			if( typeof arguments[0]==='string' ){
+				return document.defaultView.getComputedStyle(this[0])[ arguments[0] ];
+			}else{
+				this.each(function(elem){
+					var cssText = '';
+					for( var prop in opts ){
+						cssText += prop+':'+opts[prop]+';';
+						//this[i].style[prop] = opts[prop];
+					};
+					elem.style.cssText += cssText;
+				});
+			}
+			return this;
+		},
+		width: function(){
+			return this.css('width').replace(/px/,'');
+		},
+		attr: function( name,value ){
+			if( arguments.length===1 ){
+				return this[0].getAttribute( arguments[0] );
+			}else{
+				this.each(function(elem){
+					elem.setAttribute(name,value);
+				})
+				return this;
+			}
+		}
+	})
 
 	// @param {object} opts
 	// @param {number} time

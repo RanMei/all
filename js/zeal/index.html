@@ -26,13 +26,13 @@ $(document).ready(function(){
 		'padding-left': "50px"
 	}).html("fuck").addClass("fuck").removeClass("fuck");
 
-	$(".dog").eq(0).fadeIn(500);
+	$(".dog").attr('fuck','11111').eq(0).fadeIn(500);
 	
-	$(".dog").on("click",function(e){
+	console.log( $(".dog").on("click",function(e){
 		$(this).animate({width:'-50',height:'100'},200);
-	});
+	}).attr('fuck') );
 	console.log(Object);
-	console.log( $('div') );
+	console.log( $('.two') );
 
 
 // var a = {
@@ -66,9 +66,13 @@ console.log( $.camelCase("fuck-you-all_piece_of-shit") );
 	<div class="dog" style="opacity: 0.2;"></div>
 	<div class="dog"></div>
 	<div class="dog"></div>
-
+<div class="two">
+	<div class="cat">
+		<div class="claw">
+		</div>
+	</div>
 	<div class="cat"></div>
-	<div class="cat"></div>
+</div>
 
 	
 </body>
