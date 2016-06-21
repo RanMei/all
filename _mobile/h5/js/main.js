@@ -3,9 +3,9 @@ $( document ).ready(function(){
 	//variables
 	var w,h;
 	var 
-		$train = $('.train');
+		$train = $('.train'),
 		$pages = $('.page'),
-		$next=document.getElementsByClassName("next")[0];
+		$next = $('.next');
 	var n=0;
 	var scrolling=false;
 	//---------------------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $( document ).ready(function(){
 				fontSize: 100*w/720+'px'
 			});
 			$('.container').height( h );
-			$pages.height( h );
+			//$pages.height( h );
 		}
 		setRem();
 		$(window).on('resize',setRem);
@@ -93,7 +93,7 @@ $( document ).ready(function(){
 	//---------------------------------------------------------------------------------------------------------------
 	init();
 	window.onresize=init;
-	$next.style.animation="poping 1s infinite";
+	//$next.style.animation="poping 1s infinite";
 
 	$('.next').on("click",toNext);
 

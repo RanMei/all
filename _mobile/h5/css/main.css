@@ -11,20 +11,33 @@ img {
   display: block;
 }
 .container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   overflow: hidden;
 }
 .container .train {
   width: 100%;
+  height: 500%;
 }
 .container .train .page {
+  box-sizing: border-box;
+  border: 10px solid black;
   position: relative;
-  padding: 0;
   width: 100%;
+  height: 20%;
   overflow: hidden;
+}
+.container .train .page .content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 .container .train .page .trooper {
   width: 3rem;
-  margin: auto;
+  margin: 1rem auto;
 }
 .container .train .page h1 {
   font-size: 0.5rem;
@@ -54,12 +67,4 @@ ul li:nth-child(5) {
   cursor: pointer;
   font-size: 50px;
   z-index: 10;
-}
-.next > div {
-  margin: -10px 0 0 -30px;
-}
-.icons {
-  margin: 100px auto;
-  display: block;
-  opacity: 0;
 }
