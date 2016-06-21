@@ -34,6 +34,12 @@ gulp.task( 'less_mobile',function(){
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest("./_mobile/css") );
 });
+gulp.task('less-h5',function(){
+	gulp.src( './_mobile/h5/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/h5/css") );
+});
 gulp.task( 'webpack_mobile',function(){
 	return gulp.src('./_mobile/src/index.js')
 	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
@@ -45,13 +51,13 @@ gulp.task( 'less-mobile-exam',function(){
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest("./_mobile/exam/css") );
 });
-
-// _z
-gulp.task('webpack-z',function(){
-	return gulp.src('./_z/modules/zeal.es6')
-		.pipe( webpack( require('./_z/webpack.config.js') ) )
-		.pipe( gulp.dest('./_z/dist') );
+gulp.task('webpack-zeal',function(){
+	return gulp.src('./_mobile/src/zeal.es6')
+		.pipe( webpack( require('./_mobile/src/webpack.config.js') ) )
+		.pipe( gulp.dest('./_mobile/js') );
 });
+
+
 
 // webpack-test
 gulp.task('webpack-test',function(){
@@ -174,8 +180,8 @@ gulp.task('watch',function(){
 	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
 	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
 	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
-
-	gulp.watch( './_z/modules/*.es6',['webpack-z'] );
+	gulp.watch( './_mobile/h5/less/*.less',['less-h5']);
+	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );

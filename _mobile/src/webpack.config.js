@@ -1,7 +1,7 @@
 module.exports = {
     entry: {
-        zeal: './_z/modules/zeal.es6',
-        'z.angular': './_z/modules/z.angular.es6'
+        zeal: './_mobile/src/zeal.es6'
+        //'z.angular': './_z/modules/z.angular.es6'
     },
     output: {
         filename: '[name].js'

@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  font-size: 100px;
+  font-family: 'Microsoft Yahei';
+}
+img {
+  display: block;
+}
+.container {
+  overflow: hidden;
+}
+.container .train {
+  width: 100%;
+}
+.container .train .page {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.container .train .page .trooper {
+  width: 3rem;
+  margin: auto;
+}
+.container .train .page h1 {
+  font-size: 0.5rem;
+  text-align: center;
+  opacity: 0;
+}
+ul li:nth-child(1) {
+  background: #F5841E;
+}
+ul li:nth-child(2) {
+  background: #FDC427;
+}
+ul li:nth-child(3) {
+  background: #69B91F;
+}
+ul li:nth-child(4) {
+  background: #0090FF;
+}
+ul li:nth-child(5) {
+  background: #C94D91;
+}
+.next {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 50px;
+  z-index: 10;
+}
+.next > div {
+  margin: -10px 0 0 -30px;
+}
+.icons {
+  margin: 100px auto;
+  display: block;
+  opacity: 0;
+}
