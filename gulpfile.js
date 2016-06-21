@@ -2,8 +2,7 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 
 var less = require('gulp-less');
-var concat = require("gulp-concat");
-var shell = require('gulp-shell');
+var autoprefixer = require('gulp-autoprefixer');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
@@ -15,9 +14,10 @@ var babelify = require('babelify');
 
 var tsify = require('tsify');
 
-var Promise = require('bluebird');
+// var concat = require("gulp-concat");
+// var shell = require('gulp-shell');
 
-gulp.task( 'express',function(){
+gulp.task( 'start_server',function(){
 	nodemon({
 		script: 'express.js',
 		ext: 'js html',
@@ -26,6 +26,38 @@ gulp.task( 'express',function(){
 		}
 	});
 });
+
+// _mobile
+gulp.task( 'less_mobile',function(){
+	gulp.src( './_mobile/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/css") );
+});
+gulp.task('less-h5',function(){
+	gulp.src( './_mobile/h5/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/h5/css") );
+});
+gulp.task( 'webpack_mobile',function(){
+	return gulp.src('./_mobile/src/index.js')
+	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
+    	.pipe( gulp.dest('./_mobile/') );
+});
+gulp.task( 'less-mobile-exam',function(){
+	gulp.src( './_mobile/exam/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/exam/css") );
+});
+gulp.task('webpack-zeal',function(){
+	return gulp.src('./_mobile/src/zeal.es6')
+		.pipe( webpack( require('./_mobile/src/webpack.config.js') ) )
+		.pipe( gulp.dest('./_mobile/js') );
+});
+
+
 
 // webpack-test
 gulp.task('webpack-test',function(){
@@ -36,9 +68,9 @@ gulp.task('webpack-test',function(){
 
 
 // shell
-gulp.task( 'restart_server',shell.task([
-	'node express.js'
-]));
+// gulp.task( 'restart_server',shell.task([
+// 	'node express.js'
+// ]));
 
 // babel
 gulp.task( 'babel_fytpy', function () {
@@ -143,11 +175,13 @@ gulp.task( 'less_react',function(){
 		.pipe( gulp.dest('./react/css') );
 });
 
-
-gulp.task( "default",['express'],function(){
-	
-	//gulp.run( ['restart_server'] );
-	//gulp.watch( './express.js',['restart_server']);
+gulp.task('watch',function(){
+	// _mobile
+	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
+	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
+	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
+	gulp.watch( './_mobile/h5/less/*.less',['less-h5']);
+	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
@@ -177,7 +211,17 @@ gulp.task( "default",['express'],function(){
 
 	// ts
 	gulp.watch( './ts/ts/*.ts',['browserify_ts'] );
+})
+
+gulp.task('express',['watch','start_server'],function(){
+
+});
+
+gulp.task( 'default',['watch'],function(){
 	
+	//gulp.run( ['restart_server'] );
+	//gulp.watch( './express.js',['restart_server']);
+
 });
 
 /*
