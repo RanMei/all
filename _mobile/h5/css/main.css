@@ -3,9 +3,15 @@
   padding: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+ul {
+  list-style: none;
+}
 html {
   font-size: 100px;
   font-family: 'Microsoft Yahei';
+}
+body {
+  overflow: hidden;
 }
 img {
   display: block;
@@ -21,43 +27,47 @@ img {
   width: 100%;
   height: 500%;
 }
+.container .train .page:nth-child(1) {
+  background: #F5841E;
+}
+.container .train .page:nth-child(2) {
+  background: #FDC427;
+}
+.container .train .page:nth-child(3) {
+  background: #69B91F;
+}
+.container .train .page:nth-child(4) {
+  background: #0090FF;
+}
+.container .train .page:nth-child(5) {
+  background: #C94D91;
+}
 .container .train .page {
   box-sizing: border-box;
-  border: 10px solid black;
   position: relative;
   width: 100%;
   height: 20%;
   overflow: hidden;
 }
-.container .train .page .content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
+.container .train .page .title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+}
+.container .train .page p {
+  padding-top: 10px;
+  font-size: 20px;
 }
 .container .train .page .trooper {
   width: 3rem;
-  margin: 1rem auto;
+  margin: auto;
+  margin-top: 0.5rem;
 }
 .container .train .page h1 {
   font-size: 0.5rem;
   text-align: center;
   opacity: 0;
-}
-ul li:nth-child(1) {
-  background: #F5841E;
-}
-ul li:nth-child(2) {
-  background: #FDC427;
-}
-ul li:nth-child(3) {
-  background: #69B91F;
-}
-ul li:nth-child(4) {
-  background: #0090FF;
-}
-ul li:nth-child(5) {
-  background: #C94D91;
 }
 .next {
   position: fixed;

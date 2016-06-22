@@ -31,4 +31,16 @@
 .fade-in-from-left-reverse {
 	animation: fade-in-from-left 1s reverse;
 }
-
+@keyframes fade-in-from-both {
+	0% {
+		transform: scale3d(1.4,1,1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale3d(1,1,1);
+		opacity: 1;
+	}
+}
+.fade-in-from-both {
+	animation: fade-in-from-both 1s forwards;
+}

@@ -1,14 +1,14 @@
 $( document ).ready(function(){
-	//---------------------------------------------------------------------------------------------------------------
+
 	//variables
 	var w,h;
 	var 
 		$train = $('.train'),
 		$pages = $('.page'),
 		$next = $('.next');
-	var n=0;
-	var scrolling=false;
-	//---------------------------------------------------------------------------------------------------------------
+	var n = 0;
+	var scrolling = false;
+
 	function init(){
 		$('body').prepend(
 			'<div class="screen"></div>'+
@@ -40,12 +40,14 @@ $( document ).ready(function(){
 		setRem();
 		$(window).on('resize',setRem);
 	};
+	init();
+
 	function toNext(){
 		if( !scrolling && n<$pages.length-1 ){
 			scrolling = true;
 			restore(n);
 			$train.css({
-				transition: '0.2s',
+				transition: '0.3s',
 				transform: 'translate3d(0,-'+(n+1)*h+'px,0)'
 			});
 			setTimeout(function(){
@@ -53,7 +55,7 @@ $( document ).ready(function(){
 				//console.log(n)
 				scrolling = false;
 				show(n);
-			},200);
+			},300);
 			// $('.train').animate({marginTop:'-='+h},200,function(){
 			// 	n++;
 			// 	scrolling = false;
@@ -65,7 +67,7 @@ $( document ).ready(function(){
 			scrolling = true;
 			restore(n);
 			$train.css({
-				transition: '0.2s',
+				transition: '0.3s ease-out',
 				transform: 'translate3d(0,-'+(n-1)*h+'px,0)'
 			});
 			setTimeout(function(){
@@ -73,7 +75,7 @@ $( document ).ready(function(){
 				show(n);
 				//console.log(n)
 				scrolling = false;
-			},200);	
+			},300);	
 			// $('.train').animate({marginTop:'+='+h},200,function(){
 			// 	n--;
 			// 	scrolling = false;
@@ -81,18 +83,27 @@ $( document ).ready(function(){
 		};		
 	};
 	function show(i){
-		if( i===1 ){
-			$('h1').addClass('fade-in-from-left');
+		switch(i){
+			case 0:
+				$('.title').addClass('fade-in-from-both');
+				break;
+			case 1:
+				$('h1').addClass('fade-in-from-left');
+				break;
 		}
 	}
 	function restore(i){
-		if( i===1 ){
-			$('h1').removeClass('fade-in-from-left');
+		switch(i){
+			case 0:
+				$('.title').removeClass('fade-in-from-both');
+				break;
+			case 1:
+				$('h1').removeClass('fade-in-from-left');
+				break;
 		}
 	}
 	//---------------------------------------------------------------------------------------------------------------
-	init();
-	window.onresize=init;
+
 	//$next.style.animation="poping 1s infinite";
 
 	$('.next').on("click",toNext);
