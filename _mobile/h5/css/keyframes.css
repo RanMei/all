@@ -92,6 +92,34 @@
   -webkit-animation: fade-in-from-left 1s reverse;
           animation: fade-in-from-left 1s reverse;
 }
+@-webkit-keyframes fade-in-from-top {
+  0% {
+    -webkit-transform: translate3d(0, -1rem, 0);
+            transform: translate3d(0, -1rem, 0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: ;
+            transform: ;
+    opacity: 1;
+  }
+}
+@keyframes fade-in-from-top {
+  0% {
+    -webkit-transform: translate3d(0, -1rem, 0);
+            transform: translate3d(0, -1rem, 0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: ;
+            transform: ;
+    opacity: 1;
+  }
+}
+.fade-in-from-top {
+  -webkit-animation: fade-in-from-top 1s forwards;
+          animation: fade-in-from-top 1s forwards;
+}
 @-webkit-keyframes fade-in-from-both {
   0% {
     -webkit-transform: scale3d(1.4, 1, 1);

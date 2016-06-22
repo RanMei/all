@@ -32,10 +32,14 @@ $( document ).ready(function(){
 			screen.hide();
 			console.log( w,h )
 			$('html').css({
-				fontSize: 100*w/720+'px'
+				'font-size': 100*w/720+'px'
 			});
 			$('.container').height( h );
 			//$pages.height( h );
+			$train.css({
+				transition: '0s',
+				transform: 'translate3d(0,-'+n*h+'px,0)'
+			})
 		}
 		setRem();
 		$(window).on('resize',setRem);
@@ -50,6 +54,7 @@ $( document ).ready(function(){
 				transition: '0.3s',
 				transform: 'translate3d(0,-'+(n+1)*h+'px,0)'
 			});
+			//console.log( $train[0] )
 			setTimeout(function(){
 				n++;
 				//console.log(n)
@@ -90,6 +95,9 @@ $( document ).ready(function(){
 			case 1:
 				$('h1').addClass('fade-in-from-left');
 				break;
+			case 2:
+				$('.iron-man').addClass('fade-in-from-top');
+				break;
 		}
 	}
 	function restore(i){
@@ -100,11 +108,11 @@ $( document ).ready(function(){
 			case 1:
 				$('h1').removeClass('fade-in-from-left');
 				break;
+			case 2:
+				$('.iron-man').removeClass('fade-in-from-top');
+				break;
 		}
 	}
-	//---------------------------------------------------------------------------------------------------------------
-
-	//$next.style.animation="poping 1s infinite";
 
 	$('.next').on("click",toNext);
 
@@ -119,4 +127,22 @@ $( document ).ready(function(){
 		};
 	});
 	
+	var Y1,Y2;
+	$(document).on('touchstart mousedown',function(e){
+		e.preventDefault();
+		Y1 = e.originalEvent.changedTouches[0].pageY;
+		//console.log(Y1);
+	});
+	$(document).on('touchend mouseup',function(e){
+		e.preventDefault();
+		Y2 = e.originalEvent.changedTouches[0].pageY;
+		var distance = Y2-Y1;
+		console.log(distance);
+		if( distance<0 ){
+			toNext();
+		}else if( distance>0 ){
+			toPrev();
+		}
+	});
+
 });

@@ -69,6 +69,11 @@ img {
   text-align: center;
   opacity: 0;
 }
+.container .train .page .iron-man {
+  margin: auto;
+  margin-top: 2rem;
+  opacity: 0;
+}
 .next {
   position: fixed;
   left: 50%;

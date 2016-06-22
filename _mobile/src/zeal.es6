@@ -77,6 +77,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 			// $('tagName')
 			elems = context.getElementsByTagName( selector );
 		}
+		;
 		if( elems.length ){
 			for( var i=0;i<elems.length;i++ ){
 				this[i] = elems[i];
@@ -159,7 +160,10 @@ Zeal.fn.extend({
 
 // Module: DOM manipulation
 Zeal.fn.extend({
-	// @param {string} string
+	/**
+	 * Sets the innerHTML of matched elements.
+	 * @param {string} string
+	 */
 	html: function( string ){
 		this.each(function(elem){
 			elem.innerHTML = string;
@@ -179,8 +183,12 @@ Zeal.fn.extend({
 	},
 	prepend: function( obj ){
 		this.each(function(elem){
-			for( var i=0;i<obj.length;i++ ){
-				elem.insertBefore( obj[i],elem.childNodes[0] );
+			if( typeof obj === 'string' ){
+				elem.innerHTML = obj+elem.innerHTML;		
+			}else{
+				for( var i=0;i<obj.length;i++ ){
+					elem.insertBefore( obj[i],elem.childNodes[0] );
+				}
 			}
 		});
 	},
@@ -211,16 +219,29 @@ Zeal.fn.extend({
 						//this[i].style[prop] = opts[prop];
 					};
 					elem.style.cssText += cssText;
+					//elem.style.cssText = cssText+elem.style.cssText;
 				});
 				return this;
 			}
 		}
 	},
-	width: function(){
-		return Number( Zeal.fn.css.call( this,'width' ).replace(/px/,'') );
+	width: function( number ){
+		if( number ){
+			this.each(function(elem){
+				elem.style.width = number+'px'
+			})
+		}else{
+			return Number( Zeal.fn.css.call( this,'width' ).replace(/px/,'') );
+		}
 	},
-	height: function(){
-		return Number( Zeal.fn.css.call( this,'height' ).replace(/px/,'') );
+	height: function( number ){
+		if( number ){
+			this.each(function(elem){
+				elem.style.height = number+'px'
+			})
+		}else{
+			return Number( Zeal.fn.css.call( this,'height' ).replace(/px/,'') );
+		}
 	},
 	hide: function(){
 		this.each(function(elem){
@@ -237,9 +258,11 @@ Zeal.fn.extend({
 })
 
 // Module: animate
-// @param {object} opts
-// @param {number} time
-// @param {function} callback
+/**
+ * @param {object} opts
+ * @param {number} time
+ * @param {function} callback
+ */
 Zeal.fn.animate=function( opts,duration,callback ){
 	this.each(function(elem){
 		var p = {};
