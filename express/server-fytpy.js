@@ -12,18 +12,21 @@ app.use( express.static(__dirname) );
 app.use( bodyParser.json() );
 app.use( cookieParser() );
 
-try{
-	var connection = mysql.createConnection({
-		host : 'localhost',
-		port : 3306,
-		user : 'root',
-		password : '',
-		database:'fytpy'
-	});
-	connection.connect();
-}catch(e){
-	console.log(e);
-}
+// try{
+// 	var connection = mysql.createConnection({
+// 		host : 'localhost',
+// 		port : 3306,
+// 		user : 'root',
+// 		password : '',
+// 		database:'fytpy'
+// 	});
+// 	connection.connect();
+// }catch(e){
+// 	console.log(e);
+// }
+
+fs.writeFileSync('./json/output.json',JSON.stringify({a:1,b:2}));
+console.log( JSON.parse(fs.readFileSync('./json/output.json')) );
 
 app.post('/login',function(req,res){
 	console.log(req.body);
@@ -106,6 +109,6 @@ app.listen(port,function(){
 //console.log(connection);
 //console.log( 'Database Connected' );
 
-fs.exists('./expres.js',function(r){
-	console.log(r);
-});
+// fs.exists('./expres.js',function(r){
+// 	console.log(r);
+// });

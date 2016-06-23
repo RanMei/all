@@ -4,6 +4,7 @@ import {_} from './_.es6';
 
 // Module: core
 var arr = [];
+var slice = arr.slice;
 
 // This is a factory function to create a Zeal object.
 // @param {string} selector
@@ -35,7 +36,7 @@ Zeal.fn = Zeal.prototype = {
 
 	},
 	toArray: function(){
-		return [].slice.call( this );
+		return arr.slice.call( this );
 	}
 };
 
@@ -46,8 +47,11 @@ Zeal.extend({
 	camelCase: _.camelCase
 });
 
-// This is a constructor.
-// @param {string} selector
+/**
+ * Create a Zeal object.
+ * This is a constructor.
+ * @param {object|string} selector
+ */
 var init = Zeal.prototype.init = function( selector,context ){
 	if( !context ){
 		var context = document;
@@ -117,7 +121,7 @@ Zeal.fn.ready = function( callback ){
 // $().on()
 Zeal.fn.on = function( events,callback ){
 	events = events.split(' ');
-	console.log(events);
+	//console.log(events);
 	this.each(function(elem){
 		for( var i=0;i<events.length;i++ ){
 			elem.addEventListener( events[i],function(e){
@@ -182,14 +186,21 @@ Zeal.fn.extend({
 		});
 	},
 	prepend: function( obj ){
+		var fragment = document.createDocumentFragment();
+		var container = document.createElement('div');
 		this.each(function(elem){
 			if( typeof obj === 'string' ){
-				elem.innerHTML = obj+elem.innerHTML;		
+				container.innerHTML = obj;
+				arr.slice.call(container.children).forEach(function(item){
+					fragment.appendChild( item );
+				})
 			}else{
-				for( var i=0;i<obj.length;i++ ){
-					elem.insertBefore( obj[i],elem.childNodes[0] );
-				}
+				obj.forEach(function(item){
+					fragment.appendChild( item );
+				})
 			}
+			elem.insertBefore( fragment,elem.firstChild );
+			fragment.textContent = '';
 		});
 	},
 	remove: function(){
@@ -215,10 +226,11 @@ Zeal.fn.extend({
 				this.each(function(elem){
 					var cssText = '';
 					for( var prop in opts ){
+						//elem.style[prop] = opts[prop];
 						cssText += prop+':'+opts[prop]+';';
-						//this[i].style[prop] = opts[prop];
 					};
 					elem.style.cssText += cssText;
+					//console.log(elem.style)
 					//elem.style.cssText = cssText+elem.style.cssText;
 				});
 				return this;

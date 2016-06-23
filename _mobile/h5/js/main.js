@@ -23,14 +23,12 @@ $( document ).ready(function(){
 			width: '100%',
 			height: '100%'
 		})
-		
 		function setRem (){
 			var screen = $('.screen');
 			screen.show();
 			w = screen.width();
 			h = screen.height();
 			screen.hide();
-			console.log( w,h )
 			$('html').css({
 				'font-size': 100*w/720+'px'
 			});
@@ -40,6 +38,7 @@ $( document ).ready(function(){
 				transition: '0s',
 				transform: 'translate3d(0,-'+n*h+'px,0)'
 			})
+			console.log('Rem reset.')
 		}
 		setRem();
 		$(window).on('resize',setRem);
@@ -50,6 +49,7 @@ $( document ).ready(function(){
 		if( !scrolling && n<$pages.length-1 ){
 			scrolling = true;
 			restore(n);
+			//console.log( $train[0]===$('.train')[0] )
 			$train.css({
 				transition: '0.3s',
 				transform: 'translate3d(0,-'+(n+1)*h+'px,0)'
@@ -137,7 +137,7 @@ $( document ).ready(function(){
 		e.preventDefault();
 		Y2 = e.originalEvent.changedTouches[0].pageY;
 		var distance = Y2-Y1;
-		console.log(distance);
+		console.log('The distance is '+distance+'.');
 		if( distance<0 ){
 			toNext();
 		}else if( distance>0 ){

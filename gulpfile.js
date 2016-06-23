@@ -19,7 +19,7 @@ var tsify = require('tsify');
 
 gulp.task( 'start_server',function(){
 	nodemon({
-		script: 'express.js',
+		script: './express/express.js',
 		ext: 'js html',
 		env: {
 			'NODE_ENV': 'development'
@@ -39,6 +39,15 @@ gulp.task('less-h5',function(){
 		.pipe( less() )
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest("./_mobile/h5/css") );
+});
+gulp.task( 'browserify-mobile',function(){
+	return(
+		browserify( './_mobile/jsx/main.jsx' )
+		.transform( 'babelify', {presets: ["es2015", "react"]} )
+		.bundle()
+		.pipe( source('bundle.js') )
+		.pipe( gulp.dest('./_mobile/js') )
+	);
 });
 gulp.task( 'webpack_mobile',function(){
 	return gulp.src('./_mobile/src/index.js')
@@ -182,6 +191,7 @@ gulp.task('watch',function(){
 	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
 	gulp.watch( './_mobile/h5/less/*.less',['less-h5']);
 	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
+	gulp.watch( './_mobile/jsx/*.jsx',['browserify-mobile'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
