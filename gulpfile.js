@@ -40,14 +40,20 @@ gulp.task('less-h5',function(){
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest("./_mobile/h5/css") );
 });
-gulp.task( 'browserify-mobile',function(){
+gulp.task( 'browserify-farm',function(){
 	return(
-		browserify( './_mobile/jsx/main.jsx' )
+		browserify( './_mobile/farm/jsx/main.jsx' )
 		.transform( 'babelify', {presets: ["es2015", "react"]} )
 		.bundle()
 		.pipe( source('bundle.js') )
-		.pipe( gulp.dest('./_mobile/js') )
+		.pipe( gulp.dest('./_mobile/farm') )
 	);
+});
+gulp.task('less-farm',function(){
+	gulp.src( './_mobile/farm/less/*.less' )
+		.pipe( less() )
+		.pipe( autoprefixer() )
+		.pipe( gulp.dest("./_mobile/farm/css") );
 });
 gulp.task( 'webpack_mobile',function(){
 	return gulp.src('./_mobile/src/index.js')
@@ -191,7 +197,8 @@ gulp.task('watch',function(){
 	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
 	gulp.watch( './_mobile/h5/less/*.less',['less-h5']);
 	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
-	gulp.watch( './_mobile/jsx/*.jsx',['browserify-mobile'] );
+	gulp.watch( './_mobile/farm/jsx/*.jsx',['browserify-farm'] );
+	gulp.watch( './_mobile/farm/less/*.less',['less-farm']);
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );

@@ -59,6 +59,20 @@ var DECREMENT = {type:'DECREMENT'};
 const $$store = createStore( $$reducer,enhancer );
 console.log( 'state initialized',$$store.getState() )
 
+class App extends React.Component {
+	constructor(){
+		super();
+	}
+	render() {
+		console.log( '<App/> rendering, State:',$$store.getState() );
+		return (
+			<div>
+				{this.props.children}
+			</div>
+		);
+	}
+}
+
 class Home extends React.Component {
 
 	submit(){
@@ -92,7 +106,9 @@ ReactDOM.render(
 	(
 		<Provider store={$$store}>		
 			<Router history={ hashHistory } >
-				<Route path="/" component={Home}>
+				<Route path="/" component={App}>
+					<Route path="/home" component={Home}/>
+					<IndexRoute path="/signin" component={Signin} />
 				</Route>
 			</Router>
 		</Provider>
