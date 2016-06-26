@@ -13,6 +13,10 @@ ul {
 img {
   display: block;
 }
+a:link {
+  color: ;
+  text-decoration: none;
+}
 /* Utility Classes */
 .container {
   background: orange;
