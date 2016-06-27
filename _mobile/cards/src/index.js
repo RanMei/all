@@ -1,6 +1,8 @@
-import * as setRem from './setRem.js';
-import * as zswiper from './z.swiper.js';
+import './setRem.js';
+import '../../js/z.swiper.js';
 import {arr} from './data.js';
+import {zAlert} from '../../src/zAlert.js';
+
 var Local = window.Local;
 var forceLog = window.forceLog;
 var param = window.param;
@@ -16,6 +18,8 @@ var $$statistics = {
 }
 
 $(document).ready(function(){
+	zAlert('确定退出吗？');
+
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){
 		var item = 

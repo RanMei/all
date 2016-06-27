@@ -27,19 +27,22 @@ gulp.task( 'start_server',function(){
 	});
 });
 
-// _mobile
-gulp.task( 'less_mobile',function(){
-	gulp.src( './_mobile/less/*.less' )
-		.pipe( less() )
-		.pipe( autoprefixer() )
-		.pipe( gulp.dest("./_mobile/css") );
-});
-gulp.task('less-h5',function(){
-	gulp.src( './_mobile/h5/less/*.less' )
-		.pipe( less() )
-		.pipe( autoprefixer() )
-		.pipe( gulp.dest("./_mobile/h5/css") );
-});
+var LESS = [
+	{ name: 'less_mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
+	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
+	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
+	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
+	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' }
+];
+LESS.forEach(function(elem){
+	gulp.task( elem.name,function(){
+		gulp.src( elem.src )
+			.pipe( less() )
+			.pipe( autoprefixer() )
+			.pipe( gulp.dest( elem.dest ) );
+	});
+})
+
 gulp.task( 'browserify-farm',function(){
 	return(
 		browserify( './_mobile/farm/jsx/main.jsx' )
@@ -49,22 +52,20 @@ gulp.task( 'browserify-farm',function(){
 		.pipe( gulp.dest('./_mobile/farm') )
 	);
 });
-gulp.task('less-farm',function(){
-	gulp.src( './_mobile/farm/less/*.less' )
-		.pipe( less() )
-		.pipe( autoprefixer() )
-		.pipe( gulp.dest("./_mobile/farm/css") );
+gulp.task( 'browserify-cards',function(){
+	return(
+		browserify( './_mobile/cards/src/index.js' )
+		.transform( 'babelify', {presets: ["es2015", "react"]} )
+		.bundle()
+		.pipe( source('bundle.js') )
+		.pipe( gulp.dest('./_mobile/cards') )
+	);
 });
+
 gulp.task( 'webpack_mobile',function(){
 	return gulp.src('./_mobile/src/index.js')
 	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
     	.pipe( gulp.dest('./_mobile/') );
-});
-gulp.task( 'less-mobile-exam',function(){
-	gulp.src( './_mobile/exam/less/*.less' )
-		.pipe( less() )
-		.pipe( autoprefixer() )
-		.pipe( gulp.dest("./_mobile/exam/css") );
 });
 gulp.task('webpack-zeal',function(){
 	return gulp.src('./_mobile/src/zeal.es6')
@@ -145,11 +146,6 @@ gulp.task( "concat_angular",function(){
 });
 
 // less
-gulp.task( 'less_svg',function(){
-	gulp.src( './_svg/less/*.less' )
-		.pipe( less() )
-		.pipe( gulp.dest("./_svg/css") );
-});
 gulp.task( 'less_qm',function(){
 	gulp.src( './qm/less/*.less' )
 		.pipe( less() )
@@ -191,14 +187,16 @@ gulp.task( 'less_react',function(){
 });
 
 gulp.task('watch',function(){
+
+	LESS.forEach(function(elem){
+		gulp.watch( elem.src,[elem.name] );
+	});
+
 	// _mobile
-	gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
-	gulp.watch( './_mobile/less/*.less',['less_mobile'] );
-	gulp.watch( './_mobile/exam/less/*.less',['less-mobile-exam'] );
-	gulp.watch( './_mobile/h5/less/*.less',['less-h5']);
+	//gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
 	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
-	gulp.watch( './_mobile/farm/jsx/*.jsx',['browserify-farm'] );
-	gulp.watch( './_mobile/farm/less/*.less',['less-farm']);
+	gulp.watch( ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'],['browserify-farm'] );
+	gulp.watch( './_mobile/cards/src/*.js',['browserify-cards'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
@@ -212,9 +210,6 @@ gulp.task('watch',function(){
 
 	// z
 	// gulp.watch( './js/Z/*.js',['browserify_Z'] );
-
-	// svg
-	gulp.watch( './_svg/less/*.less',['less_svg'] );
 
 	// qm
 	gulp.watch( './qm/less/*.less',['less_qm'] );

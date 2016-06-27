@@ -29,6 +29,40 @@ a:link {
 /* Media Queries */
 @media (-webkit-min-device-pixel-ratio: 2) {
 }
+.wrapper {
+  width: 7.2rem;
+}
+.nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 7.20rem;
+  height: 0.80rem;
+  background: white;
+  overflow: hidden;
+}
+.nav a:link {
+  width: 1.77rem;
+  height: 0.80rem;
+  float: left;
+  border-right: 0.01rem solid #EFEFEF;
+  color: black;
+}
+.nav a:visited {
+  color: black;
+}
+.nav img {
+  width: 0.4rem;
+  display: block;
+  margin: 0.1rem auto 0 auto;
+}
+.nav p {
+  font-size: 0.2rem;
+  text-align: center;
+}
+.nav .selected {
+  color: #66CC66;
+}
 .SIGN_IN {
   height: 12.8rem;
   background: #EFEFEF;
@@ -58,8 +92,11 @@ a:link {
   top: 0.4rem;
   width: 2.66rem;
   height: 2.66rem;
-  background: #5EA626;
+  background: rgba(94, 166, 38, 0.3);
   border-radius: 1.33rem;
+}
+.SIGN_IN .logo img {
+  width: 2.66rem;
 }
 .SIGN_IN .word {
   position: absolute;
