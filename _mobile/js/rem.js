@@ -21,7 +21,7 @@ if( window.$ ){
 			var w = screen.width();
 			var h = screen.height();
 			screen.hide();
-			console.log( w,h )
+			console.log( 'Size of the viewport is '+w+'*'+h+'.' );
 			$('html').css({
 				fontSize: 100*w/720+'px'
 			});

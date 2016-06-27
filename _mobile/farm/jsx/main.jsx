@@ -6,7 +6,7 @@ import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App
 import {Item} from './components/Item.jsx';
 import {CommentBox} from './components/CommentBox.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
-import {Signin} from './components/Signin.jsx';
+
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 //import {Veil} from './components/Veil.jsx';
 
@@ -59,6 +59,12 @@ var DECREMENT = {type:'DECREMENT'};
 const $$store = createStore( $$reducer,enhancer );
 console.log( 'state initialized',$$store.getState() )
 
+var SigninConnected = connect(function(state){
+	return {
+		user:state.user
+	}
+})( Signin );
+
 class App extends React.Component {
 	constructor(){
 		super();
@@ -73,30 +79,20 @@ class App extends React.Component {
 	}
 }
 
-class Home extends React.Component {
-
-	submit(){
-		var user = JSON.stringify({userID:'15911111111',password:'111111'});
-		$.ajax({
-			headers:{
-				'Content-type': 'application/json'
-			},
-			type: 'post',
-			url: '/login',
-			data: user
-		}).done(function(data){
-			console.log(data);
-		});
-	}
+import {Signin} from './components/Signin.jsx';
+class SigninContainer extends React.Component {
 	render(){
 		return (
-			<div className="home">
-				<div className="papa">
-					<input/>
-					<input/>
-					<button onClick={this.submit.bind(this)}>登录</button>
-				</div>
-			</div>
+			<Signin
+				act={ (action)=>$$store.dispatch(action) }/>
+		)
+	}
+}
+
+class Home extends React.Component {
+	render(){
+		return (
+			<div>Home</div>
 		)
 	}
 }
@@ -107,8 +103,8 @@ ReactDOM.render(
 		<Provider store={$$store}>		
 			<Router history={ hashHistory } >
 				<Route path="/" component={App}>
-					<Route path="/home" component={Home}/>
-					<IndexRoute path="/signin" component={Signin} />
+					<Route path="/home" component={Home} />
+					<IndexRoute path="/signin" component={SigninContainer} />
 				</Route>
 			</Router>
 		</Provider>

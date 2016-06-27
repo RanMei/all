@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
 
-const port = 8080;
+const port = 3002;
 var app = express();
 
 app.use( express.static(__dirname+'/../') );
@@ -17,9 +17,14 @@ app.post('/login',function(req,res){
 	res.set({
 		'Content-Type': 'text/plain'
 	})
-	//var users = JSON.parse(fs.readFileSync('./json/users.json'));
-	//console.log(users);
-	if( req.body.userID==='15911111111'&&req.body.password==='111111' ){
+	var users = JSON.parse(fs.readFileSync('./json/users.json'));
+	var ok = false;
+	users.forEach(function(elem){
+		if( req.body.userID===elem.userID&&req.body.password===elem.password ){
+			ok = true;
+		}
+	});
+	if( ok ){
 		res.send( 'true' );
 	}else{
 		res.send( 'false' );
