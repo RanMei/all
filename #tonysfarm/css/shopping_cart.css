@@ -1,0 +1,26 @@
+.main {height:12.80rem;background:#EFEFEF;}
+
+.header {position:relative;width:7.20rem;height:1rem;margin-bottom:.20rem;background:white;overflow:hidden;}
+.header>p {width:5.90rem;height:1rem;line-height:1rem;font-size:0.2rem;text-indent:.30rem;border-right:1px solid black;float:left;}
+.header span {color:#FFA620}
+.delete {width:1.27rem;height:1rem;float:right;}
+.delete a {width:0.5rem;margin:auto;margin-top:.20rem;display:block;}
+.delete img {width:0.24rem;margin:auto;display:block;}
+.delete p {text-align:center;font-size:0.2rem;margin:auto;}
+.delete a:visited {color:black;}
+
+.item {position:relative;width:7.20rem;height:2.20rem;background:white;margin-bottom:.20rem;}
+.item .thumbnail {position:absolute;left:.15rem;top:.15rem;width:1.90rem;height:1.90rem;background:#66CC66}
+.name {position:absolute;left:2.50rem;top:.15rem;font-size:0.2rem;}
+.price {position:absolute;left:2.50rem;bottom:.15rem;color:#FF9900;font-size:0.32rem;}
+.counter {position:absolute;right:.15rem;bottom:.15rem;}
+.counter1 {width:.50rem;height:.50rem;border:1px solid black;font-size:0.32rem;line-height:.50rem;text-align:center;float:left;color:grey;}
+.counter2 {width:1rem;height:.50rem;border-top:1px solid black;border-bottom:1px solid black;font-size:0.32rem;line-height:.50rem;text-align:center;float:left;}
+.counter3 {width:.50rem;height:.50rem;border:1px solid black;font-size:0.32rem;line-height:.50rem;text-align:center;float:left;}
+
+.footer {position:fixed;left:0px;bottom:0px;width:7.20rem;height:1rem;background:white;}
+.back {position:absolute;width:1rem;height:1rem;border-right:1px solid black;overflow:hidden;display:block;}
+.back img {width:0.19rem;height:0.37rem;display:block;margin:auto;margin-top:.30rem;}
+.discount {position:absolute;left:1.25rem;top:.15rem;color:grey;font-size:0.2rem;}
+.sum {position:absolute;left:1.25rem;top:.50rem;font-size:0.3rem;}
+.pay {position:absolute;right:.30rem;top:.10rem;width:1.90rem;height:.70rem;border-radius:.10rem;background:#FF9900;color:white;text-align:center;font-size:0.32rem;line-height:.70rem;}

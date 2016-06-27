@@ -1,0 +1,15 @@
+.wrapper {width:7.20rem;height:12.80rem;background:#EFEFEF;}
+
+.header {position:relative;height:1rem;margin-bottom:.20rem;background:white;overflow:hidden;}
+.header>p {width:5.90rem;height:1rem;line-height:1rem;font-size:.2rem;text-indent:.30rem;border-right:1px solid black;float:left;}
+.header span {color:#FFA620}
+.delete:link {width:1.28rem;height:1rem;float:left;display:block;color:black;}
+.delete:visited {color:black;}
+.delete img {width:0.25rem;display:block;margin:auto;margin-top:.20rem;}
+.delete p {width:1rem;text-align:center;font-size:.2rem;margin:auto;}
+
+.item {position:relative;width:7.20rem;height:2.20rem;background:white;border-bottom:1px solid grey;}
+.thumbnail {position:absolute;left:.15rem;top:.15rem;width:1.90rem;height:1.90rem;display:block}
+.name {position:absolute;left:2.50rem;top:.15rem;font-size:.2rem;}
+.price {position:absolute;left:2.50rem;bottom:.15rem;color:#FF9900;font-size:.32rem;}
+.putinto {position:absolute;right:.30rem;bottom:.10rem;width:.4rem;display:block;cursor:pointer}

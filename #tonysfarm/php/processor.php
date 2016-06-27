@@ -1,0 +1,1 @@
+<html><body>Welcome! <?php echo $_POST["name"];?> of House <?php echo $_POST["house"];?>!</body></html>
