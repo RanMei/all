@@ -65,6 +65,8 @@ var SigninConnected = connect(function(state){
 	}
 })( Signin );
 
+import {Navbar} from './components/Navbar.jsx';
+
 class App extends React.Component {
 	constructor(){
 		super();
@@ -89,14 +91,7 @@ class SigninContainer extends React.Component {
 	}
 }
 
-class Home extends React.Component {
-	render(){
-		return (
-			<div>Home</div>
-		)
-	}
-}
-
+import {Home} from './components/Home.jsx';
 // The router.
 ReactDOM.render(
 	(
@@ -104,7 +99,8 @@ ReactDOM.render(
 			<Router history={ hashHistory } >
 				<Route path="/" component={App}>
 					<Route path="/home" component={Home} />
-					<IndexRoute path="/signin" component={SigninContainer} />
+					<Route path="/signin" component={SigninContainer} />
+					<IndexRoute path="/home" component={Home} />
 				</Route>
 			</Router>
 		</Provider>

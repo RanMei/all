@@ -1,67 +1,128 @@
 import {$$imgDir} from '../common.jsx';
 
+import {Navbar} from './Navbar.jsx';
+
 class Home extends React.Component {
 	render() {
-		return (
-			<div id="home" className="ka-slideDown">
-				<Showcase/>
-			</div>
-		);
-	}
-}
-
-class Showcase extends React.Component {
-	render(){
-		return (
-			<div className="container">
-				<div className="box2">
-					<ul className="col1">
-						<li>
-							<div className="upper">
-								<div className="icon"><a href=""><img src={$$imgDir+"084337.png"}/></a></div>
-								<a href="" className="title">玩具模型</a>
-							</div>
-							<div className="lower">
-								<a href="">模型公仔</a> <a href="">仿真收藏</a> <a href="">更多></a></div>
-						</li>
-						<li>
-							<div className="upper">
-								<div className="icon"><a href=""><img src={$$imgDir+"153449.png"}/></a></div>
-								<a href="" className="title">数码配件</a>
-							</div>
-							<div className="lower">
-								<a href="">手机配件</a> <a href="">充电装备</a> <a href="">更多></a></div>
-						</li>
-						<li>
-							<div className="upper">
-								<div className="icon"><a href=""><img src={$$imgDir+"160245.png"}/></a></div>
-								<a href="" className="title">服装服饰</a>
-							</div>
-							<div className="lower">
-								<a href="">男装</a> <a href="">女装</a> <a href="">更多></a></div>
-						</li>
-						<li>
-							<div className="upper">
-								<div className="icon"><a href=""><img src={$$imgDir+"161113.png"}/></a></div>
-								<a href="" className="title">居家日用</a>
-							</div>
-							<div className="lower">
-								<a href="">创意文具</a> <a href="">抱枕靠垫</a> <a href="">更多></a></div>
-						</li>
-					</ul>
-					<div className="col2">
-						<dl>
-							<dt><a href="#/item?id=1602091546"><img src={$$imgDir+"index/1602091546.jpg"}/></a></dt>
-							<dt><a href="#/item?id=1602091458"><img src={$$imgDir+"144118.jpg"}/></a></dt>
-							<dd><a href=""><img src={$$imgDir+"144233.jpg"}/></a></dd>
-							<dd><a href=""><img src={$$imgDir+"144245.jpg"}/></a></dd>
-							<dd><a href=""><img src={$$imgDir+"144256.jpg"}/></a></dd>
-							<dd><a href=""><img src={$$imgDir+"144311.jpg"}/></a></dd>		
-						</dl>
+		if( !sessionStorage.userID ){
+			location.hash = 'signin';
+			return <div></div>
+		}else{
+			return (
+				<div className="HOME">
+					<div className="searchbar">
+						<div className="search">
+							<img src="img/search.png"/>
+							<input type="text" name="" placeholder="请输入产品名称"/>
+						</div>
 					</div>
+					
+					<div className="slider">
+						<ul className="slider-imgs">
+							<li><img src="images/index/slider_3.jpg"/></li>
+							<li><img src="images/index/slider_0.jpg"/></li>
+							<li><img src="images/index/slider_1.jpg"/></li>
+							<li><img src="images/index/slider_2.jpg"/></li>
+						</ul>
+						<ul className="slider-tabs">
+							<li className="selected"></li><li></li><li></li><li></li>
+						</ul>
+					</div>
+				
+					<div className="panel">
+						<div className="panel-header">	
+							<p className="class-name">时令果蔬</p>
+							<p className="more"><a href="">更多</a></p>
+						</div>
+						<ul className="row">
+							<a href="items/item.html" className="item">
+								<img className="thumbnail" src="images/index/1.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/2.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+						</ul>	
+						<ul className="row">
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/3.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/4.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+						</ul>	
+					</div>
+					<div className="panel">
+						<div className="panel-header">	
+							<p className="class-name">水产海鲜</p>
+							<p className="more"><a href="">更多</a></p>
+						</div>
+						<ul className="row">
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/5.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/6.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+						</ul>	
+						<ul className="row">
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/7.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/8.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+						</ul>	
+					</div>
+					<div className="panel">
+						<div className="panel-header">	
+							<p className="class-name">新鲜菜蔬</p>
+							<p className="more"><a href="">更多</a></p>
+						</div>
+						<ul className="row">
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/9.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+							<a href="" className="item">
+								<img className="thumbnail" src="images/index/10.jpg"/>
+								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
+								<p className="description">维C之冠，水果之王</p>
+								<p className="price">￥178.00</p>
+							</a>
+						</ul>
+					</div>
+					<div className="nav_shadow">
+					</div>
+					<Navbar />
 				</div>
-			</div>
-		)
+			);
+		};
 	}
 }
 

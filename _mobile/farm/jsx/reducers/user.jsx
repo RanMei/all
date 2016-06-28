@@ -22,6 +22,7 @@ function user (state={},action){
 				}
 			});
 			if( ok ){
+				sessionStorage.userID = action.user.userID;
 				return {userID: action.user.userID}
 			};
 		default:

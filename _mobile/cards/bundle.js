@@ -193,7 +193,7 @@ $(document).ready(function () {
 	;
 });
 
-},{"../../js/z.swiper.js":4,"../../src/zAlert.js":5,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../js/z.swiper.js":4,"../../src/zAlert.js":6,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -791,36 +791,118 @@ $.fn.swipe = function (opts) {
 },{}],5:[function(require,module,exports){
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+/**
+ * Create an HTML element.
+ * @param  {string} tag  
+ * @param  {array} childNodes
+ * @return {object}
+ */
+function createElement(tag, config, childNodes) {
+	var elem = document.createElement('div');
+	if (config) {
+		for (var key in config) {
+			//console.log(key)
+			if (key === 'style') {
+				elem.style.cssText = config[key];
+			} else {
+				elem.setAttribute(key, config[key]);
+			};
+		}
+	};
+	if (childNodes) {
+		childNodes.forEach(function (child) {
+			if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) === 'object') {
+				elem.appendChild(child);
+			} else if (typeof child === 'string') {
+				var textNode = document.createTextNode(child);
+				elem.appendChild(textNode);
+			};
+		});
+	};
+	//console.log(elem)
+	return elem;
+}
+
+module.exports = createElement;
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 var $ = window.$;
 
-$('body').prepend('<div class="mask2016">' + '<div class="bg"></div>' + '<div class="panel">' + '<p class="text"></p>' + '<div class="buttons">' + '<div class="button confirm">确定</div>' + '<div class="button cancel">取消</div>' + '</div>' + '</div>' + '</div>');
+var createElement = require('./createElement.js');
 
-var $mask = $('.mask2016');
-var $bg = $mask.find('.bg');
-var $panel = $mask.find('.panel');
-var $text = $mask.find('.text');
-var $buttons = $mask.find('.buttons');
-var $button = $mask.find('.button');
-var $confirm = $mask.find('.confirm');
-var $cancel = $mask.find('.cancel');
+function createFragment() {}
 
-$mask.css({
-	position: 'fixed',
-	left: 0,
-	top: 0,
-	width: '100%',
-	height: '100%',
-	display: 'none',
-	'z-index': 1000
-});
-$bg.css({
-	width: '100%',
-	height: '100%',
-	background: 'rgba(0,0,0,0.5)'
-});
+var obj = {
+	type: 'div',
+	childNodes: [{
+		type: 'div'
+	}, {
+		type: 'div'
+	}]
+};
+
+var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
+
+function useStringTemplate() {
+	$('body').prepend('<div class="mask2016">' + '<div class="bg"></div>' + '<div class="panel">' + '<p class="text"></p>' + '<div class="buttons">' + '<div class="button confirm">确定</div>' + '<div class="button cancel">取消</div>' + '</div>' + '</div>' + '</div>');
+
+	$mask = $('.mask2016');
+	$bg = $mask.find('.bg');
+	$panel = $mask.find('.panel');
+	$text = $mask.find('.text');
+	$buttons = $mask.find('.buttons');
+	$button = $mask.find('.button');
+	$confirm = $mask.find('.confirm');
+	$cancel = $mask.find('.cancel');
+};
+
+function useElementCreating() {
+	var _confirm = createElement('div', null, ['确定']);
+	var _cancel = createElement('div', null, ['取消']);
+	var _buttons = createElement('div', null, [_confirm, _cancel]);
+
+	var _text = createElement('p');
+
+	var _panel = createElement('div', null, [_text, _buttons]);
+
+	var _bg = createElement('div', { style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' });
+
+	var _mask = createElement('div', { style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;' }, [_bg, _panel]);
+
+	$mask = $(_mask);
+	$bg = $(_bg);
+	$panel = $(_panel);
+	$text = $(_text);
+	$buttons = $(_buttons);
+	$button = $([_confirm, _cancel]);
+	$confirm = $(_confirm);
+	$cancel = $(_cancel);
+
+	$('body').prepend($mask);
+};
+useElementCreating();
+
+// $mask.css({
+// 	position: 'fixed',
+// 	left: 0,
+// 	top: 0,
+// 	width: '100%',
+// 	height: '100%',
+// 	display: 'none',
+// 	'z-index': 1000
+// });
+// $bg.css({
+// 	width: '100%',
+// 	height: '100%',
+// 	background: 'rgba(0,0,0,0.5)'
+// });
 $panel.css({
 	position: 'absolute',
 	left: 0, top: 0, right: 0, bottom: 0,
@@ -857,4 +939,4 @@ function zAlert(text) {
 
 exports.zAlert = zAlert;
 
-},{}]},{},[2]);
+},{"./createElement.js":5}]},{},[2]);
