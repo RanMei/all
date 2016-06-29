@@ -91,6 +91,16 @@ class SigninContainer extends React.Component {
 	}
 }
 
+import {Member} from './components/Member.jsx';
+class MemberContainer extends React.Component {
+	render(){
+		return (
+			<Member
+				act={ (action)=>$$store.dispatch(action) }/>
+		)
+	}
+}
+
 import {Home} from './components/Home.jsx';
 // The router.
 ReactDOM.render(
@@ -99,7 +109,9 @@ ReactDOM.render(
 			<Router history={ hashHistory } >
 				<Route path="/" component={App}>
 					<Route path="/home" component={Home} />
+					<Route path="/item" component={Item} />
 					<Route path="/signin" component={SigninContainer} />
+					<Route path="/member" component={MemberContainer} />
 					<IndexRoute path="/home" component={Home} />
 				</Route>
 			</Router>

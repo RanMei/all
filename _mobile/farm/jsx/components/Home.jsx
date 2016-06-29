@@ -1,13 +1,40 @@
 import {$$imgDir} from '../common.jsx';
 
 import {Navbar} from './Navbar.jsx';
+import {Swiper} from './Swiper.jsx';
+
+
+var swiperItems = [
+	'img/index/slider_0.jpg',
+	'img/index/slider_1.jpg',
+	'img/index/slider_2.jpg',
+	'img/index/slider_3.jpg'
+]
 
 class Home extends React.Component {
+	constructor(props) {
+        super(props);
+        var items;
+		$.ajax({
+			type: 'post',
+			url: '/getItems',
+			async: false
+		}).done(function(data){
+			//console.log(data);
+			items = data;
+		})
+        this.state = {
+            items: items
+        };
+        console.log('<Home/> constructing',this.state)
+    }
 	render() {
+		window.scroll(0,0);
 		if( !sessionStorage.userID ){
 			location.hash = 'signin';
 			return <div></div>
 		}else{
+			//this.getItems();
 			return (
 				<div className="HOME">
 					<div className="searchbar">
@@ -17,12 +44,13 @@ class Home extends React.Component {
 						</div>
 					</div>
 					
+					<Swiper items={swiperItems} />
 					<div className="slider">
 						<ul className="slider-imgs">
-							<li><img src="images/index/slider_3.jpg"/></li>
-							<li><img src="images/index/slider_0.jpg"/></li>
-							<li><img src="images/index/slider_1.jpg"/></li>
-							<li><img src="images/index/slider_2.jpg"/></li>
+							<li><img src="img/index/slider_3.jpg"/></li>
+							<li><img src="img/index/slider_0.jpg"/></li>
+							<li><img src="img/index/slider_1.jpg"/></li>
+							<li><img src="img/index/slider_2.jpg"/></li>
 						</ul>
 						<ul className="slider-tabs">
 							<li className="selected"></li><li></li><li></li><li></li>
@@ -34,87 +62,72 @@ class Home extends React.Component {
 							<p className="class-name">时令果蔬</p>
 							<p className="more"><a href="">更多</a></p>
 						</div>
-						<ul className="row">
-							<a href="items/item.html" className="item">
-								<img className="thumbnail" src="images/index/1.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/2.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-						</ul>	
-						<ul className="row">
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/3.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/4.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-						</ul>	
+						<ul className="panel-body">
+							{this.state.items.map(function(item,i){
+								var href = '#/item?id='+item.id;
+								var src = 'img/thumbnail/'+item.id+'.jpg';
+								var style = {
+									float: i%2===0?'left':'right'
+								};
+								return (
+									<div className="item">
+										<a href={href} style={style}>
+											<img className="thumbnail" src={src}/>
+											<p className="name">{item.name}</p>
+											<p className="description">{item.desc}</p>
+											<p className="price">￥{item.price.toFixed(2)}</p>
+										</a>
+									</div>
+								)
+							})}
+						</ul>
 					</div>
 					<div className="panel">
 						<div className="panel-header">	
 							<p className="class-name">水产海鲜</p>
 							<p className="more"><a href="">更多</a></p>
 						</div>
-						<ul className="row">
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/5.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/6.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-						</ul>	
-						<ul className="row">
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/7.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/8.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-						</ul>	
+						<ul className="panel-body">
+							{this.state.items.map(function(item,i){
+								var src = 'img/thumbnail/'+item.id+'.jpg';
+								var style = {
+									float: i%2===0?'left':'right'
+								};
+								return (
+									<div className="item">
+										<a href="items/item.html" style={style}>
+											<img className="thumbnail" src={src}/>
+											<p className="name">{item.name}</p>
+											<p className="description">{item.desc}</p>
+											<p className="price">￥{item.price.toFixed(2)}</p>
+										</a>
+									</div>
+								)
+							})}
+						</ul>
 					</div>
 					<div className="panel">
 						<div className="panel-header">	
 							<p className="class-name">新鲜菜蔬</p>
 							<p className="more"><a href="">更多</a></p>
 						</div>
-						<ul className="row">
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/9.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
-							<a href="" className="item">
-								<img className="thumbnail" src="images/index/10.jpg"/>
-								<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg）</p>
-								<p className="description">维C之冠，水果之王</p>
-								<p className="price">￥178.00</p>
-							</a>
+						<ul className="panel-body">
+							{this.state.items.map(function(item,i){
+								var src = 'img/thumbnail/'+item.id+'.jpg';
+								var style = {
+									float: i%2===0?'left':'right'
+								};
+								return (
+									<div className="item">
+										<a href="items/item.html" style={style}>
+											<img className="thumbnail" src={src}/>
+											<p className="name">{item.name}</p>
+											<p className="description">{item.desc}</p>
+											<p className="price">￥{item.price.toFixed(2)}</p>
+										</a>
+									</div>
+								)
+							})}
 						</ul>
 					</div>
 					<div className="nav_shadow">

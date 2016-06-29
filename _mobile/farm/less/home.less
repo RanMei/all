@@ -21,6 +21,22 @@
 		}
 	}
 
+	.Swiper {
+		position: relative;
+		width: 100%;
+		height: 4.9rem;
+		overflow: hidden;
+		.train {
+			.item {
+				float: left;
+				img {
+					width: 100%;
+					display: block;
+				}
+			}
+		}
+	}
+
 	.slider {position:relative;width:7.20rem;height:4.90rem;margin-bottom:.20rem;overflow:hidden;}
 	.slider-imgs {width:36rem;overflow:hidden;}
 	.slider li {float:left;width:7.2rem;}
@@ -44,22 +60,26 @@
 			.more a:visited {color:#FF9900;}
 		}
 
-		.row {
+		.panel-body {
 			position: relative;
 			padding: 0 .40rem 0.1rem 0.4rem;
 			overflow: hidden;
 			.item {
-				width: 2.60rem;
 				float: left;
-				.thumbnail {width:2.60rem;height:2.60rem;display:block;}
-				p {width:2.40rem;margin:.05rem 0 .05rem 0;font-size:.2rem;}
-				.description {color:grey;}
-				.price {color: @orange;}
+				width: 50%;
+				height: 4.4rem;
+				overflow: hidden;
+				a {
+					width: 2.60rem;
+					float: left;
+					.name {color:black;}
+					.thumbnail {width:2.60rem;height:2.60rem;display:block;}
+					p {width:2.40rem;margin:.05rem 0 .05rem 0;font-size:.2rem;}
+					.description {color:grey;}
+					.price {color: @orange;}
+				}
 			}
-			.item:nth-child(2) {float:right;}
 		}
-		.item:link .name {color:black;}
-		.item:visited .name {color:black;}
 	}
 
 

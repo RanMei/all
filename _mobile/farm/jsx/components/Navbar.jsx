@@ -32,7 +32,7 @@ class Navbar extends React.Component {
 		return (
 			<div className="NAVBAR">
 				<ul className="nav">
-					<a href="index.html">
+					<a href="#/home">
 						<img src="img/homepage.png"/>
 						<p>首页</p>
 						<div className="line"></div>
@@ -47,7 +47,7 @@ class Navbar extends React.Component {
 						<p>购物车</p>
 						<div className="line"></div>
 					</a>
-					<a href="">
+					<a href="#/member">
 						<img src="img/mine2.png"/>
 						<p className="selected">我的多利</p>
 					</a>

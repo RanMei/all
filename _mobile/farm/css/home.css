@@ -3,6 +3,9 @@
   padding: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+* :focus {
+  outline: none;
+}
 html {
   font-size: 100px;
   font-family: 'Microsoft Yahei';
@@ -61,6 +64,19 @@ a:link {
   display: block;
   font-size: 0.288rem;
   border: none;
+}
+.HOME .Swiper {
+  position: relative;
+  width: 100%;
+  height: 4.9rem;
+  overflow: hidden;
+}
+.HOME .Swiper .train .item {
+  float: left;
+}
+.HOME .Swiper .train .item img {
+  width: 100%;
+  display: block;
 }
 .HOME .slider {
   position: relative;
@@ -129,39 +145,39 @@ a:link {
 .HOME .panel .panel-header .more a:visited {
   color: #FF9900;
 }
-.HOME .panel .row {
+.HOME .panel .panel-body {
   position: relative;
   padding: 0 .40rem 0.1rem 0.4rem;
   overflow: hidden;
 }
-.HOME .panel .row .item {
+.HOME .panel .panel-body .item {
+  float: left;
+  width: 50%;
+  height: 4.4rem;
+  overflow: hidden;
+}
+.HOME .panel .panel-body .item a {
   width: 2.60rem;
   float: left;
 }
-.HOME .panel .row .item .thumbnail {
+.HOME .panel .panel-body .item a .name {
+  color: black;
+}
+.HOME .panel .panel-body .item a .thumbnail {
   width: 2.60rem;
   height: 2.60rem;
   display: block;
 }
-.HOME .panel .row .item p {
+.HOME .panel .panel-body .item a p {
   width: 2.40rem;
   margin: .05rem 0 .05rem 0;
   font-size: .2rem;
 }
-.HOME .panel .row .item .description {
+.HOME .panel .panel-body .item a .description {
   color: grey;
 }
-.HOME .panel .row .item .price {
+.HOME .panel .panel-body .item a .price {
   color: #FF9900;
-}
-.HOME .panel .row .item:nth-child(2) {
-  float: right;
-}
-.HOME .panel .item:link .name {
-  color: black;
-}
-.HOME .panel .item:visited .name {
-  color: black;
 }
 .HOME .nav_shadow {
   height: 0.8rem;

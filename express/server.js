@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
 
-const port = 3004;
+const port = 4000;
 var app = express();
 
 app.use( express.static(__dirname+'/../') );
@@ -30,6 +30,29 @@ app.post('/login',function(req,res){
 		res.send( 'false' );
 	}
 	
+})
+
+app.post('/getItems',function(req,res){
+	var items = fs.readFileSync('./json/items-farm.json');
+	res.set({
+		'Content-Type': 'application/json'
+	})
+	res.send( items );
+})
+
+app.post('/getItem',function(req,res){
+	var itemID = req.body.itemID;
+	var item;
+	var items = JSON.parse( fs.readFileSync('./json/items-farm.json') );
+	items.forEach(function(elem){
+		if( elem.id===itemID ){
+			item = elem;
+		}
+	});
+	res.set({
+		'Content-Type': 'application/json'
+	})
+	res.send( JSON.stringify(item) );
 })
 
 // app.post('/logout',function(req,res){

@@ -25,6 +25,9 @@ function user (state={},action){
 				sessionStorage.userID = action.user.userID;
 				return {userID: action.user.userID}
 			};
+		case 'LOGOUT':
+			delete sessionStorage.userID;
+			return {userID: undefined};
 		default:
 			return state;
 	}
