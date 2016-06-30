@@ -1,5 +1,13 @@
 import {$$rootDir,$$itemDir,$$phpDir,$$imgDir} from '../common.jsx';
 import {CommentBox} from './CommentBox.jsx';
+import {Swiper} from './Swiper.jsx';
+
+var swiperItems = [
+	'img/index/slider_0.jpg',
+	'img/index/slider_1.jpg',
+	'img/index/slider_2.jpg',
+	'img/index/slider_3.jpg'
+]
 
 function getItem(){
 	var itemID = location.hash.match(/\?id=(\w+)/)[1];
@@ -78,17 +86,8 @@ class Item extends React.Component {
 		var item = this.state.item;
 		return (
 			<div className="ITEM">
-				<div className="slider">
-					<ul className="train">
-						<a href=""><img src="0001/2.jpg"/></a>
-						<a href=""><img src="0001/0.jpg"/></a>
-						<a href=""><img src="0001/1.jpg"/></a>
-						<a href=""><img src="0001/2.jpg"/></a>
-					</ul>
-					<ul className="tabs">
-						<li className="selected"></li><li></li><li></li><li></li>
-					</ul>
-				</div>
+
+				<Swiper items={swiperItems}/>
 			
 				<div className="desc">
 					<div className="upper">

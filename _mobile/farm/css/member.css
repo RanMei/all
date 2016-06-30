@@ -1,3 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+* :focus {
+  outline: none;
+}
+html {
+  font-size: 100px;
+  font-family: 'Microsoft Yahei';
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
+a:link {
+  color: ;
+  text-decoration: none;
+}
+/* Utility Classes */
+.container {
+  background: orange;
+  overflow: hidden;
+  display: none;
+}
+.clearfix {
+  clear: both;
+}
+/* Media Queries */
+@media (-webkit-min-device-pixel-ratio: 2) {
+}
+.wrapper {
+  width: 7.2rem;
+}
 .MEMBER {
   width: 7.2rem;
   height: 12.80rem;

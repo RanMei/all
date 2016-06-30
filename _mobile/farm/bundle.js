@@ -1084,42 +1084,6 @@ var Home = function (_React$Component) {
 					React.createElement(_Swiper.Swiper, { items: swiperItems }),
 					React.createElement(
 						'div',
-						{ className: 'slider' },
-						React.createElement(
-							'ul',
-							{ className: 'slider-imgs' },
-							React.createElement(
-								'li',
-								null,
-								React.createElement('img', { src: 'img/index/slider_3.jpg' })
-							),
-							React.createElement(
-								'li',
-								null,
-								React.createElement('img', { src: 'img/index/slider_0.jpg' })
-							),
-							React.createElement(
-								'li',
-								null,
-								React.createElement('img', { src: 'img/index/slider_1.jpg' })
-							),
-							React.createElement(
-								'li',
-								null,
-								React.createElement('img', { src: 'img/index/slider_2.jpg' })
-							)
-						),
-						React.createElement(
-							'ul',
-							{ className: 'slider-tabs' },
-							React.createElement('li', { className: 'selected' }),
-							React.createElement('li', null),
-							React.createElement('li', null),
-							React.createElement('li', null)
-						)
-					),
-					React.createElement(
-						'div',
 						{ className: 'panel' },
 						React.createElement(
 							'div',
@@ -1316,11 +1280,15 @@ var _common = require('../common.jsx');
 
 var _CommentBox = require('./CommentBox.jsx');
 
+var _Swiper = require('./Swiper.jsx');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var swiperItems = ['img/index/slider_0.jpg', 'img/index/slider_1.jpg', 'img/index/slider_2.jpg', 'img/index/slider_3.jpg'];
 
 function getItem() {
 	var itemID = location.hash.match(/\?id=(\w+)/)[1];
@@ -1422,42 +1390,7 @@ var Item = function (_React$Component) {
 			return React.createElement(
 				'div',
 				{ className: 'ITEM' },
-				React.createElement(
-					'div',
-					{ className: 'slider' },
-					React.createElement(
-						'ul',
-						{ className: 'train' },
-						React.createElement(
-							'a',
-							{ href: '' },
-							React.createElement('img', { src: '0001/2.jpg' })
-						),
-						React.createElement(
-							'a',
-							{ href: '' },
-							React.createElement('img', { src: '0001/0.jpg' })
-						),
-						React.createElement(
-							'a',
-							{ href: '' },
-							React.createElement('img', { src: '0001/1.jpg' })
-						),
-						React.createElement(
-							'a',
-							{ href: '' },
-							React.createElement('img', { src: '0001/2.jpg' })
-						)
-					),
-					React.createElement(
-						'ul',
-						{ className: 'tabs' },
-						React.createElement('li', { className: 'selected' }),
-						React.createElement('li', null),
-						React.createElement('li', null),
-						React.createElement('li', null)
-					)
-				),
+				React.createElement(_Swiper.Swiper, { items: swiperItems }),
 				React.createElement(
 					'div',
 					{ className: 'desc' },
@@ -1583,7 +1516,7 @@ var Item = function (_React$Component) {
 
 exports.Item = Item;
 
-},{"../common.jsx":1,"./CommentBox.jsx":3}],7:[function(require,module,exports){
+},{"../common.jsx":1,"./CommentBox.jsx":3,"./Swiper.jsx":11}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2266,6 +2199,7 @@ var Signin = function (_React$Component) {
 			}
 		};
 		window.scroll(0, 0);
+		console.log('<Signin/> constructing');
 		return _this;
 	}
 
@@ -2380,15 +2314,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var X0, X1, X2;
-
-var trainStyle = {};
-var itemStyle = {};
-
-var $trainOffset = 0;
-var $width;
-var $currentOne = 0;
-
 var Swiper = function (_React$Component) {
 	_inherits(Swiper, _React$Component);
 
@@ -2398,13 +2323,16 @@ var Swiper = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this, props));
 
 		var self = _this;
+		_this.$trainOffset = 0;
+		_this.$currentOne = 0;
 		_this.state = {
 			trainStyle: {
 				width: _this.props.items.length + '00%'
 			},
 			itemStyle: {
 				width: 100 / _this.props.items.length + '%'
-			}
+			},
+			currentOne: 0
 		};
 		return _this;
 	}
@@ -2413,29 +2341,38 @@ var Swiper = function (_React$Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var self = this;
-			$width = Number(document.defaultView.getComputedStyle(React.findDOMNode(self.refs.Swiper)).width.replace(/px/, ''));
+			var _Swiper = React.findDOMNode(self.refs.Swiper);
+
+			this.$width = Number(document.defaultView.getComputedStyle(_Swiper).width.replace(/px/, ''));
 			window.addEventListener('resize', function () {
-				$width = Number(document.defaultView.getComputedStyle(React.findDOMNode(self.refs.Swiper)).width.replace(/px/, ''));
-				console.log($width);
+				self.$width = Number(document.defaultView.getComputedStyle(React.findDOMNode(self.refs.Swiper)).width.replace(/px/, ''));
 			});
+			setInterval(function () {
+				if (self.$currentOne < self.props.items.length - 1) {
+					self.$currentOne++;
+				} else {
+					self.$currentOne = 0;
+				};
+				self.toItem(self.$currentOne);
+			}, 3000);
 		}
 	}, {
 		key: 'handleTouchStart',
 		value: function handleTouchStart(e) {
-			X0 = X1 = e.changedTouches[0].pageX;
-			console.log(X1);
+			this.X0 = this.X1 = e.changedTouches[0].pageX;
+			console.log(this.X1);
 		}
 	}, {
 		key: 'handleTouchMove',
 		value: function handleTouchMove(e) {
-			X2 = e.changedTouches[0].pageX;
-			var distance = X2 - X1;
-			$trainOffset += distance;
-			X1 = X2;
+			this.X2 = e.changedTouches[0].pageX;
+			var distance = this.X2 - this.X1;
+			this.$trainOffset += distance;
+			this.X1 = this.X2;
 			var trainStyle = {
 				width: this.props.items.length + '00%',
 				transition: '0s',
-				transform: 'translate3d(' + $trainOffset + 'px,0,0)'
+				transform: 'translate3d(' + this.$trainOffset + 'px,0,0)'
 			};
 			this.setState({
 				trainStyle: trainStyle
@@ -2444,28 +2381,31 @@ var Swiper = function (_React$Component) {
 	}, {
 		key: 'handleTouchEnd',
 		value: function handleTouchEnd(e) {
-			X2 = e.changedTouches[0].pageX;
-			var distance = X2 - X0;
-			if (distance > 0 && $currentOne > 0) {
-				$currentOne--;
-			} else if (distance < 0 && $currentOne < this.props.items.length - 1) {
-				$currentOne++;
+			this.X2 = e.changedTouches[0].pageX;
+			var distance = this.X2 - this.X0;
+			if (distance > 0 && this.$currentOne > 0) {
+				this.$currentOne--;
+			} else if (distance < 0 && this.$currentOne < this.props.items.length - 1) {
+				this.$currentOne++;
 			}
-			$trainOffset = -$currentOne * $width;
-			console.log($currentOne);
+			this.toItem(this.$currentOne);
+		}
+	}, {
+		key: 'toItem',
+		value: function toItem(i) {
+			this.$trainOffset = -i * this.$width;
 			this.setState({
 				trainStyle: {
 					width: this.props.items.length + '00%',
 					transition: '0.3s',
-					transform: 'translate3d(' + $trainOffset + 'px,0,0)'
-				}
+					transform: 'translate3d(' + this.$trainOffset + 'px,0,0)'
+				},
+				currentOne: i
 			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			//trainStyle.width = this.props.items.length+'00%';
-			//itemStyle.width = 100/this.props.items.length+'%';
 			var self = this;
 			return React.createElement(
 				'div',
@@ -2483,7 +2423,15 @@ var Swiper = function (_React$Component) {
 							React.createElement('img', { src: elem })
 						);
 					})
-				)
+				),
+				React.createElement(
+					'ul',
+					{ className: 'pagination', ref: 'pagination' },
+					this.props.items.map(function (elem, i) {
+						return React.createElement('li', { className: i === self.state.currentOne ? 'dot active' : 'dot' });
+					})
+				),
+				'}'
 			);
 		}
 	}]);
@@ -2580,7 +2528,7 @@ var DECREMENT = { type: 'DECREMENT' };
 
 // store
 var $$store = createStore(_reducer.$$reducer, enhancer);
-console.log('state initialized', $$store.getState());
+console.log('Redux: state initialized', $$store.getState());
 
 var SigninConnected = connect(function (state) {
 	return {
@@ -2594,7 +2542,10 @@ var App = function (_React$Component) {
 	function App() {
 		_classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+
+		console.log('<App/> constructing');
+		return _this;
 	}
 
 	_createClass(App, [{

@@ -57,7 +57,7 @@ var DECREMENT = {type:'DECREMENT'};
 
 // store
 const $$store = createStore( $$reducer,enhancer );
-console.log( 'state initialized',$$store.getState() )
+console.log( 'Redux: state initialized',$$store.getState() )
 
 var SigninConnected = connect(function(state){
 	return {
@@ -70,6 +70,7 @@ import {Navbar} from './components/Navbar.jsx';
 class App extends React.Component {
 	constructor(){
 		super();
+		console.log('<App/> constructing');
 	}
 	render() {
 		console.log( '<App/> rendering, State:',$$store.getState() );

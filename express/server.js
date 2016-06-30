@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
 
-const port = 4000;
+const port = 2000;
 var app = express();
 
 app.use( express.static(__dirname+'/../') );

@@ -8,6 +8,7 @@ class Signin extends React.Component {
 			}
 		};
 		window.scroll(0,0);
+		console.log('<Signin/> constructing');
 	}
 	setUserID(e){
 		var user = this.state.user;

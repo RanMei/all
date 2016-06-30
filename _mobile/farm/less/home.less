@@ -25,6 +25,7 @@
 		position: relative;
 		width: 100%;
 		height: 4.9rem;
+		margin-bottom: 0.2rem;
 		overflow: hidden;
 		.train {
 			.item {
@@ -33,6 +34,25 @@
 					width: 100%;
 					display: block;
 				}
+			}
+		}
+		.pagination {
+			position: absolute;
+			left: 2.91rem;
+			bottom: 0.2rem;
+			padding: 0.05rem 0.05rem 0.05rem 0.05rem;
+			border-radius: 0.11rem;
+			background: white;
+			.dot {
+				float: left;
+				width: 0.12rem;
+				height: 0.12rem;
+				margin: 0 0.1rem 0 0.1rem;
+				border-radius: 50%;
+				background: grey;
+			}
+			.dot.active {
+				background: @green;
 			}
 		}
 	}

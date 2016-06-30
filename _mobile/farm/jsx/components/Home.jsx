@@ -45,17 +45,6 @@ class Home extends React.Component {
 					</div>
 					
 					<Swiper items={swiperItems} />
-					<div className="slider">
-						<ul className="slider-imgs">
-							<li><img src="img/index/slider_3.jpg"/></li>
-							<li><img src="img/index/slider_0.jpg"/></li>
-							<li><img src="img/index/slider_1.jpg"/></li>
-							<li><img src="img/index/slider_2.jpg"/></li>
-						</ul>
-						<ul className="slider-tabs">
-							<li className="selected"></li><li></li><li></li><li></li>
-						</ul>
-					</div>
 				
 					<div className="panel">
 						<div className="panel-header">	

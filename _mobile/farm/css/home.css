@@ -69,6 +69,7 @@ a:link {
   position: relative;
   width: 100%;
   height: 4.9rem;
+  margin-bottom: 0.2rem;
   overflow: hidden;
 }
 .HOME .Swiper .train .item {
@@ -77,6 +78,25 @@ a:link {
 .HOME .Swiper .train .item img {
   width: 100%;
   display: block;
+}
+.HOME .Swiper .pagination {
+  position: absolute;
+  left: 2.91rem;
+  bottom: 0.2rem;
+  padding: 0.05rem 0.05rem 0.05rem 0.05rem;
+  border-radius: 0.11rem;
+  background: white;
+}
+.HOME .Swiper .pagination .dot {
+  float: left;
+  width: 0.12rem;
+  height: 0.12rem;
+  margin: 0 0.1rem 0 0.1rem;
+  border-radius: 50%;
+  background: grey;
+}
+.HOME .Swiper .pagination .dot.active {
+  background: #5EA626;
 }
 .HOME .slider {
   position: relative;

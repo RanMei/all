@@ -1,13 +1,22 @@
 if( window.$ ){
 	$(document).ready(function(){
 		$('body').prepend(
-			'<div class="screen"></div>'+
-			'<div class="bar"></div>'
+			'<div rem-screen></div>'+
+			'<div rem-bar></div>'
 		);
-		$('.bar').css({
+		//console.log( document.querySelector('[rem-screen]') )
+		$screen = $( document.querySelector('[rem-screen]') );
+		$bar = $( document.querySelector('[rem-bar]') );
+		$screen.removeAttr('rem-screen');
+		$bar.removeAttr('rem-bar');
+		//console.log($screen)
+		// $('html').css({
+		// 	'font-size': '100px'
+		// });
+		$bar.css({
 			width: '100%'
 		});
-		$('.screen').css({
+		$screen.css({
 			position: 'fixed',
 			width: '100%',
 			height: '100%'
@@ -16,12 +25,11 @@ if( window.$ ){
 		 * Get width and height of current viewport and set rem.
 		 */
 		function setRem (){
-			var screen = $('.screen');
-			screen.show();
-			var w = screen.width();
-			var h = screen.height();
-			screen.hide();
-			console.log( 'Size of the viewport is '+w+'*'+h+'.' );
+			$screen.show();
+			var w = $screen.width();
+			var h = $screen.height();
+			$screen.hide();
+			console.log( 'rem: Size of the viewport is '+w+'*'+h+'.' );
 			$('html').css({
 				fontSize: 100*w/720+'px'
 			});
