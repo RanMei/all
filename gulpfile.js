@@ -32,7 +32,8 @@ var LESS = [
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
 	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
-	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' }
+	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
+	{ name: 'less-design-button', src: './design/button/less/*.less', dest: './design/button/css' }	
 ];
 LESS.forEach(function(elem){
 	gulp.task( elem.name,function(){
