@@ -1,6 +1,6 @@
 var $ = window.$;
 
-var createElement = require('./createElement.js');
+import {createElement,refs} from './createElement.js';
 
 function createFragment(){
 
@@ -44,38 +44,68 @@ function useStringTemplate(){
 	$cancel = $mask.find('.cancel');
 };
 
-function useElementCreating(){
-	var _confirm = createElement('div',null,['确定']);
-	var _cancel = createElement('div',null,['取消']);
-	var _buttons = createElement('div',null,[_confirm,_cancel]);
+function createTemplate(){
+	var fragment = 
+		createElement('div',
+			{
+				ref: 'mask',
+				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;'},
+			[
+				createElement('div',
+					{	
+						ref: 'bg',
+						style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
+				),
+				createElement('div',{ref:'panel'},[
+					createElement('p',{ref:'text'}),
+					createElement('div',{ref:'buttons'},[
+						createElement('div',
+							{
+								ref:'confirm',
+								style: 'background: #197FEE;'
+							},['确定']),
+						createElement('div',{ref:'cancel'},['取消'])
+					])
+				])
+			]
+		);
 
-	var _text = createElement('p');
+	console.log( refs )
 
-	var _panel = createElement('div',null,[_text,_buttons]);
+	// var _confirm = createElement(
+	// 	'div',
+	// 	{style: 'background: #197FEE;'},
+	// 	['确定']);
+	// var _cancel = createElement('div',null,['取消']);
+	// var _buttons = createElement('div',null,[_confirm,_cancel]);
 
-	var _bg = createElement(
-		'div',
-		{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
-	);
+	// var _text = createElement('p');
 
-	var _mask = createElement(
-		'div',
-		{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
-		[_bg,_panel]
-	);
+	// var _panel = createElement('div',null,[_text,_buttons]);
 
-	$mask 	= $( _mask );
-	$bg 	= $( _bg );
-	$panel 	= $( _panel );
-	$text 	= $( _text );
-	$buttons = $( _buttons );
-	$button = $( [_confirm,_cancel] );
-	$confirm = $( _confirm );
-	$cancel = $( _cancel );
+	// var _bg = createElement(
+	// 	'div',
+	// 	{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
+	// );
+
+	// var _mask = createElement(
+	// 	'div',
+	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
+	// 	[_bg,_panel]
+	// );
+
+	$mask 	= $( refs.mask );
+	$bg 	= $( refs.bg );
+	$panel 	= $( refs.panel );
+	$text 	= $( refs.text );
+	$buttons = $( refs.buttons );
+	$button = $( [refs.confirm,refs.cancel] );
+	$confirm = $( refs.confirm );
+	$cancel = $( refs.cancel );
 
 	$('body').prepend($mask);
 };
-useElementCreating();
+createTemplate();
 
 // $mask.css({
 // 	position: 'fixed',
@@ -102,27 +132,33 @@ $panel.css({
 })
 $text.css({
 	'box-sizing': 'border-box',
+	height: '2rem',
 	padding: '0.15rem'
 })
 $buttons.css({
+	height: '1rem',
 	overflow: 'hidden'
 })
 $button.css({
 	float: 'left',
 	width: '50%',
+	height: '1rem',
+	'line-height': '1rem',
 	'text-align': 'center'
 })
 
-$bg.on('click',function(){
-	$mask.hide();
-})
-$cancel.on('click',function(){
-	$mask.hide();
-})
 
-function zAlert( text ){
+
+function zConfirm( text,callback1,callback2 ){
 	$text.html( text );
 	$mask.show();
+	$bg.on('click',function(){
+		$mask.hide();
+	})
+	$cancel.on('click',function(){
+		callback2();
+		$mask.hide();
+	})
 }
 
-export {zAlert};
+export {zConfirm};

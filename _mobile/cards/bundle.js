@@ -138,7 +138,7 @@ exports.arr = arr;
 
 require('./setRem.js');
 
-require('../../js/z.swiper.js');
+require('../../src/z.swiper.js');
 
 var _data = require('./data.js');
 
@@ -159,7 +159,9 @@ var $$statistics = {
 };
 
 $(document).ready(function () {
-	(0, _zAlert.zAlert)('确定退出吗？');
+	(0, _zAlert.zConfirm)('确定退出吗？', function () {}, function () {
+		console.log('cancelled');
+	});
 
 	var inserted = '';
 	for (var i = 0; i < _data.arr.length; i++) {
@@ -193,7 +195,7 @@ $(document).ready(function () {
 	;
 });
 
-},{"../../js/z.swiper.js":4,"../../src/zAlert.js":6,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/z.swiper.js":5,"../../src/zAlert.js":6,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -211,6 +213,51 @@ $(document).ready(function () {
 });
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var refs = {};
+
+/**
+ * Create an HTML element.
+ * @param  {string} tag  
+ * @param  {array} childNodes
+ * @return {object}
+ */
+function createElement(tag, config, childNodes) {
+	var elem = document.createElement('div');
+	if (config) {
+		for (var key in config) {
+			//console.log(key)
+			if (key === 'style') {
+				elem.style.cssText = config[key];
+			} else if (key === 'ref') {
+				refs[config.ref] = elem;
+			} else {
+				elem.setAttribute(key, config[key]);
+			};
+		}
+	};
+	if (childNodes) {
+		childNodes.forEach(function (child) {
+			if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) === 'object') {
+				elem.appendChild(child);
+			} else if (typeof child === 'string') {
+				var textNode = document.createTextNode(child);
+				elem.appendChild(textNode);
+			};
+		});
+	};
+	return elem;
+}
+
+module.exports = {
+	createElement: createElement,
+	refs: refs
+};
+
+},{}],5:[function(require,module,exports){
 "use strict";
 
 //import {arr} from './data.js';
@@ -788,54 +835,17 @@ $.fn.swipe = function (opts) {
 	});
 };
 
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-/**
- * Create an HTML element.
- * @param  {string} tag  
- * @param  {array} childNodes
- * @return {object}
- */
-function createElement(tag, config, childNodes) {
-	var elem = document.createElement('div');
-	if (config) {
-		for (var key in config) {
-			//console.log(key)
-			if (key === 'style') {
-				elem.style.cssText = config[key];
-			} else {
-				elem.setAttribute(key, config[key]);
-			};
-		}
-	};
-	if (childNodes) {
-		childNodes.forEach(function (child) {
-			if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) === 'object') {
-				elem.appendChild(child);
-			} else if (typeof child === 'string') {
-				var textNode = document.createTextNode(child);
-				elem.appendChild(textNode);
-			};
-		});
-	};
-	//console.log(elem)
-	return elem;
-}
-
-module.exports = createElement;
-
 },{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var $ = window.$;
+exports.zConfirm = undefined;
 
-var createElement = require('./createElement.js');
+var _createElement = require('./createElement.js');
+
+var $ = window.$;
 
 function createFragment() {}
 
@@ -863,31 +873,52 @@ function useStringTemplate() {
 	$cancel = $mask.find('.cancel');
 };
 
-function useElementCreating() {
-	var _confirm = createElement('div', null, ['确定']);
-	var _cancel = createElement('div', null, ['取消']);
-	var _buttons = createElement('div', null, [_confirm, _cancel]);
+function createTemplate() {
+	var fragment = (0, _createElement.createElement)('div', {
+		ref: 'mask',
+		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [(0, _createElement.createElement)('div', {
+		ref: 'bg',
+		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), (0, _createElement.createElement)('div', { ref: 'panel' }, [(0, _createElement.createElement)('p', { ref: 'text' }), (0, _createElement.createElement)('div', { ref: 'buttons' }, [(0, _createElement.createElement)('div', {
+		ref: 'confirm',
+		style: 'background: #197FEE;'
+	}, ['确定']), (0, _createElement.createElement)('div', { ref: 'cancel' }, ['取消'])])])]);
 
-	var _text = createElement('p');
+	console.log(_createElement.refs);
 
-	var _panel = createElement('div', null, [_text, _buttons]);
+	// var _confirm = createElement(
+	// 	'div',
+	// 	{style: 'background: #197FEE;'},
+	// 	['确定']);
+	// var _cancel = createElement('div',null,['取消']);
+	// var _buttons = createElement('div',null,[_confirm,_cancel]);
 
-	var _bg = createElement('div', { style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' });
+	// var _text = createElement('p');
 
-	var _mask = createElement('div', { style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;' }, [_bg, _panel]);
+	// var _panel = createElement('div',null,[_text,_buttons]);
 
-	$mask = $(_mask);
-	$bg = $(_bg);
-	$panel = $(_panel);
-	$text = $(_text);
-	$buttons = $(_buttons);
-	$button = $([_confirm, _cancel]);
-	$confirm = $(_confirm);
-	$cancel = $(_cancel);
+	// var _bg = createElement(
+	// 	'div',
+	// 	{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
+	// );
+
+	// var _mask = createElement(
+	// 	'div',
+	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
+	// 	[_bg,_panel]
+	// );
+
+	$mask = $(_createElement.refs.mask);
+	$bg = $(_createElement.refs.bg);
+	$panel = $(_createElement.refs.panel);
+	$text = $(_createElement.refs.text);
+	$buttons = $(_createElement.refs.buttons);
+	$button = $([_createElement.refs.confirm, _createElement.refs.cancel]);
+	$confirm = $(_createElement.refs.confirm);
+	$cancel = $(_createElement.refs.cancel);
 
 	$('body').prepend($mask);
 };
-useElementCreating();
+createTemplate();
 
 // $mask.css({
 // 	position: 'fixed',
@@ -914,29 +945,33 @@ $panel.css({
 });
 $text.css({
 	'box-sizing': 'border-box',
+	height: '2rem',
 	padding: '0.15rem'
 });
 $buttons.css({
+	height: '1rem',
 	overflow: 'hidden'
 });
 $button.css({
 	float: 'left',
 	width: '50%',
+	height: '1rem',
+	'line-height': '1rem',
 	'text-align': 'center'
 });
 
-$bg.on('click', function () {
-	$mask.hide();
-});
-$cancel.on('click', function () {
-	$mask.hide();
-});
-
-function zAlert(text) {
+function zConfirm(text, callback1, callback2) {
 	$text.html(text);
 	$mask.show();
+	$bg.on('click', function () {
+		$mask.hide();
+	});
+	$cancel.on('click', function () {
+		callback2();
+		$mask.hide();
+	});
 }
 
-exports.zAlert = zAlert;
+exports.zConfirm = zConfirm;
 
-},{"./createElement.js":5}]},{},[2]);
+},{"./createElement.js":4}]},{},[2]);

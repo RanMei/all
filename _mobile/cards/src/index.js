@@ -1,7 +1,7 @@
 import './setRem.js';
-import '../../js/z.swiper.js';
+import '../../src/z.swiper.js';
 import {arr} from './data.js';
-import {zAlert} from '../../src/zAlert.js';
+import {zConfirm} from '../../src/zAlert.js';
 
 var Local = window.Local;
 var forceLog = window.forceLog;
@@ -18,7 +18,9 @@ var $$statistics = {
 }
 
 $(document).ready(function(){
-	zAlert('确定退出吗？');
+	zConfirm('确定退出吗？',function(){},function(){
+		console.log('cancelled');
+	});
 
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){

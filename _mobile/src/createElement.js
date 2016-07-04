@@ -1,3 +1,5 @@
+var refs = {};
+
 /**
  * Create an HTML element.
  * @param  {string} tag  
@@ -11,6 +13,8 @@ function createElement( tag,config,childNodes ){
 			//console.log(key)
 			if( key==='style' ){
 				elem.style.cssText = config[key];
+			}else if( key==='ref' ){
+				refs[ config.ref ] = elem;
 			}else{
 				elem.setAttribute(key,config[key]);
 			};
@@ -26,8 +30,10 @@ function createElement( tag,config,childNodes ){
 			};
 		});
 	};
-	//console.log(elem)
 	return elem;
 }
 
-module.exports = createElement;
+module.exports = {
+	createElement: createElement,
+	refs: refs
+};
