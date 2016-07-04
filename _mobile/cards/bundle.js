@@ -144,6 +144,8 @@ var _data = require('./data.js');
 
 var _zAlert = require('../../src/zAlert.js');
 
+var _ZeactDOM = require('../../src/ZeactDOM.js');
+
 var Local = window.Local;
 var forceLog = window.forceLog;
 var param = window.param;
@@ -159,9 +161,16 @@ var $$statistics = {
 };
 
 $(document).ready(function () {
-	(0, _zAlert.zConfirm)('确定退出吗？', function () {}, function () {
-		console.log('cancelled');
-	});
+	// zConfirm('确定退出吗？',function(){},function(){
+	// 	console.log('cancelled');
+	// });
+	var mmm = new _zAlert.Mask();
+	mmm.props.text = '确定退出吗？';
+	_ZeactDOM.ZeactDOM.render(mmm, document.querySelector('body'));
+
+	var nnn = new _zAlert.Mask();
+	nnn.props.text = 'another';
+	_ZeactDOM.ZeactDOM.render(nnn, document.querySelector('body'));
 
 	var inserted = '';
 	for (var i = 0; i < _data.arr.length; i++) {
@@ -195,7 +204,7 @@ $(document).ready(function () {
 	;
 });
 
-},{"../../src/z.swiper.js":5,"../../src/zAlert.js":6,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/ZeactDOM.js":5,"../../src/z.swiper.js":7,"../../src/zAlert.js":8,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -213,11 +222,42 @@ $(document).ready(function () {
 });
 
 },{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+function ZeactComponent() {
+	this.props = {};
+	this.refs = {};
+}
+
+exports.ZeactComponent = ZeactComponent;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var ZeactDOM = {};
+
+ZeactDOM.render = function (component, container) {
+	container.appendChild(component.render());
+};
+
+exports.ZeactDOM = ZeactDOM;
+
+},{}],6:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var refs = {};
+var ZeactElement = function ZeactElement() {};
 
 /**
  * Create an HTML element.
@@ -225,7 +265,7 @@ var refs = {};
  * @param  {array} childNodes
  * @return {object}
  */
-function createElement(tag, config, childNodes) {
+ZeactElement.createElement = function (tag, config, childNodes) {
 	var elem = document.createElement('div');
 	if (config) {
 		for (var key in config) {
@@ -233,7 +273,7 @@ function createElement(tag, config, childNodes) {
 			if (key === 'style') {
 				elem.style.cssText = config[key];
 			} else if (key === 'ref') {
-				refs[config.ref] = elem;
+				this.refs[config.ref] = elem;
 			} else {
 				elem.setAttribute(key, config[key]);
 			};
@@ -250,14 +290,11 @@ function createElement(tag, config, childNodes) {
 		});
 	};
 	return elem;
-}
-
-module.exports = {
-	createElement: createElement,
-	refs: refs
 };
 
-},{}],5:[function(require,module,exports){
+exports.ZeactElement = ZeactElement;
+
+},{}],7:[function(require,module,exports){
 "use strict";
 
 //import {arr} from './data.js';
@@ -835,33 +872,159 @@ $.fn.swipe = function (opts) {
 	});
 };
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.zConfirm = undefined;
+exports.Mask = undefined;
 
-var _createElement = require('./createElement.js');
+var _ZeactElement = require('./ZeactElement.js');
+
+var _ZeactComponent = require('./ZeactComponent.js');
 
 var $ = window.$;
 
-function createFragment() {}
-
-var obj = {
-	type: 'div',
-	childNodes: [{
-		type: 'div'
-	}, {
-		type: 'div'
-	}]
+function Mask() {}
+Mask.prototype = new _ZeactComponent.ZeactComponent();
+Mask.prototype.show = function () {
+	this.refs.mask.display = 'block';
 };
+Mask.prototype.render = function () {
+	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+	var refs = this.refs;
+	var fragment = createElement('div', {
+		ref: 'mask',
+		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [createElement('div', {
+		ref: 'bg',
+		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), createElement('div', { ref: 'panel' }, [createElement('p', { ref: 'text' }), createElement('div', { ref: 'buttons' }, [createElement('div', {
+		ref: 'confirm',
+		style: 'background: #197FEE;'
+	}, ['确定']), createElement('div', { ref: 'cancel' }, ['取消'])])])]);
+
+	refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
+	refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
+	refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
+	refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+	refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+
+	refs.text.innerHTML = this.props.text;
+	refs.bg.addEventListener('click', function () {
+		refs.mask.style.display = 'none';
+	});
+
+	return fragment;
+};
+
+// function createTemplate(){
+
+// 	console.log( refs )
+
+// 	$mask 	= $( refs.mask );
+// 	$bg 	= $( refs.bg );
+// 	$panel 	= $( refs.panel );
+// 	$text 	= $( refs.text );
+// 	$buttons = $( refs.buttons );
+// 	$button = $( [refs.confirm,refs.cancel] );
+// 	$confirm = $( refs.confirm );
+// 	$cancel = $( refs.cancel );
+
+// 	$('body').prepend($mask);
+// };
+// createTemplate();
+
+// $mask.css({
+// 	position: 'fixed',
+// 	left: 0,
+// 	top: 0,
+// 	width: '100%',
+// 	height: '100%',
+// 	display: 'none',
+// 	'z-index': 1000
+// });
+// $bg.css({
+// 	width: '100%',
+// 	height: '100%',
+// 	background: 'rgba(0,0,0,0.5)'
+// });
+// $panel.css({
+// 	position: 'absolute',
+// 	left: 0, top: 0, right: 0, bottom: 0,
+// 	width: '5rem',
+// 	height: '3rem',
+// 	margin: 'auto',
+// 	background: 'white',
+// 	'font-size': '0.3rem'
+// })
+// $text.css({
+// 	'box-sizing': 'border-box',
+// 	height: '2rem',
+// 	padding: '0.15rem'
+// })
+// $buttons.css({
+// 	height: '1rem',
+// 	overflow: 'hidden'
+// })
+// $button.css({
+// 	float: 'left',
+// 	width: '50%',
+// 	height: '1rem',
+// 	'line-height': '1rem',
+// 	'text-align': 'center'
+// })
+
+function zConfirm(text, callback1, callback2) {
+	$text.html(text);
+	$mask.show();
+	// $bg.on('click',function(){
+	// 	$mask.hide();
+	// })
+	$cancel.on('click', function () {
+		callback2();
+		$mask.hide();
+	});
+}
+
+exports.Mask = Mask;
+
+/*
 
 var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
 
-function useStringTemplate() {
-	$('body').prepend('<div class="mask2016">' + '<div class="bg"></div>' + '<div class="panel">' + '<p class="text"></p>' + '<div class="buttons">' + '<div class="button confirm">确定</div>' + '<div class="button cancel">取消</div>' + '</div>' + '</div>' + '</div>');
+// var a = new ZeactComponent();
+// var createElement = ZeactElement.createElement.bind(a);
+// var refs = a.refs;
+
+function createFragment(){
+
+}
+
+var obj = {
+	type: 'div',
+	childNodes: [
+		{
+			type: 'div'
+		},
+		{
+			type: 'div'
+		}
+	]
+}
+
+function useStringTemplate(){
+	$('body').prepend(
+		'<div class="mask2016">'+
+			'<div class="bg"></div>'+
+			'<div class="panel">'+
+				'<p class="text"></p>'+
+				'<div class="buttons">'+
+					'<div class="button confirm">确定</div>'+
+					'<div class="button cancel">取消</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>'
+	);
 
 	$mask = $('.mask2016');
 	$bg = $mask.find('.bg');
@@ -872,18 +1035,6 @@ function useStringTemplate() {
 	$confirm = $mask.find('.confirm');
 	$cancel = $mask.find('.cancel');
 };
-
-function createTemplate() {
-	var fragment = (0, _createElement.createElement)('div', {
-		ref: 'mask',
-		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [(0, _createElement.createElement)('div', {
-		ref: 'bg',
-		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), (0, _createElement.createElement)('div', { ref: 'panel' }, [(0, _createElement.createElement)('p', { ref: 'text' }), (0, _createElement.createElement)('div', { ref: 'buttons' }, [(0, _createElement.createElement)('div', {
-		ref: 'confirm',
-		style: 'background: #197FEE;'
-	}, ['确定']), (0, _createElement.createElement)('div', { ref: 'cancel' }, ['取消'])])])]);
-
-	console.log(_createElement.refs);
 
 	// var _confirm = createElement(
 	// 	'div',
@@ -907,71 +1058,6 @@ function createTemplate() {
 	// 	[_bg,_panel]
 	// );
 
-	$mask = $(_createElement.refs.mask);
-	$bg = $(_createElement.refs.bg);
-	$panel = $(_createElement.refs.panel);
-	$text = $(_createElement.refs.text);
-	$buttons = $(_createElement.refs.buttons);
-	$button = $([_createElement.refs.confirm, _createElement.refs.cancel]);
-	$confirm = $(_createElement.refs.confirm);
-	$cancel = $(_createElement.refs.cancel);
+*/
 
-	$('body').prepend($mask);
-};
-createTemplate();
-
-// $mask.css({
-// 	position: 'fixed',
-// 	left: 0,
-// 	top: 0,
-// 	width: '100%',
-// 	height: '100%',
-// 	display: 'none',
-// 	'z-index': 1000
-// });
-// $bg.css({
-// 	width: '100%',
-// 	height: '100%',
-// 	background: 'rgba(0,0,0,0.5)'
-// });
-$panel.css({
-	position: 'absolute',
-	left: 0, top: 0, right: 0, bottom: 0,
-	width: '5rem',
-	height: '3rem',
-	margin: 'auto',
-	background: 'white',
-	'font-size': '0.3rem'
-});
-$text.css({
-	'box-sizing': 'border-box',
-	height: '2rem',
-	padding: '0.15rem'
-});
-$buttons.css({
-	height: '1rem',
-	overflow: 'hidden'
-});
-$button.css({
-	float: 'left',
-	width: '50%',
-	height: '1rem',
-	'line-height': '1rem',
-	'text-align': 'center'
-});
-
-function zConfirm(text, callback1, callback2) {
-	$text.html(text);
-	$mask.show();
-	$bg.on('click', function () {
-		$mask.hide();
-	});
-	$cancel.on('click', function () {
-		callback2();
-		$mask.hide();
-	});
-}
-
-exports.zConfirm = zConfirm;
-
-},{"./createElement.js":4}]},{},[2]);
+},{"./ZeactComponent.js":4,"./ZeactElement.js":6}]},{},[2]);

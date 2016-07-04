@@ -1,4 +1,4 @@
-var refs = {};
+var ZeactElement = function(){};
 
 /**
  * Create an HTML element.
@@ -6,7 +6,7 @@ var refs = {};
  * @param  {array} childNodes
  * @return {object}
  */
-function createElement( tag,config,childNodes ){
+ZeactElement.createElement = function( tag,config,childNodes ){
 	var elem = document.createElement('div');
 	if( config ){
 		for( var key in config ){
@@ -14,7 +14,7 @@ function createElement( tag,config,childNodes ){
 			if( key==='style' ){
 				elem.style.cssText = config[key];
 			}else if( key==='ref' ){
-				refs[ config.ref ] = elem;
+				this.refs[ config.ref ] = elem;
 			}else{
 				elem.setAttribute(key,config[key]);
 			};
@@ -33,7 +33,4 @@ function createElement( tag,config,childNodes ){
 	return elem;
 }
 
-module.exports = {
-	createElement: createElement,
-	refs: refs
-};
+export {ZeactElement};

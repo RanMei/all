@@ -1,7 +1,8 @@
 import './setRem.js';
 import '../../src/z.swiper.js';
 import {arr} from './data.js';
-import {zConfirm} from '../../src/zAlert.js';
+import {Mask} from '../../src/zAlert.js';
+import {ZeactDOM} from '../../src/ZeactDOM.js';
 
 var Local = window.Local;
 var forceLog = window.forceLog;
@@ -18,9 +19,16 @@ var $$statistics = {
 }
 
 $(document).ready(function(){
-	zConfirm('确定退出吗？',function(){},function(){
-		console.log('cancelled');
-	});
+	// zConfirm('确定退出吗？',function(){},function(){
+	// 	console.log('cancelled');
+	// });
+	var mmm = new Mask();
+	mmm.props.text = '确定退出吗？';
+	ZeactDOM.render( mmm,document.querySelector('body') );
+
+	var nnn = new Mask();
+	nnn.props.text = 'another';
+	ZeactDOM.render( nnn,document.querySelector('body') );
 
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){
