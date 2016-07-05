@@ -166,22 +166,15 @@ var $$statistics = {
 
 $(document).ready(function () {
 
-	// var maskA = new Mask({
-	// 	text: '确定退出吗？'
-	// });
-	// ZeactDOM.render( maskA,document.querySelector('body') );
-	var pageA = new _Page.Page();
+	var pageA = new _Page.Page({
+		act: function act(action) {
+			console.log('EXIT');
+			if (action.type === 'EXIT') {
+				maskA.show();
+			}
+		}
+	});
 	_ZeactDOM.ZeactDOM.render(pageA, document.querySelector('body'));
-
-	// var swiperB = new Swiper({
-	// 	items: [0,1]
-	// });
-	// ZeactDOM.render( swiperB,document.querySelector('body') );
-
-	// var swiperC = new Swiper({
-	// 	items: [0,1,2,3]
-	// });
-	// ZeactDOM.render( swiperC,document.querySelector('body') );
 
 	var inserted = '';
 	for (var i = 0; i < _data.arr.length; i++) {
@@ -250,14 +243,14 @@ function Mask(props) {
 }
 Mask.prototype = new _ZeactComponent.ZeactComponent();
 Mask.prototype.show = function () {
-	this.refs.mask.display = 'block';
+	this.refs.mask.style.display = 'block';
 };
 Mask.prototype.render = function () {
 	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
 	var refs = this.refs;
 	var fragment = createElement('div', {
 		ref: 'mask',
-		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [createElement('div', {
+		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;' }, [createElement('div', {
 		ref: 'bg',
 		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), createElement('div', { ref: 'panel' }, [createElement('p', { ref: 'text' }), createElement('div', { ref: 'buttons' }, [createElement('div', {
 		ref: 'confirm',
@@ -434,30 +427,61 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Page = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _ZeactElement = require('./ZeactElement.js');
 
-var _ZeactComponent = require('./ZeactComponent.js');
+var _ZeactComponent2 = require('./ZeactComponent.js');
+
+var _Mask = require('./Mask.js');
 
 var _Swiper = require('./Swiper.js');
 
-function Page(props) {
-	this.refs = {};
-	this.props = props;
-}
-Page.prototype = new _ZeactComponent.ZeactComponent();
-Page.prototype.render = function () {
-	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-	var refs = this.refs;
-	var fragment = createElement('div', {
-		ref: 'mask',
-		style: 'position:relative; width:100%; background:grey; display:block;'
-	}, [new _Swiper.Swiper({ items: [0, 1, 2, 3, 4, 5] }).render()]);
-	return fragment;
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Page = function (_ZeactComponent) {
+	_inherits(Page, _ZeactComponent);
+
+	function Page(props) {
+		_classCallCheck(this, Page);
+
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page).call(this));
+
+		_this.refs = {};
+		_this.props = props;
+		return _this;
+	}
+
+	_createClass(Page, [{
+		key: 'render',
+		value: function render() {
+			var self = this;
+			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+			var refs = this.refs;
+			var swiperA = new _Swiper.Swiper({ items: [0, 1, 2, 3, 4, 5] });
+			var maskA = new _Mask.Mask({ text: '确定退出吗？' });
+			var fragment = createElement('div', {
+				ref: 'page',
+				style: 'position:relative; width:100%; background:grey; display:block;'
+			}, [maskA.render(), swiperA.render(), createElement('p', { ref: 'p' }, ['退出'])]);
+			refs.p.addEventListener('click', function () {
+				//self.props.act({type:'EXIT'});
+				maskA.show();
+			});
+			return fragment;
+		}
+	}]);
+
+	return Page;
+}(_ZeactComponent2.ZeactComponent);
 
 exports.Page = Page;
 
-},{"./Swiper.js":6,"./ZeactComponent.js":7,"./ZeactElement.js":9}],6:[function(require,module,exports){
+},{"./Mask.js":4,"./Swiper.js":6,"./ZeactComponent.js":7,"./ZeactElement.js":9}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

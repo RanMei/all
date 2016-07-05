@@ -22,22 +22,15 @@ var $$statistics = {
 
 $(document).ready(function(){
 
-	// var maskA = new Mask({
-	// 	text: '确定退出吗？'
-	// });
-	// ZeactDOM.render( maskA,document.querySelector('body') );
-	var pageA = new Page();
+	var pageA = new Page({
+		act: function(action){
+			console.log('EXIT')
+			if(action.type==='EXIT'){
+				maskA.show();				
+			}
+		}
+	});
 	ZeactDOM.render( pageA,document.querySelector('body') );
-
-	// var swiperB = new Swiper({
-	// 	items: [0,1]
-	// });
-	// ZeactDOM.render( swiperB,document.querySelector('body') );
-
-	// var swiperC = new Swiper({
-	// 	items: [0,1,2,3]
-	// });
-	// ZeactDOM.render( swiperC,document.querySelector('body') );
 
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){

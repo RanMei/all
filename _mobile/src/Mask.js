@@ -7,7 +7,7 @@ function Mask( props ){
 }
 Mask.prototype = new ZeactComponent();
 Mask.prototype.show = function(){
-	this.refs.mask.display = 'block';
+	this.refs.mask.style.display = 'block';
 }
 Mask.prototype.render = function(){
 	var createElement = ZeactElement.createElement.bind(this);
@@ -16,7 +16,7 @@ Mask.prototype.render = function(){
 		createElement('div',
 			{
 				ref: 'mask',
-				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;'},
+				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
 			[
 				createElement('div',
 					{	
