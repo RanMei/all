@@ -1,11 +1,9 @@
-var $ = window.$;
-
 import {ZeactElement} from './ZeactElement.js';
 import {ZeactComponent} from './ZeactComponent.js';
 
-
-
-function Mask(){
+function Mask( props ){
+	this.refs = {};
+	this.props = props;
 }
 Mask.prototype = new ZeactComponent();
 Mask.prototype.show = function(){
@@ -52,12 +50,18 @@ Mask.prototype.render = function(){
 		'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
 
 	refs.text.innerHTML = this.props.text;
-	refs.bg.addEventListener('click',function(){
+	refs.cancel.addEventListener('click',function(){
 		refs.mask.style.display = 'none';
 	})
 
 	return fragment;
 }
+
+export {Mask};
+
+/*
+var $ = window.$;
+
 
 // function createTemplate(){
 
@@ -117,23 +121,6 @@ Mask.prototype.render = function(){
 // 	'text-align': 'center'
 // })
 
-
-
-function zConfirm( text,callback1,callback2 ){
-	$text.html( text );
-	$mask.show();
-	// $bg.on('click',function(){
-	// 	$mask.hide();
-	// })
-	$cancel.on('click',function(){
-		callback2();
-		$mask.hide();
-	})
-}
-
-export {Mask};
-
-/*
 
 var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
 
@@ -202,5 +189,18 @@ function useStringTemplate(){
 	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
 	// 	[_bg,_panel]
 	// );
+
+
+function zConfirm( text,callback1,callback2 ){
+	$text.html( text );
+	$mask.show();
+	// $bg.on('click',function(){
+	// 	$mask.hide();
+	// })
+	$cancel.on('click',function(){
+		callback2();
+		$mask.hide();
+	})
+}
 
 */

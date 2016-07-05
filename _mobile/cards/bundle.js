@@ -142,7 +142,11 @@ require('../../src/z.swiper.js');
 
 var _data = require('./data.js');
 
-var _zAlert = require('../../src/zAlert.js');
+var _Mask = require('../../src/Mask.js');
+
+var _Swiper = require('../../src/Swiper.js');
+
+var _Page = require('../../src/Page.js');
 
 var _ZeactDOM = require('../../src/ZeactDOM.js');
 
@@ -161,16 +165,23 @@ var $$statistics = {
 };
 
 $(document).ready(function () {
-	// zConfirm('确定退出吗？',function(){},function(){
-	// 	console.log('cancelled');
-	// });
-	var mmm = new _zAlert.Mask();
-	mmm.props.text = '确定退出吗？';
-	_ZeactDOM.ZeactDOM.render(mmm, document.querySelector('body'));
 
-	var nnn = new _zAlert.Mask();
-	nnn.props.text = 'another';
-	_ZeactDOM.ZeactDOM.render(nnn, document.querySelector('body'));
+	// var maskA = new Mask({
+	// 	text: '确定退出吗？'
+	// });
+	// ZeactDOM.render( maskA,document.querySelector('body') );
+	var pageA = new _Page.Page();
+	_ZeactDOM.ZeactDOM.render(pageA, document.querySelector('body'));
+
+	// var swiperB = new Swiper({
+	// 	items: [0,1]
+	// });
+	// ZeactDOM.render( swiperB,document.querySelector('body') );
+
+	// var swiperC = new Swiper({
+	// 	items: [0,1,2,3]
+	// });
+	// ZeactDOM.render( swiperC,document.querySelector('body') );
 
 	var inserted = '';
 	for (var i = 0; i < _data.arr.length; i++) {
@@ -179,7 +190,7 @@ $(document).ready(function () {
 		'</div>' + '</li>';
 		$('.train').append(item);
 	}
-
+	//console.log( document.querySelectorAll('.item') );
 	$('.swiper').swipe({
 		mode: 'touch',
 		autoplay: false
@@ -204,7 +215,7 @@ $(document).ready(function () {
 	;
 });
 
-},{"../../src/ZeactDOM.js":5,"../../src/z.swiper.js":7,"../../src/zAlert.js":8,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":8,"../../src/z.swiper.js":10,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -222,6 +233,310 @@ $(document).ready(function () {
 });
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Mask = undefined;
+
+var _ZeactElement = require('./ZeactElement.js');
+
+var _ZeactComponent = require('./ZeactComponent.js');
+
+function Mask(props) {
+	this.refs = {};
+	this.props = props;
+}
+Mask.prototype = new _ZeactComponent.ZeactComponent();
+Mask.prototype.show = function () {
+	this.refs.mask.display = 'block';
+};
+Mask.prototype.render = function () {
+	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+	var refs = this.refs;
+	var fragment = createElement('div', {
+		ref: 'mask',
+		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [createElement('div', {
+		ref: 'bg',
+		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), createElement('div', { ref: 'panel' }, [createElement('p', { ref: 'text' }), createElement('div', { ref: 'buttons' }, [createElement('div', {
+		ref: 'confirm',
+		style: 'background: #197FEE;'
+	}, ['确定']), createElement('div', { ref: 'cancel' }, ['取消'])])])]);
+
+	refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
+	refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
+	refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
+	refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+	refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+
+	refs.text.innerHTML = this.props.text;
+	refs.cancel.addEventListener('click', function () {
+		refs.mask.style.display = 'none';
+	});
+
+	return fragment;
+};
+
+exports.Mask = Mask;
+
+/*
+var $ = window.$;
+
+
+// function createTemplate(){
+
+
+// 	console.log( refs )
+
+// 	$mask 	= $( refs.mask );
+// 	$bg 	= $( refs.bg );
+// 	$panel 	= $( refs.panel );
+// 	$text 	= $( refs.text );
+// 	$buttons = $( refs.buttons );
+// 	$button = $( [refs.confirm,refs.cancel] );
+// 	$confirm = $( refs.confirm );
+// 	$cancel = $( refs.cancel );
+
+// 	$('body').prepend($mask);
+// };
+// createTemplate();
+
+// $mask.css({
+// 	position: 'fixed',
+// 	left: 0,
+// 	top: 0,
+// 	width: '100%',
+// 	height: '100%',
+// 	display: 'none',
+// 	'z-index': 1000
+// });
+// $bg.css({
+// 	width: '100%',
+// 	height: '100%',
+// 	background: 'rgba(0,0,0,0.5)'
+// });
+// $panel.css({
+// 	position: 'absolute',
+// 	left: 0, top: 0, right: 0, bottom: 0,
+// 	width: '5rem',
+// 	height: '3rem',
+// 	margin: 'auto',
+// 	background: 'white',
+// 	'font-size': '0.3rem'
+// })
+// $text.css({
+// 	'box-sizing': 'border-box',
+// 	height: '2rem',
+// 	padding: '0.15rem'
+// })
+// $buttons.css({
+// 	height: '1rem',
+// 	overflow: 'hidden'
+// })
+// $button.css({
+// 	float: 'left',
+// 	width: '50%',
+// 	height: '1rem',
+// 	'line-height': '1rem',
+// 	'text-align': 'center'
+// })
+
+
+var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
+
+// var a = new ZeactComponent();
+// var createElement = ZeactElement.createElement.bind(a);
+// var refs = a.refs;
+
+function createFragment(){
+
+}
+
+var obj = {
+	type: 'div',
+	childNodes: [
+		{
+			type: 'div'
+		},
+		{
+			type: 'div'
+		}
+	]
+}
+
+function useStringTemplate(){
+	$('body').prepend(
+		'<div class="mask2016">'+
+			'<div class="bg"></div>'+
+			'<div class="panel">'+
+				'<p class="text"></p>'+
+				'<div class="buttons">'+
+					'<div class="button confirm">确定</div>'+
+					'<div class="button cancel">取消</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>'
+	);
+
+	$mask = $('.mask2016');
+	$bg = $mask.find('.bg');
+	$panel = $mask.find('.panel');
+	$text = $mask.find('.text');
+	$buttons = $mask.find('.buttons');
+	$button = $mask.find('.button');
+	$confirm = $mask.find('.confirm');
+	$cancel = $mask.find('.cancel');
+};
+
+	// var _confirm = createElement(
+	// 	'div',
+	// 	{style: 'background: #197FEE;'},
+	// 	['确定']);
+	// var _cancel = createElement('div',null,['取消']);
+	// var _buttons = createElement('div',null,[_confirm,_cancel]);
+
+	// var _text = createElement('p');
+
+	// var _panel = createElement('div',null,[_text,_buttons]);
+
+	// var _bg = createElement(
+	// 	'div',
+	// 	{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
+	// );
+
+	// var _mask = createElement(
+	// 	'div',
+	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
+	// 	[_bg,_panel]
+	// );
+
+
+function zConfirm( text,callback1,callback2 ){
+	$text.html( text );
+	$mask.show();
+	// $bg.on('click',function(){
+	// 	$mask.hide();
+	// })
+	$cancel.on('click',function(){
+		callback2();
+		$mask.hide();
+	})
+}
+
+*/
+
+},{"./ZeactComponent.js":7,"./ZeactElement.js":9}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Page = undefined;
+
+var _ZeactElement = require('./ZeactElement.js');
+
+var _ZeactComponent = require('./ZeactComponent.js');
+
+var _Swiper = require('./Swiper.js');
+
+function Page(props) {
+	this.refs = {};
+	this.props = props;
+}
+Page.prototype = new _ZeactComponent.ZeactComponent();
+Page.prototype.render = function () {
+	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+	var refs = this.refs;
+	var fragment = createElement('div', {
+		ref: 'mask',
+		style: 'position:relative; width:100%; background:grey; display:block;'
+	}, [new _Swiper.Swiper({ items: [0, 1, 2, 3, 4, 5] }).render()]);
+	return fragment;
+};
+
+exports.Page = Page;
+
+},{"./Swiper.js":6,"./ZeactComponent.js":7,"./ZeactElement.js":9}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.Swiper = undefined;
+
+var _ZeactElement = require('./ZeactElement.js');
+
+var _ZeactComponent = require('./ZeactComponent.js');
+
+function Item() {
+	this.refs = {};
+}
+Item.prototype = new _ZeactComponent.ZeactComponent();
+Item.prototype.render = function () {};
+
+function Swiper(props) {
+	this.refs = {};
+	this.props = props;
+	this.width = null;
+	this.offset = 0;
+	this.currentOne = 0;
+	this.length = props.items.length;
+}
+Swiper.prototype = new _ZeactComponent.ZeactComponent();
+Swiper.prototype.show = function () {
+	this.refs.mask.display = 'block';
+};
+Swiper.prototype.go = function (i) {};
+Swiper.prototype.setWidth = function () {
+	this.width = Number(document.defaultView.getComputedStyle(this.refs.swiper).width.replace(/px/, ''));
+};
+Swiper.prototype.render = function () {
+	var self = this;
+	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+	var refs = this.refs;
+	var fragment = createElement('div', {
+		ref: 'swiper',
+		style: 'width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+	}, [createElement('ul', {
+		ref: 'train',
+		style: 'width:' + self.length + '00%; height:100%;'
+	}, self.props.items.map(function (elem) {
+		return createElement('li', { style: 'float:left; width:' + 100 / self.length + '%;' }, [elem + '']);
+	}))]);
+	refs.swiper.addEventListener('touchstart', function (e) {
+		self.setWidth();
+		self.X0 = self.X1 = e.changedTouches[0].pageX;
+	});
+	refs.swiper.addEventListener('touchmove', function (e) {
+		self.X2 = e.changedTouches[0].pageX;
+		var distance = self.X2 - self.X1;
+		self.offset += distance;
+		self.X1 = self.X2;
+		refs.train.style.cssText += 'transition:0s; transform:translate3d(' + self.offset + 'px,0,0)';
+	});
+	refs.swiper.addEventListener('touchend', function (e) {
+		self.X2 = e.changedTouches[0].pageX;
+		var distance = self.X2 - self.X0;
+		if (distance < 0 && self.currentOne < self.length - 1) {
+			self.currentOne++;
+		} else if (distance > 0 && self.currentOne > 0) {
+			self.currentOne--;
+		}
+		self.offset = -self.currentOne * self.width;
+		refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + self.offset + 'px,0,0)';
+	});
+	window.addEventListener('resize', function () {
+		self.setWidth();
+		self.offset = -self.currentOne * self.width;
+		refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
+	});
+	return fragment;
+};
+
+exports.Swiper = Swiper;
+
+},{"./ZeactComponent.js":7,"./ZeactElement.js":9}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -230,11 +545,12 @@ Object.defineProperty(exports, "__esModule", {
 function ZeactComponent() {
 	this.props = {};
 	this.refs = {};
+	this.setState = function () {};
 }
 
 exports.ZeactComponent = ZeactComponent;
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -248,7 +564,7 @@ ZeactDOM.render = function (component, container) {
 
 exports.ZeactDOM = ZeactDOM;
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -265,8 +581,8 @@ var ZeactElement = function ZeactElement() {};
  * @param  {array} childNodes
  * @return {object}
  */
-ZeactElement.createElement = function (tag, config, childNodes) {
-	var elem = document.createElement('div');
+ZeactElement.createElement = function (type, config, childNodes) {
+	var elem = document.createElement(type);
 	if (config) {
 		for (var key in config) {
 			//console.log(key)
@@ -294,7 +610,7 @@ ZeactElement.createElement = function (tag, config, childNodes) {
 
 exports.ZeactElement = ZeactElement;
 
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 //import {arr} from './data.js';
@@ -872,192 +1188,4 @@ $.fn.swipe = function (opts) {
 	});
 };
 
-},{}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Mask = undefined;
-
-var _ZeactElement = require('./ZeactElement.js');
-
-var _ZeactComponent = require('./ZeactComponent.js');
-
-var $ = window.$;
-
-function Mask() {}
-Mask.prototype = new _ZeactComponent.ZeactComponent();
-Mask.prototype.show = function () {
-	this.refs.mask.display = 'block';
-};
-Mask.prototype.render = function () {
-	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-	var refs = this.refs;
-	var fragment = createElement('div', {
-		ref: 'mask',
-		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:block; z-index:1000;' }, [createElement('div', {
-		ref: 'bg',
-		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), createElement('div', { ref: 'panel' }, [createElement('p', { ref: 'text' }), createElement('div', { ref: 'buttons' }, [createElement('div', {
-		ref: 'confirm',
-		style: 'background: #197FEE;'
-	}, ['确定']), createElement('div', { ref: 'cancel' }, ['取消'])])])]);
-
-	refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
-	refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
-	refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
-	refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-	refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-
-	refs.text.innerHTML = this.props.text;
-	refs.bg.addEventListener('click', function () {
-		refs.mask.style.display = 'none';
-	});
-
-	return fragment;
-};
-
-// function createTemplate(){
-
-// 	console.log( refs )
-
-// 	$mask 	= $( refs.mask );
-// 	$bg 	= $( refs.bg );
-// 	$panel 	= $( refs.panel );
-// 	$text 	= $( refs.text );
-// 	$buttons = $( refs.buttons );
-// 	$button = $( [refs.confirm,refs.cancel] );
-// 	$confirm = $( refs.confirm );
-// 	$cancel = $( refs.cancel );
-
-// 	$('body').prepend($mask);
-// };
-// createTemplate();
-
-// $mask.css({
-// 	position: 'fixed',
-// 	left: 0,
-// 	top: 0,
-// 	width: '100%',
-// 	height: '100%',
-// 	display: 'none',
-// 	'z-index': 1000
-// });
-// $bg.css({
-// 	width: '100%',
-// 	height: '100%',
-// 	background: 'rgba(0,0,0,0.5)'
-// });
-// $panel.css({
-// 	position: 'absolute',
-// 	left: 0, top: 0, right: 0, bottom: 0,
-// 	width: '5rem',
-// 	height: '3rem',
-// 	margin: 'auto',
-// 	background: 'white',
-// 	'font-size': '0.3rem'
-// })
-// $text.css({
-// 	'box-sizing': 'border-box',
-// 	height: '2rem',
-// 	padding: '0.15rem'
-// })
-// $buttons.css({
-// 	height: '1rem',
-// 	overflow: 'hidden'
-// })
-// $button.css({
-// 	float: 'left',
-// 	width: '50%',
-// 	height: '1rem',
-// 	'line-height': '1rem',
-// 	'text-align': 'center'
-// })
-
-function zConfirm(text, callback1, callback2) {
-	$text.html(text);
-	$mask.show();
-	// $bg.on('click',function(){
-	// 	$mask.hide();
-	// })
-	$cancel.on('click', function () {
-		callback2();
-		$mask.hide();
-	});
-}
-
-exports.Mask = Mask;
-
-/*
-
-var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
-
-// var a = new ZeactComponent();
-// var createElement = ZeactElement.createElement.bind(a);
-// var refs = a.refs;
-
-function createFragment(){
-
-}
-
-var obj = {
-	type: 'div',
-	childNodes: [
-		{
-			type: 'div'
-		},
-		{
-			type: 'div'
-		}
-	]
-}
-
-function useStringTemplate(){
-	$('body').prepend(
-		'<div class="mask2016">'+
-			'<div class="bg"></div>'+
-			'<div class="panel">'+
-				'<p class="text"></p>'+
-				'<div class="buttons">'+
-					'<div class="button confirm">确定</div>'+
-					'<div class="button cancel">取消</div>'+
-				'</div>'+
-			'</div>'+
-		'</div>'
-	);
-
-	$mask = $('.mask2016');
-	$bg = $mask.find('.bg');
-	$panel = $mask.find('.panel');
-	$text = $mask.find('.text');
-	$buttons = $mask.find('.buttons');
-	$button = $mask.find('.button');
-	$confirm = $mask.find('.confirm');
-	$cancel = $mask.find('.cancel');
-};
-
-	// var _confirm = createElement(
-	// 	'div',
-	// 	{style: 'background: #197FEE;'},
-	// 	['确定']);
-	// var _cancel = createElement('div',null,['取消']);
-	// var _buttons = createElement('div',null,[_confirm,_cancel]);
-
-	// var _text = createElement('p');
-
-	// var _panel = createElement('div',null,[_text,_buttons]);
-
-	// var _bg = createElement(
-	// 	'div',
-	// 	{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
-	// );
-
-	// var _mask = createElement(
-	// 	'div',
-	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
-	// 	[_bg,_panel]
-	// );
-
-*/
-
-},{"./ZeactComponent.js":4,"./ZeactElement.js":6}]},{},[2]);
+},{}]},{},[2]);

@@ -1,7 +1,9 @@
 import './setRem.js';
 import '../../src/z.swiper.js';
 import {arr} from './data.js';
-import {Mask} from '../../src/zAlert.js';
+import {Mask} from '../../src/Mask.js';
+import {Swiper} from '../../src/Swiper.js';
+import {Page} from '../../src/Page.js';
 import {ZeactDOM} from '../../src/ZeactDOM.js';
 
 var Local = window.Local;
@@ -19,16 +21,23 @@ var $$statistics = {
 }
 
 $(document).ready(function(){
-	// zConfirm('确定退出吗？',function(){},function(){
-	// 	console.log('cancelled');
-	// });
-	var mmm = new Mask();
-	mmm.props.text = '确定退出吗？';
-	ZeactDOM.render( mmm,document.querySelector('body') );
 
-	var nnn = new Mask();
-	nnn.props.text = 'another';
-	ZeactDOM.render( nnn,document.querySelector('body') );
+	// var maskA = new Mask({
+	// 	text: '确定退出吗？'
+	// });
+	// ZeactDOM.render( maskA,document.querySelector('body') );
+	var pageA = new Page();
+	ZeactDOM.render( pageA,document.querySelector('body') );
+
+	// var swiperB = new Swiper({
+	// 	items: [0,1]
+	// });
+	// ZeactDOM.render( swiperB,document.querySelector('body') );
+
+	// var swiperC = new Swiper({
+	// 	items: [0,1,2,3]
+	// });
+	// ZeactDOM.render( swiperC,document.querySelector('body') );
 
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){
@@ -49,7 +58,7 @@ $(document).ready(function(){
 			'</li>';
 		$('.train').append( item );
 	}
-
+	//console.log( document.querySelectorAll('.item') );
 	$('.swiper').swipe({
 		mode: 'touch',
 		autoplay: false

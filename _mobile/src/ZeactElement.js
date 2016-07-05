@@ -6,8 +6,8 @@ var ZeactElement = function(){};
  * @param  {array} childNodes
  * @return {object}
  */
-ZeactElement.createElement = function( tag,config,childNodes ){
-	var elem = document.createElement('div');
+ZeactElement.createElement = function( type,config,childNodes ){
+	var elem = document.createElement(type);
 	if( config ){
 		for( var key in config ){
 			//console.log(key)
