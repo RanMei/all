@@ -174,7 +174,9 @@ $(document).ready(function () {
 			}
 		}
 	});
-	_ZeactDOM.ZeactDOM.render(pageA, document.querySelector('body'));
+	//ZeactDOM.render( pageA,document.querySelector('body') );
+
+	document.querySelector('body').appendChild(pageA.render());
 
 	var inserted = '';
 	for (var i = 0; i < _data.arr.length; i++) {
@@ -208,7 +210,7 @@ $(document).ready(function () {
 	;
 });
 
-},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":8,"../../src/z.swiper.js":10,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":9,"../../src/z.swiper.js":11,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -233,43 +235,74 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Mask = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _ZeactElement = require('./ZeactElement.js');
 
-var _ZeactComponent = require('./ZeactComponent.js');
+var _ZeactComponent2 = require('./ZeactComponent.js');
 
-function Mask(props) {
-	this.refs = {};
-	this.props = props;
-}
-Mask.prototype = new _ZeactComponent.ZeactComponent();
-Mask.prototype.show = function () {
-	this.refs.mask.style.display = 'block';
-};
-Mask.prototype.render = function () {
-	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-	var refs = this.refs;
-	var fragment = createElement('div', {
-		ref: 'mask',
-		style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;' }, [createElement('div', {
-		ref: 'bg',
-		style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);' }), createElement('div', { ref: 'panel' }, [createElement('p', { ref: 'text' }), createElement('div', { ref: 'buttons' }, [createElement('div', {
-		ref: 'confirm',
-		style: 'background: #197FEE;'
-	}, ['确定']), createElement('div', { ref: 'cancel' }, ['取消'])])])]);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
-	refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
-	refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
-	refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-	refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	refs.text.innerHTML = this.props.text;
-	refs.cancel.addEventListener('click', function () {
-		refs.mask.style.display = 'none';
-	});
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	return fragment;
-};
+var Mask = function (_ZeactComponent) {
+	_inherits(Mask, _ZeactComponent);
+
+	function Mask(props) {
+		_classCallCheck(this, Mask);
+
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this));
+
+		_this.refs = {};
+		_this.props = props;
+		_this.state = {
+			text: '111'
+		};
+		return _this;
+	}
+
+	_createClass(Mask, [{
+		key: 'show',
+		value: function show() {
+			this.refs.mask.style.display = 'block';
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+			var refs = this.refs;
+			var fragment = createElement('div', {
+				ref: 'mask',
+				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'
+			}, createElement('div', {
+				ref: 'bg',
+				style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'
+			}), createElement('div', { ref: 'panel' }, createElement('p', null, createElement('input', { ref: 'inputBox', type: 'text' }), createElement('span', { ref: 'text' })), createElement('div', { ref: 'buttons' }, createElement('div', {
+				ref: 'confirm',
+				style: 'background: #197FEE;'
+			}, '确定'), createElement('div', { ref: 'cancel' }, '取消'))));
+
+			refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
+			refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
+			refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
+			refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+			refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+
+			refs.inputBox.onchange = function () {
+				refs.text.innerHTML = refs.inputBox.value;
+			};
+			refs.cancel.addEventListener('click', function () {
+				refs.mask.style.display = 'none';
+			});
+
+			return fragment;
+		}
+	}]);
+
+	return Mask;
+}(_ZeactComponent2.ZeactComponent);
 
 exports.Mask = Mask;
 
@@ -419,7 +452,7 @@ function zConfirm( text,callback1,callback2 ){
 
 */
 
-},{"./ZeactComponent.js":7,"./ZeactElement.js":9}],5:[function(require,module,exports){
+},{"./ZeactComponent.js":8,"./ZeactElement.js":10}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -429,7 +462,7 @@ exports.Page = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ZeactElement = require('./ZeactElement.js');
+var _Zeact = require('./Zeact.js');
 
 var _ZeactComponent2 = require('./ZeactComponent.js');
 
@@ -441,7 +474,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //import {ZeactElement} from './ZeactElement.js';
 
 var Page = function (_ZeactComponent) {
 	_inherits(Page, _ZeactComponent);
@@ -460,17 +493,26 @@ var Page = function (_ZeactComponent) {
 		key: 'render',
 		value: function render() {
 			var self = this;
-			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+			var createElement = _Zeact.Zeact.createElement.bind(this);
 			var refs = this.refs;
-			var swiperA = new _Swiper.Swiper({ items: [0, 1, 2, 3, 4, 5] });
-			var maskA = new _Mask.Mask({ text: '确定退出吗？' });
+			//var swiperA = new Swiper({items: [0,1,2,3,4,5]});
+			//var maskA = new Mask({text: '确定退出吗？'});
 			var fragment = createElement('div', {
 				ref: 'page',
 				style: 'position:relative; width:100%; background:grey; display:block;'
-			}, [maskA.render(), swiperA.render(), createElement('p', { ref: 'p' }, ['退出'])]);
+			}, createElement(_Mask.Mask, {
+				ref: 'maskA',
+				text: '确定退出吗？'
+			}), createElement(_Swiper.Swiper, {
+				ref: 'swiperA',
+				items: [0, 1, 2, 3, 4, 5]
+			}), createElement(_Swiper.Swiper, {
+				ref: 'swiperB',
+				items: [0, 1, 2, 3, 4, 5, 6, 7, 8, 111]
+			}), createElement('p', { ref: 'p' }, '退出'));
 			refs.p.addEventListener('click', function () {
 				//self.props.act({type:'EXIT'});
-				maskA.show();
+				refs.maskA.obj.show();
 			});
 			return fragment;
 		}
@@ -481,7 +523,7 @@ var Page = function (_ZeactComponent) {
 
 exports.Page = Page;
 
-},{"./Mask.js":4,"./Swiper.js":6,"./ZeactComponent.js":7,"./ZeactElement.js":9}],6:[function(require,module,exports){
+},{"./Mask.js":4,"./Swiper.js":6,"./Zeact.js":7,"./ZeactComponent.js":8}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -521,13 +563,15 @@ Swiper.prototype.render = function () {
 	var refs = this.refs;
 	var fragment = createElement('div', {
 		ref: 'swiper',
-		style: 'width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
-	}, [createElement('ul', {
+		style: 'position:relative; width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+	}, createElement('ul', {
 		ref: 'train',
 		style: 'width:' + self.length + '00%; height:100%;'
 	}, self.props.items.map(function (elem) {
-		return createElement('li', { style: 'float:left; width:' + 100 / self.length + '%;' }, [elem + '']);
-	}))]);
+		return createElement('li', { style: 'float:left; width:' + 100 / self.length + '%;' }, elem + '');
+	})), createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
+		return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
+	})));
 	refs.swiper.addEventListener('touchstart', function (e) {
 		self.setWidth();
 		self.X0 = self.X1 = e.changedTouches[0].pageX;
@@ -547,6 +591,10 @@ Swiper.prototype.render = function () {
 		} else if (distance > 0 && self.currentOne > 0) {
 			self.currentOne--;
 		}
+		for (var i = 0; i < refs.pagination.children.length; i++) {
+			refs.pagination.children[i].style.background = 'white';
+		};
+		refs.pagination.children[self.currentOne].style.background = 'green';
 		self.offset = -self.currentOne * self.width;
 		refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + self.offset + 'px,0,0)';
 	});
@@ -555,12 +603,29 @@ Swiper.prototype.render = function () {
 		self.offset = -self.currentOne * self.width;
 		refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
 	});
+	//console.log(fragment)
 	return fragment;
 };
 
 exports.Swiper = Swiper;
 
-},{"./ZeactComponent.js":7,"./ZeactElement.js":9}],7:[function(require,module,exports){
+},{"./ZeactComponent.js":8,"./ZeactElement.js":10}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Zeact = undefined;
+
+var _ZeactElement = require('./ZeactElement.js');
+
+var Zeact = {};
+
+Zeact.createElement = _ZeactElement.ZeactElement.createElement;
+
+exports.Zeact = Zeact;
+
+},{"./ZeactElement.js":10}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -574,7 +639,7 @@ function ZeactComponent() {
 
 exports.ZeactComponent = ZeactComponent;
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -588,7 +653,7 @@ ZeactDOM.render = function (component, container) {
 
 exports.ZeactDOM = ZeactDOM;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -605,8 +670,15 @@ var ZeactElement = function ZeactElement() {};
  * @param  {array} childNodes
  * @return {object}
  */
-ZeactElement.createElement = function (type, config, childNodes) {
-	var elem = document.createElement(type);
+ZeactElement.createElement = function (type, config) {
+	var elem;
+	if (typeof type === 'function') {
+		var obj = new type(config);
+		elem = obj.render();
+		elem.obj = obj;
+	} else {
+		elem = document.createElement(type);
+	}
 	if (config) {
 		for (var key in config) {
 			//console.log(key)
@@ -619,22 +691,30 @@ ZeactElement.createElement = function (type, config, childNodes) {
 			};
 		}
 	};
-	if (childNodes) {
-		childNodes.forEach(function (child) {
+	if (arguments.length > 2) {
+		//var childrenLength = arguments.length - 2;
+		for (var i = 2; i < arguments.length; i++) {
+			var child = arguments[i];
 			if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) === 'object') {
-				elem.appendChild(child);
+				if (Array.isArray(child)) {
+					child.forEach(function (item) {
+						elem.appendChild(item);
+					});
+				} else {
+					elem.appendChild(child);
+				}
 			} else if (typeof child === 'string') {
 				var textNode = document.createTextNode(child);
 				elem.appendChild(textNode);
 			};
-		});
+		};
 	};
 	return elem;
 };
 
 exports.ZeactElement = ZeactElement;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 //import {arr} from './data.js';

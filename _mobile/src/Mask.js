@@ -1,60 +1,74 @@
 import {ZeactElement} from './ZeactElement.js';
 import {ZeactComponent} from './ZeactComponent.js';
 
-function Mask( props ){
-	this.refs = {};
-	this.props = props;
-}
-Mask.prototype = new ZeactComponent();
-Mask.prototype.show = function(){
-	this.refs.mask.style.display = 'block';
-}
-Mask.prototype.render = function(){
-	var createElement = ZeactElement.createElement.bind(this);
-	var refs = this.refs;
-	var fragment = 
-		createElement('div',
-			{
-				ref: 'mask',
-				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
-			[
+class Mask extends ZeactComponent {
+	constructor(props){
+		super();
+		this.refs = {};
+		this.props = props;
+		this.state = {
+			text: '111'
+		}
+	}
+	show(){
+		this.refs.mask.style.display = 'block';
+	}
+	render(){
+		var createElement = ZeactElement.createElement.bind(this);
+		var refs = this.refs;
+		var fragment = 
+			createElement('div',
+				{
+					ref: 'mask',
+					style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'
+				},
 				createElement('div',
 					{	
 						ref: 'bg',
-						style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
+						style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'
+					}
 				),
-				createElement('div',{ref:'panel'},[
-					createElement('p',{ref:'text'}),
-					createElement('div',{ref:'buttons'},[
+				createElement(
+					'div',
+					{ref:'panel'},
+					createElement('p',null,
+						createElement('input',{ref:'inputBox',type:'text'}),
+						createElement('span',{ref:'text'})
+					),
+					createElement('div',{ref:'buttons'},
 						createElement('div',
 							{
 								ref:'confirm',
 								style: 'background: #197FEE;'
-							},['确定']),
-						createElement('div',{ref:'cancel'},['取消'])
-					])
-				])
-			]
-		);
+							},
+							'确定'),
+						createElement('div',{ref:'cancel'},'取消')
+					)
+				)
+			);
 
-	refs.panel.style.cssText += 
-		'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;'+
-		'font-size:0.3rem;';
-	refs.text.style.cssText +=
-		'box-sizing:border-box; height:2rem; padding:0.15rem';
-	refs.buttons.style.cssText +=
-		'height:1rem; overflow:hidden;';
-	refs.confirm.style.cssText +=
-		'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-	refs.cancel.style.cssText +=
-		'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+		refs.panel.style.cssText += 
+			'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;'+
+			'font-size:0.3rem;';
+		refs.text.style.cssText +=
+			'box-sizing:border-box; height:2rem; padding:0.15rem';
+		refs.buttons.style.cssText +=
+			'height:1rem; overflow:hidden;';
+		refs.confirm.style.cssText +=
+			'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
+		refs.cancel.style.cssText +=
+			'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
 
-	refs.text.innerHTML = this.props.text;
-	refs.cancel.addEventListener('click',function(){
-		refs.mask.style.display = 'none';
-	})
+		refs.inputBox.onchange=function(){
+			refs.text.innerHTML = refs.inputBox.value;
+		};
+		refs.cancel.addEventListener('click',function(){
+			refs.mask.style.display = 'none';
+		})
 
-	return fragment;
+		return fragment;
+	}
+
 }
 
 export {Mask};

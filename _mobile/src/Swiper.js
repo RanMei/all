@@ -1,3 +1,4 @@
+import {_} from './_.js';
 import {ZeactElement} from './ZeactElement.js';
 import {ZeactComponent} from './ZeactComponent.js';
 
@@ -35,18 +36,22 @@ Swiper.prototype.render = function(){
 		createElement('div',
 			{
 				ref: 'swiper',
-				style: 'width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+				style: 'position:relative; width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
 			},
-			[
 			createElement('ul',
 				{	
 					ref: 'train',
 					style: 'width:'+self.length+'00%; height:100%;'
 				},
 				self.props.items.map(function(elem){
-					return createElement('li',{style: 'float:left; width:'+(100/self.length)+'%;'},[elem+''])
+					return createElement('li',{style: 'float:left; width:'+(100/self.length)+'%;'},elem+'')
 				})
-			)]
+			),
+			createElement('ul',{ref:'pagination',style:'position:absolute; left:0; top:0; overflow:hidden;'},
+				self.props.items.map(function(elem){
+					return createElement('li',{style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;'})
+				})
+			)
 		);
 	refs.swiper.addEventListener('touchstart',function(e){
 		self.setWidth();
@@ -67,6 +72,10 @@ Swiper.prototype.render = function(){
 		}else if( distance>0&&self.currentOne>0 ){
 			self.currentOne--;
 		}
+		_.forEach( refs.pagination.children,function(child){
+			child.style.background = 'white';
+		} )
+		refs.pagination.children[self.currentOne].style.background = 'green';
 		self.offset = -self.currentOne*self.width;
 		refs.train.style.cssText += 'transition:0.3s; transform:translate3d('+self.offset+'px,0,0)';
 	})
@@ -75,6 +84,7 @@ Swiper.prototype.render = function(){
 		self.offset = -self.currentOne*self.width;
 		refs.train.style.cssText += 'transition:0.1s; transform:translate3d('+self.offset+'px,0,0)';
 	})
+	//console.log(fragment)
 	return fragment;
 }
 

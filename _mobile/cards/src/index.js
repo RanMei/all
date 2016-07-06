@@ -30,7 +30,9 @@ $(document).ready(function(){
 			}
 		}
 	});
-	ZeactDOM.render( pageA,document.querySelector('body') );
+	//ZeactDOM.render( pageA,document.querySelector('body') );
+
+	document.querySelector('body').appendChild( pageA.render() );
 
 	var inserted = '';
 	for( var i=0;i<arr.length;i++ ){
