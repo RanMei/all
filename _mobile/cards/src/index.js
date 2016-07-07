@@ -12,15 +12,11 @@ var param = window.param;
 var ABook = window.ABook;
 var $ = window.$;
 
-//Local.init();//注册客户端方法
-//forceLog( param('act_f') );
 
-var $$statistics = {
-	cards: [],
-	hexagons: []
-}
 
 $(document).ready(function(){
+
+	console.log( navigator.userAgent )
 
 	var pageA = new Page({
 		act: function(action){
@@ -73,7 +69,5 @@ $(document).ready(function(){
 	window.onbeforeunload = function(){
 		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
 	}
-	// $('.card').css({
-	// 	transition:'0.3s';
-	// })
+
 });

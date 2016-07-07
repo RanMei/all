@@ -1,4 +1,4 @@
-import {_} from './_.es6';
+import {_} from './_.js';
 //var _ = require('./_.js');
 
 
@@ -60,8 +60,16 @@ var init = Zeal.prototype.init = function( selector,context ){
 	this.selector = selector;
 	// $(window), $(document), $(this)
 	if( typeof selector==='object' ){
-		this[0] = selector;
-		this.length = 1;
+		//if( Array.isArray(selector) ){
+		if( selector.length ){
+			for( var i=0;i<selector.length;i++ ){
+				this[i] = selector[i];
+			}
+			this.length = selector.length;
+		}else{
+			this[0] = selector;
+			this.length = 1;
+		}
 	};
 	
 	if( typeof selector==='string' ){
@@ -106,22 +114,23 @@ Zeal.fn.find = function( selector ){
 Zeal.fn.ready = function( callback ){
 	// this[0] is actually document.
 	var elem = this[0];
-	if( elem.readyState==="complete" ){
-		callback();
-	}else{
-		elem.addEventListener( "readystatechange",function(){
-			if( elem.readyState==="complete" ){
-				callback();
-			};
-		});
-	};		
+	// if( elem.readyState==="complete" ){
+	// 	callback();
+	// }else{
+	// 	elem.addEventListener( "readystatechange",function(){
+	// 		if( elem.readyState==="complete" ){
+	// 			alert('444')
+	// 			callback();
+	// 		};
+	// 	});
+	// };
+	document.addEventListener( 'DOMContentLoaded',callback );	
 };
 
 // Module: events
 // $().on()
 Zeal.fn.on = function( events,callback ){
 	events = events.split(' ');
-	//console.log(events);
 	this.each(function(elem){
 		for( var i=0;i<events.length;i++ ){
 			elem.addEventListener( events[i],function(e){
@@ -158,6 +167,11 @@ Zeal.fn.extend({
 			})
 			return this;
 		}
+	},
+	removeAttr: function( key ){
+		this.each(function(elem){
+			elem.removeAttribute(key);
+		});
 	}
 })
 
@@ -226,12 +240,22 @@ Zeal.fn.extend({
 				this.each(function(elem){
 					var cssText = '';
 					for( var prop in opts ){
-						//elem.style[prop] = opts[prop];
-						cssText += prop+':'+opts[prop]+';';
+						if( !/-/.test(prop) ){
+							var _prop = prop.replace(/[A-Z]/g,function(letter){
+								return '-'+letter.toLowerCase();
+							})
+							if( /(transform)|(transition)/.test( _prop) ){
+								cssText += _prop+':'+opts[prop]+';-webkit-'+_prop+':'+opts[prop]+';';
+								//console.log(cssText)
+							}else{
+								cssText += _prop+':'+opts[prop]+';';
+							}
+						}else{
+							cssText += prop+':'+opts[prop]+';';
+						}
 					};
 					elem.style.cssText += cssText;
-					//console.log(elem.style)
-					//elem.style.cssText = cssText+elem.style.cssText;
+
 				});
 				return this;
 			}
@@ -351,4 +375,9 @@ Zeal.ajax = function( obj ){
 	};		
 };
 
-window.$ = Zeal;
+if( window.$===undefined ){
+	console.log('window.$ is window.Zeal.');
+	window.$ = Zeal;
+}else{
+	window.Zeal = Zeal;
+}

@@ -6,24 +6,24 @@ var ZeactElement = function(){};
  * @param  {array} childNodes
  * @return {object}
  */
-ZeactElement.createElement = function( type,config ){
+ZeactElement.createElement = function( type,props ){
 	var elem;
 	if( typeof type==='function' ){
-		var obj = new type(config);
+		var obj = new type(props);
 		elem = obj.render();
 		elem.obj = obj;
 	}else{
 		elem = document.createElement(type);
 	}
-	if( config ){
-		for( var key in config ){
+	if( props ){
+		for( var key in props ){
 			//console.log(key)
 			if( key==='style' ){
-				elem.style.cssText = config[key];
+				elem.style.cssText = props[key];
 			}else if( key==='ref' ){
-				this.refs[ config.ref ] = elem;
-			}else{
-				elem.setAttribute(key,config[key]);
+				this.refs[ props.ref ] = elem;
+			}else if( /(src)/.test(key) ){
+				elem.setAttribute(key,props[key]);
 			};
 		}
 	};

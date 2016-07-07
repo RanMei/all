@@ -10,6 +10,11 @@ var _ = {
 };
 
 // Functions to process strings.
+/**
+ * Make a string camelcased.
+ * @param  {string} string
+ * @return {string}
+ */
 function camelCase( string ){
 	string = string.replace(/(-[a-z]?)|(_[a-z]?)/ig,function(match){
 		return match.replace(/-|_/,'').toUpperCase();
@@ -39,6 +44,11 @@ function bubbleSort(arr){
 }
 
 // Functions to process objects.
+/**
+ * Extend an object.
+ * @param  {[type]} obj [description]
+ * @return {[type]}     [description]
+ */
 function extend ( obj ){
 	var target = this;
 	for( var p in obj ){

@@ -156,15 +156,9 @@ var param = window.param;
 var ABook = window.ABook;
 var $ = window.$;
 
-//Local.init();//注册客户端方法
-//forceLog( param('act_f') );
-
-var $$statistics = {
-	cards: [],
-	hexagons: []
-};
-
 $(document).ready(function () {
+
+	console.log(navigator.userAgent);
 
 	var pageA = new _Page.Page({
 		act: function act(action) {
@@ -201,16 +195,12 @@ $(document).ready(function () {
 		//ABook.gotoReading( arr[i].bid );
 	});
 
-	window.onbeforeunload = function () {}
-	//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
-
-	// $('.card').css({
-	// 	transition:'0.3s';
-	// })
-	;
+	window.onbeforeunload = function () {
+		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
+	};
 });
 
-},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":9,"../../src/z.swiper.js":11,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":9,"../../src/z.swiper.js":12,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var $ = window.jQuery || window.$;
@@ -531,85 +521,150 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Swiper = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _2 = require('./_.js');
+
 var _ZeactElement = require('./ZeactElement.js');
 
-var _ZeactComponent = require('./ZeactComponent.js');
+var _ZeactComponent3 = require('./ZeactComponent.js');
 
-function Item() {
-	this.refs = {};
-}
-Item.prototype = new _ZeactComponent.ZeactComponent();
-Item.prototype.render = function () {};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function Swiper(props) {
-	this.refs = {};
-	this.props = props;
-	this.width = null;
-	this.offset = 0;
-	this.currentOne = 0;
-	this.length = props.items.length;
-}
-Swiper.prototype = new _ZeactComponent.ZeactComponent();
-Swiper.prototype.show = function () {
-	this.refs.mask.display = 'block';
-};
-Swiper.prototype.go = function (i) {};
-Swiper.prototype.setWidth = function () {
-	this.width = Number(document.defaultView.getComputedStyle(this.refs.swiper).width.replace(/px/, ''));
-};
-Swiper.prototype.render = function () {
-	var self = this;
-	var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-	var refs = this.refs;
-	var fragment = createElement('div', {
-		ref: 'swiper',
-		style: 'position:relative; width:5.4rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
-	}, createElement('ul', {
-		ref: 'train',
-		style: 'width:' + self.length + '00%; height:100%;'
-	}, self.props.items.map(function (elem) {
-		return createElement('li', { style: 'float:left; width:' + 100 / self.length + '%;' }, elem + '');
-	})), createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
-		return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
-	})));
-	refs.swiper.addEventListener('touchstart', function (e) {
-		self.setWidth();
-		self.X0 = self.X1 = e.changedTouches[0].pageX;
-	});
-	refs.swiper.addEventListener('touchmove', function (e) {
-		self.X2 = e.changedTouches[0].pageX;
-		var distance = self.X2 - self.X1;
-		self.offset += distance;
-		self.X1 = self.X2;
-		refs.train.style.cssText += 'transition:0s; transform:translate3d(' + self.offset + 'px,0,0)';
-	});
-	refs.swiper.addEventListener('touchend', function (e) {
-		self.X2 = e.changedTouches[0].pageX;
-		var distance = self.X2 - self.X0;
-		if (distance < 0 && self.currentOne < self.length - 1) {
-			self.currentOne++;
-		} else if (distance > 0 && self.currentOne > 0) {
-			self.currentOne--;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Item = function (_ZeactComponent) {
+	_inherits(Item, _ZeactComponent);
+
+	function Item(props) {
+		_classCallCheck(this, Item);
+
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
+
+		_this.props = props;
+		return _this;
+	}
+
+	_createClass(Item, [{
+		key: 'render',
+		value: function render() {
+			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+			var fragment = createElement('li', { style: 'float:left; width:' + this.props.width + ';' }, createElement('img', {
+				src: this.props.src,
+				style: 'height:6.9rem; margin:auto; display:block;'
+			}));
+			return fragment;
 		}
-		for (var i = 0; i < refs.pagination.children.length; i++) {
-			refs.pagination.children[i].style.background = 'white';
-		};
-		refs.pagination.children[self.currentOne].style.background = 'green';
-		self.offset = -self.currentOne * self.width;
-		refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + self.offset + 'px,0,0)';
-	});
-	window.addEventListener('resize', function () {
-		self.setWidth();
-		self.offset = -self.currentOne * self.width;
-		refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
-	});
-	//console.log(fragment)
-	return fragment;
-};
+	}]);
+
+	return Item;
+}(_ZeactComponent3.ZeactComponent);
+
+var Swiper = function (_ZeactComponent2) {
+	_inherits(Swiper, _ZeactComponent2);
+
+	function Swiper(props) {
+		_classCallCheck(this, Swiper);
+
+		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this));
+
+		_this2.refs = {};
+		_this2.props = props;
+		_this2.width = null;
+		_this2.offset = 0;
+		_this2.currentOne = 0;
+		_this2.length = props.items.length;
+		return _this2;
+	}
+
+	_createClass(Swiper, [{
+		key: 'show',
+		value: function show() {
+			this.refs.mask.display = 'block';
+		}
+		// update(key){
+		// 	switch(key){
+		// 		case 'currentOne':
+
+		// 	}
+		// }
+
+	}, {
+		key: 'go',
+		value: function go(i) {
+			var refs = this.refs;
+			_2._.forEach(refs.pagination.children, function (child) {
+				child.style.background = 'white';
+			});
+			refs.pagination.children[i].style.background = 'green';
+			this.offset = -i * this.width;
+			refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + this.offset + 'px,0,0)';
+		}
+	}, {
+		key: 'setWidth',
+		value: function setWidth() {
+			this.width = Number(document.defaultView.getComputedStyle(this.refs.swiper).width.replace(/px/, ''));
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var self = this;
+			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
+			var refs = this.refs;
+			var fragment = createElement('div', {
+				ref: 'swiper',
+				style: 'position:relative; width:6rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+			}, createElement('ul', {
+				ref: 'train',
+				style: 'width:' + self.length + '00%; height:100%;'
+			}, self.props.items.map(function (elem, i) {
+				return createElement(Item, {
+					width: 100 / self.length + '%',
+					src: 'img/card_' + i + '.png'
+				});
+			})), createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
+				return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
+			})));
+			refs.pagination.children[self.currentOne].style.background = 'green';
+			refs.swiper.addEventListener('touchstart', function (e) {
+				self.setWidth();
+				self.X0 = self.X1 = e.changedTouches[0].pageX;
+			});
+			refs.swiper.addEventListener('touchmove', function (e) {
+				self.X2 = e.changedTouches[0].pageX;
+				var distance = self.X2 - self.X1;
+				self.offset += distance;
+				self.X1 = self.X2;
+				refs.train.style.cssText += 'transition:0s; transform:translate3d(' + self.offset + 'px,0,0)';
+			});
+			refs.swiper.addEventListener('touchend', function (e) {
+				self.X2 = e.changedTouches[0].pageX;
+				var distance = self.X2 - self.X0;
+				if (distance < 0 && self.currentOne < self.length - 1) {
+					self.currentOne++;
+				} else if (distance > 0 && self.currentOne > 0) {
+					self.currentOne--;
+				}
+				self.go(self.currentOne);
+			});
+			window.addEventListener('resize', function () {
+				self.setWidth();
+				self.offset = -self.currentOne * self.width;
+				refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
+			});
+			//console.log(fragment)
+			return fragment;
+		}
+	}]);
+
+	return Swiper;
+}(_ZeactComponent3.ZeactComponent);
 
 exports.Swiper = Swiper;
 
-},{"./ZeactComponent.js":8,"./ZeactElement.js":10}],7:[function(require,module,exports){
+},{"./ZeactComponent.js":8,"./ZeactElement.js":10,"./_.js":11}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -631,10 +686,24 @@ exports.Zeact = Zeact;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-function ZeactComponent() {
-	this.props = {};
+function ZeactComponent(props) {
+	this.props = props || {};
 	this.refs = {};
-	this.setState = function () {};
+	this.state = {};
+	this.setState = function (obj) {
+		var self = this;
+		var stateChanged = false;
+		for (var key in obj) {
+			if (obj[key] === self.state[key]) {} else {
+				self.state[key] = obj[key];
+				stateChanged = true;
+			}
+		}
+		if (stateChanged) {
+			self.update();
+		}
+	};
+	this.update = function () {};
 }
 
 exports.ZeactComponent = ZeactComponent;
@@ -670,24 +739,24 @@ var ZeactElement = function ZeactElement() {};
  * @param  {array} childNodes
  * @return {object}
  */
-ZeactElement.createElement = function (type, config) {
+ZeactElement.createElement = function (type, props) {
 	var elem;
 	if (typeof type === 'function') {
-		var obj = new type(config);
+		var obj = new type(props);
 		elem = obj.render();
 		elem.obj = obj;
 	} else {
 		elem = document.createElement(type);
 	}
-	if (config) {
-		for (var key in config) {
+	if (props) {
+		for (var key in props) {
 			//console.log(key)
 			if (key === 'style') {
-				elem.style.cssText = config[key];
+				elem.style.cssText = props[key];
 			} else if (key === 'ref') {
-				this.refs[config.ref] = elem;
-			} else {
-				elem.setAttribute(key, config[key]);
+				this.refs[props.ref] = elem;
+			} else if (/(src)/.test(key)) {
+				elem.setAttribute(key, props[key]);
 			};
 		}
 	};
@@ -715,6 +784,86 @@ ZeactElement.createElement = function (type, config) {
 exports.ZeactElement = ZeactElement;
 
 },{}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _ = {
+	bubbleSort: bubbleSort,
+	camelCase: camelCase,
+	copy: copy,
+	//each
+	extend: extend,
+	forEach: forEach
+	//map
+};
+
+// Functions to process strings.
+function camelCase(string) {
+	string = string.replace(/(-[a-z]?)|(_[a-z]?)/ig, function (match) {
+		return match.replace(/-|_/, '').toUpperCase();
+	});
+	return string;
+}
+
+// Functions to process arrays.
+function forEach(arr, callback) {
+	for (var i = 0; i < arr.length; i++) {
+		callback(arr[i], i);
+	}
+}
+function bubbleSort(arr) {
+	var i = 0;
+	while (i < arr.length - 1) {
+		for (var j = i + 1; j < arr.length - 1; j++) {
+			if (arr[i] > arr[j]) {
+				var x = arr[i];
+				arr[i] = arr[j];
+				arr[j] = x;
+			};
+		};
+		i++;
+	}
+	return arr;
+}
+
+// Functions to process objects.
+function extend(obj) {
+	var target = this;
+	for (var p in obj) {
+		target[p] = obj[p];
+	}
+	return target;
+}
+
+function copy(src, deep) {
+	var __copy;
+	if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+		if (src.length) {
+			__copy = [];
+		} else {
+			__copy = {};
+		};
+		for (var x in src) {
+			if (deep && _typeof(src[x]) === "object") {
+				__copy[x] = Zeal.copy(src[x], true);
+			} else {
+				__copy[x] = src[x];
+			};
+		};
+		return __copy;
+	};
+};
+
+window._ = _;
+
+exports._ = _;
+
+},{}],12:[function(require,module,exports){
 "use strict";
 
 //import {arr} from './data.js';
