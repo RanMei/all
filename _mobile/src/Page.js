@@ -21,27 +21,35 @@ class Page extends ZeactComponent {
 			createElement('div',
 				{
 					ref: 'page',
-					style: 'position:relative; width:100%; background:grey; display:block;'
+					style: 'position:relative; width:100%; background:grey; display:block; overflow:hidden;'
 				},
+				createElement(
+					'img',
+					{
+						ref: 'bg',
+						src: 'img/bg.png',
+						style: 'width: 100%'
+					}
+				),
+				createElement(
+					'div',
+					{
+						ref: 'content',
+						style: 'position:absolute; left:0; top:0; width: 100%; height:100%;'
+					},
+					createElement(
+						Swiper,
+						{
+							ref: 'swiperA',
+							items: self.props.items
+						}
+					)
+				),
 				createElement(
 					Mask,
 					{
 						ref: 'maskA',
 						text: '确定退出吗？'
-					}
-				),
-				createElement(
-					Swiper,
-					{
-						ref: 'swiperA',
-						items: [0,1,2,3,4,5]
-					}
-				),
-				createElement(
-					Swiper,
-					{
-						ref: 'swiperB',
-						items: [0,1,2,3,4,5,6,7,8,111]
 					}
 				),
 				createElement('p',

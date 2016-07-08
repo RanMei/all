@@ -166,7 +166,8 @@ $(document).ready(function () {
 			if (action.type === 'EXIT') {
 				maskA.show();
 			}
-		}
+		},
+		items: _data.arr
 	});
 	//ZeactDOM.render( pageA,document.querySelector('body') );
 
@@ -489,16 +490,20 @@ var Page = function (_ZeactComponent) {
 			//var maskA = new Mask({text: '确定退出吗？'});
 			var fragment = createElement('div', {
 				ref: 'page',
-				style: 'position:relative; width:100%; background:grey; display:block;'
-			}, createElement(_Mask.Mask, {
+				style: 'position:relative; width:100%; background:grey; display:block; overflow:hidden;'
+			}, createElement('img', {
+				ref: 'bg',
+				src: 'img/bg.png',
+				style: 'width: 100%'
+			}), createElement('div', {
+				ref: 'content',
+				style: 'position:absolute; left:0; top:0; width: 100%; height:100%;'
+			}, createElement(_Swiper.Swiper, {
+				ref: 'swiperA',
+				items: self.props.items
+			})), createElement(_Mask.Mask, {
 				ref: 'maskA',
 				text: '确定退出吗？'
-			}), createElement(_Swiper.Swiper, {
-				ref: 'swiperA',
-				items: [0, 1, 2, 3, 4, 5]
-			}), createElement(_Swiper.Swiper, {
-				ref: 'swiperB',
-				items: [0, 1, 2, 3, 4, 5, 6, 7, 8, 111]
 			}), createElement('p', { ref: 'p' }, '退出'));
 			refs.p.addEventListener('click', function () {
 				//self.props.act({type:'EXIT'});
@@ -534,6 +539,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var person = {
+	name: 'John',
+	wife: {
+		name: 'Jane',
+		father: {
+			name: 'Robert'
+		},
+		number: [1, 3, 4, 5, 67, 8, 8]
+	}
+};
+var man = _2._.deepClone(person);
+man.wife.father.name = 'Micky';
+man.wife.number[0] = 111111111;
+console.log(person);
 
 var Item = function (_ZeactComponent) {
 	_inherits(Item, _ZeactComponent);
@@ -576,6 +596,9 @@ var Swiper = function (_ZeactComponent2) {
 		_this2.offset = 0;
 		_this2.currentOne = 0;
 		_this2.length = props.items.length;
+		_this2.state = {
+			currentOne: 0
+		};
 		return _this2;
 	}
 
@@ -584,13 +607,15 @@ var Swiper = function (_ZeactComponent2) {
 		value: function show() {
 			this.refs.mask.display = 'block';
 		}
-		// update(key){
-		// 	switch(key){
-		// 		case 'currentOne':
-
-		// 	}
-		// }
-
+	}, {
+		key: 'update',
+		value: function update(key) {
+			var self = this;
+			switch (key) {
+				case 'currentOne':
+					self.go(this.state.currentOne);
+			}
+		}
 	}, {
 		key: 'go',
 		value: function go(i) {
@@ -601,6 +626,7 @@ var Swiper = function (_ZeactComponent2) {
 			refs.pagination.children[i].style.background = 'green';
 			this.offset = -i * this.width;
 			refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + this.offset + 'px,0,0)';
+			//refs.number.innerHTML = this.state.currentOne;
 		}
 	}, {
 		key: 'setWidth',
@@ -615,19 +641,35 @@ var Swiper = function (_ZeactComponent2) {
 			var refs = this.refs;
 			var fragment = createElement('div', {
 				ref: 'swiper',
-				style: 'position:relative; width:6rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+				style: 'position:relative; width:6rem; height:6.9rem; margin:auto; margin-top:3.35rem;'
 			}, createElement('ul', {
 				ref: 'train',
-				style: 'width:' + self.length + '00%; height:100%;'
+				style: 'position:absolute; width:' + self.length + '00%; height:100%;'
 			}, self.props.items.map(function (elem, i) {
 				return createElement(Item, {
 					width: 100 / self.length + '%',
 					src: 'img/card_' + i + '.png'
 				});
-			})), createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
+			})),
+			//createElement('p',{ref:'number',style:'position:absolute; left:0; top:0;'},this.state.currentOne),
+			createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
 				return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
 			})));
+			// self.setWidth();
 			refs.pagination.children[self.currentOne].style.background = 'green';
+			_2._.forEach(refs.pagination.children, function (child, i) {
+				child.addEventListener('click', function () {
+					self.currentOne = i;
+					self.setState({
+						currentOne: i
+					});
+				});
+			});
+			// refs.items = [].slice.call(refs.train.children,0);
+			// console.log(refs.items);
+			// var firstClone = refs.items[0].cloneNode(true);
+			// firstClone.style.cssText += 'position:absolute; top:0; right:-'+(100/self.length)+'%;';
+			// refs.train.appendChild( firstClone );
 			refs.swiper.addEventListener('touchstart', function (e) {
 				self.setWidth();
 				self.X0 = self.X1 = e.changedTouches[0].pageX;
@@ -647,14 +689,17 @@ var Swiper = function (_ZeactComponent2) {
 				} else if (distance > 0 && self.currentOne > 0) {
 					self.currentOne--;
 				}
-				self.go(self.currentOne);
+				self.setState({
+					currentOne: self.currentOne
+				});
+				//self.go( self.currentOne );
 			});
 			window.addEventListener('resize', function () {
 				self.setWidth();
 				self.offset = -self.currentOne * self.width;
 				refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
 			});
-			//console.log(fragment)
+			//console.log(self)
 			return fragment;
 		}
 	}]);
@@ -696,14 +741,14 @@ function ZeactComponent(props) {
 		for (var key in obj) {
 			if (obj[key] === self.state[key]) {} else {
 				self.state[key] = obj[key];
+
 				stateChanged = true;
 			}
+			self.update(key);
 		}
-		if (stateChanged) {
-			self.update();
-		}
+		if (stateChanged) {}
+		console.log(self.state);
 	};
-	this.update = function () {};
 }
 
 exports.ZeactComponent = ZeactComponent;
@@ -772,7 +817,7 @@ ZeactElement.createElement = function (type, props) {
 				} else {
 					elem.appendChild(child);
 				}
-			} else if (typeof child === 'string') {
+			} else if (typeof child === 'string' || typeof child === 'number') {
 				var textNode = document.createTextNode(child);
 				elem.appendChild(textNode);
 			};
@@ -784,7 +829,7 @@ ZeactElement.createElement = function (type, props) {
 exports.ZeactElement = ZeactElement;
 
 },{}],11:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -797,12 +842,18 @@ var _ = {
 	camelCase: camelCase,
 	copy: copy,
 	//each
+	deepClone: deepClone,
 	extend: extend,
 	forEach: forEach
 	//map
 };
 
 // Functions to process strings.
+/**
+ * Make a string camelcased.
+ * @param  {string} string
+ * @return {string}
+ */
 function camelCase(string) {
 	string = string.replace(/(-[a-z]?)|(_[a-z]?)/ig, function (match) {
 		return match.replace(/-|_/, '').toUpperCase();
@@ -810,10 +861,19 @@ function camelCase(string) {
 	return string;
 }
 
-// Functions to process arrays.
-function forEach(arr, callback) {
-	for (var i = 0; i < arr.length; i++) {
-		callback(arr[i], i);
+/**
+ * Traverse an array or an array-like object.
+ * 
+ * @param  {array|object}   arr      [description]
+ * @param  {Function} callback [description]
+ */
+function forEach(src, callback) {
+	if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === 'object') {
+		for (var i = 0; i < src.length; i++) {
+			callback(src[i], i);
+		}
+	} else {
+		throw new TypeError('src must be an object or an array.').stack;
 	}
 }
 function bubbleSort(arr) {
@@ -832,32 +892,52 @@ function bubbleSort(arr) {
 }
 
 // Functions to process objects.
-function extend(obj) {
-	var target = this;
-	for (var p in obj) {
-		target[p] = obj[p];
+/**
+ * Extend an object.
+ * 
+ * @param  {object} obj [description]
+ * @return {object}     [description]
+ */
+function extend(target, src, deep) {
+	for (var key in src) {
+		if (deep && src[key] === 'object') {
+			target[key] = extend(target[key], src[key], true);
+		} else {
+			target[key] = src[key];
+		};
 	}
 	return target;
+}
+function deepExtend(target, src) {
+	return extend(target, src, true);
 }
 
 function copy(src, deep) {
 	var __copy;
-	if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+	if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === "object") {
 		if (src.length) {
 			__copy = [];
 		} else {
 			__copy = {};
 		};
-		for (var x in src) {
-			if (deep && _typeof(src[x]) === "object") {
-				__copy[x] = Zeal.copy(src[x], true);
+		for (var key in src) {
+			if (deep && _typeof(src[key]) === "object") {
+				__copy[key] = copy(src[key], true);
 			} else {
-				__copy[x] = src[x];
+				__copy[key] = src[key];
 			};
 		};
 		return __copy;
-	};
+	} else {
+		throw new TypeError('src must be an object.').stack;
+	}
 };
+function shallowCopy(src) {
+	return copy(src, false);
+}
+function deepClone(src) {
+	return copy(src, true);
+}
 
 window._ = _;
 

@@ -40,7 +40,9 @@ Zeal.fn = Zeal.prototype = {
 	}
 };
 
-Zeal.extend = Zeal.fn.extend = _.extend;
+Zeal.extend = Zeal.fn.extend = function(src){
+	_.extend( this,src );
+}
 
 Zeal.extend({
 	copy: _.copy,

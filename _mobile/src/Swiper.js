@@ -2,6 +2,21 @@ import {_} from './_.js';
 import {ZeactElement} from './ZeactElement.js';
 import {ZeactComponent} from './ZeactComponent.js';
 
+var person = {
+	name: 'John',
+	wife: {
+		name: 'Jane',
+		father: {
+			name: 'Robert'
+		},
+		number: [1,3,4,5,67,8,8]
+	}
+}
+var man = _.deepClone(person);
+man.wife.father.name = 'Micky';
+man.wife.number[0] = 111111111;
+console.log(person);
+
 class Item extends ZeactComponent {
 	constructor(props){
 		super();
@@ -34,16 +49,20 @@ class Swiper extends ZeactComponent {
 		this.offset = 0;
 		this.currentOne = 0;
 		this.length = props.items.length;
+		this.state = {
+			currentOne: 0
+		}
 	}
 	show(){
 		this.refs.mask.display = 'block';
 	}
-	// update(key){
-	// 	switch(key){
-	// 		case 'currentOne':
-				
-	// 	}
-	// }
+	update(key){
+		var self = this;
+		switch(key){
+			case 'currentOne':
+				self.go( this.state.currentOne );
+		}
+	}
 	go(i){
 		var refs = this.refs;
 		_.forEach( refs.pagination.children,function(child){
@@ -52,6 +71,7 @@ class Swiper extends ZeactComponent {
 		refs.pagination.children[i].style.background = 'green';
 		this.offset = -i*this.width;
 		refs.train.style.cssText += 'transition:0.3s; transform:translate3d('+this.offset+'px,0,0)';
+		//refs.number.innerHTML = this.state.currentOne;
 	}
 	setWidth(){
 		this.width = Number( document.defaultView.getComputedStyle(this.refs.swiper).width.replace(/px/,'') );
@@ -64,12 +84,12 @@ class Swiper extends ZeactComponent {
 			createElement('div',
 				{
 					ref: 'swiper',
-					style: 'position:relative; width:6rem; height:6.9rem; margin:auto; background:red; overflow:hidden;'
+					style: 'position:relative; width:6rem; height:6.9rem; margin:auto; margin-top:3.35rem;'
 				},
 				createElement('ul',
 					{	
 						ref: 'train',
-						style: 'width:'+self.length+'00%; height:100%;'
+						style: 'position:absolute; width:'+self.length+'00%; height:100%;'
 					},
 					self.props.items.map(function(elem,i){
 						return createElement(
@@ -77,16 +97,32 @@ class Swiper extends ZeactComponent {
 							{
 								width: (100/self.length)+'%',
 								src: 'img/card_'+i+'.png'
-							})
+							}
+						)
 					})
 				),
+				//createElement('p',{ref:'number',style:'position:absolute; left:0; top:0;'},this.state.currentOne),
 				createElement('ul',{ref:'pagination',style:'position:absolute; left:0; top:0; overflow:hidden;'},
 					self.props.items.map(function(elem){
 						return createElement('li',{style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;'})
 					})
 				)
 			);
+		// self.setWidth();
 		refs.pagination.children[self.currentOne].style.background = 'green';
+		_.forEach( refs.pagination.children,function(child,i){
+			child.addEventListener('click',function(){
+				self.currentOne = i;
+				self.setState({
+					currentOne: i
+				})
+			})
+		} )
+		// refs.items = [].slice.call(refs.train.children,0);
+		// console.log(refs.items);
+		// var firstClone = refs.items[0].cloneNode(true);
+		// firstClone.style.cssText += 'position:absolute; top:0; right:-'+(100/self.length)+'%;';
+		// refs.train.appendChild( firstClone );
 		refs.swiper.addEventListener('touchstart',function(e){
 			self.setWidth();
 			self.X0 = self.X1 = e.changedTouches[0].pageX;
@@ -106,14 +142,17 @@ class Swiper extends ZeactComponent {
 			}else if( distance>0&&self.currentOne>0 ){
 				self.currentOne--;
 			}
-			self.go( self.currentOne );
+			self.setState({
+				currentOne: self.currentOne
+			})
+			//self.go( self.currentOne );
 		})
 		window.addEventListener('resize',function(){
 			self.setWidth();
 			self.offset = -self.currentOne*self.width;
 			refs.train.style.cssText += 'transition:0.1s; transform:translate3d('+self.offset+'px,0,0)';
 		})
-		//console.log(fragment)
+		//console.log(self)
 		return fragment;
 	}
 

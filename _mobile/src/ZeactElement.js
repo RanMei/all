@@ -39,7 +39,7 @@ ZeactElement.createElement = function( type,props ){
 				}else{
 					elem.appendChild( child );
 				}
-			}else if( typeof child==='string' ){
+			}else if( typeof child==='string'||typeof child==='number' ){
 				var textNode = document.createTextNode(child);
 				elem.appendChild( textNode );
 			};

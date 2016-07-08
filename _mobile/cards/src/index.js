@@ -24,7 +24,8 @@ $(document).ready(function(){
 			if(action.type==='EXIT'){
 				maskA.show();				
 			}
-		}
+		},
+		items: arr
 	});
 	//ZeactDOM.render( pageA,document.querySelector('body') );
 

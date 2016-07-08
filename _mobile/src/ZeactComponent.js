@@ -10,15 +10,15 @@ function ZeactComponent(props){
 
 			}else{
 				self.state[key] = obj[key];
+
 				stateChanged = true;
 			}
+			self.update(key);
 		}
 		if( stateChanged ){
-			self.update();
+			
 		}
-	}
-	this.update = function(){
-		
+		console.log(self.state)
 	}
 }
 
