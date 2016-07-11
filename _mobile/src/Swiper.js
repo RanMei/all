@@ -108,7 +108,7 @@ class Swiper extends ZeactComponent {
 					})
 				)
 			);
-		// self.setWidth();
+		
 		refs.pagination.children[self.currentOne].style.background = 'green';
 		_.forEach( refs.pagination.children,function(child,i){
 			child.addEventListener('click',function(){
@@ -147,6 +147,14 @@ class Swiper extends ZeactComponent {
 			})
 			//self.go( self.currentOne );
 		})
+		setInterval(function(){
+			self.setWidth();
+			self.currentOne++;
+			if(self.currentOne>=self.length){
+				self.currentOne = 0;
+			};
+			self.go( self.currentOne );
+		},2000)
 		window.addEventListener('resize',function(){
 			self.setWidth();
 			self.offset = -self.currentOne*self.width;

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>Blobs button</title>
+
+	<link rel="stylesheet" href="css/blobs.css">
+	<script type="text/javascript" src="../src/rem.js"></script>
+	
+	
+	
+</head>
+
+<body>
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		<defs>
+			<filter id="goo">
+				<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+				<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+				<feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+			</filter>
+		</defs>
+	</svg>
+
+	<div class="container">
+		
+		<a class="blob-btn">
+			Blob Button
+			<span class="blob-btn__inner">
+				<span class="_blobs">
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+				</span>
+			</span>
+		</a>
+		
+		<button class="blob-btn">
+			BIGGER BUTTON
+			<span class="blob-btn__inner">
+				<span class="_blobs">
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+					<span class="_blob"></span>
+				</span>
+			</span>
+		</button>
+
+		<a class="btn">
+			Blob Button
+			<span class="blob-btn__inner">
+				<span class="_blobs">
+					<span class="blob"></span>
+					<span class="blob"></span>
+					<span class="blob"></span>
+					<span class="blob"></span>
+				</span>
+			</span>
+		</a>
+
+	</div>
+
+
+	
+	
+	
+	
+	
+</body>
+</html>

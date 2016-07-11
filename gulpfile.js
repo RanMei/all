@@ -29,10 +29,12 @@ gulp.task( 'start_server',function(){
 
 var LESS = [
 	{ name: 'less_mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
+	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
 	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
 	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
+	{ name: 'less-button', src: './_mobile/button/less/*.less', dest: './_mobile/button/css' },
 	{ name: 'less-design-button', src: './design/button/less/*.less', dest: './design/button/css' }	
 ];
 LESS.forEach(function(elem){
@@ -44,24 +46,21 @@ LESS.forEach(function(elem){
 	});
 })
 
-gulp.task( 'browserify-farm',function(){
-	return(
-		browserify( './_mobile/farm/jsx/main.jsx' )
-		.transform( 'babelify', {presets: ["es2015", "react"]} )
-		.bundle()
-		.pipe( source('bundle.js') )
-		.pipe( gulp.dest('./_mobile/farm') )
-	);
-});
-gulp.task( 'browserify-cards',function(){
-	return(
-		browserify( './_mobile/cards/src/index.js' )
-		.transform( 'babelify', {presets: ["es2015", "react"]} )
-		.bundle()
-		.pipe( source('bundle.js') )
-		.pipe( gulp.dest('./_mobile/cards') )
-	);
-});
+var BROWSERIFY = [
+	{ name: 'browserify-farm', src: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm' },
+	{ name: 'browserify-cards', src: './_mobile/cards/src/index.js', dest: './_mobile/cards' }
+];
+BROWSERIFY.forEach(function(item){
+	gulp.task( item.name,function(){
+		return(
+			browserify( item.src )
+			.transform( 'babelify', {presets: ["es2015", "react"]} )
+			.bundle()
+			.pipe( source('bundle.js') )
+			.pipe( gulp.dest(item.dest) )
+		);
+	});
+})
 
 gulp.task( 'webpack_mobile',function(){
 	return gulp.src('./_mobile/src/index.js')

@@ -18,6 +18,7 @@ $.fn.swipe = function( opts ){
 	
 	$(document).ready(function(){
 		
+		// state
 		var $$currentOne	= 0;
 		var $$target;
 		var $$switching		= false;
@@ -289,11 +290,12 @@ $.fn.swipe = function( opts ){
 			var currentItemScale = 1;
 			var otherItemScale = 0.8;
 			var isDown = false;
+			var X0, X1, X2;
 			var originalX;
 			var prevX;
 			var currentX;
 			var touchStartTime,touchEndTime;
-			var Y1,Y2;
+			var Y1, Y2;
 			var scrollPrevented = false;
 
 			$$items.addClass('inactive');
@@ -344,9 +346,8 @@ $.fn.swipe = function( opts ){
 					isDown = true;
 					touchStartTime = new Date().getTime();
 					//console.log(e.changedTouches[0].pageX)
-					originalX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-					Y1 = e.originalEvent.changedTouches[0].pageY;
-					prevX = originalX;
+					X0 = X1 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+					Y1 = e.originalEvent? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
 					if( $$carousel===true ){
 						if( $$currentOne===$$length-1 ){
 							$$items.eq(0).appendTo($$train);
@@ -358,11 +359,14 @@ $.fn.swipe = function( opts ){
 			$$train.on("mousemove touchmove",function(e){
 				
 				if( isDown ){
-					currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-					Y2 = e.originalEvent.changedTouches[0].pageY;
-					var distanceY = Y2-Y1;
-					var distance = currentX - prevX;
-					prevX = currentX;
+					X2 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+					Y2 = e.originalEvent? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
+					var distanceY = Y2 - Y1;
+					var distance = X2 - X1;
+					if( distanceY>distance ){
+
+					}
+					X1 = X2;
 					//console.log(distance)
 					trainOffsetX += distance;
 					itemOffsetX += distance;
@@ -407,28 +411,22 @@ $.fn.swipe = function( opts ){
 					touchEndTime = new Date().getTime();
 					var timeSpan = touchEndTime - touchStartTime;
 					//console.log( timeSpan );
-					currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-					var distance = currentX - originalX;
+					X2 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+					var distance = X2 - X0;
 					if( ( timeSpan<200||distance<-0.25*$$width||distance>0.25*$$width ) ){
 						if( distance<0 ){
 							$$currentOne++;
 							if( $$currentOne===$$length ){
 								$$currentOne = $$carousel?0:($$length-1);
 							}else{
-								//通知服务器用户浏览了哪张卡片。
-								//forceLog( param('act_f'),'card-'+$$currentOne );
-								//$$statistics.cards.push( $$currentOne );
-								//console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
+								
 							}
 						}else if( distance>0 ){
 							$$currentOne--;
 							if( $$currentOne===-1 ){
 								$$currentOne = $$carousel?($$length-1):0;
 							}else{
-								//通知服务器用户浏览了哪张卡片。
-								//forceLog( param('act_f'),'card-'+$$currentOne );
-								//$$statistics.cards.push( $$currentOne );
-								//console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
+
 							}
 						}
 					}

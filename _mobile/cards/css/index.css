@@ -3,6 +3,10 @@
   padding: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 ul {
   list-style: none;
 }
@@ -206,9 +210,9 @@ html {
 }
 .frame .content .honeycomb .HEXAGON:before {
   border-bottom: 0.3rem solid #ffffff;
-  top: -0.28rem;
+  top: -0.3rem;
 }
 .frame .content .honeycomb .HEXAGON:after {
   border-top: 0.3rem solid #ffffff;
-  bottom: -0.28rem;
+  bottom: -0.3rem;
 }

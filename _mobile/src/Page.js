@@ -28,7 +28,7 @@ class Page extends ZeactComponent {
 					{
 						ref: 'bg',
 						src: 'img/bg.png',
-						style: 'width: 100%'
+						style: 'width: 100%; display:block;'
 					}
 				),
 				createElement(
@@ -43,6 +43,10 @@ class Page extends ZeactComponent {
 							ref: 'swiperA',
 							items: self.props.items
 						}
+					),
+					createElement('p',
+						{ref: 'p'},
+						'退出'
 					)
 				),
 				createElement(
@@ -51,14 +55,11 @@ class Page extends ZeactComponent {
 						ref: 'maskA',
 						text: '确定退出吗？'
 					}
-				),
-				createElement('p',
-					{ref: 'p'},
-					'退出'
 				)
 			);
 		refs.p.addEventListener('click',function(){
 			//self.props.act({type:'EXIT'});
+			console.log(refs.maskA);
 			refs.maskA.obj.show();
 		})
 		return fragment;

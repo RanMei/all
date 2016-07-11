@@ -167,7 +167,7 @@ $(document).ready(function () {
 				maskA.show();
 			}
 		},
-		items: _data.arr
+		items: [0, 1, 2, 3]
 	});
 	//ZeactDOM.render( pageA,document.querySelector('body') );
 
@@ -494,19 +494,20 @@ var Page = function (_ZeactComponent) {
 			}, createElement('img', {
 				ref: 'bg',
 				src: 'img/bg.png',
-				style: 'width: 100%'
+				style: 'width: 100%; display:block;'
 			}), createElement('div', {
 				ref: 'content',
 				style: 'position:absolute; left:0; top:0; width: 100%; height:100%;'
 			}, createElement(_Swiper.Swiper, {
 				ref: 'swiperA',
 				items: self.props.items
-			})), createElement(_Mask.Mask, {
+			}), createElement('p', { ref: 'p' }, '退出')), createElement(_Mask.Mask, {
 				ref: 'maskA',
 				text: '确定退出吗？'
-			}), createElement('p', { ref: 'p' }, '退出'));
+			}));
 			refs.p.addEventListener('click', function () {
 				//self.props.act({type:'EXIT'});
+				console.log(refs.maskA);
 				refs.maskA.obj.show();
 			});
 			return fragment;
@@ -655,7 +656,7 @@ var Swiper = function (_ZeactComponent2) {
 			createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
 				return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
 			})));
-			// self.setWidth();
+
 			refs.pagination.children[self.currentOne].style.background = 'green';
 			_2._.forEach(refs.pagination.children, function (child, i) {
 				child.addEventListener('click', function () {
@@ -694,6 +695,14 @@ var Swiper = function (_ZeactComponent2) {
 				});
 				//self.go( self.currentOne );
 			});
+			setInterval(function () {
+				self.setWidth();
+				self.currentOne++;
+				if (self.currentOne >= self.length) {
+					self.currentOne = 0;
+				};
+				self.go(self.currentOne);
+			}, 2000);
 			window.addEventListener('resize', function () {
 				self.setWidth();
 				self.offset = -self.currentOne * self.width;
@@ -967,6 +976,7 @@ $.fn.swipe = function (opts) {
 
 	$(document).ready(function () {
 
+		// state
 		var $$currentOne = 0;
 		var $$target;
 		var $$switching = false;
@@ -1242,6 +1252,7 @@ $.fn.swipe = function (opts) {
 			var currentItemScale;
 			var otherItemScale;
 			var isDown;
+			var X0, X1, X2;
 			var originalX;
 			var prevX;
 			var currentX;
@@ -1326,9 +1337,8 @@ $.fn.swipe = function (opts) {
 						isDown = true;
 						touchStartTime = new Date().getTime();
 						//console.log(e.changedTouches[0].pageX)
-						originalX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-						Y1 = e.originalEvent.changedTouches[0].pageY;
-						prevX = originalX;
+						X0 = X1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+						Y1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
 						if ($$carousel === true) {
 							if ($$currentOne === $$length - 1) {
 								$$items.eq(0).appendTo($$train);
@@ -1340,11 +1350,12 @@ $.fn.swipe = function (opts) {
 				$$train.on("mousemove touchmove", function (e) {
 
 					if (isDown) {
-						currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-						Y2 = e.originalEvent.changedTouches[0].pageY;
+						X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+						Y2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
 						var distanceY = Y2 - Y1;
-						var distance = currentX - prevX;
-						prevX = currentX;
+						var distance = X2 - X1;
+						if (distanceY > distance) {}
+						X1 = X2;
 						//console.log(distance)
 						trainOffsetX += distance;
 						itemOffsetX += distance;
@@ -1384,30 +1395,20 @@ $.fn.swipe = function (opts) {
 						touchEndTime = new Date().getTime();
 						var timeSpan = touchEndTime - touchStartTime;
 						//console.log( timeSpan );
-						currentX = e.originalEvent.changedTouches[0].pageX || e.pageX || e.originalEvent.changedTouches[0].pageX;
-						var distance = currentX - originalX;
+						X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+						var distance = X2 - X0;
 						if (timeSpan < 200 || distance < -0.25 * $$width || distance > 0.25 * $$width) {
 							if (distance < 0) {
 								$$currentOne++;
 								if ($$currentOne === $$length) {
 									$$currentOne = $$carousel ? 0 : $$length - 1;
-								} else {
-									//通知服务器用户浏览了哪张卡片。
-									//forceLog( param('act_f'),'card-'+$$currentOne );
-									//$$statistics.cards.push( $$currentOne );
-									//console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
-								}
+								} else {}
 							} else if (distance > 0) {
-									$$currentOne--;
-									if ($$currentOne === -1) {
-										$$currentOne = $$carousel ? $$length - 1 : 0;
-									} else {
-										//通知服务器用户浏览了哪张卡片。
-										//forceLog( param('act_f'),'card-'+$$currentOne );
-										//$$statistics.cards.push( $$currentOne );
-										//console.log( $$currentOne,'card-'+arr[$$currentOne].bid );
-									}
-								}
+								$$currentOne--;
+								if ($$currentOne === -1) {
+									$$currentOne = $$carousel ? $$length - 1 : 0;
+								} else {}
+							}
 						}
 
 						// if( $$carousel===true&&$$currentOne===0 ){
