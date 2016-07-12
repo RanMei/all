@@ -8,23 +8,6 @@ html {
 body {
   background: #E1332D;
 }
-.btn {
-  color: #fff;
-  cursor: pointer;
-  display: block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 45px;
-  margin: 0 auto 2em;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  vertical-align: middle;
-  width: 100%;
-}
-.btn:hover {
-  text-decoration: none;
-}
 .btn-stroke {
   position: relative;
   width: 4rem;
@@ -78,59 +61,25 @@ body {
     stroke-dashoffset: 200;
   }
 }
-.btn-2 {
-  letter-spacing: 0;
+@-webkit-keyframes eclipse {
+  100% {
+    background: #e02c26;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    color: #ec817d;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #c2211c;
+  }
 }
-.btn-2:hover,
-.btn-2:active {
-  letter-spacing: 5px;
-}
-.btn-2:after,
-.btn-2:before {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border: 1px solid rgba(255, 255, 255, 0);
-  bottom: 0px;
-  content: " ";
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  -webkit-transition: all 280ms ease-in-out;
-  transition: all 280ms ease-in-out;
-  width: 0;
-}
-.btn-2:hover:after,
-.btn-2:hover:before {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-color: #fff;
-  -webkit-transition: width 350ms ease-in-out;
-  transition: width 350ms ease-in-out;
-  width: 70%;
-}
-.btn-2:hover:before {
-  bottom: auto;
-  top: 0;
-  width: 70%;
-}
-.btn-3 {
-  background: #e3403a;
-  border: 1px solid #da251f;
-  box-shadow: 0px 2px 0 #d6251f, 2px 4px 6px #e02a24;
-  font-weight: 900;
-  letter-spacing: 1px;
-  -webkit-transition: all 150ms linear;
-  transition: all 150ms linear;
-}
-.btn-3:hover {
-  background: #e02c26;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
-  color: #ec817d;
-  text-decoration: none;
-  text-shadow: -1px -1px 0 #c2211c;
-  -webkit-transition: all 250ms linear;
-  transition: all 250ms linear;
+@keyframes eclipse {
+  100% {
+    background: #e02c26;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    color: #ec817d;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #c2211c;
+  }
 }
 .btn-reflect {
   position: relative;
@@ -186,7 +135,7 @@ body {
   position: relative;
   width: 4rem;
   height: 1rem;
-  margin: 1rem;
+  margin: 1rem auto 1rem auto;
   line-height: 1rem;
   border: 1px solid white;
   font-size: 0.5rem;
@@ -292,66 +241,78 @@ body {
             transform: scale3d(1.3, 2, 0);
   }
 }
-.btn-5 {
-  width: 160px;
-  height: 45px;
-  margin: 50px;
-  font-size: 16px;
-  line-height: 45px;
-  color: white;
+.btn-2 {
+  display: block;
+  width: 4rem;
+  height: 1rem;
+  margin: 0 auto 1rem auto;
+  line-height: 1rem;
+  font-size: 0.5rem;
   text-align: center;
-  -webkit-animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-          animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  -webkit-animation: haha 2s infinite;
-          animation: haha 2s infinite;
+  color: white;
+  letter-spacing: 0;
+  -webkit-animation: word 1s infinite alternate;
+          animation: word 1s infinite alternate;
 }
-@-webkit-keyframes haha {
+.btn-2:before,
+.btn-2:after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 0;
+  width: 0;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-animation: line 1s infinite alternate;
+          animation: line 1s infinite alternate;
+}
+.btn-2:after {
+  bottom: 0;
+}
+@-webkit-keyframes word {
   0% {
-    border: 0 solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, 0.5);
-    outline-offset: 0px;
-    text-shadow: none;
-  }
-  99% {
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 2px #427388;
+    letter-spacing: 0;
   }
   100% {
-    border: 0 solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, 0.5);
-    outline-offset: 0px;
-    text-shadow: none;
+    letter-spacing: 0.2rem;
   }
 }
-@keyframes haha {
+@keyframes word {
   0% {
-    border: 0 solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, 0.5);
-    outline-offset: 0px;
-    text-shadow: none;
-  }
-  99% {
-    border: 1px solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
-    text-shadow: 1px 1px 2px #427388;
+    letter-spacing: 0;
   }
   100% {
-    border: 0 solid;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, 0.5);
-    outline-offset: 0px;
-    text-shadow: none;
+    letter-spacing: 0.2rem;
   }
+}
+@-webkit-keyframes line {
+  100% {
+    width: 80%;
+    border-color: white;
+  }
+}
+@keyframes line {
+  100% {
+    width: 80%;
+    border-color: white;
+  }
+}
+.btn-3 {
+  display: block;
+  width: 4rem;
+  height: 1rem;
+  margin: auto;
+  background: #e3403a;
+  color: white;
+  border: 1px solid #da251f;
+  box-shadow: 0px 2px 0 #d6251f, 2px 4px 6px #e02a24;
+  font-size: 0.5rem;
+  line-height: 1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+  -webkit-animation: eclipse 0.6s infinite alternate;
+          animation: eclipse 0.6s infinite alternate;
 }
