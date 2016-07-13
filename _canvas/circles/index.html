@@ -15,7 +15,7 @@
 	}
 	</style>
 	<script>
-	window.onload=function(){
+	window.addEventListener('DOMContentLoaded',function(){
 		
 		var $canvas = document.getElementById("mycanvas");
 		var $w = $canvas.width = window.innerWidth;
@@ -35,7 +35,7 @@
 		function Circle( x,y ){
 			this.x = x;
 			this.y = y;
-			this.r = Math.round(400*Math.random());
+			this.r = Math.round(200*Math.random());
 			this.alpha = 1;
 			this.color = 'rgba(200,30,200,1)';
 			this.tick = 0;
@@ -84,7 +84,7 @@
 			circles.push( new Circle( e.offsetX,e.offsetY ) );
 		});
 			
-	};
+	});
 		
 
 	</script>

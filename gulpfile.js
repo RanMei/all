@@ -29,6 +29,7 @@ gulp.task( 'start_server',function(){
 
 var LESS = [
 	{ name: 'less_mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
+	{ name: 'less-mobile-svg', src: './_mobile/svg/less/*.less', dest: './_mobile/svg/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
 	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },

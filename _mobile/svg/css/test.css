@@ -1,0 +1,113 @@
+@-webkit-keyframes stroke-half-900 {
+  0% {
+    stroke-dashoffset: -900;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@keyframes stroke-half-900 {
+  0% {
+    stroke-dashoffset: -900;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes dashing {
+  0% {
+    stroke-dashoffset: -628.31853072;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 628.31853072;
+  }
+}
+@keyframes dashing {
+  0% {
+    stroke-dashoffset: -628.31853072;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 628.31853072;
+  }
+}
+.test {
+  width: 1000px;
+  height: 500px;
+  background: black;
+}
+.test .line1 {
+  stroke: white;
+}
+.test .circle-1 {
+  stroke: red;
+  stroke-width: 5;
+  fill: orange;
+}
+.test .circle-red {
+  stroke: red;
+  stroke-width: 2;
+  stroke-dasharray: 314.15926536;
+  -webkit-animation: dashing 4s linear 0s infinite;
+          animation: dashing 4s linear 0s infinite;
+}
+.test .square {
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  stroke-dasharray: 450;
+  -webkit-animation: stroke-half-900 4s linear 0s infinite;
+          animation: stroke-half-900 4s linear 0s infinite;
+}
+.test .text-lannister {
+  stroke: yellow;
+}
+.test polyline {
+  stroke: white;
+}
+.svg-square {
+  padding: 20px;
+  background: black;
+}
+.svg-square .square-1 {
+  fill: none;
+  stroke: orange;
+  stroke-width: 1;
+}
+.spiral {
+  stroke: red;
+  stroke-width: 2;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  -webkit-animation: stroke 3s linear 0s infinite;
+          animation: stroke 3s linear 0s infinite;
+}
+.gameboy {
+  stroke: red;
+  stroke-width: 3;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  -webkit-animation: stroke 3s linear 0s infinite;
+          animation: stroke 3s linear 0s infinite;
+}
