@@ -8,18 +8,12 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 	<style>
 	* {margin:0;padding:0}
-	.canvasContainer {
-		margin: auto;
-		width: 5rem;
-		height: 3rem;
-		display: block;
-	}
 	canvas {
 		width: 100%;
-		height: 100%;
+		max-width: 1000px;
 	}
 	</style>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
+
 	<script type="text/javascript" src="../js/rem.js"></script>
 	<script>
 	window.onload=function(){
@@ -30,11 +24,11 @@
 		var $w,$h;
 		function initCanvas(){
 			$w = $canvas.width = 1000;
-			$h = $canvas.height = 600;
-			z.lineWidth=5;
+			$h = $canvas.height = 1000;
+			z.lineWidth = 15;
 		};
 		initCanvas();
-		$(window).on('resize',initCanvas);
+		//window.addEventListener('resize',initCanvas)
 		
 		var $hue = 360;
 		var $tick = 0;
@@ -75,7 +69,7 @@
 		
 		function render(){
 			window.requestAnimationFrame(render);
-			if( circles.length<10 ){
+			if( circles.length<50 ){
 				circles.push( new Circle( $w/2,$h/2/*Math.random()*$w,Math.random()*$h*/ ) );
 			};
 			z.globalCompositeOperation = 'source-over';
@@ -95,7 +89,10 @@
 		//setInterval(render,10);
 
 		mycanvas.addEventListener("mousedown",function(e){
-			circles.push( new Circle( e.offsetX,e.offsetY ) );
+			console.log(e)
+			var x = e.offsetX*1000/Number( document.defaultView.getComputedStyle( mycanvas ).width.replace(/px/,'') );
+			var y = e.offsetY*1000/Number( document.defaultView.getComputedStyle( mycanvas ).height.replace(/px/,'') );
+			circles.push( new Circle( x,y ) );
 		});
 			
 	};
@@ -106,11 +103,10 @@
 
 
 <body>
-	<div class="canvasContainer">
-		<canvas id="mycanvas">
 
-		</canvas>
-	</div>
+	<canvas id="mycanvas">
+
+	</canvas>
 
 
 </body>

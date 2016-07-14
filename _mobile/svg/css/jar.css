@@ -1,0 +1,124 @@
+body {
+  background: #d6e7f3;
+}
+.center {
+  height: 320px;
+  width: 320px;
+  margin: -160px 0 0 -160px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border: 1px solid black;
+}
+.center svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.center svg.logo {
+  position: absolute;
+  top: 123px;
+  left: 127px;
+  width: 68px;
+  height: 80px;
+}
+.center path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.center .logo path {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 900;
+  -webkit-animation: londing1 4s linear 0s infinite;
+  animation: londing1 4s linear 0s infinite;
+}
+.center .square path {
+  stroke-dasharray: 450;
+  -webkit-animation: londing1 4s linear 0s infinite;
+  animation: londing1 4s linear 0s infinite;
+}
+.center .svg2 path {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  -webkit-animation: londing2 3s linear 0s infinite;
+          animation: londing2 3s linear 0s infinite;
+}
+.center .svg3 path {
+  stroke-dasharray: 230;
+  stroke-dashoffset: 230;
+  -webkit-animation: londing3 2s linear 0s infinite;
+          animation: londing3 2s linear 0s infinite;
+}
+@-webkit-keyframes londing1 {
+  0% {
+    stroke-dashoffset: -900;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@keyframes londing1 {
+  0% {
+    stroke-dashoffset: -900;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@-webkit-keyframes londing2 {
+  0% {
+    stroke-dashoffset: 340;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -340;
+  }
+}
+@keyframes londing2 {
+  0% {
+    stroke-dashoffset: 340;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -340;
+  }
+}
+@-webkit-keyframes londing3 {
+  0% {
+    stroke-dashoffset: -230;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 230;
+  }
+}
+@keyframes londing3 {
+  0% {
+    stroke-dashoffset: -230;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 230;
+  }
+}

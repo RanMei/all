@@ -103,3 +103,9 @@ app.post('/getItem',function(req,res){
 app.listen(port,function(){
 	console.log( 'Server running at '+port+'.' );
 });
+
+process.on('exit',function(){
+	console.log('exit current');
+})
+
+// process.exit();
