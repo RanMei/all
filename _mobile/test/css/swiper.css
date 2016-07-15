@@ -1,41 +1,62 @@
-* {margin: 0;padding: 0;}
-ul {list-style: none;}
-
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: 'Microsoft Yahei';
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
 .swiper {
   position: relative;
-  width: 600px;
-  height: 400px;
+  width: 80%;
   margin: 20px auto 0 auto;
   overflow: hidden;
+  background: lightgrey;
   box-shadow: 15px 15px 35px grey;
 }
 .swiper .train {
-  position: absolute;
-  width: 500%;
-  height: 100%;
+  width: 10000px;
 }
-.swiper .train > li {
+.swiper .train .item {
   position: relative;
-  width: 600px;
-  height: 100%;
   float: left;
+  z-index: 5;
 }
-.swiper .train > li p {
+.swiper .train .item p {
   position: absolute;
   left: 0;
-  bottom: 10px;
+  bottom: 0.1rem;
   width: 100%;
-  font-size: 150%;
+  font-size: 0.4rem;
   color: white;
-  z-index: 1;
   text-align: center;
+  z-index: 5;
+}
+.swiper .train .item img {
+  width: 100%;
+}
+.swiper .tabs li {
+  width: 0.2rem;
+  height: 0.2rem;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: white;
+  float: left;
+  margin: 0.1rem;
+  opacity: 0.5;
+  cursor: pointer;
 }
 .swiper .prev {
   position: absolute;
   left: 10px;
   bottom: 0px;
   cursor: pointer;
-  font-size: 300%;
+  font-size: 0.3rem;
   color: white;
   z-index: 1;
 }
@@ -47,7 +68,7 @@ ul {list-style: none;}
   right: 10px;
   bottom: 0px;
   cursor: pointer;
-  font-size: 300%;
+  font-size: 0.3rem;
   color: white;
   z-index: 1;
 }
@@ -57,27 +78,9 @@ ul {list-style: none;}
 .swiper .tabs {
   position: absolute;
 }
-.swiper .tabs > li {
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
-  border-radius: 50%;
-  background: white;
-  float: left;
-  margin-right: 10px;
-  opacity: 0.5;
-  cursor: pointer;
-}
 .swiper .tabs > li.active {
   background: orange;
   opacity: 1;
-}
-.swiper .shade {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 0 50px 45px;
 }
 .swiper .runtime {
   position: absolute;

@@ -8,28 +8,35 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.css">
 	
-	<script src="../js/jquery.min.js"></script>
-	<script src="../src/z.swiper.js"></script>
 </head>
 
 <body>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('.swiper').swipe({
-			mode: 'slider'
-		});
-	});
-	</script>
+
 	<!-- A slider. -->
 	<div class="swiper">
 		<ul class="train">
-			<li class="item" style="background: url(images/slider/1.jpg) center;"><p>1 Ned Stark</p></li>
-			<li class="item" style="background: url(images/slider/2.jpg) center;"><p>2 Jaime Lannister</p></li>
-			<li class="item" style="background: url(images/slider/3.jpg) center;"><p>3 Winter Soldier</p></li>
-			<li class="item" style="background: url(images/slider/4.jpg) center;"><p>4 Captain America</p></li>
-			<li class="item" style="background: url(images/slider/5.jpg) center;"><p>5 James Bond</p></li>
+			<li class="item">
+				<img src="images/slider/1.jpg"/>
+				<p>1 Ned Stark</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/2.jpg"/>
+				<p>2 Jaime Lannister</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/3.jpg"/>
+				<p>3 Winter Soldier</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/4.jpg"/>
+				<p>4 Captain America</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/5.jpg"/>
+				<p>5 James Bond</p>
+			</li>
 		</ul>
 		<div class="prev"><i class="fa fa-angle-left"></i></div>
 		<div class="next"><i class="fa fa-angle-right"></i></div>
@@ -40,8 +47,16 @@
 		</ul>
 	</div>
 
-	
-	
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../src/rem.js"></script>
+<script src="../src/z.swiper.js"></script>	
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.swiper').swipe({
+		mode: 'touch'
+	});
+});
+</script>
 	
 	
 	

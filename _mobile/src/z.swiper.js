@@ -15,18 +15,46 @@ $.fn.swipe = function( opts ){
 	var $$width		= $$swiper.width(),
 		$$height	= $$items.height(),//$$swiper.height(),
 		$$length	= $$items.length;
-	
+		$$last		= $$length-1;
+
 	$(document).ready(function(){
 		
 		// state
 		var $$currentOne	= 0;
 		var $$target;
 		var $$switching		= false;
+
+		var state = {
+			currentOne: 0,
+			switching: false,
+			X0: null,
+			X1: null,
+			X2: null,
+			Y1: null,
+			Y2: null
+		}
+
+		var config = {
+			mode: 'slider',
+			direction: 'horizontal',
+			autoplay: false,
+			carousel: false,
+			sticky: true,
+			interval: 4000,
+			duration: 300,
+			keyControll: true,
+			wheelControll: true
+		}
+
+		for( key in opts ){
+			config[key] = opts[key];
+		}
+
 		// Configuration.
 		var $$mode			= opts.mode			|| "slider",
 			$$direction		= opts.direction	|| "horizontal",
 			$$autoplay		= opts.autoplay		|| false,
-			$$carousel		= opts.carousel		|| false,
+			$$carousel		= opts.carousel		|| true,
 			$$sticky		= opts.sticky		|| true,
 			$$interval		= opts.interval		|| 4000,
 			$$duration		= opts.duration		|| 300;
@@ -48,6 +76,7 @@ $.fn.swipe = function( opts ){
 			});
 			$$renderTabs();
 		}
+		$$init();
 		$(window).on( 'resize',$$init );
 
 		function $$renderTabs(){
@@ -302,46 +331,24 @@ $.fn.swipe = function( opts ){
 			$$items.eq(0).removeClass('inactive');
 
 			function toCard( i ){
-				//console.log($$width);
-				$$items.css({transition:$$duration/1000+'s'});
-				$$items.addClass('inactive');
-				$$items.eq(i).removeClass('inactive');
 				$$train.css({
 					transition: '0.3s',
-					transform: 'translate3d('+(-i*$$width)+'px,0,0)'
+					transform: 'translate3d('+  (-i*$$width)  +'px,0,0)'
 				});
-				// $$items.eq( $$currentOne ).css({
-				// 	transform: ''
-				// });
-				// $$items.eq( $$currentOne-1 ).css({
-				// 	transition: '0.3s',
-				// 	transform: 'scale(0.8)'
-				// })
-				$('.HEXAGON').removeClass('active');
-				$('.HEXAGON').eq( $$currentOne ).addClass('active');
 				$$renderTabs();
 				setTimeout(function(){
 					currentItemScale = 1;
 					otherItemScale = 0.8;				
 					$$switching = false;
 				},$$duration);
-				// $$train.animate( {
-				// 	left:(-i*$$width)
-				// },$$duration,function(){
-				// 	$$renderTabs();
 
-				// 	$('.HEXAGON').removeClass('active');
-				// 	$('.HEXAGON').eq( $$currentOne ).addClass('active');
-
-				// 	$$switching = false;
-				// } );
 			}
 			$$train.on("mousedown touchstart",function(e){
 
-				if( true ){
+				if( !$$switching ){
 					scrollPrevented = false;
 					trainOffsetX = -$$currentOne*$$width;
-					$$switching = true;
+					
 					//e.preventDefault();
 					isDown = true;
 					touchStartTime = new Date().getTime();
@@ -351,7 +358,17 @@ $.fn.swipe = function( opts ){
 					if( $$carousel===true ){
 						if( $$currentOne===$$length-1 ){
 							$$items.eq(0).appendTo($$train);
-							$$train.css({left:'+='+$$width+'px'});
+							$$train.css({
+								transition: '0s',
+								'padding-left': $$width+'px'
+							})
+						}else if( $$currentOne===0 ){
+							$$items.eq( $$last ).prependTo( $$train );
+							trainOffsetX = -$$width;
+							$$train.css({
+								transition: '0s',
+								transform: 'translate3d('+trainOffsetX+'px,0,0)'
+							})
 						}
 					}
 				};
@@ -408,45 +425,114 @@ $.fn.swipe = function( opts ){
 			});
 			$$train.on("mouseup mouseleave touchend",function(e){
 				if( isDown ){
-					touchEndTime = new Date().getTime();
-					var timeSpan = touchEndTime - touchStartTime;
-					//console.log( timeSpan );
-					X2 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
-					var distance = X2 - X0;
-					if( ( timeSpan<200||distance<-0.25*$$width||distance>0.25*$$width ) ){
-						if( distance<0 ){
-							$$currentOne++;
-							if( $$currentOne===$$length ){
-								$$currentOne = $$carousel?0:($$length-1);
-							}else{
-								
+					if(!$$switching){
+						$$switching = true;
+						touchEndTime = new Date().getTime();
+						var timeSpan = touchEndTime - touchStartTime;
+						//console.log( timeSpan );
+						X2 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+						var distance = X2 - X0;
+						
+						if( $$carousel===false ){
+							if( distance<0 ){
+								$$currentOne = $$currentOne===$$last? $$last:$$currentOne+1 ;
+							}else if( distance>0 ){
+								$$currentOne = $$currentOne===0? 0:$$currentOne-1;
 							}
-						}else if( distance>0 ){
-							$$currentOne--;
-							if( $$currentOne===-1 ){
-								$$currentOne = $$carousel?($$length-1):0;
+							toCard( $$currentOne );
+							isDown = false;
+						}else{
+							if( true||( timeSpan<200||distance<-0.25*$$width||distance>0.25*$$width ) ){
+								if( distance<0 ){
+									//$$target = $$currentOne===$$length-1? 0:$$currentOne++ ;
+									$$currentOne++;
+									if( $$currentOne===$$length ){
+										$$currentOne = 0;
+									}
+									state.switching = 'toNext';
+								}else if( distance>0 ){
+									//$$target = $$currentOne===0? $$length-1:$$currentOne--;
+									$$currentOne--;
+									if( $$currentOne===-1 ){
+										$$currentOne = $$length-1;
+									}
+									state.switching = 'toPrev';
+								}
+							}
+							console.log($$currentOne)
+							if( $$carousel===true&&$$currentOne===0&&distance<0 ){
+								$$renderTabs();
+								trainOffsetX = -$$length*$$width;
+								$$train.css({
+									transition: '0.3s',
+									transform: 'translate3d('+trainOffsetX+'px,0,0)'
+								})
+								setTimeout(function(){
+									$$items.eq(0).prependTo( $$train );
+									trainOffsetX = 0;
+									$$train.css({
+										transition: '0s',
+										transform: 'translate3d('+trainOffsetX+'px,0,0)',
+										'padding-left': '0px'
+									})
+								},300);
+							}else if( $$carousel===true&&$$currentOne===$$length-2&&distance>0 ){
+								$$renderTabs();
+								trainOffsetX = -($$length-2)*$$width;
+								$$train.css({
+									transition: '0.3s',
+									transform: 'translate3d('+trainOffsetX+'px,0,0)'
+								})
+								setTimeout(function(){
+									$$items.eq(0).prependTo( $$train );
+									$$train.css({
+										transition: '0s',
+										'padding-left': '0px'
+									})
+								},300);				
+							}else if( $$carousel===true&&$$currentOne===$$last&&distance>0 ){
+								trainOffsetX = 0;
+								$$train.css({
+									transition: '0.3s',
+									transform: 'translate3d('+trainOffsetX+'px,0,0)'
+								})
+								setTimeout(function(){
+									$$items.eq( $$last ).appendTo( $$train );
+									trainOffsetX = -($$length-1)*$$width;
+									$$train.css({
+										transition: '0s',
+										transform: 'translate3d('+trainOffsetX+'px,0,0)'
+									})
+								},300);
+							}else if( $$carousel===true&&$$currentOne===1&&state.switching==='toNext' ){
+								trainOffsetX = -2*$$width;
+								$$train.css({
+									transition: '0.3s',
+									transform: 'translate3d('+trainOffsetX+'px,0,0)'
+								})
+								setTimeout(function(){
+									$$items.eq( $$last ).appendTo( $$train );
+									trainOffsetX = -$$width;
+									$$train.css({
+										transition: '0s',
+										transform: 'translate3d('+trainOffsetX+'px,0,0)'
+									})
+								},300);
 							}else{
-
+								toCard( $$currentOne );
+								isDown = false;
 							}
 						}
+						setTimeout(function(){
+							$$switching = false;
+						},300)
 					}
 
-					// if( $$carousel===true&&$$currentOne===0 ){
-					// 	$$train.animate( 
-					// 		{left:-($$length-1)*$$width},
-					// 		$$duration,
-					// 		function(){
-					// 			$$items.eq(0).prependTo($$train);
-					// 			$$train.css({left:0});
-					// 			$$renderTabs();
-					// 			$$switching = false;
-					// 		}
-					// 	 )
-					// };
-					//console.log( $$currentOne );
-					//console.log( toCard );
-					toCard( $$currentOne );
-					isDown = false;
+
+
+					
+					
+					
 				};
 			});
 			function next(){
@@ -488,19 +574,9 @@ $.fn.swipe = function( opts ){
 			$$swiper.find(".next").on("click",next);
 			$$swiper.find(".prev").on("click",prev);
 
-			var hexagons = $('.HEXAGON');
-			hexagons.on('click',function(){
+			$$tabs.on('click',function(){
 				if( true ){
-					//switching = true;
-					//for jQuery
-					var i = $(this).index('.HEXAGON');
-					//通知服务器用户点击了哪个六边形。
-					//forceLog( param('act_f'),'hexagon-'+i );
-					//$$statistics.hexagons.push(i);
-					console.log( i,'hexagon-'+i );
-					hexagons.removeClass('active');
-					$(this).addClass('active');
-					$$currentOne = i;
+					$$currentOne = $(this).index();
 					toCard( $$currentOne );
 				}
 			})

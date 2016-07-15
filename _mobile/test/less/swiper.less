@@ -1,0 +1,99 @@
+* {margin: 0;padding: 0;}
+
+html {
+	font-family: 'Microsoft Yahei';
+}
+
+ul {list-style: none;}
+
+img {display: block;}
+
+.swiper {
+	position: relative;
+	width: 80%;
+	margin: 20px auto 0 auto;
+	overflow: hidden;
+	background: lightgrey;
+	box-shadow: 15px 15px 35px grey;
+	.train {
+		width: 10000px;
+		//overflow: hidden;
+		.item {
+			position: relative;
+			float: left; z-index: 5;
+			//width: 20%;
+			p {
+				position: absolute; left: 0; bottom: 0.1rem;
+				width: 100%;
+				font-size: 0.4rem; color: white; text-align: center;
+				z-index: 5;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+	.tabs {
+		li {
+			width: 0.2rem; height: 0.2rem;
+			border: 1px solid black;
+			border-radius: 50%;
+			background: white;
+			float: left;
+			margin: 0.1rem;
+			opacity: 0.5;
+			cursor: pointer;
+		}
+	}
+}
+
+
+.swiper .prev {
+	position: absolute;
+	left: 10px;
+	bottom: 0px;
+	cursor: pointer;
+	font-size: 0.3rem;
+	color: white;
+	z-index: 1;
+}
+.swiper .prev:hover {
+	color: orange;
+}
+.swiper .next {
+	position: absolute;
+	right: 10px;
+	bottom: 0px;
+	cursor: pointer;
+	font-size: 0.3rem;
+	color: white;
+	z-index: 1;
+}
+.swiper .next:hover {
+	color: orange;
+}
+.swiper .tabs {
+	position: absolute;
+}
+.swiper .tabs > li {
+
+}
+.swiper .tabs > li.active {
+	background: orange;
+	opacity: 1;
+}
+// .swiper .shade {
+// 	position: absolute;
+// 	left: 0;
+// 	bottom: 0;
+// 	width: 100%;
+// 	box-shadow: 0 0 50px 45px;
+// }
+.swiper .runtime {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 6px;
+	background: orange;
+}
