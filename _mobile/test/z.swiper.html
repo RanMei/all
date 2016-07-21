@@ -47,13 +47,88 @@
 		</ul>
 	</div>
 
+	<!-- A slider. -->
+	<div class="swiper1">
+		<ul class="train">
+			<li class="item">
+				<img src="images/slider/1.jpg"/>
+				<p>1 Ned Stark</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/2.jpg"/>
+				<p>2 Jaime Lannister</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/3.jpg"/>
+				<p>3 Winter Soldier</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/4.jpg"/>
+				<p>4 Captain America</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/5.jpg"/>
+				<p>5 James Bond</p>
+			</li>
+		</ul>
+		<div class="prev"><i class="fa fa-angle-left"></i></div>
+		<div class="next"><i class="fa fa-angle-right"></i></div>
+		<div class="shade"></div>
+		<div class="runtime"></div>
+		<ul class="tabs">
+			<li class="active"></li><li></li><li></li><li></li><li></li>
+		</ul>
+	</div>
+
+	<!-- A slider. -->
+	<div class="swiper2">
+		<ul class="train">
+			<li class="item">
+				<img src="images/slider/1.jpg"/>
+				<p>1 Ned Stark</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/2.jpg"/>
+				<p>2 Jaime Lannister</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/3.jpg"/>
+				<p>3 Winter Soldier</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/4.jpg"/>
+				<p>4 Captain America</p>
+			</li>
+			<li class="item">
+				<img src="images/slider/5.jpg"/>
+				<p>5 James Bond</p>
+			</li>
+		</ul>
+		<div class="prev"><i class="fa fa-angle-left"></i></div>
+		<div class="next"><i class="fa fa-angle-right"></i></div>
+		<div class="shade"></div>
+		<div class="runtime"></div>
+		<ul class="tabs">
+			<li class="active"></li><li></li><li></li><li></li><li></li>
+		</ul>
+	</div>
+
 <script src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../src/rem.js"></script>
 <script src="../src/z.swiper.js"></script>	
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.swiper').swipe({
-		mode: 'touch'
+		mode: 'touch',
+		carousel: false
+	});
+	$('.swiper1').swipe({
+		mode: 'touch',
+		carousel: true
+	});
+	$('.swiper2').swipe({
+		mode: 'slider',
+		carousel: false
 	});
 });
 </script>

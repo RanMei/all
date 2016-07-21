@@ -1,4 +1,7 @@
-* {margin: 0;padding: 0;}
+* {
+	margin: 0; padding: 0;
+	-webkit-tap-highlight-color: transparent;
+}
 
 html {
 	font-family: 'Microsoft Yahei';
@@ -8,10 +11,10 @@ ul {list-style: none;}
 
 img {display: block;}
 
-.swiper {
+.swiper,.swiper1,.swiper2 {
 	position: relative;
 	width: 80%;
-	margin: 20px auto 0 auto;
+	margin: 40px auto 0 auto;
 	overflow: hidden;
 	background: lightgrey;
 	box-shadow: 15px 15px 35px grey;
@@ -25,7 +28,7 @@ img {display: block;}
 			p {
 				position: absolute; left: 0; bottom: 0.1rem;
 				width: 100%;
-				font-size: 0.4rem; color: white; text-align: center;
+				font-size: 0.4rem; color: white; text-align: center; text-shadow: 5px 5px 5px orange;
 				z-index: 5;
 			}
 			img {
@@ -34,6 +37,7 @@ img {display: block;}
 		}
 	}
 	.tabs {
+		position: absolute;
 		li {
 			width: 0.2rem; height: 0.2rem;
 			border: 1px solid black;
@@ -44,44 +48,37 @@ img {display: block;}
 			opacity: 0.5;
 			cursor: pointer;
 		}
+		li.active {
+			background: orange;
+			opacity: 1;
+		}
+	}
+	.prev {
+		position: absolute;
+		left: 10px;
+		bottom: 0px;
+		cursor: pointer;
+		font-size: 0.3rem;
+		color: white;
+		z-index: 1;
+		&:hover {
+			color: orange;
+		}
+	}
+	.next {
+		position: absolute;
+		right: 10px;
+		bottom: 0px;
+		cursor: pointer;
+		font-size: 0.3rem;
+		color: white;
+		z-index: 1;
+		&:hover {
+			color: orange;
+		}
 	}
 }
 
-
-.swiper .prev {
-	position: absolute;
-	left: 10px;
-	bottom: 0px;
-	cursor: pointer;
-	font-size: 0.3rem;
-	color: white;
-	z-index: 1;
-}
-.swiper .prev:hover {
-	color: orange;
-}
-.swiper .next {
-	position: absolute;
-	right: 10px;
-	bottom: 0px;
-	cursor: pointer;
-	font-size: 0.3rem;
-	color: white;
-	z-index: 1;
-}
-.swiper .next:hover {
-	color: orange;
-}
-.swiper .tabs {
-	position: absolute;
-}
-.swiper .tabs > li {
-
-}
-.swiper .tabs > li.active {
-	background: orange;
-	opacity: 1;
-}
 // .swiper .shade {
 // 	position: absolute;
 // 	left: 0;

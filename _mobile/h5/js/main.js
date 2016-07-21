@@ -119,10 +119,11 @@ $( document ).ready(function(){
 	$( window ).on("DOMMouseScroll mousewhell keydown",function(e){
 		//e = e || window.event;
 		//console.log(e.originalEvent.keyCode)
-		if( e.detail>0||e.wheelDelta<0||e.originalEvent.keyCode===40 ){
+		e = e.originalEvent;
+		if( e.detail>0||e.wheelDelta<0||e.keyCode===40 ){
 			toNext();
 		}else
-		if( e.detail<0||e.wheelDelta>0||e.originalEvent.keyCode===38 ){
+		if( e.detail<0||e.wheelDelta>0||e.keyCode===38 ){
 			toPrev();
 		};
 	});

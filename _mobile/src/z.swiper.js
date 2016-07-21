@@ -54,7 +54,7 @@ $.fn.swipe = function( opts ){
 		var $$mode			= opts.mode			|| "slider",
 			$$direction		= opts.direction	|| "horizontal",
 			$$autoplay		= opts.autoplay		|| false,
-			$$carousel		= opts.carousel		|| true,
+			$$carousel		= opts.carousel		|| false,
 			$$sticky		= opts.sticky		|| true,
 			$$interval		= opts.interval		|| 4000,
 			$$duration		= opts.duration		|| 300;
@@ -94,111 +94,54 @@ $.fn.swipe = function( opts ){
 		});	
 		
 		if( $$mode==="slider" ){
-			if( $$direction==="horizontal" ){
 
-			}else if( $$direction==="vertical" ){
-				$$train.css({
-					width: '100%'
-				});
-				$$items.css({
-					float: ''
-				});
-
-			}
-
-			//-------------------------------------------------------------------
-			
 			/**
 			 * @param {number} i [description]
 			 */			
 			function to( i ){
-				// $$train.animate(
-				// 	$$direction==="horizontal"?
-				// 	{left:-i*$$width}:
-				// 	{top:-i*$$height},
-				// 	$$duration,
-				// 	callback
-				// );
+				$$renderTabs();
 				$$train.css({
 					transition: $$duration/1000+'s ease',
 					transform: 'translate3d('+(-i*$$width)+'px,0,0)'
 				})
 				setTimeout(callback,$$duration);
 				function callback() {
-					$$renderTabs();
-					$$switching=false;
+					$$switching = false;
 				}
 				// $$currentOne = $$target;
 			}
 
 			function next(){
 				if( !$$switching ){
-					$$switching=true;
-					if( $$mode==="slider" ){
+					$$switching = true;
 						
-						// $$target = $$currentOne + 1;
-						// if( $$target<=$$length-1 ){
-						// 	to( $$target );
-						// };
-						// if( $$target===$$length ){
-						// 	$$target = 0;
-						// };
-						
-						//$$runtime.stop().css(  {width:0}  );
-						//run();
-						
-						// if current one is not the last one
-						if( $$currentOne < $$length-1 ){
-							$$currentOne++;
-							to( $$currentOne );
-						// else if the current one is the last one
-						}else if( $$currentOne===$$length-1 ){
-							$$items.eq(0).appendTo( $$train );
+					// if current one is not the last one
+					if( $$currentOne < $$length-1 ){
+						$$currentOne++;
+						to( $$currentOne );
+					// else if the current one is the last one
+					}else if( $$currentOne===$$length-1 ){
+						$$currentOne = 0;
+						$$renderTabs();
+						$$items.eq(0).appendTo( $$train );
+						$$train.css({
+							transition: '0s',
+							transform: 'translate3d(-'+($$length-2)*$$width+'px,0,0)'	
+						});
+						setTimeout(function(){
 							$$train.css({
-								transition: '0s',
-								transform: 'translate3d(-'+($$length-2)*$$width+'px,0,0)'	
-							});
+								transition: $$duration/1000+'s',
+								transform: 'translate3d(-'+($$length-1)*$$width+'px,0,0)'
+							})
 							setTimeout(function(){
+								$$items.eq(0).prependTo( $$train );
 								$$train.css({
-									transition: $$duration/1000+'s',
-									transform: 'translate3d(-'+($$length-1)*$$width+'px,0,0)'
+									transition: '0s',
+									transform: 'translate3d(0,0,0)'
 								})
-								setTimeout(function(){
-									$$items.eq(0).prependTo( $$train );
-									$$train.css({
-										transition: '0s',
-										transform: 'translate3d(0,0,0)'
-									})
-									$$currentOne = 0;
-									$$renderTabs();
-									$$switching = false;
-								},$$duration);
-							},20);
-							// $$items.eq(0).appendTo( $$train );
-							// // $$train.css(
-							// // 	$$direction==="horizontal"?
-							// // 	{left:"+="+$$width+"px"}:
-							// // 	{top:"+="+$$height+"px"}
-							// // );
-							// // $$train.animate(
-							// // 	$$direction==="horizontal"?
-							// // 	{left:"-="+$$width+"px"}:
-							// // 	{top:"-="+$$height+"px"},
-							// // 	$$duration,
-							// // 	callback 
-							// // );
-							// function callback(){
-							// 	$$train.css(
-							// 		$$direction==="horizontal"?
-							// 		{left:0}:
-							// 		{top:0}
-							// 	);
-							// 	$$items.eq(0).prependTo( $$train );
-							// 	$$currentOne = 0;
-							// 	$$renderTabs();
-							// 	$$switching = false;
-							// }
-						}
+								$$switching = false;
+							},$$duration);
+						},20);
 					};				
 				};
 			};
@@ -206,59 +149,33 @@ $.fn.swipe = function( opts ){
 			function prev(){
 				if( !$$switching ){
 					$$switching = true;
-					if( $$mode==="slider" ){
-						//$$runtime.stop().animate(  {"width":"0px"},0  );
-						if( $$currentOne>0 ){
-							$$currentOne--;
-							to( $$currentOne );
-						}else if( $$currentOne===0 ){
-							// function callback(){
-							// 	$$items.eq(-1).appendTo(  $$train  );
-							// 	$$train.css(
-							// 		$$direction==="horizontal"?
-							// 		{left:"-"+ ($$length-1)*$$width +"px"}:
-							// 		{top:"-"+ ($$length-1)*$$height +"px"}
-							// 	);
-							// 	$$currentOne = ($$length-1);
-							// 	$$renderTabs();
-							// 	$$switching = false;
-							// }
-							
-							// $$items.eq(-1).prependTo( $$train );
-							// $$train.css(
-							// 	$$direction==="horizontal"?
-							// 	{left:"-="+$$width+"px"}:
-							// 	{top:"-="+$$height+"px"}
-							// );
-							// $$train.animate(
-							// 	$$direction==="horizontal"?
-							// 	{left:"+="+$$width+"px"}:
-							// 	{top:"+="+$$height+"px"},
-							// 	$$duration,
-							// 	callback
-							// );
-							$$items.eq(-1).prependTo( $$train );
+
+					//$$runtime.stop().animate(  {"width":"0px"},0  );
+					if( $$currentOne>0 ){
+						$$currentOne--;
+						to( $$currentOne );
+					}else if( $$currentOne===0 ){
+						$$currentOne = $$length-1;
+						$$renderTabs();
+						$$items.eq(-1).prependTo( $$train );
+						$$train.css({
+							transition: '0s',
+							transform: 'translate3d('+(-$$width)+'px,0,0)'	
+						});
+						setTimeout(function(){
 							$$train.css({
-								transition: '0s',
-								transform: 'translate3d('+(-$$width)+'px,0,0)'	
-							});
+								transition: $$duration/1000+'s',
+								transform: 'translate3d(0,0,0)'
+							})
 							setTimeout(function(){
+								$$items.eq(-1).appendTo( $$train );
 								$$train.css({
-									transition: $$duration/1000+'s',
-									transform: 'translate3d(0,0,0)'
+									transition: '0s',
+									transform: 'translate3d(-'+($$length-1)*$$width+'px,0,0)'
 								})
-								setTimeout(function(){
-									$$items.eq(-1).appendTo( $$train );
-									$$train.css({
-										transition: '0s',
-										transform: 'translate3d(-'+($$length-1)*$$width+'px,0,0)'
-									})
-									$$currentOne = $$length-1;
-									$$renderTabs();
-									$$switching = false;
-								},$$duration);
-							},20);
-						}
+								$$switching = false;
+							},$$duration);
+						},20);
 					};
 				};
 			};
@@ -285,26 +202,13 @@ $.fn.swipe = function( opts ){
 			$$tabs.on("click",jump);
 			//run();
 			
-			var X1,X2,Y1,Y2;
-			// $$train.on("mousedown touchstart",function(e){
-			// 	X1 = e.pageX;
-			// 	Y1 = e.pageY;
-			// });
-			// $$train.on("mouseup mouseleave touchend",function(e){
-			// 	X2 = e.pageX;
-			// 	Y2 = e.pageY;
-			// 	if( $$direction==="horizontal" ){
-			// 		X2<X1?next():prev();
-			// 	};
-			// 	if( $$direction==="vertical" ){
-			// 		Y2<Y1?next():prev();
-			// 	};
-			// });
 			$$train.on("mousewheel DOMMouseScroll",function(e){
 				e.preventDefault();
-				if( e.originalEvent.detail>0 ){
+				e = e.originalEvent;
+				if( e.detail>0||e.wheelDelta<0||e.keyCode===40 ){
 					next();
-				}else{
+				}else
+				if( e.detail<0||e.wheelDelta>0||e.keyCode===38 ){
 					prev();
 				};
 			});
@@ -326,6 +230,8 @@ $.fn.swipe = function( opts ){
 			var touchStartTime,touchEndTime;
 			var Y1, Y2;
 			var scrollPrevented = false;
+			var scrolling = false;
+			var moveCount = 0;
 
 			$$items.addClass('inactive');
 			$$items.eq(0).removeClass('inactive');
@@ -341,61 +247,65 @@ $.fn.swipe = function( opts ){
 					otherItemScale = 0.8;				
 					$$switching = false;
 				},$$duration);
-
 			}
-			$$train.on("mousedown touchstart",function(e){
 
+			$$train.on("touchstart",function(e){
+
+				//e.preventDefault();
 				if( !$$switching ){
-					scrollPrevented = false;
+					moveCount = 0;
+					scrolling = false;
 					trainOffsetX = -$$currentOne*$$width;
-					
-					//e.preventDefault();
 					isDown = true;
 					touchStartTime = new Date().getTime();
-					//console.log(e.changedTouches[0].pageX)
+					
 					X0 = X1 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
 					Y1 = e.originalEvent? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
+					
 					if( $$carousel===true ){
-						if( $$currentOne===$$length-1 ){
-							$$items.eq(0).appendTo($$train);
-							$$train.css({
-								transition: '0s',
-								'padding-left': $$width+'px'
-							})
-						}else if( $$currentOne===0 ){
+						if( $$currentOne===0 ){
 							$$items.eq( $$last ).prependTo( $$train );
 							trainOffsetX = -$$width;
 							$$train.css({
 								transition: '0s',
 								transform: 'translate3d('+trainOffsetX+'px,0,0)'
 							})
+						}else if( $$currentOne===$$last ){
+							$$items.eq(0).appendTo($$train);
+							$$train.css({
+								transition: '0s',
+								'padding-left': $$width+'px'
+							})
 						}
 					}
 				};
 			});
-			$$train.on("mousemove touchmove",function(e){
+			$$train.on("touchmove",function(e){
 				
 				if( isDown ){
 					X2 = e.originalEvent? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
 					Y2 = e.originalEvent? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
 					var distanceY = Y2 - Y1;
 					var distance = X2 - X1;
-					if( distanceY>distance ){
-
-					}
 					X1 = X2;
-					//console.log(distance)
+
+					moveCount++;
+					if( moveCount===1 ){
+						if( Math.abs(distance)<Math.abs(distanceY) ){
+							scrolling = true;
+						}
+					}
+
 					trainOffsetX += distance;
 					itemOffsetX += distance;
 					currentItemScale += 0.2*distance/$$width;
 					otherItemScale = (otherItemScale!==1)?(0.8+( 0.2*Math.abs(itemOffsetX)/$$width )):1;
-					//console.log(currentItemScale)
 
 		
-					if( !scrollPrevented&&Math.abs(distance)<Math.abs(distanceY) ){
+					if( scrolling ){
 						
 					}else{
-						e.preventDefault();
+						//e.preventDefault();
 						scrollPrevented = true;
 						if( $$sticky ){
 							//The train will move.
@@ -425,7 +335,7 @@ $.fn.swipe = function( opts ){
 			});
 			$$train.on("mouseup mouseleave touchend",function(e){
 				if( isDown ){
-					if(!$$switching){
+					if(!$$switching&&!scrolling){
 						$$switching = true;
 						touchEndTime = new Date().getTime();
 						var timeSpan = touchEndTime - touchStartTime;
@@ -459,9 +369,9 @@ $.fn.swipe = function( opts ){
 									state.switching = 'toPrev';
 								}
 							}
+							$$renderTabs();
 							console.log($$currentOne)
 							if( $$carousel===true&&$$currentOne===0&&distance<0 ){
-								$$renderTabs();
 								trainOffsetX = -$$length*$$width;
 								$$train.css({
 									transition: '0.3s',
@@ -477,7 +387,6 @@ $.fn.swipe = function( opts ){
 									})
 								},300);
 							}else if( $$carousel===true&&$$currentOne===$$length-2&&distance>0 ){
-								$$renderTabs();
 								trainOffsetX = -($$length-2)*$$width;
 								$$train.css({
 									transition: '0.3s',
@@ -526,13 +435,7 @@ $.fn.swipe = function( opts ){
 						setTimeout(function(){
 							$$switching = false;
 						},300)
-					}
-
-
-
-					
-					
-					
+					}	
 				};
 			});
 			function next(){
