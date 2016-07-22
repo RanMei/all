@@ -13,41 +13,43 @@ ul {list-style: none;}
 </style>
 
 
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-	<script type="text/javascript" src="./z.wheelpicker.js"></script>
 </head>
 
 <body>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$(".wheelpicker").isWheelPicker({
-			names: ['years','months','days'],
-			items: [
-				['2016','2017','2018','2019','2020','2021','2022','2023','2024'],
-				[1,2,3,4,5,6,7,8,9,10,11,12],
-				[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
-			],
-			itemHeight: 40
-		});
-		$(".citypicker").isWheelPicker({
-			names: ['provinces'],
-			items: [
-				['山东','山西','河南','河北','广东','辽宁','黑龙江','广西','吉林']
-			],
-			itemHeight: 40
-		});
-		var a = [1,2,3]
-		console.log( $(document) );
-		console.log( typeof a,a );
-		console.log( $ );
-	});
-	</script>
 	<div class="citypicker">
 	</div>
 
 	<div class="wheelpicker">
 	</div>
-	
+
+<script type="text/javascript" src="../src/rem.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../src/z.wheelpicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".wheelpicker").isWheelPicker({
+		names: ['years','months','days'],
+		items: [
+			['2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+			[1,2,3,4,5,6,7,8,9,10,11,12],
+			[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+		],
+		itemHeight: 40
+	});
+	$(".citypicker").isWheelPicker({
+		names: ['provinces'],
+		items: [
+			['山东','山西','河南','河北','广东','辽宁','黑龙江','广西','吉林']
+		],
+		itemHeight: 40
+	});
+	var a = [1,2,3]
+	console.log( $(document) );
+	console.log( typeof a,a );
+	console.log( $ );
+});
+</script>
+
 </body>
 
 </html>

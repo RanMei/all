@@ -1,6 +1,5 @@
 import {_} from './_.js';
-import {ZeactElement} from './ZeactElement.js';
-import {ZeactComponent} from './ZeactComponent.js';
+import {Zeact} from '../Zeact/Zeact.js';
 
 var person = {
 	name: 'John',
@@ -23,7 +22,7 @@ class Item extends ZeactComponent {
 		this.props = props;
 	}
 	render(){
-		var createElement = ZeactElement.createElement.bind(this);
+		var createElement = Zeact.createElement.bind(this);
 		var fragment = 
 			createElement(
 				'li',
@@ -78,7 +77,7 @@ class Swiper extends ZeactComponent {
 	}
 	render(){
 		var self = this;
-		var createElement = ZeactElement.createElement.bind(this);
+		var createElement = Zeact.createElement.bind(this);
 		var refs = this.refs;
 		var fragment = 
 			createElement('div',

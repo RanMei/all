@@ -1,11 +1,10 @@
 //import {ZeactElement} from './ZeactElement.js';
 
 import {Zeact} from './Zeact.js';
-import {ZeactComponent} from './ZeactComponent.js';
 import {Mask} from './Mask.js';
 import {Swiper} from './Swiper.js';
 
-class Page extends ZeactComponent {
+class Page extends Zeact.Component {
 	constructor(props){
 		super();
 		this.refs = {};

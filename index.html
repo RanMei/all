@@ -3,18 +3,62 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>index</title>
-	<script type="text/javascript" src="vendor/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="./vendor/bootstrap.css">
 <style type="text/css">
 html {
-	font-family: Microsoft Yahei;
+	font-family: 'Microsoft Yahei';
+}
+
+@media screen and (max-width: 750px){
+	body {
+		font-size: 20px!important;
+	}
+}
+.container {
+
 }
 div {
-	padding: 15px 0 15px 0;
+	border-bottom: 1px solid lightgrey;
 }
 </style>
 </head>
 
+<body>
+	<div class="container">
+		<div>
+			<a class="a-login">登录</a>
+			<a class="a-logout">注销</a><br/>
+		</div>
+
+		<div>
+			<a href="./_mobile">_mobile</a><br/>
+			<a href="./_mobile/farm">_mobile/farm</a><br/>
+			<a href="./_mobile/h5">_mobile/h5</a><br/>
+			<a href="./_mobile/canvas/fire.html">_mobile/canvas/fire.html</a><br/>
+			<a href="./_mobile/canvas/rain.html">_mobile/canvas/rain.html</a><br/>
+			<a href="./_mobile/svg/sunset.html">_mobile/svg/sunset.html</a><br/>
+		</div>
+
+		<a href="./fytpy">fytpy</a>
+		<a href="./caredaily">caredaily</a>
+		<a href="./_wolf">_wolf</a>
+		<a href="./qm/mobile.html">qm</a>
+		<a href="./fytpy/react">react</a>
+
+		<div>
+			<a href="./_canvas/DriftingBalls">canvas/DriftingBalls</a><br/>
+			<a href="./_canvas/NeonHexagons">canvas/NeonHexagons</a><br/>
+			<a href="./_canvas/ShapeShifter">canvas/ShapeShifter</a><br/>
+			<a href="./_canvas/Matter">canvas/Matter</a><br/>
+			<a href="./_canvas/Heart">Heart</a></br>
+			<a href="./_canvas/circles">circles</a>
+		</div>
+
+	</div>
+
+<script type="text/javascript" src="vendor/jquery.js"></script>
 <script type="text/javascript">
 // 	document.cookie = 'name=John';
 // 	document.cookie = 'id=123';
@@ -94,30 +138,6 @@ $(document).ready(function(){
 	})
 });
 </script>
-
-<body>
-	<a class="a-login">登录</a>
-	<a class="a-logout">注销</a>
-
-	<a href="./_mobile">_mobile</a>
-	
-	<a href="./fytpy">fytpy</a>
-	<a href="./caredaily">caredaily</a>
-	<a href="./_wolf">_wolf</a>
-	<a href="./qm/mobile.html">qm</a>
-	<a href="./fytpy/react">react</a>
-
-	<div>
-		<a href="./_canvas/DriftingBalls">canvas/DriftingBalls</a><br/>
-		<a href="./_canvas/NeonHexagons">canvas/NeonHexagons</a><br/>
-		<a href="./_canvas/ShapeShifter">canvas/ShapeShifter</a><br/>
-		<a href="./_canvas/Matter">canvas/Matter</a><br/>
-		<a href="./_canvas/Heart">Heart</a></br>
-		<a href="./_canvas/circles">circles</a>
-	</div>
-	<div>
-		<a href="./_svg/test.html">_svg</a>
-	</div>
 </body>
 
 </html>

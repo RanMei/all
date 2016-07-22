@@ -1,7 +1,6 @@
-import {ZeactElement} from './ZeactElement.js';
-import {ZeactComponent} from './ZeactComponent.js';
+import {Zeact} from '../Zeact/Zeact.js';
 
-class Mask extends ZeactComponent {
+class Mask extends Zeact.Component {
 	constructor(props){
 		super();
 		this.refs = {};
@@ -14,7 +13,7 @@ class Mask extends ZeactComponent {
 		this.refs.mask.style.display = 'block';
 	}
 	render(){
-		var createElement = ZeactElement.createElement.bind(this);
+		var createElement = Zeact.createElement.bind(this);
 		var refs = this.refs;
 		var fragment = 
 			createElement('div',

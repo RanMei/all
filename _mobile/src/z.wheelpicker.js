@@ -8,7 +8,7 @@
 		// params.items -> $$items
 		var $$names			= params.names,
 			$$items			= params.items,
-			$$itemHeight	= params.itemHeight || 30,
+			$$itemHeight	= '0.5rem',
 			$$wheelNumber	= params.wheelNumber || 3;
 
 		var $$itemWidth = (1/$$names.length)*100+'%';
@@ -18,7 +18,8 @@
 			//position:"fixed",
 			left:0,
 			bottom:0,
-			width:"400px",
+			width:"100%",
+			'font-size': '0.3rem',
 			overflow:"hidden"
 		});
 
@@ -51,7 +52,7 @@
 				thisParts.append(
 					'<div class="part '+ name +'" style="float:left;width:'+ $$itemWidth +';">'+
 						'<div class="partHeader" style="height:30px;text-align:center;"></div>'+
-						'<div class="window" style="position:relative;height:'+(5*$$itemHeight)+'px;background:lightgrey;overflow:hidden;">'+
+						'<div class="window" style="position:relative;height:'+'2.5rem'+';background:lightgrey;overflow:hidden;">'+
 							'<div style="position:absolute;left:0;top:0;width:100%;height:80px;background:linear-gradient(#EFEFEF,transparent);z-index:5"></div>'+
 							'<div style="position:absolute;left:0;bottom:0;width:100%;height:80px;background:linear-gradient(transparent,#EFEFEF);z-index:5"></div>'+
 							'<div style="position:absolute;left:0;top:36%;width:100%;height:1px;background:black;z-index:5"></div>'+
@@ -76,7 +77,7 @@
 					items[i] = items[i] + (THIS.name==='months'?'月':'');
 					items[i] = items[i] + (THIS.name==='days'?'日':'');
 					$$wheelPicker.find("."+name).find(".wheel").append(
-						'<li style="height:'+$$itemHeight+'px;line-height:30px;text-align:center">'+
+						'<li style="height:'+$$itemHeight+';line-height:'+$$itemHeight+';text-align:center">'+
 							items[i]+
 						'</li>'
 					);

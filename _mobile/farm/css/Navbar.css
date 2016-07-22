@@ -30,7 +30,7 @@
   top: 0;
   width: 1px;
   height: 100%;
-  background: black;
+  background: lightgrey;
 }
 .NAVBAR .nav a:visited {
   color: black;

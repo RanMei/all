@@ -19,7 +19,7 @@ var tsify = require('tsify');
 
 gulp.task( 'start_server',function(){
 	nodemon({
-		script: './express/express.js',
+		script: './express/main.js',
 		ext: 'js html',
 		env: {
 			'NODE_ENV': 'development'
@@ -28,7 +28,7 @@ gulp.task( 'start_server',function(){
 });
 
 var LESS = [
-	{ name: 'less_mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
+	{ name: 'less-mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
 	{ name: 'less-mobile-svg', src: './_mobile/svg/less/*.less', dest: './_mobile/svg/css' },
 	{ name: 'less-mobile-test', src: './_mobile/test/less/*.less', dest: './_mobile/test/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
@@ -37,7 +37,13 @@ var LESS = [
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
 	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
 	{ name: 'less-button', src: './_mobile/button/less/*.less', dest: './_mobile/button/css' },
-	{ name: 'less-design-button', src: './design/button/less/*.less', dest: './design/button/css' }	
+	{ name: 'less-design-button', src: './design/button/less/*.less', dest: './design/button/css' },
+	{ name: 'less-qm', src: './qm/less/*.less', dest: './qm/css' },
+	{ name: 'less-wolf', src: './_wolf/less/*.less', dest: './_wolf/css' },
+	{ name: 'less-fytpy', src: './fytpy/less/*.less', dest: './fytpy/css' },
+	{ name: 'less-caredaily', src: './caredaily/less/*.less', dest: './caredaily/css' },
+	{ name: 'less-angular', src: './angular/less/*.less', dest: './angular/public/css' },
+	{ name: 'less-tpl', src: './$tpl/less/*.less', dest: './$tpl/css' }		
 ];
 LESS.forEach(function(elem){
 	gulp.task( elem.name,function(){
@@ -49,13 +55,17 @@ LESS.forEach(function(elem){
 })
 
 var BROWSERIFY = [
-	{ name: 'browserify-farm', src: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm' },
-	{ name: 'browserify-cards', src: './_mobile/cards/src/index.js', dest: './_mobile/cards' }
+	{ 	name: 'browserify-mobile-farm', 
+		main: './_mobile/farm/jsx/main.jsx', 
+		dest: './_mobile/farm', 
+		files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
+	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
+	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' }
 ];
 BROWSERIFY.forEach(function(item){
 	gulp.task( item.name,function(){
 		return(
-			browserify( item.src )
+			browserify( item.main )
 			.transform( 'babelify', {presets: ["es2015", "react"]} )
 			.bundle()
 			.pipe( source('bundle.js') )
@@ -64,26 +74,16 @@ BROWSERIFY.forEach(function(item){
 	});
 })
 
-gulp.task( 'webpack_mobile',function(){
-	return gulp.src('./_mobile/src/index.js')
-	    .pipe( webpack( require('./_mobile/webpack.config.js') ) )
-    	.pipe( gulp.dest('./_mobile/') );
-});
-gulp.task('webpack-zeal',function(){
-	return gulp.src('./_mobile/src/zeal.es6')
-		.pipe( webpack( require('./_mobile/src/webpack.config.js') ) )
-		.pipe( gulp.dest('./_mobile/js') );
-});
-
-
-
-// webpack-test
-gulp.task('webpack-test',function(){
-	return gulp.src('./webpack-test/jsx/entry.jsx')
-	    .pipe( webpack( require('./webpack-test/webpack.config.js') ) )
-    	.pipe( gulp.dest('./webpack-test/') );
-});
-
+const WEBPACK = [
+	{ name: 'webpack-zeal', src: './_mobile/src/zeal.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' }
+];
+WEBPACK.forEach(function(item){
+	gulp.task( item.name,function(){
+		return gulp.src( item.src )
+			.pipe( webpack( require(item.config) ) )
+			.pipe( gulp.dest(item.dest) );
+	});
+})
 
 // shell
 // gulp.task( 'restart_server',shell.task([
@@ -148,45 +148,6 @@ gulp.task( "concat_angular",function(){
 });
 
 // less
-gulp.task( 'less_qm',function(){
-	gulp.src( './qm/less/*.less' )
-		.pipe( less() )
-		.pipe( gulp.dest("./qm/css") );
-});
-gulp.task( 'less_$tpl',function(){
-	gulp.src( './$tpl/less/*.less' )
-		.pipe( less() )
-		.pipe( gulp.dest("./$tpl/css") );
-});
-gulp.task( "less",function(){
-	gulp.src( "./angular/less/*.less" )
-		.pipe( less() )
-		.pipe( gulp.dest("./angular/public/css") );
-	
-	gulp.src(    "./caredaily/less/*.less" )
-		.pipe( less() )
-		.pipe( gulp.dest(    "./caredaily/css") );
-});
-gulp.task( 'less_wolf',function(){
-	gulp.src( "./_wolf/less/*.less" )
-		.pipe( less() )
-		.pipe( gulp.dest("./_wolf/css") );
-});
-gulp.task( 'less_fytpy',function(){
-	gulp.src( './fytpy/less/*.less')
-		.pipe( less() )
-		.pipe( gulp.dest('./fytpy/css') );
-});
-gulp.task( 'less_$mobile',function(){
-	gulp.src( './$mobile/less/*.less')
-		.pipe( less() )
-		.pipe( gulp.dest('./$mobile/css') );
-});
-gulp.task( 'less_react',function(){
-	gulp.src( './react/less/*.less')
-		.pipe( less() )
-		.pipe( gulp.dest('./react/css') );
-});
 
 gulp.task('watch',function(){
 
@@ -194,33 +155,24 @@ gulp.task('watch',function(){
 		gulp.watch( elem.src,[elem.name] );
 	});
 
-	// _mobile
-	//gulp.watch( './_mobile/src/*.js',['webpack_mobile'] );
-	gulp.watch( './_mobile/src/*.es6',['webpack-zeal'] );
-	gulp.watch( ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'],['browserify-farm'] );
-	gulp.watch( './_mobile/cards/src/*.js',['browserify-cards'] );
+	WEBPACK.forEach(function(elem){
+		gulp.watch( elem.src,[elem.name] );
+	});
+
+	BROWSERIFY.forEach(function(elem){
+		gulp.watch( elem.files,[elem.name] );
+	});
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
 
-	// less-tasks	
-	gulp.watch( './angular/less/*.less',['less'] );
-	gulp.watch( './_wolf/less/*.less',['less_wolf'] );
-	gulp.watch( './caredaily/less/*.less',['less'] );
-	gulp.watch( './$mobile/less/*.less',['less_$mobile'] );
-	gulp.watch( './$tpl/less/*.less',['less_$tpl'] );
-
 	// z
 	// gulp.watch( './js/Z/*.js',['browserify_Z'] );
 
-	// qm
-	gulp.watch( './qm/less/*.less',['less_qm'] );
 	// fytpy
-	gulp.watch( './fytpy/less/*.less',['less_fytpy'] );
 	gulp.watch( './fytpy/es6/*.es6',['babel_fytpy'] );
 
 	// react
-	gulp.watch( './react/less/*.less',['less_react'] );
 	gulp.watch( ['./fytpy/react/jsx/*.jsx','./fytpy/react/jsx/*/*.jsx'],['browserify_react'] );
 
 	// ts

@@ -1,6 +1,6 @@
 module.exports = {
     entry: {
-        zeal: './_mobile/src/zeal.es6'
+        zeal: './_mobile/src/zeal.js'
         //'z.angular': './_z/modules/z.angular.es6'
     },
     output: {
@@ -9,7 +9,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.es6$/,
+                test: /\.js$/,
                 loader: "babel",
                 query: {
                     presets: ['react','es2015']

@@ -88,7 +88,9 @@
 		}
 	};
 
-	Zeal.extend = Zeal.fn.extend = _2._.extend;
+	Zeal.extend = Zeal.fn.extend = function (src) {
+		_2._.extend(this, src);
+	};
 
 	Zeal.extend({
 		copy: _2._.copy,
@@ -108,8 +110,16 @@
 		this.selector = selector;
 		// $(window), $(document), $(this)
 		if ((typeof selector === 'undefined' ? 'undefined' : _typeof(selector)) === 'object') {
-			this[0] = selector;
-			this.length = 1;
+			//if( Array.isArray(selector) ){
+			if (selector.length) {
+				for (var i = 0; i < selector.length; i++) {
+					this[i] = selector[i];
+				}
+				this.length = selector.length;
+			} else {
+				this[0] = selector;
+				this.length = 1;
+			}
 		};
 
 		if (typeof selector === 'string') {
@@ -154,22 +164,23 @@
 	Zeal.fn.ready = function (callback) {
 		// this[0] is actually document.
 		var elem = this[0];
-		if (elem.readyState === "complete") {
-			callback();
-		} else {
-			elem.addEventListener("readystatechange", function () {
-				if (elem.readyState === "complete") {
-					callback();
-				};
-			});
-		};
+		// if( elem.readyState==="complete" ){
+		// 	callback();
+		// }else{
+		// 	elem.addEventListener( "readystatechange",function(){
+		// 		if( elem.readyState==="complete" ){
+		// 			alert('444')
+		// 			callback();
+		// 		};
+		// 	});
+		// };
+		document.addEventListener('DOMContentLoaded', callback);
 	};
 
 	// Module: events
 	// $().on()
 	Zeal.fn.on = function (events, callback) {
 		events = events.split(' ');
-		//console.log(events);
 		this.each(function (elem) {
 			for (var i = 0; i < events.length; i++) {
 				elem.addEventListener(events[i], function (e) {
@@ -206,6 +217,11 @@
 				});
 				return this;
 			}
+		},
+		removeAttr: function removeAttr(key) {
+			this.each(function (elem) {
+				elem.removeAttribute(key);
+			});
 		}
 	});
 
@@ -273,12 +289,21 @@
 					this.each(function (elem) {
 						var cssText = '';
 						for (var prop in opts) {
-							//elem.style[prop] = opts[prop];
-							cssText += prop + ':' + opts[prop] + ';';
+							if (!/-/.test(prop)) {
+								var _prop = prop.replace(/[A-Z]/g, function (letter) {
+									return '-' + letter.toLowerCase();
+								});
+								if (/(transform)|(transition)/.test(_prop)) {
+									cssText += _prop + ':' + opts[prop] + ';-webkit-' + _prop + ':' + opts[prop] + ';';
+									//console.log(cssText)
+								} else {
+										cssText += _prop + ':' + opts[prop] + ';';
+									}
+							} else {
+								cssText += prop + ':' + opts[prop] + ';';
+							}
 						};
 						elem.style.cssText += cssText;
-						//console.log(elem.style)
-						//elem.style.cssText = cssText+elem.style.cssText;
 					});
 					return this;
 				}
@@ -396,13 +421,18 @@
 		};
 	};
 
-	window.$ = Zeal;
+	if (window.$ === undefined) {
+		console.log('window.$ is window.Zeal.');
+		window.$ = Zeal;
+	} else {
+		window.Zeal = Zeal;
+	}
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -415,12 +445,18 @@
 		camelCase: camelCase,
 		copy: copy,
 		//each
+		deepClone: deepClone,
 		extend: extend,
 		forEach: forEach
 		//map
 	};
 
 	// Functions to process strings.
+	/**
+	 * Make a string camelcased.
+	 * @param  {string} string
+	 * @return {string}
+	 */
 	function camelCase(string) {
 		string = string.replace(/(-[a-z]?)|(_[a-z]?)/ig, function (match) {
 			return match.replace(/-|_/, '').toUpperCase();
@@ -428,10 +464,19 @@
 		return string;
 	}
 
-	// Functions to process arrays.
-	function forEach(arr, callback) {
-		for (var i = 0; i < arr.length; i++) {
-			callback(arr[i], i);
+	/**
+	 * Traverse an array or an array-like object.
+	 * 
+	 * @param  {array|object}   arr      [description]
+	 * @param  {Function} callback [description]
+	 */
+	function forEach(src, callback) {
+		if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === 'object') {
+			for (var i = 0; i < src.length; i++) {
+				callback(src[i], i);
+			}
+		} else {
+			throw new TypeError('src must be an object or an array.').stack;
 		}
 	}
 	function bubbleSort(arr) {
@@ -450,32 +495,52 @@
 	}
 
 	// Functions to process objects.
-	function extend(obj) {
-		var target = this;
-		for (var p in obj) {
-			target[p] = obj[p];
+	/**
+	 * Extend an object.
+	 * 
+	 * @param  {object} obj [description]
+	 * @return {object}     [description]
+	 */
+	function extend(target, src, deep) {
+		for (var key in src) {
+			if (deep && src[key] === 'object') {
+				target[key] = extend(target[key], src[key], true);
+			} else {
+				target[key] = src[key];
+			};
 		}
 		return target;
+	}
+	function deepExtend(target, src) {
+		return extend(target, src, true);
 	}
 
 	function copy(src, deep) {
 		var __copy;
-		if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+		if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === "object") {
 			if (src.length) {
 				__copy = [];
 			} else {
 				__copy = {};
 			};
-			for (var x in src) {
-				if (deep && _typeof(src[x]) === "object") {
-					__copy[x] = Zeal.copy(src[x], true);
+			for (var key in src) {
+				if (deep && _typeof(src[key]) === "object") {
+					__copy[key] = copy(src[key], true);
 				} else {
-					__copy[x] = src[x];
+					__copy[key] = src[key];
 				};
 			};
 			return __copy;
-		};
+		} else {
+			throw new TypeError('src must be an object.').stack;
+		}
 	};
+	function shallowCopy(src) {
+		return copy(src, false);
+	}
+	function deepClone(src) {
+		return copy(src, true);
+	}
 
 	window._ = _;
 
