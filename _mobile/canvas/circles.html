@@ -16,16 +16,28 @@
 
 	<script type="text/javascript" src="../js/rem.js"></script>
 	<script>
-	window.onload=function(){
+	window.onload = function(){
+
+		var config = {
+			
+			canvasWidth: 1000,
+			canvasHeight: 1000,
+
+			lineWidth: 15,
+			circleCount: 50,
+			circleColor: 'rgba(200,30,200,1)',
+			circleMaxRadius: 400,
+			circleFadingRate: 0.008
+		}
 		
 		var $canvas = document.getElementById("mycanvas");
 		var z = $canvas.getContext("2d");
 
 		var $w,$h;
 		function initCanvas(){
-			$w = $canvas.width = 1000;
-			$h = $canvas.height = 1000;
-			z.lineWidth = 15;
+			$w = $canvas.width = config.canvasWidth;
+			$h = $canvas.height = config.canvasHeight;
+			z.lineWidth = config.lineWidth;
 		};
 		initCanvas();
 		//window.addEventListener('resize',initCanvas)
@@ -43,7 +55,7 @@
 		function Circle( x,y ){
 			this.x = x;
 			this.y = y;
-			this.r = Math.round(400*Math.random());
+			this.r = Math.round(config.circleMaxRadius*Math.random());
 			this.alpha = 1;
 			this.color = 'rgba(200,30,200,1)';
 			this.tick = 0;
@@ -52,7 +64,7 @@
 			step: function(){
 				this.x+= Math.random()*6-3;
 				this.y+= Math.random()*6-3;
-				this.alpha = 1 - 0.008*this.tick;
+				this.alpha -= config.circleFadingRate;
 				this.color = 'rgba(10,30,200,'+this.alpha+')';
 				this.tick++;
 				this.draw();
@@ -69,7 +81,7 @@
 		
 		function render(){
 			window.requestAnimationFrame(render);
-			if( circles.length<50 ){
+			if( circles.length<config.circleCount ){
 				circles.push( new Circle( $w/2,$h/2/*Math.random()*$w,Math.random()*$h*/ ) );
 			};
 			z.globalCompositeOperation = 'source-over';

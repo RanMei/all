@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
 
-const port = 2000;
+const port = 80;
 var app = express();
 
 app.use( express.static(__dirname+'/../') );
@@ -110,10 +110,11 @@ app.listen(port,function(){
 
 var i = 0;
 process.on('uncaughtException',function(e){
-	console.log(e);
-	i++;
-	app.listen(port+i,function(){
-		console.log( 'Server running at '+(port+i)+'.' );
-	});
+	// console.log(e);
+	// i++;
+	// app.listen(port+i,function(){
+	// 	console.log( 'Server running at '+(port+i)+'.' );
+	// });
+	console.log('Server is already in running at '+port+'.')
 })
 //process.exit();

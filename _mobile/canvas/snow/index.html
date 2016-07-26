@@ -17,23 +17,12 @@
 
 <body>
 
-	
-	<p class="text">Snowfall</p>
-	<canvas id="snow"></canvas>
-	<canvas id="snow-top"></canvas>
-	<canvas id="snow-blur"></canvas>
-	<script>
-		window.onload = function() {
-			new Snowfall('#snow')
-			new Snowfall('#snow-top', {
-				maxRadius: 10
-			})
-			new Snowfall('#snow-blur', {
-				particles: 10,
-				maxRadius: 35
-			})
-		}
-	</script>
+	<div class="container">
+		<p class="text">Snowfall</p>
+		<canvas id="snow"></canvas>
+		<canvas id="snow-top"></canvas>
+		<canvas id="snow-blur"></canvas>
+	</div>
 
 	<script src="js/index.js"></script>
 

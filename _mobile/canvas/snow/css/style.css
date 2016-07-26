@@ -1,10 +1,9 @@
-@import "http://webfonts.ru/import/nautilus.css";
-html {
-  background: #0BA2FF;
+* {
+  margin: 0; padding: 0;
 }
 
 .text {
-  font-family: 'Nautilus Pompilius';
+  font-family: 'Microsoft Yahei';
   font-size: 7vw;
   color: #FFD585;
   position: absolute;
@@ -14,6 +13,12 @@ html {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.container {
+  width: 1000px;
+  height: 1000px;
+  background: #0BA2FF;
 }
 
 canvas {

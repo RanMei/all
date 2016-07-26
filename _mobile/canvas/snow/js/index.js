@@ -1,16 +1,23 @@
 ;(function (window) {
-    var defaults = {
-            color: '#fff',
-            speed: 2,
-            particles: 100,
-            maxRadius: 5
-        },
-        html = document.getElementsByTagName('html')[0];
 
-    var Snowfall = function (el, opts) {
-        this.el = typeof el == 'string' ? getElement(el) : el;
-        this.opts = extend({}, defaults, opts);
+    var Snowfall = function (selector, opts) {
+        this.el = document.querySelector(selector);
+        
+        this.width = this.el.width = 1000;
+        this.height = this.el.height = 1000;
+
         this.ctx = this.el.getContext('2d');
+
+        this.config = {
+            color: 'white',
+            speed: 2,
+            count: 100,
+            maxRadius: 5
+        }
+
+        for(var key in opts){
+            this.config[key] = opts[key];
+        }
 
         this.particles = [];
         this.angle = 0;
@@ -20,71 +27,40 @@
 
     Snowfall.prototype = {
         init: function () {
-            this.setDimensions();
+            // this.el.width = 1000;
+            // this.el.height = 1000;
+            // this.setDimensions();
             this.createParticles();
-            this.update();
-
-            window.addEventListener('resize', this.onResize.bind(this))
-        },
-
-        setDimensions: function () {
-            var width = window.innerWidth,
-                height = window.innerHeight;
-
-            this.width = width;
-            this.height = height;
-
-            this.el.setAttribute('width', width);
-            this.el.setAttribute('height', height);
+            this.render();
         },
 
         createParticles: function () {
-            var _this = this;
+            var self = this;
 
-            while (this.opts.particles--) {
-                _this.particles.push(new Snowfall.Particle({
-                    x: Math.round(Math.random() * _this.width),
-                    y: Math.round(Math.random() * _this.height),
+            while (this.config.count--) {
+                self.particles.push(new Snowfall.Particle({
+                    x: Math.round( Math.random() * self.width ),
+                    y: Math.round( Math.random() * self.height ),
                     d: Math.random(),
-                    radius: getRandomInt(2, _this.opts.maxRadius),
-                    snowfall: _this,
-                    ctx: _this.ctx
+                    radius: getRandomInt(2, self.config.maxRadius),
+                    snowfall: self,
+                    ctx: self.ctx
                 }))
             }
 
         },
 
-        update: function () {
+        render: function () {
+            var self = this;
             this.angle = this.angle - 0.0001;
 
             this.ctx.clearRect(0, 0, this.width, this.height);
             this.particles.forEach(function (particle) {
-                   particle.update()
+                particle.update();
+                particle.draw(self.ctx);
             });
 
-
-            this.draw();
-
-            requestAnimationFrame(this.update.bind(this))
-        },
-
-        draw: function () {
-            var ctx = this.ctx;
-
-            ctx.beginPath();
-            this.particles.forEach(function (particle) {
-                ctx.moveTo(particle.x, particle.y);
-                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, true);
-                ctx.fillStyle = particle.color;
-            });
-            ctx.fill();
-        },
-
-        //  Events
-        // -------------------------------------------------
-
-        onResize: function () {
-            this.setDimensions();
+            requestAnimationFrame( this.render.bind(this) )
         }
     };
 
@@ -104,9 +80,9 @@
     Snowfall.Particle = function (params) {
         this.opts = extend({}, defaults, params);
 
-        this.color = this.opts.color;
-        this.x = this.opts.x;
-        this.y = this.opts.y;
+        this.color = 'white';
+        this.x = Math.round( Math.random() * 1000 );
+        this.y = Math.round( Math.random() * 1000 );
         this.d = this.opts.d;
 
         this.radius = this.opts.radius;
@@ -114,16 +90,13 @@
     };
 
     Snowfall.Particle.prototype = {
-        init: function () {
-
-        },
 
         update: function () {
             var params = this.opts.snowfall,
                 x, y;
 
-            x = Math.cos(params.angle) * this.d * params.opts.speed + this.x;
-            y = Math.sin(params.angle) + 1 + ((this.radius/3*this.d) * params.opts.speed) + this.y;
+            x = Math.cos(params.angle) * this.d * params.config.speed + this.x;
+            y = Math.sin(params.angle) + 1 + ((this.radius/3*this.d) * params.config.speed) + this.y;
 
             if (x > params.width) {
                 x = 0;
@@ -140,14 +113,16 @@
 
             this.x = x;
             this.y = y;
+        },
+        draw: function(ctx){
+            ctx.beginPath();
+            ctx.moveTo( this.x, this.y );
+            ctx.arc( this.x, this.y, this.radius, 0, Math.PI * 2, true );
+            ctx.fillStyle = this.color;
+            ctx.fill();
         }
     }
 })(window, Snowfall);
-
-// Utils
-function getElement (query) {
-    return document.querySelector(query);
-}
 
 function extend (target) {
     target = arguments[0];
@@ -165,4 +140,15 @@ function extend (target) {
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
+}
+
+window.onload = function() {
+    new Snowfall('#snow')
+    new Snowfall('#snow-top', {
+        maxRadius: 10
+    })
+    new Snowfall('#snow-blur', {
+        count: 10,
+        maxRadius: 35
+    })
 }
