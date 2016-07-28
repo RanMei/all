@@ -1,0 +1,61 @@
+@keyframes fadeIn {
+	from {opacity:0}
+	to {opacity:1}
+}
+@keyframes poping {
+	80% {transform:translateY(20px);}
+	100% {transform:;}
+}
+@keyframes shimmering {
+	0% {opacity:1}
+	50% {opacity:0.4}
+	100% {opacity:1}
+}
+.shimmering {
+	animation: shimmering 1s infinite;
+}
+
+@keyframes fade-in-from-left {
+	0% {
+		transform: translate3d(-1rem,0,0);
+		opacity: 0;
+	}
+	100% {
+		transform: ;
+		opacity: 1;
+	}
+}
+.fade-in-from-left {
+	animation: fade-in-from-left 1s forwards;
+}
+.fade-in-from-left-reverse {
+	animation: fade-in-from-left 1s reverse;
+}
+
+@keyframes fade-in-from-top {
+	0% {
+		transform: translate3d(0,-1rem,0);
+		opacity: 0;
+	}
+	100% {
+		transform: ;
+		opacity: 1;
+	}
+}
+.fade-in-from-top {
+	animation: fade-in-from-top 1s forwards;
+}
+
+@keyframes fade-in-from-both {
+	0% {
+		transform: scale3d(1.4,1,1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale3d(1,1,1);
+		opacity: 1;
+	}
+}
+.fade-in-from-both {
+	animation: fade-in-from-both 1s forwards;
+}

@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+ul {
+  list-style: none;
+}
+html {
+  font-family: 'Microsoft Yahei';
+}
+body {
+  overflow: hidden;
+}
+img {
+  display: block;
+}
+canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: black;
+  z-index: 10;
+}
