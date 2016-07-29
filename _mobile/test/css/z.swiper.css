@@ -33,10 +33,6 @@ img {
   position: relative;
   float: left;
   z-index: 5;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
 }
 .swiper .train .item p,
 .swiper1 .train .item p,
@@ -56,21 +52,14 @@ img {
 .swiper2 .train .item img {
   width: 100%;
 }
-.swiper .train .item.active,
-.swiper1 .train .item.active,
-.swiper2 .train .item.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.swiper .pagination,
-.swiper1 .pagination,
-.swiper2 .pagination {
+.swiper .tabs,
+.swiper1 .tabs,
+.swiper2 .tabs {
   position: absolute;
-  z-index: 10;
 }
-.swiper .pagination li,
-.swiper1 .pagination li,
-.swiper2 .pagination li {
+.swiper .tabs li,
+.swiper1 .tabs li,
+.swiper2 .tabs li {
   width: 0.2rem;
   height: 0.2rem;
   border: 1px solid black;
@@ -81,9 +70,9 @@ img {
   opacity: 0.5;
   cursor: pointer;
 }
-.swiper .pagination li.active,
-.swiper1 .pagination li.active,
-.swiper2 .pagination li.active {
+.swiper .tabs li.active,
+.swiper1 .tabs li.active,
+.swiper2 .tabs li.active {
   background: orange;
   opacity: 1;
 }

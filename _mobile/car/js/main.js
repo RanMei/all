@@ -18,7 +18,7 @@ App.prototype = {
 		})
 		document.addEventListener('touchmove',function(e){
 			self.y2 = e.changedTouches[0].pageY;
-			self.dy = Math.round( (self.y2 - self.y1)/self.width*2000 );
+			self.dy = Math.round( 2*(self.y2 - self.y1)/self.width*2000 );
 			self.y += self.dy;
 			if( self.y<=0 ){self.y = 0}
 			self.y1 = self.y2;
@@ -29,16 +29,15 @@ App.prototype = {
 			self.t1 = new Date().getTime();
 			self.y2 = self.y2 = e.changedTouches[0].pageY;
 			if( (self.y2-self.y0>20)&&(self.t1-self.t0<200) ){
-				self.scroll();
+				self.autoScroll();
 			}
 		})
-		//window.addEventListener('resize',self.onResize.bind(self));
-		self.onResize();
+		self.canvas.render(self.y,self.dy);
 	},
-	scroll: function(){
+	autoScroll: function(){
 		var self = this;
 		self.interval = setInterval(function(){
-			self.dy = Math.round( 8/self.width*2000 );
+			self.dy = Math.round( 12/self.width*2000 );
 			self.y += self.dy;
 			self.canvas.render(self.y,self.dy);
 		},33)
@@ -59,78 +58,13 @@ var canvas = new Canvas({
 	imgs: {
 		road: ['img/road.jpg',1200,451],
 		car: ['img/car.png',505,851],
-		shape: ['img/shape.png',640,988,-3200],
+		shape: ['img/shape.png',640,533,-3200],
+		bg: ['img/bg.png',640,559],
 		title: ['img/seat-1.png',640,540,-2000],
-		lamp: ['img/lamp.png',640,357,-2000]
+		lamp: ['img/lamp.png',640,357,-2000],
+		lamp1: ['img/lamp1.jpg',958,719]
 	}
 });
-
-
-canvas.lineX = -250;
-//canvas.pattern = canvas.ctx.createPattern(canvas.img.road);
-
-canvas.render = function(y,dy){
-	console.log(y,dy)
-	// console.log(this.img.car)
-	var ctx = this.ctx;
-	var width = this.canvas.width;
-	var shape = this.img.shape;
-	var title = this.img.title;
-	var lamp = this.img.lamp;
-	
-	ctx.clearRect( 0, 0, this.canvas.width, this.canvas.height )
-
-	// ctx.fillStyle = 'red';
-	// ctx.rect(0,0,100,100);
-	// ctx.fill();
-
-	for( var i=-5;i<15;i++ ){
-		ctx.drawImage(
-			this.img.road, 0, y-i*this.canvas.width*this.img.road.r, this.canvas.width, this.canvas.width*this.img.road.r
-		)
-	}
-
-	ctx.drawImage(
-		this.img.car, this.canvas.width/2.7, 800, this.canvas.width/2, this.canvas.width/2*this.img.car.r
-	)
-
-	if( y>0&&y<10000 ){
-
-		if( y>3400&&y<=7000 ){
-			shape.cy = 200;
-		}else{
-			shape.cy += dy;
-		}
-		
-		console.log(shape.cy)
-
-		ctx.drawImage(
-			shape, 0, shape.cy, this.canvas.width, this.canvas.width*shape.r
-		)
-
-	};
-	
-	if( y>8000 ){
-		var cy = -10000 + y;
-		ctx.drawImage(
-			lamp, 0, cy, width, width*lamp.r
-		)
-
-		var cy = cy + 335;
-		this.lineX += dy/6;
-
-		ctx.beginPath();
-		ctx.moveTo(this.lineX,cy);
-		ctx.lineTo(this.lineX+this.canvas.width,cy-300);
-		ctx.lineTo(this.lineX+this.canvas.width,cy-300-150);
-		ctx.lineTo(this.lineX,cy-150);
-		ctx.closePath();
-		ctx.fillStyle = 'silver';
-		ctx.fill();
-	}
-}
-
-canvas.init();
 
 var app = new App(canvas);
 app.init();

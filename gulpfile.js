@@ -32,6 +32,7 @@ var LESS = [
 	{ name: 'less-mobile-svg', src: './_mobile/svg/less/*.less', dest: './_mobile/svg/css' },
 	{ name: 'less-mobile-test', src: './_mobile/test/less/*.less', dest: './_mobile/test/css' },
 	{ name: 'less-mobile-car', src: './_mobile/car/less/*.less', dest: './_mobile/car/css' },
+	{ name: 'less-mobile-swiper', src: './_mobile/swiper/less/*.less', dest: './_mobile/swiper/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
 	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
