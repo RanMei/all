@@ -4,6 +4,288 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+function Swiper(config) {
+	this.elem = config.elem;
+	this.obj = $(this.elem);
+
+	this.items = config.items;
+	this.act = config.act;
+
+	this.carousel = config.carousel || false;
+	this.duration = config.duration || 300;
+
+	this.currentOne = 0;
+	this.trainOffsetX = 0;
+
+	this.init();
+}
+
+Swiper.prototype = {
+	init: function init() {
+		var _this = this;
+
+		var obj = this.obj;
+		this.train = obj.find('.train');
+
+		var arr = this.items;
+		var fragment = '';
+		for (var i = 0; i < arr.length; i++) {
+			fragment += '<li class="item ' + (i === 0 ? 'active' : '') + '">\n\t\t\t\t\t<div class="card">\n\t\t\t\t\t\t<img class="card-img" src="img/card_' + i + '.png"/>\n\t\t\t\t\t\t<img class="banner" src="img/banner.png"/>\n\t\t\t\t\t\t<img class="book" src="img/book_' + i + '.png"/>\n\t\t\t\t\t\t<div class="toDetails"></div>\n\t\t\t\t\t\t<img class="open_book" src="img/open_book.png"/>\n\t\t\t\t\t\t<div class="ribbon">\n\t\t\t\t\t\t\t<p class="title">' + arr[i].title + '<span>' + arr[i].className + '</span></p>\n\t\t\t\t\t\t\t<p class="desc">' + arr[i].desc + '</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</li>';
+		}
+		this.train.append(fragment);
+
+		this.items = obj.find('.item');
+		this.imgs = obj.find('img');
+		this.dots = obj.find('.dot');
+
+		this.switching = false;
+		this.isDown = false;
+
+		this.sticky = true;
+		this.length = this.items.length;
+		this.last = this.length - 1;
+
+		var self = this;
+		window.addEventListener('DOMContentLoaded', function () {
+			_this.setSize();
+		});
+
+		this.renderTabs();
+		this.items.css({
+			transition: '0.3s'
+		});
+		//this.css();
+		this.listen();
+	},
+	setSize: function setSize() {
+		this.width = Number(document.defaultView.getComputedStyle(this.elem).width.replace(/px/, ''));
+		this.height = Number(document.defaultView.getComputedStyle(this.elem).height.replace(/px/, ''));
+	},
+	resize: function resize() {
+		var self = this;
+		setTimeout(function () {
+			self.setSize();
+			self.toItem(self.currentOne);
+		}, 50);
+	},
+	listen: function listen() {
+		$(window).on('resize', this.resize.bind(this));
+		this.obj.on('touchstart', this.ontouchstart.bind(this));
+		this.obj.on('touchmove', this.ontouchmove.bind(this));
+		this.obj.on('touchend', this.ontouchend.bind(this));
+	},
+	css: function css() {
+		this.obj.css({
+			width: '80%',
+			margin: '50px auto'
+		}), this.train.css({}), this.items.css({
+			width: this.width + 'px'
+		}), this.imgs.css({
+			width: '100%'
+		});
+	},
+	renderTabs: function renderTabs() {
+		this.dots.removeClass('active');
+		this.dots.eq(this.currentOne).addClass('active');
+	},
+	toItem: function toItem(i) {
+		this.currentOne = i;
+		this.act({
+			type: 'SWITCH',
+			index: i
+		});
+		this.train.css({
+			transition: '0.3s',
+			transform: 'translate3d(' + -i * this.width + 'px,0,0)'
+		});
+		this.items.removeClass('active');
+		this.items.eq(this.currentOne).addClass('active');
+		this.renderTabs();
+		setTimeout(function () {
+			this.currentItemScale = 1;
+			this.otherItemScale = 0.8;
+			this.switching = false;
+		}, this.duration);
+	},
+	ontouchstart: function ontouchstart(e) {
+		if (!this.switching) {
+			this.moveCount = 0;
+			this.scrolling = false;
+			this.trainOffsetX = -this.currentOne * this.width;
+			this.isDown = true;
+			this.touchStartTime = new Date().getTime();
+
+			this.X0 = this.X1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+			this.Y1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
+
+			if (this.carousel === true) {
+				if (this.currentOne === 0) {
+					this.items.eq(this.last).prependTo(this.train);
+					this.trainOffsetX = -this.width;
+					this.train.css({
+						transition: '0s',
+						transform: 'translate3d(' + this.trainOffsetX + 'px,0,0)'
+					});
+				} else if (this.currentOne === this.last) {
+					this.items.eq(0).appendTo(this.train);
+					this.train.css({
+						transition: '0s',
+						'padding-left': this.width + 'px'
+					});
+				}
+			}
+		};
+	},
+	ontouchmove: function ontouchmove(e) {
+		if (this.isDown) {
+			this.X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+			this.Y2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
+			var distanceY = this.Y2 - this.Y1;
+			var distance = this.X2 - this.X1;
+			this.X1 = this.X2;
+
+			this.moveCount++;
+			if (this.moveCount === 1) {
+				if (Math.abs(distance) < Math.abs(distanceY)) {
+					this.scrolling = true;
+				}
+			}
+
+			this.trainOffsetX += distance;
+			this.itemOffsetX += distance;
+			this.currentItemScale += 0.2 * distance / this.width;
+			this.otherItemScale = this.otherItemScale !== 1 ? 0.8 + 0.2 * Math.abs(this.itemOffsetX) / this.width : 1;
+
+			if (this.scrolling) {} else {
+				//e.preventDefault();
+				this.scrollPrevented = true;
+				if (this.sticky) {
+					//The train will move.
+					this.train.css({
+						transition: '0s',
+						transform: 'translate3d(' + this.trainOffsetX + 'px,0,0)'
+					});
+				};
+			}
+		};
+	},
+	ontouchend: function ontouchend(e) {
+		var self = this;
+		if (this.isDown) {
+			if (!this.switching && !this.scrolling) {
+				this.switching = true;
+				this.touchEndTime = new Date().getTime();
+				var timeSpan = this.touchEndTime - this.touchStartTime;
+				//console.log( timeSpan );
+				this.X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
+				var distance = this.X2 - this.X0;
+
+				if (this.carousel === false) {
+					if (distance < 0) {
+						this.currentOne = this.currentOne === this.last ? this.last : this.currentOne + 1;
+					} else if (distance > 0) {
+						this.currentOne = this.currentOne === 0 ? 0 : this.currentOne - 1;
+					}
+					this.toItem(this.currentOne);
+					this.isDown = false;
+				} else {
+					if (true || timeSpan < 200 || distance < -0.25 * this.width || distance > 0.25 * this.width) {
+						if (distance < 0) {
+							//$$target = $$currentOne===$$length-1? 0:$$currentOne++ ;
+							this.currentOne++;
+							if (this.currentOne === this.length) {
+								this.currentOne = 0;
+							}
+							this.state = 'toNext';
+						} else if (distance > 0) {
+							//$$target = $$currentOne===0? $$length-1:$$currentOne--;
+							this.currentOne--;
+							if (this.currentOne === -1) {
+								this.currentOne = this.length - 1;
+							}
+							this.state = 'toPrev';
+						}
+					}
+					this.renderTabs();
+					//console.log($$currentOne)
+					if (this.carousel === true && this.currentOne === 0 && distance < 0) {
+						this.trainOffsetX = -this.length * this.width;
+						this.train.css({
+							transition: '0.3s',
+							transform: 'translate3d(' + this.trainOffsetX + 'px,0,0)'
+						});
+						setTimeout(function () {
+							self.items.eq(0).prependTo(self.train);
+							self.trainOffsetX = 0;
+							self.train.css({
+								transition: '0s',
+								transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)',
+								'padding-left': '0px'
+							});
+						}, 300);
+					} else if (self.carousel === true && self.currentOne === self.length - 2 && distance > 0) {
+						self.trainOffsetX = -(self.length - 2) * self.width;
+						self.train.css({
+							transition: '0.3s',
+							transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)'
+						});
+						setTimeout(function () {
+							self.items.eq(0).prependTo(self.train);
+							self.train.css({
+								transition: '0s',
+								'padding-left': '0px'
+							});
+						}, 300);
+					} else if (self.carousel === true && self.currentOne === self.last && distance > 0) {
+						self.trainOffsetX = 0;
+						self.train.css({
+							transition: '0.3s',
+							transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)'
+						});
+						setTimeout(function () {
+							self.items.eq(self.last).appendTo(self.train);
+							self.trainOffsetX = -(self.length - 1) * self.width;
+							self.train.css({
+								transition: '0s',
+								transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)'
+							});
+						}, 300);
+					} else if (self.carousel === true && self.currentOne === 1 && self.state === 'toNext') {
+						self.trainOffsetX = -2 * self.width;
+						self.train.css({
+							transition: '0.3s',
+							transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)'
+						});
+						setTimeout(function () {
+							self.items.eq(self.last).appendTo(self.train);
+							self.trainOffsetX = -self.width;
+							self.train.css({
+								transition: '0s',
+								transform: 'translate3d(' + self.trainOffsetX + 'px,0,0)'
+							});
+						}, 300);
+					} else {
+						self.toItem(self.currentOne);
+						self.isDown = false;
+					}
+				}
+				setTimeout(function () {
+					self.switching = false;
+				}, 300);
+			}
+		};
+	}
+};
+
+exports.Swiper = Swiper;
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 var arr = [{
 	bid: 495203,
 	author: '打眼',
@@ -133,22 +415,14 @@ var arr = [{
 }];
 exports.arr = arr;
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
-require('./setRem.js');
-
-require('../../src/z.swiper.js');
+require('../../src/rem.js');
 
 var _data = require('./data.js');
 
-var _Mask = require('../../src/Mask.js');
-
-var _Swiper = require('../../src/Swiper.js');
-
-var _Page = require('../../src/Page.js');
-
-var _ZeactDOM = require('../../src/ZeactDOM.js');
+var _Swiper = require('./Swiper.js');
 
 var Local = window.Local;
 var forceLog = window.forceLog;
@@ -156,1370 +430,81 @@ var param = window.param;
 var ABook = window.ABook;
 var $ = window.$;
 
-$(document).ready(function () {
+console.log(navigator.userAgent);
 
-	console.log(navigator.userAgent);
+function App(config) {
+	this.elem = config.elem;
+	this.obj = $(this.elem);
+	this.train = this.obj.find('.train');
+	this.toDetails = this.obj.find('.toDetails');
+	this.hexagons = this.obj.find('.HEXAGON');
 
-	var pageA = new _Page.Page({
-		act: function act(action) {
-			console.log('EXIT');
-			if (action.type === 'EXIT') {
-				maskA.show();
-			}
-		},
-		items: [0, 1, 2, 3]
-	});
-	//ZeactDOM.render( pageA,document.querySelector('body') );
+	this.arr = config.arr;
 
-	document.querySelector('body').appendChild(pageA.render());
+	this.init();
+}
 
-	var inserted = '';
-	for (var i = 0; i < _data.arr.length; i++) {
-		var item = '<li class="item">' + '<div class="card">' + '<img class="card-img" src="img/card_' + i + '.png"/>' + '<img class="banner" src="img/banner.png"/>' + '<img class="book" src="img/book_' + i + '.png"/>' + '<div class="toDetails"></div>' + '<img class="open_book" src="img/open_book.png"/>' + '<div class="ribbon">' + '<p class="title">' + _data.arr[i].title + ' <span>' + _data.arr[i].className + '</span></p>' + '<p class="desc">' + _data.arr[i].desc + '</p>' + '</div>' +
-		//'</div>'+
-		'</div>' + '</li>';
-		$('.train').append(item);
+App.prototype = {
+	init: function init() {
+		this.render();
+		this.listen();
+	},
+	render: function render() {
+		this.swiper = new _Swiper.Swiper({
+			elem: document.getElementsByClassName('swiper')[0],
+			items: this.arr,
+			act: this.act.bind(this)
+		});
+	},
+	listen: function listen() {
+		var self = this;
+		this.toDetails.on('click', function () {
+			var i = $(this).index('.toDetails');
+			console.log(i, 'details-' + _data.arr[i].bid);
+		});
+		this.hexagons.on('click', function () {
+			var i = $(this).index('.HEXAGON');
+			self.swiper.toItem(i);
+		});
+	},
+	act: function act(action) {
+		switch (action.type) {
+			case 'SWITCH':
+				this.hexagons.removeClass('active');
+				this.hexagons.eq(action.index).addClass('active');
+				break;
+		}
 	}
-	//console.log( document.querySelectorAll('.item') );
-	$('.swiper').swipe({
-		mode: 'touch',
-		autoplay: false
-	});
+};
 
-	//console.log($('.card'));
-
-	$('.toDetails').on('click', function () {
-		var i = $(this).index('.toDetails');
-		//通知服务器用户进入了哪本书的详情页。
-		//forceLog( param('act_f'),'details-'+arr[i].bid );
-		console.log(i, 'details-' + _data.arr[i].bid);
-		//ABook.gotoReading( arr[i].bid );
-	});
-
-	window.onbeforeunload = function () {
-		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
-	};
+new App({
+	elem: document.getElementsByTagName('html')[0],
+	arr: _data.arr
 });
 
-},{"../../src/Mask.js":4,"../../src/Page.js":5,"../../src/Swiper.js":6,"../../src/ZeactDOM.js":9,"../../src/z.swiper.js":12,"./data.js":1,"./setRem.js":3}],3:[function(require,module,exports){
+},{"../../src/rem.js":4,"./Swiper.js":1,"./data.js":2}],4:[function(require,module,exports){
 'use strict';
 
-var $ = window.jQuery || window.$;
+document.addEventListener('DOMContentLoaded', function () {
 
-$(document).ready(function () {
+	var $html = document.querySelector('html');
+	var $body = document.querySelector('body');
+	var $screen = document.createElement('div');
+
+	$screen.style.cssText += 'position:fixed; width:100%; height:100%; display:none;';
+	$body.insertBefore($screen, $body.firstChild);
 
 	function setRem() {
-		var w = $('.bar').width();
-		$('html').css({
-			'font-size': 100 * w / 720 + 'px'
-		});
+		$screen.style.display = 'block';
+		var w = Number(document.defaultView.getComputedStyle($screen).width.replace(/px/, ''));
+		var h = Number(document.defaultView.getComputedStyle($screen).height.replace(/px/, ''));
+		$screen.style.display = 'none';
+		$html.style.fontSize = 100 * w / 720 + 'px';
+		//document.getElementsByClassName('container')[0].style.height = h+'px';
+		console.log('rem: Size of the viewport is ' + w + '*' + h + '.');
 	}
 	setRem();
-	$(window).on('resize', setRem);
+	window.addEventListener('resize', setRem);
 });
 
-},{}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Mask = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _ZeactElement = require('./ZeactElement.js');
-
-var _ZeactComponent2 = require('./ZeactComponent.js');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Mask = function (_ZeactComponent) {
-	_inherits(Mask, _ZeactComponent);
-
-	function Mask(props) {
-		_classCallCheck(this, Mask);
-
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this));
-
-		_this.refs = {};
-		_this.props = props;
-		_this.state = {
-			text: '111'
-		};
-		return _this;
-	}
-
-	_createClass(Mask, [{
-		key: 'show',
-		value: function show() {
-			this.refs.mask.style.display = 'block';
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-			var refs = this.refs;
-			var fragment = createElement('div', {
-				ref: 'mask',
-				style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'
-			}, createElement('div', {
-				ref: 'bg',
-				style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'
-			}), createElement('div', { ref: 'panel' }, createElement('p', null, createElement('input', { ref: 'inputBox', type: 'text' }), createElement('span', { ref: 'text' })), createElement('div', { ref: 'buttons' }, createElement('div', {
-				ref: 'confirm',
-				style: 'background: #197FEE;'
-			}, '确定'), createElement('div', { ref: 'cancel' }, '取消'))));
-
-			refs.panel.style.cssText += 'position:absolute; left:0; top:0; right:0; bottom:0; width:5rem; height:3rem; margin:auto; background:white;' + 'font-size:0.3rem;';
-			refs.text.style.cssText += 'box-sizing:border-box; height:2rem; padding:0.15rem';
-			refs.buttons.style.cssText += 'height:1rem; overflow:hidden;';
-			refs.confirm.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-			refs.cancel.style.cssText += 'float:left; width:50%; height:1rem; line-height:1rem; text-align:center;';
-
-			refs.inputBox.onchange = function () {
-				refs.text.innerHTML = refs.inputBox.value;
-			};
-			refs.cancel.addEventListener('click', function () {
-				refs.mask.style.display = 'none';
-			});
-
-			return fragment;
-		}
-	}]);
-
-	return Mask;
-}(_ZeactComponent2.ZeactComponent);
-
-exports.Mask = Mask;
-
-/*
-var $ = window.$;
-
-
-// function createTemplate(){
-
-
-// 	console.log( refs )
-
-// 	$mask 	= $( refs.mask );
-// 	$bg 	= $( refs.bg );
-// 	$panel 	= $( refs.panel );
-// 	$text 	= $( refs.text );
-// 	$buttons = $( refs.buttons );
-// 	$button = $( [refs.confirm,refs.cancel] );
-// 	$confirm = $( refs.confirm );
-// 	$cancel = $( refs.cancel );
-
-// 	$('body').prepend($mask);
-// };
-// createTemplate();
-
-// $mask.css({
-// 	position: 'fixed',
-// 	left: 0,
-// 	top: 0,
-// 	width: '100%',
-// 	height: '100%',
-// 	display: 'none',
-// 	'z-index': 1000
-// });
-// $bg.css({
-// 	width: '100%',
-// 	height: '100%',
-// 	background: 'rgba(0,0,0,0.5)'
-// });
-// $panel.css({
-// 	position: 'absolute',
-// 	left: 0, top: 0, right: 0, bottom: 0,
-// 	width: '5rem',
-// 	height: '3rem',
-// 	margin: 'auto',
-// 	background: 'white',
-// 	'font-size': '0.3rem'
-// })
-// $text.css({
-// 	'box-sizing': 'border-box',
-// 	height: '2rem',
-// 	padding: '0.15rem'
-// })
-// $buttons.css({
-// 	height: '1rem',
-// 	overflow: 'hidden'
-// })
-// $button.css({
-// 	float: 'left',
-// 	width: '50%',
-// 	height: '1rem',
-// 	'line-height': '1rem',
-// 	'text-align': 'center'
-// })
-
-
-var $mask, $bg, $panel, $text, $buttons, $button, $confirm, $cancel;
-
-// var a = new ZeactComponent();
-// var createElement = ZeactElement.createElement.bind(a);
-// var refs = a.refs;
-
-function createFragment(){
-
-}
-
-var obj = {
-	type: 'div',
-	childNodes: [
-		{
-			type: 'div'
-		},
-		{
-			type: 'div'
-		}
-	]
-}
-
-function useStringTemplate(){
-	$('body').prepend(
-		'<div class="mask2016">'+
-			'<div class="bg"></div>'+
-			'<div class="panel">'+
-				'<p class="text"></p>'+
-				'<div class="buttons">'+
-					'<div class="button confirm">确定</div>'+
-					'<div class="button cancel">取消</div>'+
-				'</div>'+
-			'</div>'+
-		'</div>'
-	);
-
-	$mask = $('.mask2016');
-	$bg = $mask.find('.bg');
-	$panel = $mask.find('.panel');
-	$text = $mask.find('.text');
-	$buttons = $mask.find('.buttons');
-	$button = $mask.find('.button');
-	$confirm = $mask.find('.confirm');
-	$cancel = $mask.find('.cancel');
-};
-
-	// var _confirm = createElement(
-	// 	'div',
-	// 	{style: 'background: #197FEE;'},
-	// 	['确定']);
-	// var _cancel = createElement('div',null,['取消']);
-	// var _buttons = createElement('div',null,[_confirm,_cancel]);
-
-	// var _text = createElement('p');
-
-	// var _panel = createElement('div',null,[_text,_buttons]);
-
-	// var _bg = createElement(
-	// 	'div',
-	// 	{style: 'width:100%; height:100%; background:rgba(0,0,0,0.5);'}
-	// );
-
-	// var _mask = createElement(
-	// 	'div',
-	// 	{style: 'position:fixed; left:0; top:0; width:100%; height:100%; display:none; z-index:1000;'},
-	// 	[_bg,_panel]
-	// );
-
-
-function zConfirm( text,callback1,callback2 ){
-	$text.html( text );
-	$mask.show();
-	// $bg.on('click',function(){
-	// 	$mask.hide();
-	// })
-	$cancel.on('click',function(){
-		callback2();
-		$mask.hide();
-	})
-}
-
-*/
-
-},{"./ZeactComponent.js":8,"./ZeactElement.js":10}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Page = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Zeact = require('./Zeact.js');
-
-var _ZeactComponent2 = require('./ZeactComponent.js');
-
-var _Mask = require('./Mask.js');
-
-var _Swiper = require('./Swiper.js');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //import {ZeactElement} from './ZeactElement.js';
-
-var Page = function (_ZeactComponent) {
-	_inherits(Page, _ZeactComponent);
-
-	function Page(props) {
-		_classCallCheck(this, Page);
-
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Page).call(this));
-
-		_this.refs = {};
-		_this.props = props;
-		return _this;
-	}
-
-	_createClass(Page, [{
-		key: 'render',
-		value: function render() {
-			var self = this;
-			var createElement = _Zeact.Zeact.createElement.bind(this);
-			var refs = this.refs;
-			//var swiperA = new Swiper({items: [0,1,2,3,4,5]});
-			//var maskA = new Mask({text: '确定退出吗？'});
-			var fragment = createElement('div', {
-				ref: 'page',
-				style: 'position:relative; width:100%; background:grey; display:block; overflow:hidden;'
-			}, createElement('img', {
-				ref: 'bg',
-				src: 'img/bg.png',
-				style: 'width: 100%; display:block;'
-			}), createElement('div', {
-				ref: 'content',
-				style: 'position:absolute; left:0; top:0; width: 100%; height:100%;'
-			}, createElement(_Swiper.Swiper, {
-				ref: 'swiperA',
-				items: self.props.items
-			}), createElement('p', { ref: 'p' }, '退出')), createElement(_Mask.Mask, {
-				ref: 'maskA',
-				text: '确定退出吗？'
-			}));
-			refs.p.addEventListener('click', function () {
-				//self.props.act({type:'EXIT'});
-				console.log(refs.maskA);
-				refs.maskA.obj.show();
-			});
-			return fragment;
-		}
-	}]);
-
-	return Page;
-}(_ZeactComponent2.ZeactComponent);
-
-exports.Page = Page;
-
-},{"./Mask.js":4,"./Swiper.js":6,"./Zeact.js":7,"./ZeactComponent.js":8}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.Swiper = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _2 = require('./_.js');
-
-var _ZeactElement = require('./ZeactElement.js');
-
-var _ZeactComponent3 = require('./ZeactComponent.js');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var person = {
-	name: 'John',
-	wife: {
-		name: 'Jane',
-		father: {
-			name: 'Robert'
-		},
-		number: [1, 3, 4, 5, 67, 8, 8]
-	}
-};
-var man = _2._.deepClone(person);
-man.wife.father.name = 'Micky';
-man.wife.number[0] = 111111111;
-console.log(person);
-
-var Item = function (_ZeactComponent) {
-	_inherits(Item, _ZeactComponent);
-
-	function Item(props) {
-		_classCallCheck(this, Item);
-
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
-
-		_this.props = props;
-		return _this;
-	}
-
-	_createClass(Item, [{
-		key: 'render',
-		value: function render() {
-			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-			var fragment = createElement('li', { style: 'float:left; width:' + this.props.width + ';' }, createElement('img', {
-				src: this.props.src,
-				style: 'height:6.9rem; margin:auto; display:block;'
-			}));
-			return fragment;
-		}
-	}]);
-
-	return Item;
-}(_ZeactComponent3.ZeactComponent);
-
-var Swiper = function (_ZeactComponent2) {
-	_inherits(Swiper, _ZeactComponent2);
-
-	function Swiper(props) {
-		_classCallCheck(this, Swiper);
-
-		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this));
-
-		_this2.refs = {};
-		_this2.props = props;
-		_this2.width = null;
-		_this2.offset = 0;
-		_this2.currentOne = 0;
-		_this2.length = props.items.length;
-		_this2.state = {
-			currentOne: 0
-		};
-		return _this2;
-	}
-
-	_createClass(Swiper, [{
-		key: 'show',
-		value: function show() {
-			this.refs.mask.display = 'block';
-		}
-	}, {
-		key: 'update',
-		value: function update(key) {
-			var self = this;
-			switch (key) {
-				case 'currentOne':
-					self.go(this.state.currentOne);
-			}
-		}
-	}, {
-		key: 'go',
-		value: function go(i) {
-			var refs = this.refs;
-			_2._.forEach(refs.pagination.children, function (child) {
-				child.style.background = 'white';
-			});
-			refs.pagination.children[i].style.background = 'green';
-			this.offset = -i * this.width;
-			refs.train.style.cssText += 'transition:0.3s; transform:translate3d(' + this.offset + 'px,0,0)';
-			//refs.number.innerHTML = this.state.currentOne;
-		}
-	}, {
-		key: 'setWidth',
-		value: function setWidth() {
-			this.width = Number(document.defaultView.getComputedStyle(this.refs.swiper).width.replace(/px/, ''));
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var self = this;
-			var createElement = _ZeactElement.ZeactElement.createElement.bind(this);
-			var refs = this.refs;
-			var fragment = createElement('div', {
-				ref: 'swiper',
-				style: 'position:relative; width:6rem; height:6.9rem; margin:auto; margin-top:3.35rem;'
-			}, createElement('ul', {
-				ref: 'train',
-				style: 'position:absolute; width:' + self.length + '00%; height:100%;'
-			}, self.props.items.map(function (elem, i) {
-				return createElement(Item, {
-					width: 100 / self.length + '%',
-					src: 'img/card_' + i + '.png'
-				});
-			})),
-			//createElement('p',{ref:'number',style:'position:absolute; left:0; top:0;'},this.state.currentOne),
-			createElement('ul', { ref: 'pagination', style: 'position:absolute; left:0; top:0; overflow:hidden;' }, self.props.items.map(function (elem) {
-				return createElement('li', { style: 'float:left; width:0.2rem; height:0.2rem; margin:0.2rem; border-radius:50%; background:white;' });
-			})));
-
-			refs.pagination.children[self.currentOne].style.background = 'green';
-			_2._.forEach(refs.pagination.children, function (child, i) {
-				child.addEventListener('click', function () {
-					self.currentOne = i;
-					self.setState({
-						currentOne: i
-					});
-				});
-			});
-			// refs.items = [].slice.call(refs.train.children,0);
-			// console.log(refs.items);
-			// var firstClone = refs.items[0].cloneNode(true);
-			// firstClone.style.cssText += 'position:absolute; top:0; right:-'+(100/self.length)+'%;';
-			// refs.train.appendChild( firstClone );
-			refs.swiper.addEventListener('touchstart', function (e) {
-				self.setWidth();
-				self.X0 = self.X1 = e.changedTouches[0].pageX;
-			});
-			refs.swiper.addEventListener('touchmove', function (e) {
-				self.X2 = e.changedTouches[0].pageX;
-				var distance = self.X2 - self.X1;
-				self.offset += distance;
-				self.X1 = self.X2;
-				refs.train.style.cssText += 'transition:0s; transform:translate3d(' + self.offset + 'px,0,0)';
-			});
-			refs.swiper.addEventListener('touchend', function (e) {
-				self.X2 = e.changedTouches[0].pageX;
-				var distance = self.X2 - self.X0;
-				if (distance < 0 && self.currentOne < self.length - 1) {
-					self.currentOne++;
-				} else if (distance > 0 && self.currentOne > 0) {
-					self.currentOne--;
-				}
-				self.setState({
-					currentOne: self.currentOne
-				});
-				//self.go( self.currentOne );
-			});
-			setInterval(function () {
-				self.setWidth();
-				self.currentOne++;
-				if (self.currentOne >= self.length) {
-					self.currentOne = 0;
-				};
-				self.go(self.currentOne);
-			}, 2000);
-			window.addEventListener('resize', function () {
-				self.setWidth();
-				self.offset = -self.currentOne * self.width;
-				refs.train.style.cssText += 'transition:0.1s; transform:translate3d(' + self.offset + 'px,0,0)';
-			});
-			//console.log(self)
-			return fragment;
-		}
-	}]);
-
-	return Swiper;
-}(_ZeactComponent3.ZeactComponent);
-
-exports.Swiper = Swiper;
-
-},{"./ZeactComponent.js":8,"./ZeactElement.js":10,"./_.js":11}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Zeact = undefined;
-
-var _ZeactElement = require('./ZeactElement.js');
-
-var Zeact = {};
-
-Zeact.createElement = _ZeactElement.ZeactElement.createElement;
-
-exports.Zeact = Zeact;
-
-},{"./ZeactElement.js":10}],8:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-function ZeactComponent(props) {
-	this.props = props || {};
-	this.refs = {};
-	this.state = {};
-	this.setState = function (obj) {
-		var self = this;
-		var stateChanged = false;
-		for (var key in obj) {
-			if (obj[key] === self.state[key]) {} else {
-				self.state[key] = obj[key];
-
-				stateChanged = true;
-			}
-			self.update(key);
-		}
-		if (stateChanged) {}
-		console.log(self.state);
-	};
-}
-
-exports.ZeactComponent = ZeactComponent;
-
-},{}],9:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var ZeactDOM = {};
-
-ZeactDOM.render = function (component, container) {
-	container.appendChild(component.render());
-};
-
-exports.ZeactDOM = ZeactDOM;
-
-},{}],10:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-var ZeactElement = function ZeactElement() {};
-
-/**
- * Create an HTML element.
- * @param  {string} tag  
- * @param  {array} childNodes
- * @return {object}
- */
-ZeactElement.createElement = function (type, props) {
-	var elem;
-	if (typeof type === 'function') {
-		var obj = new type(props);
-		elem = obj.render();
-		elem.obj = obj;
-	} else {
-		elem = document.createElement(type);
-	}
-	if (props) {
-		for (var key in props) {
-			//console.log(key)
-			if (key === 'style') {
-				elem.style.cssText = props[key];
-			} else if (key === 'ref') {
-				this.refs[props.ref] = elem;
-			} else if (/(src)/.test(key)) {
-				elem.setAttribute(key, props[key]);
-			};
-		}
-	};
-	if (arguments.length > 2) {
-		//var childrenLength = arguments.length - 2;
-		for (var i = 2; i < arguments.length; i++) {
-			var child = arguments[i];
-			if ((typeof child === 'undefined' ? 'undefined' : _typeof(child)) === 'object') {
-				if (Array.isArray(child)) {
-					child.forEach(function (item) {
-						elem.appendChild(item);
-					});
-				} else {
-					elem.appendChild(child);
-				}
-			} else if (typeof child === 'string' || typeof child === 'number') {
-				var textNode = document.createTextNode(child);
-				elem.appendChild(textNode);
-			};
-		};
-	};
-	return elem;
-};
-
-exports.ZeactElement = ZeactElement;
-
-},{}],11:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-var _ = {
-	bubbleSort: bubbleSort,
-	camelCase: camelCase,
-	copy: copy,
-	//each
-	deepClone: deepClone,
-	extend: extend,
-	forEach: forEach
-	//map
-};
-
-// Functions to process strings.
-/**
- * Make a string camelcased.
- * @param  {string} string
- * @return {string}
- */
-function camelCase(string) {
-	string = string.replace(/(-[a-z]?)|(_[a-z]?)/ig, function (match) {
-		return match.replace(/-|_/, '').toUpperCase();
-	});
-	return string;
-}
-
-/**
- * Traverse an array or an array-like object.
- * 
- * @param  {array|object}   arr      [description]
- * @param  {Function} callback [description]
- */
-function forEach(src, callback) {
-	if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === 'object') {
-		for (var i = 0; i < src.length; i++) {
-			callback(src[i], i);
-		}
-	} else {
-		throw new TypeError('src must be an object or an array.').stack;
-	}
-}
-function bubbleSort(arr) {
-	var i = 0;
-	while (i < arr.length - 1) {
-		for (var j = i + 1; j < arr.length - 1; j++) {
-			if (arr[i] > arr[j]) {
-				var x = arr[i];
-				arr[i] = arr[j];
-				arr[j] = x;
-			};
-		};
-		i++;
-	}
-	return arr;
-}
-
-// Functions to process objects.
-/**
- * Extend an object.
- * 
- * @param  {object} obj [description]
- * @return {object}     [description]
- */
-function extend(target, src, deep) {
-	for (var key in src) {
-		if (deep && src[key] === 'object') {
-			target[key] = extend(target[key], src[key], true);
-		} else {
-			target[key] = src[key];
-		};
-	}
-	return target;
-}
-function deepExtend(target, src) {
-	return extend(target, src, true);
-}
-
-function copy(src, deep) {
-	var __copy;
-	if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === "object") {
-		if (src.length) {
-			__copy = [];
-		} else {
-			__copy = {};
-		};
-		for (var key in src) {
-			if (deep && _typeof(src[key]) === "object") {
-				__copy[key] = copy(src[key], true);
-			} else {
-				__copy[key] = src[key];
-			};
-		};
-		return __copy;
-	} else {
-		throw new TypeError('src must be an object.').stack;
-	}
-};
-function shallowCopy(src) {
-	return copy(src, false);
-}
-function deepClone(src) {
-	return copy(src, true);
-}
-
-window._ = _;
-
-exports._ = _;
-
-},{}],12:[function(require,module,exports){
-"use strict";
-
-//import {arr} from './data.js';
-
-var $ = window.$;
-
-$.fn.swipe = function (opts) {
-
-	var $$swiper = this;
-	var $$train = $$swiper.find(".train");
-	// The sequence will not change after any DOM manipulation.
-	var $$items = $$swiper.find(".item");
-	var $$tabs = $$swiper.find(".tabs>li");
-	var $$runtime = $$swiper.find(".runtime");
-
-	// $$width is the width of this swiper.
-	var $$width = $$swiper.width(),
-	    $$height = $$items.height(),
-	    //$$swiper.height(),
-	$$length = $$items.length;
-
-	$(document).ready(function () {
-
-		// state
-		var $$currentOne = 0;
-		var $$target;
-		var $$switching = false;
-		// Configuration.
-		var $$mode = opts.mode || "slider",
-		    $$direction = opts.direction || "horizontal",
-		    $$autoplay = opts.autoplay || false,
-		    $$carousel = opts.carousel || false,
-		    $$sticky = opts.sticky || true,
-		    $$interval = opts.interval || 4000,
-		    $$duration = opts.duration || 300;
-
-		var $$keyControll = opts.keyControll || true,
-		    $$wheelControll = opts.wheelControll || true;
-
-		function $$init() {
-			$$currentOne = 0;
-			$$target = 0;
-			$$switching = false;
-			$$width = $$swiper.width();
-			$$items.width($$width);
-			$$height = $$items.height();
-			$$swiper.height($$height);
-			$$train.css({
-				transform: 'translate3d(0,0,0)',
-				left: 0
-			});
-			$$renderTabs();
-		}
-		$(window).on('resize', $$init);
-
-		function $$renderTabs() {
-			$$tabs.removeClass("active");
-			$$tabs.eq($$currentOne).addClass("active");
-		}
-
-		$$swiper.css({
-			position: "relative"
-		});
-		$$train.css({
-			position: "absolute",
-			left: 0,
-			top: 0
-		});
-
-		if ($$mode === "slider") {
-			var X1, X2, Y1, Y2;
-
-			(function () {
-
-				//-------------------------------------------------------------------
-
-				/**
-     * @param {number} i [description]
-     */
-
-				var to = function to(i) {
-					// $$train.animate(
-					// 	$$direction==="horizontal"?
-					// 	{left:-i*$$width}:
-					// 	{top:-i*$$height},
-					// 	$$duration,
-					// 	callback
-					// );
-					$$train.css({
-						transition: $$duration / 1000 + 's ease',
-						transform: 'translate3d(' + -i * $$width + 'px,0,0)'
-					});
-					setTimeout(callback, $$duration);
-					function callback() {
-						$$renderTabs();
-						$$switching = false;
-					}
-					// $$currentOne = $$target;
-				};
-
-				var next = function next() {
-					if (!$$switching) {
-						$$switching = true;
-						if ($$mode === "slider") {
-
-							// $$target = $$currentOne + 1;
-							// if( $$target<=$$length-1 ){
-							// 	to( $$target );
-							// };
-							// if( $$target===$$length ){
-							// 	$$target = 0;
-							// };
-
-							//$$runtime.stop().css(  {width:0}  );
-							//run();
-
-							// if current one is not the last one
-							if ($$currentOne < $$length - 1) {
-								$$currentOne++;
-								to($$currentOne);
-								// else if the current one is the last one
-							} else if ($$currentOne === $$length - 1) {
-									$$items.eq(0).appendTo($$train);
-									$$train.css({
-										transition: '0s',
-										transform: 'translate3d(-' + ($$length - 2) * $$width + 'px,0,0)'
-									});
-									setTimeout(function () {
-										$$train.css({
-											transition: $$duration / 1000 + 's',
-											transform: 'translate3d(-' + ($$length - 1) * $$width + 'px,0,0)'
-										});
-										setTimeout(function () {
-											$$items.eq(0).prependTo($$train);
-											$$train.css({
-												transition: '0s',
-												transform: 'translate3d(0,0,0)'
-											});
-											$$currentOne = 0;
-											$$renderTabs();
-											$$switching = false;
-										}, $$duration);
-									}, 20);
-									// $$items.eq(0).appendTo( $$train );
-									// // $$train.css(
-									// // 	$$direction==="horizontal"?
-									// // 	{left:"+="+$$width+"px"}:
-									// // 	{top:"+="+$$height+"px"}
-									// // );
-									// // $$train.animate(
-									// // 	$$direction==="horizontal"?
-									// // 	{left:"-="+$$width+"px"}:
-									// // 	{top:"-="+$$height+"px"},
-									// // 	$$duration,
-									// // 	callback
-									// // );
-									// function callback(){
-									// 	$$train.css(
-									// 		$$direction==="horizontal"?
-									// 		{left:0}:
-									// 		{top:0}
-									// 	);
-									// 	$$items.eq(0).prependTo( $$train );
-									// 	$$currentOne = 0;
-									// 	$$renderTabs();
-									// 	$$switching = false;
-									// }
-								}
-						};
-					};
-				};
-
-				var prev = function prev() {
-					if (!$$switching) {
-						$$switching = true;
-						if ($$mode === "slider") {
-							//$$runtime.stop().animate(  {"width":"0px"},0  );
-							if ($$currentOne > 0) {
-								$$currentOne--;
-								to($$currentOne);
-							} else if ($$currentOne === 0) {
-								// function callback(){
-								// 	$$items.eq(-1).appendTo(  $$train  );
-								// 	$$train.css(
-								// 		$$direction==="horizontal"?
-								// 		{left:"-"+ ($$length-1)*$$width +"px"}:
-								// 		{top:"-"+ ($$length-1)*$$height +"px"}
-								// 	);
-								// 	$$currentOne = ($$length-1);
-								// 	$$renderTabs();
-								// 	$$switching = false;
-								// }
-
-								// $$items.eq(-1).prependTo( $$train );
-								// $$train.css(
-								// 	$$direction==="horizontal"?
-								// 	{left:"-="+$$width+"px"}:
-								// 	{top:"-="+$$height+"px"}
-								// );
-								// $$train.animate(
-								// 	$$direction==="horizontal"?
-								// 	{left:"+="+$$width+"px"}:
-								// 	{top:"+="+$$height+"px"},
-								// 	$$duration,
-								// 	callback
-								// );
-								$$items.eq(-1).prependTo($$train);
-								$$train.css({
-									transition: '0s',
-									transform: 'translate3d(' + -$$width + 'px,0,0)'
-								});
-								setTimeout(function () {
-									$$train.css({
-										transition: $$duration / 1000 + 's',
-										transform: 'translate3d(0,0,0)'
-									});
-									setTimeout(function () {
-										$$items.eq(-1).appendTo($$train);
-										$$train.css({
-											transition: '0s',
-											transform: 'translate3d(-' + ($$length - 1) * $$width + 'px,0,0)'
-										});
-										$$currentOne = $$length - 1;
-										$$renderTabs();
-										$$switching = false;
-									}, $$duration);
-								}, 20);
-							}
-						};
-					};
-				};
-
-				var jump = function jump() {
-					if (!$$switching) {
-						$$switching = true;
-						if ($$mode === "slider") {
-							$$currentOne = $(this).index();
-							to($$currentOne);
-						};
-					};
-				};
-
-				var run = function run() {
-					$$runtime.animate({ "width": $$width }, $$interval, function () {
-						$$runtime.css({ width: 0 });
-					});
-				};
-
-				if ($$direction === "horizontal") {} else if ($$direction === "vertical") {
-					$$train.css({
-						width: '100%'
-					});
-					$$items.css({
-						float: ''
-					});
-				};
-
-				;
-
-				;
-
-				setInterval(next, $$interval);
-				$$swiper.find(".next").on("click", next);
-				$$swiper.find(".prev").on("click", prev);
-				$$tabs.on("click", jump);
-				//run();
-
-				// $$train.on("mousedown touchstart",function(e){
-				// 	X1 = e.pageX;
-				// 	Y1 = e.pageY;
-				// });
-				// $$train.on("mouseup mouseleave touchend",function(e){
-				// 	X2 = e.pageX;
-				// 	Y2 = e.pageY;
-				// 	if( $$direction==="horizontal" ){
-				// 		X2<X1?next():prev();
-				// 	};
-				// 	if( $$direction==="vertical" ){
-				// 		Y2<Y1?next():prev();
-				// 	};
-				// });
-				$$train.on("mousewheel DOMMouseScroll", function (e) {
-					e.preventDefault();
-					if (e.originalEvent.detail > 0) {
-						next();
-					} else {
-						prev();
-					};
-				});
-			})();
-		};
-
-		//			
-		if ($$mode === 'touch') {
-			var trainOffsetX;
-			var itemOffsetX;
-			var currentItemScale;
-			var otherItemScale;
-			var isDown;
-			var X0, X1, X2;
-			var originalX;
-			var prevX;
-			var currentX;
-			var touchStartTime, touchEndTime;
-			var Y1, Y2;
-			var scrollPrevented;
-			var hexagons;
-
-			(function () {
-				var toCard = function toCard(i) {
-					//console.log($$width);
-					$$items.css({ transition: $$duration / 1000 + 's' });
-					$$items.addClass('inactive');
-					$$items.eq(i).removeClass('inactive');
-					$$train.css({
-						transition: '0.3s',
-						transform: 'translate3d(' + -i * $$width + 'px,0,0)'
-					});
-					// $$items.eq( $$currentOne ).css({
-					// 	transform: ''
-					// });
-					// $$items.eq( $$currentOne-1 ).css({
-					// 	transition: '0.3s',
-					// 	transform: 'scale(0.8)'
-					// })
-					$('.HEXAGON').removeClass('active');
-					$('.HEXAGON').eq($$currentOne).addClass('active');
-					$$renderTabs();
-					setTimeout(function () {
-						currentItemScale = 1;
-						otherItemScale = 0.8;
-						$$switching = false;
-					}, $$duration);
-					// $$train.animate( {
-					// 	left:(-i*$$width)
-					// },$$duration,function(){
-					// 	$$renderTabs();
-
-					// 	$('.HEXAGON').removeClass('active');
-					// 	$('.HEXAGON').eq( $$currentOne ).addClass('active');
-
-					// 	$$switching = false;
-					// } );
-				};
-
-				var next = function next() {
-					if (!$$switching) {
-						$$currentOne++;
-						if ($$currentOne === $$length) {
-							$$currentOne = 0;
-						};
-						toCard($$currentOne);
-					};
-				};
-
-				var prev = function prev() {
-					$$currentOne--;
-					if ($$currentOne === -1) {
-						$$currentOne = $$length - 1;
-					};
-					toCard($$currentOne);
-				};
-
-				trainOffsetX = 0;
-				itemOffsetX = 0;
-				currentItemScale = 1;
-				otherItemScale = 0.8;
-				isDown = false;
-				scrollPrevented = false;
-
-
-				$$items.addClass('inactive');
-				$$items.eq(0).removeClass('inactive');
-
-				$$train.on("mousedown touchstart", function (e) {
-
-					if (true) {
-						scrollPrevented = false;
-						trainOffsetX = -$$currentOne * $$width;
-						$$switching = true;
-						//e.preventDefault();
-						isDown = true;
-						touchStartTime = new Date().getTime();
-						//console.log(e.changedTouches[0].pageX)
-						X0 = X1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
-						Y1 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
-						if ($$carousel === true) {
-							if ($$currentOne === $$length - 1) {
-								$$items.eq(0).appendTo($$train);
-								$$train.css({ left: '+=' + $$width + 'px' });
-							}
-						}
-					};
-				});
-				$$train.on("mousemove touchmove", function (e) {
-
-					if (isDown) {
-						X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
-						Y2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageY : e.changedTouches[0].pageY;
-						var distanceY = Y2 - Y1;
-						var distance = X2 - X1;
-						if (distanceY > distance) {}
-						X1 = X2;
-						//console.log(distance)
-						trainOffsetX += distance;
-						itemOffsetX += distance;
-						currentItemScale += 0.2 * distance / $$width;
-						otherItemScale = otherItemScale !== 1 ? 0.8 + 0.2 * Math.abs(itemOffsetX) / $$width : 1;
-						//console.log(currentItemScale)
-
-						if (!scrollPrevented && Math.abs(distance) < Math.abs(distanceY)) {} else {
-							e.preventDefault();
-							scrollPrevented = true;
-							if ($$sticky) {
-								//The train will move.
-								$$train.css({
-									transition: '0s',
-									transform: 'translate3d(' + trainOffsetX + 'px,0,0)'
-								});
-								// $$items.eq( $$currentOne ).css({
-								// 	transition: '0s',
-								// 	transform: 'scale('+currentItemScale+')'
-								// })
-								// // $$items.eq( $$currentOne-1 ).css({
-								// // 	transition: '0s',
-								// // 	transform: 'scale('+otherItemScale+')'
-								// // })
-								// $$items.eq( $$currentOne+1 ).css({
-								// 	transition: '0s',
-								// 	transform: 'scale('+otherItemScale+')'
-								// })
-							};
-						}
-
-						// // $$train.css( {left:"+="+distance+"px"},0 );
-					};
-				});
-				$$train.on("mouseup mouseleave touchend", function (e) {
-					if (isDown) {
-						touchEndTime = new Date().getTime();
-						var timeSpan = touchEndTime - touchStartTime;
-						//console.log( timeSpan );
-						X2 = e.originalEvent ? e.originalEvent.changedTouches[0].pageX : e.changedTouches[0].pageX;
-						var distance = X2 - X0;
-						if (timeSpan < 200 || distance < -0.25 * $$width || distance > 0.25 * $$width) {
-							if (distance < 0) {
-								$$currentOne++;
-								if ($$currentOne === $$length) {
-									$$currentOne = $$carousel ? 0 : $$length - 1;
-								} else {}
-							} else if (distance > 0) {
-								$$currentOne--;
-								if ($$currentOne === -1) {
-									$$currentOne = $$carousel ? $$length - 1 : 0;
-								} else {}
-							}
-						}
-
-						// if( $$carousel===true&&$$currentOne===0 ){
-						// 	$$train.animate(
-						// 		{left:-($$length-1)*$$width},
-						// 		$$duration,
-						// 		function(){
-						// 			$$items.eq(0).prependTo($$train);
-						// 			$$train.css({left:0});
-						// 			$$renderTabs();
-						// 			$$switching = false;
-						// 		}
-						// 	 )
-						// };
-						//console.log( $$currentOne );
-						//console.log( toCard );
-						toCard($$currentOne);
-						isDown = false;
-					};
-				});
-
-
-				if ($$keyControll) {
-					$(document).on('keydown', function () {});
-				}
-				// if( $$wheelControll ){
-				// 	$$train.on("mousewheel DOMMouseScroll",function(e){
-				// 		e.preventDefault();
-				// 		console.log(e.originalEvent.detail)
-				// 		if( e.originalEvent.detail>0 ){
-				// 			next();
-				// 		}else{
-				// 			prev();
-				// 		};
-				// 	});
-				// }
-				if ($$autoplay) {
-					setInterval(next, 4000);
-				}
-				$$swiper.find(".next").on("click", next);
-				$$swiper.find(".prev").on("click", prev);
-
-				hexagons = $('.HEXAGON');
-
-				hexagons.on('click', function () {
-					if (true) {
-						//switching = true;
-						//for jQuery
-						var i = $(this).index('.HEXAGON');
-						//通知服务器用户点击了哪个六边形。
-						//forceLog( param('act_f'),'hexagon-'+i );
-						//$$statistics.hexagons.push(i);
-						console.log(i, 'hexagon-' + i);
-						hexagons.removeClass('active');
-						$(this).addClass('active');
-						$$currentOne = i;
-						toCard($$currentOne);
-					}
-				});
-			})();
-		};
-
-		//
-		if ($$mode === 'fade') {
-			(function () {
-
-				// functions
-
-				var to = function to(i) {
-					$$items.eq(i).siblings().fadeOut(100);
-					$$items.eq(i).fadeIn(400);
-					$$renderTabs();
-				};
-
-				var next = function next() {
-					$$currentOne++;
-					if ($$currentOne === $$length) {
-						$$currentOne = 0;
-					};
-					to($$currentOne);
-				};
-
-				var prev = function prev() {
-					$$currentOne--;
-					if ($$currentOne === -1) {
-						$$currentOne = $$length - 1;
-					};
-					to($$currentOne);
-				};
-
-				// actions
-
-
-				// init
-				$$train.css({
-					width: "100%"
-				});
-				$$items.css({
-					position: "absolute",
-					display: "none"
-				});
-				$$items.eq($$currentOne).show();setInterval(next, 3000);
-				$$tabs.on("click", function () {
-					$$currentOne = $(this).index();
-					to($$currentOne);
-				});
-				$$swiper.find(".next").on("click", next);
-				$$swiper.find(".prev").on("click", prev);
-			})();
-		};
-	});
-};
-
-},{}]},{},[2]);
+},{}]},{},[3]);

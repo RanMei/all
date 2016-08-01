@@ -1,10 +1,6 @@
-import './setRem.js';
-import '../../src/z.swiper.js';
+import '../../src/rem.js';
 import {arr} from './data.js';
-import {Mask} from '../../src/Mask.js';
-import {Swiper} from '../../src/Swiper.js';
-import {Page} from '../../src/Page.js';
-import {ZeactDOM} from '../../src/ZeactDOM.js';
+import {Swiper} from './Swiper.js';
 
 var Local = window.Local;
 var forceLog = window.forceLog;
@@ -12,63 +8,54 @@ var param = window.param;
 var ABook = window.ABook;
 var $ = window.$;
 
+console.log( navigator.userAgent )
 
+function App(config){
+	this.elem = config.elem;
+	this.obj = $(this.elem);
+	this.train = this.obj.find('.train');
+	this.toDetails = this.obj.find('.toDetails');
+	this.hexagons = this.obj.find('.HEXAGON');
 
-$(document).ready(function(){
+	this.arr = config.arr;
 
-	console.log( navigator.userAgent )
+	this.init();
+}
 
-	var pageA = new Page({
-		act: function(action){
-			console.log('EXIT')
-			if(action.type==='EXIT'){
-				maskA.show();				
-			}
-		},
-		items: [0,1,2,3]
-	});
-	//ZeactDOM.render( pageA,document.querySelector('body') );
-
-	document.querySelector('body').appendChild( pageA.render() );
-
-	var inserted = '';
-	for( var i=0;i<arr.length;i++ ){
-		var item = 
-			'<li class="item">'+
-				'<div class="card">'+
-					'<img class="card-img" src="img/card_'+i+'.png"/>'+
-					'<img class="banner" src="img/banner.png"/>'+
-					'<img class="book" src="img/book_'+i+'.png"/>'+
-					'<div class="toDetails"></div>'+
-					'<img class="open_book" src="img/open_book.png"/>'+
-					'<div class="ribbon">'+
-						'<p class="title">'+arr[i].title+' <span>'+arr[i].className+'</span></p>'+
-						'<p class="desc">'+arr[i].desc+'</p>'+
-					'</div>'+
-					//'</div>'+
-				'</div>'+
-			'</li>';
-		$('.train').append( item );
+App.prototype = {
+	init: function(){
+		this.render();
+		this.listen();
+	},
+	render: function(){
+		this.swiper = new Swiper({
+			elem: document.getElementsByClassName('swiper')[0],
+			items: this.arr,
+			act: this.act.bind(this)
+		})
+	},
+	listen: function(){
+		var self = this;
+		this.toDetails.on('click',function(){
+			var i = $(this).index('.toDetails');
+			console.log( i,'details-'+arr[i].bid );
+		})
+		this.hexagons.on('click',function(){
+			var i = $(this).index('.HEXAGON');
+			self.swiper.toItem(i)
+		})
+	},
+	act: function(action){
+		switch(action.type){
+			case 'SWITCH':
+				this.hexagons.removeClass('active');
+				this.hexagons.eq(action.index).addClass('active');
+				break;
+		}
 	}
-	//console.log( document.querySelectorAll('.item') );
-	$('.swiper').swipe({
-		mode: 'touch',
-		autoplay: false
-	})
+}
 
-	//console.log($('.card'));
-
-
-	$('.toDetails').on('click',function(){
-		var i = $(this).index('.toDetails');
-		//通知服务器用户进入了哪本书的详情页。
-		//forceLog( param('act_f'),'details-'+arr[i].bid );
-		console.log( i,'details-'+arr[i].bid );
-		//ABook.gotoReading( arr[i].bid );
-	});
-
-	window.onbeforeunload = function(){
-		//forceLog( param('act_f'), JSON.stringify( $$statistics ) );
-	}
-
-});
+new App({
+	elem: document.getElementsByTagName('html')[0],
+	arr: arr
+})

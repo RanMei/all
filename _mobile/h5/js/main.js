@@ -1,93 +1,65 @@
-$( document ).ready(function(){
+'use strict';
 
-	//variables
-	var w,h;
-	var 
-		$train = $('.train'),
-		$pages = $('.page'),
-		$next = $('.next');
-	var n = 0;
-	var scrolling = false;
+function App( config ){
+	this.elem = config.elem;
+	this.obj = $(this.elem);
+	this.train = this.obj.find('.train');
+	this.pages = this.obj.find('.page');
+	this.nextBtn = this.obj.find('.next');
 
-	function init(){
-		$('body').prepend(
-			'<div class="screen"></div>'+
-			'<div class="bar"></div>'
-		);
-		$('.bar').css({
-			width: '100%',
-			height: 0
-		});
-		$('.screen').css({
-			position: 'fixed',
-			width: '100%',
-			height: '100%'
-		})
-		function setRem (){
-			var screen = $('.screen');
-			screen.show();
-			w = screen.width();
-			h = screen.height();
-			screen.hide();
-			$('html').css({
-				'font-size': 100*w/720+'px'
+	this.n = 0;
+	this.scrolling = false;
+	this.Y1 = null;
+	this.Y2 = null;
+	this.init();
+}
+
+App.prototype = {
+	init: function(){
+		var self = this;
+		window.addEventListener('DOMContentLoaded',function(){
+			$('body').prepend(
+				'<div class="screen"></div>'+
+				'<div class="bar"></div>'
+			);
+			self.screen = $('.screen');
+			$('.bar').css({
+				width: '100%',
+				height: 0
 			});
-			$('.container').height( h );
-			//$pages.height( h );
-			$train.css({
-				transition: '0s',
-				transform: 'translate3d(0,-'+n*h+'px,0)'
+			//console.log($('.bar'))
+			self.screen.css({
+				position: 'fixed',
+				width: '100%',
+				height: '100%'
 			})
-			console.log('Rem reset.')
-		}
-		setRem();
-		$(window).on('resize',setRem);
-	};
-	init();
-
-	function toNext(){
-		if( !scrolling && n<$pages.length-1 ){
-			scrolling = true;
-			restore(n);
-			//console.log( $train[0]===$('.train')[0] )
-			$train.css({
-				transition: '0.3s',
-				transform: 'translate3d(0,-'+(n+1)*h+'px,0)'
-			});
-			//console.log( $train[0] )
-			setTimeout(function(){
-				n++;
-				//console.log(n)
-				scrolling = false;
-				show(n);
-			},300);
-			// $('.train').animate({marginTop:'-='+h},200,function(){
-			// 	n++;
-			// 	scrolling = false;
-			// });
-		};
-	};
-	function toPrev(){
-		if( !scrolling && n>0 ){
-			scrolling = true;
-			restore(n);
-			$train.css({
-				transition: '0.3s ease-out',
-				transform: 'translate3d(0,-'+(n-1)*h+'px,0)'
-			});
-			setTimeout(function(){
-				n--;
-				show(n);
-				//console.log(n)
-				scrolling = false;
-			},300);	
-			// $('.train').animate({marginTop:'+='+h},200,function(){
-			// 	n--;
-			// 	scrolling = false;
-			// });		
-		};		
-	};
-	function show(i){
+			//console.log(this.screen)
+			self.setRem();
+			self.listen();
+		});
+	},
+	listen: function(){
+		$(window).on('resize',this.setRem.bind(this));
+		$(window).on("DOMMouseScroll mousewhell keydown",this.onScroll.bind(this));
+		$(document).on('touchstart mousedown',this.onTouchStart.bind(this));
+		$(document).on('touchend mouseup',this.onTouchEnd.bind(this));
+	},
+	setRem: function(){
+		this.screen.show();
+		//console.log(this.screen)
+		this.w = this.screen.width();
+		this.h = this.screen.height();
+		this.screen.hide();
+		$('html').css({
+			'font-size': 100*this.w/720+'px'
+		});
+		$('.container').height( this.h );
+		this.train.css({
+			transition: '0s',
+			transform: 'translate3d(0,-'+this.n*this.h+'px,0)'
+		})
+	},
+	show: function(i){
 		switch(i){
 			case 0:
 				$('.title').addClass('fade-in-from-both');
@@ -99,8 +71,8 @@ $( document ).ready(function(){
 				$('.iron-man').addClass('fade-in-from-top');
 				break;
 		}
-	}
-	function restore(i){
+	},
+	restore: function(i){
 		switch(i){
 			case 0:
 				$('.title').removeClass('fade-in-from-both');
@@ -112,38 +84,70 @@ $( document ).ready(function(){
 				$('.iron-man').removeClass('fade-in-from-top');
 				break;
 		}
-	}
-
-	$('.next').on("click",toNext);
-
-	$( window ).on("DOMMouseScroll mousewhell keydown",function(e){
-		//e = e || window.event;
-		//console.log(e.originalEvent.keyCode)
-		e = e.originalEvent;
-		if( e.detail>0||e.wheelDelta<0||e.keyCode===40 ){
-			toNext();
-		}else
-		if( e.detail<0||e.wheelDelta>0||e.keyCode===38 ){
-			toPrev();
+	},
+	toNext: function(){
+		var self = this;
+		if( (!this.scrolling) && this.n<this.pages.length-1 ){
+			this.scrolling = true;
+			this.restore( this.n );
+			console.log( this.n )
+			this.train.css({
+				transition: '0.3s',
+				transform: 'translate3d(0,-'+(this.n+1)*this.h+'px,0)'
+			});
+			//console.log( $train[0] )
+			setTimeout(function(){
+				self.n++;
+				//console.log(n)
+				self.scrolling = false;
+				self.show(self.n);
+			},300);
 		};
-	});
-	
-	var Y1,Y2;
-	$(document).on('touchstart mousedown',function(e){
+	},
+	toPrev: function(){
+		if( !this.scrolling && this.n>0 ){
+			this.scrolling = true;
+			this.restore(this.n);
+			this.train.css({
+				transition: '0.3s ease-out',
+				transform: 'translate3d(0,-'+(this.n-1)*this.h+'px,0)'
+			});
+			var self = this;
+			setTimeout(function(){
+				self.n--;
+				self.show(self.n);
+				//console.log(n)
+				self.scrolling = false;
+			},300);	
+		};
+	},	
+	onTouchStart: function(e){
 		e.preventDefault();
-		Y1 = e.originalEvent.changedTouches[0].pageY;
-		//console.log(Y1);
-	});
-	$(document).on('touchend mouseup',function(e){
+		this.Y1 = e.originalEvent.changedTouches[0].pageY;
+		console.log(this.Y1)
+	},
+	onTouchEnd: function(e){	
 		e.preventDefault();
-		Y2 = e.originalEvent.changedTouches[0].pageY;
-		var distance = Y2-Y1;
+		this.Y2 = e.originalEvent.changedTouches[0].pageY;
+		var distance = this.Y2-this.Y1;
 		console.log('The distance is '+distance+'.');
 		if( distance<0 ){
-			toNext();
+			this.toNext();
 		}else if( distance>0 ){
-			toPrev();
+			this.toPrev();
 		}
-	});
+	},
+	onScroll: function(e){
+		e = e.originalEvent;
+		if( e.detail>0||e.wheelDelta<0||e.keyCode===40 ){
+			this.toNext();
+		}else
+		if( e.detail<0||e.wheelDelta>0||e.keyCode===38 ){
+			this.toPrev();
+		};
+	}
+}
 
-});
+new App({
+	elem: document.getElementsByTagName('html')[0]
+})

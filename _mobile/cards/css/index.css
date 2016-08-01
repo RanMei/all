@@ -150,10 +150,15 @@ html {
   line-height: 0.32rem;
   color: #B9C8E5;
 }
-.frame .content .swiper-container .swiper .train .item.inactive {
+.frame .content .swiper-container .swiper .train .item {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   opacity: 0.5;
+}
+.frame .content .swiper-container .swiper .train .item.active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
 }
 .frame .content .honeycomb {
   margin-top: 0.3rem;

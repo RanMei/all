@@ -3,6 +3,9 @@ function Swiper(config){
 	this.elem = config.elem;
 	this.obj = $(this.elem);
 
+	this.items = config.items;
+	this.act = config.act;
+
 	this.carousel = config.carousel || false;
 	this.duration = config.duration || 300;
 
@@ -15,23 +18,28 @@ function Swiper(config){
 Swiper.prototype = {
 	init: function(){
 		var obj = this.obj;
-		obj.html(
-			'<ul class="train">'+
-				'<li class="item active"><img src="images/slider/1.jpg"/></li>'+
-				'<li class="item"><img src="images/slider/2.jpg"/></li>'+
-				'<li class="item"><img src="images/slider/3.jpg"/></li>'+
-				'<li class="item"><img src="images/slider/4.jpg"/></li>'+
-				'<li class="item"><img src="images/slider/5.jpg"/></li>'+
-			'</ul>'+
-			'<ul class="pagination">'+
-				'<li class="dot">'+
-				'<li class="dot">'+
-				'<li class="dot">'+
-				'<li class="dot">'+
-				'<li class="dot">'+
-			'</ul>'
-		)
 		this.train = obj.find('.train');
+
+		var arr = this.items;
+		var fragment = '';
+		for( var i=0;i<arr.length;i++ ){
+			fragment +=
+				`<li class="item ${i===0?'active':''}">
+					<div class="card">
+						<img class="card-img" src="img/card_${i}.png"/>
+						<img class="banner" src="img/banner.png"/>
+						<img class="book" src="img/book_${i}.png"/>
+						<div class="toDetails"></div>
+						<img class="open_book" src="img/open_book.png"/>
+						<div class="ribbon">
+							<p class="title">${arr[i].title}<span>${arr[i].className}</span></p>
+							<p class="desc">${arr[i].desc}</p>
+						</div>
+					</div>
+				</li>`;
+		}
+		this.train.append( fragment );
+
 		this.items = obj.find('.item');
 		this.imgs = obj.find('img');
 		this.dots = obj.find('.dot');
@@ -43,21 +51,31 @@ Swiper.prototype = {
 		this.length = this.items.length;
 		this.last = this.length - 1;
 
-		this.width = obj.width();
-		this.height = obj.height();
+		var self = this;
+		window.addEventListener('DOMContentLoaded',()=>{
+			this.setSize();
+		})
+
 
 		this.renderTabs();
-		this.css();
+		this.items.css({
+			transition: '0.3s'
+		})
+		//this.css();
 		this.listen();
+	},
+	setSize: function(){
+		this.width = 
+			Number( document.defaultView.getComputedStyle( this.elem ).width.replace(/px/,'') );
+		this.height = 
+			Number( document.defaultView.getComputedStyle( this.elem ).height.replace(/px/,'') );
 	},
 	resize: function(){
 		var self = this;
-		self.width = self.obj.width();
-		self.height = self.obj.height();
-		self.items.css({
-			width: self.width+'px'
-		})
-		self.toItem( self.currentOne )
+		setTimeout(function(){
+			self.setSize();
+			self.toItem( self.currentOne );
+		},50)
 	},
 	listen: function(){
 		$(window).on('resize',this.resize.bind(this));
@@ -74,8 +92,7 @@ Swiper.prototype = {
 
 		}),
 		this.items.css({
-			width: this.width+'px',
-			transition: this.duration/1000+'s'
+			width: this.width+'px'
 		}),
 		this.imgs.css({
 			width: '100%'
@@ -86,8 +103,13 @@ Swiper.prototype = {
 		this.dots.eq( this.currentOne ).addClass('active');
 	},
 	toItem: function( i ){
+		this.currentOne = i;
+		this.act({
+			type:'SWITCH',
+			index: i
+		});
 		this.train.css({
-			transition: this.duration/1000+'s',
+			transition: '0.3s',
 			transform: 'translate3d('+  (-i*this.width)  +'px,0,0)'
 		});
 		this.items.removeClass('active');
@@ -206,7 +228,7 @@ Swiper.prototype = {
 					if( this.carousel===true&&this.currentOne===0&&distance<0 ){
 						this.trainOffsetX = -this.length*this.width;
 						this.train.css({
-							transition: this.duration/1000+'s',
+							transition: '0.3s',
 							transform: 'translate3d('+this.trainOffsetX+'px,0,0)'
 						})
 						setTimeout(function(){
@@ -221,7 +243,7 @@ Swiper.prototype = {
 					}else if( self.carousel===true&&self.currentOne===self.length-2&&distance>0 ){
 						self.trainOffsetX = -(self.length-2)*self.width;
 						self.train.css({
-							transition: this.duration/1000+'s',
+							transition: '0.3s',
 							transform: 'translate3d('+self.trainOffsetX+'px,0,0)'
 						})
 						setTimeout(function(){
@@ -234,7 +256,7 @@ Swiper.prototype = {
 					}else if( self.carousel===true&&self.currentOne===self.last&&distance>0 ){
 						self.trainOffsetX = 0;
 						self.train.css({
-							transition: this.duration/1000+'s',
+							transition: '0.3s',
 							transform: 'translate3d('+self.trainOffsetX+'px,0,0)'
 						})
 						setTimeout(function(){
@@ -248,7 +270,7 @@ Swiper.prototype = {
 					}else if( self.carousel===true&&self.currentOne===1&&self.state==='toNext' ){
 						self.trainOffsetX = -2*self.width;
 						self.train.css({
-							transition: this.duration/1000+'s',
+							transition: '0.3s',
 							transform: 'translate3d('+self.trainOffsetX+'px,0,0)'
 						})
 						setTimeout(function(){
@@ -266,8 +288,10 @@ Swiper.prototype = {
 				}
 				setTimeout(function(){
 					self.switching = false;
-				},self.duration)
+				},300)
 			}	
 		};
 	}
 }
+
+export {Swiper};
