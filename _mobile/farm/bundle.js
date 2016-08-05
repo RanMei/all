@@ -1043,23 +1043,33 @@ var Home = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
 
-		var items;
-		$.ajax({
-			type: 'post',
-			url: '/getItems',
-			async: false
-		}).done(function (data) {
-			//console.log(data);
-			items = data;
-		});
-		_this.state = {
-			items: items
-		};
-		console.log('<Home/> constructing', _this.state);
+		var self = _this;
+		self.state = { items: [] };
+		self.getItems();
+		console.log('<Home/> constructing', self.state);
 		return _this;
 	}
 
 	_createClass(Home, [{
+		key: 'getItems',
+		value: function getItems() {
+			var self = this;
+			fetch('/getItems', {
+				method: 'POST',
+				headers: {
+					// 'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(self.state.user)
+			}).then(function (res) {
+				return res.json();
+			}).then(function (data) {
+				self.setState({
+					items: data
+				});
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			window.scroll(0, 0);
@@ -1067,7 +1077,6 @@ var Home = function (_React$Component) {
 				location.hash = 'signin';
 				return React.createElement('div', null);
 			} else {
-				//this.getItems();
 				return React.createElement(
 					'div',
 					{ className: 'HOME' },
@@ -1290,28 +1299,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var swiperItems = ['img/index/slider_0.jpg', 'img/index/slider_1.jpg', 'img/index/slider_2.jpg', 'img/index/slider_3.jpg'];
 
-function getItem() {
-	var itemID = location.hash.match(/\?id=(\w+)/)[1];
-	var item;
-	console.log(itemID);
-	$.ajax({
-		headers: {
-			'Content-type': 'application/json'
-		},
-		type: 'post',
-		url: '/getItem',
-		data: JSON.stringify({ itemID: itemID }),
-		async: false
-	}).done(function (data) {
-		//console.log( data );
-		console.log('item received');
-		item = data;
-	}).error(function (e, f, g) {
-		console.log(e, f, g);
-	});
-	return item;
-}
-
 var Item = function (_React$Component) {
 	_inherits(Item, _React$Component);
 
@@ -1320,7 +1307,11 @@ var Item = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
 
-		var item = getItem();
+		var item = {
+			name: null,
+			price: 0,
+			desc: null
+		};
 		item.quantity = 1;
 		_this.state = {
 			item: item,
@@ -1329,12 +1320,37 @@ var Item = function (_React$Component) {
 		};
 		window.scroll(0, 0);
 		console.log('<Item/> constructing', _this.props, _this.state);
+		_this.getItem();
 		return _this;
 	}
 
 	_createClass(Item, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {}
+	}, {
+		key: 'getItem',
+		value: function getItem() {
+			var self = this;
+			var itemID = location.hash.match(/\?id=(\w+)/)[1];
+			fetch('/getItem', {
+				method: 'POST',
+				headers: {
+					// 'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ itemID: itemID })
+			}).then(function (res) {
+				return res.json();
+			}).then(function (data) {
+				console.log('<Item/> item received');
+				data.quantity = 1;
+				self.setState({
+					item: data
+				});
+			}).catch(function (e, f, g) {
+				console.log(e, f, g);
+			});
+		}
 	}, {
 		key: 'increase',
 		value: function increase() {
@@ -2184,6 +2200,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import 'babel-polyfill';
+
 var Signin = function (_React$Component) {
 	_inherits(Signin, _React$Component);
 
@@ -2206,7 +2224,7 @@ var Signin = function (_React$Component) {
 	_createClass(Signin, [{
 		key: 'setUserID',
 		value: function setUserID(e) {
-			var user = this.state.user;
+			var user = Object.assign({}, this.state.user);
 			user.userID = e.target.value;
 			this.setState({
 				user: user
@@ -2215,7 +2233,7 @@ var Signin = function (_React$Component) {
 	}, {
 		key: 'setPassword',
 		value: function setPassword(e) {
-			var user = this.state.user;
+			var user = Object.assign({}, this.state.user);
 			user.password = e.target.value;
 			this.setState({
 				user: user
@@ -2224,9 +2242,26 @@ var Signin = function (_React$Component) {
 	}, {
 		key: 'login',
 		value: function login() {
-			this.props.act({
-				type: 'LOGIN',
-				user: this.state.user
+			var self = this;
+			fetch('/login', {
+				method: 'POST',
+				headers: {
+					// 'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(self.state.user),
+				async: false
+			}).then(function (res) {
+				return res.text();
+			}).then(function (data) {
+				if (data === 'true') {
+					self.props.act({
+						type: 'LOGIN',
+						user: self.state.user
+					});
+				} else {
+					alert('您输入的用户名或密码有误！');
+				}
 			});
 		}
 	}, {
@@ -2528,7 +2563,8 @@ var DECREMENT = { type: 'DECREMENT' };
 
 // store
 var $$store = createStore(_reducer.$$reducer, enhancer);
-console.log('Redux: state initialized', $$store.getState());
+console.debug('Redux: store created.');
+console.debug('Redux: state initialized', $$store.getState());
 
 var SigninConnected = connect(function (state) {
 	return {
@@ -2748,28 +2784,10 @@ function user() {
 
 	switch (action.type) {
 		case 'LOGIN':
-			var ok = false;
-			$.ajax({
-				headers: {
-					'Content-type': 'application/json'
-				},
-				type: 'POST',
-				url: '/login',
-				data: JSON.stringify(action.user),
-				async: false
-			}).done(function (data) {
-				if (data === 'true') {
-					alert('登录成功！');
-					ok = true;
-					location.hash = 'home';
-				} else {
-					alert('您输入的用户名或密码有误！');
-				}
-			});
-			if (ok) {
-				sessionStorage.userID = action.user.userID;
-				return { userID: action.user.userID };
-			};
+			sessionStorage.userID = action.user.userID;
+			alert('登录成功！');
+			location.hash = 'home';
+			return { userID: action.user.userID };
 		case 'LOGOUT':
 			delete sessionStorage.userID;
 			return { userID: undefined };

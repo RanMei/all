@@ -57,7 +57,8 @@ var DECREMENT = {type:'DECREMENT'};
 
 // store
 const $$store = createStore( $$reducer,enhancer );
-console.log( 'Redux: state initialized',$$store.getState() )
+console.debug( 'Redux: store created.')
+console.debug( 'Redux: state initialized',$$store.getState() )
 
 var SigninConnected = connect(function(state){
 	return {

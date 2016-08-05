@@ -9,32 +9,14 @@ var swiperItems = [
 	'img/index/slider_3.jpg'
 ]
 
-function getItem(){
-	var itemID = location.hash.match(/\?id=(\w+)/)[1];
-	var item;
-	console.log(itemID)
-	$.ajax({
-		headers:{
-			'Content-type': 'application/json'
-		},
-		type:'post',
-		url:'/getItem',
-		data: JSON.stringify({itemID:itemID}),
-		async: false
-	}).done(function(data){
-		//console.log( data );
-		console.log('item received');
-		item = data;
-	}).error(function(e,f,g){
-		console.log(e,f,g);
-	})
-	return item;
-}
-
 class Item extends React.Component {
 	constructor(){
 		super();
-		var item = getItem();
+		var item = {
+			name: null,
+			price: 0,
+			desc: null
+		};
 		item.quantity = 1;
 		this.state = {
 			item: item,
@@ -43,8 +25,31 @@ class Item extends React.Component {
 		};
 		window.scroll(0,0);
 		console.log('<Item/> constructing',this.props,this.state);
+		this.getItem();
 	}
 	componentWillMount(){
+	}
+	getItem(){
+		var self = this;
+		var itemID = location.hash.match(/\?id=(\w+)/)[1];
+		fetch('/getItem', {
+			method: 'POST',
+			headers: {
+				// 'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({itemID:itemID})
+		}).then(function(res){
+			return res.json();
+		}).then(function(data){
+			console.log('<Item/> item received');
+			data.quantity = 1;
+			self.setState({
+				item: data
+			})	
+		}).catch(function(e,f,g){
+			console.log(e,f,g);
+		})
 	}
 	increase(){
 		this.state.item.quantity++;

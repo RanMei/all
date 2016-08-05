@@ -109,6 +109,18 @@ body {
   color: balck;
   margin-right: 30px;
 }
+.first .navbar .nav a:link {
+  color: black;
+}
+.first .navbar .nav a:visited {
+  color: black;
+}
+.first .navbar .nav a:hover {
+  color: #C52E1E;
+}
+.first .navbar .nav span {
+  font-size: 10px;
+}
 .first .line {
   height: 5px;
 }
@@ -169,19 +181,15 @@ body {
   margin: 0 0 20px 0;
   font-size: 2rem;
 }
-.nav a:link {
-  color: black;
+.second .container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 700px;
 }
-.nav a:visited {
-  color: black;
-}
-.nav a:hover {
-  color: #C52E1E;
-}
-.nav span {
-  font-size: 10px;
-}
-/* */
 .second .title {
   margin: 50px 0 20px 0;
   font-size: 2rem;
@@ -235,6 +243,7 @@ body {
   float: left;
   margin-left: 2px;
   margin-right: 2px;
+  -webkit-transition: 2s;
   transition: 2s;
   display: block;
 }
@@ -267,128 +276,148 @@ body {
 .third .gallery .p8 {
   bottom: -80px;
 }
-/* */
-.fourth .title {
+.fourth .centered {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 700px;
+}
+.fourth .centered .title {
   padding: 30px 0 20px 0;
   text-align: center;
   color: white;
   font-size: 30px;
 }
-.fourth .desc {
+.fourth .centered .desc {
   font-size: 14px;
   text-align: center;
   color: white;
   margin: 0 0 30px 0;
 }
-.fourth .timeline {
-  width: 800px;
-  height: 300px;
-  margin: auto;
-}
-.fourth .month {
-  width: 800px;
-  margin: auto;
-}
-.fourth .month > li {
-  float: left;
-  font-size: 14px;
-  color: white;
-}
-.fourth .prev {
+.fourth .centered .cards-container .prev {
   float: left;
   margin: 100px 0 0 0;
   cursor: pointer;
 }
-.fourth .next {
+.fourth .centered .cards-container .next {
   float: right;
   margin: 100px 0 0 0;
   z-index: 99;
   cursor: pointer;
 }
-.cards {
+.fourth .centered .cards-container .cards {
   width: 214px;
   height: 300px;
   margin: auto;
-  perspective: 1000px;
-  transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
-.cards .card {
+.fourth .centered .cards-container .cards .card {
   position: absolute;
   width: 214px;
   opacity: 0.9;
-  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
 }
-.cards .card1 {
-  transform: translateX(-360px) translateZ(-360px) rotateY(40deg);
+.fourth .centered .cards-container .cards .card1 {
+  -webkit-transform: translateX(-360px) translateZ(-360px) rotateY(40deg);
+          transform: translateX(-360px) translateZ(-360px) rotateY(40deg);
 }
-.cards .card2 {
-  transform: translateX(-240px) translateZ(-240px) rotateY(40deg);
+.fourth .centered .cards-container .cards .card2 {
+  -webkit-transform: translateX(-240px) translateZ(-240px) rotateY(40deg);
+          transform: translateX(-240px) translateZ(-240px) rotateY(40deg);
 }
-.cards .card3 {
-  transform: translateX(-120px) translateZ(-120px) rotateY(40deg);
+.fourth .centered .cards-container .cards .card3 {
+  -webkit-transform: translateX(-120px) translateZ(-120px) rotateY(40deg);
+          transform: translateX(-120px) translateZ(-120px) rotateY(40deg);
 }
-.cards .card4 {
+.fourth .centered .cards-container .cards .card4 {
   z-index: 1;
 }
-.cards .card5 {
-  transform: translateX(120px) translateZ(-120px) rotateY(-40deg);
+.fourth .centered .cards-container .cards .card5 {
+  -webkit-transform: translateX(120px) translateZ(-120px) rotateY(-40deg);
+          transform: translateX(120px) translateZ(-120px) rotateY(-40deg);
 }
-.cards .card6 {
-  transform: translateX(240px) translateZ(-240px) rotateY(-40deg);
+.fourth .centered .cards-container .cards .card6 {
+  -webkit-transform: translateX(240px) translateZ(-240px) rotateY(-40deg);
+          transform: translateX(240px) translateZ(-240px) rotateY(-40deg);
 }
-.cards .card7 {
-  transform: translateX(360px) translateZ(-360px) rotateY(-40deg);
+.fourth .centered .cards-container .cards .card7 {
+  -webkit-transform: translateX(360px) translateZ(-360px) rotateY(-40deg);
+          transform: translateX(360px) translateZ(-360px) rotateY(-40deg);
 }
-.month {
+.fourth .centered .timeline {
+  width: 800px;
+  height: 300px;
+  margin: auto;
+}
+.fourth .centered .timeline .month {
   position: relative;
+  width: 100%;
 }
-.month li {
+.fourth .centered .timeline .month li {
   position: absolute;
+  font-size: 14px;
+  color: white;
 }
-.month0 {
+.fourth .centered .timeline .month .month0 {
   left: 40px;
   top: 40px;
 }
-.month1 {
+.fourth .centered .timeline .month .month1 {
   left: 140px;
   top: 60px;
 }
-.month2 {
+.fourth .centered .timeline .month .month2 {
   left: 240px;
   top: 70px;
 }
-.month3 {
+.fourth .centered .timeline .month .month3 {
   left: 380px;
   top: 80px;
 }
-.month4 {
+.fourth .centered .timeline .month .month4 {
   left: 500px;
   top: 70px;
 }
-.month5 {
+.fourth .centered .timeline .month .month5 {
   left: 600px;
   top: 60px;
 }
-.month6 {
+.fourth .centered .timeline .month .month6 {
   left: 690px;
   top: 40px;
 }
-.fifth .title {
+.fifth .centered {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 700px;
+}
+.fifth .centered .title {
   text-align: center;
   font-size: 40px;
   color: grey;
   padding: 60px 0 20px 0;
 }
-.fifth .desc {
+.fifth .centered .desc {
   text-align: center;
   font-size: 14px;
   color: grey;
   margin: 0 0 60px 0;
 }
-.fifth .desc span {
+.fifth .centered .desc span {
   color: #AC1F25;
 }
-.fifth .company li {
+.fifth .centered .company li {
   float: left;
   width: 220px;
   height: 250px;
@@ -397,20 +426,22 @@ body {
   overflow: hidden;
   box-shadow: 0 0 5px grey;
 }
-.fifth .upper {
+.fifth .centered .upper {
   position: relative;
   height: 125px;
   overflow: hidden;
 }
-.fifth .upper img {
+.fifth .centered .upper img {
   position: absolute;
   width: 100%;
+  -webkit-transition: 1s;
   transition: 1s;
 }
-.fifth .upper:hover img {
-  transform: scale(1.2);
+.fifth .centered .upper:hover img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
-.fifth .upper .name {
+.fifth .centered .upper .name {
   position: absolute;
   width: 100%;
   top: 30px;
@@ -419,44 +450,44 @@ body {
   z-index: 5;
   text-align: center;
 }
-.fifth .lower {
+.fifth .centered .lower {
   height: 125px;
 }
-.city_name {
+.fifth .centered .city_name {
   margin: 20px 10px 0 10px;
   font-size: 18px;
   color: #AC1F25;
 }
-.city_desc {
+.fifth .centered .city_desc {
   margin: 10px;
   font-size: 12px;
 }
-.footer {
+.fifth .footer {
   position: absolute;
   bottom: -106px;
   height: 106px;
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
 }
-.footer .left {
+.fifth .footer .left {
   float: left;
   margin-left: 50px;
 }
-.footer .nav {
+.fifth .footer .left .nav {
   padding: 0 0 10px 0;
 }
-.footer .nav a:link {
+.fifth .footer .left .nav a:link {
   float: left;
   font-size: 12px;
   margin: 0 16px 0 0;
   color: black;
 }
-.footer .nav a:hover {
+.fifth .footer .left .nav a:hover {
   color: black;
 }
-.footer .copyright {
+.fifth .footer .left .copyright {
   font-size: 12px;
 }
-.footer .right {
+.fifth .footer .right {
   float: right;
   margin: 10px 50px 0 0;
 }

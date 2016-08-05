@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',function(){
 		$screen.style.display = 'none';
 		$html.style.fontSize = 100*w/720+'px';
 		//document.getElementsByClassName('container')[0].style.height = h+'px';
-		console.log( 'rem: Size of the viewport is '+w+'*'+h+'.' );
+		console.debug( 'rem: Rem reset. Size of the viewport is '+w+'*'+h+'.' );
 	}
 	setRem();
 	window.addEventListener('resize',setRem);

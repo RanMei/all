@@ -14,19 +14,27 @@ var swiperItems = [
 class Home extends React.Component {
 	constructor(props) {
         super(props);
-        var items;
-		$.ajax({
-			type: 'post',
-			url: '/getItems',
-			async: false
-		}).done(function(data){
-			//console.log(data);
-			items = data;
+        var self = this;
+		self.state = {items: []};
+		self.getItems();
+		console.log('<Home/> constructing',self.state);
+    }
+    getItems(){
+    	var self = this;
+		fetch('/getItems', {
+			method: 'POST',
+			headers: {
+				// 'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify( self.state.user )
+		}).then(function(res){
+			return res.json();
+		}).then(function(data){
+			self.setState({
+				items: data
+			})
 		})
-        this.state = {
-            items: items
-        };
-        console.log('<Home/> constructing',this.state)
     }
 	render() {
 		window.scroll(0,0);
@@ -34,7 +42,6 @@ class Home extends React.Component {
 			location.hash = 'signin';
 			return <div></div>
 		}else{
-			//this.getItems();
 			return (
 				<div className="HOME">
 					<div className="searchbar">
