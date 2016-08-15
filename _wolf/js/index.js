@@ -1,3 +1,10 @@
+function Balls(config){
+
+}
+Balls.prototype = {
+	
+}
+
 function Cards(config){
 	this.elem = config.elem;
 	this.obj = $(this.elem);
@@ -19,6 +26,9 @@ function Cards(config){
 Cards.prototype = {
 	init: function(){
 		this.listen();
+	},
+	html: function(){
+		this.elem.innerHTML = '';
 	},
 	listen: function(){
 		this.arrows.on('mouseenter',function(){

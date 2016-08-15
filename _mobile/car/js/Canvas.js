@@ -95,7 +95,7 @@ Canvas.prototype = {
 		// 	ctx.scale(1/this.carScale,1/this.carScale)
 		// }
 
-		if( y>0&&y<12000 ){
+		if( y>=0&&y<12000 ){
 
 			var cy = y - 0 - width*shape.r;
 

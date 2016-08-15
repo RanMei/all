@@ -1,15 +1,38 @@
 import {_} from './_.js';
 import {Canvas} from './Canvas.js';
 
-var App = function(canvas){
+var App = function(){
 	this.y = 0;
 	this.dy = 0;
-	this.canvas = canvas;
+	this.canvas = null;
 	this.width = window.innerWidth;
+	this.init();
 }
 
 App.prototype = {
 	init: function(){
+		var self = this;
+		self.initCanvas();
+		self.listen();
+	},
+	initCanvas: function(){
+		this.canvas = new Canvas({
+			elem: document.getElementById('canvas'),
+			width: 2000,
+			height: 6000,
+			imgs: {
+				road: ['img/road.jpg',1200,451],
+				car: ['img/car.png',505,851],
+				shape: ['img/shape.png',640,533,-3200],
+				bg: ['img/bg.png',640,559],
+				title: ['img/seat-1.png',640,540,-2000],
+				lamp: ['img/lamp.png',640,357,-2000],
+				lamp1: ['img/lamp1.jpg',958,719]
+			}
+		});
+		this.canvas.render(this.y,this.dy);
+	},
+	listen: function(){
 		var self = this;
 		document.addEventListener('touchstart',function(e){
 			clearInterval(self.interval);
@@ -32,12 +55,11 @@ App.prototype = {
 				self.autoScroll();
 			}
 		})
-		self.canvas.render(self.y,self.dy);
 	},
 	autoScroll: function(){
 		var self = this;
 		self.interval = setInterval(function(){
-			self.dy = Math.round( 12/self.width*2000 );
+			self.dy = Math.round( 20/self.width*2000 );
 			self.y += self.dy;
 			self.canvas.render(self.y,self.dy);
 		},33)
@@ -48,23 +70,6 @@ App.prototype = {
 	}
 }
 
-
-
-
-var canvas = new Canvas({
-	elem: document.getElementById('canvas'),
-	width: 2000,
-	height: 6000,
-	imgs: {
-		road: ['img/road.jpg',1200,451],
-		car: ['img/car.png',505,851],
-		shape: ['img/shape.png',640,533,-3200],
-		bg: ['img/bg.png',640,559],
-		title: ['img/seat-1.png',640,540,-2000],
-		lamp: ['img/lamp.png',640,357,-2000],
-		lamp1: ['img/lamp1.jpg',958,719]
-	}
-});
-
-var app = new App(canvas);
-app.init();
+window.onload = function(){
+	var app = new App();
+}

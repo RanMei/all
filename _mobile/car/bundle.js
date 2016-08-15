@@ -95,7 +95,7 @@ Canvas.prototype = {
 		// 	ctx.scale(1/this.carScale,1/this.carScale)
 		// }
 
-		if (y > 0 && y < 12000) {
+		if (y >= 0 && y < 12000) {
 
 			var cy = y - 0 - width * shape.r;
 
@@ -160,15 +160,38 @@ var _2 = require('./_.js');
 
 var _Canvas = require('./Canvas.js');
 
-var App = function App(canvas) {
+var App = function App() {
 	this.y = 0;
 	this.dy = 0;
-	this.canvas = canvas;
+	this.canvas = null;
 	this.width = window.innerWidth;
+	this.init();
 };
 
 App.prototype = {
 	init: function init() {
+		var self = this;
+		self.initCanvas();
+		self.listen();
+	},
+	initCanvas: function initCanvas() {
+		this.canvas = new _Canvas.Canvas({
+			elem: document.getElementById('canvas'),
+			width: 2000,
+			height: 6000,
+			imgs: {
+				road: ['img/road.jpg', 1200, 451],
+				car: ['img/car.png', 505, 851],
+				shape: ['img/shape.png', 640, 533, -3200],
+				bg: ['img/bg.png', 640, 559],
+				title: ['img/seat-1.png', 640, 540, -2000],
+				lamp: ['img/lamp.png', 640, 357, -2000],
+				lamp1: ['img/lamp1.jpg', 958, 719]
+			}
+		});
+		this.canvas.render(this.y, this.dy);
+	},
+	listen: function listen() {
 		var self = this;
 		document.addEventListener('touchstart', function (e) {
 			clearInterval(self.interval);
@@ -193,12 +216,11 @@ App.prototype = {
 				self.autoScroll();
 			}
 		});
-		self.canvas.render(self.y, self.dy);
 	},
 	autoScroll: function autoScroll() {
 		var self = this;
 		self.interval = setInterval(function () {
-			self.dy = Math.round(12 / self.width * 2000);
+			self.dy = Math.round(20 / self.width * 2000);
 			self.y += self.dy;
 			self.canvas.render(self.y, self.dy);
 		}, 33);
@@ -209,22 +231,8 @@ App.prototype = {
 	}
 };
 
-var canvas = new _Canvas.Canvas({
-	elem: document.getElementById('canvas'),
-	width: 2000,
-	height: 6000,
-	imgs: {
-		road: ['img/road.jpg', 1200, 451],
-		car: ['img/car.png', 505, 851],
-		shape: ['img/shape.png', 640, 533, -3200],
-		bg: ['img/bg.png', 640, 559],
-		title: ['img/seat-1.png', 640, 540, -2000],
-		lamp: ['img/lamp.png', 640, 357, -2000],
-		lamp1: ['img/lamp1.jpg', 958, 719]
-	}
-});
-
-var app = new App(canvas);
-app.init();
+window.onload = function () {
+	var app = new App();
+};
 
 },{"./Canvas.js":1,"./_.js":2}]},{},[3]);
