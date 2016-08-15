@@ -1,13 +1,67 @@
 
 document.addEventListener('DOMContentLoaded',function(){
 
+    var defaults = {
+        color: '#fff',
+        x: Math.round(Math.random() * 500),
+        y: Math.round(Math.random() * 500),
+        d: 0,
+        radius: 5
+    };
+
+    Particle = function (params) {
+        this.opts = extend({}, defaults, params);
+
+        this.color = 'white';
+        this.x = Math.round( Math.random() * 1000 );
+        this.y = Math.round( Math.random() * 1000 );
+        this.d = this.opts.d;
+
+        this.radius = this.opts.radius;
+
+    };
+
+    Particle.prototype = {
+
+        update: function () {
+            var params = this.opts.snowfall,
+            x, y;
+
+            x = Math.cos(0) * this.d * 2 + this.x;
+            y = Math.sin(0) + 1 + ((this.radius/3*this.d) * 2) + this.y;
+
+            if (x > params.width) {
+                x = 0;
+            }
+
+            if (x < 0) {
+                x = params.width;
+            }
+
+            if(y > params.height) {
+                y = 0;
+                x = getRandomInt(0, params.width)
+            }
+
+            this.x = x;
+            this.y = y;
+        },
+        draw: function(ctx){
+            ctx.beginPath();
+            ctx.moveTo( this.x, this.y );
+            ctx.arc( this.x, this.y, this.radius, 0, Math.PI * 2, true );
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
 	var Snowfall = function (selector, opts) {
-		this.el = document.querySelector(selector);
+		this.elem = document.querySelector(selector);
 
-		this.width = this.el.width = 1000;
-		this.height = this.el.height = 1000;
+		this.width = this.elem.width = 1000;
+		this.height = this.elem.height = 1000;
 
-		this.ctx = this.el.getContext('2d');
+		this.ctx = this.elem.getContext('2d');
 
 		this.config = {
 			color: 'white',
@@ -34,12 +88,11 @@ document.addEventListener('DOMContentLoaded',function(){
             this.createParticles();
             this.render();
         },
-
         createParticles: function () {
         	var self = this;
 
         	for( var i=0;i<this.config.count;i++ ){
-        		self.particles.push(new Snowfall.Particle({
+        		self.particles.push(new Particle({
         			x: Math.round( Math.random() * self.width ),
         			y: Math.round( Math.random() * self.height ),
         			d: Math.random(),
@@ -50,7 +103,6 @@ document.addEventListener('DOMContentLoaded',function(){
         	}
 
         },
-
         render: function () {
         	var self = this;
         	this.angle = this.angle - 0.0001;
@@ -65,59 +117,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     };
 
-    var defaults = {
-    	color: '#fff',
-    	x: Math.round(Math.random() * 500),
-    	y: Math.round(Math.random() * 500),
-    	d: 0,
-    	radius: 5
-    };
-
-    Snowfall.Particle = function (params) {
-    	this.opts = extend({}, defaults, params);
-
-    	this.color = 'white';
-    	this.x = Math.round( Math.random() * 1000 );
-    	this.y = Math.round( Math.random() * 1000 );
-    	this.d = this.opts.d;
-
-    	this.radius = this.opts.radius;
-
-    };
-
-    Snowfall.Particle.prototype = {
-
-    	update: function () {
-    		var params = this.opts.snowfall,
-    		x, y;
-
-    		x = Math.cos(0) * this.d * 2 + this.x;
-    		y = Math.sin(0) + 1 + ((this.radius/3*this.d) * 2) + this.y;
-
-    		if (x > params.width) {
-    			x = 0;
-    		}
-
-    		if (x < 0) {
-    			x = params.width;
-    		}
-
-    		if(y > params.height) {
-    			y = 0;
-    			x = getRandomInt(0, params.width)
-    		}
-
-    		this.x = x;
-    		this.y = y;
-    	},
-    	draw: function(ctx){
-    		ctx.beginPath();
-    		ctx.moveTo( this.x, this.y );
-    		ctx.arc( this.x, this.y, this.radius, 0, Math.PI * 2, true );
-    		ctx.fillStyle = this.color;
-    		ctx.fill();
-    	}
-    }
+    
 
 
     function extend (target) {

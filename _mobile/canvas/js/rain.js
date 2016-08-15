@@ -1,13 +1,10 @@
 (function(){
-	var canvas = document.getElementById('canvas');
-	var ctx = canvas.getContext('2d');
 
-	var $w = canvas.width = 1000;
-	var $h = canvas.height = 1000;
-	
-	function Drop(){
+	function Drop(host){
 		var self = this;
-		this.x = Math.random()*$w;
+		this.w = host.w;
+		this.ctx = host.ctx;
+		this.x = Math.random()*this.w;
 		this.y = -Math.random()*800;
 		//this.lightness = 50;
 		this.a = 0.7 + Math.random()*0.3;
@@ -51,13 +48,14 @@
 			this.color = 'rgba(0,94,255,'+this.a+')';
 		},
 		draw: function(){
-			ctx.beginPath();
-			ctx.fillStyle = this.color;
-			ctx.fillRect(this.x,this.y,this.width,this.height);
+			this.ctx.beginPath();
+			this.ctx.fillStyle = this.color;
+			this.ctx.fillRect(this.x,this.y,this.width,this.height);
 		}
 	}
 
-	function Splash(x,y){
+	function Splash(x,y,host){
+		this.ctx = host.ctx;
 		this.x = x;
 		this.y = y;
 		this.r = 2;
@@ -68,10 +66,10 @@
 	}
 	Splash.prototype = {
 		draw: function(){
-			ctx.beginPath();
-			ctx.fillStyle = this.color;
-			ctx.arc(this.x, this.y, this.r, Math.PI*2, false);
-			ctx.fill();
+			this.ctx.beginPath();
+			this.ctx.fillStyle = this.color;
+			this.ctx.arc(this.x, this.y, this.r, Math.PI*2, false);
+			this.ctx.fill();
 		},
 		step: function(){
 			this.x += this.speedX;
@@ -81,39 +79,95 @@
 		}
 	}
 
-	var drops = [];
-	for(var i=0;i<500;i++){
-		drops.push( new Drop() );
+	function Rain(config){
+		this.canvas = config.elem;
+		this.ctx = this.canvas.getContext('2d');
+		this.w = this.canvas.width = 1000;
+		this.h = this.canvas.height = 1000;
+
+		this.drops = [];
+		this.dropCount = 500;
+		this.splashes = [];
+
+		this.paused = false;
+
+		this.init();
 	}
-	var splashes = [];
-
-	function render(){
-		window.requestAnimationFrame(render);
-
-		ctx.globalCompositeOperation = 'source-over';
-		ctx.fillStyle = 'rgba(0,0,0,0.5)';
-		ctx.fillRect( 0,0,$w,$h );
-		ctx.globalCompositeOperation = 'lighter';
-
-		drops.forEach(function(drop,i){
-			drop.draw();
-			drop.step();			
-			if( drop.y>$h ){
-				drops[i] = new Drop();
-				splashes.push( new Splash(drop.x,$h) );
+	Rain.prototype = {
+		init: function(){
+			this.createDrops();
+			this.listen();
+			this.render();
+		},
+		createDrops: function(){
+			for(var i=0;i<this.dropCount;i++){
+				this.drops[i] = new Drop(this);
 			}
-		})
+		},
+		reset: function(){
+			this.drops = [];
+			this.splashes = [];
+			this.createDrops();
+		},
+		play: function(){
+			this.paused = false;
+			this.render();
+		},
+		pause: function(){
+			this.paused = true;
+		},
+		listen: function(){
+			var self = this;
+			self.canvas.addEventListener('click',function(){
+				if( self.paused ){
+					self.play();
+				}else{
+					self.pause();
+				}
+			})
+			// self.canvas.addEventListener('click',function(){
+			// 	self.reset();
+			// })
+		},
+		render: function(){
+			var self = this;
 
-		splashes.forEach(function(splash,i){
-			splash.draw();
-			splash.step();
-			if( splash.life<=0 ){
-				splashes.splice(i,1);
-			}
-		})
-		//console.log(splashes.length)
+			var ctx = this.ctx;
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.fillStyle = 'rgba(0,0,0,0.5)';
+			ctx.fillRect( 0,0,this.w,this.h );
+			ctx.globalCompositeOperation = 'lighter';
 
+			self.drops.forEach(function(drop,i){
+				drop.draw();
+				drop.step();			
+				if( drop.y>self.h ){
+					self.drops[i] = new Drop(self);
+					self.splashes.push( new Splash(drop.x,self.h,self) );
+				}
+			})
+			self.splashes.forEach(function(splash,i){
+				splash.draw();
+				splash.step();
+				if( splash.life<=0 ){
+					self.splashes.splice(i,1);
+				}
+			})
+
+			if( !self.paused ){
+				window.requestAnimationFrame( self.render.bind(self) );
+			};
+		}
 	}
-	render();
+
+	new Rain({
+		elem: document.getElementById('canvas')
+	})
+	new Rain({
+		elem: document.getElementById('canvas2')
+	})
+	new Rain({
+		elem: document.getElementById('canvas3')
+	})
 
 })();

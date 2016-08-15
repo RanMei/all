@@ -6,7 +6,7 @@ class Signin extends React.Component {
 		this.state = {
 			user:{
 				userID: '',
-				password:''
+				password: ''
 			}
 		};
 		window.scroll(0,0);
