@@ -35,6 +35,6 @@
 .NAVBAR .nav a:visited {
   color: black;
 }
-.NAVBAR .nav .active {
+.NAVBAR .nav .selected {
   color: #66CC66;
 }

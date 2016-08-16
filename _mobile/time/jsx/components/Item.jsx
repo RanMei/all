@@ -12,13 +12,14 @@ var swiperItems = [
 class Item extends React.Component {
 	constructor(){
 		super();
+		var item = {
+			name: null,
+			price: 0,
+			desc: null
+		};
+		item.quantity = 1;
 		this.state = {
-			item: {
-				name: '--',
-				price: 0,
-				desc: '',
-				quantity: 1
-			},
+			item: item,
 			tabPanel: 0,
 			thumbnail: 0
 		};
@@ -72,11 +73,11 @@ class Item extends React.Component {
 			tabPanel: index
 		});
 	}
-	addToCart(){
+	toCart(){
 		// Perform an action.
 		this.props.act({
 			type:'ADD_TO_CART',
-			itemID: this.state.item.id,
+			itemID: this.state.item.itemID,
 			quantity: this.state.item.quantity
 		});
 	}
@@ -135,7 +136,7 @@ class Item extends React.Component {
 						<img src="./img/homepage.png"></img>
 						<p>首页</p>
 					</a>
-					<a className="to_cart" onClick={this.addToCart.bind(this)}>加入购物车</a>
+					<a href="javascript:void(0);" className="to_cart">加入购物车</a>
 				</div>
 			</div>
 		)

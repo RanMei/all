@@ -1033,21 +1033,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var swiperItems = ['img/index/slider_0.jpg', 'img/index/slider_1.jpg', 'img/index/slider_2.jpg', 'img/index/slider_3.jpg'];
-
 var Home = function (_React$Component) {
 	_inherits(Home, _React$Component);
 
 	function Home(props) {
 		_classCallCheck(this, Home);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
-
-		var self = _this;
-		self.state = { items: [] };
-		self.getItems();
-		console.log('<Home/> constructing', self.state);
-		return _this;
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
+		//       var self = this;
+		// self.state = {items: []};
+		// self.getItems();
+		// console.log('<Home/> constructing',self.state);
 	}
 
 	_createClass(Home, [{
@@ -1073,200 +1069,75 @@ var Home = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			window.scroll(0, 0);
-			if (!sessionStorage.userID) {
-				location.hash = 'signin';
-				return React.createElement('div', null);
-			} else {
-				return React.createElement(
+
+			return React.createElement(
+				'div',
+				{ className: 'HOME' },
+				React.createElement('div', { className: 'banner' }),
+				React.createElement(
 					'div',
-					{ className: 'HOME' },
+					{ className: 'navbar' },
+					React.createElement('li', null),
+					React.createElement('li', null),
+					React.createElement('li', null),
+					React.createElement('li', null),
 					React.createElement(
-						'div',
-						{ className: 'searchbar' },
-						React.createElement(
-							'div',
-							{ className: 'search' },
-							React.createElement('img', { src: 'img/search.png' }),
-							React.createElement('input', { type: 'text', name: '', placeholder: '请输入产品名称' })
-						)
-					),
-					React.createElement(_Swiper.Swiper, { items: swiperItems }),
+						'a',
+						{ className: 'toSignin', href: '#/signin' },
+						React.createElement('img', { src: 'img/mine.png' })
+					)
+				),
+				React.createElement('div', { className: 'searchbar' }),
+				React.createElement(
+					'ul',
+					{ className: 'showcase' },
 					React.createElement(
-						'div',
-						{ className: 'panel' },
+						'li',
+						null,
 						React.createElement(
-							'div',
-							{ className: 'panel-header' },
-							React.createElement(
-								'p',
-								{ className: 'class-name' },
-								'时令果蔬'
-							),
-							React.createElement(
-								'p',
-								{ className: 'more' },
-								React.createElement(
-									'a',
-									{ href: '' },
-									'更多'
-								)
-							)
-						),
-						React.createElement(
-							'ul',
-							{ className: 'panel-body' },
-							this.state.items.map(function (item, i) {
-								var href = '#/item?id=' + item.id;
-								var src = 'img/thumbnail/' + item.id + '.jpg';
-								var style = {
-									float: i % 2 === 0 ? 'left' : 'right'
-								};
-								return React.createElement(
-									'div',
-									{ className: 'item' },
-									React.createElement(
-										'a',
-										{ href: href, style: style },
-										React.createElement('img', { className: 'thumbnail', src: src }),
-										React.createElement(
-											'p',
-											{ className: 'name' },
-											item.name
-										),
-										React.createElement(
-											'p',
-											{ className: 'description' },
-											item.desc
-										),
-										React.createElement(
-											'p',
-											{ className: 'price' },
-											'￥',
-											item.price.toFixed(2)
-										)
-									)
-								);
-							})
+							'p',
+							null,
+							'模玩'
 						)
 					),
 					React.createElement(
-						'div',
-						{ className: 'panel' },
+						'li',
+						null,
 						React.createElement(
-							'div',
-							{ className: 'panel-header' },
-							React.createElement(
-								'p',
-								{ className: 'class-name' },
-								'水产海鲜'
-							),
-							React.createElement(
-								'p',
-								{ className: 'more' },
-								React.createElement(
-									'a',
-									{ href: '' },
-									'更多'
-								)
-							)
-						),
-						React.createElement(
-							'ul',
-							{ className: 'panel-body' },
-							this.state.items.map(function (item, i) {
-								var src = 'img/thumbnail/' + item.id + '.jpg';
-								var style = {
-									float: i % 2 === 0 ? 'left' : 'right'
-								};
-								return React.createElement(
-									'div',
-									{ className: 'item' },
-									React.createElement(
-										'a',
-										{ href: 'items/item.html', style: style },
-										React.createElement('img', { className: 'thumbnail', src: src }),
-										React.createElement(
-											'p',
-											{ className: 'name' },
-											item.name
-										),
-										React.createElement(
-											'p',
-											{ className: 'description' },
-											item.desc
-										),
-										React.createElement(
-											'p',
-											{ className: 'price' },
-											'￥',
-											item.price.toFixed(2)
-										)
-									)
-								);
-							})
+							'p',
+							null,
+							'模玩'
 						)
 					),
 					React.createElement(
-						'div',
-						{ className: 'panel' },
+						'li',
+						null,
 						React.createElement(
-							'div',
-							{ className: 'panel-header' },
-							React.createElement(
-								'p',
-								{ className: 'class-name' },
-								'新鲜菜蔬'
-							),
-							React.createElement(
-								'p',
-								{ className: 'more' },
-								React.createElement(
-									'a',
-									{ href: '' },
-									'更多'
-								)
-							)
-						),
-						React.createElement(
-							'ul',
-							{ className: 'panel-body' },
-							this.state.items.map(function (item, i) {
-								var src = 'img/thumbnail/' + item.id + '.jpg';
-								var style = {
-									float: i % 2 === 0 ? 'left' : 'right'
-								};
-								return React.createElement(
-									'div',
-									{ className: 'item' },
-									React.createElement(
-										'a',
-										{ href: 'items/item.html', style: style },
-										React.createElement('img', { className: 'thumbnail', src: src }),
-										React.createElement(
-											'p',
-											{ className: 'name' },
-											item.name
-										),
-										React.createElement(
-											'p',
-											{ className: 'description' },
-											item.desc
-										),
-										React.createElement(
-											'p',
-											{ className: 'price' },
-											'￥',
-											item.price.toFixed(2)
-										)
-									)
-								);
-							})
+							'p',
+							null,
+							'模玩'
 						)
 					),
-					React.createElement('div', { className: 'nav_shadow' }),
-					React.createElement(_Navbar.Navbar, { name: 'home' })
-				);
-			};
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'p',
+							null,
+							'模玩'
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'p',
+							null,
+							'模玩'
+						)
+					)
+				)
+			);
 		}
 	}]);
 
@@ -1275,7 +1146,7 @@ var Home = function (_React$Component) {
 
 exports.Home = Home;
 
-},{"../common.jsx":1,"./Navbar.jsx":8,"./Swiper.jsx":12}],6:[function(require,module,exports){
+},{"../common.jsx":1,"./Navbar.jsx":8,"./Swiper.jsx":11}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1307,13 +1178,14 @@ var Item = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
 
+		var item = {
+			name: null,
+			price: 0,
+			desc: null
+		};
+		item.quantity = 1;
 		_this.state = {
-			item: {
-				name: '--',
-				price: 0,
-				desc: '',
-				quantity: 1
-			},
+			item: item,
 			tabPanel: 0,
 			thumbnail: 0
 		};
@@ -1381,12 +1253,12 @@ var Item = function (_React$Component) {
 			});
 		}
 	}, {
-		key: 'addToCart',
-		value: function addToCart() {
+		key: 'toCart',
+		value: function toCart() {
 			// Perform an action.
 			this.props.act({
 				type: 'ADD_TO_CART',
-				itemID: this.state.item.id,
+				itemID: this.state.item.itemID,
 				quantity: this.state.item.quantity
 			});
 		}
@@ -1518,7 +1390,7 @@ var Item = function (_React$Component) {
 					),
 					React.createElement(
 						'a',
-						{ className: 'to_cart', onClick: this.addToCart.bind(this) },
+						{ href: 'javascript:void(0);', className: 'to_cart' },
 						'加入购物车'
 					)
 				)
@@ -1531,7 +1403,7 @@ var Item = function (_React$Component) {
 
 exports.Item = Item;
 
-},{"../common.jsx":1,"./CommentBox.jsx":3,"./Swiper.jsx":12}],7:[function(require,module,exports){
+},{"../common.jsx":1,"./CommentBox.jsx":3,"./Swiper.jsx":11}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1696,7 +1568,7 @@ var Member = function (_React$Component) {
 						{ className: 'logout', onClick: this.logout.bind(this) },
 						'退出登录'
 					),
-					React.createElement(_Navbar.Navbar, { name: 'mine' })
+					React.createElement(_Navbar.Navbar, null)
 				);
 			};
 		}
@@ -1708,7 +1580,7 @@ var Member = function (_React$Component) {
 exports.Member = Member;
 
 },{"../common.jsx":1,"./Navbar.jsx":8}],8:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -1730,60 +1602,91 @@ var Navbar = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
 
-		_this.state = {};
+		_this.state = {
+			user: {
+				userID: '',
+				password: ''
+			}
+		};
 		return _this;
 	}
 
 	_createClass(Navbar, [{
-		key: "render",
+		key: 'setUserID',
+		value: function setUserID(e) {
+			var user = this.state.user;
+			user.userID = e.target.value;
+			this.setState({
+				user: user
+			});
+		}
+	}, {
+		key: 'setPassword',
+		value: function setPassword(e) {
+			var user = this.state.user;
+			user.password = e.target.value;
+			this.setState({
+				user: user
+			});
+		}
+	}, {
+		key: 'login',
+		value: function login() {
+			this.props.act({
+				type: 'LOGIN',
+				user: this.state.user
+			});
+		}
+	}, {
+		key: 'render',
 		value: function render() {
 			return React.createElement(
-				"div",
-				{ className: "NAVBAR" },
+				'div',
+				{ className: 'NAVBAR' },
 				React.createElement(
-					"ul",
-					{ className: "nav" },
+					'ul',
+					{ className: 'nav' },
 					React.createElement(
-						"a",
-						{ href: "#/home" },
-						React.createElement("img", { src: "img/homepage" + (this.props.name === 'home' ? '2' : '') + ".png" }),
+						'a',
+						{ href: '#/home' },
+						React.createElement('img', { src: 'img/homepage.png' }),
 						React.createElement(
-							"p",
-							{ className: this.props.name === 'home' ? 'active' : '' },
-							"首页"
-						),
-						React.createElement("div", { className: "line" })
-					),
-					React.createElement(
-						"a",
-						{ href: "" },
-						React.createElement("img", { src: "img/classes" + (this.props.name === 'classes' ? '2' : '') + ".png" }),
-						React.createElement(
-							"p",
+							'p',
 							null,
-							"分类"
+							'首页'
 						),
-						React.createElement("div", { className: "line" })
+						React.createElement('div', { className: 'line' })
 					),
 					React.createElement(
-						"a",
-						{ href: "#/shopping_cart" },
-						React.createElement("img", { src: "img/cart.png" }),
+						'a',
+						{ href: '' },
+						React.createElement('img', { src: 'img/class.png' }),
 						React.createElement(
-							"p",
+							'p',
 							null,
-							"购物车"
+							'分类'
 						),
-						React.createElement("div", { className: "line" })
+						React.createElement('div', { className: 'line' })
 					),
 					React.createElement(
-						"a",
-						{ href: "#/member" },
-						React.createElement("img", { src: "img/mine" + (this.props.name === 'mine' ? '2' : '') + ".png" }),
+						'a',
+						{ href: 'shopping_cart.html' },
+						React.createElement('img', { src: 'img/cart.png' }),
 						React.createElement(
-							"p",
-							{ className: this.props.name === 'mine' ? 'active' : '' },
-							"我的多利"
+							'p',
+							null,
+							'购物车'
+						),
+						React.createElement('div', { className: 'line' })
+					),
+					React.createElement(
+						'a',
+						{ href: '#/member' },
+						React.createElement('img', { src: 'img/mine2.png' }),
+						React.createElement(
+							'p',
+							{ className: 'selected' },
+							'我的多利'
 						)
 					)
 				)
@@ -1934,9 +1837,9 @@ var ShoppingCart = function (_React$Component2) {
 	}, {
 		key: "componentWillMount",
 		value: function componentWillMount() {
-			// this.setState({
-			// 	items: this.props.user.shoppingCart||[]
-			// })
+			this.setState({
+				items: this.props.user.shoppingCart || []
+			});
 		}
 	}, {
 		key: "componentDidMount",
@@ -2049,92 +1952,99 @@ var ShoppingCart = function (_React$Component2) {
 			console.log('<ShoppingCart/> rendering', this.props, this.state);
 			return React.createElement(
 				"div",
-				{ className: "SHOPPING_CART" },
+				{ className: "shopping-cart wrapper ka-slideDown" },
 				React.createElement(
 					"div",
-					{ className: "header" },
+					{ className: "container" },
 					React.createElement(
-						"p",
-						null,
-						"购物车总共有： ",
-						React.createElement(
-							"span",
-							null,
-							"1"
-						),
-						" 件商品"
+						"div",
+						{ className: "shopping-cart-header1" },
+						"我的购物车"
 					),
 					React.createElement(
 						"div",
-						{ className: "delete" },
+						{ className: "shopping-cart-header2" },
+						React.createElement("input", { className: "check", type: "checkbox", checked: this.allChecked(), onChange: this.checkAll.bind(this) }),
 						React.createElement(
-							"a",
-							{ href: "" },
-							React.createElement("img", { src: "img/delete.png" }),
+							"div",
+							{ className: "thumbnail" },
+							"全选"
+						),
+						React.createElement(
+							"p",
+							{ className: "name" },
+							"商品"
+						),
+						React.createElement(
+							"p",
+							{ className: "spec" },
+							"规格"
+						),
+						React.createElement(
+							"p",
+							{ className: "price" },
+							"单价(元)"
+						),
+						React.createElement(
+							"div",
+							{ className: "counter" },
+							"数量"
+						),
+						React.createElement(
+							"div",
+							{ className: "subtotal" },
+							"小计(元)"
+						),
+						React.createElement(
+							"p",
+							{ className: "manipulation" },
+							"操作"
+						)
+					),
+					React.createElement(ItemList, {
+						items: this.state.items,
+						checkThis: this.checkThis.bind(this),
+						plusOne: this.plusOne.bind(this),
+						minusOne: this.minusOne.bind(this),
+						remove: this.removeItem.bind(this) }),
+					React.createElement(
+						"div",
+						{ style: { overflow: "hidden", background: "white" } },
+						React.createElement(
+							"ul",
+							{ className: "summary" },
 							React.createElement(
-								"p",
+								"li",
 								null,
-								"删除"
+								"已选择",
+								React.createElement(
+									"span",
+									{ className: "totalQuantity" },
+									this.getTotalQuantity()
+								),
+								"件商品"
+							),
+							React.createElement(
+								"li",
+								null,
+								"总价（不含运费）：",
+								React.createElement(
+									"span",
+									{ className: "note" },
+									"￥"
+								),
+								React.createElement(
+									"span",
+									{ className: "totalPrice" },
+									this.getTotalPrice()
+								)
+							),
+							React.createElement(
+								"li",
+								{ className: "checkout" },
+								"去结算"
 							)
 						)
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "item" },
-					React.createElement("img", { className: "thumbnail", src: "img/index/4.jpg" }),
-					React.createElement(
-						"p",
-						{ className: "name" },
-						"苍溪红心猕猴桃24粒礼品装(约2.5kg)"
-					),
-					React.createElement(
-						"p",
-						{ className: "price" },
-						"￥178.00"
-					),
-					React.createElement(
-						"div",
-						{ className: "counter" },
-						React.createElement(
-							"p",
-							{ className: "counter1" },
-							"-"
-						),
-						React.createElement(
-							"p",
-							{ className: "counter2" },
-							"1"
-						),
-						React.createElement(
-							"p",
-							{ className: "counter3" },
-							"+"
-						)
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "footer" },
-					React.createElement(
-						"a",
-						{ href: "javascript:history.go(-1);", className: "back" },
-						React.createElement("img", { src: "img/back.png" })
-					),
-					React.createElement(
-						"p",
-						{ className: "discount" },
-						"已优惠：￥0.00"
-					),
-					React.createElement(
-						"p",
-						{ className: "sum" },
-						"总计：￥178.00"
-					),
-					React.createElement(
-						"a",
-						{ className: "pay", href: "" },
-						"去结算"
 					)
 				)
 			);
@@ -2163,82 +2073,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // import 'babel-polyfill';
 
-var Mask = function (_React$Component) {
-	_inherits(Mask, _React$Component);
-
-	function Mask() {
-		_classCallCheck(this, Mask);
-
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this));
-
-		_this.style = {
-			mask: {
-				position: 'fixed',
-				left: 0,
-				top: 0,
-				width: '100%',
-				height: '100%',
-				zIndex: '1000'
-			},
-			p: {
-				position: 'absolute',
-				left: 0,
-				top: 0,
-				bottom: 0,
-				right: 0,
-				margin: 'auto',
-				width: '3rem',
-				height: '1rem',
-				borderRadius: '0.1rem',
-				background: 'black',
-				opacity: '0.5',
-				color: 'white',
-				textAlign: 'center',
-				fontSize: '0.2rem',
-				lineHeight: '1rem'
-			}
-		};
-		return _this;
-	}
-
-	_createClass(Mask, [{
-		key: 'render',
-		value: function render() {
-			var self = this;
-			return React.createElement(
-				'div',
-				{ style: this.style.mask },
-				React.createElement(
-					'p',
-					{ style: this.style.p },
-					self.props.text
-				)
-			);
-		}
-	}]);
-
-	return Mask;
-}(React.Component);
-
-var Signin = function (_React$Component2) {
-	_inherits(Signin, _React$Component2);
+var Signin = function (_React$Component) {
+	_inherits(Signin, _React$Component);
 
 	function Signin() {
 		_classCallCheck(this, Signin);
 
-		var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
 
-		_this2.state = {
+		_this.state = {
 			user: {
 				userID: '',
 				password: ''
-			},
-			alert: false,
-			text: 'xxx'
+			}
 		};
 		window.scroll(0, 0);
 		console.log('<Signin/> constructing');
-		return _this2;
+		return _this;
 	}
 
 	_createClass(Signin, [{
@@ -2275,24 +2126,12 @@ var Signin = function (_React$Component2) {
 				return res.text();
 			}).then(function (data) {
 				if (data === 'true') {
-					self.setState({
-						text: '登录成功！',
-						alert: true
-					});
 					self.props.act({
 						type: 'LOGIN',
 						user: self.state.user
 					});
 				} else {
-					self.setState({
-						text: '您输入的用户名或密码有误！',
-						alert: true
-					});
-					setTimeout(function () {
-						self.setState({
-							alert: false
-						});
-					}, 800);
+					alert('您输入的用户名或密码有误！');
 				}
 			});
 		}
@@ -2302,62 +2141,7 @@ var Signin = function (_React$Component2) {
 			return React.createElement(
 				'div',
 				{ className: 'SIGN_IN' },
-				this.state.alert === true ? React.createElement(Mask, { text: this.state.text }) : '',
-				React.createElement(
-					'div',
-					{ className: 'header' },
-					React.createElement('img', { className: 'grass', src: 'img/grass1.png' }),
-					React.createElement(
-						'div',
-						{ className: 'outer-round' },
-						React.createElement(
-							'div',
-							{ className: 'logo' },
-							React.createElement('img', { src: 'img/kiwifruit.png' })
-						),
-						React.createElement(
-							'div',
-							{ className: 'word' },
-							'多利农庄'
-						)
-					)
-				),
-				React.createElement(
-					'form',
-					null,
-					React.createElement('input', { type: 'text', name: 'user_id', placeholder: '手机号/邮箱', onChange: this.setUserID.bind(this) }),
-					React.createElement('br', null),
-					React.createElement('input', { type: 'password', name: 'password', placeholder: '密码', onChange: this.setPassword.bind(this) }),
-					React.createElement('br', null)
-				),
-				React.createElement(
-					'a',
-					{ className: 'login', onClick: this.login.bind(this) },
-					'登录'
-				),
-				React.createElement(
-					'div',
-					{ className: 'options' },
-					React.createElement(
-						'p',
-						null,
-						React.createElement(
-							'a',
-							{ href: '#/signup' },
-							'注册账号'
-						),
-						React.createElement(
-							'span',
-							null,
-							'|'
-						),
-						React.createElement(
-							'a',
-							{ href: 'retrive_password.html' },
-							'忘记密码'
-						)
-					)
-				)
+				React.createElement('div', { className: 'header' })
 			);
 		}
 	}]);
@@ -2368,141 +2152,6 @@ var Signin = function (_React$Component2) {
 exports.Signin = Signin;
 
 },{}],11:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Signup = function (_React$Component) {
-	_inherits(Signup, _React$Component);
-
-	function Signup() {
-		_classCallCheck(this, Signup);
-
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signup).call(this));
-
-		_this.state = {};
-		return _this;
-	}
-
-	_createClass(Signup, [{
-		key: 'getID',
-		value: function getID(e) {
-			this.setState({ userID: e.target.value });
-			console.log(this.state);
-		}
-	}, {
-		key: 'getPwd',
-		value: function getPwd(e) {
-			this.setState({ password: e.target.value });
-		}
-	}, {
-		key: 'login',
-		value: function login() {
-			if (this.state.userID === '111' && this.state.password === '111111') {
-				this.props.onLogin({
-					type: 'LOGIN',
-					data: this.state
-				});
-			} else {
-				alert('Invalid username or password.');
-			}
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return React.createElement(
-				'div',
-				{ className: 'SIGNUP' },
-				React.createElement('img', { className: 'grass', src: 'img/grass1.png' }),
-				React.createElement('div', { className: 'spacer' }),
-				React.createElement(
-					'div',
-					{ className: 'outer-circle' },
-					React.createElement('div', { className: 'circle' }),
-					React.createElement(
-						'div',
-						{ className: 'word' },
-						'多利农庄'
-					)
-				),
-				React.createElement(
-					'p',
-					{ className: 'words' },
-					'切换到 ',
-					React.createElement(
-						'a',
-						{ href: '' },
-						'邮箱注册'
-					),
-					React.createElement(
-						'span',
-						null,
-						' | '
-					),
-					'已经有账号了？点此 ',
-					React.createElement(
-						'a',
-						{ href: '#/signin' },
-						'登录'
-					)
-				),
-				React.createElement(
-					'form',
-					null,
-					React.createElement('input', { className: 'input1', type: 'text', name: 'phonenumber', placeholder: '请输入手机号码' }),
-					React.createElement('br', null),
-					React.createElement('input', { className: 'input1', type: 'text', name: 'verif', placeholder: '请输入短信验证码' }),
-					React.createElement(
-						'a',
-						{ href: '', className: 'get-verif' },
-						'获取验证码(60)'
-					),
-					React.createElement('br', null),
-					React.createElement('input', { className: 'input1', type: 'password', name: 'password', placeholder: '设置新密码（6-18位数字或字母）' }),
-					React.createElement('br', null),
-					React.createElement('input', { className: 'input1', type: 'password', name: 'password2', placeholder: '再次输入密码' }),
-					React.createElement('br', null),
-					React.createElement(
-						'div',
-						{ className: 'cb' },
-						React.createElement('input', { id: 'agree', type: 'checkbox', name: 'agree' }),
-						React.createElement(
-							'label',
-							{ htmlFor: 'agree' },
-							React.createElement('img', { className: 'check', src: 'img/checkmark.png' })
-						),
-						React.createElement(
-							'p',
-							null,
-							'同意多利庄园使用协议'
-						)
-					)
-				),
-				React.createElement(
-					'a',
-					{ className: 'register', href: '' },
-					'注 册'
-				)
-			);
-		}
-	}]);
-
-	return Signup;
-}(React.Component);
-
-exports.Signup = Signup;
-
-},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2644,7 +2293,7 @@ var Swiper = function (_React$Component) {
 
 exports.Swiper = Swiper;
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2654,6 +2303,8 @@ var _App = require('./components/App.jsx');
 var _Item = require('./components/Item.jsx');
 
 var _CommentBox = require('./components/CommentBox.jsx');
+
+var _ShoppingCart = require('./components/ShoppingCart.jsx');
 
 var _ConfirmOrder = require('./components/ConfirmOrder.jsx');
 
@@ -2673,13 +2324,9 @@ var _Navbar = require('./components/Navbar.jsx');
 
 var _Signin = require('./components/Signin.jsx');
 
-var _Signup = require('./components/Signup.jsx');
-
 var _Member = require('./components/Member.jsx');
 
 var _Home = require('./components/Home.jsx');
-
-var _ShoppingCart = require('./components/ShoppingCart.jsx');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2813,52 +2460,7 @@ var MemberContainer = function (_React$Component3) {
 	return MemberContainer;
 }(React.Component);
 
-var ShoppingCartContainer = function (_React$Component4) {
-	_inherits(ShoppingCartContainer, _React$Component4);
-
-	function ShoppingCartContainer() {
-		_classCallCheck(this, ShoppingCartContainer);
-
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCartContainer).apply(this, arguments));
-	}
-
-	_createClass(ShoppingCartContainer, [{
-		key: 'render',
-		value: function render() {
-			return React.createElement(_ShoppingCart.ShoppingCart, {
-				act: function act(action) {
-					return $$store.dispatch(action);
-				} });
-		}
-	}]);
-
-	return ShoppingCartContainer;
-}(React.Component);
-
-var ItemContainer = function (_React$Component5) {
-	_inherits(ItemContainer, _React$Component5);
-
-	function ItemContainer() {
-		_classCallCheck(this, ItemContainer);
-
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(ItemContainer).apply(this, arguments));
-	}
-
-	_createClass(ItemContainer, [{
-		key: 'render',
-		value: function render() {
-			return React.createElement(_Item.Item, {
-				act: function act(action) {
-					return $$store.dispatch(action);
-				} });
-		}
-	}]);
-
-	return ItemContainer;
-}(React.Component);
 // The router.
-
-
 ReactDOM.render(React.createElement(
 	Provider,
 	{ store: $$store },
@@ -2869,47 +2471,62 @@ ReactDOM.render(React.createElement(
 			Route,
 			{ path: '/', component: App },
 			React.createElement(Route, { path: '/home', component: _Home.Home }),
+			React.createElement(Route, { path: '/item', component: _Item.Item }),
 			React.createElement(Route, { path: '/signin', component: SigninContainer }),
-			React.createElement(Route, { path: '/signup', component: _Signup.Signup }),
 			React.createElement(Route, { path: '/member', component: MemberContainer }),
-			React.createElement(Route, { path: '/shopping_cart', component: ShoppingCartContainer }),
-			React.createElement(Route, { path: '/item', component: ItemContainer }),
 			React.createElement(IndexRoute, { path: '/home', component: _Home.Home })
 		)
 	)
 ), document.getElementById('app'));
 
-},{"./components/App.jsx":2,"./components/CommentBox.jsx":3,"./components/ConfirmOrder.jsx":4,"./components/Home.jsx":5,"./components/Item.jsx":6,"./components/Member.jsx":7,"./components/Navbar.jsx":8,"./components/ShoppingCart.jsx":9,"./components/Signin.jsx":10,"./components/Signup.jsx":11,"./reducers/reducer.jsx":14,"redux-devtools":465,"redux-devtools-dock-monitor":380,"redux-devtools-log-monitor":459}],14:[function(require,module,exports){
+},{"./components/App.jsx":2,"./components/CommentBox.jsx":3,"./components/ConfirmOrder.jsx":4,"./components/Home.jsx":5,"./components/Item.jsx":6,"./components/Member.jsx":7,"./components/Navbar.jsx":8,"./components/ShoppingCart.jsx":9,"./components/Signin.jsx":10,"./reducers/reducer.jsx":14,"redux-devtools":465,"redux-devtools-dock-monitor":380,"redux-devtools-log-monitor":459}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+function counter() {
+	var state = arguments.length <= 0 || arguments[0] === undefined ? { num: 0 } : arguments[0];
+	var action = arguments[1];
+
+	var _state = { num: state.num };
+	switch (action.type) {
+		case 'INCREMENT':
+			_state.num += 1;
+			break;
+		case 'DECREMENT':
+			_state.num--;
+			break;
+		default:
+			break;
+	}
+	//console.log(_state);
+	return _state;
+}
+
+exports.counter = counter;
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.$$reducer = undefined;
 
 var _redux = require('redux');
+
+var _counter = require('./counter.jsx');
 
 var _user = require('./user.jsx');
 
 var _shoppingCart = require('./shoppingCart.jsx');
 
-function page() {
-	var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	var action = arguments[1];
-
-	switch (action.type) {
-		case 'JUMP':
-			return action.name;
-		default:
-			return state;
-	}
-}
-
-var $$reducer = (0, _redux.combineReducers)({ user: _user.user, page: page, shoppingCart: _shoppingCart.shoppingCart });
+var $$reducer = (0, _redux.combineReducers)({ user: _user.user });
 
 exports.$$reducer = $$reducer;
 
-},{"./shoppingCart.jsx":15,"./user.jsx":16,"redux":578}],15:[function(require,module,exports){
+},{"./counter.jsx":13,"./shoppingCart.jsx":15,"./user.jsx":16,"redux":578}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2926,22 +2543,41 @@ function shoppingCart() {
 
 	switch (action.type) {
 		case 'ADD_TO_CART':
-			console.log(action);
-			fetch('/getItem', {
-				method: 'POST',
-				headers: {
-					// 'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ itemID: action.itemID })
-			}).then(function (res) {
-				return res.json();
-			}).then(function (data) {
-				console.log('fuck');
-			}).catch(function (e, f, g) {
-				console.log(e, f, g);
+			var shoppingCart = [];
+			var successful = false;
+			console.log(JSON.stringify(action));
+			$.ajax({
+				type: 'post',
+				url: _common.$$phpDir + '/shoppingCart.php',
+				data: { data: JSON.stringify(action) },
+				//dataType: 'text',
+				async: false
+			}).done(function (data) {
+				if (data) {
+					shoppingCart = JSON.parse(data);
+					alert('成功加入购物车！');
+					successful = true;
+				} else {
+					alert('请先登录！');
+				}
 			});
-			return state;
+			console.log(shoppingCart);
+			return successful ? { shoppingCart: shoppingCart } : state;
+		case 'REMOVE_ITEM':
+			var shoppingCart = [];
+			var successful = false;
+			$.ajax({
+				type: 'post',
+				url: _common.$$phpDir + '/shoppingCart.php',
+				data: { data: JSON.stringify(action) },
+				async: false
+			}).done(function (data) {
+				if (data) {
+					shoppingCart = JSON.parse(data);
+					successful = true;
+				} else {}
+			});
+			return successful ? { shoppingCart: shoppingCart } : state;
 		default:
 			return state;
 	}
@@ -34972,4 +34608,4 @@ module.exports = function symbolObservablePonyfill(root) {
 	return result;
 };
 
-},{}]},{},[13]);
+},{}]},{},[12]);

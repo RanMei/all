@@ -1,0 +1,12 @@
+.wrapper {position:absolute;left:0;top:0;width:7.20rem;height:12.80rem;background:#EFEFEF;}
+
+ul {background:white;padding:0 0.2rem 0 .40rem;overflow:hidden;margin-top:.20rem;}
+ul li {padding:0.15rem 0 0.15rem 0;border-bottom:1px solid grey;overflow:hidden;}
+ul li p {width:1.30rem;float:left;font-size:0.2rem;}
+ul li input {width:3.50rem;height:.30rem;float:left;font-size:0.2rem;border:none;}
+ul li span {width:1rem;float:left;font-size:0.19rem;margin-left:.35rem;color:grey;}
+
+.toggle {position:relative;float:left;width:.80rem;height:.40rem;border-radius:.20rem;background:#EFEFEF;box-shadow:inset 0 0 1px grey;margin-left:4rem;cursor:pointer}
+.toggle_btn {position:absolute;left:.03rem;top:.03rem;width:.34rem;height:.34rem;border-radius:50%;background:#EFEFEF;box-shadow:0 0 1px grey;}
+
+.save {width:6.80rem;height:.80rem;border-radius:.10rem;background:#FF9900;text-align:center;line-height:.80rem;color:white;font-size:0.32rem;margin:.40rem 0px 0px .20rem;}

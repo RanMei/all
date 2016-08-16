@@ -47,9 +47,9 @@ class ShoppingCart extends React.Component {
 
 	}
 	componentWillMount(){
-		// this.setState({
-		// 	items: this.props.user.shoppingCart||[]
-		// })
+		this.setState({
+			items: this.props.user.shoppingCart||[]
+		})
 	}
 	componentDidMount(){
 		//console.log('<ShoppingCart/> mount',this.props,this.state)
@@ -134,37 +134,33 @@ class ShoppingCart extends React.Component {
 		//console.log(Function);
 		console.log('<ShoppingCart/> rendering',this.props,this.state)
 		return (
-			<div className="SHOPPING_CART">
-				<div className="header">
-					<p>购物车总共有： <span>1</span> 件商品</p>
-					<div className="delete">
-						<a href="">
-							<img src="img/delete.png"/>
-							<p>删除</p>
-						</a>
+			<div className="shopping-cart wrapper ka-slideDown">
+				<div className="container">
+					<div className="shopping-cart-header1">我的购物车</div>
+					<div className="shopping-cart-header2">
+						<input className="check" type="checkbox" checked={this.allChecked()} onChange={this.checkAll.bind(this)}/>
+						<div className="thumbnail">全选</div>
+						<p className="name">商品</p>
+						<p className="spec">规格</p>
+						<p className="price">单价(元)</p>
+						<div className="counter">数量</div>
+						<div className="subtotal">小计(元)</div>
+						<p className="manipulation">操作</p>
+					</div>
+					<ItemList 
+						items={this.state.items} 
+						checkThis={this.checkThis.bind(this)}
+						plusOne={this.plusOne.bind(this)}
+						minusOne={this.minusOne.bind(this)}
+						remove={this.removeItem.bind(this)}/>
+					<div style={{overflow:"hidden",background:"white"}}>
+						<ul className="summary">
+							<li>已选择<span className="totalQuantity">{this.getTotalQuantity()}</span>件商品</li>
+							<li>总价（不含运费）：<span className="note">￥</span><span className="totalPrice">{this.getTotalPrice()}</span></li>
+							<li className="checkout">去结算</li>
+						</ul>
 					</div>
 				</div>
-				
-				<div className="item">
-					<img className="thumbnail" src="img/index/4.jpg"/>
-					<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg)</p>
-					<p className="price">￥178.00</p>
-					<div className="counter">
-						<p className="counter1">-</p>
-						<p className="counter2">1</p>
-						<p className="counter3">+</p>
-					</div>
-				</div>
-				
-				<div className="footer">
-					<a href="javascript:history.go(-1);" className="back"><img src="img/back.png"/></a>
-					<p className="discount">已优惠：￥0.00</p>
-					<p className="sum">总计：￥178.00</p>
-					<a className="pay" href="">去结算</a>
-				</div>
-			
-			
-			
 			</div>
 		);
 	}

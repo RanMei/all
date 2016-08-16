@@ -128,7 +128,7 @@ class Home extends React.Component {
 					</div>
 					<div className="nav_shadow">
 					</div>
-					<Navbar />
+					<Navbar name='home'/>
 				</div>
 			);
 		};

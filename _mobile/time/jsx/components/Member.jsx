@@ -71,7 +71,7 @@ class Member extends React.Component {
 					</div>
 					
 					<a className="logout" onClick={this.logout.bind(this)}>退出登录</a>
-					<Navbar name="mine" />
+					<Navbar />
 				</div>
 			);
 		};

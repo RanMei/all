@@ -1,0 +1,128 @@
+.SIGNUP .main {
+  height: 15rem;
+  background: #EFEFEF;
+}
+.SIGNUP .grass {
+  width: 100%;
+}
+.SIGNUP .spacer {
+  position: relative;
+  width: 7.2rem;
+  height: 3.62rem;
+  background: #EFEFEF;
+}
+.SIGNUP .outer-circle {
+  position: absolute;
+  left: 1.625rem;
+  top: 0.8rem;
+  width: 3.95rem;
+  height: 3.95rem;
+  background: #EFEFEF;
+  border-radius: 1.975rem;
+}
+.SIGNUP .circle {
+  position: absolute;
+  left: 0.645rem;
+  top: 0.4rem;
+  width: 2.66rem;
+  height: 2.66rem;
+  background: #5EA626;
+  border-radius: 1.33rem;
+}
+.SIGNUP .word {
+  position: absolute;
+  top: 3.2rem;
+  width: 3.95rem;
+  text-align: center;
+  font-size: 0.48rem;
+}
+.SIGNUP .words {
+  font-size: 0.32rem;
+  margin: 0 0 0.2rem 0.3rem;
+}
+.SIGNUP .words a {
+  color: #FF6600;
+  text-decoration: none;
+}
+.SIGNUP .words span {
+  color: grey;
+  margin: 0 0.1rem 0 0.1rem;
+}
+.SIGNUP form {
+  position: relative;
+}
+.SIGNUP .input1 {
+  width: 7.2rem;
+  height: 1.15rem;
+  font-size: 0.32rem;
+  border: none;
+  text-indent: 0.3rem;
+  font-family: ΢���ź�;
+  margin-bottom: 0.02rem;
+}
+.SIGNUP .get-verif {
+  position: absolute;
+  top: 2.05rem;
+  right: 0.3rem;
+  width: 2.3rem;
+  height: 0.8rem;
+  border-radius: 0.1rem;
+  background: #5EA626;
+  text-align: center;
+  line-height: 0.8rem;
+  color: white;
+  font-size: 0.32rem;
+}
+.SIGNUP .cb {
+  position: relative;
+  width: 5rem;
+  height: 0.34rem;
+  margin: 0.2rem 0 0.2rem 2rem;
+}
+.SIGNUP label {
+  display: block;
+  width: 0.34rem;
+  height: 0.34rem;
+  background: url(../img/checkbox.png);
+  background-size: 100%;
+  float: left;
+  margin-right: 0.1rem;
+}
+.SIGNUP label img {
+  position: relative;
+  width: 80%;
+  left: 0.03rem;
+  top: 0.03rem;
+  display: none;
+}
+.SIGNUP #agree {
+  position: absolute;
+  left: 0.05rem;
+  top: 0.05rem;
+  z-index: -1;
+}
+.SIGNUP #agree:checked + label img {
+  display: block;
+}
+.SIGNUP .cb p {
+  height: 0.34rem;
+  line-height: 0.34rem;
+  font-size: 0.32rem;
+  float: left;
+  color: #663399;
+}
+.SIGNUP .register:link {
+  width: 6.8rem;
+  height: 0.8rem;
+  border-radius: 0.1rem;
+  background: #5EA626;
+  text-align: center;
+  line-height: 0.8rem;
+  color: white;
+  font-size: 0.32rem;
+  margin: 0 0.2rem 2rem 0.2rem;
+  display: block;
+}
+.SIGNUP .register:visited {
+  color: white;
+}

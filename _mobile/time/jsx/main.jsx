@@ -5,6 +5,7 @@
 import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
 import {Item} from './components/Item.jsx';
 import {CommentBox} from './components/CommentBox.jsx';
+import {ShoppingCart} from './components/ShoppingCart.jsx';
 
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 //import {Veil} from './components/Veil.jsx';
@@ -92,8 +93,6 @@ class SigninContainer extends React.Component {
 	}
 }
 
-import {Signup} from './components/Signup.jsx';
-
 import {Member} from './components/Member.jsx';
 class MemberContainer extends React.Component {
 	render(){
@@ -105,23 +104,6 @@ class MemberContainer extends React.Component {
 }
 
 import {Home} from './components/Home.jsx';
-import {ShoppingCart} from './components/ShoppingCart.jsx';
-class ShoppingCartContainer extends React.Component {
-	render(){
-		return (
-			<ShoppingCart
-				act={ (action)=>$$store.dispatch(action) }/>
-		)
-	}
-}
-class ItemContainer extends React.Component {
-	render(){
-		return (
-			<Item
-				act={ (action)=>$$store.dispatch(action) }/>
-		)
-	}
-}
 // The router.
 ReactDOM.render(
 	(
@@ -129,11 +111,9 @@ ReactDOM.render(
 			<Router history={ hashHistory } >
 				<Route path="/" component={App}>
 					<Route path="/home" component={Home} />
+					<Route path="/item" component={Item} />
 					<Route path="/signin" component={SigninContainer} />
-					<Route path="/signup" component={Signup} />
 					<Route path="/member" component={MemberContainer} />
-					<Route path="/shopping_cart" component={ShoppingCartContainer} />
-					<Route path="/item" component={ItemContainer} />
 					<IndexRoute path="/home" component={Home} />
 				</Route>
 			</Router>
