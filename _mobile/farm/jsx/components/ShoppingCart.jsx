@@ -42,6 +42,29 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
+		this.state = {
+			items: []
+		}
+		this.getItems();
+	}
+	getItems(){
+		var self = this;
+		fetch('/getShoppingCart', {
+			method: 'POST',
+			headers: {
+				// 'Accept': 'application/json',
+				//'Content-Type': 'application/json'
+			}
+		}).then(function(res){
+			return res.json();
+		}).then(function(data){
+			console.log('<ShoppingCart/> item received',data);
+			self.setState({
+				items: data
+			})	
+		}).catch(function(e,f,g){
+			console.log(e,f,g);
+		})
 	}
 	getInitialState(){
 
@@ -145,17 +168,22 @@ class ShoppingCart extends React.Component {
 					</div>
 				</div>
 				
-				<div className="item">
-					<img className="thumbnail" src="img/index/4.jpg"/>
-					<p className="name">苍溪红心猕猴桃24粒礼品装(约2.5kg)</p>
-					<p className="price">￥178.00</p>
-					<div className="counter">
-						<p className="counter1">-</p>
-						<p className="counter2">1</p>
-						<p className="counter3">+</p>
-					</div>
-				</div>
-				
+				{this.state.items.map( (item)=>{
+					return (
+						<div className="item">
+							<img className="thumbnail" src={"img/thumbnail/"+item.id+".jpg"}/>
+							<p className="name">{item.name}</p>
+							<p className="price">￥{item.price.toFixed(2)}</p>
+							<div className="counter">
+								<p className="counter1">-</p>
+								<p className="counter2">1</p>
+								<p className="counter3">+</p>
+							</div>
+						</div>
+					);
+				})}
+
+				<div className="footerShadow"></div>
 				<div className="footer">
 					<a href="javascript:history.go(-1);" className="back"><img src="img/back.png"/></a>
 					<p className="discount">已优惠：￥0.00</p>

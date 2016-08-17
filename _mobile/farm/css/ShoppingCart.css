@@ -1,5 +1,4 @@
 .SHOPPING_CART {
-  height: 12.80rem;
   background: lightgrey;
 }
 .SHOPPING_CART .header {
@@ -107,6 +106,10 @@
   line-height: .50rem;
   text-align: center;
   float: left;
+}
+.SHOPPING_CART .footerShadow {
+  width: 100%;
+  height: 1rem;
 }
 .SHOPPING_CART .footer {
   position: fixed;

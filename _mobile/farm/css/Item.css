@@ -35,6 +35,9 @@ a:link {
 .wrapper {
   width: 7.2rem;
 }
+.shown {
+  display: block!important;
+}
 .ITEM {
   width: 100%;
   height: 15rem;

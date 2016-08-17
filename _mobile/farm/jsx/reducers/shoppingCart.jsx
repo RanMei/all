@@ -5,7 +5,7 @@ function shoppingCart (state=[],action){
 	switch (action.type) {
 		case 'ADD_TO_CART':
 			console.log(action)
-			fetch('/getItem', {
+			fetch('/addToCart', {
 				method: 'POST',
 				headers: {
 					// 'Accept': 'application/json',

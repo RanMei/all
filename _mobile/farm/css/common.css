@@ -35,3 +35,6 @@ a:link {
 .wrapper {
   width: 7.2rem;
 }
+.shown {
+  display: block!important;
+}

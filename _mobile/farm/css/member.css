@@ -35,6 +35,9 @@ a:link {
 .wrapper {
   width: 7.2rem;
 }
+.shown {
+  display: block!important;
+}
 .MEMBER {
   width: 7.2rem;
   height: 12.80rem;

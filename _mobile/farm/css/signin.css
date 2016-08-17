@@ -35,6 +35,9 @@ a:link {
 .wrapper {
   width: 7.2rem;
 }
+.shown {
+  display: block!important;
+}
 .SIGN_IN {
   height: 12.8rem;
   background: #DEDEDE;

@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
 
-const port = 80;
+const port = 8080;
 var app = express();
 
 app.use( express.static(__dirname+'/../') );
@@ -55,7 +55,16 @@ app.post('/getItem',function(req,res){
 	res.send( JSON.stringify(item) );
 })
 
+app.post('/getShoppingCart',function(req,res){
+	var shoppingCart = JSON.parse( fs.readFileSync('./json/shopping_cart.json') );
+	res.set({
+		'Content-Type': 'application/json'
+	})
+	res.send( JSON.stringify(shoppingCart) );
+})
+
 app.post('/addToCart',function(req,res){
+	console.log('shit')
 	var itemID = req.body.itemID;
 	var quantity = req.body.quantity;
 	var items = {};
@@ -68,11 +77,11 @@ app.post('/addToCart',function(req,res){
 	});
 	item.quantity = quantity;
 	shoppingCart.push( item );
-	fs.writeFile( 'shopping_cart.json', JSON.stringify(shoppingCart) );
+	fs.writeFile( './json/shopping_cart.json', JSON.stringify(shoppingCart) );
 	res.set({
-		'Content-Type': 'application/json'
+		'Content-Type': 'text/plain'
 	})
-	res.send( JSON.stringify(item) );
+	res.send( 'true' );
 })
 
 // app.post('/logout',function(req,res){

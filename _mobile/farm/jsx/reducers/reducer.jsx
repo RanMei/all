@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 
 import {user} from './user.jsx';
 import {shoppingCart} from './shoppingCart.jsx';
+import {notice} from './notice.jsx';
 
 function page(state={},action){
 	switch (action.type) {
@@ -12,6 +13,6 @@ function page(state={},action){
 	}
 }
 
-var $$reducer = combineReducers({user,page,shoppingCart});
+var $$reducer = combineReducers({user,shoppingCart,notice});
 
 export {$$reducer};
