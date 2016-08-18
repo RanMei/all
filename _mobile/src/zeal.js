@@ -13,6 +13,7 @@ var Zeal = function( selector,context ){
 };
 
 Zeal.fn = Zeal.prototype = {
+	length: 0,
 	each: function( callback ){
 		for( var i=0;i<this.length;i++ ){
 			callback( this[i],i );
@@ -45,6 +46,7 @@ Zeal.extend = Zeal.fn.extend = function(src){
 }
 
 Zeal.extend({
+	isArray: Array.isArray,
 	copy: _.copy,
 	camelCase: _.camelCase
 });
@@ -193,10 +195,20 @@ Zeal.fn.extend({
 	append: function( obj ){
 		this.each(function(elem){
 			if( typeof obj === 'string' ){
-				elem.innerHTML += obj;		
+				var fragment = document.createDocumentFragment();
+				var container = document.createElement('div');
+				container.innerHTML = obj;
+				arr.slice.call(container.children).forEach(function(item){
+					fragment.appendChild( item );
+				})
+				elem.appendChild( fragment );
 			}else{
-				for( var i=0;i<obj.length;i++ ){
-					elem.appendChild( obj[i] );
+				if( obj.length ){
+					for( var i=0;i<obj.length;i++ ){
+						elem.appendChild( obj[i] );
+					}
+				}else{
+					elem.appendChild( obj );
 				}
 			}
 		});
@@ -211,9 +223,9 @@ Zeal.fn.extend({
 					fragment.appendChild( item );
 				})
 			}else{
-				obj.forEach(function(item){
-					fragment.appendChild( item );
-				})
+				for( var i=0;i<obj.length;i++ ){
+					fragment.appendChild( obj[i] );
+				}
 			}
 			elem.insertBefore( fragment,elem.firstChild );
 			fragment.textContent = '';
@@ -277,9 +289,26 @@ Zeal.fn.extend({
 			this.each(function(elem){
 				elem.style.height = number+'px'
 			})
+		}else if( this[0]===document ){
+			// Chrome || Firefox
+			return Math.max(
+				document.body.scrollHeight,
+				document.body.offsetHeight,
+				document.body.clientHeight,
+				document.documentElement.scrollHeight,
+				document.documentElement.offsetHeight,
+				document.documentElement.clientHeight
+			);
+		}else if( this[0]===window ){
+			return window.innerHeight;
 		}else{
 			return Number( Zeal.fn.css.call( this,'height' ).replace(/px/,'') );
 		}
+	},
+	scrollTop: function(){
+		// Chrome || Firefox
+		var val = document.body.scrollTop || document.documentElement.scrollTop;
+		return val;
 	},
 	hide: function(){
 		this.each(function(elem){
@@ -378,8 +407,12 @@ Zeal.ajax = function( obj ){
 };
 
 if( window.$===undefined ){
-	console.log('window.$ is window.Zeal.');
 	window.$ = Zeal;
+	console.warn('Zeal: window.$ is window.Zeal.');
 }else{
+	console.warn('Zeal: $ is already occupied.');
 	window.Zeal = Zeal;
 }
+
+window.$ = Zeal;
+console.warn('Zeal: window.$ is window.Zeal.');

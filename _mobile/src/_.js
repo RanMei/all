@@ -11,6 +11,9 @@ var _ = {
 };
 
 // Functions to process strings.
+function trim( str ){
+	return str.replace(/(^\s+)|(\s+$)/g,'');
+}
 /**
  * Make a string camelcased.
  * @param  {string} string

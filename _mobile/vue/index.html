@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title></title>
+	
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+	<div id="app">
+		<div class="mask" v-show="maskShown">
+			<div class="cancel" v-on:click="cancel">取消</div>
+		</div>
+		<div class="shoppingCart">
+			<p v-show="items.length>3">{{items.length}}</p>
+			<ul>
+				<li class="item" v-for="item in items">
+					{{item.name}} {{item.quantity}}
+				</li>
+			</ul>
+			<button v-on:touchend="push">push</button>
+		</div>
+	</div>
+
+<script type="text/javascript" src="./vendor/fetch.js"></script>
+<script type="text/javascript" src="../src/rem.js"></script>
+
+<script type="text/javascript" src="./vendor/vue.min.js"></script>
+<script type="text/javascript" src="./src/app.js"></script>
+</body>
+
+</html>

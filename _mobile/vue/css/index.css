@@ -1,0 +1,20 @@
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.mask .cancel {
+  color: #FF9900;
+}
+.opacity {
+  opacity: 0.8!important;
+}
+.shoppingCart {
+  font-size: 0.5rem;
+}

@@ -34,6 +34,7 @@
     "redux-devtools-log-monitor": "^1.0.11",
     "tsify": "^0.14.7",
     "vinyl-source-stream": "^1.1.0",
+    "vueify": "^8.7.0",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
   },

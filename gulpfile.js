@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var gulp = require('gulp'); 
 var nodemon = require('gulp-nodemon');
 
@@ -11,6 +13,8 @@ var webpack = require('webpack-stream');
 
 var babel = require('gulp-babel');
 var babelify = require('babelify');
+
+var vueify = require('vueify');
 
 var tsify = require('tsify');
 
@@ -34,6 +38,7 @@ var LESS = [
 	{ name: 'less-mobile-car', src: './_mobile/car/less/*.less', dest: './_mobile/car/css' },
 	{ name: 'less-mobile-swiper', src: './_mobile/swiper/less/*.less', dest: './_mobile/swiper/css' },
 	{ name: 'less-mobile-time', src: './_mobile/time/less/*.less', dest: './_mobile/time/css' },
+	{ name: 'less-mobile-vue', src: './_mobile/vue/less/*.less', dest: './_mobile/vue/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
 	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
@@ -74,6 +79,15 @@ BROWSERIFY.forEach(function(item){
 			.pipe( gulp.dest(item.dest) )
 		);
 	});
+})
+
+gulp.task('vueify',function(){
+	return(
+		browserify('./_mobile/vue/src/main.js')
+		.transform(vueify)
+		.bundle()
+		.pipe(fs.createWriteStream('./_mobile/vue/bundle.js'))
+	)
 })
 
 const WEBPACK = [
@@ -164,6 +178,8 @@ gulp.task('watch',function(){
 	BROWSERIFY.forEach(function(elem){
 		gulp.watch( elem.files,[elem.name] );
 	});
+
+	gulp.watch( './_mobile/vue/src/*.js',['vueify'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
