@@ -1,0 +1,21 @@
+@keyframes up {
+	100% {
+		transform: translate3d(0,0,0) rotate3d(1,0,0,-180deg);
+	}
+}
+
+.ka-up {
+	transform-origin: 0 0;
+	animation: 1s up forwards ease-in;
+}
+
+@keyframes down {
+	100% {
+		transform: translate3d(0,0,0) rotate3d(1,0,0,190deg);
+	}
+}
+
+.ka-down {
+	transform-origin: 0 100%;
+	animation: 1s down forwards ease-in;
+}

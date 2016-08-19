@@ -16,25 +16,17 @@ ul {
 img {
   display: block;
 }
-a:link {
-  color: ;
-  text-decoration: none;
-}
-/* Utility Classes */
-.container {
-  background: orange;
-  overflow: hidden;
-  display: none;
-}
 .clearfix {
   clear: both;
 }
 /* Media Queries */
 @media (-webkit-min-device-pixel-ratio: 2) {
 }
-.wrapper {
-  width: 7.2rem;
-}
-.shown {
-  display: block!important;
+@media (max-width: 350px) {
+  .desc {
+    font-size: 0.18rem!important;
+  }
+  .rules p {
+    font-size: 0.16rem!important;
+  }
 }
