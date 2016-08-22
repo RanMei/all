@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Day 29 - Automatic Firework Launcher</title>
+    
+    
+    <link rel="stylesheet" href="css/reset.css">
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300'>
+
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  background: #212121;
+  margin: 0;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes chill {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+p {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  color: white;
+  opacity: 0;
+  font-family: "Source Sans Pro";
+  animation: fadeIn 2s ease-out, chill 2s 2s, fadeOut 2s 4s;
+}
+
+.social:hover a {
+  transform: rotate(-45deg) scale(1.05);
+}
+.social:hover i {
+  color: #21c2ff;
+}
+
+a {
+  position: absolute;
+  bottom: -40px;
+  right: -75px;
+  background: white;
+  color: white;
+  box-shadow: -1px -1px 20px 0px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  width: 150px;
+  height: 80px;
+  transform-origin: 50% 50%;
+  transform: rotate(-45deg);
+  transition: .15s ease-out;
+}
+
+i {
+  position: absolute;
+  bottom: 7px;
+  right: 7px;
+  pointer-events: none;
+  color: #00ACED;
+  z-index: 1000;
+  font-size: 100px;
+  transition: .15s ease-out;
+}
+
+    </style>
+
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    <canvas></canvas>
+
+<p>Mouse down = explosions</p>
+
+<!-- Social -->
+<div class="social">
+  <a href="https://twitter.com/Christopher4Lis" target="_blank"></a>
+  <i class="fa fa-twitter fa-lg"></i>
+</div>
+    
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
