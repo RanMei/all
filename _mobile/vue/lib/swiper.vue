@@ -1,36 +1,74 @@
-import './rem.js';
+<template>
+<div class="swiper" 
+	style="width:3rem;height:2rem;background:{{bg}};"
+	v-on:touchstart="touchstart($event)"
+	v-on:touchmove="touchmove($event)"
+	v-on:touchend="touchend($event)">
+	<ul class="train" 
+		style="transform:translate3d({{trainOffsetX}}px,0,0);{{transition===true?'transition:0.5s':''}};}}">
+		<li class="item {{i===currentOne?'active':''}}" 
+			v-for="(i,item) in items" 
+			style="background:{{item}};"></li>
+	</ul>
+</div>
+</template>
 
-var swiper = new Vue({
-	el: '.swiper',
-	data: {
-		width: 0,
+<style lang="less" scoped>
+.swiper {
+	position: relative;
+	margin: auto;
+	.train {
+		width: 1000%;
+		height: 100%;
+		.item {
+			float: left;
+			width: 10%; height: 100%;
+			transform: scale(0.8);
+			opacity: 0.6;
+			transition: 0.5s;
+		}
+		.item.active {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+</style>
 
-		switching: false,
-		inCycle: false,
-		moveCount: 0,
-		scrolling: false,
-		trainOffsetX: 0,
-		X1: 0,
-		X2: 0,
+<script>
+var swiper = {
+	props: ['bg'],
+	data: function(){
+		return {
+			width: 0,
 
-		currentOne: 2,
-		transition: false,
-		offset: 0,
-		items: ['red','orange','yellow','green','blue']
+			switching: false,
+			inCycle: false,
+			moveCount: 0,
+			scrolling: false,
+			trainOffsetX: 0,
+			X1: 0,
+			X2: 0,
+
+			currentOne: 2,
+			transition: false,
+			offset: 0,
+			items: ['red','orange','yellow','green','blue']
+		}
 	},
-	methods: {
-		init: function(){
-			window.addEventListener('load',()=>{
+	ready: function(){
+		window.addEventListener('load',()=>{
+			this.setWidth();
+			this.trainOffsetX = -this.width*2;
+		});
+		window.addEventListener('resize',()=>{
+			setTimeout(()=>{
 				this.setWidth();
 				this.trainOffsetX = -this.width*2;
-			});
-			window.addEventListener('resize',()=>{
-				setTimeout(()=>{
-					this.setWidth();
-					this.trainOffsetX = -this.width*2;
-				},50)
-			})
-		},
+			},50)
+		})
+	},
+	methods: {
 		setWidth: function(){
 			this.transition = false;
 			var elem = document.querySelectorAll('.swiper')[0];
@@ -97,10 +135,8 @@ var swiper = new Vue({
 				};
 				this.inCycle = false;
 			};
-			
-
 		}
 	}
-})
-
-swiper.init();
+}
+module.exports = swiper;
+</script>

@@ -30,7 +30,10 @@ var swiper = new Vue({
 				_this.trainOffsetX = -_this.width * 2;
 			});
 			window.addEventListener('resize', function () {
-				_this.setWidth();
+				setTimeout(function () {
+					_this.setWidth();
+					_this.trainOffsetX = -_this.width * 2;
+				}, 50);
 			});
 		},
 		setWidth: function setWidth() {

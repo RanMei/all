@@ -17,6 +17,7 @@ var babelify = require('babelify');
 var vueify = require('vueify');
 
 var tsify = require('tsify');
+var uglify = require('gulp-uglify');
 
 // var concat = require("gulp-concat");
 // var shell = require('gulp-shell');
@@ -84,10 +85,10 @@ BROWSERIFY.forEach(function(item){
 
 gulp.task('vueify',function(){
 	return(
-		browserify('./_mobile/vue/src/main.js')
-		.transform(vueify)
+		browserify('./_mobile/vue/lib/main_swiper.js')
+		.transform( 'vueify', {presets: ["es2015", "react"]} )
 		.bundle()
-		.pipe(fs.createWriteStream('./_mobile/vue/bundle.js'))
+		.pipe(fs.createWriteStream('./_mobile/vue/bundle_swiper.js'))
 	)
 })
 
@@ -180,7 +181,7 @@ gulp.task('watch',function(){
 		gulp.watch( elem.files,[elem.name] );
 	});
 
-	gulp.watch( './_mobile/vue/src/*.js',['vueify'] );
+	gulp.watch( './_mobile/vue/lib/*.*',['vueify'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
