@@ -1,106 +1,39 @@
-import './rem.js';
+// import './rem.js';
+// import {swiper} from './swiper.vue';
 
-var swiper = new Vue({
-	el: '.swiper',
+require('./rem.js');
+var home = require('./components/home.vue');
+var mask = require('./components/mask.vue');
+var swiper = require('./components/swiper.vue');
+var box = require('./components/box.vue');
+
+Vue.component( 'home',home );
+Vue.component( 'mask',mask );
+Vue.component( 'box',box );
+Vue.component( 'swiper',swiper );
+
+new Vue({
+	el: 'body',
+	components: {
+		mask: mask,
+		swiper: swiper,
+		box: box
+	},
 	data: {
-		width: 0,
-
-		switching: false,
-		inCycle: false,
-		moveCount: 0,
-		scrolling: false,
-		trainOffsetX: 0,
-		X1: 0,
-		X2: 0,
-
-		currentOne: 2,
-		transition: false,
-		offset: 0,
-		items: ['red','orange','yellow','green','blue']
+		current: 0,
+		pages: [
+			'home',
+			'box'
+		]
+	},
+	computed: {
+		currentPage: function(){
+			return this.pages[this.current];
+		}
 	},
 	methods: {
-		init: function(){
-			window.addEventListener('load',()=>{
-				this.setWidth();
-				this.trainOffsetX = -this.width*2;
-			});
-			window.addEventListener('resize',()=>{
-				setTimeout(()=>{
-					this.setWidth();
-					this.trainOffsetX = -this.width*2;
-				},50)
-			})
-		},
-		setWidth: function(){
-			this.transition = false;
-			var elem = document.querySelectorAll('.swiper')[0];
-			var width = document.defaultView.getComputedStyle( elem ).width.replace(/px/,'');
-			this.width = width;		
-		},
-		touchstart: function(e){
-			if( this.switching===false ){
-				this.inCycle = true;
-				// reset states of this touch cycle
-				this.moveCount = 0;
-				this.scrolling = false;
-				this.transition = false;
-				
-				this.X0 = this.X1 = e.changedTouches[0].pageX;
-				this.Y1 = e.changedTouches[0].pageY;
-			};
-		},
-		touchmove: function(e){
-			if( this.inCycle ){
-				this.X2 = e.changedTouches[0].pageX;
-				var distance = this.X2-this.X1;
-				this.X1 = this.X2;
-				this.trainOffsetX += distance;
-			}
-
-		},
-		touchend: function(e){
-			if( this.inCycle ){
-				this.X2 = e.changedTouches[0].pageX;
-				var distance = this.X2-this.X0;
-				this.switching = true;
-				if( distance<0 ){
-					if( this.currentOne<this.items.length-1 ){
-						this.currentOne++;
-						this.transition = true;
-						this.trainOffsetX = -this.width*3;
-					}
-					setTimeout(()=>{
-						this.transition = false;
-						var first = this.items[0];
-						this.items.splice(0,1);
-						this.items.push(first);
-						this.currentOne = 2;
-						this.trainOffsetX = -this.width*2;
-						this.switching = false;
-					},500)
-				}else if( distance>0 ){
-					if( this.currentOne>0 ){
-						this.currentOne--;
-						this.transition = true;
-						this.trainOffsetX = -this.width;
-					};
-					setTimeout(()=>{
-						this.transition = false;
-						var zz = this.items.length-1;
-						var last = this.items[zz];
-						this.items.splice(zz,1);
-						this.items.unshift(last);
-						this.currentOne = 2;
-						this.trainOffsetX = -this.width*2;
-						this.switching = false;
-					},500)
-				};
-				this.inCycle = false;
-			};
-			
-
+		next: function(){
+			this.current++;
 		}
 	}
 })
-
-swiper.init();

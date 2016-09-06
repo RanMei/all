@@ -1,6 +1,6 @@
 <template>
 <div class="swiper" 
-	style="width:3rem;height:2rem;background:{{bg}};"
+	style="width:50%;height:2rem;background:{{bg}};"
 	v-on:touchstart="touchstart($event)"
 	v-on:touchmove="touchmove($event)"
 	v-on:touchend="touchend($event)">

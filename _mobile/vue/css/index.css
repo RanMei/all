@@ -1,27 +1,24 @@
-.main {
+#app {
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
-  overflow: hidden;
-}
-.main .swiper {
-  position: relative;
-  margin: auto;
-}
-.main .swiper .train {
-  width: 1000%;
   height: 100%;
+  background: lightgrey;
 }
-.main .swiper .train .item {
-  float: left;
-  width: 10%;
-  height: 100%;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-  opacity: 0.6;
+.trans-transition {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-}
-.main .swiper .train .item.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   opacity: 1;
+}
+.trans-enter {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.trans-leave {
+  -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+          transform: translate3d(-100%, 0, 0) rotate3d(0, 1, 0, -90deg);
+  opacity: 0;
 }

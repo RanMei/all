@@ -14,13 +14,22 @@
 <body>
 
 <div class="main">
-	<swiper bg="black"></swiper>
-	<swiper bg="yellow"></swiper>
-	<box></box>
+	<div class="swiper" 
+		style="width:3rem;height:2rem;background:grey;"
+		v-on:touchstart="touchstart($event)"
+		v-on:touchmove="touchmove($event)"
+		v-on:touchend="touchend($event)">
+		<ul class="train" 
+			style="transform:translate3d({{trainOffsetX}}px,0,0);{{transition===true?'transition:0.5s':''}};}}">
+			<li class="item {{i===currentOne?'active':''}}" 
+				v-for="(i,item) in items" 
+				style="background:{{item}};"></li>
+		</ul>
+	</div>
 </div>
 
 <script type="text/javascript" src="vendor/vue.min.js"></script>
-<script type="text/javascript" src="bundle_swiper.js"></script>
+<script type="text/javascript" src="dist/bundle_swiper.js"></script>
 
 </body>
 

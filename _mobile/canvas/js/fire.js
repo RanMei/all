@@ -168,8 +168,8 @@ Fire.prototype = {
 		var ctx = this.ctx;
 		ctx.globalCompositeOperation = "source-over";
 		ctx.fillStyle = "black";
-		ctx.fillRect(0, 0, this.w, this.h);
-		//ctx.clearRect(0, 0, W, H);
+		//ctx.fillRect(0, 0, this.w, this.h);
+		ctx.clearRect(0, 0, this.w, this.h);
 		ctx.globalCompositeOperation = "lighter";
 		
 		this.particles.forEach(function(p,i){
@@ -192,11 +192,6 @@ new Fire({
 	width: 800,
 	height: 1000
 })
-new Fire({
-	width: 800,
-	height: 1000
-})
-
 
 window.addEventListener('DOMContentLoaded',function(){
 

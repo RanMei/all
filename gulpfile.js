@@ -67,7 +67,7 @@ var BROWSERIFY = [
 	{ name: 'browserify-mobile-farm', main: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm', files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
-	{ name: 'browserify-mobile-vue', main: './_mobile/vue/lib/main.js', dest: './_mobile/vue', files: './_mobile/vue/lib/*.js' },
+	// { name: 'browserify-mobile-vue-swiper', main: './_mobile/vue/lib/main_swiper.js', dest: './_mobile/vue/dist/', files: './_mobile/vue/lib/*.js' },
 	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' },
 	{ name: 'browserify-mobile-car', main: './_mobile/car/js/main.js', dest: './_mobile/car', files: './_mobile/car/js/*.js' }
 ];
@@ -78,6 +78,7 @@ BROWSERIFY.forEach(function(item){
 			.transform( 'babelify', {presets: ["es2015", "react"]} )
 			.bundle()
 			.pipe( source('bundle.js') )
+			// .pipe( uglify() )
 			.pipe( gulp.dest(item.dest) )
 		);
 	});
@@ -85,15 +86,23 @@ BROWSERIFY.forEach(function(item){
 
 gulp.task('vueify',function(){
 	return(
-		browserify('./_mobile/vue/lib/main_swiper.js')
-		.transform( 'vueify', {presets: ["es2015", "react"]} )
+		browserify('./_mobile/vue/lib/main.js')
+		.transform( [vueify,babelify] )
 		.bundle()
-		.pipe(fs.createWriteStream('./_mobile/vue/bundle_swiper.js'))
+		.pipe( source('bundle_.js') )
+		.pipe( gulp.dest('./_mobile/vue/dist/') )
+		// .pipe(fs.createWriteStream('./_mobile/vue/bundle_swiper.js'))
+		// .pipe( uglify )
 	)
 })
 
 const WEBPACK = [
-	{ name: 'webpack-zeal', src: './_mobile/src/zeal.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' }
+	{ name: 'webpack-zeal', watched: ['./_mobile/src/*.*'], src: './_mobile/src/zeal.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' },
+	{	name: 'webpack-mobile-vue', 
+		watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
+		src: './_mobile/vue/lib/main.js', 
+		config: './_mobile/vue/webpack.config.js', 
+		dest: './_mobile/vue/dist/' }
 ];
 WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
@@ -174,14 +183,14 @@ gulp.task('watch',function(){
 	});
 
 	WEBPACK.forEach(function(elem){
-		gulp.watch( elem.src,[elem.name] );
+		gulp.watch( elem.watched,[elem.name] );
 	});
 
 	BROWSERIFY.forEach(function(elem){
 		gulp.watch( elem.files,[elem.name] );
 	});
 
-	gulp.watch( './_mobile/vue/lib/*.*',['vueify'] );
+	// gulp.watch( './_mobile/vue/lib/*.*',['vueify'] );
 
 	// angular	
 	gulp.watch( './angular/public/js/*/*.js',['concat_angular'] );
