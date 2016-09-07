@@ -1,3 +1,87 @@
+function Sunset(){
+	this.arizona = document.getElementById("arizona");
+	this.sun = document.getElementById("sun");
+	this.mesaLayers = this.arizona.querySelectorAll("path");
+
+	this.regex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/;
+	this.mode = 'sunset';
+	this.tick = 0;
+	this.ratio = 1;
+	this.sunY = Number( this.sun.getAttribute('cy') );
+
+	this.playing = false;
+
+	this.Y0 = null;
+	this.Y1 = null;
+	this.Y2 = null;
+
+	this.init();
+}
+Sunset.prototype = {
+	init: function(){
+		this.arizona.addEventListener( 'click',this.handleClick.bind(this) );
+		document.addEventListener( 'touchstart',this.touchstart.bind(this) );
+		document.addEventListener( 'touchmove',this.touchmove.bind(this) );
+	},
+	handleClick: function(){
+		if( !this.playing ){
+			this.playing = true;
+			this.play();
+		}else{
+			this.playing = false;
+		}
+	},
+	touchstart: function(e){
+		this.Y0 = this.Y1 = e.changedTouches[0].pageY;
+	},
+	touchmove: function(e){
+		this.Y2 = e.changedTouches[0].pageY;
+		var distance = this.Y2 - this.Y1;
+		console.log(distance)
+		this.Y1 = this.Y2;
+		this.sunY += distance/10;
+		this.ratio -= distance/500;
+		this.sun.style.cy = this.sunY+'';
+		this.layersChange();
+	},
+	layersChange: function(){
+		var self = this;
+		Array.prototype.forEach.call(self.mesaLayers, function(layer) {
+			
+			var layerFill = layer.getAttribute("fill"),
+				hslComponents = layerFill.match(self.regex).slice(1),
+				newHSL = parseFloat(hslComponents[2]) * self.ratio;
+
+			self.arizona.style.background = "hsl(48, " + 100 * self.ratio + "%, " + 88 * self.ratio + "%)";
+			layer.style.fill = "hsl(" + hslComponents[0] +", "+ hslComponents[1] + "%, " +  newHSL + "%)";
+			
+		});
+	},
+	play: function(){
+		var self = this;
+		if( self.playing ){
+			window.requestAnimationFrame( self.play.bind(self) );
+		};
+		
+		if( self.sunY<128 ){
+			self.mode = 'sunset';
+		}else if( self.sunY>170 ){
+			self.mode = 'sunrise';
+		}
+		if( self.mode==='sunset' ){
+			self.sunY += 0.1;
+			self.sun.style.cy = self.sunY+'';
+			self.ratio -= 0.0022;			
+		}else{
+			self.sunY -= 0.1;
+			self.sun.style.cy = self.sunY+'';
+			self.ratio += 0.0022;
+		};
+		self.layersChange();
+	}
+}
+new Sunset();
+
 var 
 	regex = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/,
 
@@ -78,4 +162,4 @@ function render() {
 	
 }
 
-document.addEventListener('click',render)
+//arizona.addEventListener('click',render)

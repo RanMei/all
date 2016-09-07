@@ -12,6 +12,9 @@
     }
 }
 @keyframes stroke {
+	0% {
+		stroke-dashoffset: 1000;
+	}
 	100% {
 		stroke-dashoffset: 0;
 	}
@@ -68,7 +71,7 @@
 	stroke-width:2;
 	stroke-dasharray: 1000;
 	stroke-dashoffset: 1000;
-	animation: stroke 3s linear 0s infinite;
+	animation: stroke 3s linear 0s infinite alternate;
 }
 .gameboy {
 	stroke: red;
