@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@-webkit-keyframes dashing {
+  0% {
+    stroke-dashoffset: -1256;
+    opacity: 0;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 1256;
+    opacity: 0;
+  }
+}
+@keyframes dashing {
+  0% {
+    stroke-dashoffset: -1256;
+    opacity: 0;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 1256;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes dashing1 {
+  0% {
+    stroke-dashoffset: -314;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 314;
+  }
+}
+@keyframes dashing1 {
+  0% {
+    stroke-dashoffset: -314;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 314;
+  }
+}
+.test {
+  width: 100%;
+  background: black;
+}
+.test .circle-red {
+  cx: 500;
+  cy: 500;
+  r: 200;
+  stroke: red;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-dasharray: 1256;
+  -webkit-animation: dashing 2s ease-in-out 0s infinite;
+          animation: dashing 2s ease-in-out 0s infinite;
+}
+.test .circle-red-1 {
+  cx: 500;
+  cy: 500;
+  r: 100;
+  stroke: red;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-dasharray: 314;
+  -webkit-animation: dashing1 2s linear 0s infinite;
+          animation: dashing1 2s linear 0s infinite;
+}

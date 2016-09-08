@@ -2,62 +2,87 @@
 	margin: 0; padding: 0;
 }
 
-@keyframes dashing {
-	0% {
-		stroke-dashoffset: -1256;
-		opacity: 0;
-		// fill: red;
-	}
-	50% {
-		stroke-dashoffset: 0;
-		opacity: 1;
-		// fill: green;
-		// opacity: 0.6;
-	}
-	100% {
-		stroke-dashoffset: 1256;
-		opacity: 0;
-		//stroke: yellow;
-		// fill: red;
-	}
+@keyframes stroke-half-900 {
+    0% {
+        stroke-dashoffset: -900;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 900;
+    }
 }
-@keyframes dashing1 {
+@keyframes stroke {
 	0% {
-		stroke-dashoffset: -314;
-		// fill: red;
+		stroke-dashoffset: 1200;
+		stroke: orange;
+		fill: black;
 	}
-	50% {
+	80% {
 		stroke-dashoffset: 0;
-		// fill: green;
-		// opacity: 0.6;
+		stroke: orange;
+		fill: black;
 	}
 	100% {
-		stroke-dashoffset: 314;
-		// fill: red;
+		stroke-dashoffset: 0;
+		stroke: orange;
+		fill: orange;
 	}
 }
 
+
 .test {
-	width: 100%;
+	display: block;
+	width: 50%;
+	margin: auto;
 	background: black;
+	.square-1 {
+		stroke-width: 5;
+		stroke-dasharray: 1200;
+		animation: stroke 2s linear forwards;
+	}
+	.line1 {
+		stroke: white;
+	}
+	.circle-1 {
+		stroke: red;
+		stroke-width: 5;
+		fill: orange;
+	}
 	.circle-red {
-		cx: 500;
-		cy: 500;
-		r: 200;
 		stroke: red;
-		stroke-width: 15;
-		stroke-linecap: round;
-		stroke-dasharray: 1256;
-		animation: dashing 2s ease-in-out 0s infinite;
+		stroke-width: 2;
+		//stroke-dasharray: @perimeter/2;
+		animation: dashing 4s linear 0s infinite;
 	}
-	.circle-red-1 {
-		cx: 500;
-		cy: 500;
-		r: 100;
-		stroke: red;
-		stroke-width: 15;
-		stroke-linecap: round;
-		stroke-dasharray: 314;
-		animation: dashing1 2s linear 0s infinite;
+	.square {
+		fill: none;
+		stroke: white;
+		stroke-width: 1;
+		stroke-dasharray: 450;
+		animation: stroke-half-900 4s linear 0s infinite;
 	}
+	.text-lannister {
+		stroke: yellow;
+	}
+	polyline {
+		stroke: white;
+	}
+}
+.svg-square {
+	padding: 20px;
+	background: black;
+	.square-1 {
+		fill:none;
+		stroke: orange;
+		stroke-width: 1;
+	}
+}
+.spiral {
+	stroke:red;
+	stroke-width:2;
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+	animation: stroke 3s linear 0s infinite alternate;
 }

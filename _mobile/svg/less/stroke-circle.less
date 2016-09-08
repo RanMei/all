@@ -1,0 +1,63 @@
+* {
+	margin: 0; padding: 0;
+}
+
+@keyframes dashing {
+	0% {
+		stroke-dashoffset: -1256;
+		opacity: 0;
+		// fill: red;
+	}
+	50% {
+		stroke-dashoffset: 0;
+		opacity: 1;
+		// fill: green;
+		// opacity: 0.6;
+	}
+	100% {
+		stroke-dashoffset: 1256;
+		opacity: 0;
+		//stroke: yellow;
+		// fill: red;
+	}
+}
+@keyframes dashing1 {
+	0% {
+		stroke-dashoffset: -314;
+		// fill: red;
+	}
+	50% {
+		stroke-dashoffset: 0;
+		// fill: green;
+		// opacity: 0.6;
+	}
+	100% {
+		stroke-dashoffset: 314;
+		// fill: red;
+	}
+}
+
+.test {
+	width: 100%;
+	background: black;
+	.circle-red {
+		cx: 500;
+		cy: 500;
+		r: 200;
+		stroke: red;
+		stroke-width: 15;
+		stroke-linecap: round;
+		stroke-dasharray: 1256;
+		animation: dashing 2s ease-in-out 0s infinite;
+	}
+	.circle-red-1 {
+		cx: 500;
+		cy: 500;
+		r: 100;
+		stroke: red;
+		stroke-width: 15;
+		stroke-linecap: round;
+		stroke-dasharray: 314;
+		animation: dashing1 2s linear 0s infinite;
+	}
+}

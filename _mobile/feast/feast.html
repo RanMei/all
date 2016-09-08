@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title></title>
+	<link href="css/index.css" rel="stylesheet">
+</head>
+
+<body v-on:touchstart="touchstart" v-on:touchend="touchend">
+	
+	<div class="nav" v-show="navShown">
+		<img class="navbar" src="images/7.png">
+		<img v-for="(a,i) in toggles" class="toggle toggle{{i+1}}" src="images/9.png"
+			style="{{i===current-1?'opacity:1;':'opacity:0;'}}">
+	</div>
+	<!---->
+	<div class="container">
+		<!-- background -->
+		<img class="background" src="images/0.jpg"/>
+		<!-- homePage -->
+		<div class="homePage" v-show="current===0">
+			<img class="createImg" src="images/0.png"
+				style="{{createImg}}">
+			<div class="begin"
+				style="{{begin}}">始也</div>
+			<div class="farewell" style="{{farewell}}">告别2015</div>
+			<div class="withUs" style="{{withUs}}">与我们一起创江湖</div>
+			<div class="start" style="{{start}}">滑动开启</div>
+			<div class="feastImg" style="{{feastImg}}">年终策划盛宴</div>
+			<img class="angle" src="images/6.png" style="{{angle}}">
+		</div>
+		<!-- pages -->
+		<div class="pages" v-show="current>0&&current<9">
+			<ul class="dj">
+				<li class="strip" 
+					v-for="strip in strips">
+					<div class="train" style="{{train}}{{imgs}}">
+						<img src="images/p0.jpg">
+						<img src="images/p1.jpg">
+						<img src="images/p2.jpg">
+						<img src="images/p3.jpg">
+						<img src="images/p4.jpg">
+						<img src="images/p5.jpg">
+						<img src="images/p6.jpg">
+						<img src="images/p7.jpg">
+					</div>
+				</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
+		<!-- endPage -->
+		<div class="endPage" v-show="current===9">
+			<p>盛宴未终<br/>敬请期待明日<br/>……</p>
+		</div>
+	
+	</div>
+	
+	
+</body>
+
+<script type="text/javascript" src="../../vendor/vue.min.js"></script>
+<script src="js/initialize.js"></script>
+<script src="js/sohu.js"></script>
+</html>

@@ -1,0 +1,326 @@
+a:link {
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color: ;
+}
+a:active {
+  color: ;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+a,
+img,
+input {
+  display: block;
+}
+body {
+  font-family: 'Microsoft Yahei';
+}
+html {
+  font-size: 100px;
+  overflow: hidden;
+}
+.clear {
+  clear: both;
+}
+/*------------------------------------------------------------------------------------*/
+.nav {
+  position: absolute;
+  top: 0;
+  left: .1rem;
+  width: .23rem;
+  height: 11.36rem;
+  z-index: 99;
+}
+.nav .navbar {
+  width: .23rem;
+  height: 11.36rem;
+}
+.nav .toggle {
+  position: absolute;
+  width: .23rem;
+  height: .25rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.nav .toggle1 {
+  top: .78rem;
+}
+.nav .toggle2 {
+  top: 1.68rem;
+}
+.nav .toggle3 {
+  top: 2.58rem;
+}
+.nav .toggle4 {
+  top: 3.48rem;
+}
+.nav .toggle5 {
+  top: 4.38rem;
+}
+.nav .toggle6 {
+  top: 5.28rem;
+}
+.nav .toggle7 {
+  top: 6.18rem;
+}
+.nav .toggle8 {
+  top: 7.08rem;
+}
+.nav .toggle9 {
+  top: 7.98rem;
+}
+/*------------------------------------------------------------------------------------*/
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+.container .homePage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .homePage .createImg {
+  position: relative;
+  width: 1.33rem;
+  height: 1.38rem;
+  margin: 1.20rem auto .40rem auto;
+  z-index: 3;
+}
+.container .homePage .begin {
+  width: 0.75rem;
+  height: 0.37rem;
+  margin: auto;
+  margin-bottom: 0.2rem;
+  font-size: 0.35rem;
+  color: white;
+  text-align: center;
+  line-height: 0.37rem;
+  opacity: 0;
+}
+.container .homePage .farewell {
+  width: 1.57rem;
+  height: 0.37rem;
+  margin: auto;
+  margin-bottom: 0.2rem;
+  font-size: 0.35rem;
+  color: white;
+  text-align: center;
+  line-height: 0.37rem;
+  opacity: 0;
+}
+.container .homePage .withUs {
+  width: 3.04rem;
+  height: 0.37rem;
+  margin: auto;
+  margin-bottom: 0.6rem;
+  font-size: 0.35rem;
+  color: white;
+  text-align: center;
+  line-height: 0.37rem;
+  opacity: 0;
+}
+.container .homePage .start {
+  width: 1.46rem;
+  height: .37rem;
+  margin: 0 auto .60rem auto;
+  font-size: 0.35rem;
+  color: white;
+  text-align: center;
+  line-height: 0.37rem;
+  opacity: 0;
+}
+.container .homePage .feastImg {
+  position: relative;
+  width: 4.68rem;
+  height: .57rem;
+  margin: auto;
+  margin-bottom: 0.2rem;
+  font-size: 0.55rem;
+  color: white;
+  text-align: center;
+  line-height: 0.55rem;
+  opacity: 0;
+}
+.container .homePage .angle {
+  width: .77rem;
+  height: 2.58rem;
+  margin: 2.00rem auto 0 auto;
+  opacity: 0;
+}
+.container .pages {
+  width: 100%;
+  height: 11.36rem;
+}
+.container .pages .dj {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.container .pages .dj .strip {
+  position: relative;
+  float: left;
+  width: 12.5%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .pages .dj .strip .train {
+  position: absolute;
+  width: 100%;
+  height: 11.36rem;
+}
+.container .pages .dj .strip .train img {
+  width: 6.40rem;
+  height: 11.36rem;
+}
+.container .pages .dj .strip:nth-child(1) .train {
+  left: 0;
+  -webkit-transition: 1.7s;
+  transition: 1.7s;
+}
+.container .pages .dj .strip:nth-child(2) .train {
+  left: -100%;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+.container .pages .dj .strip:nth-child(3) .train {
+  left: -200%;
+  -webkit-transition: 1.1s;
+  transition: 1.1s;
+}
+.container .pages .dj .strip:nth-child(4) .train {
+  left: -300%;
+  -webkit-transition: 1.2s;
+  transition: 1.2s;
+}
+.container .pages .dj .strip:nth-child(5) .train {
+  left: -400%;
+  -webkit-transition: 1.0s;
+  transition: 1.0s;
+}
+.container .pages .dj .strip:nth-child(6) .train {
+  left: -500%;
+  -webkit-transition: 1.3s;
+  transition: 1.3s;
+}
+.container .pages .dj .strip:nth-child(7) .train {
+  left: -600%;
+  -webkit-transition: 1.4s;
+  transition: 1.4s;
+}
+.container .pages .dj .strip:nth-child(8) .train {
+  left: -700%;
+  -webkit-transition: 1.6s;
+  transition: 1.6s;
+}
+.container .endPage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .endPage p {
+  margin-top: 5.00rem;
+  font-size: .32rem;
+  color: white;
+  text-align: center;
+}
+@-webkit-keyframes scaleFadeIn {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 0.8;
+  }
+}
+@keyframes scaleFadeIn {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 0.8;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes scaleFadeIn2 {
+  0% {
+    -webkit-transform: scale3d(1, 0, 1);
+            transform: scale3d(1, 0, 1);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    opacity: 0.8;
+  }
+}
+@keyframes scaleFadeIn2 {
+  0% {
+    -webkit-transform: scale3d(1, 0, 1);
+            transform: scale3d(1, 0, 1);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+    opacity: 0.8;
+  }
+}
