@@ -1,0 +1,97 @@
+* {
+	margin: 0; padding: 0;
+}
+
+.sky {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	.pad {
+		width: 100%;
+	}
+	.bg {
+		position: absolute; left: 0; top: 0;
+		width: 100%; height: 100%;
+		animation: 40s bg linear infinite;
+		@keyframes bg {
+			0% {
+				background: #007fd5;
+			}
+			20% {
+				background: #007fd5;
+			}
+			60% {
+				background: black;
+			}
+			100% {
+				background: #007fd5;
+			}
+		}
+	}
+	.cloud {
+		position: absolute; left: 0; top: 0;
+		width: 200%; height: 100%;
+	}
+	.moon {
+		background: url("../img/parallax-clouds/moon.png");
+		background-size: 50%;
+		animation: 40s moon linear infinite;
+		@keyframes moon {
+			0% {
+				opacity: 0;
+				transform: translate3d(0,0,0);
+			}
+			20% {
+				opacity: 0;
+				transform: translate3d(0,0,0);
+			}
+			60% {
+				opacity: 1;
+				transform: translate3d(-10%,0,0);
+			}
+			100% {
+				opacity: 0;
+				transform: translate3d(-20%,0,0);
+			}
+		}
+	}
+	.cloud-1 {
+		background: url("../img/parallax-clouds/cloud_one.png");
+		background-size: 50%;
+		animation: cloud-1 10s linear infinite;
+		@keyframes cloud-1 {
+			0% {
+				background-position: 0;
+			}
+			100% {
+				background-position: -100%;
+			}
+		}
+	}
+	.cloud-2 {
+		background: url("../img/parallax-clouds/cloud_two.png");
+		background-size: 50%;
+		animation: cloud-2 20s linear infinite;
+		@keyframes cloud-2 {
+			0% {
+				background-position: 0;
+			}
+			100% {
+				background-position: -100%;
+			}
+		}
+	}
+	.cloud-3 {
+		background: url("../img/parallax-clouds/cloud_three.png");
+		background-size: 50%;
+		animation: cloud-3 40s linear infinite;
+		@keyframes cloud-3 {
+			0% {
+				background-position: 0;
+			}
+			100% {
+				background-position: -100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,126 @@
+@red: #CC3636;
+@blue: #003876;
+@brown: #A39161;
+@white: #FFF;
+
+* {
+	margin: 0; padding: 0;
+}
+
+body {
+	background: @red;
+}
+
+#logo {
+	display: block;
+	width: 30%;
+	margin: auto; margin-top: 100px;
+	background-color: @red;
+}
+
+#wheel {
+	@num: 150;
+	stroke: @white;
+	fill: @red;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	transition: 2s;
+	@keyframes wheel {
+		0% {
+			stroke-dashoffset: @num;
+		}
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#cannon {
+	@num: 250;
+	fill: @red;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	@keyframes cannon {
+		0% {
+			stroke-dashoffset: @num;
+		}
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#cannon-fill {
+	fill: @brown;
+	opacity: 0;
+	@keyframes cannon-fill {
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+.blue {
+	@num: 300;
+	fill: @red;
+	stroke: @white;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	transition: 2s;
+	@keyframes blue {
+		0% {
+			stroke-dashoffset: @num;
+		}
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#template {
+	@num: 400;
+	stroke-width: 1px;
+	stroke: @white;
+	fill: @red;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	transition: 2s;
+	@keyframes template {
+		0% {
+			stroke-dashoffset: @num;
+		}
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#plate1 {
+	fill: @red;
+	transition: 2s;
+}
+#plate2 {
+	fill: @red;
+	transition: 2s;
+}
+
+.text-stroke {
+	fill: @white;
+	opacity: 0;
+	transform-origin: 50% 50%;
+}
+.text-fill {
+	fill: @brown;
+	opacity: 0;
+	transform-origin: 50% 50%;
+}
+@keyframes text {
+	0% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}

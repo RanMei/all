@@ -2,26 +2,38 @@
   margin: 0;
   padding: 0;
 }
-@-webkit-keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
+body {
+  background: purple;
 }
 .gameboy {
   width: 50%;
   display: block;
   margin: auto;
-  background: orange;
-  stroke: black;
+  margin-top: 20%;
+  background: purple;
+  stroke: white;
   stroke-width: 3;
   stroke-linecap: round;
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
   -webkit-animation: stroke 3s linear 0s infinite;
           animation: stroke 3s linear 0s infinite;
+}
+@-webkit-keyframes stroke {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  100% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes stroke {
+  0% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  100% {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 0;
+  }
 }

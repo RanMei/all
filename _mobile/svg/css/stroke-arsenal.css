@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #CC3636;
+}
+#logo {
+  display: block;
+  width: 30%;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #CC3636;
+}
+#wheel {
+  stroke: #FFF;
+  fill: #CC3636;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+@-webkit-keyframes wheel {
+  0% {
+    stroke-dashoffset: 150;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes wheel {
+  0% {
+    stroke-dashoffset: 150;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+#cannon {
+  fill: #CC3636;
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+}
+@-webkit-keyframes cannon {
+  0% {
+    stroke-dashoffset: 250;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes cannon {
+  0% {
+    stroke-dashoffset: 250;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+#cannon-fill {
+  fill: #A39161;
+  opacity: 0;
+}
+@-webkit-keyframes cannon-fill {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes cannon-fill {
+  100% {
+    opacity: 1;
+  }
+}
+.blue {
+  fill: #CC3636;
+  stroke: #FFF;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+@-webkit-keyframes blue {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes blue {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+#template {
+  stroke-width: 1px;
+  stroke: #FFF;
+  fill: #CC3636;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+@-webkit-keyframes template {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes template {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+#plate1 {
+  fill: #CC3636;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+#plate2 {
+  fill: #CC3636;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+.text-stroke {
+  fill: #FFF;
+  opacity: 0;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+.text-fill {
+  fill: #A39161;
+  opacity: 0;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+@-webkit-keyframes text {
+  0% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes text {
+  0% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}

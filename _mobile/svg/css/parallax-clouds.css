@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.sky {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.sky .pad {
+  width: 100%;
+}
+.sky .bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: 40s bg linear infinite;
+          animation: 40s bg linear infinite;
+}
+@-webkit-keyframes bg {
+  0% {
+    background: #007fd5;
+  }
+  20% {
+    background: #007fd5;
+  }
+  60% {
+    background: black;
+  }
+  100% {
+    background: #007fd5;
+  }
+}
+@keyframes bg {
+  0% {
+    background: #007fd5;
+  }
+  20% {
+    background: #007fd5;
+  }
+  60% {
+    background: black;
+  }
+  100% {
+    background: #007fd5;
+  }
+}
+.sky .cloud {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 100%;
+}
+.sky .moon {
+  background: url("../img/parallax-clouds/moon.png");
+  background-size: 50%;
+  -webkit-animation: 40s moon linear infinite;
+          animation: 40s moon linear infinite;
+}
+@-webkit-keyframes moon {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-10%, 0, 0);
+            transform: translate3d(-10%, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+  }
+}
+@keyframes moon {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-10%, 0, 0);
+            transform: translate3d(-10%, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+  }
+}
+.sky .cloud-1 {
+  background: url("../img/parallax-clouds/cloud_one.png");
+  background-size: 50%;
+  -webkit-animation: cloud-1 10s linear infinite;
+          animation: cloud-1 10s linear infinite;
+}
+@-webkit-keyframes cloud-1 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+@keyframes cloud-1 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+.sky .cloud-2 {
+  background: url("../img/parallax-clouds/cloud_two.png");
+  background-size: 50%;
+  -webkit-animation: cloud-2 20s linear infinite;
+          animation: cloud-2 20s linear infinite;
+}
+@-webkit-keyframes cloud-2 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+@keyframes cloud-2 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+.sky .cloud-3 {
+  background: url("../img/parallax-clouds/cloud_three.png");
+  background-size: 50%;
+  -webkit-animation: cloud-3 40s linear infinite;
+          animation: cloud-3 40s linear infinite;
+}
+@-webkit-keyframes cloud-3 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+@keyframes cloud-3 {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -100%;
+  }
+}

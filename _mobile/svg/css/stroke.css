@@ -2,62 +2,6 @@
   margin: 0;
   padding: 0;
 }
-@-webkit-keyframes stroke-half-900 {
-  0% {
-    stroke-dashoffset: -900;
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 900;
-  }
-}
-@keyframes stroke-half-900 {
-  0% {
-    stroke-dashoffset: -900;
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 900;
-  }
-}
-@-webkit-keyframes stroke {
-  0% {
-    stroke-dashoffset: 1200;
-    stroke: orange;
-    fill: black;
-  }
-  80% {
-    stroke-dashoffset: 0;
-    stroke: orange;
-    fill: black;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    stroke: orange;
-    fill: orange;
-  }
-}
-@keyframes stroke {
-  0% {
-    stroke-dashoffset: 1200;
-    stroke: orange;
-    fill: black;
-  }
-  80% {
-    stroke-dashoffset: 0;
-    stroke: orange;
-    fill: black;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    stroke: orange;
-    fill: orange;
-  }
-}
 .test {
   display: block;
   width: 50%;
@@ -66,52 +10,43 @@
 }
 .test .square-1 {
   stroke-width: 5;
-  stroke-dasharray: 1200;
+  stroke-linecap: round;
   -webkit-animation: stroke 2s linear forwards;
           animation: stroke 2s linear forwards;
 }
-.test .line1 {
-  stroke: white;
+@-webkit-keyframes stroke {
+  0% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    stroke: orange;
+    fill: black;
+  }
+  80% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    stroke: orange;
+    fill: black;
+  }
+  100% {
+    stroke: orange;
+    fill: orange;
+  }
 }
-.test .circle-1 {
-  stroke: red;
-  stroke-width: 5;
-  fill: orange;
-}
-.test .circle-red {
-  stroke: red;
-  stroke-width: 2;
-  -webkit-animation: dashing 4s linear 0s infinite;
-          animation: dashing 4s linear 0s infinite;
-}
-.test .square {
-  fill: none;
-  stroke: white;
-  stroke-width: 1;
-  stroke-dasharray: 450;
-  -webkit-animation: stroke-half-900 4s linear 0s infinite;
-          animation: stroke-half-900 4s linear 0s infinite;
-}
-.test .text-lannister {
-  stroke: yellow;
-}
-.test polyline {
-  stroke: white;
-}
-.svg-square {
-  padding: 20px;
-  background: black;
-}
-.svg-square .square-1 {
-  fill: none;
-  stroke: orange;
-  stroke-width: 1;
-}
-.spiral {
-  stroke: red;
-  stroke-width: 2;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  -webkit-animation: stroke 3s linear 0s infinite alternate;
-          animation: stroke 3s linear 0s infinite alternate;
+@keyframes stroke {
+  0% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    stroke: orange;
+    fill: black;
+  }
+  80% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    stroke: orange;
+    fill: black;
+  }
+  100% {
+    stroke: orange;
+    fill: orange;
+  }
 }

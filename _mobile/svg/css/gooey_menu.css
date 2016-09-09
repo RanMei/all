@@ -21,6 +21,15 @@ h4 {
 h1 {
   font-size: 3em;
 }
+svg {
+  margin: auto;
+  width: 1.4rem;
+  height: 0;
+}
+.menu {
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
+}
 .menu {
   position: relative;
   width: 1.4rem;

@@ -2,21 +2,27 @@
 	margin: 0; padding: 0;
 }
 
-@keyframes stroke {
-	100% {
-		stroke-dashoffset: 0;
-	}
+body {
+	background: purple;
 }
 
 .gameboy {
+	@num: 2000;
 	width: 50%; display: block;
-	margin: auto;
-	background: orange;
-	stroke: black;
+	margin: auto; margin-top: 20%;
+	background: purple;
+	stroke: white;
 	stroke-width: 3;
 	stroke-linecap: round;
-	stroke-dasharray: 2000;
-	stroke-dashoffset: 2000;
-
 	animation: stroke 3s linear 0s infinite;
+	@keyframes stroke {
+		0% {
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		100% {
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
 }

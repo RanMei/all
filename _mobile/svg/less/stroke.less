@@ -2,36 +2,6 @@
 	margin: 0; padding: 0;
 }
 
-@keyframes stroke-half-900 {
-    0% {
-        stroke-dashoffset: -900;
-    }
-    50% {
-        stroke-dashoffset: 0;
-    }
-    100% {
-        stroke-dashoffset: 900;
-    }
-}
-@keyframes stroke {
-	0% {
-		stroke-dashoffset: 1200;
-		stroke: orange;
-		fill: black;
-	}
-	80% {
-		stroke-dashoffset: 0;
-		stroke: orange;
-		fill: black;
-	}
-	100% {
-		stroke-dashoffset: 0;
-		stroke: orange;
-		fill: orange;
-	}
-}
-
-
 .test {
 	display: block;
 	width: 50%;
@@ -39,50 +9,26 @@
 	background: black;
 	.square-1 {
 		stroke-width: 5;
-		stroke-dasharray: 1200;
+		stroke-linecap: round;
 		animation: stroke 2s linear forwards;
+		@num: 1200;
+		@keyframes stroke {
+			0% {
+				stroke-dasharray: @num;
+				stroke-dashoffset: @num;
+				stroke: orange;
+				fill: black;
+			}
+			80% {
+				stroke-dasharray: @num;
+				stroke-dashoffset: 0;
+				stroke: orange;
+				fill: black;
+			}
+			100% {
+				stroke: orange;
+				fill: orange;
+			}
+		}
 	}
-	.line1 {
-		stroke: white;
-	}
-	.circle-1 {
-		stroke: red;
-		stroke-width: 5;
-		fill: orange;
-	}
-	.circle-red {
-		stroke: red;
-		stroke-width: 2;
-		//stroke-dasharray: @perimeter/2;
-		animation: dashing 4s linear 0s infinite;
-	}
-	.square {
-		fill: none;
-		stroke: white;
-		stroke-width: 1;
-		stroke-dasharray: 450;
-		animation: stroke-half-900 4s linear 0s infinite;
-	}
-	.text-lannister {
-		stroke: yellow;
-	}
-	polyline {
-		stroke: white;
-	}
-}
-.svg-square {
-	padding: 20px;
-	background: black;
-	.square-1 {
-		fill:none;
-		stroke: orange;
-		stroke-width: 1;
-	}
-}
-.spiral {
-	stroke:red;
-	stroke-width:2;
-	stroke-dasharray: 1000;
-	stroke-dashoffset: 1000;
-	animation: stroke 3s linear 0s infinite alternate;
 }
