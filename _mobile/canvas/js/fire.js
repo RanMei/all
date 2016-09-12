@@ -146,8 +146,14 @@ function Fire(config){
 
 Fire.prototype = {
 	init: function(){
+		this.addControl();
 		this.createParticles();
 		this.play();
+	},
+	clear: function(){
+		clearInterval( this.interval );
+		this.particles = [];
+		this.smoke_particles = [];
 	},
 	createParticles: function(){
 		for(var i = 0; i < this.config.particle_count; i++){
@@ -184,6 +190,27 @@ Fire.prototype = {
 	},
 	play: function(){
 		this.interval = setInterval(this.render.bind(this), 33);
+	},
+	addControl: function(){
+		var self = this;
+		for( var key in self.config ){
+			var input = document.createElement('input');
+			var br = document.createElement('br');
+			input.setAttribute('name',key);
+			input.setAttribute('placeholder',key);
+			document.getElementsByTagName('body')[0].appendChild(input);
+			document.getElementsByTagName('body')[0].appendChild(br);
+		}
+		var inputs = document.querySelectorAll('input');
+		// console.log(inputs);
+		[].forEach.call(inputs,function(item){
+			item.addEventListener('change',function(e){
+				self.clear();
+				self.config[ e.target.name ] = e.target.value;
+				self.createParticles();
+				self.play();
+			})
+		})
 	}
 }
 
@@ -192,38 +219,3 @@ new Fire({
 	width: 800,
 	height: 1000
 })
-
-window.addEventListener('DOMContentLoaded',function(){
-
-
-
-	var custom = {
-	};
-
-	for( var key in custom ){
-		config[key] = custom[key];
-	}
-
-	var interval;
-	//start();
-
-	for( var key in config ){
-		var input = document.createElement('input');
-		var br = document.createElement('br');
-		input.setAttribute('name',key);
-		input.setAttribute('placeholder',key);
-		document.getElementsByTagName('body')[0].appendChild(input);
-		document.getElementsByTagName('body')[0].appendChild(br);
-	}
-	
-	var inputs = document.querySelectorAll('input');
-	console.log(inputs);
-	[].forEach.call(inputs,function(item){
-		item.addEventListener('change',function(e){
-			config[ e.target.name ] = e.target.value;
-			clearInterval(interval);
-			//start();
-		})
-	})
-
-});

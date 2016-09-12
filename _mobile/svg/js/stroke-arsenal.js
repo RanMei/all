@@ -15,20 +15,16 @@ function Arsenal(){
 Arsenal.prototype = {
 	init: function(){
 		var self = this;
-		self.wheel.style.animation = '2s wheel forwards';
-		setTimeout(function(){
-			self.cannon.style.animation = '2s cannon forwards';
-		},1000);
-		setTimeout(function(){
-			self.blue[0].style.animation = '2s blue forwards';
-			self.blue[1].style.animation = '2s blue forwards';
-		},2500);
-		setTimeout(function(){
-			self.template.style.animation = '2s template forwards';
-		},3000);
+		self.begin( self.wheel, '2s wheel forwards', 0 );
+		self.begin( self.cannon, '2s cannon forwards', 1000 );
+		self.begin( self.blue[0], '2s blue forwards', 2500 );
+		self.begin( self.blue[1], '2s blue forwards', 3000 );
+		self.begin( self.template, '2s template forwards', 3000 );
+		self.begin( self.cannonFill, '1s cannon-fill ease-out forwards', 5000 );
+
 		setTimeout(function(){
 			self.wheel.style.fill = '#A39161';
-			self.cannonFill.style.animation = '1s cannon-fill ease-out forwards';
+			//self.cannonFill.style.animation = '1s cannon-fill ease-out forwards';
 			self.cannon.style.strokeWidth = 3;
 			self.blue[0].style.fill = '#003876';
 			self.blue[1].style.fill = '#003876';
@@ -37,10 +33,15 @@ Arsenal.prototype = {
 			self.template.style.fill = '#A39161';
 			self.template.style.stroke = '#A39161';
 		},5000);
+
+		self.begin( self.textStroke, '1s text forwards', 6000 );
+		self.begin( self.textFill, '1s text forwards', 6000 );
+	},
+	begin: function(elem,animation,timeout){
 		setTimeout(function(){
-			self.textStroke.style.animation = '1s text forwards';
-			self.textFill.style.animation = '1s text forwards';
-		},6000);
+			elem.style.animation = animation;
+			elem.style.webkitAnimation = animation;
+		},timeout);
 	}
 }
 new Arsenal();

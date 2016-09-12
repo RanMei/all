@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.test {
+  display: block;
+  width: 100%;
+  margin: auto;
+  background: black;
+}
+.test .square-1 {
+  stroke-width: 5;
+  stroke-linecap: round;
+  -webkit-animation: stroke 2s linear forwards;
+          animation: stroke 2s linear forwards;
+}
+@-webkit-keyframes stroke {
+  0% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    stroke: orange;
+    fill: black;
+  }
+  80% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    stroke: orange;
+    fill: black;
+  }
+  100% {
+    stroke: orange;
+    fill: orange;
+  }
+}
+@keyframes stroke {
+  0% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    stroke: orange;
+    fill: black;
+  }
+  80% {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    stroke: orange;
+    fill: black;
+  }
+  100% {
+    stroke: orange;
+    fill: orange;
+  }
+}

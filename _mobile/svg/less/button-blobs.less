@@ -1,0 +1,199 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #333;
+	font-family: 'Microsoft Yahei';
+}
+
+svg {
+	display: none;
+}
+.container {
+	margin-top: 10vw;
+	text-align: center;
+	overflow: hidden;
+}
+
+.blob-btn {
+	@color: #0fe0f5;
+	z-index: 1;
+	position: relative;
+	width: 4rem; height: 1rem;
+	margin: 0 auto 1rem auto;
+	line-height: 1rem;
+	box-sizing: border-box;
+	text-align: center;
+	text-transform: uppercase;
+	color: @color;
+	font-size: 0.3rem;
+	font-weight: bold;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	transition: color 0.5s;
+	cursor: pointer;
+	display: block;
+	&:before {
+		content: "";
+		z-index: 1;
+		position: absolute; left: 0; top: 0;
+		width: 100%; height: 100%;
+		border: 0.1rem solid #0fe0f5;
+	}
+}
+.blob-btn:after {
+	content: "";
+	z-index: -2;
+	position: absolute; left: 0.15rem; top: 0.15rem;
+	width: 100%; height: 100%;
+	border: 0.1rem solid #222;
+	transition: all 0.3s 0.2s;
+}
+.blob-btn:hover:after {
+	transition: all 0.3s;
+	left: 0;
+	top: 0;
+}
+
+// .blob-btn:after {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   border: 6px solid red;
+//   transition: all 0.3s;
+//   z-index: -2;
+// }
+// .blob-btn:hover:after {
+//   transform: scale(1.5);
+// }
+.blob-btn:hover {
+	color: #222;
+}
+
+.blob-btn__inner {
+	z-index: -1;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+._blobs {
+	position: relative;
+	display: block;
+	height: 100%;
+	//filter: url("#goo");
+}
+._blob {
+	position: absolute;
+	top: 6px;
+	width: 25%;
+	height: 100%;
+	background: #0fe0f5;
+	border-radius: 100%;
+	transform: translate3d(0, 150%, 0) scale(1.7);
+	transition: transform 0.45s;
+}
+@supports ( (filter: url("#goo") ) {
+	._blob {
+		transform: translate3d(0, 150%, 0) scale(1.4);
+	}
+}
+._blob:nth-child(1) {
+	left: 0%;
+	transition-delay: 0s;
+}
+._blob:nth-child(2) {
+	left: 30%;
+	transition-delay: 0.08s;
+}
+._blob:nth-child(3) {
+	left: 60%;
+	transition-delay: 0.16s;
+}
+._blob:nth-child(4) {
+	left: 90%;
+	transition-delay: 0.24s;
+}
+.blob-btn:hover ._blob {
+	transform: translate3d(0,0,0) scale(1.7);
+}
+@supports ( filter: url("#goo") ) {
+	.blob-btn:hover ._blob {
+		transform: translate3d(0,0,0) scale(1.4);
+	}
+}
+
+
+
+
+.btn {
+	@color: orange;
+	z-index: 1;
+	position: relative;
+	width: 60vw; height: 14vw; line-height: 14vw;
+	margin: auto;
+	box-sizing: border-box;
+	font-size: 5vw; font-weight: bold; text-align: center; text-transform: uppercase; color: @color;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	transition: color 0.5s;
+	cursor: pointer;
+	display: block;
+	animation: change 0.45s infinite alternate;
+	@keyframes change {
+		0% {
+		}
+		100% {
+			color: black;
+		}
+	}
+	&:before {
+		content: "";
+		position: absolute; left: 0; top: 0;
+		width: 100%; height: 100%;
+		border: 1.5vw solid @color;
+		z-index: 1;
+	}
+	.blob {
+		position: absolute; top: 1vw;
+		width: 25%; height: 100%;
+		background: @color;
+		border-radius: 100%;
+		transform: translate3d(0, 150%, 0) scale(1.7);
+		//transition: transform 0.45s;
+	}
+	@keyframes blob1 {
+		0% {
+			transform: translate3d(0,150%,0) scale(1.7);
+		}
+		100% {
+			transform: translate3d(0,0,0) scale(1.7);       
+		}
+	}
+	.blob:nth-child(1) {
+		left: 0;
+		animation: blob1 0.45s infinite alternate;
+	}
+	.blob:nth-child(2) {
+		left: 30%;
+		animation: blob1 0.45s 0.08s infinite alternate;
+	}
+	.blob:nth-child(3) {
+		left: 60%;
+		animation: blob1 0.45s 0.16s infinite alternate;
+	}
+	.blob:nth-child(4) {
+		left: 90%;
+		animation: blob1 0.45s 0.24s infinite alternate;
+	}
+}

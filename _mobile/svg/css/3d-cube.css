@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #333;
+  text-align: center;
+  font-family: Arial;
+}
+.controller {
+  padding: 10vw 0 10vw 0;
+}
+.separator {
+  width: 100%;
+  height: 10vw;
+}
+.twitter {
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 4px;
+  background: #00ACED;
+  display: inline-block;
+  padding: 10px 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+/* 3D Cube */
+.space3d {
+  width: 50vw;
+  height: 50vw;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  text-align: center;
+  display: inline-block;
+}
+.space3d .cube {
+  display: inline-block;
+  -webkit-transition: all 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-15deg) rotateY(15deg);
+          transform: rotateX(-15deg) rotateY(15deg);
+}
+.space3d .cube .face {
+  overflow: hidden;
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  border: 1px solid black;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1), 0 0 50px rgba(0, 0, 0, 0.3);
+  font-size: 30vw;
+  color: white;
+  line-height: 50vw;
+  opacity: 0.8;
+}
+.space3d .cube .face-front {
+  -webkit-transform: translate3d(0, 0, 25vw);
+          transform: translate3d(0, 0, 25vw);
+}
+.space3d .cube .face-top {
+  -webkit-transform: rotateX(90deg) translate3d(0, 0, 25vw);
+          transform: rotateX(90deg) translate3d(0, 0, 25vw);
+}
+.space3d .cube .face-bottom {
+  -webkit-transform: rotateX(-90deg) translate3d(0, 0, 25vw);
+          transform: rotateX(-90deg) translate3d(0, 0, 25vw);
+}
+.space3d .cube .face-left {
+  left: 50%;
+  margin-left: -25vw;
+  -webkit-transform: rotateY(-90deg) translate3d(0, 0, 25vw);
+          transform: rotateY(-90deg) translate3d(0, 0, 25vw);
+}
+.space3d .cube .face-right {
+  left: 50%;
+  margin-left: -25vw;
+  -webkit-transform: rotateY(90deg) translate3d(0, 0, 25vw);
+          transform: rotateY(90deg) translate3d(0, 0, 25vw);
+}
+.space3d .cube .face-back {
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 25vw);
+          transform: rotateY(180deg) translate3d(0, 0, 25vw);
+}
+#radio-left:checked ~ .space3d .cube {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+#radio-right:checked ~ .space3d .cube {
+  -webkit-transform: rotateY(-90deg);
+          transform: rotateY(-90deg);
+}
+#radio-bottom:checked ~ .space3d .cube {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+#radio-top:checked ~ .space3d .cube {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+#radio-back:checked ~ .space3d .cube {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.face-front {
+  background: url(http://2.bp.blogspot.com/-JxKfUObT4L8/UYYaRhRNJmI/AAAAAAAAAUY/243IlIOKj2c/s320/brahama.jpg);
+  background-size: auto 100%;
+}
+.face-left {
+  background: url(http://4.bp.blogspot.com/-HGFGdCGFTkw/UXVq6PNmS4I/AAAAAAAAAUE/hBNmVCOVlu4/s400/durga+wm.jpg);
+  background-size: auto 100%;
+}
+.face-right {
+  background: url(http://2.bp.blogspot.com/-yrnBD8wJ-g0/UNRtPF8pR7I/AAAAAAAAATE/YSpLvqTNyoQ/s320/A+P+J+abdul+kalam_+swm+.jpg);
+  background-size: auto 100%;
+}
+.face-top {
+  background: url(http://3.bp.blogspot.com/-mySu8dy4ux4/ULiVKS4YBbI/AAAAAAAAAR0/vBMi_4dAPDE/s400/rajiv+dixit+s.jpg);
+  background-size: auto 100%;
+}
+.face-bottom {
+  background: url(http://2.bp.blogspot.com/-B9QWFtc9bVY/UHFs7y9GqkI/AAAAAAAAARI/YLDkoHYr3g4/s400/Gau+wm.jpg);
+  background-size: auto 100%;
+}
+.face-back {
+  background: url(http://3.bp.blogspot.com/-ofufG97PpiU/UBzXu-1AisI/AAAAAAAAAP0/iDnhOh-vrb8/s400/shiv+ji.jpg);
+  background-size: auto 100%;
+}

@@ -1,0 +1,34 @@
+* {
+	margin: 0; padding: 0;
+}
+
+.test {
+	display: block;
+	width: 100%;
+	margin: auto;
+	background: black;
+	.square-1 {
+		stroke-width: 5;
+		stroke-linecap: round;
+		animation: stroke 2s linear forwards;
+		@num: 1200;
+		@keyframes stroke {
+			0% {
+				stroke-dasharray: @num;
+				stroke-dashoffset: @num;
+				stroke: orange;
+				fill: black;
+			}
+			80% {
+				stroke-dasharray: @num;
+				stroke-dashoffset: 0;
+				stroke: orange;
+				fill: black;
+			}
+			100% {
+				stroke: orange;
+				fill: orange;
+			}
+		}
+	}
+}

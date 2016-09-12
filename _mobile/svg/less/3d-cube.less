@@ -1,0 +1,143 @@
+* {
+	margin: 0; padding: 0;
+}
+
+body {
+	color: #333;
+	text-align: center;
+	font-family: Arial;
+}
+
+
+.controller {
+	padding: 10vw 0 10vw 0;
+}
+
+.separator {
+	width: 100%; height: 10vw;
+}
+
+.twitter {
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 4px;
+	background: #00ACED;
+	display: inline-block;
+	padding: 10px 8px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+/* 3D Cube */
+.space3d {
+	@num: 50vw;
+	width: @num;
+	height: @num;
+	perspective: 1000px;
+	text-align: center;
+	display: inline-block;
+	.cube {
+		display: inline-block;
+		transition: all 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		text-align: center;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+		transform: rotateX(-15deg) rotateY(15deg);
+		.face {
+			overflow: hidden;
+			position: absolute;
+			width: @num; height: @num;
+			border: 1px solid black;
+			//background: #FFF;
+			box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.1), 0 0 50px rgba(0, 0, 0, 0.3);
+			font-size: 30vw;
+			color: white;
+			line-height: @num;
+			opacity: 0.8;
+		}
+
+		.face-front {
+			transform: translate3d(0, 0, @num/2);
+		}
+
+		.face-top {
+			transform: rotateX(90deg) translate3d(0, 0, @num/2);
+		}
+
+		.face-bottom {
+			transform: rotateX(-90deg) translate3d(0, 0, @num/2);
+		}
+
+		.face-left {
+			left: 50%;
+			margin-left: -@num/2;
+			transform: rotateY(-90deg) translate3d(0, 0, @num/2);
+		}
+
+		.face-right {
+			left: 50%;
+			margin-left: -@num/2;
+			transform: rotateY(90deg) translate3d(0, 0, @num/2);
+		}
+
+		.face-back {
+			transform: rotateY(180deg) translate3d(0, 0, @num/2);
+		}
+	}
+}
+
+
+
+
+
+#radio-left:checked ~ .space3d .cube {
+	transform: rotateY(90deg);
+}
+
+#radio-right:checked ~ .space3d .cube {
+	transform: rotateY(-90deg);
+}
+
+#radio-bottom:checked ~ .space3d .cube {
+	transform: rotateX(90deg);
+}
+
+#radio-top:checked ~ .space3d .cube {
+	transform: rotateX(-90deg);
+}
+
+#radio-back:checked ~ .space3d .cube {
+	transform: rotateY(180deg);
+}
+
+.face-front {
+	background: url(http://2.bp.blogspot.com/-JxKfUObT4L8/UYYaRhRNJmI/AAAAAAAAAUY/243IlIOKj2c/s320/brahama.jpg);
+	background-size: auto 100%;
+}
+
+.face-left {
+	background: url(http://4.bp.blogspot.com/-HGFGdCGFTkw/UXVq6PNmS4I/AAAAAAAAAUE/hBNmVCOVlu4/s400/durga+wm.jpg);
+	background-size: auto 100%;
+}
+
+.face-right {
+	background: url(http://2.bp.blogspot.com/-yrnBD8wJ-g0/UNRtPF8pR7I/AAAAAAAAATE/YSpLvqTNyoQ/s320/A+P+J+abdul+kalam_+swm+.jpg);
+	background-size: auto 100%;
+}
+
+.face-top {
+	background: url(http://3.bp.blogspot.com/-mySu8dy4ux4/ULiVKS4YBbI/AAAAAAAAAR0/vBMi_4dAPDE/s400/rajiv+dixit+s.jpg);
+	background-size: auto 100%;
+}
+
+.face-bottom {
+	background: url(http://2.bp.blogspot.com/-B9QWFtc9bVY/UHFs7y9GqkI/AAAAAAAAARI/YLDkoHYr3g4/s400/Gau+wm.jpg);
+	background-size: auto 100%;
+}
+
+.face-back {
+	background: url(http://3.bp.blogspot.com/-ofufG97PpiU/UBzXu-1AisI/AAAAAAAAAP0/iDnhOh-vrb8/s400/shiv+ji.jpg);
+	background-size: auto 100%;
+}

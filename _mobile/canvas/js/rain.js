@@ -163,11 +163,11 @@
 	new Rain({
 		elem: document.getElementById('canvas')
 	})
-	new Rain({
-		elem: document.getElementById('canvas2')
-	})
-	new Rain({
-		elem: document.getElementById('canvas3')
-	})
+	// new Rain({
+	// 	elem: document.getElementById('canvas2')
+	// })
+	// new Rain({
+	// 	elem: document.getElementById('canvas3')
+	// })
 
 })();
