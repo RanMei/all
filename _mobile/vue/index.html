@@ -12,11 +12,56 @@
 </head>
 
 <body>
-	<div id="app" v-on:click="next">
-		<component :is="currentPage"></component>
-		<div class="carousel">
-			
-		</div>
+	<ul class="nav">
+		<li v-for="a in nav" @click="toPage(a)">
+			{{a}}
+		</li>
+	</ul>
+
+	<div class="swiper"
+		@mousedown="mousedown($event)"
+		@mouseup="mouseup($event)">
+		<ul class="train" style="transform:translate3d(0,-{{current*5}}%,0);">
+			<li class="item">
+				<h1 class="title">
+					移动端网页动画的制作
+				</h1>
+			</li>
+			<technology></technology>
+			<css3-transitions></css3-transitions>
+			<css3-animations></css3-animations>
+			<li class="item">
+				<h2>Examples</h2>
+				<p>
+					“QQ阅读狂欢季”推广页面<br/>
+					Gooey Menu<br/>
+					parallax animation （视差动画）<br/>
+					&emsp;郊外<br/>
+					&emsp;云层<br/>
+					3D Cube<br/>
+				</p>
+			</li>
+			<li class="item">
+				<h2>SVG</h2>
+				<p>
+				</p>
+			</li>
+			<li class="item">
+				<h2>Canvas</h2>
+				<p>
+					面向对象编程<br/>
+				</p>
+			</li>
+			<li class="item">
+				<h2>交互、设计与前端同学合作制作动画的一些思考</h2>
+				<p>
+					设计同学可给出某一动画的起始帧与结束帧的设计图。<br/>
+					例子：Gooey Menu<br/>
+					<br/>
+					实践：“读书运动会”获奖通知页的制作
+				</p>
+			</li>
+		</ul>
 	</div>
 
 <script type="text/javascript" src="vendor/vue.min.js"></script>

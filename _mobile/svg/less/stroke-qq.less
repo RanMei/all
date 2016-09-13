@@ -1,0 +1,101 @@
+body {
+	background: grey;
+}
+
+svg {
+	display: block;
+	width: 50%;
+	margin: auto;
+}
+
+@time: 2s;
+
+#covers-a {
+	@num: 400;
+	@color: #76D5FF;
+	stroke: white;
+	//fill: transparent;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	animation: @time covers-a forwards;
+	@keyframes covers-a {
+		0% {
+			stroke: @color;
+			fill: none;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: transparent;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#backbone {
+	@num: 230;
+	@color: #19B6FF;
+	stroke: white;
+	//fill: transparent;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	animation: @time backbone forwards;
+	@keyframes backbone {
+		0% {
+			stroke: @color;
+			fill: none;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: transparent;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#covers-c {
+	@num: 370;
+	@color: #00ADFC;
+	stroke: white;
+	//fill: transparent;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	animation: @time covers-c forwards;
+	@keyframes covers-c {
+		0% {
+			stroke: @color;
+			fill: none;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: transparent;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+}

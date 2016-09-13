@@ -46,83 +46,68 @@
 
 	'use strict';
 
-	// import './rem.js';
-	// import {swiper} from './swiper.vue';
+	var technology = __webpack_require__(1);
+	var css3Transitions = __webpack_require__(8);
+	var css3Animations = __webpack_require__(12);
 
-	__webpack_require__(1);
-	var home = __webpack_require__(2);
-	var mask = __webpack_require__(9);
-	var swiper = __webpack_require__(14);
-	var box = __webpack_require__(19);
+	var box = __webpack_require__(16);
 
-	Vue.component('home', home);
-	Vue.component('mask', mask);
-	Vue.component('box', box);
-	Vue.component('swiper', swiper);
+	Vue.component('css3Transitions', css3Transitions);
+	Vue.component('css3Animations', css3Animations);
+	Vue.component('technology', technology);
 
 	new Vue({
 		el: 'body',
-		components: {
-			mask: mask,
-			swiper: swiper,
-			box: box
-		},
+		components: {},
 		data: {
+			nav: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+
 			current: 0,
+			Y1: null,
+			Y2: null,
 			pages: ['home', 'box']
 		},
 		computed: {
-			currentPage: function currentPage() {
-				return this.pages[this.current];
+			length: function length() {
+				return this.nav.length;
 			}
 		},
 		methods: {
-			next: function next() {
-				this.current++;
+			toPage: function toPage(i) {
+				this.current = i;
+			},
+			mousedown: function mousedown(e) {
+				this.Y1 = e.pageY;
+			},
+			mouseup: function mouseup(e) {
+				this.Y2 = e.pageY;
+				var distance = this.Y2 - this.Y1;
+				console.log(distance);
+				if (distance < 0) {
+					if (this.current < this.length - 1) {
+						this.current++;
+					}
+				} else if (distance > 0) {
+					if (this.current > 0) {
+						this.current--;
+					}
+				}
 			}
 		}
 	});
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	document.addEventListener('DOMContentLoaded', function () {
-
-		var $html = document.querySelector('html');
-		var $body = document.querySelector('body');
-		var $screen = document.createElement('div');
-
-		$screen.style.cssText += 'position:fixed; width:100%; height:100%; display:none;';
-		$body.insertBefore($screen, $body.firstChild);
-
-		function setRem() {
-			$screen.style.display = 'block';
-			var w = Number(document.defaultView.getComputedStyle($screen).width.replace(/px/, ''));
-			var h = Number(document.defaultView.getComputedStyle($screen).height.replace(/px/, ''));
-			$screen.style.display = 'none';
-			$html.style.fontSize = 100 * w / 720 + 'px';
-			//document.getElementsByClassName('container')[0].style.height = h+'px';
-			console.log('rem: Size of the viewport is ' + w + '*' + h + '.');
-		}
-		setRem();
-		window.addEventListener('resize', setRem);
-	});
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(3)
-	__vue_script__ = __webpack_require__(7)
+	__webpack_require__(2)
+	__vue_script__ = __webpack_require__(6)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\home.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(8)
+	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\technology.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(7)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -132,7 +117,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./home.vue"
+	  var id = "./technology.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -141,23 +126,23 @@
 	})()}
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(4);
+	var content = __webpack_require__(3);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-24fe7a80&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./home.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-24fe7a80&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./home.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-141d3d26&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-141d3d26&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -167,21 +152,21 @@
 	}
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(4)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".home[_v-24fe7a80] {\n  width: 100%;\n  height: 100%;\n  font-size: 0.5rem;\n  text-align: center;\n}\n", ""]);
+	exports.push([module.id, ".three[_v-141d3d26] {\n  overflow: hidden;\n}\n.three li[_v-141d3d26] {\n  width: 33.333333%;\n  float: left;\n}\n.three li img[_v-141d3d26] {\n  height: 20vw;\n  margin: auto;\n  margin-top: 10vw;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -236,7 +221,7 @@
 	};
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -458,140 +443,116 @@
 
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var home = {
+	module.exports = {
 		data: function data() {
 			return {
-				color: 'red',
-				items: [0, 1, 2]
+				css3: 'img/css3.svg',
+				svg: 'img/svg.png',
+				html5: 'img/html5.svg'
 			};
-		},
-		ready: function ready() {},
-		methods: {
-			change: function change() {
-				this.color = 'orange';
-			}
 		}
 	};
-	module.exports = home;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<li class=\"item\" _v-141d3d26=\"\">\n\t<h2 _v-141d3d26=\"\">\n\t\t制作网页动画的技术\n\t</h2>\n\t<ul class=\"three\" _v-141d3d26=\"\">\n\t\t<li _v-141d3d26=\"\">\n\t\t\t<img :src=\"css3\" _v-141d3d26=\"\">\n\t\t\t<h3 _v-141d3d26=\"\">CSS3</h3>\n\t\t</li>\n\t\t<li _v-141d3d26=\"\">\n\t\t\t<img :src=\"svg\" _v-141d3d26=\"\">\n\t\t\t<h3 _v-141d3d26=\"\">SVG</h3>\n\t\t</li>\n\t\t<li _v-141d3d26=\"\">\n\t\t\t<img :src=\"html5\" _v-141d3d26=\"\">\n\t\t\t<h3 _v-141d3d26=\"\">Canvas</h3>\n\t\t</li>\n\t</ul>\n</li>\n";
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"home\" _v-24fe7a80=\"\">\n\t前端是如何做动画的\n</div>\n";
+	var __vue_script__, __vue_template__
+	__webpack_require__(9)
+	__vue_script__ = __webpack_require__(11)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\css3Transitions.vue: named exports in *.vue files are ignored.")}
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./css3Transitions.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __vue_script__, __vue_template__
-	__webpack_require__(10)
-	__vue_script__ = __webpack_require__(12)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\mask.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(13)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(10);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ec06306&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ec06306&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
 	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "./mask.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(11);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-525ebe0d&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mask.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-525ebe0d&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./mask.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(4)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".mask[_v-525ebe0d] {\n  z-index: 10;\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n}\n.mask .mask-panel[_v-525ebe0d] {\n  overflow: hidden;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  width: 5.5rem;\n  height: 3.6rem;\n  margin: auto;\n  border-radius: 0.1rem;\n  background: white;\n}\n.mask .mask-panel .top[_v-525ebe0d] {\n  box-sizing: border-box;\n  height: 0.9rem;\n  border-bottom: 1px solid #d8d8d8;\n  font-size: 0.28rem;\n  line-height: 0.9rem;\n  font-weight: bold;\n  text-align: center;\n}\n.mask .mask-panel .middle[_v-525ebe0d] {\n  box-sizing: border-box;\n  height: 1.8rem;\n  border-bottom: 1px solid #d8d8d8;\n  font-size: 0.28rem;\n  line-height: 1.8rem;\n  text-align: center;\n}\n.mask .mask-panel .bottom[_v-525ebe0d] {\n  overflow: hidden;\n}\n.mask .mask-panel .bottom li[_v-525ebe0d] {\n  float: left;\n  width: 50%;\n  height: 0.9rem;\n  line-height: 0.9rem;\n  font-size: 0.28rem;\n  text-align: center;\n}\n.mask .mask-panel .bottom .confirm[_v-525ebe0d] {\n  background: #3d8dcf;\n  color: white;\n}\n", ""]);
+	exports.push([module.id, "", ""]);
 
 	// exports
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
 
-	var mask = {
-		data: function data() {
-			return {
-				shown: true
-			};
-		},
-		methods: {
-			hide: function hide() {
-				this.shown = false;
-			}
-		}
+	module.exports = {
+		template: "\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\t\ttransform: translate3d(20vw,5vw,0);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 translate\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: scale3d(1.2,1.5,0);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 scale3d\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: skew(30deg,30deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 skew\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateY(360deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 rotateY\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"square0 rotateX\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tperspective: 1000px;<br/>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square rotate\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\topacity: 0;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 opacity\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbackground: red;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square background\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbox-shadow: 0 0 10vw 1vw green;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square box-shadow\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t"
 	};
-	module.exports = mask;
 
 /***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"mask\" v-show=\"shown\" _v-525ebe0d=\"\">\n\t<div class=\"mask-panel\" _v-525ebe0d=\"\">\n\t\t<p class=\"top\" _v-525ebe0d=\"\">下载QQ阅读，畅读海量小说</p>\n\t\t<p class=\"middle\" _v-525ebe0d=\"\">如果还未安装QQ阅读，你可以：</p>\n\t\t<ul class=\"bottom\" _v-525ebe0d=\"\">\n\t\t\t<li class=\"confirm\" _v-525ebe0d=\"\">下载QQ阅读</li>\n\t\t\t<li class=\"cancel\" v-on:click=\"hide\" _v-525ebe0d=\"\">取消</li>\n\t\t</ul>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(15)
-	__vue_script__ = __webpack_require__(17)
+	__webpack_require__(13)
+	__vue_script__ = __webpack_require__(15)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\swiper.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(18)
+	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\css3Animations.vue: named exports in *.vue files are ignored.")}
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -601,7 +562,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./swiper.vue"
+	  var id = "./css3Animations.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -610,23 +571,23 @@
 	})()}
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(16);
+	var content = __webpack_require__(14);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-04773b59&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-04773b59&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -636,150 +597,41 @@
 	}
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(4)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".swiper[_v-04773b59] {\n  position: relative;\n  margin: auto;\n}\n.swiper .train[_v-04773b59] {\n  width: 1000%;\n  height: 100%;\n}\n.swiper .train .item[_v-04773b59] {\n  float: left;\n  width: 10%;\n  height: 100%;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n  opacity: 0.6;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.swiper .train .item.active[_v-04773b59] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
+	exports.push([module.id, ".two {\n  width: 100%;\n  overflow: hidden;\n}\n.two .two-left {\n  box-sizing: border-box;\n  float: left;\n  width: 50%;\n  padding-left: 10vw;\n  font-size: 1vw!important;\n}\n.two .two-right {\n  float: left;\n  width: 50%;\n}\n.two .two-right .yoda {\n  width: 50%;\n  margin: auto;\n  margin-top: 10vw;\n}\n.two .two-right .yoda:hover {\n  -webkit-animation: 2s rubberBand forwards;\n          animation: 2s rubberBand forwards;\n}\n@-webkit-keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n@keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 17 */
+/* 15 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	var swiper = {
-		props: ['bg'],
-		data: function data() {
-			return {
-				width: 0,
-
-				switching: false,
-				inCycle: false,
-				moveCount: 0,
-				scrolling: false,
-				trainOffsetX: 0,
-				X1: 0,
-				X2: 0,
-
-				currentOne: 2,
-				transition: false,
-				offset: 0,
-				items: ['red', 'orange', 'yellow', 'green', 'blue']
-			};
-		},
-		ready: function ready() {
-			var _this = this;
-
-			window.addEventListener('load', function () {
-				_this.setWidth();
-				_this.trainOffsetX = -_this.width * 2;
-			});
-			window.addEventListener('resize', function () {
-				setTimeout(function () {
-					_this.setWidth();
-					_this.trainOffsetX = -_this.width * 2;
-				}, 50);
-			});
-		},
-		methods: {
-			setWidth: function setWidth() {
-				this.transition = false;
-				var elem = document.querySelectorAll('.swiper')[0];
-				var width = document.defaultView.getComputedStyle(elem).width.replace(/px/, '');
-				this.width = width;
-			},
-			touchstart: function touchstart(e) {
-				if (this.switching === false) {
-					this.inCycle = true;
-
-					this.moveCount = 0;
-					this.scrolling = false;
-					this.transition = false;
-
-					this.X0 = this.X1 = e.changedTouches[0].pageX;
-					this.Y1 = e.changedTouches[0].pageY;
-				};
-			},
-			touchmove: function touchmove(e) {
-				if (this.inCycle) {
-					this.X2 = e.changedTouches[0].pageX;
-					var distance = this.X2 - this.X1;
-					this.X1 = this.X2;
-					this.trainOffsetX += distance;
-				}
-			},
-			touchend: function touchend(e) {
-				var _this2 = this;
-
-				if (this.inCycle) {
-					this.X2 = e.changedTouches[0].pageX;
-					var distance = this.X2 - this.X0;
-					this.switching = true;
-					if (distance < 0) {
-						if (this.currentOne < this.items.length - 1) {
-							this.currentOne++;
-							this.transition = true;
-							this.trainOffsetX = -this.width * 3;
-						}
-						setTimeout(function () {
-							_this2.transition = false;
-							var first = _this2.items[0];
-							_this2.items.splice(0, 1);
-							_this2.items.push(first);
-							_this2.currentOne = 2;
-							_this2.trainOffsetX = -_this2.width * 2;
-							_this2.switching = false;
-						}, 500);
-					} else if (distance > 0) {
-						if (this.currentOne > 0) {
-							this.currentOne--;
-							this.transition = true;
-							this.trainOffsetX = -this.width;
-						};
-						setTimeout(function () {
-							_this2.transition = false;
-							var zz = _this2.items.length - 1;
-							var last = _this2.items[zz];
-							_this2.items.splice(zz, 1);
-							_this2.items.unshift(last);
-							_this2.currentOne = 2;
-							_this2.trainOffsetX = -_this2.width * 2;
-							_this2.switching = false;
-						}, 500);
-					};
-					this.inCycle = false;
-				};
-			}
-		}
+	module.exports = {
+		template: "\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Animations\n\t\t\t</h2>\n\t\t\t<div class=\"two\">\n\t\t\t\t<div class=\"two-left\">\n\t\t\t\t\t@keyframes rubberBand {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;0% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;30% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.25, 0.75, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;40% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(0.75, 1.25, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;50% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.15, 0.85, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;65% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(.95, 1.05, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;75% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.05, .95, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;100% {<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br/>\n\t\t\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br/>\n\t\t\t\t\t}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"two-right\">\n\t\t\t\t\t<img class=\"yoda\" src=\"img/yoda.png\"/>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t"
 	};
-	module.exports = swiper;
 
 /***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"swiper\" style=\"width:50%;height:2rem;background:{{bg}};\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-04773b59=\"\">\n\t<ul class=\"train\" style=\"transform:translate3d({{trainOffsetX}}px,0,0);{{transition===true?'transition:0.5s':''}};}}\" _v-04773b59=\"\">\n\t\t<li class=\"item {{i===currentOne?'active':''}}\" v-for=\"(i,item) in items\" style=\"background:{{item}};\" _v-04773b59=\"\"></li>\n\t</ul>\n</div>\n";
-
-/***/ },
-/* 19 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(20)
-	__vue_script__ = __webpack_require__(22)
+	__webpack_require__(17)
+	__vue_script__ = __webpack_require__(19)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\box.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(23)
+	__vue_template__ = __webpack_require__(20)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -798,16 +650,16 @@
 	})()}
 
 /***/ },
-/* 20 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(18);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -824,10 +676,10 @@
 	}
 
 /***/ },
-/* 21 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(4)();
 	// imports
 
 
@@ -838,7 +690,7 @@
 
 
 /***/ },
-/* 22 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -860,7 +712,7 @@
 	module.exports = box;
 
 /***/ },
-/* 23 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"box\" style=\"background:{{color}}\" v-on:click=\"change\" _v-2faa033a=\"\">\n\t<div class=\"item\" v-for=\"item in items\" _v-2faa033a=\"\">{{item}}</div>\n</div>\n";

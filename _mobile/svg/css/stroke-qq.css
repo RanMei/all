@@ -1,0 +1,149 @@
+body {
+  background: grey;
+}
+svg {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+#covers-a {
+  stroke: white;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  -webkit-animation: 2s covers-a forwards;
+          animation: 2s covers-a forwards;
+}
+@-webkit-keyframes covers-a {
+  0% {
+    stroke: #76D5FF;
+    fill: none;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+  80% {
+    stroke: #76D5FF;
+    fill: transparent;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #76D5FF;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes covers-a {
+  0% {
+    stroke: #76D5FF;
+    fill: none;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+  80% {
+    stroke: #76D5FF;
+    fill: transparent;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #76D5FF;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+}
+#backbone {
+  stroke: white;
+  stroke-dasharray: 230;
+  stroke-dashoffset: 230;
+  -webkit-animation: 2s backbone forwards;
+          animation: 2s backbone forwards;
+}
+@-webkit-keyframes backbone {
+  0% {
+    stroke: #19B6FF;
+    fill: none;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 230;
+  }
+  80% {
+    stroke: #19B6FF;
+    fill: transparent;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #19B6FF;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes backbone {
+  0% {
+    stroke: #19B6FF;
+    fill: none;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 230;
+  }
+  80% {
+    stroke: #19B6FF;
+    fill: transparent;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #19B6FF;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+}
+#covers-c {
+  stroke: white;
+  stroke-dasharray: 370;
+  stroke-dashoffset: 370;
+  -webkit-animation: 2s covers-c forwards;
+          animation: 2s covers-c forwards;
+}
+@-webkit-keyframes covers-c {
+  0% {
+    stroke: #00ADFC;
+    fill: none;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
+  }
+  80% {
+    stroke: #00ADFC;
+    fill: transparent;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #00ADFC;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes covers-c {
+  0% {
+    stroke: #00ADFC;
+    fill: none;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
+  }
+  80% {
+    stroke: #00ADFC;
+    fill: transparent;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #00ADFC;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+}
