@@ -6,23 +6,26 @@ svg {
   width: 50%;
   margin: auto;
 }
+.second {
+  opacity: 0;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
 #covers-a {
-  stroke: white;
+  fill: grey;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
-  -webkit-animation: 2s covers-a forwards;
-          animation: 2s covers-a forwards;
 }
 @-webkit-keyframes covers-a {
   0% {
     stroke: #76D5FF;
-    fill: none;
+    fill: grey;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
   }
   80% {
     stroke: #76D5FF;
-    fill: transparent;
+    fill: grey;
     stroke-dasharray: 400;
     stroke-dashoffset: 0;
   }
@@ -36,13 +39,13 @@ svg {
 @keyframes covers-a {
   0% {
     stroke: #76D5FF;
-    fill: none;
+    fill: grey;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
   }
   80% {
     stroke: #76D5FF;
-    fill: transparent;
+    fill: grey;
     stroke-dasharray: 400;
     stroke-dashoffset: 0;
   }
@@ -53,52 +56,58 @@ svg {
     stroke-dashoffset: 0;
   }
 }
-#backbone {
-  stroke: white;
-  stroke-dasharray: 230;
-  stroke-dashoffset: 230;
-  -webkit-animation: 2s backbone forwards;
-          animation: 2s backbone forwards;
+#covers-a.active {
+  -webkit-animation: 2s covers-a forwards;
+          animation: 2s covers-a forwards;
 }
-@-webkit-keyframes backbone {
+#covers-b {
+  fill: grey;
+  stroke-dasharray: 370;
+  stroke-dashoffset: 370;
+}
+@-webkit-keyframes covers-b {
   0% {
-    stroke: #19B6FF;
-    fill: none;
-    stroke-dasharray: 230;
-    stroke-dashoffset: 230;
+    stroke: #76D5FF;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
   }
   80% {
-    stroke: #19B6FF;
-    fill: transparent;
-    stroke-dasharray: 230;
+    stroke: #76D5FF;
+    fill: grey;
+    stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
   100% {
     stroke: transparent;
-    fill: #19B6FF;
-    stroke-dasharray: 230;
+    fill: #76D5FF;
+    stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
 }
-@keyframes backbone {
+@keyframes covers-b {
   0% {
-    stroke: #19B6FF;
-    fill: none;
-    stroke-dasharray: 230;
-    stroke-dashoffset: 230;
+    stroke: #76D5FF;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
   }
   80% {
-    stroke: #19B6FF;
-    fill: transparent;
-    stroke-dasharray: 230;
+    stroke: #76D5FF;
+    fill: grey;
+    stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
   100% {
     stroke: transparent;
-    fill: #19B6FF;
-    stroke-dasharray: 230;
+    fill: #76D5FF;
+    stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
+}
+#covers-b.active {
+  -webkit-animation: 2s covers-b forwards;
+          animation: 2s covers-b forwards;
 }
 #covers-c {
   stroke: white;
@@ -110,13 +119,13 @@ svg {
 @-webkit-keyframes covers-c {
   0% {
     stroke: #00ADFC;
-    fill: none;
+    fill: grey;
     stroke-dasharray: 370;
     stroke-dashoffset: 370;
   }
   80% {
     stroke: #00ADFC;
-    fill: transparent;
+    fill: grey;
     stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
@@ -130,13 +139,13 @@ svg {
 @keyframes covers-c {
   0% {
     stroke: #00ADFC;
-    fill: none;
+    fill: grey;
     stroke-dasharray: 370;
     stroke-dashoffset: 370;
   }
   80% {
     stroke: #00ADFC;
-    fill: transparent;
+    fill: grey;
     stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
@@ -146,4 +155,198 @@ svg {
     stroke-dasharray: 370;
     stroke-dashoffset: 0;
   }
+}
+#backbone {
+  stroke: white;
+  stroke-dasharray: 230;
+  stroke-dashoffset: 230;
+  -webkit-animation: 2s backbone forwards;
+          animation: 2s backbone forwards;
+}
+@-webkit-keyframes backbone {
+  0% {
+    stroke: #19B6FF;
+    fill: grey;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 230;
+  }
+  80% {
+    stroke: #19B6FF;
+    fill: grey;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #19B6FF;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes backbone {
+  0% {
+    stroke: #19B6FF;
+    fill: grey;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 230;
+  }
+  80% {
+    stroke: #19B6FF;
+    fill: grey;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #19B6FF;
+    stroke-dasharray: 230;
+    stroke-dashoffset: 0;
+  }
+}
+#pages {
+  fill: grey;
+  stroke-dasharray: 370;
+  stroke-dashoffset: 370;
+}
+@-webkit-keyframes pages {
+  0% {
+    stroke: white;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
+  }
+  80% {
+    stroke: white;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: white;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pages {
+  0% {
+    stroke: white;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 370;
+  }
+  80% {
+    stroke: white;
+    fill: grey;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: white;
+    stroke-dasharray: 370;
+    stroke-dashoffset: 0;
+  }
+}
+#pages.active {
+  -webkit-animation: 2s pages forwards;
+          animation: 2s pages forwards;
+}
+#mark-a {
+  fill: transparent;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+@-webkit-keyframes mark-a {
+  0% {
+    stroke: #F2556F;
+    fill: transparent;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+  }
+  80% {
+    stroke: #F2556F;
+    fill: transparent;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #F2556F;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes mark-a {
+  0% {
+    stroke: #F2556F;
+    fill: transparent;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+  }
+  80% {
+    stroke: #F2556F;
+    fill: transparent;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #F2556F;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+}
+#mark-a.active {
+  -webkit-animation: 2s mark-a forwards;
+          animation: 2s mark-a forwards;
+}
+#mark-b {
+  fill: transparent;
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+}
+@-webkit-keyframes mark-b {
+  0% {
+    stroke: #F23051;
+    fill: transparent;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+  }
+  80% {
+    stroke: #F23051;
+    fill: transparent;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #F23051;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes mark-b {
+  0% {
+    stroke: #F23051;
+    fill: transparent;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+  }
+  80% {
+    stroke: #F23051;
+    fill: transparent;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke: transparent;
+    fill: #F23051;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 0;
+  }
+}
+#mark-b.active {
+  -webkit-animation: 2s mark-b forwards;
+          animation: 2s mark-b forwards;
 }

@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: '';
+}
+.clearfix:after {
+  clear: both;
+}
+body {
+  font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: #3C4954;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3), 0 3px 3px rgba(0, 0, 0, 0.15), 0 3px 2px -2px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 -0.5px 1px rgba(0, 0, 0, 0.15);
+}
+.button {
+  position: relative;
+  width: 60vw;
+  height: 20vw;
+  margin: auto;
+  margin-bottom: 2vw;
+  line-height: 20vw;
+  font-size: 4vw;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.button .RIPPLE {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.button .RIPPLE use {
+  opacity: 0;
+}
+.button.styl-material {
+  -webkit-transition: 200ms background cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 200ms background cubic-bezier(0.4, 0, 0.2, 1);
+  background: #E91E63;
+}
+.button.styl-material:hover,
+.button.styl-material:focus {
+  outline: none;
+  background: #EC407A;
+}
+/* Colors */
+.theme-2 .button.styl-material {
+  background: #2196F3;
+}
+.theme-2 .button.styl-material:hover,
+.theme-2 .button.styl-material:focus {
+  background: #2b9bf4;
+}
+.theme-3 .button.styl-material {
+  background: #009688;
+}
+.theme-3 .button.styl-material:hover,
+.theme-3 .button.styl-material:focus {
+  background: #26A69A;
+}
+.theme-3 .RIPPLE {
+  fill: #00695C;
+}

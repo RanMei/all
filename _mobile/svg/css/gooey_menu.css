@@ -25,7 +25,14 @@ h1 {
 svg {
   margin: auto;
   width: 20vw;
-  height: 0;
+  height: 20vw;
+  margin-top: 20vw;
+  background: orange;
+  display: none;
+}
+.menu {
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
 }
 .menu {
   position: relative;

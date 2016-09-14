@@ -1,5 +1,7 @@
+@bg: grey;
+
 body {
-	background: grey;
+	background: @bg;
 }
 
 svg {
@@ -10,24 +12,91 @@ svg {
 
 @time: 2s;
 
+.second {
+	opacity: 0;
+	transition: @time;
+}
+
 #covers-a {
 	@num: 400;
 	@color: #76D5FF;
-	stroke: white;
-	//fill: transparent;
+	fill: @bg;
 	stroke-dasharray: @num;
 	stroke-dashoffset: @num;
-	animation: @time covers-a forwards;
 	@keyframes covers-a {
 		0% {
 			stroke: @color;
-			fill: none;
+			fill: @bg;
 			stroke-dasharray: @num;
 			stroke-dashoffset: @num;
 		}
 		80% {
 			stroke: @color;
-			fill: transparent;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+	&.active {
+		animation: @time covers-a forwards;
+	}
+}
+
+#covers-b {
+	@num: 370;
+	@color: #76D5FF;
+	fill: @bg;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	@keyframes covers-b {
+		0% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+	&.active {
+		animation: @time covers-b forwards;
+	}
+}
+
+#covers-c {
+	@num: 370;
+	@color: #00ADFC;
+	stroke: white;
+	//fill: transparent;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	animation: @time covers-c forwards;
+	@keyframes covers-c {
+		0% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: @bg;
 			stroke-dasharray: @num;
 			stroke-dashoffset: 0;
 		}
@@ -51,7 +120,66 @@ svg {
 	@keyframes backbone {
 		0% {
 			stroke: @color;
-			fill: none;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+}
+
+#pages {
+	@num: 370;
+	@color: white;
+	fill: @bg;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	@keyframes pages {
+		0% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: @num;
+		}
+		80% {
+			stroke: @color;
+			fill: @bg;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+		100% {
+			stroke: transparent;
+			fill: @color;
+			stroke-dasharray: @num;
+			stroke-dashoffset: 0;
+		}
+	}
+	&.active {
+		animation: @time pages forwards;
+	}
+}
+
+#mark-a {
+	@num: 60;
+	@color: #F2556F;
+	fill: transparent;
+	stroke-dasharray: @num;
+	stroke-dashoffset: @num;
+	@keyframes mark-a {
+		0% {
+			stroke: @color;
+			fill: transparent;
 			stroke-dasharray: @num;
 			stroke-dashoffset: @num;
 		}
@@ -68,20 +196,21 @@ svg {
 			stroke-dashoffset: 0;
 		}
 	}
+	&.active {
+		animation: @time mark-a forwards;
+	}
 }
 
-#covers-c {
-	@num: 370;
-	@color: #00ADFC;
-	stroke: white;
-	//fill: transparent;
+#mark-b {
+	@num: 120;
+	@color: #F23051;
+	fill: transparent;
 	stroke-dasharray: @num;
 	stroke-dashoffset: @num;
-	animation: @time covers-c forwards;
-	@keyframes covers-c {
+	@keyframes mark-b {
 		0% {
 			stroke: @color;
-			fill: none;
+			fill: transparent;
 			stroke-dasharray: @num;
 			stroke-dashoffset: @num;
 		}
@@ -97,5 +226,8 @@ svg {
 			stroke-dasharray: @num;
 			stroke-dashoffset: 0;
 		}
+	}
+	&.active {
+		animation: @time mark-b forwards;
 	}
 }

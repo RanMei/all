@@ -13,7 +13,7 @@
 
 <body>
 	<ul class="nav">
-		<li v-for="a in nav" @click="toPage(a)">
+		<li v-for="a in nav" @click="toPage(a)" class="{{a===current?'active':''}}">
 			{{a}}
 		</li>
 	</ul>
@@ -44,12 +44,38 @@
 			<li class="item">
 				<h2>SVG</h2>
 				<p>
+					color-changing<br/>
+					Stroke Animation<br/>
+					Shape Morphing<br/>
+					filters
 				</p>
 			</li>
 			<li class="item">
 				<h2>Canvas</h2>
 				<p>
-					面向对象编程<br/>
+				canvas是HTML5（HTML的第五个版本）中加入的一个新标签。前端开发者可以在canvas内绘制位图。<br/>
+				</p>
+				<canvas
+				style="display:block;width:50vw;height:30vw;margin:auto;background:black;"></canvas>
+			</li>
+			<li class="item">
+				<h2>Canvas Animation</h2>
+				<p>
+					面向对象编程：<br/>
+					对象{<br/>
+					&emsp;属性：坐标，速度，尺寸，颜色......<br/>
+					&emsp;方法：前进，后退......<br/>
+					}<br/>
+					<br/>
+					原理：根据数据绘制一帧 → 计算出下一帧的数据 → 绘制下一帧 → 周而复始
+				</p>
+			</li>
+			<li class="item">
+				<h2>Examples</h2>
+				<p>
+					rain<br/>
+					fire<br/>
+					snowfall<br/>
 				</p>
 			</li>
 			<li class="item">
@@ -60,6 +86,11 @@
 					<br/>
 					实践：“读书运动会”获奖通知页的制作
 				</p>
+			</li>
+			<li class="item">
+				<h1 class="title">
+					谢谢大家
+				</h1>
 			</li>
 		</ul>
 	</div>
