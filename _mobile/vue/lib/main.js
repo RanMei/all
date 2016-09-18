@@ -2,12 +2,13 @@ var technology = require('./components/technology.vue');
 var css3Transitions = require('./components/css3Transitions.vue');
 var css3Animations = require('./components/css3Animations.vue');
 
-var box = require('./components/box.vue');
+var swiper = require('./components/swiper.vue');
 
 
 Vue.component( 'css3Transitions',css3Transitions );
 Vue.component( 'css3Animations',css3Animations );
 Vue.component( 'technology',technology );
+Vue.component( 'swiper',swiper );
 
 new Vue({
 	el: 'body',

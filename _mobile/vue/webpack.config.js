@@ -1,7 +1,10 @@
 module.exports = {
-    entry: "./_mobile/vue/lib/main.js",
+    entry: {
+        index: './_mobile/vue/lib/main.js',
+        swiper: './_mobile/vue/lib/main_swiper.js'
+    },
     output: {
-        filename: "bundle.js"
+        filename: '[name].bundle.js'
     },
     module: {
         loaders: [

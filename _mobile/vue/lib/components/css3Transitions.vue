@@ -19,7 +19,7 @@ module.exports = {
 			<div class="strip">
 				<div class="left">
 					<table><tr><th>
-					transform: scale3d(1.2,1.5,0);
+					transform: scale3d(1.2,1.2,1);
 					</th></tr></table>
 				</div>
 				<img class="r2d2 scale3d" src="img/r2d2.png"/>

@@ -50,11 +50,12 @@
 	var css3Transitions = __webpack_require__(8);
 	var css3Animations = __webpack_require__(12);
 
-	var box = __webpack_require__(16);
+	var swiper = __webpack_require__(16);
 
 	Vue.component('css3Transitions', css3Transitions);
 	Vue.component('css3Animations', css3Animations);
 	Vue.component('technology', technology);
+	Vue.component('swiper', swiper);
 
 	new Vue({
 		el: 'body',
@@ -539,7 +540,7 @@
 	"use strict";
 
 	module.exports = {
-		template: "\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\t\ttransform: translate3d(20vw,5vw,0);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 translate\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: scale3d(1.2,1.5,0);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 scale3d\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: skew(30deg,30deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 skew\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateY(360deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 rotateY\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"square0 rotateX\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tperspective: 1000px;<br/>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square rotate\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\topacity: 0;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 opacity\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbackground: red;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square background\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbox-shadow: 0 0 10vw 1vw green;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square box-shadow\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t"
+		template: "\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\t\ttransform: translate3d(20vw,5vw,0);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 translate\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: scale3d(1.2,1.2,1);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 scale3d\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: skew(30deg,30deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 skew\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateY(360deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 rotateY\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"square0 rotateX\"></div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tperspective: 1000px;<br/>\n\t\t\t\t\ttransform: rotateX(60deg);\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square rotate\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t\t<li class=\"item\">\n\t\t\t<h2>\n\t\t\t\tCSS3 Transitions\n\t\t\t</h2>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\topacity: 0;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<img class=\"r2d2 opacity\" src=\"img/r2d2.png\"/>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbackground: red;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square background\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"strip\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<table><tr><th>\n\t\t\t\t\tbox-shadow: 0 0 10vw 1vw green;\n\t\t\t\t\t</th></tr></table>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"space\">\n\t\t\t\t\t<div class=\"square box-shadow\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t"
 	};
 
 /***/ },
@@ -630,7 +631,7 @@
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\box.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] _mobile\\vue\\lib\\components\\swiper.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(20)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -641,7 +642,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./box.vue"
+	  var id = "./swiper.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -665,8 +666,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2faa033a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./box.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2faa033a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./box.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-04773b59&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-04773b59&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -684,7 +685,7 @@
 
 
 	// module
-	exports.push([module.id, ".box[_v-2faa033a] {\n  width: 4rem;\n  height: 2rem;\n  overflow: hidden;\n}\n.box .item[_v-2faa033a] {\n  float: left;\n}\n", ""]);
+	exports.push([module.id, ".swiper[_v-04773b59] {\n  position: relative;\n  width: 50%;\n  height: 20vw;\n  background: grey;\n  margin: auto;\n}\n.swiper .train[_v-04773b59] {\n  width: 1000%;\n  height: 100%;\n}\n.swiper .train .item[_v-04773b59] {\n  float: left;\n  width: 10%;\n  height: 100%;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n  opacity: 0.6;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.swiper .train .item.active[_v-04773b59] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
 
 	// exports
 
@@ -695,27 +696,150 @@
 
 	'use strict';
 
-	var box = {
+	var swiper = {
+		props: ['style'],
 		data: function data() {
 			return {
-				color: 'red',
-				items: [0, 1, 2]
+				width: 0,
+
+				sticky: false,
+				autoplay: false,
+
+				duration: 300,
+				interval: 500,
+
+				switching: false,
+				inCycle: false,
+				moveCount: 0,
+				scrolling: false,
+				trainOffsetX: 0,
+				X1: 0,
+				X2: 0,
+
+				currentOne: 2,
+				transition: '0s',
+				offset: 0,
+				items: ['red', 'orange', 'yellow', 'green', 'blue']
 			};
 		},
-		ready: function ready() {},
+		ready: function ready() {
+			var _this = this;
+
+			window.addEventListener('load', function () {
+				_this.setWidth();
+				_this.trainOffsetX = -_this.width * 2;
+			});
+			window.addEventListener('resize', function () {
+				setTimeout(function () {
+					_this.setWidth();
+					_this.trainOffsetX = -_this.width * 2;
+				}, 50);
+			});
+			if (this.autoplay) {
+				setInterval(function () {
+					_this.toNext();
+				}, this.interval);
+			}
+		},
 		methods: {
-			change: function change() {
-				this.color = 'orange';
+			setWidth: function setWidth() {
+				this.transition = false;
+				var elem = this.$el;
+				var width = document.defaultView.getComputedStyle(elem).width.replace(/px/, '');
+				this.width = width;
+			},
+			toNext: function toNext() {
+				var _this2 = this;
+
+				if (this.currentOne < this.items.length - 1) {
+					this.currentOne++;
+					this.transition = '0.3s';
+					this.trainOffsetX = -this.width * 3;
+				}
+				setTimeout(function () {
+					_this2.transition = '0s';
+					var first = _this2.items[0];
+					_this2.items.splice(0, 1);
+					_this2.items.push(first);
+					_this2.currentOne = 2;
+					_this2.trainOffsetX = -_this2.width * 2;
+					_this2.switching = false;
+				}, this.duration);
+			},
+			toPrev: function toPrev() {
+				var _this3 = this;
+
+				if (this.currentOne > 0) {
+					this.currentOne--;
+					this.transition = '0.3s';
+					this.trainOffsetX = -this.width;
+				};
+				setTimeout(function () {
+					_this3.transition = false;
+					var zz = _this3.items.length - 1;
+					var last = _this3.items[zz];
+					_this3.items.splice(zz, 1);
+					_this3.items.unshift(last);
+					_this3.currentOne = 2;
+					_this3.trainOffsetX = -_this3.width * 2;
+					_this3.switching = false;
+				}, this.interval);
+			},
+			touchstart: function touchstart(e) {
+				if (this.switching === false) {
+					this.inCycle = true;
+
+					this.moveCount = 0;
+					this.scrolling = false;
+					this.transition = '0s';
+
+					this.X0 = this.X1 = e.changedTouches[0].pageX;
+					this.Y1 = e.changedTouches[0].pageY;
+				};
+			},
+			touchmove: function touchmove(e) {
+				if (this.inCycle && !this.scrolling) {
+					this.moveCount++;
+					if (this.moveCount === 1) {
+						this.X2 = e.changedTouches[0].pageX;
+						this.Y2 = e.changedTouches[0].pageY;
+						var distanceY = this.Y2 - this.Y1;
+						var distanceX = this.X2 - this.X1;
+						if (Math.abs(distanceY) > Math.abs(distanceX)) {
+							this.scrolling = true;
+						}
+					}
+
+					if (this.sticky) {
+						this.X2 = e.changedTouches[0].pageX;
+						var distance = this.X2 - this.X1;
+						this.X1 = this.X2;
+						this.trainOffsetX += distance;
+					}
+				}
+			},
+			touchend: function touchend(e) {
+				if (this.inCycle && !this.scrolling) {
+					this.X2 = e.changedTouches[0].pageX;
+					var distance = this.X2 - this.X0;
+					this.switching = true;
+					if (distance < 0) {
+						this.toNext();
+					} else if (distance > 0) {
+						this.toPrev();
+					};
+					this.inCycle = false;
+				};
 			}
 		}
 	};
-	module.exports = box;
+	module.exports = swiper;
 
 /***/ },
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"box\" style=\"background:{{color}}\" v-on:click=\"change\" _v-2faa033a=\"\">\n\t<div class=\"item\" v-for=\"item in items\" _v-2faa033a=\"\">{{item}}</div>\n</div>\n";
+	module.exports = "\n<div class=\"swiper\" style=\"{{style}}\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-04773b59=\"\">\n\t<ul class=\"train\" style=\"transform:translate3d({{trainOffsetX}}px,0,0);transition:{{transition}};\" _v-04773b59=\"\">\n\t\t<li class=\"item {{i===currentOne?'active':''}}\" v-for=\"(i,item) in items\" style=\"background:{{item}};\" _v-04773b59=\"\"></li>\n\t</ul>\n</div>\n";
 
 /***/ }
 /******/ ]);

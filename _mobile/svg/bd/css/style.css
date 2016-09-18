@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding:15px 0px 0px 0px;
+  background-color:#F2DCAD;
+}
+
+svg{
+  position:relative;
+  margin:0 auto;
+  display:block;
+  top:0;right:0;bottom:0;left:0;
+}
+
+g path{visibility: hidden;} 

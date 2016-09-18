@@ -1,3 +1,0 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/wintr/pen/XKVmRN.
-
- Back with another Dribbble inspired City Intro Card SVG Animation. Click on Explore to show another. I did my best recreating the skyline effect in illustrator, originally made by the very talented Vasjen Katro. I would love to know your thoughts! You can view the original Dribbble shot here: https://dribbble.com/shots/2041810-City-intro-animation 
