@@ -516,6 +516,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\h5\\school\\lib\\components\\face.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(8)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -549,8 +550,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./face.vue", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./face.vue");
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7780e1db&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./face.vue", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7780e1db&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./face.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -568,7 +569,7 @@
 
 
 	// module
-	exports.push([module.id, ".face {\n  position: relative;\n  width: 100%;\n  height: 5.8rem;\n  background: #5acce6;\n}\n.face .cloud_1 {\n  position: absolute;\n  left: 0.32rem;\n  top: 0.75rem;\n  width: 0.52rem;\n  -webkit-animation: cloud_1 10s linear infinite;\n          animation: cloud_1 10s linear infinite;\n}\n@-webkit-keyframes cloud_1 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(1500%, 0, 0);\n            transform: translate3d(1500%, 0, 0);\n  }\n}\n@keyframes cloud_1 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(1500%, 0, 0);\n            transform: translate3d(1500%, 0, 0);\n  }\n}\n.face .cloud_2 {\n  position: absolute;\n  left: 0.75rem;\n  top: 2.25rem;\n  width: 0.87rem;\n  -webkit-animation: cloud_2 15s linear infinite;\n          animation: cloud_2 15s linear infinite;\n}\n@-webkit-keyframes cloud_2 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(900%, 0, 0);\n            transform: translate3d(900%, 0, 0);\n  }\n}\n@keyframes cloud_2 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(900%, 0, 0);\n            transform: translate3d(900%, 0, 0);\n  }\n}\n.face .cloud_3 {\n  position: absolute;\n  left: 4.6rem;\n  top: -0.1rem;\n  width: 0.9rem;\n  -webkit-animation: cloud_3 20s linear infinite;\n          animation: cloud_3 20s linear infinite;\n}\n@-webkit-keyframes cloud_3 {\n  0% {\n    -webkit-transform: translate3d(-650%, 0, 0);\n            transform: translate3d(-650%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n@keyframes cloud_3 {\n  0% {\n    -webkit-transform: translate3d(-650%, 0, 0);\n            transform: translate3d(-650%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n", ""]);
+	exports.push([module.id, ".face[_v-7780e1db] {\n  position: relative;\n  width: 100%;\n  height: 5.8rem;\n  overflow: hidden;\n  background: #5acce6;\n}\n.face .cloud_1[_v-7780e1db] {\n  position: absolute;\n  left: 0.32rem;\n  top: 0.75rem;\n  width: 0.52rem;\n  -webkit-animation: cloud_1 10s linear infinite;\n          animation: cloud_1 10s linear infinite;\n}\n@-webkit-keyframes cloud_1 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(1500%, 0, 0);\n            transform: translate3d(1500%, 0, 0);\n  }\n}\n@keyframes cloud_1 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(1500%, 0, 0);\n            transform: translate3d(1500%, 0, 0);\n  }\n}\n.face .cloud_2[_v-7780e1db] {\n  position: absolute;\n  left: 0.75rem;\n  top: 2.25rem;\n  width: 0.87rem;\n  -webkit-animation: cloud_2 15s linear infinite;\n          animation: cloud_2 15s linear infinite;\n}\n@-webkit-keyframes cloud_2 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(900%, 0, 0);\n            transform: translate3d(900%, 0, 0);\n  }\n}\n@keyframes cloud_2 {\n  0% {\n    -webkit-transform: translate3d(-200%, 0, 0);\n            transform: translate3d(-200%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(900%, 0, 0);\n            transform: translate3d(900%, 0, 0);\n  }\n}\n.face .cloud_3[_v-7780e1db] {\n  position: absolute;\n  left: 4.6rem;\n  top: -0.1rem;\n  width: 0.9rem;\n  -webkit-animation: cloud_3 20s linear infinite;\n          animation: cloud_3 20s linear infinite;\n}\n@-webkit-keyframes cloud_3 {\n  0% {\n    -webkit-transform: translate3d(-650%, 0, 0);\n            transform: translate3d(-650%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n@keyframes cloud_3 {\n  0% {\n    -webkit-transform: translate3d(-650%, 0, 0);\n            transform: translate3d(-650%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n.face .cloud_4[_v-7780e1db] {\n  position: absolute;\n  left: 6.25rem;\n  top: 1.32rem;\n  width: 0.48rem;\n  -webkit-animation: cloud_4 12s linear infinite;\n          animation: cloud_4 12s linear infinite;\n}\n@-webkit-keyframes cloud_4 {\n  0% {\n    -webkit-transform: translate3d(-1500%, 0, 0);\n            transform: translate3d(-1500%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n@keyframes cloud_4 {\n  0% {\n    -webkit-transform: translate3d(-1500%, 0, 0);\n            transform: translate3d(-1500%, 0, 0);\n  }\n  100% {\n    -webkit-transform: translate3d(300%, 0, 0);\n            transform: translate3d(300%, 0, 0);\n  }\n}\n.face .clouds_1[_v-7780e1db] {\n  position: absolute;\n  left: 0rem;\n  top: 2.2rem;\n  width: 7.2rem;\n  -webkit-animation: twinkle 3s linear infinite;\n          animation: twinkle 3s linear infinite;\n}\n@-webkit-keyframes twinkle {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.2;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes twinkle {\n  0% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 0.2;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.face .clouds_2[_v-7780e1db] {\n  position: absolute;\n  left: 0rem;\n  top: 2.9rem;\n  width: 7.2rem;\n  -webkit-animation: twinkle2 3s linear infinite;\n          animation: twinkle2 3s linear infinite;\n}\n@-webkit-keyframes twinkle2 {\n  0% {\n    opacity: 0.2;\n  }\n  50% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0.2;\n  }\n}\n@keyframes twinkle2 {\n  0% {\n    opacity: 0.2;\n  }\n  50% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0.2;\n  }\n}\n.face .logos[_v-7780e1db] {\n  position: absolute;\n  left: 0.14rem;\n  top: 0.2rem;\n  width: 2.88rem;\n}\n.face .planet[_v-7780e1db] {\n  position: absolute;\n  left: 0.7rem;\n  top: 0.7rem;\n  width: 5.8rem;\n}\n.face .clouds_3[_v-7780e1db] {\n  position: absolute;\n  left: 0;\n  top: 3.2rem;\n  width: 100%;\n}\n.face .grass[_v-7780e1db] {\n  position: absolute;\n  left: 0;\n  top: 5rem;\n  width: 100%;\n}\n.face .trees[_v-7780e1db] {\n  position: absolute;\n  left: 5.88rem;\n  top: 4.24rem;\n  width: 1.35rem;\n}\n.face .car[_v-7780e1db] {\n  position: absolute;\n  left: 0.5rem;\n  top: 4.75rem;\n  width: 0.9rem;\n}\n", ""]);
 
 	// exports
 
@@ -854,14 +855,34 @@
 /* 7 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	module.exports = {
-		template: "\n\t\t<div class=\"face\">\n\t\t\t<img class=\"cloud_1\" src=\"./img/face/cloud_1.png\"/>\n\t\t\t<img class=\"cloud_2\" src=\"./img/face/cloud_2.png\"/>\n\t\t\t<img class=\"cloud_3\" src=\"./img/face/cloud_3.png\"/>\n\t\t</div>\n\t",
 		data: function data() {
-			return {};
+			return {
+				img: {
+					cloud_1: './img/face/cloud_1.png',
+					cloud_2: './img/face/cloud_2.png',
+					cloud_3: './img/face/cloud_3.png',
+					cloud_4: './img/face/cloud_4.png',
+					clouds_1: './img/face/clouds_1.png',
+					clouds_2: './img/face/clouds_2.png',
+					logos: './img/face/logos.png',
+					planet: './img/face/planet.png',
+					clouds_3: './img/face/clouds_3.png',
+					grass: './img/face/grass.png',
+					trees: './img/face/trees.png',
+					car: './img/face/car.png'
+				}
+			};
 		}
 	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"face\" _v-7780e1db=\"\">\n\t<img class=\"cloud_1\" :src=\"img.cloud_1\" _v-7780e1db=\"\">\n\t<img class=\"cloud_2\" :src=\"img.cloud_2\" _v-7780e1db=\"\">\n\t<img class=\"cloud_3\" :src=\"img.cloud_3\" _v-7780e1db=\"\">\n\t<img class=\"cloud_4\" :src=\"img.cloud_4\" _v-7780e1db=\"\">\n\t<img class=\"clouds_1\" :src=\"img.clouds_1\" _v-7780e1db=\"\">\n\t<img class=\"clouds_2\" :src=\"img.clouds_2\" _v-7780e1db=\"\">\n\t<img class=\"logos\" :src=\"img.logos\" _v-7780e1db=\"\">\n\t<img class=\"planet\" :src=\"img.planet\" _v-7780e1db=\"\">\n\t<img class=\"clouds_3\" :src=\"img.clouds_3\" _v-7780e1db=\"\">\n\t<img class=\"grass\" :src=\"img.grass\" _v-7780e1db=\"\">\n\t<img class=\"trees\" :src=\"img.trees\" _v-7780e1db=\"\">\n\t<img class=\"car\" :src=\"img.car\" _v-7780e1db=\"\">\n</div>\t\n";
 
 /***/ }
 /******/ ]);

@@ -74,6 +74,11 @@ var BROWSERIFY = [
 	{ name: 'browserify-mobile-farm', main: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm', files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
+	{ 	name: 'browserify-mobile-zeal', 
+		main: './_mobile/src/zeal.main.js', 
+		dest: './_mobile/vendor/', 
+		files: './_mobile/src/*.js',
+		output: 'zeal.js' },
 	// { name: 'browserify-mobile-vue-swiper', main: './_mobile/vue/lib/main_swiper.js', dest: './_mobile/vue/dist/', files: './_mobile/vue/lib/*.js' },
 	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' },
 	{ name: 'browserify-mobile-car', main: './_mobile/car/js/main.js', dest: './_mobile/car', files: './_mobile/car/js/*.js' },
@@ -86,7 +91,7 @@ BROWSERIFY.forEach(function(item){
 			browserify( item.main )
 			.transform( 'babelify', {presets: ["es2015", "react"]} )
 			.bundle()
-			.pipe( source('bundle.js') )
+			.pipe( source(item.output||'bundle.js') )
 			// .pipe( uglify() )
 			.pipe( gulp.dest(item.dest) )
 		);
@@ -106,7 +111,7 @@ gulp.task('vueify',function(){
 })
 
 const WEBPACK = [
-	{ name: 'webpack-zeal', watched: ['./_mobile/src/*.*'], src: './_mobile/src/zeal.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' },
+	//{ name: 'webpack-zeal', watched: ['./_mobile/src/*.*'], src: './_mobile/src/zeal.main.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' },
 	{	name: 'webpack-mobile-vue', 
 		watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
 		src: './_mobile/vue/lib/main.js', 

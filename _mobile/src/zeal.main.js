@@ -1,6 +1,4 @@
 import {_} from './_.js';
-//var _ = require('./_.js');
-
 
 // Module: core
 var arr = [];
@@ -330,7 +328,7 @@ Zeal.fn.extend({
  * @param {number} time
  * @param {function} callback
  */
-Zeal.fn.animate=function( opts,duration,callback ){
+Zeal.fn.animate = function( opts,duration,callback ){
 	this.each(function(elem){
 		var p = {};
 		var target = {};
@@ -396,14 +394,23 @@ Zeal.fn.extend({
 // Module: ajax
 Zeal.ajax = function( obj ){
 	var xhr = new XMLHttpRequest();
-	xhr.open( obj.type,obj.url );
-	xhr.send( obj.data||null );
-	xhr.onreadystatechange = function(){
-		var data = xhr.responseText;
-		if( xhr.status===200 ){
-			obj.success(data);
-		};
-	};		
+    xhr.timeout = 5000;
+    xhr.ontimeout = function(){
+        console.log('timeout');
+    };
+    xhr.onerror = function(xhr,type){
+        console.log(xhr, type);
+    };
+    xhr.onreadystatechange = function(){
+        if( xhr.readyState===4 ){
+            if( xhr.status===200 ){
+                var data = xhr.responseText;
+                obj.success(data);
+            };
+        };
+    };
+    xhr.open( obj.type,obj.url );
+    xhr.send( obj.data||null );		
 };
 
 if( window.$===undefined ){
@@ -413,6 +420,3 @@ if( window.$===undefined ){
 	console.warn('Zeal: $ is already occupied.');
 	window.Zeal = Zeal;
 }
-
-window.$ = Zeal;
-console.warn('Zeal: window.$ is window.Zeal.');

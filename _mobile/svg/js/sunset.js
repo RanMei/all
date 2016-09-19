@@ -8,6 +8,7 @@ function Sunset(){
 	this.tick = 0;
 	this.ratio = 1;
 	this.sunY = Number( this.sun.getAttribute('cy') );
+	
 
 	this.playing = false;
 
@@ -19,9 +20,17 @@ function Sunset(){
 }
 Sunset.prototype = {
 	init: function(){
+		this.onResize();
 		this.arizona.addEventListener( 'click',this.handleClick.bind(this) );
 		document.addEventListener( 'touchstart',this.touchstart.bind(this) );
 		document.addEventListener( 'touchmove',this.touchmove.bind(this) );
+		window.addEventListener( 'resize',this.onResize.bind(this) );
+	},
+	onResize: function(){
+		var self = this;
+		setTimeout(function(){
+			self.height = Number( document.defaultView.getComputedStyle( self.arizona ).height.replace(/px/,'') );
+		},300);
 	},
 	handleClick: function(){
 		if( !this.playing ){
@@ -37,10 +46,18 @@ Sunset.prototype = {
 	touchmove: function(e){
 		this.Y2 = e.changedTouches[0].pageY;
 		var distance = this.Y2 - this.Y1;
-		console.log(distance)
+		//var relativeDistance = distance/this.height;
+		//console.log(relativeDistance)
 		this.Y1 = this.Y2;
 		this.sunY += distance/10;
-		this.ratio -= distance/500;
+		if( this.sunY>170 ){
+			this.sunY = 170;
+		}else if( this.sunY<128 ){
+			this.sunY = 128;
+		}else{
+			this.ratio -= distance/460;
+		}
+		
 		this.sun.style.cy = this.sunY+'';
 		this.layersChange();
 	},
