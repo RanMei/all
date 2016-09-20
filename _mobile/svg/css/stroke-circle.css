@@ -60,7 +60,7 @@
   cx: 500;
   cy: 500;
   r: 200;
-  stroke: red;
+  stroke: url(#linearGradient-1);
   stroke-width: 15;
   stroke-linecap: round;
   stroke-dasharray: 1256;
@@ -71,7 +71,6 @@
   cx: 500;
   cy: 500;
   r: 100;
-  stroke: red;
   stroke-width: 15;
   stroke-linecap: round;
   stroke-dasharray: 314;

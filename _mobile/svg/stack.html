@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<!-- Pure CSS SVG Countdown (Ready) -->
+	<title></title>
+	<link rel="stylesheet" href="css/stack.css">
+</head>
+
+<body>
+
+	<div class="space">
+		<ul class="stack">
+			<li class="card card0"></li>
+			<li class="card card1"></li>
+			<li class="card card2"></li>
+			<li class="card card3"></li>
+			<li class="card card4"></li>
+		</ul>
+	</div>
+
+<!-- <script type="text/javascript" src="../vendor/debug.js"></script> -->
+<script type="text/javascript" src="../vendor/rem.js"></script>
+<script type="text/javascript">
+function Stack(config){
+	var self = this;
+	this.elem = document.querySelector(config.el);
+	this.cards = this.elem.querySelectorAll('.card');
+	this.length = this.cards.length;
+	this.current = this.length-1;
+
+	this.switching = false;
+	window.addEventListener('load',function(){
+		self.init();
+	});
+}
+Stack.prototype = {
+	init: function(){
+		this.cards[this.current].style.animation = 'toFirst 0s forwards';
+		this.cards[this.current-1].style.animation = 'toSecond 0s forwards';
+		this.cards[this.current-2].style.animation = 'toThird 0s forwards';
+
+		this.cards[this.current].style.webkitAnimation = 'toFirst 0.01s forwards';
+		this.cards[this.current-1].style.webkitAnimation = 'toSecond 0.01s forwards';
+		this.cards[this.current-2].style.webkitAnimation = 'toThird 0.01s forwards';
+		this.listen();
+	},
+	play: function(){
+		if( !this.switching ){
+			var self = this;
+			self.switching = true;
+			cards = this.elem.querySelectorAll('.card');
+
+			cards[this.current].style.animation = 'leave 0.3s forwards';
+			cards[this.current-1].style.animation = 'toFirst 0.3s forwards';
+			cards[this.current-2].style.animation = 'toSecond 0.3s forwards';
+			cards[this.current-3].style.animation = 'toThird 0.3s forwards';
+
+			cards[this.current].style.webkitAnimation = 'leave 0.3s forwards';
+			cards[this.current-1].style.webkitAnimation = 'toFirst 0.3s forwards';
+			cards[this.current-2].style.webkitAnimation = 'toSecond 0.3s forwards';
+			cards[this.current-3].style.webkitAnimation = 'toThird 0.3s forwards';
+			setTimeout(function(){
+				cards[self.current].style.animation = '';
+				cards[self.current].style.webkitAnimation = '';
+				self.elem.insertBefore( cards[self.current],self.elem.firstChild );
+				self.switching = false;
+			},600);
+			// if( this.current>0 ){
+			// 	this.current--;
+			// }else{
+			// 	this.current = this.length - 1;
+			// }
+			//console.log(this.current);
+		};
+	},
+	touchstart: function(e){
+		e.preventDefault();
+		this.X1 = e.changedTouches[0].pageX;
+		console.log(this.X1)
+	},
+	touchend: function(e){
+		this.X2 = e.changedTouches[0].pageX;
+		var distance = this.X2 - this.X1;
+		console.log(this.X2);
+		if( distance>0 ){
+			this.play();
+		}
+	},
+	listen: function(){
+		this.elem.addEventListener('touchstart',this.touchstart.bind(this));
+		this.elem.addEventListener('touchend',this.touchend.bind(this));
+		//this.elem.addEventListener('click',this.play.bind(this));
+	}
+}
+new Stack({
+	el: '.stack'
+})
+</script>
+</body>
+</html>

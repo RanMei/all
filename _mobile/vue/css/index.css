@@ -26,7 +26,7 @@ html {
   font-size: 2vw!important;
 }
 h1 {
-  font-size: 5vw;
+  font-size: 6vw;
   text-align: center;
 }
 h2 {
@@ -35,15 +35,23 @@ h2 {
   font-size: 5vw;
   text-align: center;
   padding-top: 2vw;
-  padding-bottom: 1vw;
+  padding-bottom: 2vw;
 }
 h3 {
   font-size: 4vw;
   text-align: center;
 }
 p {
+  width: 80%;
+  margin: auto;
   font-size: 3vw;
-  margin-left: 10vw;
+  margin-bottom: 1vw;
+}
+.small {
+  font-size: 1vw!important;
+}
+.normal {
+  font-size: 3vw!important;
 }
 .nav {
   position: fixed;
@@ -63,6 +71,23 @@ p {
 }
 .nav li.active {
   background: white;
+}
+.two {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+.two .col {
+  float: left;
+  width: 50%;
+}
+.two .col img {
+  width: 90%;
+  margin: auto;
+}
+.panel {
+  width: 40%;
+  margin: auto;
 }
 .strip {
   width: 100%;

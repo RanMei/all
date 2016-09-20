@@ -11,16 +11,30 @@
 <body>
 
 	<svg class="test" viewBox="0,0,1000,1000" pointer-events="all" version="1.1" xmlns="http://www.w3.org/2000/svg">
-		
+		<defs>
+			<linearGradient 
+			id="linearGradient-1"
+			x1="0%" y1="100%" x2="100%" y2="100%">
+				<stop stop-color="#2090F8" offset="0%"></stop>
+				<stop stop-color="#01FCE4" offset="41.7610013%"></stop>
+				<stop stop-color="#0BFF8C" offset="78.6870217%"></stop>
+				<stop stop-color="#51FF00" offset="100%"></stop>
+			</linearGradient>
+		</defs>
+
 		<circle 
-			class="circle-red"
-			cx="500" cy="500" r="200"/>
+		class="circle-red"
+		cx="500" cy="500" r="200"
+		stroke="url(#linearGradient-1)"
+		/>
 		<circle 
-			class="circle-red-1"
-			cx="500" cy="500" r="100"/>
+		class="circle-red-1"
+		cx="500" cy="500" r="100"
+		stroke="url(#linearGradient-1)"
+		/>
 
 	</svg>
 
-<script type="text/javascript" src="../src/rem.js"></script>
+	<script type="text/javascript" src="../src/rem.js"></script>
 </body>
 </html>
