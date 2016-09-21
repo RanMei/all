@@ -82,7 +82,8 @@ var BROWSERIFY = [
 	// { name: 'browserify-mobile-vue-swiper', main: './_mobile/vue/lib/main_swiper.js', dest: './_mobile/vue/dist/', files: './_mobile/vue/lib/*.js' },
 	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' },
 	{ name: 'browserify-mobile-car', main: './_mobile/car/js/main.js', dest: './_mobile/car', files: './_mobile/car/js/*.js' },
-	{ name: 'browserify-mobile-olympics', main: './_mobile/h5/olympics/lib/main.js', dest: './_mobile/h5/olympics/dist/', files: './_mobile/h5/olympics/lib/*.js' }
+	{ name: 'browserify-mobile-h5-olympics', main: './_mobile/h5/olympics/lib/main.js', dest: './_mobile/h5/olympics/dist/', files: './_mobile/h5/olympics/lib/*.js' },
+	{ name: 'browserify-mobile-h5-carnival', main: './_mobile/h5/carnival/lib/main.js', dest: './_mobile/h5/carnival/dist/', files: './_mobile/h5/carnival/lib/*.js' }
 /*	{ name: 'browserify-mobile-project', main: './_mobile/project/lib/main.js', dest: './_mobile/project/dist/', files: './_mobile/project/lib/*.js' }*/
 ];
 BROWSERIFY.forEach(function(item){

@@ -28,6 +28,7 @@
 			&emsp;stroke-circle<br/>
 			&emsp;stroke-gameboy<br/>
 			&emsp;stroke-qq<br/>
+			&emsp;countdown<br/>
 		</div>
 		<div class="col">
 			<img class="pen" :src="img.pen"/>

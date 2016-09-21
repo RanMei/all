@@ -143,47 +143,18 @@
 			}
 		},
 		ready: function ready() {
-			// if( this.ios===false ){
-			// 	this.getAndroidOSVersion();
-			// }
 			this.getData();
 		},
 		methods: {
 			getData: function getData() {
 				var self = this;
 
-				//通知服务器用户进入了index.html页面。
-				Local.forceLog(common.param('act_f'), 'index');
+				self.isLogin = false;
 
-				Local.reqaObj(common.server() + 'pkg160804/init' /*+'?tf=1&skey=@bvnUSeMcj&timi=549595715'*/, function (data) {
-					console.log(data);
-
-					if (self.ios === false) {
-						self.ver_ok = data.ver_ok;
-					}
-
-					//更新model：
-					self.isLogin = data.isLogin;
-
-					for (var i = 1; i < 5; i++) {
-						self.gifts[i].acquired = data.gifts[i].acquired;
-						self.gifts[i].left = data.gifts[i].left;
-						self.gifts[i].timeleft = data.gifts[i].timeLeft;
-					}
-					self.chance = data.chance;
-					if (data.isLogin) {
-						if (data.myavor !== '') {
-							self.myavor = data.myavor;
-						};
-					};
-
-					// 供测试用：
-					if (self.testMode) {
-						self.fake();
-					}
-				}, [], function () {
-					Local.showToast("网络异常，请稍候重试");
-				}, 1);
+				self.chance = 0;
+				self.gifts[2].left = 1000;
+				self.gifts[3].left = 100;
+				self.gifts[4].left = 10;
 			},
 			getAndroidOSVersion: function getAndroidOSVersion() {
 				console.log(navigator);
@@ -206,37 +177,14 @@
 				self.gifts[4].timeleft = 0;
 			},
 			signin: function signin() {
-				if (this.testMode) {
-					this.isLogin = true;
-				} else if (this.ios) {
-					Local.login();
-				} else {
-					Local.login();
-				}
+				this.isLogin = true;
+				this.myavor = 'img/avatar.png';
 			},
 			get: function get(i) {
 				var self = this;
-				Local.reqaObj(common.server() + 'pkg160804/pick?prizeNumber=' + i, function (data) {
-					console.log(data);
-					// 供测试用：
-					if (self.testMode) {
-						data.code = -5;
-					};
-					// 如果成功领取到该礼包：
-					if (data.code === 0) {
-						self.gifts[i].acquired = true;
-						self.chance += i;
-						self.showMask(i);
-						// 如果该礼包已经被领光：
-					} else if (data.code === -5) {
-							self.showMask('out');
-							// 如果领取该礼包失败：
-						} else {
-								Local.showToast("领取失败");
-							};
-				}, [], function () {
-					Local.showToast("网络异常，请稍候重试");
-				}, 1);
+				self.gifts[i].acquired = true;
+				self.chance += i;
+				self.showMask(i);
 			},
 			// 添加在抽奖按钮上的事件：
 			drawtouchstart: function drawtouchstart(e) {
@@ -260,62 +208,37 @@
 				if (!self.inDrawing) {
 					//如果用户可以抽奖：
 					if (self.chance > 0) {
-						//启动抽奖过程。
-						self.inDrawing = true;
-						//向服务器发出请求。
-						Local.reqaObj(common.server() + 'pkg160804/dolottery', function (data) {
-							console.log(data);
+						var result;
+						var cycle;
+						var duration;
 
-							if (self.testMode) {
-								data.prizename = '100元沪江网校学习卡';
-							}
-							//如果用户中奖了：
-							if (data.prizename) {
-								var result;
-								var cycle;
-								var duration;
-
-								(function () {
-									var move = function move() {
-										self.current++;
-										if (self.current === 8) {
-											self.current = 0;
-											cycle++;
-										};
-										duration += 10;
-										if (cycle === 3 && self.current === result) {
-											setTimeout(function () {
-												self.showMask('get' + result);
-												self.chance--;
-												self.inDrawing = false;
-											}, 1000);
-										} else {
-											setTimeout(move, duration);
-										}
-									};
-
-									if (self.ios) {
-										self.prizes_ios.forEach(function (a, i) {
-											if (a === data.prizename) {
-												result = i;
-											}
-										});
-									} else {
-										self.prizes.forEach(function (a, i) {
-											if (a === data.prizename) {
-												result = i;
-											}
-										});
-									};
-									cycle = 0;
-									duration = 100;
-
+						(function () {
+							var move = function move() {
+								self.current++;
+								if (self.current === 8) {
+									self.current = 0;
+									cycle++;
+								};
+								duration += 10;
+								if (cycle === 3 && self.current === result) {
+									setTimeout(function () {
+										self.showMask('get' + result);
+										self.chance--;
+										self.inDrawing = false;
+									}, 1000);
+								} else {
 									setTimeout(move, duration);
-								})();
+								}
 							};
-						}, [], function () {
-							Local.showToast("网络异常，请稍候重试");
-						}, 1);
+
+							//启动抽奖过程。
+							self.inDrawing = true;
+							result = Math.round(Math.random() * 7);
+							cycle = 0;
+							duration = 100;
+
+							setTimeout(move, duration);
+						})();
 					} else {
 						self.showMask('none');
 					}

@@ -95,6 +95,30 @@ require('./rem.js');
 
 require('./zeal.js');
 
+function App() {
+	this.btn = document.querySelector('.btn');
+	this.btnImg = document.querySelector('.btn-img');
+	this.init();
+}
+App.prototype = {
+	init: function init() {
+		var self = this;
+		this.btn.addEventListener('touchstart', function () {
+			self.btnImg.setAttribute('src', 'img/btn_active.png');
+		});
+		this.btn.addEventListener('touchmove', function () {
+			self.btnImg.setAttribute('src', 'img/btn.png');
+		});
+		this.btn.addEventListener('touchend', function () {
+			self.btnImg.setAttribute('src', 'img/btn.png');
+		});
+		this.btn.addEventListener('touchcancel', function () {
+			self.btnImg.setAttribute('src', 'img/btn.png');
+		});
+	}
+};
+new App();
+
 window.initSNS = function () {
 
 	// var $ = window.Zeal;
@@ -109,13 +133,7 @@ window.initSNS = function () {
 	var ok = true;
 	var X0, X1, Y0, Y1;
 	$('.btn').on('touchstart', function (e) {
-		e.preventDefault();
-		// X0 = e.originalEvent.changedTouches[0].pageX;
-		// Y0 = e.originalEvent.changedTouches[0].pageY;
 		$('.btn-img').attr('src', 'img/btn_active.png');
-		// setTimeout(function(){
-		// 	$('.btn-img').attr('src','img/btn.png');
-		// },1000);
 	});
 
 	// $('.btn').on('touchcancel',function(e){
@@ -464,8 +482,8 @@ Zeal.fn.extend({
 								cssText += _prop + ':' + opts[prop] + ';-webkit-' + _prop + ':' + opts[prop] + ';';
 								//console.log(cssText)
 							} else {
-								cssText += _prop + ':' + opts[prop] + ';';
-							}
+									cssText += _prop + ':' + opts[prop] + ';';
+								}
 						} else {
 							cssText += prop + ':' + opts[prop] + ';';
 						}

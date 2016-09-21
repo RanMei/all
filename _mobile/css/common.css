@@ -7,13 +7,13 @@ html {
   font-size: 100px;
   font-family: 'Microsoft Yahei';
 }
-ul {
+ul,
+li {
   list-style: none;
 }
 img {
   display: block;
 }
-/* Utility Classes */
 .container {
   background: orange;
   overflow: hidden;
