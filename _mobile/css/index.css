@@ -1,0 +1,8 @@
+.NAVBAR {
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  border-bottom: 1px solid #dddddd;
+}

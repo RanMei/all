@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "init": "mkdir less src css img",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node express.js",
     "build": "cross-env NODE_ENV=production browserify -e _mobile/vue/lib/main_swiper.js | uglifyjs -c warnings=false -m > dist/build.js"

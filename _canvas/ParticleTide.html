@@ -37,88 +37,6 @@ canvas {border: 1px solid #333333;}
 	</div>
 <script type="text/javascript">
 (function(){
-	
-	// //variables
-	// var D=2*Math.PI,//角度：2PI
-	// 	width= 1000,//画布宽度
-	// 	height		= 560,//画布高度
-	// 	$$length	= 1000,//粒子数目
-	// 	B=0.96,
-	// 	particles=[],//包含所有粒子的数组
-	// 	$canvas,//画布
-	// 	z,//画笔
-	// 	$outContainer,//
-	// 	$innerContainer,//
-	// 	cx,//光标当前位置的横坐标
-	// 	cy,//光标当前位置的纵坐标
-	// 	currentX,//上一帧上光标的横坐标
-	// 	currentY,//上一帧上光标的纵坐标
-	// 	dcx,//光标目前位置相对于光标上一位置在横轴上的偏移量
-	// 	dcy,//光标目前位置相对于光标上一位置在纵轴上的偏移量
-	// 	mouseDown;//鼠标键是否按下
-
-	// //l为光标,d为光标的引力范围,m为鼠标点击所产生的斥力范围
-	// var l=0.125*width,
-	// 	m=0.5*width,
-	// 	$gravityRadius = 0.86*width,
-	// 	t=Math.random;
-	// //functions	
-	// function render(){
-	// 	//z为画笔
-	// 	z.globalCompositeOperation="source-over";
-	// 	z.fillStyle="rgba(8,8,12,0.65)";
-	// 	z.fillRect(0,0,width,height);
-
-	// 	z.globalCompositeOperation="lighter";
-	// 	dcx=cx-currentX;//光标目前位置相对于光标上一位置在横轴上的偏移量
-	// 	dcy=cy-currentY;//光标目前位置相对于光标上一位置在纵轴上的偏移量
-	// 	currentX=cx;
-	// 	currentY=cy;
-		
-	// 	particles.map(function(elem){
-	// 		elem.step();
-	// 	});
-	// }
-	// //获取光标的位置
-	// function getCursor(e){
-	// 	e = e || window.event;
-	// 	cx = e.clientX-$outContainer.offsetLeft-$innerContainer.offsetLeft;
-	// 	cy = e.clientY-$outContainer.offsetTop-$innerContainer.offsetTop;
-	// }
-	// //粒子的构造函数
-	// function Particle(){
-	// 	this.color="#1350B1";
-	// 	this.x;
-	// 	this.y;
-	// 	this.dx;
-	// 	this.dy;
-	// }
-
-	
-	// function init(){
-	// 	$canvas=document.getElementById("mainCanvas");
-	// 	if($canvas.getContext){
-	// 		$outContainer=document.getElementById("outContainer");
-	// 		$innerContainer=document.getElementById("innerContainer");
-	// 		z=$canvas.getContext("2d");
-	// 		for(var i=$$length;i--;){//创造600个粒子
-	// 			var p = new Particle;
-	// 			p.x=0.5*width;//粒子出现在画布中心
-	// 			p.y=0.5*height;//粒子出现在画布中心
-	// 			p.dx=34*Math.random()*Math.cos(i);
-	// 			p.dy=34*Math.random()*Math.sin(i);
-	// 			particles[i]=p
-	// 		}
-	// 		cx=currentX=0.5*width;//光标的初始位置的横坐标在画布中心
-	// 		cy=currentY=0.5*height;//光标的初始位置的纵坐标在画布中心
-	// 		document.onmousedown=function(){mouseDown=true;};
-	// 		document.onmouseup=function(){mouseDown=false;};
-	// 		document.onmousemove=getCursor;//鼠标移动时获取光标在画布内的坐标
-	// 		setInterval(render,33);//每隔33毫秒重绘画布
-	// 		console.log('Canvas initialized.');
-	// 	}else{
-	// 	};	
-	// };
 
 	function Particle(config){
 		this.color = config.color;
@@ -164,8 +82,8 @@ canvas {border: 1px solid #333333;}
 			//如果粒子在指针的影响范围内
 			if( g<l ){
 				s = 0.26*(1-g/l);
-				dx+=dcx*s;
-				dy+=dcy*s;
+				dx += canvas.dcx*s;
+				dy += canvas.dcy*s;
 			};
 			dx *= this.B;
 			dy *= this.B;
@@ -236,6 +154,7 @@ canvas {border: 1px solid #333333;}
 	}
 	Canvas.prototype = {
 		init: function(){
+			this.addControl();
 			this.createParticles(Particle);
 			this.listen();
 			this.interval = setInterval( this.render.bind(this),33 );
@@ -243,7 +162,6 @@ canvas {border: 1px solid #333333;}
 		reset: function(){
 			this.particles = [];
 			clearInterval( this.interval );
-			this.color = 'green';
 			this.createParticles(Particle);
 			this.interval = setInterval( this.render.bind(this),33 );
 		},
@@ -255,8 +173,8 @@ canvas {border: 1px solid #333333;}
 			ctx.fillRect(0,0,this.width,this.height);
 
 			ctx.globalCompositeOperation="lighter";
-			dcx = this.cx - this.currentX;//光标目前位置相对于光标上一位置在横轴上的偏移量
-			dcy = this.cy - this.currentY;//光标目前位置相对于光标上一位置在纵轴上的偏移量
+			this.dcx = this.cx - this.currentX;//光标目前位置相对于光标上一位置在横轴上的偏移量
+			this.dcy = this.cy - this.currentY;//光标目前位置相对于光标上一位置在纵轴上的偏移量
 			this.currentX = this.cx;
 			this.currentY = this.cy;
 			
@@ -295,12 +213,32 @@ canvas {border: 1px solid #333333;}
 				self.cx = e.clientX-self.$outContainer.offsetLeft-self.$innerContainer.offsetLeft;
 				self.cy = e.clientY-self.$outContainer.offsetTop-self.$innerContainer.offsetTop;
 			});
-			document.addEventListener('keydown',function(e){
-				self.reset();
-			});
+			// document.addEventListener('keydown',function(e){
+			// 	self.reset();
+			// });
 		},
 		addControl: function(){
-
+			var self = this;
+			var keys = [
+				'color', 'length'
+			];
+			var div = document.createElement('div');
+			div.style.cssText += 'position:fixed;left:0;top:0;background:white;padding:20px;opacity:0.8;';
+			keys.forEach(function(name){
+				var input = document.createElement('input');
+				if( name==='color' ){
+					input.setAttribute('type','color');
+				}
+				input.setAttribute('placeholder',name);
+				input.style.cssText += 'display:block;width:150px;height:20px;';
+				div.appendChild(input);
+				input.addEventListener('blur',function(e){
+					var val = e.target.value;
+					self[name] = val;
+					self.reset();
+				})
+			})
+			document.querySelector('body').appendChild(div);
 		}
 	}
 	new Canvas();

@@ -5,83 +5,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>MadSoap</title>
-	<link rel="stylesheet" type="text/css" href="./vendor/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./_mobile/css/common.css">
+	<link rel="stylesheet" type="text/css" href="./_mobile/css/index.css">
 	<style type="text/css">
-		* {
-			margin: 0; padding: 0;
-			box-sizing: border-box;
-		}
-		a {text-decoration: none;}
-		a:link {color: #e91e63;}
-		a:visited {color: #e91e63;}
-		a:hover {color: #e91e63;}
-		a:active {color: #e91e63;}
-		html {
-			font-family: 'Microsoft Yahei';
-		}
 
-		@media screen and (max-width: 750px){
-			body {
-				font-size: 4vw!important;
-			}
-		}
-		.container {
-			width: 100%;
-			padding-top: 4vw;
-			padding-left: 4vw;
-			padding-right: 4vw;
-		}
-		.section {
-			padding-top: 2vw;
-			padding-bottom: 2vw;
-			border-bottom: 1px solid lightgrey;
-		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="section">
-			<a class="a-login">登录</a>
-			<a class="a-logout">注销</a><br/>
-		</div>
-		<div class="section">
-			CSS3 animation<br/>
-			<a href="./_mobile/svg/3d-cube.html">./_mobile/svg/3d-cube.html</a><br/>
-			interactive<br/>
-			<a href="./_mobile/svg/gooey_menu.html">gooey_menu</a><br/>
-			<a href="./_mobile/svg/stack.html">stack</a><br/>
-			SVG<br/>
-			<a href="./_mobile/svg/wave.html">./_mobile/svg/wave.html</a><br/>
-			<a href="./_mobile/svg/sunset.html">_mobile/svg/sunset.html</a><br/>
-			<a href="./_mobile/svg/countdown.html">./_mobile/svg/countdown.html</a><br/>
-			parallax animation<br/>
-			<a href="./_mobile/svg/parallax-clouds.html">./_mobile/svg/parallax-clouds.html</a><br/>
-			<a href="./_mobile/svg/parallax.html">./_mobile/svg/parallax.html</a><br/>
-			button animation<br/>
-			<a href="./_mobile/svg/button-blobs.html">./_mobile/svg/button-blobs.html</a><br/>
-			<a href="./_mobile/svg/button-red.html">./_mobile/svg/button-red.html</a><br/>
-			stroke animation<br/>
-			<a href="./_mobile/svg/stroke-arsenal.html">./_mobile/svg/stroke-arsenal.html</a><br/>
-			<a href="./_mobile/svg/stroke-square.html">./_mobile/svg/stroke-square.html</a><br/>
-			<a href="./_mobile/svg/stroke-circle.html">./_mobile/svg/stroke-circle.html</a><br/>
-			<a href="./_mobile/svg/stroke-jar.html">./_mobile/svg/stroke-jar.html</a><br/>
-			<a href="./_mobile/svg/stroke-gameboy.html">./_mobile/svg/stroke-gameboy.html</a><br/>
-			<a href="./_mobile/svg/stroke-qq.html">./_mobile/svg/stroke-qq.html</a><br/>
-			morphing<br/>
-			<a href="./_mobile/svg/morphing-phones.html">./_mobile/svg/morphing-phones.html</a><br/>
-			canvas<br/>
-			<a href="./_mobile/canvas/rain.html">./_mobile/canvas/rain.html</a><br/>
-			<a href="./_mobile/canvas/snowfall.html">./_mobile/canvas/snowfall.html</a><br/>
-			<a href="./_mobile/canvas/fire.html">./_mobile/canvas/fire.html</a><br/>
-			h5<br/>
-			<a href="./_mobile/h5/star_wars/index.html">./_mobile/h5/star_wars/index.html</a><br/>
-			<a href="./_mobile/h5/olympics/index.html">./_mobile/h5/olympics/index.html</a><br/>
-			<a href="./_mobile/h5/carnival/index.html">./_mobile/h5/carnival/index.html</a><br/>
-			<a href="./_mobile/h5/school/index.html">./_mobile/h5/school/index.html</a><br/>
-			<a href="./_mobile/h5/feast/feast.html">./_mobile/h5/feast/feast.html</a><br/>
-			<a href="./_mobile/h5/project/index.html">./_mobile/h5/project/index.html</a><br/>
-		</div>
+	<div id="app"></div>
+
 		<div class="section">
 			<a href="./_mobile">_mobile</a><br/>
 			<a href="./_mobile/farm">_mobile/farm</a><br/>
@@ -105,92 +38,16 @@
 			<a href="./_canvas/NeonHexagons">canvas/NeonHexagons</a><br/>
 			<a href="./_canvas/ShapeShifter">canvas/ShapeShifter</a><br/>
 			<a href="./_canvas/Matter">canvas/Matter</a><br/>
-			<a href="./_canvas/Heart">Heart</a></br>
+			<a href="./_canvas/Heart.html">./_canvas/Heart.html</a></br>
 			<a href="./_canvas/circles">circles</a>
 		</div>
 
-	</div>
-
-	<script type="text/javascript" src="vendor/jquery.js"></script>
-	<script type="text/javascript">
-// 	document.cookie = 'name=John';
-// 	document.cookie = 'id=123';
-// 	console.log( document.cookie );
-
-// 	console.log(localStorage);
-
-// 	localStorage.userID = "111";
-// 	console.log(localStorage);
-// 	console.log(document.domain);
-
-// 	var elem = document.createElement("div");
-// 	elem = document.getElementsByTagName("a");
-// 	console.log(elem);
-
-// 	function f(s){
-// 		var r = /^\s+/;
-// 		s = s.replace( r ,"2" );
-// 		if( r.test(s) ){
-// 			f(s);
-// 		}else{
-// 			console.log(s);
-// 		}
-// 	}
-// 	f("   11  111   1111   ");
-// 	function Dog(){
-
-// 	}
-// 	var dog1 = new Dog();
-// 	console.log( Dog.prototype.constructor );
-// window.onload = function(){
-// 	console.log( document.getElementsByTagName("a") );
-// };
-$(document).ready(function(){
-	console.log('Cookies before login:',document.cookie)
-	
-	$.ajax({
-		headers:{
-			'Content-type': 'application/json'
-		},	
-		url: '/login',
-		type: 'post',
-		data: JSON.stringify({
-			username: '15911111111',
-			password: '111111'
-		}),
-		async: false
-	}).done(function(data){
-		console.log(data);
-		console.log('Cookies:',document.cookie);
-	});
-	$.ajax({
-		url: '/getUser',
-		type: 'post',
-	}).done(function(data){
-		console.log('User:',data);
-	})
-	$.ajax({
-		headers:{
-			'Content-type': 'application/json'
-		},	
-		url: '/getItem',
-		type: 'post',
-		data: JSON.stringify({
-			itemID: '1602091546'
-		})
-	}).done(function(data){
-		console.log('Item received:',data);
-	});
-	$(".a-logout").on("click",function(){
-		$.ajax({
-			type: 'post',
-			url: '/logout'
-		}).done(function(){
-			console.log('Cookies:',document.cookie)
-		});
-	})
-});
-</script>
+<script type="text/javascript" src="./_mobile/vendor/react.min.js"></script>
+<script type="text/javascript" src="./_mobile/vendor/react-dom.min.js"></script>
+<script type="text/javascript" src="./_mobile/vendor/ReactRouter.min.js"></script>
+<script type="text/javascript" src="./_mobile/vendor/redux.min.js"></script>
+<script type="text/javascript" src="./_mobile/vendor/react-redux.min.js"></script>
+<script type="text/javascript" src="./_mobile/dist/bundle.js"></script>
 </body>
 
 </html>

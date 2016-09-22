@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>读书运动会获奖结果</title>
+	<title>读书运动会</title>
 
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -14,8 +14,64 @@
 <body>
 
 	<div class="CONTAINER">
+		<div class="nav">
+			<img src="img/nav.png"/>
+			<p class="nav-text">点击查看前10名榜单</p>
+		</div>
+
+		<div class="mask" style="background: url(img/result_repeat.png); background-size: 1.98rem;">
+			<div class="PADDING"></div>
+			<img class="mask_bg" src="img/mask_bg.png"/>
+			<div class="content">
+				<img class="colors" src="img/colors.png"/>
+				<img class="bugle-left" src="img/bugle_left.png"/>
+				<img class="bugle-right" src="img/bugle_right.png"/>
+				<img class="pDown" src="img/p_down.png"/>
+				<div class="envelope"/>
+					<img class="envelope-back" src="img/envelope_back.png"/>
+					<img class="paper" src="img/paper.png"/>
+					<img class="envelope-front" src="img/envelope_front.png"/>
+					<img class="button" src="img/button.png"/>
+					<img class="hand" src="img/hand.png"/>
+				</div>
+				<img class="cloud" src="img/cloud_2.png"/>
+		<!-- 		<img class="star star1" src="img/star.png"/>
+				<img class="star star2" src="img/star.png"/>
+				<img class="star star3" src="img/star.png"/>
+				<img class="star star4" src="img/star.png"/>
+				<img class="star star5" src="img/star.png"/>
+				<img class="star star6" src="img/star.png"/>
+				<img class="star star7" src="img/star.png"/>
+				<img class="star star8" src="img/star.png"/> -->
+			</div>
+		</div>
+
+		<div class="myResult">
+			<div class="backg">
+				<img class="bg" src="img/my_result_2.png" style="background: url(img/result_repeat.png); background-size: 1.98rem;"/>
+			</div>
+			<div class="shadow"></div>
+			<div class="content">
+				<p class="congratulations">恭喜您</p>
+				<p class="__name">用户名</p>
+				<p class="inThis">在本届读书运动会中赢得</p>
+				<div class="banner">
+					<img src="img/red_banner.png"/>
+					<p class="__ranking">第--名</p>
+				</div>
+				<img class="rPrize"/>
+				<p class="acquire">获得</p>
+
+				<p class="myPrize">--</p>
+				<div class="toContact">填写联系方式</div>
+				<p class="please">请填写正确的联系方式，方便客服与您联系</p>
+<!-- 				<p class="toTop10">点击查看前10名榜单</p> -->
+			</div>
+		</div>
+
 		<div class="result">
 			<img class="bg" src="img/result_bg_1.png" style="background: url(img/result_repeat.png); background-size: 1.98rem;"/>
+			<div class="shadow"></div>
 			<div class="content">
 				<div class="list list-1"></div>
 				<div class="list list-2"></div>
@@ -23,17 +79,11 @@
 				<div class="list list-4"></div>
 			</div>
 		</div>
-	</div>	
+	</div>
+<script type="text/javascript" src="vendor/rem.js"></script>
+<script type="text/javascript" src="vendor/jquery.min.js"></script>
 
-<!-- <script type="text/javascript" src="js/debug.js"></script> -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jsbridge.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/local.js"></script>
-<!--script type="text/javascript" src="js/tools/debug_tool.js"></script-->
-
-<script type="text/javascript" src="./dist/bundle_result.js"></script>
-<!-- <script type="text/javascript" src="./lib/snowfall.js"></script> -->
+<script type="text/javascript" src="./dist/result.bundle.js"></script>
 
 </body>
 

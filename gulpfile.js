@@ -71,6 +71,7 @@ LESS.forEach(function(elem){
 })
 
 var BROWSERIFY = [
+	{ name: 'browserify-mobile', main: './_mobile/jsx/main.jsx', dest: './_mobile/dist/', files: ['./_mobile/jsx/*.jsx','./_mobile/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-farm', main: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm', files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
@@ -82,7 +83,6 @@ var BROWSERIFY = [
 	// { name: 'browserify-mobile-vue-swiper', main: './_mobile/vue/lib/main_swiper.js', dest: './_mobile/vue/dist/', files: './_mobile/vue/lib/*.js' },
 	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' },
 	{ name: 'browserify-mobile-car', main: './_mobile/car/js/main.js', dest: './_mobile/car', files: './_mobile/car/js/*.js' },
-	{ name: 'browserify-mobile-h5-olympics', main: './_mobile/h5/olympics/lib/main.js', dest: './_mobile/h5/olympics/dist/', files: './_mobile/h5/olympics/lib/*.js' },
 	{ name: 'browserify-mobile-h5-carnival', main: './_mobile/h5/carnival/lib/main.js', dest: './_mobile/h5/carnival/dist/', files: './_mobile/h5/carnival/lib/*.js' }
 /*	{ name: 'browserify-mobile-project', main: './_mobile/project/lib/main.js', dest: './_mobile/project/dist/', files: './_mobile/project/lib/*.js' }*/
 ];
@@ -123,6 +123,11 @@ const WEBPACK = [
 		src: './_mobile/project/lib/main.js', 
 		config: './_mobile/project/webpack.config.js', 
 		dest: './_mobile/project/dist/' },
+	{	name: 'webpack-mobile-h5-olympics', 
+		watched: ['./_mobile/h5/olympics/lib/*.*'], 
+		src: './_mobile/h5/olympics/lib/main.js', 
+		config: './_mobile/h5/olympics/webpack.config.js', 
+		dest: './_mobile/h5/olympics/dist/' },
 	{	name: 'webpack-mobile-h5-school', 
 		watched: ['./_mobile/h5/school/lib/*.*','./_mobile/h5/school/lib/*/*.*'], 
 		src: './_mobile/h5/school/lib/main.js', 

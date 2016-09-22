@@ -38,7 +38,7 @@ App.prototype = {
 		this.createBorders();
 		this.createRect(0,0);
 		this.createMouseConstraint();
-		//this.createObjects();
+		this.createObjects();
 		this.render();
 		this.listen();
 		this.runner = Engine.run( this.engine );

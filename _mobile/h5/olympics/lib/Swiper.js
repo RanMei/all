@@ -1,4 +1,3 @@
-
 function Swiper(config){
 	this.elem = config.elem;
 	this.obj = $(this.elem);
@@ -13,8 +12,8 @@ function Swiper(config){
 		'1','2-3','4-6','7-10'
 	];
 
-	this.carousel = config.carousel || true;
-	this.sticky = config.sticky || true;
+	this.carousel = config.carousel;
+	this.sticky = config.sticky;
 	this.duration = config.duration || 300;
 
 	this.currentOne = 0;
@@ -66,7 +65,12 @@ Swiper.prototype = {
 		self.toItem( self.currentOne )
 	},
 	listen: function(){
-		$(window).on('resize',this.resize.bind(this));
+		var self = this;
+		$(window).on('resize',function(){
+			setTimeout(function(){
+				self.resize();
+			},300)
+		});
 		this.body.on('touchstart',this.ontouchstart.bind(this));
 		this.body.on('touchmove',this.ontouchmove.bind(this));
 		this.body.on('touchend',this.ontouchend.bind(this));
