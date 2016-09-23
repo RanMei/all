@@ -71,7 +71,6 @@ LESS.forEach(function(elem){
 })
 
 var BROWSERIFY = [
-	{ name: 'browserify-mobile', main: './_mobile/jsx/main.jsx', dest: './_mobile/dist/', files: ['./_mobile/jsx/*.jsx','./_mobile/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-farm', main: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm', files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
@@ -113,6 +112,7 @@ gulp.task('vueify',function(){
 
 const WEBPACK = [
 	//{ name: 'webpack-zeal', watched: ['./_mobile/src/*.*'], src: './_mobile/src/zeal.main.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' },
+	{ name: 'webpack-mobile-main', src: './_mobile/main/src/main.jsx', dest: './_mobile/main/dist/', config: './_mobile/main/webpack.config.js', watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*'] },
 	{	name: 'webpack-mobile-vue', 
 		watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
 		src: './_mobile/vue/lib/main.js', 

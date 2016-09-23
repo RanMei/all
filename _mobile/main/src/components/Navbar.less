@@ -1,0 +1,33 @@
+@import (reference) '../common.less';
+
+.NAVBAR {
+	box-sizing: border-box;
+	position: relative;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	font-size: 24px;
+	color: #333;
+	border-bottom: 1px solid @grey-border;
+	.navicon {
+		position: absolute; left: 0; top: 0;
+		width: 44px; height: 44px;
+		font-size: 20px;
+		line-height: 44px; text-align: center;
+	}
+	.box {
+		position: absolute; left: 0; top: 100%;
+		width: 100%;
+		border-top: 1px solid @grey-border;
+		border-bottom: 1px solid @grey-border;
+		background: white;
+		font-size: 15px;
+		text-align: left;
+		display: none;
+		box-shadow: inset 0 1px 0 #fff,0 8px 10px rgba(0,0,0,0.15);
+		.tab {
+			padding: 8px 15px;
+			line-height: normal;
+		}
+	}
+}
