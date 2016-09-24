@@ -29,6 +29,9 @@ a:link {
 .clearfix {
   clear: both;
 }
+body {
+  background: #ECEBEB;
+}
 /* Media Queries */
 @media (-webkit-min-device-pixel-ratio: 2) {
 }

@@ -1,30 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+* :focus {
+  outline: none;
+}
+html {
+  font-size: 100px;
+  font-family: 'Microsoft Yahei';
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
+a:link {
+  color: ;
+  text-decoration: none;
+}
+/* Utility Classes */
+.container {
+  background: orange;
+  overflow: hidden;
+  display: none;
+}
+.clearfix {
+  clear: both;
+}
+body {
+  background: #ECEBEB;
+}
+/* Media Queries */
+@media (-webkit-min-device-pixel-ratio: 2) {
+}
+.wrapper {
+  width: 7.2rem;
+}
+.shown {
+  display: block!important;
+}
 .NAVBAR {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 0.80rem;
+  height: 1rem;
+  border-top: 1px solid #dfdfdf;
   background: white;
   overflow: hidden;
 }
-.NAVBAR .nav a:link {
+.NAVBAR .nav a {
   position: relative;
   width: 25%;
-  height: 0.80rem;
+  height: 1rem;
   float: left;
   color: black;
   display: block;
+  color: #999999;
 }
-.NAVBAR .nav a:link img {
-  width: 0.4rem;
-  display: block;
-  margin: 0.1rem auto 0 auto;
+.NAVBAR .nav a .icon {
+  width: 100%;
+  font-size: 0.4rem;
+  line-height: 0.6rem;
+  text-align: center;
 }
-.NAVBAR .nav a:link p {
+.NAVBAR .nav a p {
+  line-height: 0.4rem;
   font-size: 0.2rem;
   text-align: center;
 }
-.NAVBAR .nav a:link .line {
+.NAVBAR .nav a .line {
   position: absolute;
   right: 0;
   top: 0;
@@ -32,9 +79,12 @@
   height: 100%;
   background: lightgrey;
 }
-.NAVBAR .nav a:visited {
-  color: black;
+.NAVBAR .nav a:link {
+  color: #999999;
 }
-.NAVBAR .nav .active {
-  color: #66CC66;
+.NAVBAR .nav a:visited {
+  color: #999999;
+}
+.NAVBAR .nav a.active {
+  color: #DD2727 !important;
 }

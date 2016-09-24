@@ -29,6 +29,9 @@ a:link {
 .clearfix {
   clear: both;
 }
+body {
+  background: #ECEBEB;
+}
 /* Media Queries */
 @media (-webkit-min-device-pixel-ratio: 2) {
 }
@@ -39,7 +42,7 @@ a:link {
   display: block!important;
 }
 .HOME {
-  background: #DEDEDE;
+  background: #ECEBEB;
 }
 .HOME .searchbar {
   position: relative;

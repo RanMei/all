@@ -2884,7 +2884,7 @@ module.exports = require("./createClass.js");
 
 exports.__esModule = true;
 
-var _defineProperty = require("babel-runtime/core-js/object/define-property");
+var _defineProperty = require("../core-js/object/define-property");
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -2907,12 +2907,12 @@ exports.default = function () {
     return Constructor;
   };
 }();
-},{"babel-runtime/core-js/object/define-property":19}],31:[function(require,module,exports){
+},{"../core-js/object/define-property":19}],31:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
 
-var _assign = require("babel-runtime/core-js/object/assign");
+var _assign = require("../core-js/object/assign");
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -2931,16 +2931,16 @@ exports.default = _assign2.default || function (target) {
 
   return target;
 };
-},{"babel-runtime/core-js/object/assign":17}],32:[function(require,module,exports){
+},{"../core-js/object/assign":17}],32:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
 
-var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+var _getPrototypeOf = require("../core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _getOwnPropertyDescriptor = require("babel-runtime/core-js/object/get-own-property-descriptor");
+var _getOwnPropertyDescriptor = require("../core-js/object/get-own-property-descriptor");
 
 var _getOwnPropertyDescriptor2 = _interopRequireDefault(_getOwnPropertyDescriptor);
 
@@ -2970,20 +2970,20 @@ exports.default = function get(object, property, receiver) {
     return getter.call(receiver);
   }
 };
-},{"babel-runtime/core-js/object/get-own-property-descriptor":20,"babel-runtime/core-js/object/get-prototype-of":22}],33:[function(require,module,exports){
+},{"../core-js/object/get-own-property-descriptor":20,"../core-js/object/get-prototype-of":22}],33:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
 
-var _setPrototypeOf = require("babel-runtime/core-js/object/set-prototype-of");
+var _setPrototypeOf = require("../core-js/object/set-prototype-of");
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = require("babel-runtime/core-js/object/create");
+var _create = require("../core-js/object/create");
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = require("babel-runtime/helpers/typeof");
+var _typeof2 = require("../helpers/typeof");
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -3004,7 +3004,7 @@ exports.default = function (subClass, superClass) {
   });
   if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
 };
-},{"babel-runtime/core-js/object/create":18,"babel-runtime/core-js/object/set-prototype-of":24,"babel-runtime/helpers/typeof":40}],34:[function(require,module,exports){
+},{"../core-js/object/create":18,"../core-js/object/set-prototype-of":24,"../helpers/typeof":40}],34:[function(require,module,exports){
 module.exports = require("./interopRequireDefault.js");
 },{"./interopRequireDefault.js":35}],35:[function(require,module,exports){
 "use strict";
@@ -3037,7 +3037,7 @@ exports.default = function (obj, keys) {
 
 exports.__esModule = true;
 
-var _typeof2 = require("babel-runtime/helpers/typeof");
+var _typeof2 = require("../helpers/typeof");
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -3050,14 +3050,14 @@ exports.default = function (self, call) {
 
   return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
 };
-},{"babel-runtime/helpers/typeof":40}],38:[function(require,module,exports){
+},{"../helpers/typeof":40}],38:[function(require,module,exports){
 module.exports = require("./toConsumableArray.js");
 },{"./toConsumableArray.js":39}],39:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
 
-var _from = require("babel-runtime/core-js/array/from");
+var _from = require("../core-js/array/from");
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -3074,16 +3074,16 @@ exports.default = function (arr) {
     return (0, _from2.default)(arr);
   }
 };
-},{"babel-runtime/core-js/array/from":14}],40:[function(require,module,exports){
+},{"../core-js/array/from":14}],40:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
 
-var _iterator = require("babel-runtime/core-js/symbol/iterator");
+var _iterator = require("../core-js/symbol/iterator");
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = require("babel-runtime/core-js/symbol");
+var _symbol = require("../core-js/symbol");
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -3096,7 +3096,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
-},{"babel-runtime/core-js/symbol":25,"babel-runtime/core-js/symbol/iterator":26}],41:[function(require,module,exports){
+},{"../core-js/symbol":25,"../core-js/symbol/iterator":26}],41:[function(require,module,exports){
 require('../../modules/es6.string.iterator');
 require('../../modules/es6.array.from');
 module.exports = require('../../modules/_core').Array.from;
@@ -3659,6 +3659,7 @@ var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
   var iframe = require('./_dom-create')('iframe')
     , i      = enumBugKeys.length
+    , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
@@ -3668,7 +3669,7 @@ var createDict = function(){
   // html.removeChild(iframe);
   iframeDocument = iframe.contentWindow.document;
   iframeDocument.open();
-  iframeDocument.write('<script>document.F=Object</script' + gt);
+  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
   iframeDocument.close();
   createDict = iframeDocument.F;
   while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -3686,6 +3687,7 @@ module.exports = Object.create || function create(O, Properties){
   } else result = createDict();
   return Properties === undefined ? result : dPs(result, Properties);
 };
+
 },{"./_an-object":56,"./_dom-create":65,"./_enum-bug-keys":66,"./_html":73,"./_object-dps":92,"./_shared-key":106}],91:[function(require,module,exports){
 var anObject       = require('./_an-object')
   , IE8_DOM_DEFINE = require('./_ie8-dom-define')

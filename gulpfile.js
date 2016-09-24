@@ -8,6 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 var webpack = require('webpack-stream');
 
@@ -18,6 +19,9 @@ var vueify = require('vueify');
 
 var tsify = require('tsify');
 var uglify = require('gulp-uglify');
+
+
+var production = true;
 
 // var concat = require("gulp-concat");
 // var shell = require('gulp-shell');
@@ -49,7 +53,9 @@ var LESS = [
 	{ name: 'less-mobile-vue', src: './_mobile/vue/less/*.less', dest: './_mobile/vue/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
-	{ name: 'less-farm', src: './_mobile/farm/less/*.less', dest: './_mobile/farm/css' },
+	{ name: 'less-farm', 
+		src: ['./_mobile/farm/src/*.less','./_mobile/farm/src/components/*.less'], 
+		dest: './_mobile/farm/css' },
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
 	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
 	{ name: 'less-button', src: './_mobile/button/less/*.less', dest: './_mobile/button/css' },
@@ -71,7 +77,7 @@ LESS.forEach(function(elem){
 })
 
 var BROWSERIFY = [
-	{ name: 'browserify-mobile-farm', main: './_mobile/farm/jsx/main.jsx', dest: './_mobile/farm', files: ['./_mobile/farm/jsx/*.jsx','./_mobile/farm/jsx/*/*.jsx'] },
+	{ name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
 	{ 	name: 'browserify-mobile-zeal', 
@@ -86,16 +92,30 @@ var BROWSERIFY = [
 /*	{ name: 'browserify-mobile-project', main: './_mobile/project/lib/main.js', dest: './_mobile/project/dist/', files: './_mobile/project/lib/*.js' }*/
 ];
 BROWSERIFY.forEach(function(item){
-	gulp.task( item.name,function(){
-		return(
-			browserify( item.main )
-			.transform( 'babelify', {presets: ["es2015", "react"]} )
-			.bundle()
-			.pipe( source(item.output||'bundle.js') )
-			// .pipe( uglify() )
-			.pipe( gulp.dest(item.dest) )
-		);
-	});
+	if( production===false ){
+		gulp.task( item.name,function(){
+			return(
+				browserify( item.main )
+				.transform( 'babelify', {presets: ["es2015", "react"]} )
+				.bundle()
+				.pipe( source(item.output||'bundle.js') )
+				.pipe( gulp.dest(item.dest) )
+			);
+		});
+	}else{
+		gulp.task( item.name,function(){
+			return(
+				browserify( item.main )
+				.transform( 'babelify', {presets: ["es2015", "react"]} )
+				.bundle()
+				.pipe( source(item.output||'bundle.js') )
+				.pipe( buffer() )
+				.pipe( uglify({
+				}) )
+				.pipe( gulp.dest(item.dest) )
+			);
+		});
+	}
 })
 
 gulp.task('vueify',function(){

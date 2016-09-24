@@ -1,0 +1,164 @@
+@import (reference) '../common.less';
+
+.SHOPPING_CART {
+	background: @grey-bg;
+
+	.header {
+		box-sizing: border-box;
+		position: relative;
+		width: 100%; height: 1rem;
+		margin-bottom: .20rem;
+		padding-left: 0.2rem;
+		background: white;
+		border-bottom: 1px solid @grey-border;
+		overflow: hidden;
+		font-size: 0.3rem; line-height: 1rem;
+	}
+	.delete {width:1.27rem;height:1rem;float:right;}
+	.delete a {width:0.5rem;margin:auto;margin-top:.20rem;display:block;}
+	.delete img {width:0.24rem;margin:auto;display:block;}
+	.delete p {text-align:center;font-size:0.2rem;margin:auto;}
+	.delete a:visited {color:black;}
+
+	.item {
+		box-sizing: border-box;
+		position: relative;
+		width: 100%; padding: 0.15rem;
+		margin-bottom:.20rem;
+		background: white;
+		overflow: hidden;
+		.part {
+			float: left;
+			.circle {
+				width: 0.3rem; height: 0.3rem;
+				margin-top: 0.7rem;
+				border-radius: 1rem;
+				border: 1px solid @grey-border;
+				font-size: 0.1rem; text-align: center; line-height: 0.3rem;
+				color: white;
+				&.active {
+					background: @red;
+					border-color: @red;
+				}
+			}
+		}
+		.part-left {
+			margin-right: 0.15rem;
+		}
+		.thumbnail {
+			width: 1.90rem; height: 1.90rem;
+			margin-right: 0.15rem;
+			img {
+				width: 100%;
+			}
+		}
+		.part-3 {
+			position: relative;
+			width: 2rem; height: 1.9rem;
+			.name {
+				font-size: 0.22rem;
+			}
+			.spec {
+				font-size: 0.22rem;
+				color: @grey-text;
+			}
+			.counter {
+				position: absolute; left: 0; bottom: 0.3rem;
+			}
+			.counter1 {
+				width: .30rem; height: .30rem;
+				border: 1px solid @grey-border;
+				font-size: 0.3rem; line-height: .30rem; text-align: center;
+				float: left;
+				color: grey;
+			}
+			.counter2 {
+				width: 1rem; height: .30rem;
+				border-top: 1px solid @grey-border;
+				border-bottom: 1px solid @grey-border;
+				font-size: 0.2rem; line-height: .30rem; text-align: center;
+				float: left;
+			}
+			.counter3 {
+				width: .30rem; height: .30rem;
+				border: 1px solid @grey-border;
+				font-size: 0.3rem; line-height: .30rem;
+				text-align: center;
+				float: left;
+			}
+		}
+		.part-4 {
+			width: 2rem;
+			float: right;
+			text-align: right;
+			.price {
+				color: @red;
+				font-size: 0.3rem;
+			}
+			.quantity {
+				color: @grey-text;
+				font-size: 0.3rem;
+			}
+		}	
+	}
+
+
+	.footer {
+		position: relative;
+		width: 100%; height: 1rem;
+		border-top: 1px solid @grey-border;
+		border-bottom: 1px solid @grey-border;
+		background: white;
+		.circle {
+			float: left;
+			width: 0.3rem; height: 0.3rem;
+			margin-left: 0.15rem;
+			margin-top: 0.3rem;
+			margin-right: 0.2rem;
+			border-radius: 1rem;
+			border: 1px solid @grey-border;
+			font-size: 0.1rem; text-align: center; line-height: 0.3rem;
+			color: white;
+			&.active {
+				background: @red;
+				border-color: @red;
+			}
+		}
+		.text-all {
+			float: left;
+			line-height: 1rem;
+			font-size: 0.3rem;
+		}
+		.back {
+			position: absolute;
+			width: 1rem; height: 1rem;
+			border-right: 1px solid black;
+			overflow: hidden; display: block;
+			img {
+				width: 0.19rem; height: 0.37rem;
+				margin: auto; margin-top: .30rem;
+				display: block;
+			}
+		}
+		.discount {position:absolute;left:1.25rem;top:.15rem;color:grey;font-size:0.2rem;}
+		.sum {
+			float: right;
+			padding-right: 0.15rem;
+			font-size: 0.3rem;
+			line-height: 1rem;
+			.money {
+				color: @red;
+			}
+		}
+		.pay {
+			float: right;
+			height: 100%;
+			padding: 0 0.2rem;
+			background: @red;
+			color: white;
+			text-align: center;
+			font-size: 0.32rem;
+			line-height: 1rem;
+		}
+	}
+}

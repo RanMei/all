@@ -1,25 +1,18 @@
 .SHOPPING_CART {
-  background: lightgrey;
+  background: #ECEBEB;
 }
 .SHOPPING_CART .header {
+  box-sizing: border-box;
   position: relative;
   width: 100%;
   height: 1rem;
   margin-bottom: .20rem;
+  padding-left: 0.2rem;
   background: white;
+  border-bottom: 1px solid #dfdfdf;
   overflow: hidden;
-}
-.SHOPPING_CART .header > p {
-  float: left;
-  width: 5.90rem;
-  height: auto;
+  font-size: 0.3rem;
   line-height: 1rem;
-  font-size: 0.2rem;
-  text-indent: .30rem;
-  border-right: 1px solid black;
-}
-.SHOPPING_CART .header > p span {
-  color: #FFA620;
 }
 .SHOPPING_CART .delete {
   width: 1.27rem;
@@ -46,78 +39,132 @@
   color: black;
 }
 .SHOPPING_CART .item {
+  box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 2.20rem;
+  padding: 0.15rem;
   margin-bottom: .20rem;
   background: white;
+  overflow: hidden;
+}
+.SHOPPING_CART .item .part {
+  float: left;
+}
+.SHOPPING_CART .item .part .circle {
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-top: 0.7rem;
+  border-radius: 1rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.1rem;
+  text-align: center;
+  line-height: 0.3rem;
+  color: white;
+}
+.SHOPPING_CART .item .part .circle.active {
+  background: #DD2727;
+  border-color: #DD2727;
+}
+.SHOPPING_CART .item .part-left {
+  margin-right: 0.15rem;
 }
 .SHOPPING_CART .item .thumbnail {
-  position: absolute;
-  left: .15rem;
-  top: .15rem;
   width: 1.90rem;
   height: 1.90rem;
-  background: #66CC66;
+  margin-right: 0.15rem;
 }
-.SHOPPING_CART .item .name {
+.SHOPPING_CART .item .thumbnail img {
+  width: 100%;
+}
+.SHOPPING_CART .item .part-3 {
+  position: relative;
+  width: 2rem;
+  height: 1.9rem;
+}
+.SHOPPING_CART .item .part-3 .name {
+  font-size: 0.22rem;
+}
+.SHOPPING_CART .item .part-3 .spec {
+  font-size: 0.22rem;
+  color: #999999;
+}
+.SHOPPING_CART .item .part-3 .counter {
   position: absolute;
-  left: 2.50rem;
-  top: .15rem;
-  font-size: 0.2rem;
+  left: 0;
+  bottom: 0.3rem;
 }
-.SHOPPING_CART .item .price {
-  position: absolute;
-  left: 2.50rem;
-  bottom: .15rem;
-  color: #FF9900;
-  font-size: 0.32rem;
-}
-.SHOPPING_CART .item .counter {
-  position: absolute;
-  right: .15rem;
-  bottom: .15rem;
-}
-.SHOPPING_CART .item .counter1 {
-  width: .50rem;
-  height: .50rem;
-  border: 1px solid black;
-  font-size: 0.32rem;
-  line-height: .50rem;
+.SHOPPING_CART .item .part-3 .counter1 {
+  width: .30rem;
+  height: .30rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.3rem;
+  line-height: .30rem;
   text-align: center;
   float: left;
   color: grey;
 }
-.SHOPPING_CART .item .counter2 {
+.SHOPPING_CART .item .part-3 .counter2 {
   width: 1rem;
-  height: .50rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  font-size: 0.32rem;
-  line-height: .50rem;
+  height: .30rem;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 0.2rem;
+  line-height: .30rem;
   text-align: center;
   float: left;
 }
-.SHOPPING_CART .item .counter3 {
-  width: .50rem;
-  height: .50rem;
-  border: 1px solid black;
-  font-size: 0.32rem;
-  line-height: .50rem;
+.SHOPPING_CART .item .part-3 .counter3 {
+  width: .30rem;
+  height: .30rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.3rem;
+  line-height: .30rem;
   text-align: center;
   float: left;
 }
-.SHOPPING_CART .footerShadow {
-  width: 100%;
-  height: 1rem;
+.SHOPPING_CART .item .part-4 {
+  width: 2rem;
+  float: right;
+  text-align: right;
+}
+.SHOPPING_CART .item .part-4 .price {
+  color: #DD2727;
+  font-size: 0.3rem;
+}
+.SHOPPING_CART .item .part-4 .quantity {
+  color: #999999;
+  font-size: 0.3rem;
 }
 .SHOPPING_CART .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: relative;
   width: 100%;
   height: 1rem;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
   background: white;
+}
+.SHOPPING_CART .footer .circle {
+  float: left;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-left: 0.15rem;
+  margin-top: 0.3rem;
+  margin-right: 0.2rem;
+  border-radius: 1rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.1rem;
+  text-align: center;
+  line-height: 0.3rem;
+  color: white;
+}
+.SHOPPING_CART .footer .circle.active {
+  background: #DD2727;
+  border-color: #DD2727;
+}
+.SHOPPING_CART .footer .text-all {
+  float: left;
+  line-height: 1rem;
+  font-size: 0.3rem;
 }
 .SHOPPING_CART .footer .back {
   position: absolute;
@@ -142,21 +189,21 @@
   font-size: 0.2rem;
 }
 .SHOPPING_CART .footer .sum {
-  position: absolute;
-  left: 1.25rem;
-  top: .50rem;
+  float: right;
+  padding-right: 0.15rem;
   font-size: 0.3rem;
+  line-height: 1rem;
+}
+.SHOPPING_CART .footer .sum .money {
+  color: #DD2727;
 }
 .SHOPPING_CART .footer .pay {
-  position: absolute;
-  right: .30rem;
-  top: .10rem;
-  width: 1.90rem;
-  height: .70rem;
-  border-radius: .10rem;
-  background: #FF9900;
+  float: right;
+  height: 100%;
+  padding: 0 0.2rem;
+  background: #DD2727;
   color: white;
   text-align: center;
   font-size: 0.32rem;
-  line-height: .70rem;
+  line-height: 1rem;
 }
