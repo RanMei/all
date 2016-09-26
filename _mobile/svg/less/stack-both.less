@@ -2,8 +2,12 @@
 	margin: 0; padding: 0;
 }
 
+html {
+	font-family: 'Microsoft Yahei';
+}
+
 body {
-	background: #5CC2F1;
+	background: white;
 	overflow-x: hidden;
 }
 
@@ -13,24 +17,41 @@ ul,li {
 
 .space {
 	width: 100%;
-	padding-top: 60vw;
+	padding: 60vw 0 1.4rem 0;
 	overflow-x: hidden;
 }
 
 .stack {
+	box-sizing: border-box;
 	@width: 80vw;
 	position: relative;
-	width: 80vw; height: 80vw;
+	width: 6.56rem; height: 5.32rem;
 	margin: auto;
-	perspective: 400px;
+	perspective: 4rem;
 	.card {
 		position: absolute; left: 0; top: 0;
 		width: 100%; height: 100%;
 		transform: translate3d(7rem,0,0);
-		border-radius: 1vw;
+		border-radius: 0.05rem;
+		border: 1px solid #d5d5d5;
+		background: white!important;
+		box-shadow: 0 0.1rem 0.5rem #cbcbcb;
+		.title {
+			box-sizing: border-box;
+			width: 100%; height: 0.94rem;
+			margin-top: 0.58rem;
+			margin-bottom: 0.6rem;
+			border-left: 0.08rem solid black;
+		}
+		p {
+			padding: 0 0.44rem;
+			font-size: 0.24rem;
+			line-height: 0.36rem;
+			color: #9b9b9b;
+		}
 		img {
-			position: absolute; right: 0.5rem; top: -1.5rem;
-			width: 2rem;
+			position: absolute; right: 0.32rem; top: -1.5rem;
+			width: 2.8rem;
 		}
 		&.card0 {
 			background: #91C794;
@@ -64,23 +85,23 @@ ul,li {
 	}
 	@keyframes toThird {
 		0% {
-			transform: translate3d(0,0.6rem,-0.6rem);
+			transform: translate3d(0,1.8rem,-1.5rem);
 		}
 		100% {
-			transform: translate3d(0,0.4rem,-0.4rem);
+			transform: translate3d(0,1.2rem,-1rem);
 		}
 	}
 	@keyframes toSecond {
 		0% {
-			transform: translate3d(0,0.4rem,-0.4rem);
+			transform: translate3d(0,1.2rem,-1rem);
 		}
 		100% {
-			transform: translate3d(0,0.2rem,-0.2rem);
+			transform: translate3d(0,0.6rem,-0.5rem);
 		}
 	}
 	@keyframes toFirst {
 		0% {
-			transform: translate3d(0,0.2rem,-0.2rem);
+			transform: translate3d(0,0.6rem,-0.5rem);
 		}
 		100% {
 			transform: translate3d(0,0,0);
@@ -136,6 +157,18 @@ ul,li {
 		100% {
 			opacity: 0;
 			transform: rotate3d(0,0,1,-60deg);;
+		}
+	}
+}
+
+.nav {
+	li {
+		float: left;
+		width: 0.22rem; height: 0.22rem;
+		border-radius: 1000px;
+		border: 1px solid black;
+		&.active {
+			background: black;
 		}
 	}
 }

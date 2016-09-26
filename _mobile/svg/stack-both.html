@@ -13,21 +13,33 @@
 	<div class="space">
 		<ul class="stack">
 			<li class="card card0">
-				<img class="cover" src="./img/stack-both/cover.jpg"/>
+				<div class="title"></div>
+				<img class="cover" src="./img/stack-both/cover.png"/>
 			</li>
 			<li class="card card1">
-				<img class="cover" src="./img/stack-both/cover.jpg"/>
+				<img class="cover" src="./img/stack-both/cover.png"/>
 			</li>
 			<li class="card card2">
-				<img class="cover" src="./img/stack-both/cover.jpg"/>
+				<img class="cover" src="./img/stack-both/cover.png"/>
 			</li>
 			<li class="card card3">
-				<img class="cover" src="./img/stack-both/cover.jpg"/>
+				<img class="cover" src="./img/stack-both/cover.png"/>
 			</li>
 			<li class="card card4">
-				<img class="cover" src="./img/stack-both/cover.jpg"/>
+				<div class="title"></div>
+				<p>
+					云落枫，华夏医学天才，意外身亡，魂附于龙啸大陆将军府废物大小姐。 这废物不但文不成武不就，更是胸大无脑，骄横任性，有了太子这样完美的未婚夫还不够，居然当众强抢美男，导致太子一怒之下解除婚约。 可废物受不了这个刺激，竟是上吊了结此生。再睁眼，她已非昔日废物大小姐。 契约神典，怀揣灵药空间，妙手回春，医绝天下！
+				</p>
+				<img class="cover" src="./img/stack-both/cover.png"/>
 			</li>
 		</ul>
+	</div>
+	<div class="nav">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
 	</div>
 
 <script type="text/javascript" src="../vendor/rem.js"></script>
@@ -63,12 +75,12 @@ Stack.prototype = {
 
 			cards[this.current].classList.add('wira-'+direction);
 
-			cards[this.current].style.animation = 'wira-'+direction+' 0.6s forwards';
+			cards[this.current].style.animation = 'wira-'+direction+' 1s forwards';
 			cards[this.current-1].style.animation = 'toFirst 0.3s forwards';
 			cards[this.current-2].style.animation = 'toSecond 0.3s forwards';
 			cards[this.current-3].style.animation = 'toThird 0.3s forwards';
 
-			cards[this.current].style.webkitAnimation = 'wira-'+direction+' 0.6s forwards';
+			cards[this.current].style.webkitAnimation = 'wira-'+direction+' 1s forwards';
 			cards[this.current-1].style.webkitAnimation = 'toFirst 0.3s forwards';
 			cards[this.current-2].style.webkitAnimation = 'toSecond 0.3s forwards';
 			cards[this.current-3].style.webkitAnimation = 'toThird 0.3s forwards';

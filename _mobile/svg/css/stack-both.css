@@ -2,8 +2,11 @@
   margin: 0;
   padding: 0;
 }
+html {
+  font-family: 'Microsoft Yahei';
+}
 body {
-  background: #5CC2F1;
+  background: white;
   overflow-x: hidden;
 }
 ul,
@@ -12,16 +15,17 @@ li {
 }
 .space {
   width: 100%;
-  padding-top: 60vw;
+  padding: 60vw 0 1.4rem 0;
   overflow-x: hidden;
 }
 .stack {
+  box-sizing: border-box;
   position: relative;
-  width: 80vw;
-  height: 80vw;
+  width: 6.56rem;
+  height: 5.32rem;
   margin: auto;
-  -webkit-perspective: 400px;
-          perspective: 400px;
+  -webkit-perspective: 4rem;
+          perspective: 4rem;
 }
 .stack .card {
   position: absolute;
@@ -31,13 +35,30 @@ li {
   height: 100%;
   -webkit-transform: translate3d(7rem, 0, 0);
           transform: translate3d(7rem, 0, 0);
-  border-radius: 1vw;
+  border-radius: 0.05rem;
+  border: 1px solid #d5d5d5;
+  background: white!important;
+  box-shadow: 0 0.1rem 0.5rem #cbcbcb;
+}
+.stack .card .title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 0.94rem;
+  margin-top: 0.58rem;
+  margin-bottom: 0.6rem;
+  border-left: 0.08rem solid black;
+}
+.stack .card p {
+  padding: 0 0.44rem;
+  font-size: 0.24rem;
+  line-height: 0.36rem;
+  color: #9b9b9b;
 }
 .stack .card img {
   position: absolute;
-  right: 0.5rem;
+  right: 0.32rem;
   top: -1.5rem;
-  width: 2rem;
+  width: 2.8rem;
 }
 .stack .card.card0 {
   background: #91C794;
@@ -68,48 +89,48 @@ li {
 }
 @-webkit-keyframes toThird {
   0% {
-    -webkit-transform: translate3d(0, 0.6rem, -0.6rem);
-            transform: translate3d(0, 0.6rem, -0.6rem);
+    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);
+            transform: translate3d(0, 1.8rem, -1.5rem);
   }
   100% {
-    -webkit-transform: translate3d(0, 0.4rem, -0.4rem);
-            transform: translate3d(0, 0.4rem, -0.4rem);
+    -webkit-transform: translate3d(0, 1.2rem, -1rem);
+            transform: translate3d(0, 1.2rem, -1rem);
   }
 }
 @keyframes toThird {
   0% {
-    -webkit-transform: translate3d(0, 0.6rem, -0.6rem);
-            transform: translate3d(0, 0.6rem, -0.6rem);
+    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);
+            transform: translate3d(0, 1.8rem, -1.5rem);
   }
   100% {
-    -webkit-transform: translate3d(0, 0.4rem, -0.4rem);
-            transform: translate3d(0, 0.4rem, -0.4rem);
+    -webkit-transform: translate3d(0, 1.2rem, -1rem);
+            transform: translate3d(0, 1.2rem, -1rem);
   }
 }
 @-webkit-keyframes toSecond {
   0% {
-    -webkit-transform: translate3d(0, 0.4rem, -0.4rem);
-            transform: translate3d(0, 0.4rem, -0.4rem);
+    -webkit-transform: translate3d(0, 1.2rem, -1rem);
+            transform: translate3d(0, 1.2rem, -1rem);
   }
   100% {
-    -webkit-transform: translate3d(0, 0.2rem, -0.2rem);
-            transform: translate3d(0, 0.2rem, -0.2rem);
+    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);
+            transform: translate3d(0, 0.6rem, -0.5rem);
   }
 }
 @keyframes toSecond {
   0% {
-    -webkit-transform: translate3d(0, 0.4rem, -0.4rem);
-            transform: translate3d(0, 0.4rem, -0.4rem);
+    -webkit-transform: translate3d(0, 1.2rem, -1rem);
+            transform: translate3d(0, 1.2rem, -1rem);
   }
   100% {
-    -webkit-transform: translate3d(0, 0.2rem, -0.2rem);
-            transform: translate3d(0, 0.2rem, -0.2rem);
+    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);
+            transform: translate3d(0, 0.6rem, -0.5rem);
   }
 }
 @-webkit-keyframes toFirst {
   0% {
-    -webkit-transform: translate3d(0, 0.2rem, -0.2rem);
-            transform: translate3d(0, 0.2rem, -0.2rem);
+    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);
+            transform: translate3d(0, 0.6rem, -0.5rem);
   }
   100% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -118,8 +139,8 @@ li {
 }
 @keyframes toFirst {
   0% {
-    -webkit-transform: translate3d(0, 0.2rem, -0.2rem);
-            transform: translate3d(0, 0.2rem, -0.2rem);
+    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);
+            transform: translate3d(0, 0.6rem, -0.5rem);
   }
   100% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -253,4 +274,14 @@ li {
     -webkit-transform: rotate3d(0, 0, 1, -60deg);
             transform: rotate3d(0, 0, 1, -60deg);
   }
+}
+.nav li {
+  float: left;
+  width: 0.22rem;
+  height: 0.22rem;
+  border-radius: 1000px;
+  border: 1px solid black;
+}
+.nav li.active {
+  background: black;
 }
