@@ -130,34 +130,48 @@ gulp.task('vueify',function(){
 	)
 })
 
-const WEBPACK = [
-	//{ name: 'webpack-zeal', watched: ['./_mobile/src/*.*'], src: './_mobile/src/zeal.main.js', config: './_mobile/src/webpack.config.js', dest: './_mobile/js' },
-	{ name: 'webpack-mobile-main', src: './_mobile/main/src/main.jsx', dest: './_mobile/main/dist/', config: './_mobile/main/webpack.config.js', watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*'] },
-	{	name: 'webpack-mobile-vue', 
-		watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
-		src: './_mobile/vue/lib/main.js', 
-		config: './_mobile/vue/webpack.config.js', 
-		dest: './_mobile/vue/dist/' },
-	{	name: 'webpack-mobile-project', 
-		watched: ['./_mobile/project/lib/*.*','./_mobile/project/lib/*/*.*'], 
-		src: './_mobile/project/lib/main.js', 
-		config: './_mobile/project/webpack.config.js', 
-		dest: './_mobile/project/dist/' },
-	{	name: 'webpack-mobile-h5-olympics', 
-		watched: ['./_mobile/h5/olympics/lib/*.*'], 
-		src: './_mobile/h5/olympics/lib/main.js', 
-		config: './_mobile/h5/olympics/webpack.config.js', 
-		dest: './_mobile/h5/olympics/dist/' },
-	{	name: 'webpack-mobile-h5-school', 
-		watched: ['./_mobile/h5/school/lib/*.*','./_mobile/h5/school/lib/*/*.*'], 
-		src: './_mobile/h5/school/lib/main.js', 
-		config: './_mobile/h5/school/webpack.config.js', 
-		dest: './_mobile/h5/school/dist/' }
-];
+const WEBPACK = [{
+	name: 'webpack-mobile-main', 
+	src: './_mobile/main/src/main.jsx', 
+	dest: './_mobile/main/dist/', 
+	config: './_mobile/main/webpack.config.js', 
+	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
+},{
+	name: 'webpack-mobile-vue', 
+	watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
+	src: './_mobile/vue/lib/main.js', 
+	config: './_mobile/vue/webpack.config.js', 
+	dest: './_mobile/vue/dist/'
+},{
+	name: 'webpack-mobile-project', 
+	watched: ['./_mobile/project/lib/*.*','./_mobile/project/lib/*/*.*'], 
+	src: './_mobile/project/lib/main.js', 
+	config: './_mobile/project/webpack.config.js', 
+	dest: './_mobile/project/dist/'
+},{
+	name: 'webpack-mobile-h5-olympics', 
+	watched: ['./_mobile/h5/olympics/lib/*.*'], 
+	src: './_mobile/h5/olympics/lib/main.js', 
+	config: './_mobile/h5/olympics/webpack.config.js', 
+	dest: './_mobile/h5/olympics/dist/'
+},{
+	name: 'webpack-mobile-h5-school', 
+	watched: ['./_mobile/h5/school/lib/*.*','./_mobile/h5/school/lib/*/*.*'], 
+	src: './_mobile/h5/school/lib/main.js', 
+	config: './_mobile/h5/school/webpack.config.js', 
+	dest: './_mobile/h5/school/dist/',
+},{
+	name: 'webpack-mobile-h5-live', 
+	watched: ['./_mobile/h5/live/src/*.*'], 
+	src: './_mobile/h5/liv/src/main.js', 
+	config: './_mobile/h5/live/webpack.config.js', 
+	dest: './_mobile/h5/live/dist/'
+}];
 WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
 		return gulp.src( item.src )
 			.pipe( webpack( require(item.config) ) )
+			//.pipe( uglify() )
 			.pipe( gulp.dest(item.dest) );
 	});
 })

@@ -48,13 +48,13 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _reducer = __webpack_require__(2);
+	var _reducer = __webpack_require__(6);
 
-	var _Navbar = __webpack_require__(7);
+	var _Navbar = __webpack_require__(11);
 
-	var _Home = __webpack_require__(12);
+	var _Home = __webpack_require__(14);
 
-	var _Animations = __webpack_require__(13);
+	var _Animations = __webpack_require__(15);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62,8 +62,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(14);
 	__webpack_require__(16);
+	__webpack_require__(18);
 
 	var PropTypes = React.PropTypes;
 
@@ -144,304 +144,9 @@
 
 /***/ },
 /* 1 */,
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.$$reducer = undefined;
-
-	var _user = __webpack_require__(3);
-
-	var _shoppingCart = __webpack_require__(5);
-
-	var _notice = __webpack_require__(6);
-
-	function page() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case 'JUMP':
-				return action.name;
-			default:
-				return state;
-		}
-	}
-
-	var $$reducer = Redux.combineReducers({ user: _user.user, shoppingCart: _shoppingCart.shoppingCart, notice: _notice.notice });
-
-	exports.$$reducer = $$reducer;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.user = undefined;
-
-	var _common = __webpack_require__(4);
-
-	function user() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case 'LOGIN':
-				sessionStorage.userID = action.user.userID;
-				location.hash = 'home';
-				return { userID: action.user.userID };
-			case 'LOGOUT':
-				delete sessionStorage.userID;
-				return { userID: undefined };
-			default:
-				return state;
-		}
-	}
-
-	exports.user = user;
-
-/***/ },
+/* 2 */,
+/* 3 */,
 /* 4 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var $$rootDir = "http://localhost/fytpy/react/";
-	var $$phpDir = "http://localhost/fytpy/php/";
-	var $$itemDir = "http://localhost/fytpy/items/";
-	var $$imgDir = "http://localhost/fytpy/images/";
-
-	exports.$$rootDir = $$rootDir;
-	exports.$$phpDir = $$phpDir;
-	exports.$$itemDir = $$itemDir;
-	exports.$$imgDir = $$imgDir;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.shoppingCart = undefined;
-
-	var _common = __webpack_require__(4);
-
-	function shoppingCart() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-		var action = arguments[1];
-
-
-		switch (action.type) {
-			case 'ADD_TO_CART':
-				console.log(action);
-				fetch('/addToCart', {
-					method: 'POST',
-					headers: {
-						// 'Accept': 'application/json',
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({ itemID: action.itemID })
-				}).then(function (res) {
-					return res.json();
-				}).then(function (data) {
-					console.log('fuck');
-				}).catch(function (e, f, g) {
-					console.log(e, f, g);
-				});
-				return state;
-			default:
-				return state;
-		}
-	}
-
-	exports.shoppingCart = shoppingCart;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.notice = undefined;
-
-	var _common = __webpack_require__(4);
-
-	function notice() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? { tick: 0, text: '' } : arguments[0];
-		var action = arguments[1];
-
-		switch (action.type) {
-			case 'ALERT':
-				var newState = {
-					tick: state.tick + 1,
-					text: action.text
-				};
-				return newState;
-			default:
-				return state;
-		}
-	}
-
-	exports.notice = notice;
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	__webpack_require__(8);
-
-	var Navbar = function (_React$Component) {
-		_inherits(Navbar, _React$Component);
-
-		function Navbar() {
-			_classCallCheck(this, Navbar);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
-
-			_this.state = {
-				show: false
-			};
-			return _this;
-		}
-
-		_createClass(Navbar, [{
-			key: "toggle",
-			value: function toggle() {
-				if (this.state.show) {
-					this.setState({
-						show: false
-					});
-				} else {
-					this.setState({
-						show: true
-					});
-				}
-			}
-		}, {
-			key: "render",
-			value: function render() {
-				return React.createElement(
-					"div",
-					{ className: "NAVBAR" },
-					React.createElement(
-						"div",
-						{ className: "navicon", onClick: this.toggle.bind(this) },
-						React.createElement("i", { className: "fa fa-navicon" })
-					),
-					"MyHome",
-					React.createElement(
-						"div",
-						{ className: this.state.show ? 'box _show' : 'box' },
-						React.createElement(
-							"div",
-							{ className: "tab" },
-							React.createElement(
-								"a",
-								{ href: "#/home" },
-								"Home"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "tab" },
-							React.createElement(
-								"a",
-								{ href: "#/animations" },
-								"Animations"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "tab" },
-							React.createElement(
-								"a",
-								{ href: "./_mobile/farm/index.html" },
-								"Farm"
-							)
-						)
-					)
-				);
-			}
-		}]);
-
-		return Navbar;
-	}(React.Component);
-
-	exports.Navbar = Navbar;
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(9);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(11)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./Navbar.less", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./Navbar.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(10)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".NAVBAR {\n  box-sizing: border-box;\n  position: relative;\n  height: 44px;\n  line-height: 44px;\n  text-align: center;\n  font-size: 24px;\n  color: #333;\n  border-bottom: 1px solid #dddddd;\n}\n.NAVBAR .navicon {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 44px;\n  height: 44px;\n  font-size: 20px;\n  line-height: 44px;\n  text-align: center;\n}\n.NAVBAR .box {\n  position: absolute;\n  left: 0;\n  top: 100%;\n  width: 100%;\n  border-top: 1px solid #dddddd;\n  border-bottom: 1px solid #dddddd;\n  background: white;\n  font-size: 15px;\n  text-align: left;\n  display: none;\n  box-shadow: inset 0 1px 0 #fff, 0 8px 10px rgba(0, 0, 0, 0.15);\n}\n.NAVBAR .box .tab {\n  padding: 8px 15px;\n  line-height: normal;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 10 */
 /***/ function(module, exports) {
 
 	/*
@@ -497,7 +202,7 @@
 
 
 /***/ },
-/* 11 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -749,7 +454,304 @@
 
 
 /***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.$$reducer = undefined;
+
+	var _user = __webpack_require__(7);
+
+	var _shoppingCart = __webpack_require__(9);
+
+	var _notice = __webpack_require__(10);
+
+	function page() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'JUMP':
+				return action.name;
+			default:
+				return state;
+		}
+	}
+
+	var $$reducer = Redux.combineReducers({ user: _user.user, shoppingCart: _shoppingCart.shoppingCart, notice: _notice.notice });
+
+	exports.$$reducer = $$reducer;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.user = undefined;
+
+	var _common = __webpack_require__(8);
+
+	function user() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'LOGIN':
+				sessionStorage.userID = action.user.userID;
+				location.hash = 'home';
+				return { userID: action.user.userID };
+			case 'LOGOUT':
+				delete sessionStorage.userID;
+				return { userID: undefined };
+			default:
+				return state;
+		}
+	}
+
+	exports.user = user;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var $$rootDir = "http://localhost/fytpy/react/";
+	var $$phpDir = "http://localhost/fytpy/php/";
+	var $$itemDir = "http://localhost/fytpy/items/";
+	var $$imgDir = "http://localhost/fytpy/images/";
+
+	exports.$$rootDir = $$rootDir;
+	exports.$$phpDir = $$phpDir;
+	exports.$$itemDir = $$itemDir;
+	exports.$$imgDir = $$imgDir;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.shoppingCart = undefined;
+
+	var _common = __webpack_require__(8);
+
+	function shoppingCart() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var action = arguments[1];
+
+
+		switch (action.type) {
+			case 'ADD_TO_CART':
+				console.log(action);
+				fetch('/addToCart', {
+					method: 'POST',
+					headers: {
+						// 'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ itemID: action.itemID })
+				}).then(function (res) {
+					return res.json();
+				}).then(function (data) {
+					console.log('fuck');
+				}).catch(function (e, f, g) {
+					console.log(e, f, g);
+				});
+				return state;
+			default:
+				return state;
+		}
+	}
+
+	exports.shoppingCart = shoppingCart;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.notice = undefined;
+
+	var _common = __webpack_require__(8);
+
+	function notice() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? { tick: 0, text: '' } : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'ALERT':
+				var newState = {
+					tick: state.tick + 1,
+					text: action.text
+				};
+				return newState;
+			default:
+				return state;
+		}
+	}
+
+	exports.notice = notice;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(12);
+
+	var Navbar = function (_React$Component) {
+		_inherits(Navbar, _React$Component);
+
+		function Navbar() {
+			_classCallCheck(this, Navbar);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+
+			_this.state = {
+				show: false
+			};
+			return _this;
+		}
+
+		_createClass(Navbar, [{
+			key: "toggle",
+			value: function toggle() {
+				if (this.state.show) {
+					this.setState({
+						show: false
+					});
+				} else {
+					this.setState({
+						show: true
+					});
+				}
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "NAVBAR" },
+					React.createElement(
+						"div",
+						{ className: "navicon", onClick: this.toggle.bind(this) },
+						React.createElement("i", { className: "fa fa-navicon" })
+					),
+					"MyHome",
+					React.createElement(
+						"div",
+						{ className: this.state.show ? 'box _show' : 'box' },
+						React.createElement(
+							"div",
+							{ className: "tab" },
+							React.createElement(
+								"a",
+								{ href: "#/home" },
+								"Home"
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "tab" },
+							React.createElement(
+								"a",
+								{ href: "#/animations" },
+								"Animations"
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "tab" },
+							React.createElement(
+								"a",
+								{ href: "./_mobile/farm/index.html" },
+								"Farm"
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Navbar;
+	}(React.Component);
+
+	exports.Navbar = Navbar;
+
+/***/ },
 /* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(13);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Navbar.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Navbar.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".NAVBAR {\n  box-sizing: border-box;\n  position: relative;\n  height: 44px;\n  line-height: 44px;\n  text-align: center;\n  font-size: 24px;\n  color: #333;\n  border-bottom: 1px solid #dddddd;\n}\n.NAVBAR .navicon {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 44px;\n  height: 44px;\n  font-size: 20px;\n  line-height: 44px;\n  text-align: center;\n}\n.NAVBAR .box {\n  position: absolute;\n  left: 0;\n  top: 100%;\n  width: 100%;\n  border-top: 1px solid #dddddd;\n  border-bottom: 1px solid #dddddd;\n  background: white;\n  font-size: 15px;\n  text-align: left;\n  display: none;\n  box-shadow: inset 0 1px 0 #fff, 0 8px 10px rgba(0, 0, 0, 0.15);\n}\n.NAVBAR .box .tab {\n  padding: 8px 15px;\n  line-height: normal;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -792,7 +794,7 @@
 	exports.Home = Home;
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -844,7 +846,7 @@
 					hrefs: ['./_mobile/canvas/rain.html', './_mobile/canvas/snowfall.html', './_mobile/canvas/fire.html']
 				}, {
 					title: 'h5',
-					hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/project/index.html']
+					hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html']
 				}]
 			};
 			return _this;
@@ -899,46 +901,6 @@
 	exports.Animations = Animations;
 
 /***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(15);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(11)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./common.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./common.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(10)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-size: 100px;\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  width: 100%;\n  height: 1vh;\n  overflow: hidden;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-body {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-body.last {\n  border-bottom: none!important;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n@media (-webkit-min-device-pixel-ratio: 2) {\n}\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\na {\n  text-decoration: none;\n}\na:link {\n  color: #e91e63;\n}\na:visited {\n  color: #e91e63;\n}\na:hover {\n  color: #e91e63;\n}\na:active {\n  color: #e91e63;\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\n@media screen and (max-width: 750px) {\n  body {\n    font-size: 4vw!important;\n  }\n}\n.container {\n  width: 100%;\n  padding-top: 4vw;\n  padding-left: 4vw;\n  padding-right: 4vw;\n}\n.section {\n  padding-top: 2vw;\n  padding-bottom: 2vw;\n  border-bottom: 1px solid lightgrey;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -948,14 +910,14 @@
 	var content = __webpack_require__(17);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(11)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./index.less", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./index.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./common.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./common.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -968,12 +930,52 @@
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(10)();
+	exports = module.exports = __webpack_require__(4)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".ANIMATIONS {\n  width: 100%;\n  padding-top: 15px;\n}\n@keyframes fuck {\n  100% {\n    background: red;\n  }\n}\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-size: 100px;\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  width: 100%;\n  height: 1vh;\n  overflow: hidden;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-body {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-body.last {\n  border-bottom: none!important;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\na {\n  text-decoration: none;\n}\na:link {\n  color: #e91e63;\n}\na:visited {\n  color: #e91e63;\n}\na:hover {\n  color: #e91e63;\n}\na:active {\n  color: #e91e63;\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\n@media screen and (max-width: 750px) {\n  body {\n    font-size: 4vw!important;\n  }\n}\n.container {\n  width: 100%;\n  padding-top: 4vw;\n  padding-left: 4vw;\n  padding-right: 4vw;\n}\n.section {\n  padding-top: 2vw;\n  padding-bottom: 2vw;\n  border-bottom: 1px solid lightgrey;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(19);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./index.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./index.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ANIMATIONS {\n  width: 100%;\n  padding-top: 15px;\n}\n@-webkit-keyframes fuck {\n  100% {\n    background: red;\n  }\n}\n@keyframes fuck {\n  100% {\n    background: red;\n  }\n}\n", ""]);
 
 	// exports
 

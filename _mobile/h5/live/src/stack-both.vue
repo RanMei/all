@@ -1,0 +1,307 @@
+<template>
+	<div class="space">
+		<ul class="stack"
+			@touchstart="touchstart($event)"
+			@touchmove="touchmove($event)"
+			@touchend="touchend($event)">
+			<li v-for="a in cards" 
+				class="card card{{a.id}} {{a._class}}"
+				style="">
+				<div class="title"></div>
+				<p>
+					{{a.id}}
+					云落枫，华夏医学天才，意外身亡，魂附于龙啸大陆将军府废物大小姐。 这废物不但文不成武不就，更是胸大无脑，骄横任性，有了太子这样完美的未婚夫还不够，居然当众强抢美男，导致太子一怒之下解除婚约。 可废物受不了这个刺激，竟是上吊了结此生。再睁眼，她已非昔日废物大小姐。 契约神典，怀揣灵药空间，妙手回春，医绝天下！
+				</p>
+				<img class="cover" :src="img.cover"/>
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<li v-for="(a,i) in nav"
+			class="{{i===dot?'active':''}}"></li>
+	</div>
+</template>
+
+<script>
+	module.exports = {
+		data: function(){
+			return {
+				img: {
+					cover: './img/cover.png'
+				},
+
+				cards: [],
+
+				nav: [],
+				dot: 0,
+
+				switching: false,
+				scrolling: false,
+				X1: null,
+				X2: null,
+				Y1: null,
+				Y2: null,
+				moveCount: 0
+			}
+		},
+		created: function(){
+			var self = this;
+			this.cards = [{
+				id: 4,
+				_class: '',
+				animation: '',
+				style: ''
+			},{
+				id: 3,
+				_class: '',
+				animation: '',
+				style: ''
+			},{
+				id: 2,
+				_class: ''
+			},{
+				id: 1,
+				_class: ''
+			},{
+				id: 0,
+				_class: ''
+			}];
+			this.nav = [0,1,2,3,4];
+			window.addEventListener('load',function(){
+				self.cards[self.current]._class = 'toFirst';
+				self.cards[self.current-1]._class = 'toSecond';
+				self.cards[self.current-2]._class = 'toThird';
+			})
+		},
+		ready: function(){
+			this.length = this.cards.length;
+			this.current = this.length-1;
+		},
+		methods: {
+			play: function(direction){
+				var self = this;
+				if( !self.switching ){
+					self.switching = true;
+					if( self.dot<self.length-1 ){
+						self.dot++;
+					}else{
+						self.dot = 0;
+					}
+					console.log('true')
+					this.cards[this.current]._class = 'wira-'+direction;
+					this.cards[this.current-1]._class = 'toFirst';
+					this.cards[this.current-2]._class = 'toSecond';
+					this.cards[this.current-3]._class = 'toThird';
+					setTimeout(function(){
+						//cards[self.current].classList.remove('wira-'+direction);
+						//self.cards[self.current].animation = '';
+						self.cards.unshift( self.cards.splice( -1,1 )[0] );
+						self.cards[0]._class = '';
+						self.cards[0].style = '';
+						self.switching = false;
+					},600);
+				};
+			},
+			touchstart: function(e){
+				this.moveCount = 0;
+				this.scrolling = false;
+				this.X1 = e.changedTouches[0].pageX;
+				this.Y1 = e.changedTouches[0].pageY;
+			},
+			touchmove: function(e){
+				this.moveCount++;
+				// if( this.scrolling ){
+				// 	e.preventDefault();
+				// }
+				if( this.moveCount===1 ){
+					this.X2 = e.changedTouches[0].pageX;
+					this.Y2 = e.changedTouches[0].pageY;
+					if( Math.abs(this.Y2-this.Y1)>Math.abs(this.X2-this.X1) ){
+						this.scrolling = true;
+					}else{
+						e.preventDefault();
+					}
+				}
+			},
+			touchend: function(e){
+				if( this.scrolling===false ){
+					this.X2 = e.changedTouches[0].pageX;
+					var distance = this.X2 - this.X1;
+					if( distance>0 ){
+						this.play('right');
+					}else if( distance<0 ){
+						this.play('left');
+					}
+				};
+			}
+		}
+	}
+</script>
+
+<style lang="less">
+.space {
+	width: 100%;
+	padding: 60vw 0 1.4rem 0;
+	overflow-x: hidden;
+}
+
+.stack {
+	box-sizing: border-box;
+	@width: 80vw;
+	position: relative;
+	width: 6.56rem; height: 5.32rem;
+	margin: auto;
+	perspective: 4rem;
+	.card {
+		position: absolute; left: 0; top: 0;
+		width: 100%; height: 100%;
+		transform: translate3d(7rem,0,0);
+		border-radius: 0.05rem;
+		border: 1px solid #d5d5d5;
+		background: white!important;
+		box-shadow: 0 0.1rem 0.5rem #cbcbcb;
+		.title {
+			box-sizing: border-box;
+			width: 100%; height: 0.94rem;
+			margin-top: 0.58rem;
+			margin-bottom: 0.6rem;
+			border-left: 0.08rem solid black;
+		}
+		p {
+			padding: 0 0.44rem;
+			font-size: 0.24rem;
+			line-height: 0.36rem;
+			color: #9b9b9b;
+		}
+		img {
+			position: absolute; right: 0.32rem; top: -1.5rem;
+			width: 2.8rem;
+		}
+		&.card0 {
+			background: #91C794;
+			//transform: translate3d(0,-8vw,-8vw);
+		}
+		&.card1 {
+			background: #9993C1;
+			//transform: translate3d(0,-6vw,-6vw);
+		}
+		&.card2 {
+			background: #B2DFDB;
+			//transform: translate3d(0,-4vw,-4vw);
+		}
+		&.card3 {
+			background: #FBCBBD;
+			//transform: translate3d(0,-2vw,-2vw);
+		}
+		&.card4 {
+			background: #FFF59D;
+			//animation: leave 0.6s forwards;
+		}
+		&.leave {
+			animation: leave 0.6s forwards;
+		}
+		&.toFirst {
+			animation: toFirst 0.6s forwards;
+		}
+		&.toSecond {
+			animation: toSecond 0.6s forwards;
+		}
+		&.toThird {
+			animation: toThird 0.6s forwards;
+		}
+		&.wira-right {
+			transform-origin: 250% 50%;
+			animation-timing-function: cubic-bezier(0.3,1,0.3,1);
+			animation: wira-right 1s forwards;
+		}
+		&.wira-left {
+			transform-origin: -150% 50%;
+			animation-timing-function: cubic-bezier(0.3,1,0.3,1);
+			animation: wira-left 1s forwards;
+		}
+	}
+	@keyframes toThird {
+		0% {
+			transform: translate3d(0,1.8rem,-1.5rem);
+		}
+		100% {
+			transform: translate3d(0,1.2rem,-1rem);
+		}
+	}
+	@keyframes toSecond {
+		0% {
+			transform: translate3d(0,1.2rem,-1rem);
+		}
+		100% {
+			transform: translate3d(0,0.6rem,-0.5rem);
+		}
+	}
+	@keyframes toFirst {
+		0% {
+			transform: translate3d(0,0.6rem,-0.5rem);
+		}
+		100% {
+			transform: translate3d(0,0,0);
+		}
+	}
+	@keyframes leave {
+		0% {
+			transform: translate3d(0,0,0);
+		}
+		100% {
+			opacity: 0;
+			transform: translate3d(3rem,0,0) rotate3d(0,0,1,20deg);
+		}
+	}
+	@keyframes eka-right {
+		0% {
+			transform: translate3d(0,0,0);
+		}
+		100% {
+			opacity: 0;
+			transform: translate3d(150%,-50%,0) rotate3d(0,0,1,-20deg);
+		}
+	}
+	@keyframes wira-right {
+		0%,100% {
+			transform-origin: 250% 50%;
+			animation-timing-function: cubic-bezier(0.3,1,0.3,1);
+		}
+		0% {
+			transform: translate3d(0,0,0);
+		}
+		100% {
+			opacity: 0;
+			transform: rotate3d(0,0,1,60deg);;
+		}
+	}
+	@keyframes wira-left {
+		0%,100% {
+			transform-origin: -150% 50%;
+			animation-timing-function: cubic-bezier(0.3,1,0.3,1);
+		}
+		0% {
+			transform: translate3d(0,0,0);
+		}
+		100% {
+			opacity: 0;
+			transform: rotate3d(0,0,1,-60deg);;
+		}
+	}
+}
+
+.nav {
+	display: table;
+	margin: auto;
+	li {
+		float: left;
+		width: 0.22rem; height: 0.22rem;
+		margin: 0 0.04rem;
+		border-radius: 1000px;
+		border: 1px solid black;
+		&.active {
+			background: black;
+		}
+	}
+}
+</style>
