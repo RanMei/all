@@ -68,12 +68,25 @@ class Signin extends React.Component {
 		// 	}				
 		// })
 	}
+	loginAsGuest(){
+
+		this.props.act({
+			type: 'LOGIN',
+			user: {
+				userID: '游客'
+			}
+		})
+		this.props.act({
+			type: 'ALERT',
+			text: '登录成功！'
+		})
+	}
 	render(){
 		return (
 			<div className="SIGN_IN">
 
 				<div className="header">
-					登录
+					登录<span className="a-guest" onClick={this.loginAsGuest.bind(this)}>游客登录 ></span>
 				</div>
 
 				<input type="text" name="user_id" placeholder="手机号/邮箱" 
@@ -82,11 +95,8 @@ class Signin extends React.Component {
 
 				<a className="login" onClick={this.login.bind(this)}>登录</a>
 				<div className="options">
-					<p>
-						<a href="#/signup">注册账号</a>
-						<span>|</span>
-						<a href="retrive_password.html">忘记密码</a>
-					</p>
+					<a className="a-signup" href="#/signup">注册账号</a>
+					<a className="a-retrive" href="retrive_password.html">忘记密码</a>
 				</div>
 
 				<Navbar name="mine"/>

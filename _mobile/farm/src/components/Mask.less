@@ -1,0 +1,21 @@
+@import (reference) '../common.less';
+
+.MASK {
+	position: fixed; left: 0; top: 0; z-index: 9999;
+	width: 100%; height: 100%;
+	background: rgba(0,0,0,0.8);
+	._panel {
+		position: absolute; left: 0; top: 0; bottom: 0; right: 0;
+		margin: auto;
+		width: 6rem; height: 3rem;
+		border-radius: 0.05rem;
+		background: white;
+		._header {
+			box-sizing: border-box;
+			padding: 0.2rem 0;
+			margin: 0 0.2rem;
+			border-bottom: 1px solid @grey-border;
+			font-size: 0.26rem; text-align: center;
+		}
+	}
+}

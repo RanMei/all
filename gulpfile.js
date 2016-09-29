@@ -53,9 +53,11 @@ var LESS = [
 	{ name: 'less-mobile-vue', src: './_mobile/vue/less/*.less', dest: './_mobile/vue/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
-	{ name: 'less-farm', 
+	{
+		name: 'less-farm', 
 		src: ['./_mobile/farm/src/*.less','./_mobile/farm/src/components/*.less'], 
-		dest: './_mobile/farm/css' },
+		dest: './_mobile/farm/dist'
+	},
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
 	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
 	{ name: 'less-button', src: './_mobile/button/less/*.less', dest: './_mobile/button/css' },
@@ -77,7 +79,7 @@ LESS.forEach(function(elem){
 })
 
 var BROWSERIFY = [
-	{ name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
+	// { name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
 	{ 	name: 'browserify-mobile-zeal', 
@@ -131,6 +133,12 @@ gulp.task('vueify',function(){
 })
 
 const WEBPACK = [{
+	name: 'webpack-mobile-farm', 
+	src: './_mobile/farm/src/main.jsx', 
+	dest: './_mobile/farm/dist/', 
+	config: './_mobile/farm/webpack.config.js', 
+	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/*/*.*']
+},{
 	name: 'webpack-mobile-main', 
 	src: './_mobile/main/src/main.jsx', 
 	dest: './_mobile/main/dist/', 

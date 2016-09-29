@@ -55,13 +55,16 @@ console.debug( 'Redux: store created.')
 console.debug( 'Redux: state initialized',$$store.getState() )
 
 
-import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
-import {Item} from './components/Item.jsx';
-import {CommentBox} from './components/CommentBox.jsx';
-import {ConfirmOrder} from './components/ConfirmOrder.jsx';
-import {Navbar} from './components/Navbar.jsx';
+import {Mask} from './components/Mask.jsx';
 import {Notice} from './components/Notice.jsx';
 import {NoticePretty} from './components/NoticePretty.jsx';
+
+import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
+import {Item} from './components/Item.jsx';
+
+import {ConfirmOrder} from './components/ConfirmOrder.jsx';
+import {Navbar} from './components/Navbar.jsx';
+
 import {Signin} from './components/Signin.jsx';
 import {Signup} from './components/Signup.jsx';
 import {Member} from './components/Member.jsx';
@@ -77,7 +80,8 @@ class App extends React.Component {
 		console.debug( '<App/> rendering, State:',$$store.getState() );
 		return (
 			<div>
-				<NoticePretty notice={this.props.notice}/>
+				<Mask/>
+				<Notice notice={this.props.notice}/>
 				{this.props.children}
 			</div>
 		);

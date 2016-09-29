@@ -1,36 +1,41 @@
+require('./Notice.less');
+
 class Notice extends React.Component {
 	constructor(){
 		super();
-		this.style = {
-			notice: {
-				position: 'fixed',
-				left: 0,
-				top: 0,
-				bottom: 0,
-				right: 0,
-				margin: 'auto',
-				width: '3rem',
-				height: '1rem',
-				borderRadius: '0.1rem',
-				background: 'black',
-				opacity: '0.5',
-				color: 'white',
-				textAlign: 'center',
-				fontSize: '0.14rem',
-				lineHeight: '1rem',
-				zIndex: '1000',
-				display: 'none'
-			}
+		this.state = {
+			show: false
 		}
+	}
+	componentWillReceiveProps(newProps){
+		console.debug('<NoticePretty/> newProps');
+		if( newProps.notice.tick!==this.props.notice.tick ){
+			this.showOnce();
+		}
+	}
+	showOnce(){
+		var self = this;
+		this.setState({
+			show: true
+		})
+		setTimeout(()=>{
+			this.setState({
+				show: false
+			})
+		},1200)
 	}
 	render(){
 		var self = this;
 		return (
-			<p className={this.props.shown===true?'shown':''} style={this.style.notice}>
-				{self.props.text}
+			<p className="NOTICE" style={{display:(this.state.show===true?'block':'none')}}>
+				{self.props.notice.text}
 			</p>
 		)
 	}
+}
+
+Notice.defaultProps = {
+	notice: {}
 }
 
 export {Notice};

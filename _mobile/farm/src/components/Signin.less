@@ -8,11 +8,16 @@
 		position: relative;
 		width: 100%; height: 1rem;
 		margin-bottom: .20rem;
-		padding-left: 0.2rem;
+		padding: 0 0.2rem;
 		background: white;
 		border-bottom: 1px solid @grey-border;
 		overflow: hidden;
 		font-size: 0.3rem; line-height: 1rem;
+		.a-guest {
+			float: right;
+			font-size: 0.24rem;
+			color: @grey-text;
+		}
 	}
 
 	input {
@@ -24,8 +29,8 @@
 		border: 1px solid @grey-border;
 		font-size: 0.32rem; text-indent: 0.20rem;
 		&:focus {
-			border: 1px solid @blue;
-			box-shadow: 0 0 3px @blue;
+			border: 1px solid @grey-text;
+			//box-shadow: 0 0 3px @blue;
 		}
 	}
 	.login {
@@ -37,11 +42,19 @@
 		line-height:0.80rem;
 		color:white;
 		font-size:0.32rem;
-		margin:0 auto 2rem auto;
+		margin: 0 auto 0.3rem auto;
 		display:block;
 	}
-	.options {text-align:center;font-size:0.32rem;color:#999999;}
-	.options span {margin:0 0.30rem 0 0.30rem;}
+	.options {
+		padding: 0 0.3rem;
+		font-size: 0.24rem; color: @grey-text;
+		.a-signup {
+			float: left;
+		}
+		.a-retrive {
+			float: right;
+		}
+	}
 	.options a:link {color: @grey-text;}
 	.options a:visited {color: @grey-text;}
 }

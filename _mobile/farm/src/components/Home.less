@@ -1,58 +1,38 @@
-@import '../common.less';
+@import (reference) '../common.less';
 
 .HOME {
 	background: @grey-bg;
 	.searchbar {
-		position: relative;
-		width: 100%;
-		height: 1.10rem;
+		position: fixed; left: 0; top: 0;
+		width: 100%; height: 0.8rem;
+		background: rgba(255,255,255,0.6);
 		overflow:hidden;
+		z-index: 10;
 		.search {
 			position: relative;
 			width: 6.20rem;
 			height: .60rem;
 			border-radius: .30rem;
 			background: white;
-			box-shadow: 0 0 .15rem grey;
+			//box-shadow: 0 0 .15rem grey;
 			margin: auto;
-			margin-top: .25rem;
+			margin-top: 0.1rem;
+			.icon {
+				float: left;
+				width: 1rem;
+				text-align: center;
+				color: @grey-text;
+				font-size: 0.3rem;
+				line-height: 0.6rem;
+			}
 			img {width:0.35rem;margin:.10rem .40rem 0 .20rem;float:left;}
-			input {height:.55rem;display:block;font-size:0.288rem;border:none;}
-		}
-	}
-
-	.Swiper {
-		position: relative;
-		width: 100%;
-		height: 4.9rem;
-		margin-bottom: 0.2rem;
-		overflow: hidden;
-		.train {
-			.item {
-				float: left;
-				img {
-					width: 100%;
-					display: block;
-				}
-			}
-		}
-		.pagination {
-			position: absolute;
-			left: 2.91rem;
-			bottom: 0.2rem;
-			padding: 0.05rem 0.05rem 0.05rem 0.05rem;
-			border-radius: 0.11rem;
-			background: white;
-			.dot {
-				float: left;
-				width: 0.12rem;
-				height: 0.12rem;
-				margin: 0 0.1rem 0 0.1rem;
-				border-radius: 50%;
-				background: grey;
-			}
-			.dot.active {
-				background: @green;
+			input {
+				font-family: 'Microsoft Yahei';
+				display: block;
+				-webkit-appearance: none;
+				//padding: 0.15rem 0;
+				font-size: 0.26rem; line-height: 0.6rem; 
+				border: none;
 			}
 		}
 	}
@@ -64,6 +44,38 @@
 	.slider-tabs {position:absolute;width:1.29rem;height:.22rem;border-radius:.11rem;background:white;padding:0 .10rem 0 .10rem;left:2.8rem;top:4.50rem;}
 	.slider-tabs li {width:.12rem;height:.12rem;border-radius:.06rem;background:grey;float:left;margin:.05rem .10rem .05rem .10rem;}
 	.slider-tabs .selected {background:#66CC66;}
+
+	.block-2 {
+		//border-bottom: 1px solid @grey-border;
+		overflow: hidden;
+		.item-2 {
+			display: block;
+			float: left; box-sizing: border-box;
+			width: 50%;
+			border-bottom: 1px solid @grey-border;
+			&:nth-child(odd) {
+				border-right: 1px solid @grey-border;
+			}
+			img {
+				width: 100%;
+			}
+			.tag {
+				padding: 0.2rem;
+				background: white;
+				.name {
+					height: 0.72rem;
+					font-size: @f-normal;
+					line-height: 0.36rem;
+					overflow: hidden;
+					color: @grey-text;
+				}
+				.price {
+					font-size: 0.24rem;
+					color: @red;
+				}
+			}
+		}
+	}
 
 	.panel {
 		position: relative;
@@ -92,11 +104,16 @@
 				a {
 					width: 2.60rem;
 					float: left;
-					.name {color:black;}
+					.name {
+						height: 0.6rem;
+						font-size: 0.2rem; line-height: 0.3rem;
+						color: black;
+						overflow: hidden;
+					}
 					.thumbnail {width:2.60rem;height:2.60rem;display:block;}
 					p {width:2.40rem;margin:.05rem 0 .05rem 0;font-size:.2rem;}
 					.description {color:grey;}
-					.price {color: @orange;}
+					.price {color: @red;}
 				}
 			}
 		}

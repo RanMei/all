@@ -24,31 +24,43 @@ class Item extends React.Component {
 		};
 		window.scroll(0,0);
 		console.log('<Item/> constructing',this.props,this.state);
-		this.getItem();
 	}
 	componentWillMount(){
+		this.getItem();
 	}
 	getItem(){
 		var self = this;
-		var itemID = location.hash.match(/\?id=(\w+)/)[1];
-		fetch('/getItem', {
-			method: 'POST',
-			headers: {
-				// 'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({itemID:itemID})
-		}).then(function(res){
-			return res.json();
-		}).then(function(data){
-			console.log('<Item/> item received');
-			data.quantity = 1;
-			self.setState({
-				item: data
-			})	
-		}).catch(function(e,f,g){
-			console.log(e,f,g);
+		var id = location.hash.match(/\?id=(\w+)/)[1];
+		var item;
+		var items = require('../data/items.js').dataItems;
+		items.forEach((a)=>{
+			if( id===a.id ){
+				item = a;
+				item.quantity = 1;
+			}
 		})
+		self.setState({
+			item: item
+		})
+
+		// fetch('/getItem', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		// 'Accept': 'application/json',
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({itemID:itemID})
+		// }).then(function(res){
+		// 	return res.json();
+		// }).then(function(data){
+		// 	console.log('<Item/> item received');
+		// 	data.quantity = 1;
+		// 	self.setState({
+		// 		item: data
+		// 	})	
+		// }).catch(function(e,f,g){
+		// 	console.log(e,f,g);
+		// })
 	}
 	increase(){
 		this.state.item.quantity++;
@@ -73,6 +85,14 @@ class Item extends React.Component {
 		});
 	}
 	addToCart(){
+		var cart = (typeof sessionStorage.shoppingCart==='string')? JSON.parse( sessionStorage.shoppingCart ):[];
+		cart.push( this.state.item );
+		sessionStorage.shoppingCart = JSON.stringify(cart);
+		console.log(sessionStorage)
+		this.props.act({
+			type: 'ALERT',
+			text: '成功加入购物车'
+		});
 		// Perform an action.
 		this.props.act({
 			type:'ADD_TO_CART',
@@ -85,57 +105,54 @@ class Item extends React.Component {
 		sessionStorage.items = JSON.stringify([this.state.item]);
 		location.hash = 'confirm_order';
 	}
+	back(){
+    	console.log(111)
+    	history.go(-1);
+    }
 	render(){
 		console.log('<Item/> rendering',this.props,this.state);
 		var item = this.state.item;
 		return (
 			<div className="ITEM">
-
-				<Swiper items={swiperItems}/>
-			
-				<div className="desc">
-					<div className="upper">
-						<h1 className="price">{item.price.toFixed(2)}</h1>
-						<div className="counter">
-							<p className="minus" onClick={this.decrease.bind(this)}>-</p>
-							<p className="quantity">{item.quantity}</p>
-							<p className="plus" onClick={this.increase.bind(this)}>+</p>
-						</div>
-					</div>
-					<div className="lower">
-						<p>{item.name}</p>
-						<p>{item.desc}</p>
-					</div>
+				<div className="topbar">
+					<i className="fa fa-angle-left" onClick={this.back.bind(this)}></i> <span className="_text">商品详情</span>
 				</div>
-				
-				<div className="item_spec">
-					<p>商品规格</p>
-					<div className="spec spec1 selected">24粒/盒</div>
-					<div className="spec spec2">8粒/盒</div>
+				<Swiper items={swiperItems}/>
+				<div className="info">
+					<p className="name">{item.name}</p>
+					<p className="price">￥{item.price.toFixed(2)}</p>
+				</div>
+				<div className="block-quantity">
+					<p>购买数量</p>
+					<div className="counter">
+						<p className="minus" onClick={this.decrease.bind(this)}>-</p>
+						<p className="quantity">{item.quantity}</p>
+						<p className="plus" onClick={this.increase.bind(this)}>+</p>
+					</div>
 				</div>
 				
 				<div className="details">
+					<img src={'./img/items/'+item.id+'/d0.jpg'}/>
+				</div>
+
 					<ul>
 						<li className="selected">商品介绍</li>
 						<li>商品参数</li>
 						<li>用户评价</li>
 					</ul>
-					<div className="line">
-					</div>
-					<div className="square">
-						<img src="0001/d0.jpg"/>
-						<img src="0001/d1.jpg"/>
-						<img src="0001/d2.jpg"/>
-					</div>
-				</div>
 			
 				<div className="item_nav_shadow"></div>
 				<div className="item_nav">
-					<a href="#/home" className="home">	
-						<img src="./img/homepage.png"></img>
-						<p>首页</p>
-					</a>
+					<div className="favor">
+						<p className="icon-star">
+							<i className="fa fa-star-o"></i>
+						</p>
+						<p className="text-favor">
+							收藏
+						</p>
+					</div>
 					<a className="to_cart" onClick={this.addToCart.bind(this)}>加入购物车</a>
+					<a className="to-buy" onClick={this.buyNow.bind(this)}>立即购买</a>
 				</div>
 			</div>
 		)

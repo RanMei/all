@@ -1,7 +1,31 @@
 .ITEM {
   width: 100%;
   height: 15rem;
-  background: #EFEFEF;
+  background: #ECEBEB;
+}
+.ITEM .topbar {
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 0.8rem;
+  margin-bottom: .20rem;
+  padding: 0 0.2rem;
+  background: white;
+  border-bottom: 1px solid #dfdfdf;
+  overflow: hidden;
+  font-size: 0.3rem;
+  line-height: 0.8rem;
+}
+.ITEM .topbar i {
+  font-size: 0.5rem;
+  line-height: 0.8rem;
+}
+.ITEM .topbar ._text {
+  font-size: 0.3rem;
+  line-height: 0.8rem;
 }
 .ITEM .slider {
   position: relative;
@@ -76,6 +100,73 @@
 .ITEM .Swiper .pagination .dot.active {
   background: #5EA626;
 }
+.ITEM .info {
+  padding: 0.1rem 0.15rem;
+  border-bottom: 1px solid #dfdfdf;
+  background: white;
+}
+.ITEM .info .name {
+  width: 5.6rem;
+  font-size: 0.26rem;
+  line-height: 0.4rem;
+  font-weight: normal;
+}
+.ITEM .info .price {
+  font-size: 0.4rem;
+  color: #DD2727;
+}
+.ITEM .block-quantity {
+  padding: 0.2rem 0.15rem;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 0.2rem;
+  font-size: 0.28rem;
+  background: white;
+  overflow: hidden;
+}
+.ITEM .block-quantity p {
+  float: left;
+  line-height: 0.5rem;
+}
+.ITEM .block-quantity .counter {
+  float: right;
+}
+.ITEM .block-quantity .counter .minus {
+  float: left;
+  box-sizing: border-box;
+  width: 0.50rem;
+  height: 0.50rem;
+  border: 1px solid #dfdfdf;
+  background: white;
+  font-size: .32rem;
+  line-height: .50rem;
+  text-align: center;
+  cursor: pointer;
+}
+.ITEM .block-quantity .counter .quantity {
+  box-sizing: border-box;
+  float: left;
+  width: 1rem;
+  height: .50rem;
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  font-size: 0.28rem;
+  line-height: .50rem;
+  text-align: center;
+}
+.ITEM .block-quantity .counter .plus {
+  box-sizing: border-box;
+  float: left;
+  width: 0.50rem;
+  height: 0.50rem;
+  border: 1px solid #dfdfdf;
+  font-size: 0.28rem;
+  line-height: 0.50rem;
+  text-align: center;
+  cursor: pointer;
+}
+.ITEM .details img {
+  width: 100%;
+}
 .ITEM .desc {
   position: relative;
   width: 100%;
@@ -97,41 +188,6 @@
   top: .30rem;
   color: #FF9900;
   font-size: .4rem;
-}
-.ITEM .desc .upper .counter {
-  float: right;
-  margin-top: .25rem;
-}
-.ITEM .desc .upper .counter .minus {
-  width: .50rem;
-  height: .50rem;
-  border: 1px solid black;
-  font-size: .32rem;
-  line-height: .50rem;
-  text-align: center;
-  float: left;
-  color: grey;
-  cursor: pointer;
-}
-.ITEM .desc .upper .counter .quantity {
-  width: 1rem;
-  height: .50rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  font-size: .32rem;
-  line-height: .50rem;
-  text-align: center;
-  float: left;
-}
-.ITEM .desc .upper .counter .plus {
-  width: .50rem;
-  height: .50rem;
-  border: 1px solid black;
-  font-size: .32rem;
-  line-height: .50rem;
-  text-align: center;
-  float: left;
-  cursor: pointer;
 }
 .ITEM .desc .lower {
   position: relative;
@@ -237,10 +293,47 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 7.20rem;
-  height: .80rem;
+  width: 100%;
+  height: 0.80rem;
   background: white;
-  border-top: 1px solid grey;
+  border-top: 1px solid #dfdfdf;
+}
+.ITEM .item_nav .favor {
+  float: left;
+  width: 33.333333%;
+  height: 0.8rem;
+  font-size: 0.3rem;
+  line-height: 0.3rem;
+  text-align: center;
+}
+.ITEM .item_nav .favor .icon-star {
+  padding: 0.1rem 0;
+}
+.ITEM .item_nav .favor .text-favor {
+  font-size: 0.24rem;
+  text-align: center;
+}
+.ITEM .item_nav .to_cart {
+  float: left;
+  display: block;
+  width: 33.333333%;
+  height: 0.80rem;
+  background: orange;
+  color: white;
+  line-height: 0.80rem;
+  text-align: center;
+  font-size: 0.28rem;
+}
+.ITEM .item_nav .to-buy {
+  float: left;
+  display: block;
+  width: 33.333333%;
+  height: 0.8rem;
+  background: #DD2727;
+  color: white;
+  line-height: 0.8rem;
+  text-align: center;
+  font-size: 0.28rem;
 }
 .ITEM .home:link {
   float: left;
@@ -260,18 +353,4 @@
 .ITEM .home p {
   font-size: 0.19rem;
   text-align: center;
-}
-.ITEM .to_cart {
-  float: left;
-  width: 3.20rem;
-  height: .60rem;
-  margin: 0.1rem 0 0 0;
-  background: #FF9933;
-  color: white;
-  border-radius: .05rem;
-  border: 1px solid black;
-  line-height: .60rem;
-  text-align: center;
-  font-size: .2rem;
-  display: block;
 }

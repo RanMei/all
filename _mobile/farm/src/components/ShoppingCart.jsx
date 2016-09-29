@@ -50,19 +50,7 @@ class ShoppingCart extends React.Component {
 	getItems(){
 		var self = this;
 
-		var items = [{
-			id: '1606291027',
-			name: '余姚特级王荸荠杨梅',
-			spec: '规格：约3斤/箱',
-			price: 100,
-			quantity: 1
-		},{
-			id: '1606291027',
-			name: '余姚特级王荸荠杨梅',
-			spec: '规格：约3斤/箱',
-			price: 100,
-			quantity: 1
-		}];
+		var items = JSON.parse( sessionStorage.shoppingCart );
 
 		items.forEach((a)=>{
 			a.selected = false;
@@ -176,6 +164,17 @@ class ShoppingCart extends React.Component {
 		});
 	}
 	removeItem(i){
+		var items = JSON.parse( JSON.stringify(this.state.items) );
+		var newItems = [];
+		items.forEach((a)=>{
+			if( !a.selected ){
+				newItems.push(a);
+			}
+		})
+		this.setState({
+			items: newItems
+		})
+		sessionStorage.shoppingCart = JSON.stringify(newItems);
 		this.props.act({
 			type:'REMOVE_ITEM',
 			itemID:this.state.items[i].itemID
@@ -188,7 +187,7 @@ class ShoppingCart extends React.Component {
 		return (
 			<div className="SHOPPING_CART">
 				<div className="header">
-					购物车
+					购物车<span className="remove" onClick={this.removeItem.bind(this)}>删除</span>
 				</div>
 				
 				{this.state.items.map( (item,i)=>{
@@ -199,7 +198,7 @@ class ShoppingCart extends React.Component {
 									<i className="fa fa-check"></i>
 								</div>
 							</div>
-							<img className="part thumbnail" src={"img/thumbnail/"+item.id+".jpg"}/>
+							<img className="part thumbnail" src={"img/items/"+item.id+"/t.jpg"}/>
 							<div className="part part-3">
 								<p className="name">{item.name}</p>
 								<p className="spec">{item.spec}</p>
@@ -226,6 +225,7 @@ class ShoppingCart extends React.Component {
 					<p className="sum">总计：<span className="money">￥{this.getTotalPrice().toFixed(2)}</span></p>
 					
 				</div>
+				<div className="navbarShadow"></div>
 				<Navbar name="shoppingCart"/>
 			
 			

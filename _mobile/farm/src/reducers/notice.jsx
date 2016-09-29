@@ -7,7 +7,7 @@ function notice (state={tick:0,text:''},action){
 				tick: state.tick+1,
 				text: action.text
 			}
-			return newState;				
+			return newState;	
 		default:
 			return state;
 	}

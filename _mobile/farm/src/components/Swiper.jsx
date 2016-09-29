@@ -1,9 +1,15 @@
+require('./Swiper.less');
+
 class Swiper extends React.Component {
 	constructor(props){
 		super(props);
 		var self = this;
 		this.$trainOffset = 0;
 		this.$currentOne = 0;
+		
+		this.X0 = null;
+		this.X1 = null;
+
 		this.state = {
 			trainStyle: {
 				width: this.props.items.length+'00%'
@@ -15,6 +21,7 @@ class Swiper extends React.Component {
 		}
 	}
 	componentDidMount(){
+		console.log(this.props)
 		var self = this;
 		var _Swiper = React.findDOMNode(self.refs.Swiper);
 
@@ -22,14 +29,18 @@ class Swiper extends React.Component {
 		window.addEventListener('resize',function(){
 			self.$width = Number( document.defaultView.getComputedStyle( React.findDOMNode(self.refs.Swiper) ).width.replace(/px/,'') );
 		})
-		setInterval(function(){
-			if( self.$currentOne<self.props.items.length-1 ){
-				self.$currentOne++;
-			}else{
-				self.$currentOne = 0;
-			};
-			self.toItem( self.$currentOne );
-		},3000);
+		if( this.props.autoplay===true ){
+			setInterval( this.toNext.bind(this),3000 );
+		};
+	}
+	toNext(){
+		var self = this;
+		if( self.$currentOne<self.props.items.length-1 ){
+			self.$currentOne++;
+		}else{
+			self.$currentOne = 0;
+		};
+		self.toItem( self.$currentOne );
 	}
 	handleTouchStart(e){
 		this.X0 = this.X1 = e.changedTouches[0].pageX;
@@ -74,30 +85,36 @@ class Swiper extends React.Component {
 		var self = this;
 		return (
 			<div className="Swiper" ref="Swiper"
+				style={this.props.style}
 				onTouchStart={this.handleTouchStart.bind(this)}
 				onTouchMove={this.handleTouchMove.bind(this)}
 				onTouchEnd={this.handleTouchEnd.bind(this)}>
 				<ul className="train" style={this.state.trainStyle}>
 					{this.props.items.map(function(elem){
 						return(
-							<li className="item" style={self.state.itemStyle}>
+							<a className="item" style={self.state.itemStyle}>
 								<img src={elem} />
-							</li>
+							</a>
 						)
 					})}
 				</ul>
-				<ul className="pagination" ref="pagination">
-					{this.props.items.map(function(elem,i){
-						return(
-							<li className={i===self.state.currentOne?'dot active':'dot'}>
-							</li>
-						)
-					})}
-				</ul>
-				}
+				<div className="pagi">
+					<ul className="pagination" ref="pagination">
+						{this.props.items.map(function(elem,i){
+							return(
+								<li className={i===self.state.currentOne?'dot active':'dot'}>
+								</li>
+							)
+						})}
+					</ul>
+				</div>
 			</div>
 		)
 	}
+}
+
+Swiper.defaultProps = {
+	autoplay: true
 }
 
 export {Swiper};

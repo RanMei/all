@@ -47,7 +47,7 @@
 	__webpack_require__(1);
 
 	Vue.component( 'stackBoth',__webpack_require__(5) );
-	Vue.component( 'buttonAlarm',__webpack_require__(11) );
+	Vue.component( 'buttonAlarm',__webpack_require__(14) );
 
 	new Vue({
 		el: 'body'
@@ -412,7 +412,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\h5\\live\\src\\stack-both.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(10)
+	__vue_template__ = __webpack_require__(13)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -446,8 +446,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c5404732&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c5404732&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -465,7 +465,7 @@
 
 
 	// module
-	exports.push([module.id, ".space {\n  width: 100%;\n  padding: 60vw 0 1.4rem 0;\n  overflow-x: hidden;\n}\n.stack {\n  box-sizing: border-box;\n  position: relative;\n  width: 6.56rem;\n  height: 5.32rem;\n  margin: auto;\n  -webkit-perspective: 4rem;\n          perspective: 4rem;\n}\n.stack .card {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-transform: translate3d(7rem, 0, 0);\n          transform: translate3d(7rem, 0, 0);\n  border-radius: 0.05rem;\n  border: 1px solid #d5d5d5;\n  background: white!important;\n  box-shadow: 0 0.1rem 0.5rem #cbcbcb;\n}\n.stack .card .title {\n  box-sizing: border-box;\n  width: 100%;\n  height: 0.94rem;\n  margin-top: 0.58rem;\n  margin-bottom: 0.6rem;\n  border-left: 0.08rem solid black;\n}\n.stack .card p {\n  padding: 0 0.44rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  color: #9b9b9b;\n}\n.stack .card img {\n  position: absolute;\n  right: 0.32rem;\n  top: -1.5rem;\n  width: 2.8rem;\n}\n.stack .card.card0 {\n  background: #91C794;\n}\n.stack .card.card1 {\n  background: #9993C1;\n}\n.stack .card.card2 {\n  background: #B2DFDB;\n}\n.stack .card.card3 {\n  background: #FBCBBD;\n}\n.stack .card.card4 {\n  background: #FFF59D;\n}\n.stack .card.leave {\n  -webkit-animation: leave 0.6s forwards;\n          animation: leave 0.6s forwards;\n}\n.stack .card.toFirst {\n  -webkit-animation: toFirst 0.6s forwards;\n          animation: toFirst 0.6s forwards;\n}\n.stack .card.toSecond {\n  -webkit-animation: toSecond 0.6s forwards;\n          animation: toSecond 0.6s forwards;\n}\n.stack .card.toThird {\n  -webkit-animation: toThird 0.6s forwards;\n          animation: toThird 0.6s forwards;\n}\n.stack .card.wira-right {\n  -webkit-transform-origin: 250% 50%;\n          transform-origin: 250% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-right 1s forwards;\n          animation: wira-right 1s forwards;\n}\n.stack .card.wira-left {\n  -webkit-transform-origin: -150% 50%;\n          transform-origin: -150% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-left 1s forwards;\n          animation: wira-left 1s forwards;\n}\n@-webkit-keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@-webkit-keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@-webkit-keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@-webkit-keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@-webkit-keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@-webkit-keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n@keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n.nav {\n  display: table;\n  margin: auto;\n}\n.nav li {\n  float: left;\n  width: 0.22rem;\n  height: 0.22rem;\n  margin: 0 0.04rem;\n  border-radius: 1000px;\n  border: 1px solid black;\n}\n.nav li.active {\n  background: black;\n}\n", ""]);
+	exports.push([module.id, ".space[_v-c5404732] {\n  width: 100%;\n  padding: 60vw 0 1.4rem 0;\n  overflow-x: hidden;\n}\n.stack[_v-c5404732] {\n  box-sizing: border-box;\n  position: relative;\n  width: 6.56rem;\n  height: 5.32rem;\n  margin: auto;\n  -webkit-perspective: 4rem;\n          perspective: 4rem;\n}\n.stack .card[_v-c5404732] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-transform: translate3d(7rem, 0, 0);\n          transform: translate3d(7rem, 0, 0);\n  border-radius: 0.05rem;\n  border: 1px solid #d5d5d5;\n  background: white!important;\n  box-shadow: 0 0.1rem 0.5rem #cbcbcb;\n}\n.stack .card .part-top[_v-c5404732] {\n  box-sizing: border-box;\n  width: 100%;\n  height: 0.94rem;\n  margin-top: 0.58rem;\n  margin-bottom: 0.6rem;\n  padding-left: 0.36rem;\n  border-left: 0.08rem solid black;\n}\n.stack .card .part-top .right[_v-c5404732] {\n  position: relative;\n  height: 100%;\n}\n.stack .card .part-top .right .title__[_v-c5404732] {\n  line-height: 0.36rem;\n  font-size: 0.36rem;\n}\n.stack .card .part-top .right .stars[_v-c5404732] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 1.64rem;\n  height: 0.23rem;\n  background: #cccccc;\n}\n.stack .card .part-top .right .stars .bg[_v-c5404732] {\n  width: 0;\n  height: 100%;\n  background: #ffbf00;\n}\n.stack .card .part-top .right .stars .starsImg[_v-c5404732] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n}\n.stack .card .part-top .right .score[_v-c5404732] {\n  position: absolute;\n  left: 1.78rem;\n  bottom: 0;\n  font-size: 0.24rem;\n  line-height: 0.24rem;\n  color: #9d9d9d;\n}\n.stack .card .intro[_v-c5404732] {\n  padding: 0 0.44rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  color: #9b9b9b;\n}\n.stack .card .cover[_v-c5404732] {\n  position: absolute;\n  right: 0.32rem;\n  top: -1.5rem;\n  width: 2.8rem;\n}\n.stack .card.card0[_v-c5404732] {\n  background: #91C794;\n}\n.stack .card.card1[_v-c5404732] {\n  background: #9993C1;\n}\n.stack .card.card2[_v-c5404732] {\n  background: #B2DFDB;\n}\n.stack .card.card3[_v-c5404732] {\n  background: #FBCBBD;\n}\n.stack .card.card4[_v-c5404732] {\n  background: #FFF59D;\n}\n.stack .card.leave[_v-c5404732] {\n  -webkit-animation: leave 0.6s forwards;\n          animation: leave 0.6s forwards;\n}\n.stack .card.toFirst[_v-c5404732] {\n  -webkit-animation: toFirst 0.6s forwards;\n          animation: toFirst 0.6s forwards;\n}\n.stack .card.toSecond[_v-c5404732] {\n  -webkit-animation: toSecond 0.6s forwards;\n          animation: toSecond 0.6s forwards;\n}\n.stack .card.toThird[_v-c5404732] {\n  -webkit-animation: toThird 0.6s forwards;\n          animation: toThird 0.6s forwards;\n}\n.stack .card.wira-right[_v-c5404732] {\n  -webkit-transform-origin: 250% 50%;\n          transform-origin: 250% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-right 1s forwards;\n          animation: wira-right 1s forwards;\n}\n.stack .card.wira-left[_v-c5404732] {\n  -webkit-transform-origin: -150% 50%;\n          transform-origin: -150% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-left 1s forwards;\n          animation: wira-left 1s forwards;\n}\n@-webkit-keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@-webkit-keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@-webkit-keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@-webkit-keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@-webkit-keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@-webkit-keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n@keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n.nav[_v-c5404732] {\n  display: table;\n  margin: auto;\n}\n.nav li[_v-c5404732] {\n  float: left;\n  width: 0.22rem;\n  height: 0.22rem;\n  margin: 0 0.04rem;\n  border-radius: 1000px;\n  border: 1px solid black;\n}\n.nav li.active[_v-c5404732] {\n  background: black;\n}\n", ""]);
 
 	// exports
 
@@ -694,15 +694,22 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _stringify = __webpack_require__(10);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = {
 		data: function data() {
 			return {
 				img: {
-					cover: './img/cover.png'
+					cover: './img/cover.png',
+					stars: './img/stars.png'
 				},
 
 				cards: [],
@@ -720,44 +727,74 @@
 			};
 		},
 		created: function created() {
-			var self = this;
-			this.cards = [{
-				id: 4,
-				_class: '',
-				animation: '',
-				style: ''
-			}, {
-				id: 3,
-				_class: '',
-				animation: '',
-				style: ''
-			}, {
-				id: 2,
-				_class: ''
-			}, {
-				id: 1,
-				_class: ''
-			}, {
-				id: 0,
-				_class: ''
-			}];
-			this.nav = [0, 1, 2, 3, 4];
-			window.addEventListener('load', function () {
-				self.cards[self.current]._class = 'toFirst';
-				self.cards[self.current - 1]._class = 'toSecond';
-				self.cards[self.current - 2]._class = 'toThird';
-			});
+			this.getData();
 		},
-		ready: function ready() {
-			this.length = this.cards.length;
-			this.current = this.length - 1;
-		},
+		ready: function ready() {},
 		methods: {
+			getData: function getData() {
+				var self = this;
+				var cards = [{
+					id: 2,
+					title: '美国队长',
+					score: 6.7,
+					intro: 'Cocain business controlls America!',
+					_class: ''
+				}, {
+					id: 1,
+					title: '超人',
+					score: 2.5,
+					intro: 'Freedom, justice and American way!',
+					_class: ''
+				}, {
+					id: 0,
+					title: '纨绔大小姐',
+					score: 9.4,
+					intro: '云落枫，华夏医学天才，意外身亡，魂附于龙啸大陆将军府废物大小姐。这废物不但文不成武不就，更是胸大无脑，骄横任性，有了太子这样完美的未婚夫还不够，居然当众强抢美男，导致太子一怒之下解除婚约。 可废物受不了这个刺激，竟是上吊了结此生。再睁眼，她已非昔日废物大小姐。 契约神典，怀揣灵药空间，妙手回春，医绝天下！',
+					_class: ''
+				}];
+				if (cards.length === 1) {
+					cards[1] = JSON.parse((0, _stringify2.default)(cards[0]));
+					cards[2] = JSON.parse((0, _stringify2.default)(cards[0]));
+					cards[3] = JSON.parse((0, _stringify2.default)(cards[0]));
+					this.cards = cards;
+					this.nav = [0];
+					this.navLength = 1;
+				} else if (cards.length === 2) {
+					cards[2] = JSON.parse((0, _stringify2.default)(cards[0]));
+					cards[3] = JSON.parse((0, _stringify2.default)(cards[1]));
+					this.cards = cards;
+					this.nav = [0, 1];
+					this.navLength = 2;
+				} else if (cards.length === 3) {
+					cards[3] = JSON.parse((0, _stringify2.default)(cards[0]));
+					cards[4] = JSON.parse((0, _stringify2.default)(cards[1]));
+					cards[5] = JSON.parse((0, _stringify2.default)(cards[2]));
+					this.cards = cards;
+					this.nav = [0, 1, 2];
+					this.navLength = 3;
+				} else {
+					var nav = [];
+					for (var i = 0; i < this.cards.length; i++) {
+						nav[i] = i;
+					}
+					this.nav = nav;
+				}
+
+				this.length = this.cards.length;
+				this.current = this.length - 1;
+				window.addEventListener('load', function () {
+					if (self.cards.length >= 4) {
+						self.cards[self.current]._class = 'toFirst';
+						self.cards[self.current - 1]._class = 'toSecond';
+						self.cards[self.current - 2]._class = 'toThird';
+					}
+				});
+			},
 			play: function play(direction) {
 				var self = this;
 				if (!self.switching) {
 					self.switching = true;
-					if (self.dot < self.length - 1) {
+					if (self.dot < self.navLength - 1) {
 						self.dot++;
 					} else {
 						self.dot = 0;
@@ -770,7 +807,6 @@
 					setTimeout(function () {
 						self.cards.unshift(self.cards.splice(-1, 1)[0]);
 						self.cards[0]._class = '';
-						self.cards[0].style = '';
 						self.switching = false;
 					}, 600);
 				};
@@ -810,22 +846,45 @@
 
 /***/ },
 /* 10 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"space\">\n\t<ul class=\"stack\"\n\t\t@touchstart=\"touchstart($event)\"\n\t\t@touchmove=\"touchmove($event)\"\n\t\t@touchend=\"touchend($event)\">\n\t\t<li v-for=\"a in cards\" \n\t\t\tclass=\"card card{{a.id}} {{a._class}}\"\n\t\t\tstyle=\"\">\n\t\t\t<div class=\"title\"></div>\n\t\t\t<p>\n\t\t\t\t{{a.id}}\n\t\t\t\t云落枫，华夏医学天才，意外身亡，魂附于龙啸大陆将军府废物大小姐。 这废物不但文不成武不就，更是胸大无脑，骄横任性，有了太子这样完美的未婚夫还不够，居然当众强抢美男，导致太子一怒之下解除婚约。 可废物受不了这个刺激，竟是上吊了结此生。再睁眼，她已非昔日废物大小姐。 契约神典，怀揣灵药空间，妙手回春，医绝天下！\n\t\t\t</p>\n\t\t\t<img class=\"cover\" :src=\"img.cover\"/>\n\t\t</li>\n\t</ul>\n</div>\n<div class=\"nav\">\n\t<li v-for=\"(a,i) in nav\"\n\t\tclass=\"{{i===dot?'active':''}}\"></li>\n</div>\n";
+	module.exports = { "default": __webpack_require__(11), __esModule: true };
 
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var core  = __webpack_require__(12)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<div class=\"space\" _v-c5404732=\"\">\n\t\t<ul class=\"stack\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" _v-c5404732=\"\">\n\t\t<li v-for=\"a in cards\" class=\"card card{{a.id}} {{a._class}}\" style=\"\" _v-c5404732=\"\">\n\t\t<div class=\"part-top\" _v-c5404732=\"\">\n\t\t\t<div class=\"right\" _v-c5404732=\"\">\n\t\t\t\t<p class=\"title__\" _v-c5404732=\"\">\n\t\t\t\t\t{{a.title}}\n\t\t\t\t</p>\n\t\t\t\t<div class=\"stars\" _v-c5404732=\"\">\n\t\t\t\t\t<div class=\"bg\" style=\"width:{{a.score*10}}%;\" _v-c5404732=\"\"></div>\n\t\t\t\t\t<img class=\"starsImg\" :src=\"img.stars\" _v-c5404732=\"\">\n\t\t\t\t</div>\n\t\t\t\t<p class=\"score\" _v-c5404732=\"\">{{a.score}}分</p>\n\t\t\t</div>\n\t\t</div>\n\t\t<p class=\"intro\" _v-c5404732=\"\">\n\t\t\t{{a.intro}}\n\t\t</p>\n\t\t<img class=\"cover\" :src=\"img.cover\" _v-c5404732=\"\">\n\t</li>\n</ul>\n</div>\n<div class=\"nav\" _v-c5404732=\"\">\n\t<li v-for=\"(a,i) in nav\" class=\"{{i===dot?'active':''}}\" _v-c5404732=\"\"></li>\n</div>\n";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__webpack_require__(12)
-	__vue_script__ = __webpack_require__(14)
+	__webpack_require__(15)
+	__vue_script__ = __webpack_require__(17)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\h5\\live\\src\\button-alarm.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(15)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -844,13 +903,13 @@
 	})()}
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(13);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(8)(content, {});
@@ -870,7 +929,7 @@
 	}
 
 /***/ },
-/* 13 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -884,7 +943,7 @@
 
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -908,7 +967,7 @@
 	};
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"button {{noted?'noted':''}}\" @click=\"note\" _v-83aab312=\"\">\n\t<div class=\"ripple {{noted?'noted':''}}\" _v-83aab312=\"\"></div>\n\t<p class=\"p-before {{noted?'noted':''}}\" _v-83aab312=\"\">\n\t\t<img :src=\"img.bell\" _v-83aab312=\"\"> 预约提醒\n\t</p>\n\t<p class=\"p-after {{noted?'noted':''}}\" _v-83aab312=\"\">\n\t\t<img :src=\"img.check\" _v-83aab312=\"\"> 预约成功\n\t</p>\n</div>\n";
