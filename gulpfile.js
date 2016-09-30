@@ -53,11 +53,11 @@ var LESS = [
 	{ name: 'less-mobile-vue', src: './_mobile/vue/less/*.less', dest: './_mobile/vue/css' },
 	{ name: 'less-cards', src: './_mobile/cards/less/*.less', dest: './_mobile/cards/css' },
 	{ name: 'less-h5', src: './_mobile/h5/less/*.less', dest: './_mobile/h5/css' },
-	{
-		name: 'less-farm', 
-		src: ['./_mobile/farm/src/*.less','./_mobile/farm/src/components/*.less'], 
-		dest: './_mobile/farm/dist'
-	},
+	// {
+	// 	name: 'less-farm', 
+	// 	src: ['./_mobile/farm/src/*.less','./_mobile/farm/src/components/*.less'], 
+	// 	dest: './_mobile/farm/dist'
+	// },
 	{ name: 'less-exam', src: './_mobile/exam/less/*.less', dest: './_mobile/exam/css' },
 	{ name: 'less-svg', src: './_svg/less/*.less', dest: './_svg/css' },
 	{ name: 'less-button', src: './_mobile/button/less/*.less', dest: './_mobile/button/css' },
@@ -179,7 +179,7 @@ WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
 		return gulp.src( item.src )
 			.pipe( webpack( require(item.config) ) )
-			//.pipe( uglify() )
+			.pipe( uglify() )
 			.pipe( gulp.dest(item.dest) );
 	});
 })

@@ -1,3 +1,5 @@
+require('./Member.less');
+
 import {$$imgDir} from '../common.jsx';
 
 import {Navbar} from './Navbar.jsx';
@@ -14,7 +16,7 @@ class Member extends React.Component {
 	}
 	render() {
 		window.scroll(0,0);
-		if( !sessionStorage.userID ){
+		if( !sessionStorage.user ){
 			location.hash = 'signin';
 			return <div></div>
 		}else{

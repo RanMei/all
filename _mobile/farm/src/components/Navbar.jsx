@@ -1,3 +1,5 @@
+require('./Navbar.less');
+
 class Navbar extends React.Component {
 	constructor(){
 		super();
@@ -13,7 +15,7 @@ class Navbar extends React.Component {
 						</div>
 						<p>首页</p>
 					</a>
-					<a href="">
+					<a href="#/category" className={this.props.name==='category'?'active':''}>
 						<div className="icon">
 							<i className="fa fa-th"></i>
 						</div>

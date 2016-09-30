@@ -1,3 +1,5 @@
+require('./Signup.less');
+
 class Signup extends React.Component {
 	constructor(){
 		super();

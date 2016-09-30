@@ -2,11 +2,6 @@
 //import {createStore,combineReducers} from 'redux';
 //import {Provider,connect} from 'react-redux';
 
-
-//import {Veil} from './components/Veil.jsx';
-
-
-
 var PropTypes = React.PropTypes;
 
 var Router = ReactRouter.Router;
@@ -18,9 +13,6 @@ var IndexRoute = ReactRouter.IndexRoute;
 var createStore = Redux.createStore;
 var compose = Redux.compose;
 var combineReducers =  Redux.combineReducers;
-
-var Provider = ReactRedux.Provider;
-var connect = ReactRedux.connect;
 
 // import { createDevTools } from 'redux-devtools';
 // import LogMonitor from 'redux-devtools-log-monitor';
@@ -60,16 +52,18 @@ import {Notice} from './components/Notice.jsx';
 import {NoticePretty} from './components/NoticePretty.jsx';
 
 import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
-import {Item} from './components/Item.jsx';
-
-import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 import {Navbar} from './components/Navbar.jsx';
 
 import {Signin} from './components/Signin.jsx';
 import {Signup} from './components/Signup.jsx';
-import {Member} from './components/Member.jsx';
+
 import {Home} from './components/Home.jsx';
+import {Category} from './components/Category.jsx';
 import {ShoppingCart} from './components/ShoppingCart.jsx';
+import {Member} from './components/Member.jsx';
+
+import {Item} from './components/Item.jsx';
+import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 
 class App extends React.Component {
 	constructor(){
@@ -88,6 +82,19 @@ class App extends React.Component {
 	}
 }
 
+var Provider = ReactRedux.Provider;
+var connect = ReactRedux.connect;
+
+function act(action){
+	switch (action.type) {
+		case 'LOGOUT':
+			setTimeout(()=>{
+				$$store.dispatch(action);
+			},1000);
+			break;
+	}
+}
+
 var AppConnected = connect(function(state){
 	return {
 		notice: state.notice
@@ -96,34 +103,26 @@ var AppConnected = connect(function(state){
 var MemberConnected = connect(function(state){
 	return {
 		user: state.user,
-		act: (action)=>$$store.dispatch(action)
+		act: act
 	}
 })( Member );
-
-class SigninContainer extends React.Component {
-	render(){
-		return (
-			<Signin
-				act={ (action)=>$$store.dispatch(action) }/>
-		)
+var ShoppingCartConnected = connect(function(state){
+	return {
+		items: state.shoppingCart,
+		act: (action)=>$$store.dispatch(action)
 	}
-}
-class ShoppingCartContainer extends React.Component {
-	render(){
-		return (
-			<ShoppingCart
-				act={ (action)=>$$store.dispatch(action) }/>
-		)
+})( ShoppingCart );
+var ItemConnected = connect(function(state){
+	return {
+		shoppingCart: state.shoppingCart,
+		act: (action)=>$$store.dispatch(action)
 	}
-}
-class ItemContainer extends React.Component {
-	render(){
-		return (
-			<Item
-				act={ (action)=>$$store.dispatch(action) }/>
-		)
+})( Item );
+var SigninConnected = connect(function(state){
+	return {
+		act: (action)=>$$store.dispatch(action)
 	}
-}
+})( Signin );
 
 // The router.
 ReactDOM.render(
@@ -132,11 +131,14 @@ ReactDOM.render(
 			<Router history={ hashHistory } >
 				<Route path="/" component={AppConnected}>
 					<Route path="/home" component={Home} />
-					<Route path="/signin" component={SigninContainer} />
-					<Route path="/signup" component={Signup} />
+					<Route path="/category" component={Category} />
+					<Route path="/shopping_cart" component={ShoppingCartConnected} />
 					<Route path="/member" component={MemberConnected} />
-					<Route path="/shopping_cart" component={ShoppingCartContainer} />
-					<Route path="/item" component={ItemContainer} />
+
+					<Route path="/signin" component={SigninConnected} />
+					<Route path="/signup" component={Signup} />
+					
+					<Route path="/item" component={ItemConnected} />
 					<IndexRoute path="/home" component={Home} />
 				</Route>
 			</Router>

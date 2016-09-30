@@ -1,3 +1,5 @@
+require('./Signin.less');
+
 // import 'babel-polyfill';
 import {Notice} from './Notice.jsx';
 import {Navbar} from './Navbar.jsx';
@@ -38,6 +40,11 @@ class Signin extends React.Component {
 			self.props.act({
 				type: 'LOGIN',
 				user: self.state.user
+			})
+		}else{
+			self.props.act({
+				type: 'ALERT',
+				text: '您输入的用户名或密码有误！'
 			})
 		}
 

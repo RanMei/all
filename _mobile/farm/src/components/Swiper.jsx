@@ -9,13 +9,14 @@ class Swiper extends React.Component {
 		
 		this.X0 = null;
 		this.X1 = null;
+		this.Y0 = null;
+		this.Y1 = null;
 
 		this.state = {
 			trainStyle: {
 				width: this.props.items.length+'00%'
 			},
 			itemStyle: {
-				width: 100/this.props.items.length+'%'
 			},
 			currentOne: 0
 		}
@@ -47,18 +48,20 @@ class Swiper extends React.Component {
 		console.log(this.X1);
 	}
 	handleTouchMove(e){
-		this.X2 = e.changedTouches[0].pageX;
-		var distance = this.X2 - this.X1;
-		this.$trainOffset += distance;
-		this.X1 = this.X2;
-		var trainStyle = {
-			width: this.props.items.length+'00%',
-			transition: '0s',
-			transform: 'translate3d('+this.$trainOffset+'px,0,0)'
-		}
-		this.setState({
-			trainStyle: trainStyle
-		})
+		if( this.props.sticky===true ){
+			this.X2 = e.changedTouches[0].pageX;
+			var distance = this.X2 - this.X1;
+			this.$trainOffset += distance;
+			this.X1 = this.X2;
+			var trainStyle = {
+				width: this.props.items.length+'00%',
+				transition: '0s',
+				transform: 'translate3d('+this.$trainOffset+'px,0,0)'
+			}
+			this.setState({
+				trainStyle: trainStyle
+			})
+		};
 	}
 	handleTouchEnd(e){
 		this.X2 = e.changedTouches[0].pageX;
@@ -90,10 +93,14 @@ class Swiper extends React.Component {
 				onTouchMove={this.handleTouchMove.bind(this)}
 				onTouchEnd={this.handleTouchEnd.bind(this)}>
 				<ul className="train" style={this.state.trainStyle}>
-					{this.props.items.map(function(elem){
+					{this.props.items.map(function(a){
 						return(
-							<a className="item" style={self.state.itemStyle}>
-								<img src={elem} />
+							<a className="item" style={{
+								width: 100/self.props.items.length+'%',
+								background: a.background?`url(${a.background}) no-repeat center`:'white',
+								backgroundSize: 'auto 100%'
+							}}>
+								{a.img?<img src={a.img}/>:null}
 							</a>
 						)
 					})}
@@ -114,6 +121,7 @@ class Swiper extends React.Component {
 }
 
 Swiper.defaultProps = {
+	sticky: true,
 	autoplay: true
 }
 

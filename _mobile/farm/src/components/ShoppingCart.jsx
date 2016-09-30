@@ -1,3 +1,5 @@
+require('./ShoppingCart.less');
+
 import {Navbar} from './Navbar.jsx';
 
 var NavbarS={width:"1000px",height:"60px",background:"red"};
@@ -42,10 +44,10 @@ class ItemList extends React.Component {
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
-		this.state = {
-			items: []
-		}
-		this.getItems();
+		// this.state = {
+		// 	items: []
+		// }
+		//this.getItems();
 	}
 	getItems(){
 		var self = this;
@@ -87,17 +89,17 @@ class ShoppingCart extends React.Component {
 		//console.log('<ShoppingCart/> mount',this.props,this.state)
 	}
 	componentWillReceiveProps(newProps){
-		this.setState({
-			items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
-		})
+		// this.setState({
+		// 	items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
+		// })
 	}
 	componentDidUpdate(){
 	}
 
 	// computed
 	allChecked(){
-		for(var i=0;i<this.state.items.length;i++){
-			if( !this.state.items[i].selected ){
+		for(var i=0;i<this.props.items.length;i++){
+			if( !this.props.items[i].selected ){
 				return false;
 			};
 		};
@@ -105,17 +107,17 @@ class ShoppingCart extends React.Component {
 	}
 	getTotalPrice(){
 		var totalPrice = 0;
-		for(var i=0;i<this.state.items.length;i++){
-			if(this.state.items[i].selected===true){
-				totalPrice+=this.state.items[i].price*this.state.items[i].quantity;
+		for(var i=0;i<this.props.items.length;i++){
+			if(this.props.items[i].selected===true){
+				totalPrice+=this.props.items[i].price*this.props.items[i].quantity;
 			};
 		}
 		return totalPrice;
 	}
-	getTotalQuantity(){
+	getTotalQuantity( items ){
 		var totalQuantity = 0;
-		for(var i=0;i<this.state.items.length;i++){
-			if( this.state.items[i].selected===true ){
+		for(var i=0;i<items.length;i++){
+			if( items[i].selected===true ){
 				totalQuantity++;
 			};
 		}
@@ -124,73 +126,98 @@ class ShoppingCart extends React.Component {
 	// methods
 	checkAll(){
 		if( this.allChecked() ){
-			for(var i=0;i<this.state.items.length;i++){
-				this.state.items[i].selected = false;
-			};
+			this.props.act({
+				type: 'UNCHECK_ALL'
+			})
+			// for(var i=0;i<this.state.items.length;i++){
+			// 	this.state.items[i].selected = false;
+			// };
 			// this.state.allChecked = false;
 		}else{
-			for(var i=0;i<this.state.items.length;i++){
-				this.state.items[i].selected = true;
-			};
+			this.props.act({
+				type: 'CHECK_ALL'
+			})
+			// for(var i=0;i<this.state.items.length;i++){
+			// 	this.state.items[i].selected = true;
+			// };
 			// this.state.allChecked = true;
 		};
-		this.setState({
-			// allChecked: this.state.allChecked,
-			items: this.state.items
-		});
+		// this.setState({
+		// 	// allChecked: this.state.allChecked,
+		// 	items: this.state.items
+		// });
 	}
 	checkThis(i){
-		this.state.items[i].selected = this.state.items[i].selected?false:true;
-		// if( this.state.items[i].selected===false ){
-		// 	this.state.allChecked = false;
-		// }
-		this.setState({
-			// allChecked: this.state.allChecked,
-			items: this.state.items
-		});
+		this.props.act({
+			type: 'CHECK_THIS',
+			i: i
+		})
+
+		// this.state.items[i].selected = this.state.items[i].selected?false:true;
+		// // if( this.state.items[i].selected===false ){
+		// // 	this.state.allChecked = false;
+		// // }
+		// this.setState({
+		// 	// allChecked: this.state.allChecked,
+		// 	items: this.state.items
+		// });
 	}
 	minusOne(i) {
-		if( this.state.items[i].quantity>1 ){
-			this.state.items[i].quantity--;
-			this.setState({
-				items: this.state.items
-			});
+		if( this.props.items[i].quantity>1 ){
+			this.props.act({
+				type: 'MINUS',
+				i: i
+			})
 		};
+
+		// if( this.state.items[i].quantity>1 ){
+		// 	this.state.items[i].quantity--;
+		// 	this.setState({
+		// 		items: this.state.items
+		// 	});
+		// };
 	}
 	plusOne(i) {
-		this.state.items[i].quantity++;
-		this.setState({
-			items: this.state.items
-		});
-	}
-	removeItem(i){
-		var items = JSON.parse( JSON.stringify(this.state.items) );
-		var newItems = [];
-		items.forEach((a)=>{
-			if( !a.selected ){
-				newItems.push(a);
-			}
-		})
-		this.setState({
-			items: newItems
-		})
-		sessionStorage.shoppingCart = JSON.stringify(newItems);
 		this.props.act({
-			type:'REMOVE_ITEM',
-			itemID:this.state.items[i].itemID
+			type: 'PLUS',
+			i: i
 		})
+		// this.state.items[i].quantity++;
+		// this.setState({
+		// 	items: this.state.items
+		// });
+	}
+	remove(i){
+		this.props.act({
+			type: 'REMOVE'
+		})
+		// var items = JSON.parse( JSON.stringify(this.state.items) );
+		// var newItems = [];
+		// items.forEach((a)=>{
+		// 	if( !a.selected ){
+		// 		newItems.push(a);
+		// 	}
+		// })
+		// this.setState({
+		// 	items: newItems
+		// })
+		// sessionStorage.shoppingCart = JSON.stringify(newItems);
+		// this.props.act({
+		// 	type:'REMOVE_ITEM',
+		// 	itemID:this.state.items[i].itemID
+		// })
 	}
 	render() {
 		//console.log(React);
 		//console.log(Function);
-		console.log('<ShoppingCart/> rendering',this.props,this.state)
+		console.debug('<ShoppingCart/> rendering',this.props,this.state)
 		return (
 			<div className="SHOPPING_CART">
 				<div className="header">
-					购物车<span className="remove" onClick={this.removeItem.bind(this)}>删除</span>
+					购物车<span className="remove" onClick={this.remove.bind(this)}>删除</span>
 				</div>
 				
-				{this.state.items.map( (item,i)=>{
+				{this.props.items.map( (item,i)=>{
 					return (
 						<div className="item">
 							<div className="part part-left">
@@ -221,7 +248,7 @@ class ShoppingCart extends React.Component {
 						<i className="fa fa-check"></i>
 					</div>
 					<p className="text-all">全选</p>
-					<a className="pay" href="">去结算({this.getTotalQuantity()})</a>
+					<a className="pay" href="">去结算({this.getTotalQuantity(this.props.items)})</a>
 					<p className="sum">总计：<span className="money">￥{this.getTotalPrice().toFixed(2)}</span></p>
 					
 				</div>

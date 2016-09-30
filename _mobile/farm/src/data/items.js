@@ -11,28 +11,36 @@ var dataItems = [{
 	"desc": "--",
 	price: 139768
 },{
-	"id": "1606291034",
-	"className": "fruit",
-	"name": "美国恐龙蛋5个/盒（约130g/个）",
-	"desc": "水润多汁，甜嫩爽口","price":49
+	"id": "1609301428",
+	"className": "clothes",
+	"name": "By Creations Lite/By Creations Lite 桑蚕丝真丝领带 男士斜条纹时尚窄领带",
+	"desc": "--",
+	"price": 320
 },{
-	"id": "1606291039",
-	"className": "fruit",
-	"name": "新西兰佳沛阳光金果6个/盒（约130g/个）",
-	"desc": "皮薄肉多，口感爽滑。",
-	"price": 69
+	"id": "1609301441",
+	"className": "jewelry",
+	"name": "GZUAN/古钻珠宝 初见 2.5克拉紫晶女戒指彩宝首饰古钻品牌商品订单满2000赠送精美品",
+	"desc": "--",
+	"price": 599
 },{
-	"id": "1606291040",
-	"className": "fruit",
-	"name": "精选国产蓝莓125g/盒*2",
-	"desc": "果肉细腻，风味独特",
-	"price": 29
+	"id": "1609301449",
+	"className": "shoes",
+	"name": "AJ ARMANI JEANS/阿玛尼牛仔酒红色牛皮材质镂空元素男士休闲鞋,B6562 NG LACED ",
+	"desc": "--",
+	"specs": {
+		"尺码": ["41","42","43","44"]
+	},
+	"price": 1805
 },{
-	"id": "1606291040",
-	"className": "fruit",
-	"name": "精选国产蓝莓125g/盒*2",
-	"desc": "果肉细腻，风味独特",
-	"price": 29
+	"id": "1609301450",
+	"className": "clothes",
+	"name": "ARMANI JEANS/阿玛尼牛仔 男士经典时尚圆领套头T恤",
+	"desc": "--",
+	"specs": {
+		"尺码": ["M","L","XL"],
+		"颜色": ["黑色","白色","红色"]
+	},
+	"price": 789
 }];
 
 export {dataItems};

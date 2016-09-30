@@ -7,66 +7,30 @@
 	.topbar {
 		box-sizing: border-box;
 		position: fixed; left: 0; top: 0; z-index: 10;
-		width: 100%; height: 0.8rem;
-		margin-bottom: .20rem;
+		width: 100%; height: 1rem;
+		//margin-bottom: .20rem;
 		padding: 0 0.2rem;
 		background: white;
 		border-bottom: 1px solid @grey-border;
 		overflow: hidden;
 		font-size: 0.3rem;
-		line-height: 0.8rem;
+		line-height: 1rem;
+		.icon {
+			float: left;
+			margin-right: 0.2rem;
+		}
 		i {
 			font-size: 0.5rem;
-			line-height: 0.8rem; 
+			line-height: 1rem; 
 		}
 		._text {
+			float: left;
 			font-size: 0.3rem;
-			line-height: 0.8rem;
+			line-height: 1rem;
 		}
 	}
-
-	.slider {position:relative;width:7.2rem;height:4.90rem;overflow:hidden}
-	.slider .train {width:28.8rem;margin-left:-7.2rem;}
-	.slider .train a {float:left;width:7.2rem;height:4.9rem;display:block;overflow:hidden}
-	.slider .train a img {width:100%}
-	.slider .tabs {position:absolute;left:2.96rem;bottom:.20rem;width:1.29rem;height:.22rem;border-radius:.11rem;background:white;padding:0 .10rem 0 .10rem;}
-	.slider .tabs li {width:.12rem;height:.12rem;border-radius:.06rem;background:grey;float:left;margin:.05rem .10rem .05rem .10rem;}
-	.slider .tabs li.selected {background:#66CC66;}
-
-	.Swiper {
-		position: relative;
-		width: 100%;
-		height: 4.9rem;
-		//margin-bottom: 0.2rem;
-		overflow: hidden;
-		.train {
-			.item {
-				float: left;
-				img {
-					width: 100%;
-					display: block;
-				}
-			}
-		}
-		.pagination {
-			position: absolute;
-			left: 2.91rem;
-			bottom: 0.2rem;
-			padding: 0.05rem 0.05rem 0.05rem 0.05rem;
-			border-radius: 0.11rem;
-			background: white;
-			.dot {
-				float: left;
-				width: 0.12rem;
-				height: 0.12rem;
-				margin: 0 0.1rem 0 0.1rem;
-				border-radius: 50%;
-				background: grey;
-			}
-			.dot.active {
-				background: @green;
-			}
-		}
+	.topbar-shadow {
+		height: 1rem;
 	}
 
 	.info {
@@ -84,6 +48,35 @@
 			color: @red;
 		}
 	}
+
+	.spec {
+		padding: 0.15rem;
+		font-size: 0.28rem;
+		line-height: 0.5rem;
+		background: white;
+		border-bottom: 1px solid @grey-border;
+		overflow: hidden;
+		li {
+			float: left;
+			&._key {
+				width: 2rem;
+			}
+			&._option {
+				box-sizing: border-box;
+				height: 0.5rem;
+				padding: 0 0.2rem;
+				margin-right: 0.2rem;
+				font-size: 0.28rem;
+				color: @black;
+				background: @grey-bg;
+				&.active {
+					background: @red;
+					color: white;
+				}
+			}
+		}
+	}
+
 	.block-quantity {
 		padding: 0.2rem 0.15rem;
 		border-bottom: 1px solid @grey-border;
@@ -169,10 +162,10 @@
 
 	.item_spec {position:relative;width:7.20rem;height:1.80rem;background:white;margin-bottom:.20rem;}
 	.item_spec p {width:6.60rem;margin-left:.30rem;padding:.20rem 0 .10rem 0;font-size:.2rem;border-bottom:1px solid grey;color:grey;}
-	.spec {float:left;width:2.30rem;height:.60rem;border:1px solid grey;color:grey;font-size:.2rem;line-height:.60rem;text-align:center;cursor:pointer}
+	//.spec {float:left;width:2.30rem;height:.60rem;border:1px solid grey;color:grey;font-size:.2rem;line-height:.60rem;text-align:center;cursor:pointer}
 	.spec1 {margin:.35rem 0 0 .60rem;float:left;}
 	.spec2 {margin:.35rem 0 0 1.20rem;}
-	.spec.selected {border:1px solid #66CC66!important;color:#66CC66!important;}
+	//.spec.selected {border:1px solid #66CC66!important;color:#66CC66!important;}
 
 	.details {position:relative;width:7.20rem;background:white;}
 	.details ul {position:relative;width:6.63rem;height:.25rem;margin-left:.30rem;padding:.15rem 0 .15rem 0;}
@@ -183,23 +176,39 @@
 	.square {position:relative;width:6.90rem;margin:0 0 0 .15rem;}
 	.square img {width:100%}
 
-	.item_nav_shadow {width:7.20rem;height:.80rem;background:white;border-top:1px solid grey;}
+	.item_nav_shadow {width:7.20rem;height:.80rem;background:white;}
 
 	.item_nav {
 		position: fixed; left: 0; bottom: 0;
 		width: 100%; height: 0.80rem;
 		background: white;
-		border-top: 1px solid @grey-border;
-		.favor {
+		//border-top: 1px solid @grey-border;
+		.part-left {
 			float: left;
 			width: 33.333333%; height: 0.8rem;
+		}
+		.favor {
+			position: relative;
+			float: left; box-sizing: border-box;
+			width: 50%; height: 0.8rem;
+			border-right: 1px solid @grey-border;
 			font-size: 0.3rem; line-height: 0.3rem;
 			text-align: center;
+			&:nth-child(1) {
+
+			}
+			.redDot {
+				position: absolute; right: 0.3rem; top: 0.05rem;
+				width: 0.18rem; height: 0.18rem;
+				border-radius: 1000px;
+				background: @red;
+			}
 			.icon-star {
+				position: relative;
 				padding: 0.1rem 0;
 			}
 			.text-favor {
-				font-size: 0.24rem;
+				font-size: 0.2rem;
 				text-align: center;
 			}
 		}

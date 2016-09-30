@@ -1,3 +1,5 @@
+require('./Home.less');
+
 import {$$imgDir} from '../common.jsx';
 
 import {Navbar} from './Navbar.jsx';
@@ -56,10 +58,20 @@ class Home extends React.Component {
 					</div>
 				</div>
 				
-				<Swiper items={swiperItems}
+				<Swiper 
+					sticky={true}
+					items={[{
+						background: 'img/index/banner_0.jpg'
+					},{
+						background: 'img/index/banner_1.jpg'
+					},{
+						background: 'img/index/banner_2.jpg'
+					},{
+						background: 'img/index/banner_3.jpg'
+					}]}
 					style={{height:'4rem'}}/>
 				
-				<div className="block-2">
+				<div className="block">
 					{this.state.items.map(function(a){
 						return (
 							<a className="item-2" href={'#/item?id='+a.id}>
@@ -77,30 +89,26 @@ class Home extends React.Component {
 					})}
 				</div>
 
-				<div className="panel">
-					<div className="panel-header">	
-						<p className="class-name">时令果蔬</p>
-						<p className="more"><a href="">更多</a></p>
+				<div className="block">
+					<div className="block-header">	
+						<i className="fa fa-heart-o"></i> 猜你喜欢
 					</div>
-					<ul className="panel-body">
-						{this.state.items.map(function(item,i){
-							var href = '#/item?id='+item.id;
-							var src = 'img/items/'+item.id+'/t.jpg';
-							var style = {
-								float: i%2===0?'left':'right'
-							};
-							return (
-								<div className="item">
-									<a href={href} style={style}>
-										<img className="thumbnail" src={src}/>
-										<p className="name">{item.name}</p>
-										<p className="description">{item.desc}</p>
-										<p className="price">￥{item.price.toFixed(2)}</p>
-									</a>
-								</div>
-							)
-						})}
-					</ul>
+					{this.state.items.map(function(item,i){
+						var href = '#/item?id='+item.id;
+						var src = 'img/items/'+item.id+'/t.jpg';
+						var style = {
+							float: i%2===0?'left':'right'
+						};
+						return (
+							<div className="item">
+								<a href={href}>
+									<img className="thumbnail" src={src}/>
+									<p className="name">{item.name}</p>
+									<p className="price">￥{item.price.toFixed(2)}</p>
+								</a>
+							</div>
+						)
+					})}
 				</div>
 
 				<div className="nav_shadow">
