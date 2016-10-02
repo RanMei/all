@@ -1,11 +1,11 @@
 <template>
-<div class="button {{noted?'noted':''}}"
-	@click="note">
-	<div class="ripple {{noted?'noted':''}}"></div>
-	<p class="p-before {{noted?'noted':''}}">
+<div class="button {{alarm}}"
+	@click="setAlarm">
+	<div class="ripple {{alarm}}"></div>
+	<p class="p-before {{alarm}}">
 		<img :src="img.bell"/> 预约提醒
 	</p>
-	<p class="p-after {{noted?'noted':''}}">
+	<p class="p-after {{alarm}}">
 		<img :src="img.check"/> 预约成功
 	</p>
 </div>
@@ -19,7 +19,10 @@
 	background: #f8f8f8;
 	z-index: 1;
 	overflow: hidden;
-	&.noted {
+	&.resolved {
+		background: #464646;
+	}
+	&.set {
 		animation: rubberBand 1s forwards;
 	}
 	@keyframes rubberBand {
@@ -59,7 +62,7 @@
 		transform: scale3d(0,0,1);
 		opacity: 0;
 		z-index: 0;
-		&.noted {
+		&.set {
 			transition: 1s ease-out;
 			transform: scale3d(1,1,1);
 			opacity: 1;
@@ -79,7 +82,10 @@
 	}
 	.p-before {
 		color: #464646;
-		&.noted {
+		&.resolved {
+			display: none;
+		}
+		&.set {
 			transition: 1s ease-out;
 			opacity: 0;
 		}
@@ -87,7 +93,10 @@
 	.p-after {
 		color: white;
 		opacity: 0;
-		&.noted {
+		&.resolved {
+			opacity: 1;
+		}
+		&.set {
 			transition: 1s ease-out;
 			opacity: 1;
 		}
@@ -97,20 +106,23 @@
 
 <script>
 module.exports = {
+	// alarm: 'pending', 'unset', 'resolved', 'set'
+	props: ['alarm'],
 	data: function(){
 		return {
 			img: {
 				bell: 'img/bell.png',
 				check: 'img/check.png'
-			},
-			noted: false
+			}
 		}
 	},
 	methods: {
-		note: function(){
-			this.noted = true;
+		setAlarm: function(){
+			console.log(this.alarm)
+			if( this.alarm==='unset' ){
+				this.$dispatch('SET_ALARM');
+			};
 		}
 	}
-
 }
 </script>

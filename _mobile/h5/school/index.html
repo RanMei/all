@@ -26,35 +26,12 @@
 		</div>
 	</div>
 
-	<div class="mask" v-show="maskShown">
-		<div class="panel">
-			<div class="square">{{{square}}}</div>
-			<p class="info" v-show="infoShown">{{{info}}}</p>
-			<p class="desc" style="{{centered?'text-align: center;':''}}">
-				<span class="span"></span>{{{desc}}}
-			</p>
-			<div class="pinkBtn gotIt" v-show="pinkBtn==='gotIt'" v-on:click="closeMask">
-				我知道了
-			</div>
-			<div class="pinkBtn help" v-show="pinkBtn==='help'" v-on:click="showMask('how')">
-				{{{help}}}
-			</div>
-			<div class="pinkBtn write" v-show="pinkBtn==='write'" v-on:click="toContact">
-				<img class="pen" src="img/pen.png"/> 填写联系方式
-			</div>
-			<img class="close" src="img/close.png" v-show="closeShown" v-on:click="closeMask"/>
-		</div>
-	</div>
+	<mask-loading></mask-loading>
+	<mask :ios="ios" :state="maskState"></mask>
 
 	<div class="main">
 
-		<div class="focus">
-			<face></face>
-			<div class="avatar">
-				<img src="{{myavor}}"/>
-			</div>
-		</div>
-		
+		<focus :avatar="myavor"></focus>
 
 		<div class="gift gift1">
 			<p class="one">每日阅读抽好礼</p>
@@ -186,24 +163,11 @@
 			</div>
 		</div>
 
-		<div class="lottery">
-			<img class="lottery-bg" src="img/lottery.png"/>
-			<div class="content">
-				<a class="toMine" v-on:click="toMine"></a>
-				<div class="btn" 
-					style="{{pressed?'background:#ffce20;border-radius: 0.1rem;':'background: url(img/btn.png) no-repeat;background-size: 100%;'}}" 
-					v-on:touchstart="drawtouchstart"
-					v-on:touchmove="drawtouchmove"
-					v-on:touchend="drawtouchend"
-					v-on:touchcancel="drawtouchcancel">
-					<p>抽奖</p>
-					<p>(<span class="chance">{{chance||0}}</span>)次机会</p>
-				</div>
-				<div v-for="(i,item) in trophies" class="trophy trophy{{i}} {{i===current?'active':''}}">
-					<img src="img/trophy{{i}}{{ios?'_ios':''}}.png"/>
-				</div>
-			</div>
-		</div>
+		<lottery-box 
+		:ios="ios" 
+		:trophies="trophies" 
+		:chance="chance"
+		:result="result"></lottery-box>
 
 		<div class="bottom">
 			<img class="bottom-top" src="img/bottom_top.png"/>
@@ -240,7 +204,7 @@
 	</div>
 
  <!--<script type="text/javascript" src="js/debug.js"></script>-->
-<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="../../vendor/vue.min.js"></script>
 
 <script type="text/javascript" src="./dist/bundle.js"></script>
 

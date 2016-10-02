@@ -100,6 +100,12 @@ var AppConnected = connect(function(state){
 		notice: state.notice
 	}
 })( App );
+var HomeConnected = connect(function(state){
+	return {
+		items: state.items
+	}
+})( Home );
+
 var MemberConnected = connect(function(state){
 	return {
 		user: state.user,

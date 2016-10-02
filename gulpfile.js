@@ -164,8 +164,8 @@ const WEBPACK = [{
 	dest: './_mobile/h5/olympics/dist/'
 },{
 	name: 'webpack-mobile-h5-school', 
-	watched: ['./_mobile/h5/school/lib/*.*','./_mobile/h5/school/lib/*/*.*'], 
-	src: './_mobile/h5/school/lib/main.js', 
+	watched: ['./_mobile/h5/school/src/*.*','./_mobile/h5/school/src/*/*.*'], 
+	src: './_mobile/h5/school/src/main.js', 
 	config: './_mobile/h5/school/webpack.config.js', 
 	dest: './_mobile/h5/school/dist/',
 },{
@@ -179,7 +179,7 @@ WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
 		return gulp.src( item.src )
 			.pipe( webpack( require(item.config) ) )
-			.pipe( uglify() )
+			//.pipe( uglify() )
 			.pipe( gulp.dest(item.dest) );
 	});
 })

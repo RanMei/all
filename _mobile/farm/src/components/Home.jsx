@@ -23,9 +23,17 @@ class Home extends React.Component {
 		self.getItems();
 		console.log('<Home/> constructing',self.state);
     }
+    componentWillMount(){
+    	this.getItems();
+    }
     getItems(){
     	var self = this;
-    	this.state.items = require('../data/items.js').dataItems;
+    	setTimeout(()=>{
+    		var newItems = require('../data/items.js').dataItems;
+    		self.setState({
+    			items: newItems
+    		})
+    	},50);
 		// fetch('/getItems', {
 		// 	method: 'POST',
 		// 	headers: {

@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./_mobile/h5/school/lib/main.js",
+    entry: "./_mobile/h5/school/src/main.js",
     output: {
         filename: "bundle.js"
     },
