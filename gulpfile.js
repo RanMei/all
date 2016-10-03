@@ -145,6 +145,12 @@ const WEBPACK = [{
 	config: './_mobile/main/webpack.config.js', 
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 },{
+	name: 'webpack-mobile-svg', 
+	src: './_mobile/svg/src/preloader.js', 
+	dest: './_mobile/svg/dist/', 
+	config: './_mobile/svg/webpack.config.js', 
+	watched: ['./_mobile/svg/src/*.*','./_mobile/svg/src/*/*.*']
+},{
 	name: 'webpack-mobile-vue', 
 	watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
 	src: './_mobile/vue/lib/main.js', 
@@ -152,10 +158,10 @@ const WEBPACK = [{
 	dest: './_mobile/vue/dist/'
 },{
 	name: 'webpack-mobile-project', 
-	watched: ['./_mobile/project/lib/*.*','./_mobile/project/lib/*/*.*'], 
-	src: './_mobile/project/lib/main.js', 
-	config: './_mobile/project/webpack.config.js', 
-	dest: './_mobile/project/dist/'
+	watched: ['./_mobile/h5/project/src/*.*','./_mobile/h5/project/src/*/*.*'], 
+	src: './_mobile/h5/project/src/main.js', 
+	config: './_mobile/h5/project/webpack.config.js', 
+	dest: './_mobile/h5/project/dist/'
 },{
 	name: 'webpack-mobile-h5-olympics', 
 	watched: ['./_mobile/h5/olympics/lib/*.*'], 

@@ -153,11 +153,11 @@ class Item extends React.Component {
 		var item = this.state.item;
 		return (
 			<div className="ITEM">
-				<div className="topbar">
-					<div className="icon">
+				<div className="topbar c-topbar">
+					<div className="c-icon">
 						<i className="fa fa-angle-left" onClick={this.back.bind(this)}></i>
 					</div>
-					<div className="_text">商品详情</div>
+					<div className="c-text">商品详情</div>
 				</div>
 				<div className="topbar-shadow"></div>
 				
@@ -216,7 +216,7 @@ class Item extends React.Component {
 							</p>
 						</div>
 						<div className="favor" onClick={this.toCart.bind(this)}>
-							<div className="redDot" style={{display:(this.props.shoppingCart.length===0?'none':'block')}}></div>
+							<div className="redDot" style={{display:(this.props.inCart===0?'none':'block')}}></div>
 							<p className="icon-star">
 								<i className="fa fa-shopping-cart"></i>
 							</p>

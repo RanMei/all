@@ -1,16 +1,17 @@
-var mask = require('./components/mask.vue');
+require('./common.less');
+require('./index.less');
+
 var container = require('./components/container.vue');
 
-Vue.component( 'mask',mask );
 Vue.component( 'container',container );
 
 new Vue({
 	el: 'body',
 	components: {
-		mask, container
+		container
 	},
 	data: {
-		state: 'loading',
+		state: 'container',
 		maskOpacity: 1,
 		user: {
 			name: '',

@@ -11,12 +11,9 @@ function user (state,action){
 
 	switch (action.type) {
 		case 'LOGIN':
-			sessionStorage.user = JSON.stringify(action.user);
-			console.log(sessionStorage)
-			location.hash = 'home';
-			return {userID: action.user.userID};				
+			location.hash = 'member';
+			return {id: action.user.id};				
 		case 'LOGOUT':
-			delete sessionStorage.user;
 			return {};
 		default:
 			return state;

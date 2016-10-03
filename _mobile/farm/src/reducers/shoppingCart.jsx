@@ -14,11 +14,7 @@ function shoppingCart (state,action){
 
 	switch (action.type) {
 		case 'LOGIN':
-			if( sessionStorage.shoppingCart ){
-				return JSON.parse( sessionStorage.shoppingCart );
-			}else{
-				return [];
-			}
+			return action.user.shoppingCart;
 		case 'PLUS':
 			// console.log( newState[action.i] )
 			newState[action.i].quantity++;

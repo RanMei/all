@@ -22,7 +22,7 @@ class Swiper extends React.Component {
 		}
 	}
 	componentDidMount(){
-		console.log(this.props)
+		//console.log(this.props)
 		var self = this;
 		var _Swiper = React.findDOMNode(self.refs.Swiper);
 

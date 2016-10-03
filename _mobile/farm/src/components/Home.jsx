@@ -20,7 +20,7 @@ class Home extends React.Component {
 		self.state = {
 			items: []
 		};
-		self.getItems();
+		//self.getItems();
 		console.log('<Home/> constructing',self.state);
     }
     componentWillMount(){
@@ -50,7 +50,7 @@ class Home extends React.Component {
 		// })
     }
     back(){
-    	console.log(111)
+    	//console.log(111)
     	history.go(-1);
     }
 	render() {

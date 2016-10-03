@@ -14,6 +14,9 @@ class Member extends React.Component {
 			type: 'LOGOUT'
 		})
 	}
+	toDIManagement(){
+		location.hash = 'di_management';
+	}
 	render() {
 		window.scroll(0,0);
 		if( !sessionStorage.user ){
@@ -29,7 +32,7 @@ class Member extends React.Component {
 									<img src="img/avatar.png"/>
 								</div>
 							</div>
-							<p className="account">{this.props.user.userID}</p>
+							<p className="account">{this.props.user.id}</p>
 						</div>
 						<div className="block">
 							<div className="row">
@@ -40,7 +43,7 @@ class Member extends React.Component {
 							<div className="row">
 								修改密码<i className="fa fa-angle-right"></i>
 							</div>
-							<div className="row">
+							<div className="row" onClick={this.toDIManagement.bind(this)}>
 								收货地址管理<i className="fa fa-angle-right"></i>
 							</div>
 						</div>

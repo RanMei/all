@@ -43,8 +43,51 @@ var DECREMENT = {type:'DECREMENT'};
 import {$$reducer} from './reducers/reducer.jsx';
 // store
 const $$store = createStore( $$reducer/*,enhancer*/ );
-console.debug( 'Redux: store created.')
-console.debug( 'Redux: state initialized',$$store.getState() )
+console.debug( 'Redux: store created.',$$store.getState() )
+function act(action){
+	switch (action.type) {
+		case 'LOGIN':
+			if( action.user.id==='15911111111'&&action.user.password==='111111' ){
+				action.user.shoppingCart = [];
+				$$store.dispatch(action);
+				$$store.dispatch({
+					type: 'ALERT',
+					text: '登录成功！'
+				})
+			}else{
+				$$store.dispatch({
+					type: 'ALERT',
+					text: '您输入的用户名或密码有误！'
+				})
+			}
+			break;
+		case 'LOGIN_AS_GUEST':
+			var user = {
+				id: 'guest',
+				shoppingCart: []
+			}
+			sessionStorage.user = '{"id":"guest"}';
+			sessionStorage.shoppingCart = '[]';
+			$$store.dispatch({
+				type: 'LOGIN',
+				user: user
+			})
+			$$store.dispatch({
+				type: 'ALERT',
+				text: '登录成功！'
+			})
+			break;
+		case 'LOGOUT':
+			delete sessionStorage.user;
+			setTimeout(()=>{
+				$$store.dispatch(action);
+			},10);
+			break;
+		default :
+			$$store.dispatch(action);
+			break;
+	}
+}
 
 
 import {Mask} from './components/Mask.jsx';
@@ -64,6 +107,7 @@ import {Member} from './components/Member.jsx';
 
 import {Item} from './components/Item.jsx';
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
+import {DIManagement} from './components/DIManagement.jsx';
 
 class App extends React.Component {
 	constructor(){
@@ -71,10 +115,10 @@ class App extends React.Component {
 		console.debug('<App/> constructing');
 	}
 	render() {
-		console.debug( '<App/> rendering, State:',$$store.getState() );
+		console.debug( '<App/> rendering.' );
 		return (
 			<div>
-				<Mask/>
+				<Mask mask={this.props.mask} act={act}/>
 				<Notice notice={this.props.notice}/>
 				{this.props.children}
 			</div>
@@ -85,18 +129,9 @@ class App extends React.Component {
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
 
-function act(action){
-	switch (action.type) {
-		case 'LOGOUT':
-			setTimeout(()=>{
-				$$store.dispatch(action);
-			},1000);
-			break;
-	}
-}
-
 var AppConnected = connect(function(state){
 	return {
+		mask: state.mask,
 		notice: state.notice
 	}
 })( App );
@@ -115,18 +150,18 @@ var MemberConnected = connect(function(state){
 var ShoppingCartConnected = connect(function(state){
 	return {
 		items: state.shoppingCart,
-		act: (action)=>$$store.dispatch(action)
+		act: act
 	}
 })( ShoppingCart );
 var ItemConnected = connect(function(state){
 	return {
-		shoppingCart: state.shoppingCart,
-		act: (action)=>$$store.dispatch(action)
+		inCart: state.shoppingCart.length,
+		act: act
 	}
 })( Item );
 var SigninConnected = connect(function(state){
 	return {
-		act: (action)=>$$store.dispatch(action)
+		act: act
 	}
 })( Signin );
 
@@ -140,6 +175,7 @@ ReactDOM.render(
 					<Route path="/category" component={Category} />
 					<Route path="/shopping_cart" component={ShoppingCartConnected} />
 					<Route path="/member" component={MemberConnected} />
+					<Route path="/di_management" component={DIManagement} />
 
 					<Route path="/signin" component={SigninConnected} />
 					<Route path="/signup" component={Signup} />

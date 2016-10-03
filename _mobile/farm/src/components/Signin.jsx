@@ -9,7 +9,7 @@ class Signin extends React.Component {
 		super();
 		this.state = {
 			user:{
-				userID: '',
+				id: '',
 				password: ''
 			}
 		};
@@ -18,7 +18,7 @@ class Signin extends React.Component {
 	}
 	setUserID(e){
 		var user = Object.assign( {},this.state.user );
-		user.userID = e.target.value;
+		user.id = e.target.value;
 		this.setState({
 			user: user
 		});
@@ -32,21 +32,10 @@ class Signin extends React.Component {
 	}
 	login(){
 		var self = this;
-		if( this.state.user.userID==='15911111111'&&this.state.user.password==='111111' ){
-			self.props.act({
-				type: 'ALERT',
-				text: '登录成功！'
-			})
-			self.props.act({
-				type: 'LOGIN',
-				user: self.state.user
-			})
-		}else{
-			self.props.act({
-				type: 'ALERT',
-				text: '您输入的用户名或密码有误！'
-			})
-		}
+		self.props.act({
+			type: 'LOGIN',
+			user: self.state.user
+		})
 
 		// fetch('/login', {
 		// 	method: 'POST',
@@ -76,23 +65,15 @@ class Signin extends React.Component {
 		// })
 	}
 	loginAsGuest(){
-
 		this.props.act({
-			type: 'LOGIN',
-			user: {
-				userID: '游客'
-			}
-		})
-		this.props.act({
-			type: 'ALERT',
-			text: '登录成功！'
+			type: 'LOGIN_AS_GUEST'
 		})
 	}
 	render(){
 		return (
 			<div className="SIGN_IN">
 
-				<div className="header">
+				<div className="header c-topbar">
 					登录<span className="a-guest" onClick={this.loginAsGuest.bind(this)}>游客登录 ></span>
 				</div>
 

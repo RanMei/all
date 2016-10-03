@@ -188,9 +188,17 @@ class ShoppingCart extends React.Component {
 		// });
 	}
 	remove(i){
-		this.props.act({
-			type: 'REMOVE'
-		})
+		if( this.props.items.length===0 ){
+			this.props.act({
+				type: 'ALERT',
+				text: '您的的购物车是空的！'
+			})
+		}else{
+			this.props.act({
+				type: 'CONFIRM',
+				text: '确认删除选中的商品吗？'
+			})
+		}
 		// var items = JSON.parse( JSON.stringify(this.state.items) );
 		// var newItems = [];
 		// items.forEach((a)=>{
@@ -210,13 +218,17 @@ class ShoppingCart extends React.Component {
 	render() {
 		//console.log(React);
 		//console.log(Function);
-		console.debug('<ShoppingCart/> rendering',this.props,this.state)
+		console.debug('<ShoppingCart/> rendering')
 		return (
 			<div className="SHOPPING_CART">
-				<div className="header">
+				<div className="header c-topbar">
 					购物车<span className="remove" onClick={this.remove.bind(this)}>删除</span>
 				</div>
 				
+				{this.props.items.length===0?
+					<p className="_info">您的购物车是空的</p>:null
+				}
+
 				{this.props.items.map( (item,i)=>{
 					return (
 						<div className="item">
