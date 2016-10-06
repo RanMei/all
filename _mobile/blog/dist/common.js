@@ -1,6 +1,37 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+/******/ 		if(moreModules[0]) {
+/******/ 			installedModules[0] = 0;
+/******/ 			return __webpack_require__(0);
+/******/ 		}
+/******/ 	};
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		2:0
+/******/ 	};
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +57,29 @@
 /******/ 		return module.exports;
 /******/ 	}
 
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"blog","1":"post"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -35,105 +89,10 @@
 
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(2);
-
-	new Vue({
-		el: 'body',
-		data: {
-			items: [{
-				title: '"读书运动会"活动案例',
-				keywords: 'CSS3',
-				desc: '"读书运动会"获奖结果页。<br/>交互：剑剑 | 设计：海龙',
-				href: './_mobile/h5/olympics/result.html'
-			},{
-				title: '3D Cube',
-				keywords: '3D',
-				desc: '立方体旋转动画。',
-				href: './_mobile/svg/3d-cube.html'
-			},{
-				title: 'stack',
-				keywords: 'CSS3',
-				desc: '卡片切换动画。',
-				href: './_mobile/svg/stack.html'
-			},{
-				title: 'morphing-phones',
-				keywords: 'SVG 形变',
-				desc: '手机的进化史。',
-				href: './_mobile/svg/morphing-phones.html'
-			},{
-				title: 'wave',
-				keywords: 'SVG',
-				desc: '波浪动画。',
-				href: './_mobile/svg/wave.html'
-			},{
-				title: 'stroke-arsenal',
-				keywords: 'SVG 描边',
-				desc: '阿森纳LOGO的描边动画。',
-				href: './_mobile/svg/stroke-arsenal.html'
-			},{
-				title: 'stroke-qq',
-				keywords: 'SVG 描边',
-				desc: 'QQ阅读LOGO的描边动画。',
-				href: './_mobile/svg/stroke-qq.html'
-			},{
-				title: 'countdown',
-				keywords: 'CSS3 SVG 描边',
-				desc: '一个倒计时动画。',
-				href: './_mobile/svg/countdown.html'
-			},{
-				title: 'gooey_menu',
-				keywords: 'CSS3',
-				desc: '一个带有胶粘效果的菜单。',
-				href: './_mobile/svg/gooey_menu.html'
-			},{
-				title: 'parallax-clouds',
-				keywords: 'CSS3 视差',
-				desc: '云层飘动的视差动画。',
-				href: './_mobile/svg/parallax-clouds.html'
-			},{
-			title: 'parallax',
-				keywords: 'CSS3 视差',
-				desc: '郊外自行车骑行主题的视差动画。',
-				href: './_mobile/svg/parallax.html'
-			},{
-				title: 'button-red',
-				keywords: 'CSS3 按钮',
-				desc: '几款红白主题的按钮。',
-				href: './_mobile/svg/button-red.html'
-			},{
-				title: 'button-ripple',
-				keywords: 'CSS3 按钮',
-				desc: '有波纹散开效果的按钮。',
-				href: './_mobile/svg/button-ripple.html'
-			},{	
-				title: 'fire',
-				keywords: 'canvas',
-				desc: '一个火焰燃烧的canvas动画。可以在页面上输入框内输入参数。',
-				href: './_mobile/canvas/fire.html'
-			},{
-				title: 'rain',
-				keywords: 'canvas',
-				desc: '一个下雨的canvas动画。点击canvas元素可实现暂停/播放。',
-				href: './_mobile/canvas/rain.html'
-			},{
-				title: 'snowfall',
-				keywords: 'canvas 滤镜',
-				desc: '一个下雪的canvas动画。由三个canvas元素叠加而成。使用了SVG的高斯模糊滤镜。',
-				href: './_mobile/canvas/snowfall.html'
-			}]
-		}
-	})
-
-/***/ },
+/* 0 */,
 /* 1 */,
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
@@ -169,7 +128,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\na {\n  text-decoration: none;\n}\nheader {\n  padding: 10px 0;\n  border-bottom: 1px solid #0F88EB;\n  font-size: 20px;\n  color: #0F88EB;\n  text-align: center;\n}\n.block {\n  display: block;\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 20px;\n  color: #0F88EB;\n  border-bottom: 1px solid #dddddd;\n}\n.block .keywords {\n  color: #F23051;\n  font-size: 14px;\n}\n.block .desc {\n  font-size: 14px;\n  color: #999;\n}\n.clearfix {\n  clear: both;\n}\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-size: 100px;\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  width: 100%;\n  height: 1vh;\n  overflow: hidden;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-body {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-body.last {\n  border-bottom: none!important;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\na {\n  text-decoration: none;\n}\na:link {\n  color: #e91e63;\n}\na:visited {\n  color: #e91e63;\n}\na:hover {\n  color: #e91e63;\n}\na:active {\n  color: #e91e63;\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\n@media screen and (max-width: 750px) {\n  body {\n    font-size: 4vw!important;\n  }\n}\n.container {\n  width: 100%;\n  padding-top: 4vw;\n  padding-left: 4vw;\n  padding-right: 4vw;\n}\n.section {\n  padding-top: 2vw;\n  padding-bottom: 2vw;\n  border-bottom: 1px solid lightgrey;\n}\n", ""]);
 
 	// exports
 

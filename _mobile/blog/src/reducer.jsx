@@ -6,13 +6,7 @@ var list1 = [{
 	title: 'night'
 }];
 
-var post1 = {
-	title: 'one post',
-	body: [
-		'huh?',
-		'what the hell?'
-	]
-}
+
 
 function list(state=[],action){
 	switch (action.type){

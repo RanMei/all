@@ -1,14 +1,16 @@
 import {$$rootDir,$$phpDir} from '../common.jsx';
 
 function user (state={},action){
+
 	switch (action.type) {
+		case 'INIT':
+			return action.user;
 		case 'LOGIN':
-			sessionStorage.userID = action.user.userID;
-			location.hash = 'home';
-			return {userID: action.user.userID};				
+			location.hash = 'member';
+			return action.user;				
 		case 'LOGOUT':
-			delete sessionStorage.userID;
-			return {userID: undefined};
+			location.hash = 'signin';
+			return {};
 		default:
 			return state;
 	}

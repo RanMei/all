@@ -5,55 +5,20 @@ import {$$imgDir} from '../common.jsx';
 import {Navbar} from './Navbar.jsx';
 import {Swiper} from './Swiper.jsx';
 
-
-var swiperItems = [
-	'img/index/slider_0.png',
-	'img/index/slider_1.png',
-	'img/index/slider_2.png',
-	'img/index/slider_3.png'
-]
-
 class Home extends React.Component {
 	constructor(props) {
         super(props);
         var self = this;
-		self.state = {
-			items: []
-		};
-		//self.getItems();
-		console.log('<Home/> constructing',self.state);
+		console.log('<Home/> constructing');
     }
     componentWillMount(){
-    	this.getItems();
-    }
-    getItems(){
-    	var self = this;
-    	setTimeout(()=>{
-    		var newItems = require('../data/items.js').dataItems;
-    		self.setState({
-    			items: newItems
-    		})
-    	},50);
-		// fetch('/getItems', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		// 'Accept': 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify( self.state.user )
-		// }).then(function(res){
-		// 	return res.json();
-		// }).then(function(data){
-		// 	self.setState({
-		// 		items: data
-		// 	})
-		// })
     }
     back(){
     	//console.log(111)
     	history.go(-1);
     }
 	render() {
+		//console.log(this.props)
 		window.scroll(0,0);
 		return (
 			<div className="HOME">
@@ -68,19 +33,11 @@ class Home extends React.Component {
 				
 				<Swiper 
 					sticky={true}
-					items={[{
-						background: 'img/index/banner_0.jpg'
-					},{
-						background: 'img/index/banner_1.jpg'
-					},{
-						background: 'img/index/banner_2.jpg'
-					},{
-						background: 'img/index/banner_3.jpg'
-					}]}
+					items={this.props.homeSwiper}
 					style={{height:'4rem'}}/>
 				
 				<div className="block">
-					{this.state.items.map(function(a){
+					{this.props.items.map(function(a){
 						return (
 							<a className="item-2" href={'#/item?id='+a.id}>
 								<img src={'img/items/'+a.id+'/t.jpg'}/>
@@ -101,7 +58,7 @@ class Home extends React.Component {
 					<div className="block-header">	
 						<i className="fa fa-heart-o"></i> 猜你喜欢
 					</div>
-					{this.state.items.map(function(item,i){
+					{this.props.items.map(function(item,i){
 						var href = '#/item?id='+item.id;
 						var src = 'img/items/'+item.id+'/t.jpg';
 						var style = {
@@ -126,6 +83,14 @@ class Home extends React.Component {
 		);
 
 	}
+}
+Home.propTypes = {
+	homeSwiper: React.PropTypes.array.isRequired,
+	items: React.PropTypes.number.isRequired
+}
+Home.defaultProps = {
+	homeSwiper: [],
+	items: []
 }
 
 export {Home};

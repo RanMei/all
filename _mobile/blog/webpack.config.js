@@ -3,8 +3,8 @@ var autoprefixer = require('autoprefixer');
 
 module.exports = {
 	entry: {
-		'index': './_mobile/main/src/main.jsx',
-		'front_end': './_mobile/main/src_front_end/main.js'
+		'blog': './_mobile/blog/src/blog.jsx',
+		'post': './_mobile/blog/src/post.jsx'
 	},
 	output: {
 		filename: '[name].bundle.js'
@@ -28,6 +28,6 @@ module.exports = {
         return [autoprefixer];
     },
     plugins: [
-    	new webpack.optimize.CommonsChunkPlugin('common.js',['index'])
+    	new webpack.optimize.CommonsChunkPlugin('common.js',['blog','post'])
     ]
 };

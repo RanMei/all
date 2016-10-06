@@ -145,6 +145,12 @@ const WEBPACK = [{
 	config: './_mobile/main/webpack.config.js', 
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 },{
+	name: 'webpack-mobile-blog', 
+	src: './_mobile/blog/src/blog.jsx', 
+	dest: './_mobile/blog/dist/', 
+	config: './_mobile/blog/webpack.config.js', 
+	watched: ['./_mobile/blog/src/*.*','./_mobile/blog/src/*/*.*']
+},{
 	name: 'webpack-mobile-svg', 
 	src: './_mobile/svg/src/preloader.js', 
 	dest: './_mobile/svg/dist/', 

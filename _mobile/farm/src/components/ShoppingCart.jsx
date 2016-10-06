@@ -2,96 +2,15 @@ require('./ShoppingCart.less');
 
 import {Navbar} from './Navbar.jsx';
 
-var NavbarS={width:"1000px",height:"60px",background:"red"};
-
-const ItemStyle = {borderBottom:'1px solid grey'};
-const LiStyle = {float:'left',width:'20%'};
-
-class ItemList extends React.Component {
-	render(){
-		var that = this;
-		return (
-			<div>
-				<ul>
-				{that.props.items.map(function(x,i){
-					return(
-					<li className='item' key={x.name}>
-						<input className="check" type="checkbox" checked={that.props.items[i].checked} onChange={that.props.checkThis.bind(that,i)}/>
-						<div className="thumbnail"><img src={$$itemDir+x.itemID+'/0.jpg'}/></div>
-						<p className="name">{x.name}</p>
-						<p className="spec">{x.description}</p>
-						<p className="price">￥{x.price}</p>
-						<div className="counter">
-							<div className="minus" onClick={that.props.minusOne.bind(that,i)}>-</div>
-							<div className="quantity">{x.quantity}</div>
-							<div className="plus" onClick={that.props.plusOne.bind(that,i)}>+</div>
-						</div>
-						<div className="subtotal">￥{x.price*x.quantity}</div>
-						<p className="manipulation">
-							<span className="delete" onClick={that.props.remove.bind(that,i)}>删除</span><br/>
-							<span className="concern">移到我的关注</span>
-						</p>
-					</li>
-					);
-				})}
-				</ul>
-			</div>
-		)
-	}
-}
-
-// <ShoppingCart items={} />
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
-		// this.state = {
-		// 	items: []
-		// }
-		//this.getItems();
-	}
-	getItems(){
-		var self = this;
-
-		var items = JSON.parse( sessionStorage.shoppingCart );
-
-		items.forEach((a)=>{
-			a.selected = false;
-		})
-
-		this.state.items = items;
-		
-		// fetch('/getShoppingCart', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		// 'Accept': 'application/json',
-		// 		//'Content-Type': 'application/json'
-		// 	}
-		// }).then(function(res){
-		// 	return res.json();
-		// }).then(function(data){
-		// 	console.log('<ShoppingCart/> item received',data);
-		// 	self.setState({
-		// 		items: data
-		// 	})	
-		// }).catch(function(e,f,g){
-		// 	console.log(e,f,g);
-		// })
-	}
-	getInitialState(){
-
 	}
 	componentWillMount(){
-		// this.setState({
-		// 	items: this.props.user.shoppingCart||[]
-		// })
 	}
 	componentDidMount(){
-		//console.log('<ShoppingCart/> mount',this.props,this.state)
 	}
 	componentWillReceiveProps(newProps){
-		// this.setState({
-		// 	items: typeof newProps.user.shoppingCart==='object'?newProps.user.shoppingCart:[]
-		// })
 	}
 	componentDidUpdate(){
 	}
@@ -129,38 +48,17 @@ class ShoppingCart extends React.Component {
 			this.props.act({
 				type: 'UNCHECK_ALL'
 			})
-			// for(var i=0;i<this.state.items.length;i++){
-			// 	this.state.items[i].selected = false;
-			// };
-			// this.state.allChecked = false;
 		}else{
 			this.props.act({
 				type: 'CHECK_ALL'
 			})
-			// for(var i=0;i<this.state.items.length;i++){
-			// 	this.state.items[i].selected = true;
-			// };
-			// this.state.allChecked = true;
 		};
-		// this.setState({
-		// 	// allChecked: this.state.allChecked,
-		// 	items: this.state.items
-		// });
 	}
 	checkThis(i){
 		this.props.act({
 			type: 'CHECK_THIS',
 			i: i
 		})
-
-		// this.state.items[i].selected = this.state.items[i].selected?false:true;
-		// // if( this.state.items[i].selected===false ){
-		// // 	this.state.allChecked = false;
-		// // }
-		// this.setState({
-		// 	// allChecked: this.state.allChecked,
-		// 	items: this.state.items
-		// });
 	}
 	minusOne(i) {
 		if( this.props.items[i].quantity>1 ){
@@ -169,23 +67,12 @@ class ShoppingCart extends React.Component {
 				i: i
 			})
 		};
-
-		// if( this.state.items[i].quantity>1 ){
-		// 	this.state.items[i].quantity--;
-		// 	this.setState({
-		// 		items: this.state.items
-		// 	});
-		// };
 	}
 	plusOne(i) {
 		this.props.act({
 			type: 'PLUS',
 			i: i
 		})
-		// this.state.items[i].quantity++;
-		// this.setState({
-		// 	items: this.state.items
-		// });
 	}
 	remove(i){
 		if( this.props.items.length===0 ){
@@ -199,21 +86,6 @@ class ShoppingCart extends React.Component {
 				text: '确认删除选中的商品吗？'
 			})
 		}
-		// var items = JSON.parse( JSON.stringify(this.state.items) );
-		// var newItems = [];
-		// items.forEach((a)=>{
-		// 	if( !a.selected ){
-		// 		newItems.push(a);
-		// 	}
-		// })
-		// this.setState({
-		// 	items: newItems
-		// })
-		// sessionStorage.shoppingCart = JSON.stringify(newItems);
-		// this.props.act({
-		// 	type:'REMOVE_ITEM',
-		// 	itemID:this.state.items[i].itemID
-		// })
 	}
 	render() {
 		//console.log(React);
@@ -266,7 +138,6 @@ class ShoppingCart extends React.Component {
 				</div>
 				<div className="navbarShadow"></div>
 				<Navbar name="shoppingCart"/>
-			
 			
 			</div>
 		);

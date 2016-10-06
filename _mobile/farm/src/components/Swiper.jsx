@@ -4,48 +4,134 @@ class Swiper extends React.Component {
 	constructor(props){
 		super(props);
 		var self = this;
+
 		this.$trainOffset = 0;
-		this.$currentOne = 0;
+		this.$currentOne = this.props.items.length;
 		
 		this.X0 = null;
 		this.X1 = null;
 		this.Y0 = null;
 		this.Y1 = null;
 
+		//console.log(this.props)
+
 		this.state = {
+			items: this.getNewItems(this.props.items),
 			trainStyle: {
-				width: this.props.items.length+'00%'
+				marginLeft: `-${this.props.items.length}00%`
 			},
 			itemStyle: {
 			},
-			currentOne: 0
+			currentDot: 0
 		}
 	}
 	componentDidMount(){
 		//console.log(this.props)
 		var self = this;
-		var _Swiper = React.findDOMNode(self.refs.Swiper);
-
-		this.$width = Number( document.defaultView.getComputedStyle( _Swiper ).width.replace(/px/,'') );
+		//self.setWidth();
 		window.addEventListener('resize',function(){
-			self.$width = Number( document.defaultView.getComputedStyle( React.findDOMNode(self.refs.Swiper) ).width.replace(/px/,'') );
+			//self.setWidth();
 		})
 		if( this.props.autoplay===true ){
-			setInterval( this.toNext.bind(this),3000 );
+			setInterval( this.toNext.bind(this),self.props.interval );
 		};
+		this.$currentOne = this.props.items.length;
+		//console.log(this.$currentOne)
+	}
+	componentWillReceiveProps(newProps){
+		this.$trainOffset = 0;
+		this.$currentOne = newProps.items.length;
+		this.setState({
+			items: this.getNewItems(newProps.items),
+			trainStyle: {
+				marginLeft: `-${newProps.items.length}00%`
+			}
+		})
+	}
+	getNewItems(items){
+		var items1 = JSON.parse( JSON.stringify(items) );
+		var items2 = JSON.parse( JSON.stringify(items) );
+		var newItems = items1.concat(items2);
+		newItems.forEach((a,i)=>{
+			a._id = i;
+		})
+		return newItems;
+	}
+	getCurrentDot(self){
+		if( self.$currentOne>self.props.items.length-1 ){
+			return self.$currentOne - self.props.items.length;
+		}else{
+			return self.$currentOne;
+		}
+	}
+	setWidth(){
+		var self = this;
+		var _Swiper = React.findDOMNode(self.refs.Swiper);
+		self.$width = Number( document.defaultView.getComputedStyle( _Swiper ).width.replace(/px/,'') );
 	}
 	toNext(){
 		var self = this;
-		if( self.$currentOne<self.props.items.length-1 ){
+		if( self.$currentOne<self.state.items.length-1 ){
 			self.$currentOne++;
 		}else{
 			self.$currentOne = 0;
 		};
-		self.toItem( self.$currentOne );
+		//console.log(self.$currentOne)
+		this.setState({
+			trainStyle: {
+				marginLeft: `-${this.props.items.length}00%`,
+				transition: `${this.props.duration/1000}s`,
+				transform: 'translate3d(-5%,0,0)'
+			},
+			currentDot: self.getCurrentDot(self)
+		})
+		setTimeout(()=>{
+			var newItems = JSON.parse( JSON.stringify(this.state.items) );
+			var a = newItems.splice(0,1)[0];
+			newItems.push(a);
+			//console.log(newItems)
+			this.setState({
+				items: newItems,
+				trainStyle: {
+					marginLeft: `-${this.props.items.length}00%`,
+					transition: '0s',
+					transform: 'translate3d(0,0,0)'
+				}
+			})
+		},self.props.duration)
+	}
+	toPrev(){
+		var self = this;
+		if( self.$currentOne>0 ){
+			self.$currentOne--;
+		}else{
+			self.$currentOne = self.state.items.length-1;
+		};
+		this.setState({
+			trainStyle: {
+				marginLeft: `-${this.props.items.length}00%`,
+				transition: `${this.props.duration/1000}s`,
+				transform: 'translate3d(5%,0,0)'
+			},
+			currentDot: self.getCurrentDot(self)
+		})
+		setTimeout(()=>{
+			var newItems = JSON.parse( JSON.stringify(this.state.items) );
+			var a = newItems.splice(newItems.length-1,1)[0];
+			newItems.unshift(a);
+			//console.log(newItems)
+			this.setState({
+				items: newItems,
+				trainStyle: {
+					marginLeft: `-${this.props.items.length}00%`,
+					transition: '0s',
+					transform: 'translate3d(0,0,0)'
+				}
+			})
+		},self.props.duration)
 	}
 	handleTouchStart(e){
 		this.X0 = this.X1 = e.changedTouches[0].pageX;
-		console.log(this.X1);
 	}
 	handleTouchMove(e){
 		if( this.props.sticky===true ){
@@ -54,7 +140,7 @@ class Swiper extends React.Component {
 			this.$trainOffset += distance;
 			this.X1 = this.X2;
 			var trainStyle = {
-				width: this.props.items.length+'00%',
+				marginLeft: `-${this.props.items.length}00%`,
 				transition: '0s',
 				transform: 'translate3d('+this.$trainOffset+'px,0,0)'
 			}
@@ -66,23 +152,13 @@ class Swiper extends React.Component {
 	handleTouchEnd(e){
 		this.X2 = e.changedTouches[0].pageX;
 		var distance = this.X2 - this.X0;
-		if( distance>0&&this.$currentOne>0 ){
-			this.$currentOne--;
-		}else if( distance<0&&this.$currentOne<this.props.items.length-1 ){
-			this.$currentOne++;
+		//console.log(distance);
+		this.$trainOffset = 0;
+		if( distance>0 ){
+			this.toPrev();
+		}else if( distance<0 ){
+			this.toNext();
 		}
-		this.toItem( this.$currentOne );
-	}
-	toItem( i ){
-		this.$trainOffset = -i*this.$width;
-		this.setState({
-			trainStyle: {
-				width: this.props.items.length+'00%',
-				transition: '0.3s',
-				transform: 'translate3d('+this.$trainOffset+'px,0,0)'
-			},
-			currentOne: i
-		})
 	}
 	render(){
 		var self = this;
@@ -93,12 +169,10 @@ class Swiper extends React.Component {
 				onTouchMove={this.handleTouchMove.bind(this)}
 				onTouchEnd={this.handleTouchEnd.bind(this)}>
 				<ul className="train" style={this.state.trainStyle}>
-					{this.props.items.map(function(a){
+					{this.state.items.map(function(a,i){
 						return(
-							<a className="item" style={{
-								width: 100/self.props.items.length+'%',
-								background: a.background?`url(${a.background}) no-repeat center`:'white',
-								backgroundSize: 'auto 100%'
+							<a className="item" href={a.href||'#/hell'} key={i} style={{
+								backgroundImage: a.background?`url(${a.background})`:''
 							}}>
 								{a.img?<img src={a.img}/>:null}
 							</a>
@@ -107,12 +181,12 @@ class Swiper extends React.Component {
 				</ul>
 				<div className="pagi">
 					<ul className="pagination" ref="pagination">
-						{this.props.items.map(function(elem,i){
+						{this.props.pagi?this.props.items.map(function(elem,i){
 							return(
-								<li className={i===self.state.currentOne?'dot active':'dot'}>
+								<li className={i===self.state.currentDot?'dot active':'dot'}>
 								</li>
 							)
-						})}
+						}):null}
 					</ul>
 				</div>
 			</div>
@@ -121,8 +195,12 @@ class Swiper extends React.Component {
 }
 
 Swiper.defaultProps = {
+	items: [],
+	duration: 500,
+	interval: 3000,
 	sticky: true,
-	autoplay: true
+	autoplay: true,
+	pagi: true
 }
 
 export {Swiper};

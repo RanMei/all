@@ -1,20 +1,14 @@
 import {$$rootDir,$$phpDir} from '../common.jsx';
 
-function shoppingCart (state,action){
-	
-	if( state===undefined ){
-		if( sessionStorage.shoppingCart ){
-			state = JSON.parse( sessionStorage.shoppingCart );
-		}else{
-			state = [];
-		}
-	};
+function shoppingCart (state=[],action){
 
 	var newState = JSON.parse( JSON.stringify(state) );
 
 	switch (action.type) {
+		case 'INIT':
+			return action.shoppingCart;
 		case 'LOGIN':
-			return action.user.shoppingCart;
+			return action.shoppingCart;
 		case 'PLUS':
 			// console.log( newState[action.i] )
 			newState[action.i].quantity++;
@@ -55,22 +49,6 @@ function shoppingCart (state,action){
 			return _newState;
 		case 'ADD_TO_CART':
 			newState.push(action.item);
-			// console.log(action)
-			// fetch('/addToCart', {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		// 'Accept': 'application/json',
-			// 		'Content-Type': 'application/json'
-			// 	},
-			// 	body: JSON.stringify({itemID: action.itemID})
-			// }).then(function(res){
-			// 	return res.json();
-			// }).then(function(data){
-			// 	console.log('fuck')
-			// }).catch(function(e,f,g){
-			// 	console.log(e,f,g);
-			// })
-			sessionStorage.shoppingCart = JSON.stringify( newState );
 			return newState;
 		case 'LOGOUT':
 			return [];
