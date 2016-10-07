@@ -1,9 +1,13 @@
+require('./common.less');
+require('./presentation.less');
+require('./presentation.keyframes.less');
+
 var technology = require('./components/technology.vue');
 var css3Transitions = require('./components/css3Transitions.vue');
 var css3Animations = require('./components/css3Animations.vue');
 var svgSection = require('./components/svg-section.vue');
 
-var swiper = require('./components/swiper.vue');
+//var swiper = require('./components/swiper.vue');
 
 var strokeCircle = require('./components/stroke-circle.vue');
 
@@ -12,7 +16,7 @@ Vue.component( 'css3Transitions',css3Transitions );
 Vue.component( 'css3Animations',css3Animations );
 Vue.component( 'svgSection',svgSection );
 Vue.component( 'technology',technology );
-Vue.component( 'swiper',swiper );
+//Vue.component( 'swiper',swiper );
 Vue.component( 'stroke-circle',strokeCircle );
 
 new Vue({

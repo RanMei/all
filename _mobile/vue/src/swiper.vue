@@ -39,16 +39,24 @@
 
 <script>
 var swiper = {
-	props: ['style'],
+	props: {
+		style: {},
+		sticky: {
+			default: true
+		},
+		autoplay: {
+			default: false
+		},
+		duration: {
+			default: 300
+		},
+		interval: {
+			default: 500
+		}
+	},
 	data: function(){
 		return {
 			width: 0,
-
-			sticky: false,
-			autoplay: false,
-
-			duration: 300,
-			interval: 500,
 
 			switching: false,
 			inCycle: false,
@@ -111,7 +119,7 @@ var swiper = {
 				this.trainOffsetX = -this.width;
 			};
 			setTimeout(()=>{
-				this.transition = false;
+				this.transition = '0s';
 				var zz = this.items.length-1;
 				var last = this.items[zz];
 				this.items.splice(zz,1);
@@ -119,9 +127,10 @@ var swiper = {
 				this.currentOne = 2;
 				this.trainOffsetX = -this.width*2;
 				this.switching = false;
-			},this.interval)
+			},this.duration)
 		},
 		touchstart: function(e){
+			console.log(this.switching)
 			if( this.switching===false ){
 				this.inCycle = true;
 				// reset states of this touch cycle
@@ -158,10 +167,11 @@ var swiper = {
 			if( this.inCycle&&!this.scrolling ){
 				this.X2 = e.changedTouches[0].pageX;
 				var distance = this.X2-this.X0;
-				this.switching = true;
 				if( distance<0 ){
+					this.switching = true;
 					this.toNext();
 				}else if( distance>0 ){
+					this.switching = true;
 					this.toPrev();
 				};
 				this.inCycle = false;

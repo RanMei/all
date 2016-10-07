@@ -1,1 +1,0 @@
-Vue.component( 'duck',require('./duck.vue') );

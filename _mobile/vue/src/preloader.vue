@@ -25,7 +25,7 @@
 		width: 30%;
 		margin: auto;
 		overflow: visible;
-		border: 1px solid red;
+		//border: 1px solid red;
 	}
 
 	.g-circle {

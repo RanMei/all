@@ -158,8 +158,8 @@ const WEBPACK = [{
 	watched: ['./_mobile/svg/src/*.*','./_mobile/svg/src/*/*.*']
 },{
 	name: 'webpack-mobile-vue', 
-	watched: ['./_mobile/vue/lib/*.*','./_mobile/vue/lib/*/*.*'], 
-	src: './_mobile/vue/lib/main.js', 
+	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*'], 
+	src: './_mobile/vue/src/presentation.main.js', 
 	config: './_mobile/vue/webpack.config.js', 
 	dest: './_mobile/vue/dist/'
 },{
