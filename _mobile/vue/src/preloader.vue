@@ -4,7 +4,7 @@
 			<circle r="10" cx="20" cy="20"></circle>
 		</symbol>
 		<g class="g-circles">
-			<g class="g-circle" v-for="a in circles">
+			<g class="g-circle" v-for="a in 12">
 				<use xlink:href="#s-circle"/>
 			</g>
 		</g>
@@ -97,7 +97,6 @@
 	module.exports = {
 		data: function(){
 			return {
-				circles: [0,1,2,3,4,5,6,7,8,9,10,11]
 			}
 		}
 	}

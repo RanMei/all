@@ -7,6 +7,8 @@ module.exports = {
 	output: {
 		filename: 'bundle.js'
 	},
+	// debug: true,
+	// devtool: 'source-map', 
 	module: {
 		loaders: [{
 			test: /(\.jsx)|(\.js)$/,

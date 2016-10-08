@@ -4,7 +4,7 @@ var swiper = require('./swiper.vue');
 Vue.component( 'swiper',swiper );
 
 new Vue({
-	el: 'body',
+	el: '#root',
 	components: {
 	},
 	data: {

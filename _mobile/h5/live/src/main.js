@@ -2,12 +2,14 @@ require('./index.less');
 
 Vue.component( 'imgBlured',require('./img-blured.vue') );
 Vue.component( 'stackBoth',require('./stack-both.vue') );
+Vue.component( 'countdown',require('./countdown.vue') );
 Vue.component( 'buttonAlarm',require('./button-alarm.vue') );
 
 new Vue({
-	el: 'body',
+	el: '.root',
 	data: {
 		items: [],
+		timeleft: 1000000000,
 		// 'pending','unset','resolved','set'
 		alarmState: 'unset'
 	},

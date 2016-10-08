@@ -11,7 +11,7 @@
 </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="less">
 .button{
 	position: absolute; left: 0.96rem; top: 2.46rem;
 	width: 2.06rem; height: 0.54rem;

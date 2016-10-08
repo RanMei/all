@@ -9,13 +9,30 @@
 </head>
 
 <body>
-	<div class="app">
+	<div class="root">
 		<div class="focus">
+			<div class="margin"></div>
+			<div class="notice">
+				<img src="img/horn.png"/>本次直播延期30分钟，请您耐心等待
+			</div>
+			<countdown :timeleft="timeleft"></countdown>
 			<button-alarm :alarm="alarmState"></button-alarm>
+			<div class="bar">
+				<div class="avatar">
+					<img src="img/avatar.png"/>
+				</div>
+				<p>直播未开始，先来了解我吧</p>
+			</div>
 		</div>
 		<stack-both
 		:items="items"></stack-both>
-		<img-blured></img-blured>
+		<div class="chat">
+			<div class="content">
+				<img class="chatImg" src="img/chat.png"/>
+				<p>想了解更多，请戳视频哦</p>
+			</div>
+		</div>
+
 	</div>
 
 <script type="text/javascript" src="../../vendor/rem.js"></script>

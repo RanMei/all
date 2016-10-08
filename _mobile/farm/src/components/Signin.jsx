@@ -17,17 +17,18 @@ class Signin extends React.Component {
 		console.log('<Signin/> constructing');
 	}
 	setUserID(e){
-		var user = Object.assign( {},this.state.user );
-		user.id = e.target.value;
+		var newUser = JSON.parse( JSON.stringify(this.state.user) );
+		//Object.assign( {},this.state.user );
+		newUser.id = e.target.value;
 		this.setState({
-			user: user
+			user: newUser
 		});
 	}
 	setPassword(e){
-		var user = Object.assign( {},this.state.user );
-		user.password = e.target.value;
+		var new_user = JSON.parse( JSON.stringify(this.state.user) );
+		new_user.password = e.target.value;
 		this.setState({
-			user: user
+			user: new_user
 		});
 	}
 	login(){
@@ -36,33 +37,6 @@ class Signin extends React.Component {
 			type: 'LOGIN',
 			user: self.state.user
 		})
-
-		// fetch('/login', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		// 'Accept': 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify( self.state.user )
-		// }).then(function(res){
-		// 	return res.text();
-		// }).then(function(data){
-		// 	if( data==='true' ){
-		// 		self.props.act({
-		// 			type: 'ALERT',
-		// 			text: '登录成功！'
-		// 		})
-		// 		self.props.act({
-		// 			type: 'LOGIN',
-		// 			user: self.state.user
-		// 		})
-		// 	}else{
-		// 		self.props.act({
-		// 			type: 'ALERT',
-		// 			text: '您输入的用户名或密码有误！'
-		// 		})
-		// 	}				
-		// })
 	}
 	loginAsGuest(){
 		this.props.act({

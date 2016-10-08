@@ -15,13 +15,77 @@ ul,li {
 	list-style: none;
 }
 
-.app {
+@blue: #9bdbca;
+@black: #494949;
+.root {
 	width: 100%;
 	overflow: hidden;
 	.focus {
 		position: relative;
 		width: 100%;
 		height: 7.24rem;
-		background: #9bdbca;
+		background: @blue;
+		//overflow: hidden;
+		.margin {
+			height: 0.1rem;
+		}
+		.notice {
+			width: 4.2rem; height: 0.44rem;
+			margin: auto;
+			border-radius: 1000px;
+			background: rgba(255, 255, 255, 0.5);
+			font-size: 0.2rem;
+			text-align: center; line-height: 0.44rem;
+			img {
+				height: 0.2rem;
+				margin-right: 0.1rem;
+				line-height: 0.44rem; vertical-align: middle;
+			}
+		}
+		.bar {
+			position: absolute; left: 0; bottom: 0;
+			width: 100%; height: 0.56rem;
+			background: rgba(255, 255, 255, 0.5);
+			font-size: 0.24rem; line-height: 0.56rem;
+			//text-align: center;
+			color: @black;
+			.avatar {
+				box-sizing: border-box;
+				position: absolute; left: 1.34rem; top: -0.19rem;
+				width: 0.94rem; height: 0.94rem;
+				border-radius: 1000px;
+				border: 0.08rem solid white;
+				background: white;
+				overflow: hidden;
+				img {
+					width: 100%; height: 100%;
+				}
+			}
+			p {
+				margin-left: 2.56rem;
+			}
+		}
+	}
+
+	.chat {
+		position: relative;
+		width: 100%; height: 6.3rem;
+		background: @blue;
+		.content {
+			position: absolute; left: 0; top: 0;
+			width: 100%; height: 100%;
+			background: rgba(255, 255, 255, 0.7);
+			.chatImg {
+				display: block;
+				width: 1.4rem;
+				margin-top: 0.68rem;
+				margin-left: 0.8rem;
+				margin-bottom: 0.3rem;
+			}
+			p {
+				font-size: 0.24rem; color: #868686;
+				margin: 0 0 0.24rem 0.8rem;
+			}
+		}
 	}
 }

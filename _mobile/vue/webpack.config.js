@@ -17,13 +17,13 @@ module.exports = {
 			loader: 'vue'
 		},{
 			test: /\.less$/,
-			//loader: 'style!css!less!postcss'
-			loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
+			loader: 'style!css!less!postcss'
+			//loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
 		}]
 	},
 	vue: {
 		loaders: {
-			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
+			//less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
 	postcss: function () {

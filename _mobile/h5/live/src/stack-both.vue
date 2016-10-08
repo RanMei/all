@@ -1,34 +1,36 @@
 <template>
+<div class="STACK">
 	<div class="space">
 		<ul class="stack"
 		@touchstart="touchstart($event)"
 		@touchmove="touchmove($event)"
 		@touchend="touchend($event)">
-		<li v-for="a in cards" 
-		class="card card{{a.id}} {{a._class}}"
-		style="">
-		<div class="part-top">
-			<div class="right">
-				<p class="title__">
-					{{a.title}}
-				</p>
-				<div class="stars">
-					<div class="bg" style="width:{{a.score*10}}%;"></div>
-					<img class="starsImg" :src="img.stars"/>
+			<li v-for="a in cards" 
+			class="card card{{a.id}} {{a._class}}"
+			style="">
+				<div class="part-top">
+					<div class="right">
+						<p class="title__">
+							{{a.title}}
+						</p>
+						<div class="stars">
+							<div class="bg" style="width:{{a.score*10}}%;"></div>
+							<img class="starsImg" :src="img.stars"/>
+						</div>
+						<p class="score">{{a.score}}分</p>
+					</div>
 				</div>
-				<p class="score">{{a.score}}分</p>
-			</div>
-		</div>
-		<p class="intro">
-			{{a.intro}}
-		</p>
-		<img class="cover" :src="img.cover"/>
-	</li>
-</ul>
-</div>
-<div class="nav">
-	<li v-for="(a,i) in nav"
-	class="{{i===dot?'active':''}}"></li>
+				<p class="intro">
+					{{a.intro}}
+				</p>
+				<img class="cover" :src="img.cover"/>
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<li v-for="(a,i) in nav"
+		class="{{i===dot?'active':''}}"></li>
+	</div>
 </div>
 </template>
 

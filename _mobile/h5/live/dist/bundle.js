@@ -48,12 +48,14 @@
 
 	Vue.component( 'imgBlured',__webpack_require__(5) );
 	Vue.component( 'stackBoth',__webpack_require__(11) );
-	Vue.component( 'buttonAlarm',__webpack_require__(19) );
+	Vue.component( 'countdown',__webpack_require__(19) );
+	Vue.component( 'buttonAlarm',__webpack_require__(24) );
 
 	new Vue({
-		el: 'body',
+		el: '.root',
 		data: {
 			items: [],
+			timeleft: 1000000000,
 			// 'pending','unset','resolved','set'
 			alarmState: 'unset'
 		},
@@ -121,7 +123,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nbody {\n  background: white;\n  overflow-x: hidden;\n}\nul,\nli {\n  list-style: none;\n}\n.app {\n  width: 100%;\n  overflow: hidden;\n}\n.app .focus {\n  position: relative;\n  width: 100%;\n  height: 7.24rem;\n  background: #9bdbca;\n}\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nbody {\n  background: white;\n  overflow-x: hidden;\n}\nul,\nli {\n  list-style: none;\n}\n.root {\n  width: 100%;\n  overflow: hidden;\n}\n.root .focus {\n  position: relative;\n  width: 100%;\n  height: 7.24rem;\n  background: #9bdbca;\n}\n.root .focus .margin {\n  height: 0.1rem;\n}\n.root .focus .notice {\n  width: 4.2rem;\n  height: 0.44rem;\n  margin: auto;\n  border-radius: 1000px;\n  background: rgba(255, 255, 255, 0.5);\n  font-size: 0.2rem;\n  text-align: center;\n  line-height: 0.44rem;\n}\n.root .focus .notice img {\n  height: 0.2rem;\n  margin-right: 0.1rem;\n  line-height: 0.44rem;\n  vertical-align: middle;\n}\n.root .focus .bar {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 0.56rem;\n  background: rgba(255, 255, 255, 0.5);\n  font-size: 0.24rem;\n  line-height: 0.56rem;\n  color: #494949;\n}\n.root .focus .bar .avatar {\n  box-sizing: border-box;\n  position: absolute;\n  left: 1.34rem;\n  top: -0.19rem;\n  width: 0.94rem;\n  height: 0.94rem;\n  border-radius: 1000px;\n  border: 0.08rem solid white;\n  background: white;\n  overflow: hidden;\n}\n.root .focus .bar .avatar img {\n  width: 100%;\n  height: 100%;\n}\n.root .focus .bar p {\n  margin-left: 2.56rem;\n}\n.root .chat {\n  position: relative;\n  width: 100%;\n  height: 6.3rem;\n  background: #9bdbca;\n}\n.root .chat .content {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.root .chat .content .chatImg {\n  display: block;\n  width: 1.4rem;\n  margin-top: 0.68rem;\n  margin-left: 0.8rem;\n  margin-bottom: 0.3rem;\n}\n.root .chat .content p {\n  font-size: 0.24rem;\n  color: #868686;\n  margin: 0 0 0.24rem 0.8rem;\n}\n", ""]);
 
 	// exports
 
@@ -439,7 +441,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
 	__webpack_require__(6)
 	__vue_script__ = __webpack_require__(9)
 	if (__vue_script__ &&
@@ -449,20 +450,14 @@
 	__vue_template__ = __webpack_require__(10)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-72efea5c/img-blured.vue"
+	  var id = "./img-blured.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -486,8 +481,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-72efea5c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./img-blured.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-72efea5c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./img-blured.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2be74851&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./img-blured.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2be74851&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./img-blured.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -505,7 +500,7 @@
 
 
 	// module
-	exports.push([module.id, ".img-blurred[_v-72efea5c] {\n  position: relative;\n  width: 50%;\n  height: 3.5rem;\n  margin: auto;\n}\n.img-blurred .img-1[_v-72efea5c] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  display: block;\n  width: 100%;\n  z-index: 2;\n}\n.img-blurred .img-2[_v-72efea5c] {\n  display: block;\n  width: 90%;\n  height: 3rem;\n  margin: auto;\n  -webkit-filter: blur(0.4rem);\n          filter: blur(0.4rem);\n}\n", ""]);
+	exports.push([module.id, ".img-blurred[_v-2be74851] {\n  position: relative;\n  width: 50%;\n  height: 3.5rem;\n  margin: auto;\n}\n.img-blurred .img-1[_v-2be74851] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  display: block;\n  width: 100%;\n  z-index: 2;\n}\n.img-blurred .img-2[_v-2be74851] {\n  display: block;\n  width: 90%;\n  height: 3rem;\n  margin: auto;\n  -webkit-filter: blur(0.4rem);\n          filter: blur(0.4rem);\n}\n", ""]);
 
 	// exports
 
@@ -752,14 +747,13 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"img-blurred\" _v-72efea5c=\"\">\n\t<img class=\"img-1\" :src=\"img.pic\" _v-72efea5c=\"\">\n\t<img class=\"img-2\" :src=\"img.pic\" _v-72efea5c=\"\">\n</div>\n";
+	module.exports = "\n<div class=\"img-blurred\" _v-2be74851=\"\">\n\t<img class=\"img-1\" :src=\"img.pic\" _v-2be74851=\"\">\n\t<img class=\"img-2\" :src=\"img.pic\" _v-2be74851=\"\">\n</div>\n";
 
 /***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
 	__webpack_require__(12)
 	__vue_script__ = __webpack_require__(14)
 	if (__vue_script__ &&
@@ -769,20 +763,14 @@
 	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-38009ee8/stack-both.vue"
+	  var id = "./stack-both.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -806,8 +794,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-38009ee8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-38009ee8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c5404732&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c5404732&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stack-both.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -825,7 +813,7 @@
 
 
 	// module
-	exports.push([module.id, ".space[_v-38009ee8] {\n  width: 100%;\n  padding: 60vw 0 1.4rem 0;\n  overflow-x: hidden;\n}\n.stack[_v-38009ee8] {\n  box-sizing: border-box;\n  position: relative;\n  width: 6.56rem;\n  height: 5.32rem;\n  margin: auto;\n  -webkit-perspective: 4rem;\n          perspective: 4rem;\n}\n.stack .card[_v-38009ee8] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-transform: translate3d(7rem, 0, 0);\n          transform: translate3d(7rem, 0, 0);\n  border-radius: 0.05rem;\n  border: 1px solid #d5d5d5;\n  background: white!important;\n  box-shadow: 0 0.1rem 0.5rem #cbcbcb;\n}\n.stack .card .part-top[_v-38009ee8] {\n  box-sizing: border-box;\n  width: 100%;\n  height: 0.94rem;\n  margin-top: 0.58rem;\n  margin-bottom: 0.6rem;\n  padding-left: 0.36rem;\n  border-left: 0.08rem solid black;\n}\n.stack .card .part-top .right[_v-38009ee8] {\n  position: relative;\n  height: 100%;\n}\n.stack .card .part-top .right .title__[_v-38009ee8] {\n  line-height: 0.36rem;\n  font-size: 0.36rem;\n}\n.stack .card .part-top .right .stars[_v-38009ee8] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 1.64rem;\n  height: 0.23rem;\n  background: #cccccc;\n}\n.stack .card .part-top .right .stars .bg[_v-38009ee8] {\n  width: 0;\n  height: 100%;\n  background: #ffbf00;\n}\n.stack .card .part-top .right .stars .starsImg[_v-38009ee8] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n}\n.stack .card .part-top .right .score[_v-38009ee8] {\n  position: absolute;\n  left: 1.78rem;\n  bottom: 0;\n  font-size: 0.24rem;\n  line-height: 0.24rem;\n  color: #9d9d9d;\n}\n.stack .card .intro[_v-38009ee8] {\n  padding: 0 0.44rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  color: #9b9b9b;\n}\n.stack .card .cover[_v-38009ee8] {\n  position: absolute;\n  right: 0.32rem;\n  top: -1.5rem;\n  width: 2.8rem;\n}\n.stack .card.card0[_v-38009ee8] {\n  background: #91C794;\n}\n.stack .card.card1[_v-38009ee8] {\n  background: #9993C1;\n}\n.stack .card.card2[_v-38009ee8] {\n  background: #B2DFDB;\n}\n.stack .card.card3[_v-38009ee8] {\n  background: #FBCBBD;\n}\n.stack .card.card4[_v-38009ee8] {\n  background: #FFF59D;\n}\n.stack .card.leave[_v-38009ee8] {\n  -webkit-animation: leave 0.6s forwards;\n          animation: leave 0.6s forwards;\n}\n.stack .card.toFirst[_v-38009ee8] {\n  -webkit-animation: toFirst 0.6s forwards;\n          animation: toFirst 0.6s forwards;\n}\n.stack .card.toSecond[_v-38009ee8] {\n  -webkit-animation: toSecond 0.6s forwards;\n          animation: toSecond 0.6s forwards;\n}\n.stack .card.toThird[_v-38009ee8] {\n  -webkit-animation: toThird 0.6s forwards;\n          animation: toThird 0.6s forwards;\n}\n.stack .card.wira-right[_v-38009ee8] {\n  -webkit-transform-origin: 250% 50%;\n          transform-origin: 250% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-right 1s forwards;\n          animation: wira-right 1s forwards;\n}\n.stack .card.wira-left[_v-38009ee8] {\n  -webkit-transform-origin: -150% 50%;\n          transform-origin: -150% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-left 1s forwards;\n          animation: wira-left 1s forwards;\n}\n@-webkit-keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@-webkit-keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@-webkit-keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@-webkit-keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@-webkit-keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@-webkit-keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n@keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n.nav[_v-38009ee8] {\n  display: table;\n  margin: auto;\n}\n.nav li[_v-38009ee8] {\n  float: left;\n  width: 0.22rem;\n  height: 0.22rem;\n  margin: 0 0.04rem;\n  border-radius: 1000px;\n  border: 1px solid black;\n}\n.nav li.active[_v-38009ee8] {\n  background: black;\n}\n", ""]);
+	exports.push([module.id, ".space[_v-c5404732] {\n  width: 100%;\n  padding: 60vw 0 1.4rem 0;\n  overflow-x: hidden;\n}\n.stack[_v-c5404732] {\n  box-sizing: border-box;\n  position: relative;\n  width: 6.56rem;\n  height: 5.32rem;\n  margin: auto;\n  -webkit-perspective: 4rem;\n          perspective: 4rem;\n}\n.stack .card[_v-c5404732] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  -webkit-transform: translate3d(7rem, 0, 0);\n          transform: translate3d(7rem, 0, 0);\n  border-radius: 0.05rem;\n  border: 1px solid #d5d5d5;\n  background: white!important;\n  box-shadow: 0 0.1rem 0.5rem #cbcbcb;\n}\n.stack .card .part-top[_v-c5404732] {\n  box-sizing: border-box;\n  width: 100%;\n  height: 0.94rem;\n  margin-top: 0.58rem;\n  margin-bottom: 0.6rem;\n  padding-left: 0.36rem;\n  border-left: 0.08rem solid black;\n}\n.stack .card .part-top .right[_v-c5404732] {\n  position: relative;\n  height: 100%;\n}\n.stack .card .part-top .right .title__[_v-c5404732] {\n  line-height: 0.36rem;\n  font-size: 0.36rem;\n}\n.stack .card .part-top .right .stars[_v-c5404732] {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 1.64rem;\n  height: 0.23rem;\n  background: #cccccc;\n}\n.stack .card .part-top .right .stars .bg[_v-c5404732] {\n  width: 0;\n  height: 100%;\n  background: #ffbf00;\n}\n.stack .card .part-top .right .stars .starsImg[_v-c5404732] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n}\n.stack .card .part-top .right .score[_v-c5404732] {\n  position: absolute;\n  left: 1.78rem;\n  bottom: 0;\n  font-size: 0.24rem;\n  line-height: 0.24rem;\n  color: #9d9d9d;\n}\n.stack .card .intro[_v-c5404732] {\n  padding: 0 0.44rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  color: #9b9b9b;\n}\n.stack .card .cover[_v-c5404732] {\n  position: absolute;\n  right: 0.32rem;\n  top: -1.5rem;\n  width: 2.8rem;\n}\n.stack .card.card0[_v-c5404732] {\n  background: #91C794;\n}\n.stack .card.card1[_v-c5404732] {\n  background: #9993C1;\n}\n.stack .card.card2[_v-c5404732] {\n  background: #B2DFDB;\n}\n.stack .card.card3[_v-c5404732] {\n  background: #FBCBBD;\n}\n.stack .card.card4[_v-c5404732] {\n  background: #FFF59D;\n}\n.stack .card.leave[_v-c5404732] {\n  -webkit-animation: leave 0.6s forwards;\n          animation: leave 0.6s forwards;\n}\n.stack .card.toFirst[_v-c5404732] {\n  -webkit-animation: toFirst 0.6s forwards;\n          animation: toFirst 0.6s forwards;\n}\n.stack .card.toSecond[_v-c5404732] {\n  -webkit-animation: toSecond 0.6s forwards;\n          animation: toSecond 0.6s forwards;\n}\n.stack .card.toThird[_v-c5404732] {\n  -webkit-animation: toThird 0.6s forwards;\n          animation: toThird 0.6s forwards;\n}\n.stack .card.wira-right[_v-c5404732] {\n  -webkit-transform-origin: 250% 50%;\n          transform-origin: 250% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-right 1s forwards;\n          animation: wira-right 1s forwards;\n}\n.stack .card.wira-left[_v-c5404732] {\n  -webkit-transform-origin: -150% 50%;\n          transform-origin: -150% 50%;\n  -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n          animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  -webkit-animation: wira-left 1s forwards;\n          animation: wira-left 1s forwards;\n}\n@-webkit-keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@keyframes toThird {\n  0% {\n    -webkit-transform: translate3d(0, 1.8rem, -1.5rem);\n            transform: translate3d(0, 1.8rem, -1.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n}\n@-webkit-keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@keyframes toSecond {\n  0% {\n    -webkit-transform: translate3d(0, 1.2rem, -1rem);\n            transform: translate3d(0, 1.2rem, -1rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n}\n@-webkit-keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes toFirst {\n  0% {\n    -webkit-transform: translate3d(0, 0.6rem, -0.5rem);\n            transform: translate3d(0, 0.6rem, -0.5rem);\n  }\n  100% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@-webkit-keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@keyframes leave {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n            transform: translate3d(3rem, 0, 0) rotate3d(0, 0, 1, 20deg);\n  }\n}\n@-webkit-keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@keyframes eka-right {\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n            transform: translate3d(150%, -50%, 0) rotate3d(0, 0, 1, -20deg);\n  }\n}\n@-webkit-keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@keyframes wira-right {\n  0%,\n  100% {\n    -webkit-transform-origin: 250% 50%;\n            transform-origin: 250% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, 60deg);\n            transform: rotate3d(0, 0, 1, 60deg);\n  }\n}\n@-webkit-keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n@keyframes wira-left {\n  0%,\n  100% {\n    -webkit-transform-origin: -150% 50%;\n            transform-origin: -150% 50%;\n    -webkit-animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n            animation-timing-function: cubic-bezier(0.3, 1, 0.3, 1);\n  }\n  0% {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n  100% {\n    opacity: 0;\n    -webkit-transform: rotate3d(0, 0, 1, -60deg);\n            transform: rotate3d(0, 0, 1, -60deg);\n  }\n}\n.nav[_v-c5404732] {\n  display: table;\n  margin: auto;\n}\n.nav li[_v-c5404732] {\n  float: left;\n  width: 0.22rem;\n  height: 0.22rem;\n  margin: 0 0.04rem;\n  border-radius: 1000px;\n  border: 1px solid black;\n}\n.nav li.active[_v-c5404732] {\n  background: black;\n}\n", ""]);
 
 	// exports
 
@@ -996,37 +984,30 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<div class=\"space\" _v-38009ee8=\"\">\n\t\t<ul class=\"stack\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" _v-38009ee8=\"\">\n\t\t<li v-for=\"a in cards\" class=\"card card{{a.id}} {{a._class}}\" style=\"\" _v-38009ee8=\"\">\n\t\t<div class=\"part-top\" _v-38009ee8=\"\">\n\t\t\t<div class=\"right\" _v-38009ee8=\"\">\n\t\t\t\t<p class=\"title__\" _v-38009ee8=\"\">\n\t\t\t\t\t{{a.title}}\n\t\t\t\t</p>\n\t\t\t\t<div class=\"stars\" _v-38009ee8=\"\">\n\t\t\t\t\t<div class=\"bg\" style=\"width:{{a.score*10}}%;\" _v-38009ee8=\"\"></div>\n\t\t\t\t\t<img class=\"starsImg\" :src=\"img.stars\" _v-38009ee8=\"\">\n\t\t\t\t</div>\n\t\t\t\t<p class=\"score\" _v-38009ee8=\"\">{{a.score}}分</p>\n\t\t\t</div>\n\t\t</div>\n\t\t<p class=\"intro\" _v-38009ee8=\"\">\n\t\t\t{{a.intro}}\n\t\t</p>\n\t\t<img class=\"cover\" :src=\"img.cover\" _v-38009ee8=\"\">\n\t</li>\n</ul>\n</div>\n<div class=\"nav\" _v-38009ee8=\"\">\n\t<li v-for=\"(a,i) in nav\" class=\"{{i===dot?'active':''}}\" _v-38009ee8=\"\"></li>\n</div>\n";
+	module.exports = "\n<div class=\"STACK\" _v-c5404732=\"\">\n\t<div class=\"space\" _v-c5404732=\"\">\n\t\t<ul class=\"stack\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" _v-c5404732=\"\">\n\t\t\t<li v-for=\"a in cards\" class=\"card card{{a.id}} {{a._class}}\" style=\"\" _v-c5404732=\"\">\n\t\t\t\t<div class=\"part-top\" _v-c5404732=\"\">\n\t\t\t\t\t<div class=\"right\" _v-c5404732=\"\">\n\t\t\t\t\t\t<p class=\"title__\" _v-c5404732=\"\">\n\t\t\t\t\t\t\t{{a.title}}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<div class=\"stars\" _v-c5404732=\"\">\n\t\t\t\t\t\t\t<div class=\"bg\" style=\"width:{{a.score*10}}%;\" _v-c5404732=\"\"></div>\n\t\t\t\t\t\t\t<img class=\"starsImg\" :src=\"img.stars\" _v-c5404732=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"score\" _v-c5404732=\"\">{{a.score}}分</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<p class=\"intro\" _v-c5404732=\"\">\n\t\t\t\t\t{{a.intro}}\n\t\t\t\t</p>\n\t\t\t\t<img class=\"cover\" :src=\"img.cover\" _v-c5404732=\"\">\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"nav\" _v-c5404732=\"\">\n\t\t<li v-for=\"(a,i) in nav\" class=\"{{i===dot?'active':''}}\" _v-c5404732=\"\"></li>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
 	__webpack_require__(20)
 	__vue_script__ = __webpack_require__(22)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\h5\\live\\src\\button-alarm.vue: named exports in *.vue files are ignored.")}
+	  console.warn("[vue-loader] _mobile\\h5\\live\\src\\countdown.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(23)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-33a4ccb8/button-alarm.vue"
+	  var id = "./countdown.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -1050,8 +1031,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-33a4ccb8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./button-alarm.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-33a4ccb8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./button-alarm.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5c234200&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./countdown.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5c234200&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./countdown.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1069,13 +1050,142 @@
 
 
 	// module
-	exports.push([module.id, ".button[_v-33a4ccb8] {\n  position: absolute;\n  left: 0.96rem;\n  top: 2.46rem;\n  width: 2.06rem;\n  height: 0.54rem;\n  border-radius: 0.18rem;\n  background: #f8f8f8;\n  z-index: 1;\n  overflow: hidden;\n}\n.button.resolved[_v-33a4ccb8] {\n  background: #464646;\n}\n.button.set[_v-33a4ccb8] {\n  -webkit-animation: rubberBand 1s forwards;\n          animation: rubberBand 1s forwards;\n}\n@-webkit-keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1, 0.75, 1);\n            transform: scale3d(1, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.9, 1.25, 1);\n            transform: scale3d(0.9, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1, 0.85, 1);\n            transform: scale3d(1, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1, 0.95, 1);\n            transform: scale3d(1, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n@keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1, 0.75, 1);\n            transform: scale3d(1, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.9, 1.25, 1);\n            transform: scale3d(0.9, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1, 0.85, 1);\n            transform: scale3d(1, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1, 0.95, 1);\n            transform: scale3d(1, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n.button .ripple[_v-33a4ccb8] {\n  position: absolute;\n  left: -0.47rem;\n  top: -1.23rem;\n  width: 3rem;\n  height: 3rem;\n  border-radius: 1000px;\n  background: #464646;\n  -webkit-transform: scale3d(0, 0, 1);\n          transform: scale3d(0, 0, 1);\n  opacity: 0;\n  z-index: 0;\n}\n.button .ripple.set[_v-33a4ccb8] {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  -webkit-transform: scale3d(1, 1, 1);\n          transform: scale3d(1, 1, 1);\n  opacity: 1;\n}\n.button p[_v-33a4ccb8] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 0.24rem;\n  line-height: 0.54rem;\n  text-align: center;\n}\n.button p img[_v-33a4ccb8] {\n  display: inline-block;\n  vertical-align: middle;\n  height: 0.24rem;\n}\n.button .p-before[_v-33a4ccb8] {\n  color: #464646;\n}\n.button .p-before.resolved[_v-33a4ccb8] {\n  display: none;\n}\n.button .p-before.set[_v-33a4ccb8] {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  opacity: 0;\n}\n.button .p-after[_v-33a4ccb8] {\n  color: white;\n  opacity: 0;\n}\n.button .p-after.resolved[_v-33a4ccb8] {\n  opacity: 1;\n}\n.button .p-after.set[_v-33a4ccb8] {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  opacity: 1;\n}\n", ""]);
+	exports.push([module.id, ".COUNTDOWN[_v-5c234200] {\n  width: 2.68rem;\n  height: 0.62rem;\n  font-size: 0.4rem;\n  background: #494949;\n  color: white;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+		props: {
+			timeleft: {
+				default: 0
+			}
+		},
+		data: function data() {
+			return {
+				days: 0,
+				hours: 0,
+				minutes: 0
+			};
+		},
+		ready: function ready() {
+			var _this = this;
+
+			this.setNumbers(this.timeleft);
+			setInterval(function () {
+				if (_this.timeleft - 60 * 1000 > 0) {
+					_this.timeleft -= 60 * 1000;
+				} else {
+					_this.timeleft = 0;
+				}
+				_this.setNumbers(_this.timeleft);
+			}, 60000);
+		},
+		methods: {
+			setNumbers: function setNumbers(time) {
+				var days = Math.floor(time / 1000 / 3600 / 24);
+				var hours = Math.floor((time - days * 1000 * 3600 * 24) / 1000 / 3600);
+				var minutes = Math.floor((time - days * 1000 * 3600 * 24 - hours * 1000 * 3600) / 1000 / 60);
+				days = this.format(days);
+				hours = this.format(hours);
+				minutes = this.format(minutes);
+				this.days = days;
+				this.hours = hours;
+				this.minutes = minutes;
+				console.log(this.days);
+			},
+			format: function format(num) {
+				if (num < 10) {
+					num = '0' + num;
+				};
+				return num;
+			}
+		}
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"COUNTDOWN\" _v-5c234200=\"\">\n\t<span _v-5c234200=\"\">{{days}}</span>天<span _v-5c234200=\"\">{{hours}}</span>时<span _v-5c234200=\"\">{{minutes}}</span>分\n</div>\n";
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(25)
+	__vue_script__ = __webpack_require__(27)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] _mobile\\h5\\live\\src\\button-alarm.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(28)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "./button-alarm.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(26);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(8)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./button-alarm.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./button-alarm.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".button {\n  position: absolute;\n  left: 0.96rem;\n  top: 2.46rem;\n  width: 2.06rem;\n  height: 0.54rem;\n  border-radius: 0.18rem;\n  background: #f8f8f8;\n  z-index: 1;\n  overflow: hidden;\n}\n.button.resolved {\n  background: #464646;\n}\n.button.set {\n  -webkit-animation: rubberBand 1s forwards;\n          animation: rubberBand 1s forwards;\n}\n@-webkit-keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1, 0.75, 1);\n            transform: scale3d(1, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.9, 1.25, 1);\n            transform: scale3d(0.9, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1, 0.85, 1);\n            transform: scale3d(1, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1, 0.95, 1);\n            transform: scale3d(1, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n@keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1, 0.75, 1);\n            transform: scale3d(1, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.9, 1.25, 1);\n            transform: scale3d(0.9, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1, 0.85, 1);\n            transform: scale3d(1, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1, 0.95, 1);\n            transform: scale3d(1, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n.button .ripple {\n  position: absolute;\n  left: -0.47rem;\n  top: -1.23rem;\n  width: 3rem;\n  height: 3rem;\n  border-radius: 1000px;\n  background: #464646;\n  -webkit-transform: scale3d(0, 0, 1);\n          transform: scale3d(0, 0, 1);\n  opacity: 0;\n  z-index: 0;\n}\n.button .ripple.set {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  -webkit-transform: scale3d(1, 1, 1);\n          transform: scale3d(1, 1, 1);\n  opacity: 1;\n}\n.button p {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 0.24rem;\n  line-height: 0.54rem;\n  text-align: center;\n}\n.button p img {\n  display: inline-block;\n  vertical-align: middle;\n  height: 0.24rem;\n}\n.button .p-before {\n  color: #464646;\n}\n.button .p-before.resolved {\n  display: none;\n}\n.button .p-before.set {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  opacity: 0;\n}\n.button .p-after {\n  color: white;\n  opacity: 0;\n}\n.button .p-after.resolved {\n  opacity: 1;\n}\n.button .p-after.set {\n  -webkit-transition: 1s ease-out;\n  transition: 1s ease-out;\n  opacity: 1;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1101,10 +1211,10 @@
 	};
 
 /***/ },
-/* 23 */
+/* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"button {{alarm}}\" @click=\"setAlarm\" _v-33a4ccb8=\"\">\n\t<div class=\"ripple {{alarm}}\" _v-33a4ccb8=\"\"></div>\n\t<p class=\"p-before {{alarm}}\" _v-33a4ccb8=\"\">\n\t\t<img :src=\"img.bell\" _v-33a4ccb8=\"\"> 预约提醒\n\t</p>\n\t<p class=\"p-after {{alarm}}\" _v-33a4ccb8=\"\">\n\t\t<img :src=\"img.check\" _v-33a4ccb8=\"\"> 预约成功\n\t</p>\n</div>\n";
+	module.exports = "\r\n<div class=\"button {{alarm}}\"\r\n\t@click=\"setAlarm\">\r\n\t<div class=\"ripple {{alarm}}\"></div>\r\n\t<p class=\"p-before {{alarm}}\">\r\n\t\t<img :src=\"img.bell\"/> 预约提醒\r\n\t</p>\r\n\t<p class=\"p-after {{alarm}}\">\r\n\t\t<img :src=\"img.check\"/> 预约成功\r\n\t</p>\r\n</div>\r\n";
 
 /***/ }
 /******/ ]);
