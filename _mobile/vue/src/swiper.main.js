@@ -21,5 +21,8 @@ new Vue({
 	computed: {
 	},
 	methods: {
+	},
+	mounted: function(){
+		console.log(this)
 	}
 })

@@ -452,6 +452,7 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(17)
 	__vue_script__ = __webpack_require__(19)
 	if (__vue_script__ &&
@@ -461,14 +462,20 @@ webpackJsonp([1],[
 	__vue_template__ = __webpack_require__(20)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./technology.vue"
+	  var id = "_v-14b8e32a/technology.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -492,8 +499,8 @@ webpackJsonp([1],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-706a17e8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-706a17e8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-14b8e32a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-14b8e32a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./technology.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -511,7 +518,7 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, ".three[_v-706a17e8] {\n  overflow: hidden;\n}\n.three li[_v-706a17e8] {\n  width: 33.333333%;\n  float: left;\n}\n.three li img[_v-706a17e8] {\n  height: 20vw;\n  margin: auto;\n  margin-top: 10vw;\n}\n", ""]);
+	exports.push([module.id, ".three[_v-14b8e32a] {\n  overflow: hidden;\n}\n.three li[_v-14b8e32a] {\n  width: 33.333333%;\n  float: left;\n}\n.three li img[_v-14b8e32a] {\n  height: 20vw;\n  margin: auto;\n  margin-top: 10vw;\n}\n", ""]);
 
 	// exports
 
@@ -536,13 +543,14 @@ webpackJsonp([1],[
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<li class=\"item\" _v-706a17e8=\"\">\n\t<h2 _v-706a17e8=\"\">\n\t\t制作网页动画的技术\n\t</h2>\n\t<ul class=\"three\" _v-706a17e8=\"\">\n\t\t<li _v-706a17e8=\"\">\n\t\t\t<img :src=\"css3\" _v-706a17e8=\"\">\n\t\t\t<h3 _v-706a17e8=\"\">CSS3</h3>\n\t\t</li>\n\t\t<li _v-706a17e8=\"\">\n\t\t\t<img :src=\"svg\" _v-706a17e8=\"\">\n\t\t\t<h3 _v-706a17e8=\"\">SVG</h3>\n\t\t</li>\n\t\t<li _v-706a17e8=\"\">\n\t\t\t<img :src=\"html5\" _v-706a17e8=\"\">\n\t\t\t<h3 _v-706a17e8=\"\">Canvas</h3>\n\t\t</li>\n\t</ul>\n</li>\n";
+	module.exports = "\n<li class=\"item\" _v-14b8e32a=\"\">\n\t<h2 _v-14b8e32a=\"\">\n\t\t制作网页动画的技术\n\t</h2>\n\t<ul class=\"three\" _v-14b8e32a=\"\">\n\t\t<li _v-14b8e32a=\"\">\n\t\t\t<img :src=\"css3\" _v-14b8e32a=\"\">\n\t\t\t<h3 _v-14b8e32a=\"\">CSS3</h3>\n\t\t</li>\n\t\t<li _v-14b8e32a=\"\">\n\t\t\t<img :src=\"svg\" _v-14b8e32a=\"\">\n\t\t\t<h3 _v-14b8e32a=\"\">SVG</h3>\n\t\t</li>\n\t\t<li _v-14b8e32a=\"\">\n\t\t\t<img :src=\"html5\" _v-14b8e32a=\"\">\n\t\t\t<h3 _v-14b8e32a=\"\">Canvas</h3>\n\t\t</li>\n\t</ul>\n</li>\n";
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(22)
 	__vue_script__ = __webpack_require__(24)
 	if (__vue_script__ &&
@@ -551,14 +559,20 @@ webpackJsonp([1],[
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\css3Transitions.vue: named exports in *.vue files are ignored.")}
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./css3Transitions.vue"
+	  var id = "_v-c24fdf82/css3Transitions.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -582,8 +596,8 @@ webpackJsonp([1],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7944073e&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7944073e&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c24fdf82&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c24fdf82&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Transitions.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -621,6 +635,7 @@ webpackJsonp([1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(26)
 	__vue_script__ = __webpack_require__(28)
 	if (__vue_script__ &&
@@ -630,14 +645,20 @@ webpackJsonp([1],[
 	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./css3Animations.vue"
+	  var id = "_v-0e72887e/css3Animations.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -661,8 +682,8 @@ webpackJsonp([1],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0d3c359f&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0d3c359f&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0e72887e&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0e72887e&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./css3Animations.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -680,7 +701,7 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, ".yoda[_v-0d3c359f] {\n  width: 50%;\n  margin: auto;\n  margin-top: 10vw;\n}\n.yoda[_v-0d3c359f]:hover {\n  -webkit-animation: 2s rubberBand forwards;\n          animation: 2s rubberBand forwards;\n}\n@-webkit-keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n@keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n", ""]);
+	exports.push([module.id, ".yoda[_v-0e72887e] {\n  width: 50%;\n  margin: auto;\n  margin-top: 10vw;\n}\n.yoda[_v-0e72887e]:hover {\n  -webkit-animation: 2s rubberBand forwards;\n          animation: 2s rubberBand forwards;\n}\n@-webkit-keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n@keyframes rubberBand {\n  from {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n  30% {\n    -webkit-transform: scale3d(1.25, 0.75, 1);\n            transform: scale3d(1.25, 0.75, 1);\n  }\n  40% {\n    -webkit-transform: scale3d(0.75, 1.25, 1);\n            transform: scale3d(0.75, 1.25, 1);\n  }\n  50% {\n    -webkit-transform: scale3d(1.15, 0.85, 1);\n            transform: scale3d(1.15, 0.85, 1);\n  }\n  65% {\n    -webkit-transform: scale3d(0.95, 1.05, 1);\n            transform: scale3d(0.95, 1.05, 1);\n  }\n  75% {\n    -webkit-transform: scale3d(1.05, 0.95, 1);\n            transform: scale3d(1.05, 0.95, 1);\n  }\n  to {\n    -webkit-transform: scale3d(1, 1, 1);\n            transform: scale3d(1, 1, 1);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -705,13 +726,14 @@ webpackJsonp([1],[
 /* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<li class=\"item\" _v-0d3c359f=\"\">\n\t<h2 _v-0d3c359f=\"\">\n\t\tCSS3 Animations\n\t</h2>\n\t<div class=\"two\" _v-0d3c359f=\"\">\n\t\t<div class=\"col small\" _v-0d3c359f=\"\">\n\t\t\t@keyframes rubberBand {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;0% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;30% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.25, 0.75, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;40% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(0.75, 1.25, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;50% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.15, 0.85, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;65% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(.95, 1.05, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;75% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.05, .95, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;100% {<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br _v-0d3c359f=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0d3c359f=\"\">\n\t\t\t}\n\t\t</div>\n\t\t<div class=\"col\" _v-0d3c359f=\"\">\n\t\t\t<img class=\"yoda\" :src=\"img.yoda\" _v-0d3c359f=\"\">\n\t\t</div>\n\t</div>\n</li>\t\n";
+	module.exports = "\n<li class=\"item\" _v-0e72887e=\"\">\n\t<h2 _v-0e72887e=\"\">\n\t\tCSS3 Animations\n\t</h2>\n\t<div class=\"two\" _v-0e72887e=\"\">\n\t\t<div class=\"col small\" _v-0e72887e=\"\">\n\t\t\t@keyframes rubberBand {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;0% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;30% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.25, 0.75, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;40% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(0.75, 1.25, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;50% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.15, 0.85, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;65% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(.95, 1.05, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;75% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1.05, .95, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;100% {<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform: scale3d(1, 1, 1);<br _v-0e72887e=\"\">\n\t\t\t&nbsp;&nbsp;&nbsp;&nbsp;}<br _v-0e72887e=\"\">\n\t\t\t}\n\t\t</div>\n\t\t<div class=\"col\" _v-0e72887e=\"\">\n\t\t\t<img class=\"yoda\" :src=\"img.yoda\" _v-0e72887e=\"\">\n\t\t</div>\n\t</div>\n</li>\t\n";
 
 /***/ },
 /* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(31)
 	__vue_script__ = __webpack_require__(33)
 	if (__vue_script__ &&
@@ -721,14 +743,20 @@ webpackJsonp([1],[
 	__vue_template__ = __webpack_require__(34)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./svg-section.vue"
+	  var id = "_v-38ff25a6/svg-section.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -752,8 +780,8 @@ webpackJsonp([1],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5645bbac&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./svg-section.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5645bbac&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./svg-section.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-38ff25a6&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./svg-section.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-38ff25a6&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./svg-section.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -771,7 +799,7 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, ".svg-essence[_v-5645bbac] {\n  width: 50%;\n  margin: auto;\n}\n.pen[_v-5645bbac] {\n  width: 90%;\n  margin: auto;\n}\n", ""]);
+	exports.push([module.id, ".svg-essence[_v-38ff25a6] {\n  width: 50%;\n  margin: auto;\n}\n.pen[_v-38ff25a6] {\n  width: 90%;\n  margin: auto;\n}\n", ""]);
 
 	// exports
 
@@ -799,13 +827,14 @@ webpackJsonp([1],[
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<li class=\"item\" _v-5645bbac=\"\">\n\t<h2 _v-5645bbac=\"\">SVG的本质</h2>\n\t<p _v-5645bbac=\"\">\n\t\t一张SVG图片本质上是由一些路径围成的色块组成的。<br _v-5645bbac=\"\">\n\t</p>\n\t<img class=\"svg-essence\" :src=\"img.svg_essence\" _v-5645bbac=\"\">\n</li>\n<li class=\"item\" _v-5645bbac=\"\">\n\t<h2 _v-5645bbac=\"\">Color-changing Animation</h2>\n\t<div class=\"two\" _v-5645bbac=\"\">\n\t\t<div class=\"col normal\" _v-5645bbac=\"\">\n\t\t\tExample:<br _v-5645bbac=\"\">\n\t\t\t sunset<br _v-5645bbac=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-5645bbac=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.orange\" _v-5645bbac=\"\">\n\t\t</div>\n\t</div>\n</li>\n<li class=\"item\" _v-5645bbac=\"\">\n\t<h2 _v-5645bbac=\"\">SVG Stroke Animation</h2>\n\t<div class=\"two\" _v-5645bbac=\"\">\n\t\t<div class=\"col normal\" _v-5645bbac=\"\">\n\t\t\tExamples:<br _v-5645bbac=\"\">\n\t\t\t stroke-arsenal<br _v-5645bbac=\"\">\n\t\t\t stroke-square<br _v-5645bbac=\"\">\n\t\t\t stroke-circle<br _v-5645bbac=\"\">\n\t\t\t stroke-gameboy<br _v-5645bbac=\"\">\n\t\t\t stroke-qq<br _v-5645bbac=\"\">\n\t\t\t countdown<br _v-5645bbac=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-5645bbac=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.pen\" _v-5645bbac=\"\">\n\t\t</div>\n\t</div>\n</li>\n<li class=\"item\" _v-5645bbac=\"\">\n\t<h2 _v-5645bbac=\"\">Shape-morphing Animation</h2>\n\t<div class=\"two\" _v-5645bbac=\"\">\n\t\t<div class=\"col normal\" _v-5645bbac=\"\">\n\t\t\tExamples:<br _v-5645bbac=\"\">\n\t\t\t morphing-phones<br _v-5645bbac=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-5645bbac=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.transformer\" _v-5645bbac=\"\">\n\t\t</div>\n\t</div>\n</li>\t\n";
+	module.exports = "\n<li class=\"item\" _v-38ff25a6=\"\">\n\t<h2 _v-38ff25a6=\"\">SVG的本质</h2>\n\t<p _v-38ff25a6=\"\">\n\t\t一张SVG图片本质上是由一些路径围成的色块组成的。<br _v-38ff25a6=\"\">\n\t</p>\n\t<img class=\"svg-essence\" :src=\"img.svg_essence\" _v-38ff25a6=\"\">\n</li>\n<li class=\"item\" _v-38ff25a6=\"\">\n\t<h2 _v-38ff25a6=\"\">Color-changing Animation</h2>\n\t<div class=\"two\" _v-38ff25a6=\"\">\n\t\t<div class=\"col normal\" _v-38ff25a6=\"\">\n\t\t\tExample:<br _v-38ff25a6=\"\">\n\t\t\t sunset<br _v-38ff25a6=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-38ff25a6=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.orange\" _v-38ff25a6=\"\">\n\t\t</div>\n\t</div>\n</li>\n<li class=\"item\" _v-38ff25a6=\"\">\n\t<h2 _v-38ff25a6=\"\">SVG Stroke Animation</h2>\n\t<div class=\"two\" _v-38ff25a6=\"\">\n\t\t<div class=\"col normal\" _v-38ff25a6=\"\">\n\t\t\tExamples:<br _v-38ff25a6=\"\">\n\t\t\t stroke-arsenal<br _v-38ff25a6=\"\">\n\t\t\t stroke-square<br _v-38ff25a6=\"\">\n\t\t\t stroke-circle<br _v-38ff25a6=\"\">\n\t\t\t stroke-gameboy<br _v-38ff25a6=\"\">\n\t\t\t stroke-qq<br _v-38ff25a6=\"\">\n\t\t\t countdown<br _v-38ff25a6=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-38ff25a6=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.pen\" _v-38ff25a6=\"\">\n\t\t</div>\n\t</div>\n</li>\n<li class=\"item\" _v-38ff25a6=\"\">\n\t<h2 _v-38ff25a6=\"\">Shape-morphing Animation</h2>\n\t<div class=\"two\" _v-38ff25a6=\"\">\n\t\t<div class=\"col normal\" _v-38ff25a6=\"\">\n\t\t\tExamples:<br _v-38ff25a6=\"\">\n\t\t\t morphing-phones<br _v-38ff25a6=\"\">\n\t\t</div>\n\t\t<div class=\"col\" _v-38ff25a6=\"\">\n\t\t\t<img class=\"pen\" :src=\"img.transformer\" _v-38ff25a6=\"\">\n\t\t</div>\n\t</div>\n</li>\t\n";
 
 /***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(36)
 	__vue_script__ = __webpack_require__(38)
 	if (__vue_script__ &&
@@ -815,14 +844,20 @@ webpackJsonp([1],[
 	__vue_template__ = __webpack_require__(39)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./stroke-circle.vue"
+	  var id = "_v-c251b814/stroke-circle.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -846,8 +881,8 @@ webpackJsonp([1],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7582ceb5&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stroke-circle.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-7582ceb5&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stroke-circle.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c251b814&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stroke-circle.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-c251b814&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./stroke-circle.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -865,7 +900,7 @@ webpackJsonp([1],[
 
 
 	// module
-	exports.push([module.id, "*[_v-7582ceb5] {\n  margin: 0;\n  padding: 0;\n}\n.test[_v-7582ceb5] {\n  width: 100%;\n  background: black;\n}\n.test .circle-red[_v-7582ceb5] {\n  cx: 500;\n  cy: 500;\n  r: 200;\n  stroke: url(#linearGradient-1);\n  stroke-width: 15;\n  stroke-linecap: round;\n  stroke-dasharray: 1256;\n  -webkit-animation: dashing 2s ease-in-out 0s infinite;\n          animation: dashing 2s ease-in-out 0s infinite;\n}\n@-webkit-keyframes dashing {\n  0% {\n    stroke-dashoffset: -1256;\n    opacity: 0;\n  }\n  50% {\n    stroke-dashoffset: 0;\n    opacity: 1;\n  }\n  100% {\n    stroke-dashoffset: 1256;\n    opacity: 0;\n  }\n}\n@keyframes dashing {\n  0% {\n    stroke-dashoffset: -1256;\n    opacity: 0;\n  }\n  50% {\n    stroke-dashoffset: 0;\n    opacity: 1;\n  }\n  100% {\n    stroke-dashoffset: 1256;\n    opacity: 0;\n  }\n}\n.test .circle-red-1[_v-7582ceb5] {\n  cx: 500;\n  cy: 500;\n  r: 100;\n  stroke-width: 15;\n  stroke-linecap: round;\n  stroke-dasharray: 314;\n  -webkit-animation: dashing1 2s linear 0s infinite;\n          animation: dashing1 2s linear 0s infinite;\n}\n@-webkit-keyframes dashing1 {\n  0% {\n    stroke-dashoffset: -314;\n  }\n  50% {\n    stroke-dashoffset: 0;\n  }\n  100% {\n    stroke-dashoffset: 314;\n  }\n}\n@keyframes dashing1 {\n  0% {\n    stroke-dashoffset: -314;\n  }\n  50% {\n    stroke-dashoffset: 0;\n  }\n  100% {\n    stroke-dashoffset: 314;\n  }\n}\n", ""]);
+	exports.push([module.id, "*[_v-c251b814] {\n  margin: 0;\n  padding: 0;\n}\n.test[_v-c251b814] {\n  width: 100%;\n  background: black;\n}\n.test .circle-red[_v-c251b814] {\n  cx: 500;\n  cy: 500;\n  r: 200;\n  stroke: url(#linearGradient-1);\n  stroke-width: 15;\n  stroke-linecap: round;\n  stroke-dasharray: 1256;\n  -webkit-animation: dashing 2s ease-in-out 0s infinite;\n          animation: dashing 2s ease-in-out 0s infinite;\n}\n@-webkit-keyframes dashing {\n  0% {\n    stroke-dashoffset: -1256;\n    opacity: 0;\n  }\n  50% {\n    stroke-dashoffset: 0;\n    opacity: 1;\n  }\n  100% {\n    stroke-dashoffset: 1256;\n    opacity: 0;\n  }\n}\n@keyframes dashing {\n  0% {\n    stroke-dashoffset: -1256;\n    opacity: 0;\n  }\n  50% {\n    stroke-dashoffset: 0;\n    opacity: 1;\n  }\n  100% {\n    stroke-dashoffset: 1256;\n    opacity: 0;\n  }\n}\n.test .circle-red-1[_v-c251b814] {\n  cx: 500;\n  cy: 500;\n  r: 100;\n  stroke-width: 15;\n  stroke-linecap: round;\n  stroke-dasharray: 314;\n  -webkit-animation: dashing1 2s linear 0s infinite;\n          animation: dashing1 2s linear 0s infinite;\n}\n@-webkit-keyframes dashing1 {\n  0% {\n    stroke-dashoffset: -314;\n  }\n  50% {\n    stroke-dashoffset: 0;\n  }\n  100% {\n    stroke-dashoffset: 314;\n  }\n}\n@keyframes dashing1 {\n  0% {\n    stroke-dashoffset: -314;\n  }\n  50% {\n    stroke-dashoffset: 0;\n  }\n  100% {\n    stroke-dashoffset: 314;\n  }\n}\n", ""]);
 
 	// exports
 
@@ -883,7 +918,7 @@ webpackJsonp([1],[
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-7582ceb5=\"\">\n\t<defs _v-7582ceb5=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-7582ceb5=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-7582ceb5=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-7582ceb5=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-7582ceb5=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-7582ceb5=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-7582ceb5=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-7582ceb5=\"\"></circle>\n\n</svg>\n";
+	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-c251b814=\"\">\n\t<defs _v-c251b814=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-c251b814=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-c251b814=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-c251b814=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-c251b814=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-c251b814=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-c251b814=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-c251b814=\"\"></circle>\n\n</svg>\n";
 
 /***/ }
 ]);

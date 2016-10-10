@@ -26,6 +26,9 @@ webpackJsonp([2],{
 		computed: {
 		},
 		methods: {
+		},
+		mounted: function(){
+			console.log(this)
 		}
 	})
 
@@ -330,6 +333,7 @@ webpackJsonp([2],{
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(41)
 	__vue_script__ = __webpack_require__(43)
 	if (__vue_script__ &&
@@ -339,14 +343,20 @@ webpackJsonp([2],{
 	__vue_template__ = __webpack_require__(47)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "./swiper.vue"
+	  var id = "_v-704a85ef/swiper.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -371,8 +381,8 @@ webpackJsonp([2],{
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ca2b26e&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-5ca2b26e&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-704a85ef&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-704a85ef&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./swiper.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -391,7 +401,7 @@ webpackJsonp([2],{
 
 
 	// module
-	exports.push([module.id, ".swiper[_v-5ca2b26e] {\n  position: relative;\n  width: 50%;\n  height: 20vw;\n  background: grey;\n  margin: auto;\n}\n.swiper .train[_v-5ca2b26e] {\n  width: 1000%;\n  height: 100%;\n}\n.swiper .train .item[_v-5ca2b26e] {\n  float: left;\n  width: 10%;\n  height: 100%;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n  opacity: 0.6;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.swiper .train .item.active[_v-5ca2b26e] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
+	exports.push([module.id, ".swiper[_v-704a85ef] {\n  position: relative;\n  width: 50%;\n  height: 20vw;\n  background: grey;\n  margin: auto;\n}\n.swiper .train[_v-704a85ef] {\n  width: 1000%;\n  height: 100%;\n}\n.swiper .train .item[_v-704a85ef] {\n  float: left;\n  width: 10%;\n  height: 100%;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n  opacity: 0.6;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n}\n.swiper .train .item.active[_v-704a85ef] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  opacity: 1;\n}\n", ""]);
 
 	// exports
 
@@ -606,7 +616,7 @@ webpackJsonp([2],{
 /***/ 47:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"swiper\" :style=\"style\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-5ca2b26e=\"\">\n\t<ul class=\"train\" :style=\" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' \" _v-5ca2b26e=\"\">\n\t\t<li :class=\" 'item '+(i===currentOne?'active':'') \" v-for=\"(item,i) in copy\" :key=\"item.background\" :style=\" `background:${item.background}` \" _v-5ca2b26e=\"\"></li>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"swiper\" :style=\"style\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-704a85ef=\"\">\n\t<ul class=\"train\" :style=\" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' \" _v-704a85ef=\"\">\n\t\t<li :class=\" 'item '+(i===currentOne?'active':'') \" v-for=\"(item,i) in copy\" :key=\"item.background\" :style=\" `background:${item.background}` \" _v-704a85ef=\"\"></li>\n\t</ul>\n</div>\n";
 
 /***/ }
 
