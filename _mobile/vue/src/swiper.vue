@@ -1,14 +1,15 @@
 <template>
 <div class="swiper" 
-	style="{{style}}"
+	:style="style"
 	v-on:touchstart="touchstart($event)"
 	v-on:touchmove="touchmove($event)"
 	v-on:touchend="touchend($event)">
 	<ul class="train" 
-		style="transform:translate3d({{trainOffsetX}}px,0,0);transition:{{transition}};">
-		<li class="item {{i===currentOne?'active':''}}" 
-			v-for="(i,item) in items" 
-			style="background:{{item}};"></li>
+		:style=" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' ">
+		<li :class=" 'item '+(i===currentOne?'active':'') " 
+			v-for="(item,i) in copy"
+			:key="item.background" 
+			:style=" `background:${item.background}` "></li>
 	</ul>
 </div>
 </template>
@@ -40,6 +41,11 @@
 <script>
 var swiper = {
 	props: {
+		items: {
+			default: function(){
+				return [];
+			}
+		},
 		style: {},
 		sticky: {
 			default: true
@@ -58,6 +64,8 @@ var swiper = {
 		return {
 			width: 0,
 
+			copy: [],
+
 			switching: false,
 			inCycle: false,
 			moveCount: 0,
@@ -68,11 +76,21 @@ var swiper = {
 
 			currentOne: 2,
 			transition: '0s',
-			offset: 0,
-			items: ['red','orange','yellow','green','blue']
+			offset: 0
 		}
 	},
-	ready: function(){
+	computed: {
+		transform: function(){
+			return 'translate3d('+trainOffsetX+'px,0,0)';
+		}
+	},
+	watch: {
+		items: function(){
+			this.copy = this.items;
+		}
+	},
+	mounted: function(){
+		this.copy = JSON.parse( JSON.stringify(this.items) );
 		window.addEventListener('load',()=>{
 			this.setWidth();
 			this.trainOffsetX = -this.width*2;
@@ -97,16 +115,16 @@ var swiper = {
 			this.width = width;		
 		},
 		toNext: function(){
-			if( this.currentOne<this.items.length-1 ){
+			if( this.currentOne<this.copy.length-1 ){
 				this.currentOne++;
 				this.transition = '0.3s';
 				this.trainOffsetX = -this.width*3;
 			}
 			setTimeout(()=>{
 				this.transition = '0s';
-				var first = this.items[0];
-				this.items.splice(0,1);
-				this.items.push(first);
+				var first = this.copy[0];
+				this.copy.splice(0,1);
+				this.copy.push(first);
 				this.currentOne = 2;
 				this.trainOffsetX = -this.width*2;
 				this.switching = false;
@@ -120,10 +138,10 @@ var swiper = {
 			};
 			setTimeout(()=>{
 				this.transition = '0s';
-				var zz = this.items.length-1;
-				var last = this.items[zz];
-				this.items.splice(zz,1);
-				this.items.unshift(last);
+				var zz = this.copy.length-1;
+				var last = this.copy[zz];
+				this.copy.splice(zz,1);
+				this.copy.unshift(last);
 				this.currentOne = 2;
 				this.trainOffsetX = -this.width*2;
 				this.switching = false;

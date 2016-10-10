@@ -5,9 +5,18 @@ Vue.component( 'swiper',swiper );
 
 new Vue({
 	el: '#root',
-	components: {
-	},
 	data: {
+		items: [{
+			background: 'red'
+		},{
+			background: 'orange'
+		},{
+			background: 'yellow'
+		},{ 
+			background: 'green'
+		},{
+			background: 'blue'
+		}]
 	},
 	computed: {
 	},

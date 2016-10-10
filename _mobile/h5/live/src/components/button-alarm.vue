@@ -1,11 +1,11 @@
 <template>
-<div class="button {{alarm}}"
+<div :class=" 'button '+alarm "
 	@click="setAlarm">
-	<div class="ripple {{alarm}}"></div>
-	<p class="p-before {{alarm}}">
+	<div :class=" 'ripple '+alarm "></div>
+	<p :class=" 'p-before '+alarm ">
 		<img :src="img.bell"/> 预约提醒
 	</p>
-	<p class="p-after {{alarm}}">
+	<p :class=" 'p-after '+alarm ">
 		<img :src="img.check"/> 预约成功
 	</p>
 </div>
@@ -107,7 +107,7 @@
 <script>
 module.exports = {
 	// alarm: 'pending', 'unset', 'resolved', 'set'
-	props: ['alarm'],
+	props: ['alarm','act'],
 	data: function(){
 		return {
 			img: {
@@ -120,7 +120,9 @@ module.exports = {
 		setAlarm: function(){
 			console.log(this.alarm)
 			if( this.alarm==='unset' ){
-				this.$dispatch('SET_ALARM');
+				this.act({
+					type: 'SET_ALARM'
+				});
 			};
 		}
 	}

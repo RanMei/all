@@ -10,9 +10,18 @@ webpackJsonp([2],{
 
 	new Vue({
 		el: '#root',
-		components: {
-		},
 		data: {
+			items: [{
+				background: 'red'
+			},{
+				background: 'orange'
+			},{
+				background: 'yellow'
+			},{ 
+				background: 'green'
+			},{
+				background: 'blue'
+			}]
 		},
 		computed: {
 		},
@@ -327,7 +336,7 @@ webpackJsonp([2],{
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\swiper.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(44)
+	__vue_template__ = __webpack_require__(47)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -390,12 +399,23 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 43:
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	var _stringify = __webpack_require__(44);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var swiper = {
 		props: {
+			items: {
+				default: function _default() {
+					return [];
+				}
+			},
 			style: {},
 			sticky: {
 				default: true
@@ -414,6 +434,8 @@ webpackJsonp([2],{
 			return {
 				width: 0,
 
+				copy: [],
+
 				switching: false,
 				inCycle: false,
 				moveCount: 0,
@@ -424,13 +446,23 @@ webpackJsonp([2],{
 
 				currentOne: 2,
 				transition: '0s',
-				offset: 0,
-				items: ['red', 'orange', 'yellow', 'green', 'blue']
+				offset: 0
 			};
 		},
-		ready: function ready() {
+		computed: {
+			transform: function transform() {
+				return 'translate3d(' + trainOffsetX + 'px,0,0)';
+			}
+		},
+		watch: {
+			items: function items() {
+				this.copy = this.items;
+			}
+		},
+		mounted: function mounted() {
 			var _this = this;
 
+			this.copy = JSON.parse((0, _stringify2.default)(this.items));
 			window.addEventListener('load', function () {
 				_this.setWidth();
 				_this.trainOffsetX = -_this.width * 2;
@@ -457,16 +489,16 @@ webpackJsonp([2],{
 			toNext: function toNext() {
 				var _this2 = this;
 
-				if (this.currentOne < this.items.length - 1) {
+				if (this.currentOne < this.copy.length - 1) {
 					this.currentOne++;
 					this.transition = '0.3s';
 					this.trainOffsetX = -this.width * 3;
 				}
 				setTimeout(function () {
 					_this2.transition = '0s';
-					var first = _this2.items[0];
-					_this2.items.splice(0, 1);
-					_this2.items.push(first);
+					var first = _this2.copy[0];
+					_this2.copy.splice(0, 1);
+					_this2.copy.push(first);
 					_this2.currentOne = 2;
 					_this2.trainOffsetX = -_this2.width * 2;
 					_this2.switching = false;
@@ -482,10 +514,10 @@ webpackJsonp([2],{
 				};
 				setTimeout(function () {
 					_this3.transition = '0s';
-					var zz = _this3.items.length - 1;
-					var last = _this3.items[zz];
-					_this3.items.splice(zz, 1);
-					_this3.items.unshift(last);
+					var zz = _this3.copy.length - 1;
+					var last = _this3.copy[zz];
+					_this3.copy.splice(zz, 1);
+					_this3.copy.unshift(last);
 					_this3.currentOne = 2;
 					_this3.trainOffsetX = -_this3.width * 2;
 					_this3.switching = false;
@@ -546,9 +578,35 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 44:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(45), __esModule: true };
+
+/***/ },
+
+/***/ 45:
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(46)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
+
+/***/ 46:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"swiper\" style=\"{{style}}\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-5ca2b26e=\"\">\n\t<ul class=\"train\" style=\"transform:translate3d({{trainOffsetX}}px,0,0);transition:{{transition}};\" _v-5ca2b26e=\"\">\n\t\t<li class=\"item {{i===currentOne?'active':''}}\" v-for=\"(i,item) in items\" style=\"background:{{item}};\" _v-5ca2b26e=\"\"></li>\n\t</ul>\n</div>\n";
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+
+/***/ 47:
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"swiper\" :style=\"style\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-5ca2b26e=\"\">\n\t<ul class=\"train\" :style=\" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' \" _v-5ca2b26e=\"\">\n\t\t<li :class=\" 'item '+(i===currentOne?'active':'') \" v-for=\"(item,i) in copy\" :key=\"item.background\" :style=\" `background:${item.background}` \" _v-5ca2b26e=\"\"></li>\n\t</ul>\n</div>\n";
 
 /***/ }
 

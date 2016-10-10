@@ -182,7 +182,7 @@ const WEBPACK = [{
 	dest: './_mobile/h5/school/dist/',
 },{
 	name: 'webpack-mobile-h5-live', 
-	watched: ['./_mobile/h5/live/src/*.*'], 
+	watched: ['./_mobile/h5/live/src/*.*','./_mobile/h5/live/src/*/*.*'], 
 	src: './_mobile/h5/liv/src/main.js', 
 	config: './_mobile/h5/live/webpack.config.js', 
 	dest: './_mobile/h5/live/dist/'

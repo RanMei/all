@@ -10,22 +10,40 @@
 
 <body>
 	<div class="root">
-		<div class="focus">
+		<div class="front">
+			<img class="timeleft" src="img/timeleft.png" :style=" hasAlarm?'':'left:0.98rem;top:0.5rem;' "/>
+			<countdown :timeleft="timeleft" :act="act" :style=" hasAlarm?'':'left:2.86rem;top:0.3rem;' "></countdown>
+			<button-alarm :alarm="alarmState" :act="act" v-if="hasAlarm"></button-alarm>
+		</div>
+		<div class="focus" style="background: url(img/focus.png);background-size: 100% auto;">
 			<div class="margin"></div>
 			<div class="notice">
 				<img src="img/horn.png"/>本次直播延期30分钟，请您耐心等待
 			</div>
-			<countdown :timeleft="timeleft"></countdown>
-			<button-alarm :alarm="alarmState"></button-alarm>
-			<div class="bar">
+			
+			
+			<!-- <div class="bar">
 				<div class="avatar">
 					<img src="img/avatar.png"/>
 				</div>
 				<p>直播未开始，先来了解我吧</p>
-			</div>
+			</div> -->
 		</div>
-		<stack-both
-		:items="items"></stack-both>
+
+		<div class="middle">
+			<img class="open-quote" src="img/open-quote.png"/>
+			<div class="middle-top">
+				<img class="close-quote" src="img/close-quote.png"/>
+				<p class="p-black">
+					Hi，我是叶非夜,日销15.6万言情天福布斯年度人气作家，直播内容预告如下
+				</p>
+				<ul>
+					<li>◆《日系》获红楼梦奖，现场演讲独家直播</li>
+				</ul>
+			</div>
+			<stack-both
+			:items="items"></stack-both>
+		</div>
 		<div class="chat">
 			<div class="content">
 				<img class="chatImg" src="img/chat.png"/>
@@ -36,7 +54,7 @@
 	</div>
 
 <script type="text/javascript" src="../../vendor/rem.js"></script>
-<script type="text/javascript" src="../../vendor/vue.min.js"></script>
+<script type="text/javascript" src="../../vendor/vue.js"></script>
 <script type="text/javascript" src="./dist/bundle.js"></script>
 
 </body>

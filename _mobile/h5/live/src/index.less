@@ -7,7 +7,7 @@ html {
 }
 
 body {
-	background: white;
+	//background: white;
 	overflow-x: hidden;
 }
 
@@ -18,13 +18,22 @@ ul,li {
 @blue: #9bdbca;
 @black: #494949;
 .root {
+	position: relative;
 	width: 100%;
 	overflow: hidden;
+	.front {
+		position: absolute; left: 0.5rem; top: 6.94rem;
+		width: 6.2rem; height: 1.02rem;
+		.timeleft {
+			position: absolute; left: 0.62rem; top: 0.12rem;
+			width: 1.8rem;
+		}
+	}
 	.focus {
-		position: relative;
+		position: absolute; left: 0; top: 0; z-index: -1;
 		width: 100%;
-		height: 7.24rem;
-		background: @blue;
+		height: 8.2rem;
+		//background: @blue;
 		//overflow: hidden;
 		.margin {
 			height: 0.1rem;
@@ -63,6 +72,36 @@ ul,li {
 			}
 			p {
 				margin-left: 2.56rem;
+			}
+		}
+	}
+
+	.middle {
+		position: relative;
+		width: 100%;
+		border-radius: 0.22rem;
+		margin-top: 7.98rem;
+		background: white;
+		overflow: hidden;
+		.open-quote {
+			position: absolute; left: 0.32rem; top: 0.4rem;
+			width: 0.58rem;
+		}
+		.middle-top {
+			position: relative;
+			.close-quote {
+				position: absolute; right: 0.32rem; bottom: 0;
+				width: 0.58rem;
+			}
+			.p-black {
+				padding: 0 1.06rem;
+				margin-top: 0.54rem;
+				font-size: 0.28rem; line-height: 0.48rem; color: @black;
+			}
+			ul {
+				padding: 0 1.06rem;
+				margin-top: 0.2rem;
+				font-size: 0.26rem; line-height: 0.48rem; color: #afafaf;
 			}
 		}
 	}

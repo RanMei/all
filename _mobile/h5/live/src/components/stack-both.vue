@@ -6,7 +6,8 @@
 		@touchmove="touchmove($event)"
 		@touchend="touchend($event)">
 			<li v-for="a in cards" 
-			class="card card{{a.id}} {{a._class}}"
+			:key="a.id"
+			:class=" 'card '+a._class "
 			style="">
 				<div class="part-top">
 					<div class="right">
@@ -14,7 +15,7 @@
 							{{a.title}}
 						</p>
 						<div class="stars">
-							<div class="bg" style="width:{{a.score*10}}%;"></div>
+							<div class="bg" :style=" 'width:'+a.score*10+'%;' "></div>
 							<img class="starsImg" :src="img.stars"/>
 						</div>
 						<p class="score">{{a.score}}分</p>
@@ -29,7 +30,7 @@
 	</div>
 	<div class="nav">
 		<li v-for="(a,i) in nav"
-		class="{{i===dot?'active':''}}"></li>
+		:class=" i===dot?'active':'' "></li>
 	</div>
 </div>
 </template>
@@ -57,15 +58,15 @@
 				moveCount: 0
 			}
 		},
-		created: function(){
-			var self = this;
-			self.$watch('items',function(){
+		watch: {
+			items: function(){
+				var self = this;
 				setTimeout(()=>{
 					self.getData();
 				},300);
-			});
+			}
 		},
-		ready: function(){
+		created: function(){
 		},
 		methods: {
 			getData: function(){
@@ -76,20 +77,20 @@
 					cards[1] = JSON.parse( JSON.stringify(cards[0]) );
 					cards[2] = JSON.parse( JSON.stringify(cards[0]) );
 					cards[3] = JSON.parse( JSON.stringify(cards[0]) );
-					this.cards = cards;
+					//this.cards = cards;
 					this.nav = [0];
 					this.navLength = 1;
 				}else if( cards.length===2 ){
 					cards[2] = JSON.parse( JSON.stringify(cards[0]) );
 					cards[3] = JSON.parse( JSON.stringify(cards[1]) );
-					this.cards = cards;
+					//this.cards = cards;
 					this.nav = [0,1];
 					this.navLength = 2;
 				}else if( cards.length===3 ){
 					cards[3] = JSON.parse( JSON.stringify(cards[0]) );
 					cards[4] = JSON.parse( JSON.stringify(cards[1]) );
 					cards[5] = JSON.parse( JSON.stringify(cards[2]) );
-					this.cards = cards;
+					//this.cards = cards;
 					this.nav = [0,1,2];
 					this.navLength = 3;
 				}else{
@@ -99,6 +100,11 @@
 					}
 					this.nav = nav;
 				}
+				cards.forEach((a,i)=>{
+					a.id = i;
+				})
+				this.cards = cards;
+				console.log(cards)
 				
 				this.length = this.cards.length;
 				this.current = this.length-1;
@@ -170,8 +176,9 @@
 <style lang="less" scoped>
 	.space {
 		width: 100%;
-		padding: 60vw 0 1.4rem 0;
+		padding: 2.4rem 0 1.4rem 0;
 		overflow-x: hidden;
+		overflow: hidden;
 	}
 
 	.stack {
@@ -354,6 +361,7 @@
 			float: left;
 			width: 0.22rem; height: 0.22rem;
 			margin: 0 0.04rem;
+			margin-bottom: 0.6rem;
 			border-radius: 1000px;
 			border: 1px solid black;
 			&.active {
