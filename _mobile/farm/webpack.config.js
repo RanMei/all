@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -5,6 +6,7 @@ module.exports = {
 		'index': './_mobile/farm/src/main.jsx'
 	},
 	output: {
+		// path: './_mobile/farm/',
 		filename: 'bundle.js'
 	},
 	// debug: true,
@@ -25,6 +27,21 @@ module.exports = {
 		}]
 	},
 	postcss: function () {
-        return [autoprefixer];
-    }
+		return [autoprefixer];
+	},
+	plugins: [
+		// new webpack.DefinePlugin({
+		// 	'process.env': {
+		// 		'NODE_ENV': JSON.stringify('production')
+		// 	}
+		// })
+		// new webpack.optimize.UglifyJsPlugin({
+  //           mangle: {
+  //               except: []
+  //           },
+  //           compress: {
+  //               warnings: false
+  //           }
+  //       })
+	]
 };

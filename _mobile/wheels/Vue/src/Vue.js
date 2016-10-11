@@ -1,37 +1,34 @@
+var forEach = [].forEach;
+
 function Vue(config){
 	var self = this;
 	this.$el = config.el? document.querySelector(config.el) : null;
 	
 	this.$data = {};
 	this._watchers = {};
+
+	this._tokens = [];
 	for(var key in config.data){
-		Object.defineProperty(this,key,{
-			get: function(){
-				//console.log('getting');
-				return config.data[key];
-			},
-			set: function(newVal){
-				//console.log('setting '+key+' to '+newVal);
-				config.data[key] = newVal;
-				self.cycle(key)
-			}
-		});
-		//console.log( config.data[key] )
-		//this.$data[key] = this[key];
-		this._watchers[key] = (function(){
-			var arr = [];
-			[].forEach.call(self.$el.childNodes,function(a){
-				console.log(a)
-				if(a.nodeType===3){
-					arr.push({
-						node: a,
-						text: a.nodeValue
-					})
+		(function(){
+			var val = config.data[key];
+			Object.defineProperty(self,key,{
+				get: function(){
+					return val;
+				},
+				set: function(newVal){
+					val = newVal;
+					self.cycle()
 				}
-			})
-			return arr;
-		})();
+			});
+		})()
+		this._tokens.push({
+			key: key,
+			reAttr: new RegExp(key,'g'),
+			reText: new RegExp('{{'+key+'}}','g')
+		});
 	}
+	this._updated = [];
+	console.log(this)
 
 	for(var key in config.methods){
 		this[key] = config.methods[key];
@@ -41,13 +38,56 @@ function Vue(config){
 		config.mounted.call(this);
 	}
 
+	this.init();
 }
 
 Vue.prototype = {
-	cycle: function(key){
+	init: function(){
+		this.$traverse(this.$el);
+		this.cycle();
+	},
+	$traverse: function(node){
 		var self = this;
-		this._watchers[key].forEach(function(a){
-			a.node.nodeValue = a.text.replace('{{'+key+'}}',self[key])
+
+		forEach.call(node.childNodes,function(a){
+			if(a.childNodes.length===0){
+				if(a.nodeType===3&&a.nodeValue.match(/{{.+}}/)){
+					self._updated.push({
+						node: a,
+						type: 'text',
+						text: a.nodeValue
+					})
+				}
+			}else{
+				forEach.call(a.attributes,function(b){
+					if(b.name.match(/^:/)){
+						self._updated.push({
+							node: a,
+							type: 'class',
+							text: b.value
+						})
+					}
+				});
+				self.$traverse(a);
+			}
+		})
+	},
+	cycle: function(){
+		var self = this;
+		this._updated.forEach(function(a){
+			if(a.type==='class'){
+				var newList = a.text;
+				self._tokens.forEach(function(b){
+					newList = newList.replace(b.reAttr,self[b.key]);
+				})
+				a.node.className = newList;
+			}else if(a.type==='text'){
+				var newText = a.text;
+				self._tokens.forEach(function(b){
+					newText = newText.replace(b.reText,self[b.key]);
+				})
+				a.node.nodeValue = newText;
+			}
 		})
 	}
 }
@@ -55,16 +95,16 @@ Vue.prototype = {
 new Vue({
 	el: 'body',
 	data: {
-		name: 'John'
+		name: 'John',
+		age: '21'
 	},
 	mounted: function(){
 		var self = this;
 		var name = 1;
-		console.log(this)
 		setInterval(function(){
 			self.name = name;
 			name++;
 		},500)
-		console.log(document.body)
+
 	}
 })

@@ -21,7 +21,7 @@ var tsify = require('tsify');
 var uglify = require('gulp-uglify');
 
 
-var production = true;
+var PRODUCTION = false;
 
 // var concat = require("gulp-concat");
 // var shell = require('gulp-shell');
@@ -94,30 +94,29 @@ var BROWSERIFY = [
 /*	{ name: 'browserify-mobile-project', main: './_mobile/project/lib/main.js', dest: './_mobile/project/dist/', files: './_mobile/project/lib/*.js' }*/
 ];
 BROWSERIFY.forEach(function(item){
-	if( production===false ){
-		gulp.task( item.name,function(){
-			return(
-				browserify( item.main )
-				.transform( 'babelify', {presets: ["es2015", "react"]} )
-				.bundle()
-				.pipe( source(item.output||'bundle.js') )
-				.pipe( gulp.dest(item.dest) )
-			);
-		});
-	}else{
-		gulp.task( item.name,function(){
+
+	gulp.task( item.name,function(){
+		if( PRODUCTION ){
 			return(
 				browserify( item.main )
 				.transform( 'babelify', {presets: ["es2015", "react"]} )
 				.bundle()
 				.pipe( source(item.output||'bundle.js') )
 				.pipe( buffer() )
-				.pipe( uglify({
-				}) )
+				.pipe( uglify({}) )
 				.pipe( gulp.dest(item.dest) )
 			);
-		});
-	}
+		}else{
+			return(
+				browserify( item.main )
+				.transform( 'babelify', {presets: ["es2015", "react"]} )
+				.bundle()
+				.pipe( source(item.output||'bundle.js') )
+				.pipe( gulp.dest(item.dest) )
+			);
+		}
+	});
+
 })
 
 gulp.task('vueify',function(){
@@ -189,10 +188,16 @@ const WEBPACK = [{
 }];
 WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
-		return gulp.src( item.src )
-			.pipe( webpack( require(item.config) ) )
-			//.pipe( uglify() )
-			.pipe( gulp.dest(item.dest) );
+		if( PRODUCTION ){
+			return gulp.src( item.src )
+				.pipe( webpack( require(item.config) ) )
+				.pipe( uglify() )
+				.pipe( gulp.dest(item.dest) );
+		}else{
+			return gulp.src( item.src )
+				.pipe( webpack( require(item.config) ) )
+				.pipe( gulp.dest(item.dest) );
+		}
 	});
 })
 
@@ -301,6 +306,9 @@ gulp.task( 'default',['watch'],function(){
 	//gulp.run( ['restart_server'] );
 	//gulp.watch( './express.js',['restart_server']);
 
+});
+gulp.task( 'build',['watch'],function(){
+	PRODUCTION = true;
 });
 
 /*
