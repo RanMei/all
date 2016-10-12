@@ -1,135 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html >
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
 	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<link rel="stylesheet" type="text/css" href="css/keyframes.css">
 </head>
 
 <body>
-	<ul class="nav">
-		<li v-for="a in nav" @click="toPage(a)" class="{{a===current?'active':''}}">
-			{{a}}
-		</li>
-	</ul>
-
-	<div class="swiper"
-		@mousedown="mousedown($event)"
-		@mouseup="mouseup($event)">
-		<ul class="train" style="transform:translate3d(0,-{{current*5}}%,0);">
-			<li class="item">
-				<h1 class="title">
-					移动端网页动画的制作
-				</h1>
-			</li>
-			<technology></technology>
-			<css3-transitions></css3-transitions>
-			<css3-animations></css3-animations>
-			<li class="item">
-				<h2>Parallax Animation</h2>
-				<div class="two">
-					<div class="col">
-					parallax animation （视差动画）:<br/>
-					&emsp;郊外<br/>
-					&emsp;云层<br/>
-					</div>
-					<div class="col">
-						<img src="img/perspective.jpg"/>
-					</div>
-				</div>
-			</li>
-			<li class="item">
-				<h2>Interactive Animation</h2>
-				<div class="two">
-					<div class="col">
-						Examples:<br/>
-						&emsp;Gooey Menu<br/>
-						&emsp;Stack<br/>
-						&emsp;3D Cube<br/>
-					</div>
-					<div class="col">
-						<img src="img/iron_man.jpg"/>
-					</div>
-				</div>
-			</li>
-			<li class="item">
-				<h2>Some other examples...</h2>
-				<div class="two">
-					<div class="col">
-						button-red<br/>
-						button-blobls<br/>
-						wave<br/>
-						“QQ阅读狂欢季”推广页面<br/>
-						“畅读开学季”活动页面<br/>
-					</div>
-					<div class="col">
-						<img src="img/books.jpg"/>
-					</div>
-				</div>
-			</li>
-			<svg-section></svg-section>
-			<li class="item">
-				<h2>Canvas</h2>
-				<p>
-				canvas是HTML5（HTML的第五个版本）中加入的一个新标签。前端开发者可以在canvas内绘制位图。<br/>
-				</p>
-				<canvas
-				style="display:block;width:50vw;height:30vw;margin:auto;background:black;"></canvas>
-			</li>
-			<li class="item">
-				<h2>Canvas Animation</h2>
-				<p>
-					面向对象编程：<br/>
-					对象{<br/>
-					&emsp;属性：坐标，速度，尺寸，颜色......<br/>
-					&emsp;方法：前进，后退......<br/>
-					}<br/>
-					<br/>
-					原理：根据数据绘制一帧 → 计算出下一帧的数据 → 绘制下一帧 → 周而复始
-				</p>
-			</li>
-			<li class="item">
-				<h2>Examples</h2>
-				<div class="two">
-					<div class="col">
-						Examples:<br/>
-						&emsp;rain<br/>
-						&emsp;fire<br/>
-						&emsp;snowfall<br/>
-					</div>
-					<div class="col">
-						<img src="img/canvas.jpg"/>
-					</div>
-				</div>
-			</li>
-			<li class="item">
-				<h2>交互、设计与前端同学合作制作动画的一些思考</h2>
-				<p>
-					设计同学可给出某一动画的起始帧与结束帧的设计图。<br/>
-					例子：Gooey Menu<br/>
-					<br/>
-					实践：“读书运动会”获奖通知页的制作
-				</p>
-			</li>
-			<li class="item">
-				<h1 class="title">
-					谢谢大家
-				</h1>
-			</li>
-		</ul>
+	<div id="root">
 	</div>
-
-<script type="text/javascript" src="../vendor/vue/vue.min.js"></script>
-<script type="text/javascript" src="../vendor/vue/vue-router.min.js"></script>
-
-<script type="text/javascript" src="dist/common.js"></script>
-<script type="text/javascript" src="dist/presentation.bundle.js"></script>
-
+<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
+<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>
+<script type="text/javascript" src="./dist/common.js"></script>
+<script type="text/javascript" src="./dist/index.bundle.js"></script>
 </body>
-
 </html>

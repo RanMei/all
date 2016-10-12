@@ -1,5 +1,5 @@
 require('./common.less');
-var swiper = require('./swiper.vue');
+var swiper = require('./components/swiper.vue');
 
 Vue.component( 'swiper',swiper );
 

@@ -4,9 +4,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'preloader': './_mobile/vue/src/preloader.main.js',
+		'index': './_mobile/vue/src/index.js',
 		'swiper': './_mobile/vue/src/swiper.main.js',
-		'presentation': './_mobile/vue/src/presentation.main.js'
+		'svg-qq': './_mobile/vue/src/svg-qq.js'
 	},
 	output: {
 		filename: '[name].bundle.js'
@@ -31,9 +31,9 @@ module.exports = {
     },
     plugins: [
     	new webpack.optimize.CommonsChunkPlugin('common.js',[
-    		'presentation',
-    		'preloader',
-    		'swiper'
+    		'index',
+    		'swiper',
+    		'svg-qq'
     	]),
     	new ExtractTextPlugin('style.css')
     ]

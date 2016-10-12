@@ -11,15 +11,7 @@
 	</svg>
 </template>
 
-<style lang="less">
-	BODY {
-		background: 
-			linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 52%), 
-			linear-gradient(-45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 52%);
-		background-size: 1em 1em;
-		background-color: #000;
-	}
-
+<style lang="less" scoped>
 	svg {
 		display: block;
 		width: 30%;

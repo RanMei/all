@@ -144,6 +144,12 @@ const WEBPACK = [{
 	config: './_mobile/main/webpack.config.js', 
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 },{
+	name: 'webpack-desktop-presentation', 
+	src: './desktop/presentation/src/presentation.main.jsx', 
+	dest: './desktop/presentation/dist/', 
+	config: './desktop/presentation/webpack.config.js', 
+	watched: ['./desktop/presentation/src/*.*','./desktop/presentation/src/*/*.*']
+},{
 	name: 'webpack-mobile-blog', 
 	src: './_mobile/blog/src/blog.jsx', 
 	dest: './_mobile/blog/dist/', 
