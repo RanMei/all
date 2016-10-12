@@ -2,15 +2,18 @@ require('./common.less');
 
 Vue.use(VueRouter);
 
-const preloader = require('./components/preloader.vue');
-const svgQq = require('./components/svg-qq.vue');
-
 const routes = [{
-	path: '/preloader',
-	component: preloader
+	path: '/',
+	component: require('./preloader-container.vue')
 },{
-	path: '/svg-qq',
-	component: svgQq
+	path: '/preloader',
+	component: require('./preloader-container.vue')
+},{
+	path: '/svg-qq-container',
+	component: require('./svg-qq-container.js')
+},{
+	path: '/swiper-container',
+	component: require('./swiper-container.js')
 }];
 
 const router = new VueRouter({
@@ -21,13 +24,3 @@ new Vue({
 	template: '<router-view></router-view>',
 	router: router
 }).$mount('#root');
-
-// Vue.component( 'preloader',require('./components/preloader.vue') );
-
-// new Vue({
-// 	el: '#root',
-// 	mounted: function(){
-
-// 	}
-// })
-

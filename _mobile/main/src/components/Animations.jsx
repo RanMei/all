@@ -69,8 +69,9 @@ class Animations extends React.Component {
 				'./_mobile/h5/feast/feast.html',
 				'./_mobile/h5/live/live.html',
 				'./_mobile/h5/project/index.html',
-				'./_mobile/vue/preloader.html',
-				'./_mobile/vue/swiper.html'
+				'./_mobile/vue/index.html#/preloader',
+				'./_mobile/vue/index.html#/svg-qq-container',
+				'./_mobile/vue/index.html#/swiper-container',
 				]
 			}]
 		};

@@ -4,15 +4,18 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'index': './_mobile/vue/src/index.js',
-		'swiper': './_mobile/vue/src/swiper.main.js',
-		'svg-qq': './_mobile/vue/src/svg-qq.js'
+		'index': './_mobile/vue/src/index.js'
+		//'swiper': './_mobile/vue/src/swiper.main.js',
+		//'svg-qq': './_mobile/vue/src/svg-qq.js'
 	},
 	output: {
 		filename: '[name].bundle.js'
 	},
 	module: {
 		loaders: [{
+			test: /\.js$/,
+			loader: 'babel'
+		},{
 			test: /\.vue$/,
 			loader: 'vue'
 		},{
@@ -30,11 +33,11 @@ module.exports = {
         return [autoprefixer];
     },
     plugins: [
-    	new webpack.optimize.CommonsChunkPlugin('common.js',[
-    		'index',
-    		'swiper',
-    		'svg-qq'
-    	]),
+    	// new webpack.optimize.CommonsChunkPlugin('common.js',[
+    	// 	'index',
+    	// 	//'swiper',
+    	// 	'svg-qq'
+    	// ]),
     	new ExtractTextPlugin('style.css')
     ]
 };
