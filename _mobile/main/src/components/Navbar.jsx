@@ -32,13 +32,14 @@ class Navbar extends React.Component {
 				MadSoap
 				<div className={this.state.show?'box _show':'box'} onClick={this.hide.bind(this)}>
 					<div className="section">
-						<div className="tab"><a href="#/home">Home</a></div>
-						<div className="tab"><a href="#/animations">Animations</a></div>
-						<div className="tab"><a href="#/blog">Blog</a></div>
+						<div className="tab"><a href="#/home"><i className="fa fa-home"></i> Home</a></div>
+						<div className="tab"><a href="#/projects"><i className="fa fa-rocket"></i> Projects</a></div>
+						<div className="tab"><a href="#/animations"><i className="fa fa-cog fa-spin"></i> Animations</a></div>
+						<div className="tab"><a href="#/blog"><i className="fa fa-book"></i> Blog</a></div>
 					</div>
 					<div className="section-bottom">
-						<div className="tab"><a href="./_mobile/farm/index.html" target="_blank">Farm</a></div>
-						<div className="tab"><a href="./front_end.html" target="_blank">Animation Library</a></div>
+						<div className="tab"><a href="./_mobile/farm/index.html" target="_blank"><i className="fa fa-money"></i> Farm</a></div>
+						<div className="tab"><a href="./front_end.html" target="_blank"><i className="fa fa-file-text"></i> Animation Library</a></div>
 					</div>
 				</div>
 			</div>

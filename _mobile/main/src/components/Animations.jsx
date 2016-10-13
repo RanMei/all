@@ -86,7 +86,7 @@ class Animations extends React.Component {
 					<div className="panel-header">
 					{a.title}
 					</div>
-					<div className={i===this.state.list.length-1?'panel-body last':'panel-body'}>
+					<div className={i===this.state.list.length-1?'panel-section last':'panel-section'}>
 					{a.hrefs.map(b=>{
 						return (
 							<span><a href={b}>{b}</a><br/></span>

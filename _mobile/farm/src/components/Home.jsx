@@ -36,6 +36,8 @@ class Home extends React.Component {
 					items={this.props.homeSwiper}
 					style={{height:'4rem'}}/>
 				
+				{[0,1,2].map(()=>{
+				return(
 				<div className="block">
 					{this.props.items.map(function(a){
 						return (
@@ -53,6 +55,8 @@ class Home extends React.Component {
 						)
 					})}
 				</div>
+				)
+				})}
 
 				<div className="block">
 					<div className="block-header">	

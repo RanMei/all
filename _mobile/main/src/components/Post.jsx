@@ -4,14 +4,14 @@
 var PropTypes = React.PropTypes;
 
 var posts = [{
-	title: 'one post',
+	title: 'What is functional programming?',
 	time: '2016-10-3',
 	body: [
-		'huh?',
-		'what the hell?'
+		'Functional programming is a programming paradigm.',
+		'These are some important concepts in functional programming: higher-order function, pure function, side effects...'
 	]
 },{
-	title: 'one post dkajglkjaldgad',
+	title: 'How to learn English?',
 	time: '2016-10-4',
 	body: [
 		'huh?adsgadga',

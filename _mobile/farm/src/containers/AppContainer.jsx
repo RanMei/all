@@ -1,4 +1,5 @@
 import {$$store} from '../store/index.jsx';
+import {$$production} from '../config.js';
 
 import {Mask} from '../components/Mask.jsx';
 import {Notice} from '../components/Notice.jsx';

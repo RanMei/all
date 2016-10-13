@@ -17,7 +17,7 @@ module.exports = {
 			loader: 'babel'
 		},{
 			test: /\.vue$/,
-			loader: 'vue'
+			loader: 'babel!vue'
 		},{
 			test: /\.less$/,
 			loader: 'style!css!less!postcss'

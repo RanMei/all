@@ -10,6 +10,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 
 import {AppContainer} from './containers/AppContainer.jsx';
 import {Home} from './components/Home.jsx';
+import {Projects} from './components/Projects.jsx';
 import {Animations} from './components/Animations.jsx';
 import {BlogContainer} from './containers/BlogContainer.jsx';
 import {Post} from './components/Post.jsx';
@@ -20,6 +21,7 @@ ReactDOM.render(
 		<Router history={ hashHistory } >
 			<Route path="/" component={AppContainer}>
 				<Route path="/home" component={Home} />
+				<Route path="/projects" component={Projects} />
 				<Route path="/animations" component={Animations} />
 				<Route path="/blog" component={BlogContainer} />
 				<Route path="/post" component={Post} />

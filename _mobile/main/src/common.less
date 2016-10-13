@@ -5,7 +5,6 @@
 }
 
 html {
-	font-size: 100px;
 	font-family: 'Microsoft Yahei';
 }
 
@@ -27,6 +26,17 @@ img {
 h1 {
 	font-size: 24px;
 }
+
+@grey-border: #dddddd;
+/*@pink: #e91e63;*/
+@pink: #4078c0;
+@blue: #4078c0;
+
+a {text-decoration: none;}
+a:link {color: @pink;}
+a:visited {color: @pink;}
+a:hover {color: @pink;}
+a:active {color: @pink;}
 
 .mask {
 	position: fixed; left: 0; top: 0;
@@ -50,6 +60,7 @@ h1 {
 	margin: auto;
 	//overflow: hidden;
 }
+
 @media (min-width:0px) {
 	.container {
 		width: 100%;
@@ -59,10 +70,22 @@ h1 {
 	.container {
 		width: 1000px;
 	}
+	.col-70 {
+		float: left;
+		width: 70%;
+	}
+	.col-30 {
+		float: left;
+		width: 30%;
+	}
 }
 
+.log {
+	padding: 10px 15px;
+	font-size: 16px;
+	font-weight: bold;
+}
 
-@grey-border: #dddddd;
 .panel {
 	margin: 0 15px 15px 15px;
 	border: 1px solid @grey-border;
@@ -76,7 +99,7 @@ h1 {
 	.item {
 		padding: 10px 15px;
 	}
-	.panel-body {
+	.panel-section {
 		padding: 10px 15px;
 		border-bottom: 1px solid @grey-border;
 		&.last {
@@ -84,7 +107,7 @@ h1 {
 		}
 	}
 	.panel-footer {
-
+		padding: 10px 15px;
 	}
 }
 
@@ -100,17 +123,4 @@ h1 {
 
 }
 @media (max-width: 350px) {
-}
-
-* {
-	margin: 0; padding: 0;
-	box-sizing: border-box;
-}
-a {text-decoration: none;}
-a:link {color: #e91e63;}
-a:visited {color: #e91e63;}
-a:hover {color: #e91e63;}
-a:active {color: #e91e63;}
-html {
-	font-family: 'Microsoft Yahei';
 }

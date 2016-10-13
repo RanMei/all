@@ -2,10 +2,10 @@ import {Blog} from '../components/Blog.jsx';
 
 var list = [{
 	time: '2016-10-3',
-	title: 'What is Functional Programming'
+	title: 'What is Functional Programming?'
 },{
 	time: '2016-10-4',
-	title: 'night'
+	title: 'How to learn English?'
 }];
 
 class BlogContainer extends React.Component {

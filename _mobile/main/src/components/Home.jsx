@@ -3,12 +3,16 @@ require('./Home.less');
 class Home extends React.Component {
 	render(){
 		return (
-			<div className="HOME">
-				<h1>These are the projects I am maintaining right now.</h1>
-				<a className="block" href="./_mobile/farm/index.html" target="_blank">
-					Farm<br/>
-					This is a E-commerce webapp built with react, react-router, redux and webpack.
-				</a>	
+			<div className="HOME col-70">
+				<div className="log">
+					Welcome, my friend! This is my personal website! Maybe you want to tap the navicon on top-left?
+				</div>
+				<div className="panel" href="./_mobile/farm/index.html" target="_blank">
+					<div className="panel-header">Farm</div>
+					<div className="panel-footer">
+						This is a E-commerce webapp built with react, react-router, redux and webpack.
+					</div>
+				</div>	
 			</div>
 		)
 	}

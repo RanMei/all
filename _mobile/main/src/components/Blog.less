@@ -1,6 +1,10 @@
 @import (reference) '../common.less';
 
-.block {
+.BLOG {
+	padding-top: 15px;
+}
+
+.block__ {
 	display: block;
 	width: 100%;
 	padding: 10px 15px;
@@ -12,11 +16,15 @@
 	.post-title {
 		width: 100%;
 		padding: 10px 15px;
+		border-bottom: 1px solid @grey-border;
 		font-size: 20px;
 	}
 	.post-body {
 		width: 100%;
-		padding: 0 15px;
+		padding: 10px 15px;
 		font-size: 14px;
+		p {
+			margin-bottom: 10px;
+		}
 	}
 }

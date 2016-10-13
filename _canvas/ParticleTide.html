@@ -125,7 +125,9 @@ canvas {border: 1px solid #333333;}
 		}
 	}
 
-	function Canvas(){
+	function Canvas(Particle){
+		this.Particle = Particle;
+
 		this.elem = document.getElementById("mainCanvas");
 		this.ctx = this.elem.getContext("2d");
 

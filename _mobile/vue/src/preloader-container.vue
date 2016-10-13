@@ -16,7 +16,7 @@
 </style>
 
 <script>
-module.exports = {
+export default {
 	components: {
 		preloader: require('./components/preloader.vue')
 	}

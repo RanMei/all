@@ -1,0 +1,19 @@
+
+
+function initLifyCycle (vm) {
+
+
+// extend Vue.prototype
+function initMixin (Vue) {}
+function eventsMixin (Vue) {}
+
+Vue.prototype._init = function(options){
+	
+}
+
+// take 'options' and return a vm.
+function Vue$3 (options) {
+	this._init(options);
+}
+
+convert the template to AST.

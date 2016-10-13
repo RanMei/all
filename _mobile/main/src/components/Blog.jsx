@@ -9,15 +9,19 @@ class Blog extends React.Component {
 	}
 	render(){
 		return (
-			<div className="INDEX">
-				<h1>This is my blog</h1>
-				{this.props.list.map(a=>{
-					return (
-						<a className="block" href={'#/post?time='+a.time}>
-							{a.title}
-						</a>
-					)
-				})}
+			<div className="BLOG">
+				<div className="panel">
+					<div className="panel-header">This is my blog</div>
+					{this.props.list.map((a,i)=>{
+						return (
+							<div className={i===this.props.list.length-1?'panel-footer':'panel-section'}>
+								<a href={'#/post?time='+a.time}>
+								{a.title}
+								</a>
+							</div>
+						)
+					})}
+				</div>
 			</div>
 		)
 	}
