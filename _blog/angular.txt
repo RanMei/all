@@ -1,10 +1,63 @@
+var toString = Object.prototype.toString;
+var angular = window.angular || (window.angular = {});
+var angularModule;
+var uid = 0;
 
-function $rootScopeProvider () {
-	...
-}
 
-function publishExternalAPI(angular){
-	extend(angular,{...});
-}
+var version =
 
 bindJQury();
+publishExternalAPI(angular)
+	extend(angular,{})
+
+	//angularModule = function module(){}
+	angularModule = setupModuleLoader(window);
+		var angular = ensure(window, 'angular', Object);
+			if(window.angular===undefined){
+				window.angular = Object();
+			}
+			return window.angular;
+		// assign function 'module' to angular.module if it is undefined
+		var angularModule = ensure(angular,'module',factory)
+			if(angular.module!==undefined){
+				return angular.module
+			}else{
+				return factory();
+					// a closure is created
+					var modules = {};
+					return function module(name,requires,configFn){}
+			}
+		return angularModule;
+
+	// create an angular module named 'ng' if there isn't one.
+	// nothing would happen if it already exists
+	angularModule('ng', ['ngLocale'], ['$provide',
+		var moduleInstance = ensure(modules,name,callback)
+			var invokeQueue = [];
+			var moduleInstance = {
+				_invokeQueue: invokeQueue,
+				name: name,
+				// assign a function to the key of this moduleInstance
+				provider: invokeLaterAndSetModuleName('$provide', 'provider'),
+					return 
+						function(){
+							invokeQueue.push(['$provide','provider',])
+							return moduleInstance;
+						}
+
+			}
+		return moduleInstance
+
+angular.module('ngLocal',)
+
+angularInit(document,bootstrap)
+	var appElement =
+	bootstrap(element,modules,config)
+		return doBootstrap()
+			var injector = createInjector(modules, config.strictDi);
+
+
+// create a controller named 'main' and 
+// push ['$controllerProvider','register','main',callback]
+// into the _invokeQueue of this moduleInstance
+angular.module('app').controller('main',callback)
