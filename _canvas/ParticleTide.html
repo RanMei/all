@@ -157,14 +157,14 @@ canvas {border: 1px solid #333333;}
 	Canvas.prototype = {
 		init: function(){
 			this.addControl();
-			this.createParticles(Particle);
+			this.createParticles(this.Particle);
 			this.listen();
 			this.interval = setInterval( this.render.bind(this),33 );
 		},
 		reset: function(){
 			this.particles = [];
 			clearInterval( this.interval );
-			this.createParticles(Particle);
+			this.createParticles(this.Particle);
 			this.interval = setInterval( this.render.bind(this),33 );
 		},
 		render: function(){
@@ -243,7 +243,7 @@ canvas {border: 1px solid #333333;}
 			document.querySelector('body').appendChild(div);
 		}
 	}
-	new Canvas();
+	new Canvas(Particle);
 
 })();
 </script>

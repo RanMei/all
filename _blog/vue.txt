@@ -1,19 +1,59 @@
 
+function Vue
+initMixin(Vue)
+	Vue.prototype._init = 
+stateMixin(Vue)
+	Object.defineProperty(Vue.prototype, '$data', dataDef)
+	Vue.prototype.$set = 
+	Vue.prototype.$delete = 
+	Vue.prototype.$watch =
+eventsMixin(Vue)
+	Vue.prototype.$on =
+lifecycleMixin(Vue)
+	Vue.prototype._mount =
+	Vue.prototype.$destroy =
+renderMixin(Vue)
+	Vue.prototype._render =
+initGlobalAPI(Vue)
+	Object.defineProperty(Vue, 'config', configDef)
+	Vue.options = Object.create(null)
+	initUse(Vue)
+		Vue.use = 
+	initMixin(Vue)
+		Vue.mixin =
+	initExtend(Vue)
+	initAssetRegisters(Vue)
 
-function initLifyCycle (vm) {
 
 
-// extend Vue.prototype
-function initMixin (Vue) {}
-function eventsMixin (Vue) {}
-
-Vue.prototype._init = function(options){
-	
-}
-
-// take 'options' and return a vm.
-function Vue$3 (options) {
-	this._init(options);
-}
-
-convert the template to AST.
+Vue(options)
+	_init(options)
+		vm._uid = 
+		vm.$options = mergeOptions(parent,options||{},vm)
+		vm._self = vm
+		initLifecycle
+			vm.$parent = 
+			vm.$root =
+			vm.$children = [];
+			vm.isMounted = false;
+		initEvents
+			vm._updateListeners = 
+		callHook(vm,'beforeCreate')
+		initState(vm)
+			vm._watchers = [];
+			initProps(vm)
+			initData(vm)
+				observe(data)
+			initComputed(vm)
+			initMethods(vm)
+			initWatch(vm)
+				if(vm.$options.watch)
+					createWatcher(vm,key)
+						vm.$watch(key)
+							const watcher = new Watcher(vm,key)
+								this.vm = vm;
+								vm._watchers.push(this);
+		callHook(vm,'created')
+			vm.$emit('created')
+		initRender(vm)
+			vm.$mount

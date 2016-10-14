@@ -6,18 +6,22 @@ var nodemon = require('gulp-nodemon');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
 
-var browserify = require('browserify');
+
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 var webpack = require('webpack-stream');
 
 var babel = require('gulp-babel');
+
+var browserify = require('browserify');
 var babelify = require('babelify');
-
 var vueify = require('vueify');
-
 var tsify = require('tsify');
+
+var rollup = require('rollup-stream');
+var gulp_rollup = require('gulp-rollup');
+
 var uglify = require('gulp-uglify');
 
 
@@ -82,11 +86,11 @@ var BROWSERIFY = [
 	// { name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
 	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
 	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
-	{ 	name: 'browserify-mobile-zeal', 
-		main: './_mobile/src/zeal/zeal.main.js', 
-		dest: './_mobile/vendor/', 
-		files: './_mobile/src/zeal/*.js',
-		output: 'zeal.js' },
+	// { 	name: 'browserify-mobile-zeal', 
+	// 	main: './_mobile/wheels/zeal/src/zeal.main.js', 
+	// 	dest: './_mobile/wheels/zeal/dist/', 
+	// 	files: './_mobile/wheels/zeal/src/*.js',
+	// 	output: 'zeal.js' },
 	// { name: 'browserify-mobile-vue-swiper', main: './_mobile/vue/lib/main_swiper.js', dest: './_mobile/vue/dist/', files: './_mobile/vue/lib/*.js' },
 	{ name: 'browserify-mobile-zeact', main: './_mobile/js/main.js', dest: './_mobile/zeact', files: './_mobile/zeact/src/*.js' },
 	{ name: 'browserify-mobile-car', main: './_mobile/car/js/main.js', dest: './_mobile/car', files: './_mobile/car/js/*.js' },
@@ -118,6 +122,25 @@ BROWSERIFY.forEach(function(item){
 	});
 
 })
+
+gulp.task('rollup',function(){
+	// gulp.src(['./_mobile/wheels/zeal/src/zeal.main.js','./_mobile/wheels/_/src/*.*'])
+	// 	.pipe( rollup({
+	// 		entry: './_mobile/wheels/zeal/src/zeal.main.js',
+	// 		format: 'umd',
+	// 		//plugins: [require('rollup-plugin-babel')()],
+	// 		dest: 'bundle.js'
+	// 	}))
+	// 	.pipe( gulp.dest('./_mobile/wheels/zeal/dist/') )
+	return (
+		rollup({
+			entry: './_mobile/wheels/zeal/src/zeal.main.js',
+			format: 'umd'// 'cjs', 'umd'
+		})
+		.pipe( source('zeal.js') )
+		.pipe( gulp.dest('./_mobile/wheels/zeal/dist/') )
+	)
+});
 
 gulp.task('vueify',function(){
 	return(
@@ -284,6 +307,8 @@ gulp.task('watch',function(){
 	BROWSERIFY.forEach(function(elem){
 		gulp.watch( elem.files,[elem.name] );
 	});
+
+	gulp.watch( './_mobile/wheels/zeal/src/*.js',['rollup'] );
 
 	// gulp.watch( './_mobile/vue/lib/*.*',['vueify'] );
 

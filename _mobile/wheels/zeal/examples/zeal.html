@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.dog {
+			width: 100px;
+			height: 100px;
+			margin: 15px;
+			background: orange;
+		}
+		.cat {
+			width: 200px;
+			height: 100px;
+			margin: 15px;
+			background: orange;
+		}
+	</style>
+</head>
+
+<body>	
+	<div class="dog" style="opacity: 0.2;"></div>
+	<div class="dog"></div>
+	<div class="dog"></div>
+
+	<div class="two">
+		<div class="cat">
+			<div class="claw">
+			</div>
+		</div>
+		<div class="cat"></div>
+	</div>
+
+	<div class="animal">
+		<div class="cat"></div>
+		<div class="cat"></div>
+		<div id="jim"></div>
+	</div>
+	<script type="text/javascript" src="../dist/zeal.js"></script>
+	<script>
+
+		$(document).ready(function(){
+
+			$(".dog").css({
+				width: "100px",
+				height: "50px",
+				background: "red",
+				'padding-left': "50px"
+			}).html("fuck").addClass("fuck").removeClass("fuck");
+
+			$(".dog").attr('fuck','11111').eq(0).fadeIn(500);
+
+			console.log( $(".dog").on("click",function(e){
+				$(this).animate({width:'-50',height:'100'},200);
+			}).attr('fuck') );
+			console.log(Object);
+			console.log( $('.two') );
+
+
+			// var a = {
+			// 	name:"Vincent",
+			// 	age:"20",
+			// 	parents:{
+			// 		dad:"dad",
+			// 		mom:"mom"
+			// 	}
+			// };
+
+			// var b = $.copy(a,true);
+
+			// b.name = "John";
+			// b.parents.dad = "fuck";
+
+			// console.log(a);
+
+			$('.animal').find('.cat').attr('fuck','shit').on('click',function(e){
+				console.log( $(this) );
+				console.log('fuck');
+			});
+			console.log( $('.animal').find('.cat') )
+			console.log( $('.animal>.cat') )
+			//console.log( $('#jim') );
+
+			
+
+			// $(".dog").remove();
+			console.log( 'Object.prototype: ',Object.prototype )
+			console.log( 'camelCase: ',$.camelCase("I-have-never-felt-power-like-this-before") );
+			console.log( 'bubbleSort: ',$.bubbleSort( [2,5,7,8,4,5,111] ) );
+		});
+	</script>
+</body>
+
+</html>

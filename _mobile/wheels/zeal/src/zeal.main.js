@@ -1,9 +1,7 @@
-import {_} from './_.js';
+import * as _ from '../../_/src/index.js';
 
 // Module: core
 var arr = [];
-var slice = arr.slice;
-
 // This is a factory function to create a Zeal object.
 // @param {string} selector
 var Zeal = function( selector,context ){
@@ -13,9 +11,7 @@ var Zeal = function( selector,context ){
 Zeal.fn = Zeal.prototype = {
 	length: 0,
 	each: function( callback ){
-		for( var i=0;i<this.length;i++ ){
-			callback( this[i],i );
-		}
+		_.forEach(this,callback);
 	},
 	eq: function(i){
 		return Zeal( this[i] );
@@ -41,12 +37,13 @@ Zeal.fn = Zeal.prototype = {
 
 Zeal.extend = Zeal.fn.extend = function(src){
 	_.extend( this,src );
-}
+};
 
 Zeal.extend({
 	isArray: Array.isArray,
-	copy: _.copy,
-	camelCase: _.camelCase
+	//copy: _.copy,
+	camelCase: _.camelCase,
+	bubbleSort: _.bubbleSort
 });
 
 /**
@@ -72,7 +69,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 			this[0] = selector;
 			this.length = 1;
 		}
-	};
+	}
 	
 	if( typeof selector==='string' ){
 		if( selector==='' ){
@@ -91,7 +88,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 			// $('tagName')
 			elems = context.getElementsByTagName( selector );
 		}
-		;
+		
 		if( elems.length ){
 			for( var i=0;i<elems.length;i++ ){
 				this[i] = elems[i];
@@ -100,7 +97,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 			this[0] = elems;
 		}
 		this.length = elems.length;
-	};
+	}
 };
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Zeal.fn = Zeal.prototype;
@@ -110,7 +107,7 @@ init.prototype = Zeal.prototype;
 Zeal.fn.find = function( selector ){
 	var context = this[0];
 	return Zeal( selector,context );
-}
+};
 
 // $(document).ready()
 Zeal.fn.ready = function( callback ){
@@ -140,10 +137,11 @@ Zeal.fn.on = function( events,callback ){
 				event.originalEvent = e;
 				event.preventDefault = e.preventDefault.bind(e);
 				event.stopPropagation = e.stopPropagation.bind(e);
-				callback.call( e.currentTarget,event )
+				callback.call( e.currentTarget,event );
 			} );
-		};	
+		}	
 	});
+	return this;
 };
 
 Zeal.fn.extend({
@@ -166,7 +164,7 @@ Zeal.fn.extend({
 		}else{
 			this.each(function(elem){
 				elem.setAttribute( name,value );
-			})
+			});
 			return this;
 		}
 	},
@@ -175,7 +173,7 @@ Zeal.fn.extend({
 			elem.removeAttribute(key);
 		});
 	}
-})
+});
 
 
 // Module: DOM manipulation
@@ -198,7 +196,7 @@ Zeal.fn.extend({
 				container.innerHTML = obj;
 				arr.slice.call(container.children).forEach(function(item){
 					fragment.appendChild( item );
-				})
+				});
 				elem.appendChild( fragment );
 			}else{
 				if( obj.length ){
@@ -219,7 +217,7 @@ Zeal.fn.extend({
 				container.innerHTML = obj;
 				arr.slice.call(container.children).forEach(function(item){
 					fragment.appendChild( item );
-				})
+				});
 			}else{
 				for( var i=0;i<obj.length;i++ ){
 					fragment.appendChild( obj[i] );
@@ -232,7 +230,7 @@ Zeal.fn.extend({
 	remove: function(){
 		this.each(function(elem){
 			elem.parentNode.removeChild(elem);
-		})
+		});
 	}
 
 });
@@ -255,7 +253,7 @@ Zeal.fn.extend({
 						if( !/-/.test(prop) ){
 							var _prop = prop.replace(/[A-Z]/g,function(letter){
 								return '-'+letter.toLowerCase();
-							})
+							});
 							if( /(transform)|(transition)/.test( _prop) ){
 								cssText += _prop+':'+opts[prop]+';-webkit-'+_prop+':'+opts[prop]+';';
 								//console.log(cssText)
@@ -265,7 +263,7 @@ Zeal.fn.extend({
 						}else{
 							cssText += prop+':'+opts[prop]+';';
 						}
-					};
+					}
 					elem.style.cssText += cssText;
 
 				});
@@ -276,8 +274,8 @@ Zeal.fn.extend({
 	width: function( number ){
 		if( number ){
 			this.each(function(elem){
-				elem.style.width = number+'px'
-			})
+				elem.style.width = number+'px';
+			});
 		}else{
 			return Number( Zeal.fn.css.call( this,'width' ).replace(/px/,'') );
 		}
@@ -285,8 +283,8 @@ Zeal.fn.extend({
 	height: function( number ){
 		if( number ){
 			this.each(function(elem){
-				elem.style.height = number+'px'
-			})
+				elem.style.height = number+'px';
+			});
 		}else if( this[0]===document ){
 			// Chrome || Firefox
 			return Math.max(
@@ -320,7 +318,7 @@ Zeal.fn.extend({
 		});
 		return this;			
 	}
-})
+});
 
 // Module: animate
 /**
@@ -353,17 +351,17 @@ Zeal.fn.animate = function( opts,duration,callback ){
 				for( var prop in opts ){
 					p[prop]+=dp[prop];
 					elem.style[prop] = p[prop] + (prop==='opacity'?0:"px");
-				};
+				}
 				i++;
 			}else{
 				clearInterval( interval );
 				for( var prop in opts ){
 					elem.style[prop] = target[prop];
-				};
+				}
 				if( callback ){
 					callback();					
-				};
-			};
+				}
+			}
 		},10);
 	});
 };
@@ -386,10 +384,10 @@ Zeal.fn.extend({
 				Zeal(elem).fadeOut( duration );
 			}else if( currentOpacity===0 ){
 				Zeal(elem).fadeIn( duration );
-			};
+			}
 		});
 	}
-})
+});
 
 // Module: ajax
 Zeal.ajax = function( obj ){
@@ -406,8 +404,8 @@ Zeal.ajax = function( obj ){
             if( xhr.status===200 ){
                 var data = xhr.responseText;
                 obj.success(data);
-            };
-        };
+            }
+        }
     };
     xhr.open( obj.type,obj.url );
     xhr.send( obj.data||null );		

@@ -21,15 +21,22 @@ function initLifecycle (vm) {
 	vm._isMounted = false;
 }
 
+Vue.prototype.$watch = function(exp,callback){
+	var vm = this;
+	var watcher = new Watcher(vm,exp,callback);
+}
 
+import {initMixin} from './init.js';
 
 // take 'options' and return a vm.
 function Vue (options) {
 	this._init(options);
 }
 
-Vue.prototype._init = function(options){
-	var vm = this;
-	vm.$options;
-}
+initMixin(Vue)
+stateMixin(Vue)
+eventsMixin(Vue)
+lifecycleMixin(Vue)
+renderMixin(Vue)
 
+export default Vue;

@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -7,16 +7,71 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var _ = {
-	bubbleSort: bubbleSort,
-	camelCase: camelCase,
-	copy: copy,
-	//each
-	deepClone: deepClone,
-	extend: extend,
-	forEach: forEach
-	//map
+// Functions to process objects.
+/**
+ * Extend an object.
+ * 
+ * @param  {object} obj [description]
+ * @return {object}     [description]
+ */
+function extend(target, src, deep) {
+	for (var key in src) {
+		if (deep && src[key] === 'object') {
+			target[key] = extend(target[key], src[key], true);
+		} else {
+			target[key] = src[key];
+		};
+	}
+	return target;
+}
+function deepExtend(target, src) {
+	return extend(target, src, true);
+}
+
+function copy(src, deep) {
+	var __copy;
+	if ((typeof src === "undefined" ? "undefined" : _typeof(src)) === "object") {
+		if (src.length) {
+			__copy = [];
+		} else {
+			__copy = {};
+		};
+		for (var key in src) {
+			if (deep && _typeof(src[key]) === "object") {
+				__copy[key] = copy(src[key], true);
+			} else {
+				__copy[key] = src[key];
+			};
+		};
+		return __copy;
+	} else {
+		throw new TypeError('src must be an object.').stack;
+	}
 };
+function shallowCopy(src) {
+	return copy(src, false);
+}
+function deepClone(src) {
+	return copy(src, true);
+}
+function clone(target, src, deep) {
+	return extend(target, src, deep);
+}
+
+exports.extend = extend;
+exports.clone = clone;
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.trim = exports.forEach = exports.clone = exports.extend = exports.camelCase = exports.bubbleSort = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _extend = require('./extend.js');
 
 // Functions to process strings.
 function trim(str) {
@@ -64,64 +119,21 @@ function bubbleSort(arr) {
 	return arr;
 }
 
-// Functions to process objects.
-/**
- * Extend an object.
- * 
- * @param  {object} obj [description]
- * @return {object}     [description]
- */
-function extend(target, src, deep) {
-	for (var key in src) {
-		if (deep && src[key] === 'object') {
-			target[key] = extend(target[key], src[key], true);
-		} else {
-			target[key] = src[key];
-		};
-	}
-	return target;
-}
-function deepExtend(target, src) {
-	return extend(target, src, true);
-}
+exports.bubbleSort = bubbleSort;
+exports.camelCase = camelCase;
+exports.extend = _extend.extend;
+exports.clone = _extend.clone;
+exports.forEach = forEach;
+exports.trim
+//map
+ = trim;
 
-function copy(src, deep) {
-	var __copy;
-	if ((typeof src === 'undefined' ? 'undefined' : _typeof(src)) === "object") {
-		if (src.length) {
-			__copy = [];
-		} else {
-			__copy = {};
-		};
-		for (var key in src) {
-			if (deep && _typeof(src[key]) === "object") {
-				__copy[key] = copy(src[key], true);
-			} else {
-				__copy[key] = src[key];
-			};
-		};
-		return __copy;
-	} else {
-		throw new TypeError('src must be an object.').stack;
-	}
-};
-function shallowCopy(src) {
-	return copy(src, false);
-}
-function deepClone(src) {
-	return copy(src, true);
-}
-
-window._ = _;
-
-exports._ = _;
-
-},{}],2:[function(require,module,exports){
+},{"./extend.js":1}],3:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var _2 = require('./_.js');
+var _index2 = require('../_/index.js');
 
 // Module: core
 var arr = [];
@@ -136,9 +148,7 @@ var Zeal = function Zeal(selector, context) {
 Zeal.fn = Zeal.prototype = {
 	length: 0,
 	each: function each(callback) {
-		for (var i = 0; i < this.length; i++) {
-			callback(this[i], i);
-		}
+		_index2._.forEach(this, callback);
 	},
 	eq: function eq(i) {
 		return Zeal(this[i]);
@@ -161,13 +171,13 @@ Zeal.fn = Zeal.prototype = {
 };
 
 Zeal.extend = Zeal.fn.extend = function (src) {
-	_2._.extend(this, src);
+	_index2._.extend(this, src);
 };
 
 Zeal.extend({
 	isArray: Array.isArray,
-	copy: _2._.copy,
-	camelCase: _2._.camelCase
+	copy: _index2._.copy,
+	camelCase: _index2._.camelCase
 });
 
 /**
@@ -531,4 +541,4 @@ if (window.$ === undefined) {
 	window.Zeal = Zeal;
 }
 
-},{"./_.js":1}]},{},[2]);
+},{"../_/index.js":2}]},{},[3]);
