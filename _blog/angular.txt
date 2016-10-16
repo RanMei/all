@@ -50,14 +50,30 @@ publishExternalAPI(angular)
 
 angular.module('ngLocal',)
 
-angularInit(document,bootstrap)
-	var appElement =
-	bootstrap(element,modules,config)
-		return doBootstrap()
-			var injector = createInjector(modules, config.strictDi);
-
-
+// create a module named 'app'
+angular.module('app',[])
 // create a controller named 'main' and 
 // push ['$controllerProvider','register','main',callback]
 // into the _invokeQueue of this moduleInstance
 angular.module('app').controller('main',callback)
+
+
+angularInit(element,bootstrap)
+	element = document;
+	var appElement = element.querySelector('ng-app');
+	var module = 'app';
+	bootstrap(element,modules,config)
+		element = appElement;
+		modules = ['app'];
+		return doBootstrap()
+			modules.unshift(['$provide', function($provide) {
+			modules.unshift('ng');
+			var injector = createInjector(modules, config.strictDi);
+				var providerInjector = 
+				var runBlocks = loadModules(modules);
+					var runBlocks = [];
+					forEach(modules,callback);
+
+				return instanceInjector;
+			injector.invoke(['$rootScope', '$rootElement', '$compile', '$injector',
+

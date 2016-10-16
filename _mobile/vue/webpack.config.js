@@ -18,6 +18,9 @@ module.exports = {
 		},{
 			test: /\.vue$/,
 			loader: 'babel!vue'
+			// query: {
+			// 	presets: ['react','es2015']
+			// }
 		},{
 			test: /\.less$/,
 			loader: 'style!css!less!postcss'

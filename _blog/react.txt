@@ -42,7 +42,7 @@ ReactDOM.render(nextElement,container,callback)
 
 			.getPublicInstance();
 
-
+// create and return a reactElement which is a plain-object
 React.createElement(type,config,children)
 	var props = {};
 	var childrenLength = arguments.length - 2;

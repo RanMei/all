@@ -1,5 +1,12 @@
+function Observer
+
+function Watcher
+
+function Dep
+Dep.target = null;
 
 function Vue
+// add some methods to Vue.prototype
 initMixin(Vue)
 	Vue.prototype._init = 
 stateMixin(Vue)
@@ -25,7 +32,7 @@ initGlobalAPI(Vue)
 	initAssetRegisters(Vue)
 
 
-
+// create a Vue instance
 Vue(options)
 	_init(options)
 		vm._uid = 
@@ -43,17 +50,67 @@ Vue(options)
 			vm._watchers = [];
 			initProps(vm)
 			initData(vm)
+				var data = vm.$options.data;
+				var keys = Object.keys(data);
+				while(i--)
+					proxy(vm,keys[i])
+						Object.defineProperty(vm,key,{
+
+						})
+				// create an observer for data
+				// start observe the changing of every value in data		
 				observe(data)
+					var ob;
+					ob = new Observer(data);
+						this.dep = new Dep();
+							this.subs = [];
+						// 
+						this.walk(data)
+							defineReactive(data, key, data[key])
+								// create a new dependency for data[key]
+								var dep = new Dep();
+								// create a new observer for data[key]
+								var childObserver = observe(data[key])
+
+								if (Dep.target) {
+    								Dep.target.addDep(this)
+
+								Object.defineProperty(data, key, {
+					retrun ob;
 			initComputed(vm)
+				Object.defineProperty(vm, key, computedSharedDefinition);
 			initMethods(vm)
 			initWatch(vm)
 				if(vm.$options.watch)
-					createWatcher(vm,key)
-						vm.$watch(key)
-							const watcher = new Watcher(vm,key)
+					// create a watcher for watch[key] and
+					// push it into vm._watchers
+					createWatcher(vm,key,watch[key])
+						vm.$watch(key,watch[key])
+							const watcher = new Watcher(vm,key,watch[key])
 								this.vm = vm;
 								vm._watchers.push(this);
+								this.expression = expOrFn.toString();
+								this.cb = watch[key];
+								this.id = ++uid;
 		callHook(vm,'created')
 			vm.$emit('created')
 		initRender(vm)
 			vm.$mount
+				if (!options.render) {
+					var template = options.template;
+					if (template) {
+					if (template) {
+						var ref = compileToFunctions(template, {
+							var ast = parse(template.trim(), options);
+								parseHTML()
+									
+							optimize(ast, options);
+
+// when data[key] was changed
+// the setter of data[key] was invoked
+data[key].set(newVal)
+	// create a new observer
+	childObserver = observe(newVal);
+	dep.notify()
+		var subs = this.subs.slice();
+		subs[i].update();

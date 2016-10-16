@@ -14,6 +14,9 @@ const routes = [{
 },{
 	path: '/swiper-container',
 	component: require('./swiper-container.js')
+},{
+	path: '/3d',
+	component: require('./components/3d.vue')
 }];
 
 const router = new VueRouter({
