@@ -1,8 +1,55 @@
+vm: {
+	uid: 1,
+	$options: {},
+	_self: vm,
+
+	$parent:
+	$root:
+	$children:
+	_watcher: 
+	_isMounted: false,
+
+	_events: [],
+
+	_watchers: [],
+	
+	__proto__: {
+		_init:
+	}
+}
+
+data: {
+	__ob__: observer
+}
+
+observer: {
+	value: data,
+	dep: {
+		id: 0,
+		subs: [watcher,watcher,...]
+	},
+	__proto__: {
+		walk: 
+	}
+}
+
+watcher: {
+	vm: ,
+	id: 0,
+	expression: ,
+	callback: ,
+	deps: [],
+	__proto__: {
+		addDep: ,
+	}
+}
+
 function Observer
 
 function Watcher
 
 function Dep
+// the current target watcher being evaluated.
 Dep.target = null;
 
 function Vue
@@ -49,6 +96,7 @@ Vue(options)
 		initState(vm)
 			vm._watchers = [];
 			initProps(vm)
+
 			initData(vm)
 				var data = vm.$options.data;
 				var keys = Object.keys(data);
@@ -58,22 +106,35 @@ Vue(options)
 
 						})
 				// create an observer for data
-				// start observe the changing of every value in data		
+				// start observe the changing of every value in data
 				observe(data)
+					if (!isObject(data)) {
+						return
+					}
 					var ob;
 					ob = new Observer(data);
+						this.value = data;
+						// create dependencies for this observer
+						// observer.dep
+						// observer.dep.subs = [watcher,watcher,...]
 						this.dep = new Dep();
+							this.id = 
+							// create subscriber
 							this.subs = [];
+						// data.__ob__
+						def(data, '__ob__', this)
 						// 
 						this.walk(data)
 							defineReactive(data, key, data[key])
 								// create a new dependency for data[key]
 								var dep = new Dep();
-								// create a new observer for data[key]
+								// create a new observer for data[key] 
+								// if it is a plain object or an array
 								var childObserver = observe(data[key])
 
 								if (Dep.target) {
     								Dep.target.addDep(this)
+    									this.subs.push(sub)
 
 								Object.defineProperty(data, key, {
 					retrun ob;
@@ -106,11 +167,19 @@ Vue(options)
 									
 							optimize(ast, options);
 
+// when the system is getting data[key]
+if (Dep.target) {
+	dep.depend()
+
+
+
 // when data[key] was changed
 // the setter of data[key] was invoked
 data[key].set(newVal)
-	// create a new observer
+	// create a new observer to replace the old one
 	childObserver = observe(newVal);
 	dep.notify()
 		var subs = this.subs.slice();
 		subs[i].update();
+
+pushTarget(this)

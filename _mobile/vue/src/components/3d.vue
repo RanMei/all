@@ -1,6 +1,7 @@
 <template>
 <div class="space">
-	<div class="flipper" :class="state">
+	<div class="flipper" :class="state"
+	@click="handleClick">
 		<div class="face front">
 			<p>front</p>
 			<img :src="img.iron_man"/>
@@ -87,6 +88,11 @@ export default {
 			}
 			//console.log(e)
 		})
+	},
+	methods: {
+		handleClick: function(){
+			this.state = this.state === ''?'two':'';
+		}
 	}
 }
 

@@ -21,9 +21,16 @@ class Projects extends React.Component {
 				'./_mobile/h5/live/live.html',
 				'./_mobile/h5/project/index.html'
 			],[
+				'./_canvas/Heart.html',
+				'./_canvas/NeonHexagons/index.html',
+				'./_canvas/DriftingBalls/index.html',
+				'./_canvas/lion/index.html',
+				'./_canvas/cube/canvas_geometry_cube.html'
+			],[
 				'./_mobile/vue/index.html#/preloader',
 				'./_mobile/vue/index.html#/svg-qq-container',
-				'./_mobile/vue/index.html#/swiper-container'
+				'./_mobile/vue/index.html#/swiper-container',
+				'./_mobile/vue/index.html#/3d'
 			]]
 		};
 	}
