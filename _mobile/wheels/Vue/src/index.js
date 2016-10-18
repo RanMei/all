@@ -1,13 +1,4 @@
-function proxy (vm,key) {
-	Object.defineProperty(vm,key,{
-		get: function(){
-			return vm._data[key];
-		},
-		set: function(val){
-			vm._data[key] = val;
-		}
-	})
-}
+
 
 function initData(vm,proxy){
 	var data = vm.$options.data;
@@ -34,9 +25,11 @@ function Vue (options) {
 }
 
 initMixin(Vue)
-stateMixin(Vue)
-eventsMixin(Vue)
-lifecycleMixin(Vue)
-renderMixin(Vue)
+// stateMixin(Vue)
+// eventsMixin(Vue)
+// lifecycleMixin(Vue)
+// renderMixin(Vue)
 
-export default Vue;
+window.Vue = Vue;
+
+//export default Vue;

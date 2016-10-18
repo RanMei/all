@@ -123,24 +123,53 @@ BROWSERIFY.forEach(function(item){
 
 })
 
-gulp.task('rollup',function(){
-	// gulp.src(['./_mobile/wheels/zeal/src/zeal.main.js','./_mobile/wheels/_/src/*.*'])
-	// 	.pipe( rollup({
-	// 		entry: './_mobile/wheels/zeal/src/zeal.main.js',
-	// 		format: 'umd',
-	// 		//plugins: [require('rollup-plugin-babel')()],
-	// 		dest: 'bundle.js'
-	// 	}))
-	// 	.pipe( gulp.dest('./_mobile/wheels/zeal/dist/') )
-	return (
-		rollup({
-			entry: './_mobile/wheels/zeal/src/zeal.main.js',
-			format: 'umd'// 'cjs', 'umd'
-		})
-		.pipe( source('zeal.js') )
-		.pipe( gulp.dest('./_mobile/wheels/zeal/dist/') )
-	)
+var ROLLUP = [{
+	name: 'rollup-zeal',
+	watch: ['./_mobile/wheels/zeal/src/*.js'],
+	entry: './_mobile/wheels/zeal/src/zeal.main.js',
+	output: 'zeal.js',
+	dest: './_mobile/wheels/zeal/dist/'
+},{
+	name: 'rollup-vue',
+	watch: ['./_mobile/wheels/vue/src/*.js'],
+	entry: './_mobile/wheels/vue/src/index.js',
+	output: 'vue.js',
+	dest: './_mobile/wheels/vue/dist/'
+}]
+ROLLUP.forEach((a)=>{
+	gulp.task(a.name,function(){
+		if(!PRODUCTION){
+			return (
+				rollup({
+					entry: a.entry,
+					format: 'umd'// 'cjs', 'umd'
+					//plugins: [require('rollup-plugin-babel')({})]
+				})
+				.pipe( source(a.output) )
+				.pipe( gulp.dest(a.dest) )
+			)
+		}else{
+			return (
+				rollup({
+					entry: a.entry,
+					format: 'umd'// 'cjs', 'umd'
+				})
+				.pipe( source(a.output) )
+				.pipe( buffer() )
+				.pipe( uglify({}) )
+				.pipe( gulp.dest(a.dest) )
+			)
+		}
+	});
 });
+// gulp.src(['./_mobile/wheels/zeal/src/zeal.main.js','./_mobile/wheels/_/src/*.*'])
+// 	.pipe( rollup({
+// 		entry: './_mobile/wheels/zeal/src/zeal.main.js',
+// 		format: 'umd',
+// 		//plugins: [require('rollup-plugin-babel')()],
+// 		dest: 'bundle.js'
+// 	}))
+// 	.pipe( gulp.dest('./_mobile/wheels/zeal/dist/') )
 
 gulp.task('vueify',function(){
 	return(
@@ -308,7 +337,9 @@ gulp.task('watch',function(){
 		gulp.watch( elem.files,[elem.name] );
 	});
 
-	gulp.watch( './_mobile/wheels/zeal/src/*.js',['rollup'] );
+	ROLLUP.forEach(a=>{
+		gulp.watch( a.watch,[a.name] );
+	})
 
 	// gulp.watch( './_mobile/vue/lib/*.*',['vueify'] );
 

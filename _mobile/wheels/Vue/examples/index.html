@@ -14,8 +14,17 @@
 		I am {{name}}.
 	</div>
 
-<script type="text/javascript" src="src/Vue.js"></script>
+<script type="text/javascript" src="../dist/vue.js"></script>
+<script type="text/javascript">
+	var root = new Vue({
+		data: {
+			name: 'John',
+			age: 21
+		}
+	})
 
+	console.log(root)
+</script>
 </body>
 
 </html>
