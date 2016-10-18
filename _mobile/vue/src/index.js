@@ -17,6 +17,9 @@ const routes = [{
 },{
 	path: '/3d',
 	component: require('./components/3d.vue')
+},{
+	path: '/orientation',
+	component: require('./components/orientation.vue')
 }];
 
 const router = new VueRouter({

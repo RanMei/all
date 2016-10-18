@@ -12,6 +12,10 @@ vm: {
 	_events: [],
 
 	_watchers: [],
+
+	name: 
+	get:
+	set:
 	
 	__proto__: {
 		_init:
@@ -19,7 +23,8 @@ vm: {
 }
 
 data: {
-	__ob__: observer
+	__ob__: observer,
+
 }
 
 observer: {
@@ -36,9 +41,10 @@ observer: {
 watcher: {
 	vm: ,
 	id: 0,
-	expression: ,
+	expression: ' loggedIn?true:false ',
 	callback: ,
 	deps: [],
+	getter: 
 	__proto__: {
 		addDep: ,
 	}
@@ -99,44 +105,75 @@ Vue(options)
 
 			initData(vm)
 				var data = vm.$options.data;
+				data = vm._data = 
 				var keys = Object.keys(data);
 				while(i--)
+					// connect vm[key] with vm._data[key]
 					proxy(vm,keys[i])
 						Object.defineProperty(vm,key,{
 
 						})
 				// create an observer for data
-				// start observe the changing of every value in data
 				observe(data)
 					if (!isObject(data)) {
 						return
 					}
 					var ob;
 					ob = new Observer(data);
-						this.value = data;
-						// create dependencies for this observer
+						var observer = this;
+						observer.value = data;
+						// create a dependency representing data
+						// which is actually useless
 						// observer.dep
 						// observer.dep.subs = [watcher,watcher,...]
-						this.dep = new Dep();
-							this.id = 
+						observer.dep = new Dep();
+							dep_data.id = 
 							// create subscriber
-							this.subs = [];
+							dep_data.subs = [];
 						// data.__ob__
 						def(data, '__ob__', this)
 						// 
-						this.walk(data)
+						observer.walk(data)
 							defineReactive(data, key, data[key])
-								// create a new dependency for data[key]
-								var dep = new Dep();
+								// create a new dependency representing data[key]
+								var dep_of_data_key = new Dep();
 								// create a new observer for data[key] 
 								// if it is a plain object or an array
 								var childObserver = observe(data[key])
-
-								if (Dep.target) {
-    								Dep.target.addDep(this)
-    									this.subs.push(sub)
-
-								Object.defineProperty(data, key, {
+    							// create getter and setter for data[key]
+    							// start observe the changing of data[key]
+								Object.defineProperty(data, key, {})
+									*********
+									// when data[key] was used,
+									// which means that data[key] became a dependency for a watcher
+									// push the watcher into dep_key.subs
+									if (Dep.target) {
+										dep_key.depend()
+											if (Dep.target) {
+												var watcher = Dep.target
+												watcher.addDep(dep_key)
+													dep_key.subs.push(watcher)
+									*********
+									// when data[key] was changed
+									// the setter of data[key] was invoked
+									data[key].set(newVal)
+										// create a new observer to replace the old one
+										childObserver = observe(newVal);
+										// notify all the watchers to update view depending on it
+										dep_key.notify()
+											var subs = dep_key.subs.slice();
+											var watcher = subs[i];
+											watcher.update();
+												watcher.run();
+													var value = watcher.get();
+														// the current watcher is the target
+														pushTarget(watcher);
+															if (Dep.target) { targetStack.push(Dep.target) }
+															Dep.target = watcher;
+														var value = this.getter.call(this.vm, this.vm);
+														popTarget();
+													watcher.callback.call(wathcer.vm, value, oldValue)
+									********* 
 					retrun ob;
 			initComputed(vm)
 				Object.defineProperty(vm, key, computedSharedDefinition);
@@ -148,38 +185,43 @@ Vue(options)
 					createWatcher(vm,key,watch[key])
 						vm.$watch(key,watch[key])
 							const watcher = new Watcher(vm,key,watch[key])
-								this.vm = vm;
+								var watcher = this;
+								watcher.vm = vm;
 								vm._watchers.push(this);
-								this.expression = expOrFn.toString();
-								this.cb = watch[key];
-								this.id = ++uid;
+								watcher.expression = expOrFn.toString();
+								watcher.cb = watch[key];
+								watcher.id = ++uid;
+								if (typeof expOrFn === 'function') {
+									watcher.getter = expOrFn
+								} else {
+									watcher.getter = parsePath(expOrFn)
+								watcher.value = this.get();
+									pushTarget(watcher)
+										if (Dep.target) { targetStack.push(Dep.target) }
+										Dep.target = watcher;
+									var value = watcher.getter.call(watcher.vm, watcher.vm);
+
+
 		callHook(vm,'created')
 			vm.$emit('created')
 		initRender(vm)
-			vm.$mount
-				if (!options.render) {
-					var template = options.template;
-					if (template) {
-					if (template) {
-						var ref = compileToFunctions(template, {
-							var ast = parse(template.trim(), options);
-								parseHTML()
-									
-							optimize(ast, options);
-
-// when the system is getting data[key]
-if (Dep.target) {
-	dep.depend()
-
-
-
-// when data[key] was changed
-// the setter of data[key] was invoked
-data[key].set(newVal)
-	// create a new observer to replace the old one
-	childObserver = observe(newVal);
-	dep.notify()
-		var subs = this.subs.slice();
-		subs[i].update();
-
-pushTarget(this)
+			if (vm.$options.el) {
+				vm.$mount(vm.$options.el)
+					if (!options.render) {
+						var template = options.template;
+						if (template) {
+						if (template) {
+							var ref = compileToFunctions(template, {
+								var ast = parse(template.trim(), options);
+									parseHTML()
+										
+								optimize(ast, options);
+				vm._mount()
+					callHook(vm, 'beforeMount')
+					// create a watcher for vm
+					vm._watcher = new Watcher(vm, function () {
+						vm._update(vm._render(), hydrating)
+					}, noop);
+					*********
+					reactiveSetter
+					*********

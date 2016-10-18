@@ -6,7 +6,7 @@ Vue.component( 'countdown',require('./components/countdown.vue') );
 Vue.component( 'buttonAlarm',require('./components/button-alarm-2.vue') );
 
 
-new Vue({
+var root = new Vue({
 	el: '.root',
 	data: {
 		items: [],
@@ -59,3 +59,5 @@ new Vue({
 		}
 	}
 })
+
+console.log(root)
