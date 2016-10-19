@@ -1,6 +1,7 @@
 <template>
 	<div class="space">
-		<div class="square" :style=" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  ">
+		<div class="square" 
+		:style=" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  ">
 			{{rotationRate.alpha}}<br/>
 			{{rotateY}}
 		</div>
@@ -10,6 +11,7 @@
 <style lang="less" scoped>
 	.space {
 		width: 100%;
+		margin-top: 3rem;
 		perspective: 1000px;
 		.square {
 			width: 3rem; height: 3rem;
@@ -44,8 +46,23 @@ export default {
 	methods: {
 		handler: function(e){
 			this.rotationRate.alpha = e.rotationRate.alpha;
-			this.rotateX += -e.rotationRate.alpha*2;
-			this.rotateY += e.rotationRate.beta*2;
+			
+			var nextX = this.rotateX + e.rotationRate.alpha*3;
+			if(nextX>=45){
+				nextX = 45;
+			}else if(nextX<=-45){
+				nextX = -45;
+			}
+			this.rotateX = nextX;
+
+			var nextY = this.rotateY + e.rotationRate.beta*3;
+			if(nextY>=45){
+				nextY = 45;
+			}else if(nextY<=-45){
+				nextY = -45;
+			}
+			this.rotateY = nextY;
+
 		}
 	}
 } 

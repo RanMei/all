@@ -2,6 +2,17 @@ require('./common.less');
 
 Vue.use(VueRouter);
 
+const svg_qq_container = function(resolve){
+	require.ensure(['./svg-qq-container.js'], () => {
+		resolve( require('./svg-qq-container.js') )
+	})
+}
+const orientation = resolve => {
+	require.ensure(['./components/orientation.vue'], () => {
+		resolve( require('./components/orientation.vue') )
+	})
+}
+
 const routes = [{
 	path: '/',
 	component: require('./preloader-container.vue')
@@ -10,7 +21,7 @@ const routes = [{
 	component: require('./preloader-container.vue')
 },{
 	path: '/svg-qq-container',
-	component: require('./svg-qq-container.js')
+	component: svg_qq_container
 },{
 	path: '/swiper-container',
 	component: require('./swiper-container.js')
@@ -19,7 +30,7 @@ const routes = [{
 	component: require('./components/3d.vue')
 },{
 	path: '/orientation',
-	component: require('./components/orientation.vue')
+	component: orientation
 }];
 
 const router = new VueRouter({

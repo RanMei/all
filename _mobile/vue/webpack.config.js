@@ -9,6 +9,7 @@ module.exports = {
 		//'svg-qq': './_mobile/vue/src/svg-qq.js'
 	},
 	output: {
+		publicPath: './dist/',
 		filename: '[name].bundle.js'
 	},
 	module: {
