@@ -1,6 +1,8 @@
+import {path} from './config.js';
+
 require('./common.less');
-require('./presentation.less');
-require('./presentation.keyframes.less');
+require('./index.less');
+require('./keyframes.less');
 
 var technology = require('./components/technology.vue');
 var css3Transitions = require('./components/css3Transitions.vue');
@@ -24,6 +26,7 @@ new Vue({
 	components: {
 	},
 	data: {
+		path: path,
 		nav: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
 
 		current: 0,

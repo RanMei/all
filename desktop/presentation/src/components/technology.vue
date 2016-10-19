@@ -35,12 +35,13 @@
 </style>
 
 <script>
+import {path} from '../config.js';
 module.exports = {
 	data: function(){
 		return {
-			css3: 'img/css3.svg',
-			svg: 'img/svg.png',
-			html5: 'img/html5.svg'
+			css3: path+'css3.svg',
+			svg: path+'svg.png',
+			html5: path+'html5.svg'
 		}
 	}
 };

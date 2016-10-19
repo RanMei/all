@@ -7,6 +7,7 @@ module.exports = {
 	},
 	output: {
 		// path: './_mobile/farm/',
+		publicPath: './dist/',
 		filename: 'bundle.js'
 	},
 	// debug: true,

@@ -5,8 +5,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	entry: {
 		'index': './_mobile/vue/src/index.js'
-		//'swiper': './_mobile/vue/src/swiper.main.js',
-		//'svg-qq': './_mobile/vue/src/svg-qq.js'
 	},
 	output: {
 		publicPath: './dist/',

@@ -31,7 +31,8 @@ class Projects extends React.Component {
 				'./_mobile/vue/index.html#/svg-qq-container',
 				'./_mobile/vue/index.html#/swiper-container',
 				'./_mobile/vue/index.html#/3d',
-				'./_mobile/vue/index.html#/orientation'
+				'./_mobile/vue/index.html#/orientation',
+				'./_mobile/vue/index.html#/3d-cube'
 			]]
 		};
 	}

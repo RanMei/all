@@ -83,11 +83,12 @@
 </style>
 
 <script>
+import {path} from '../config.js';
 module.exports = {
 	data: function(){
 		return {
 			img: {
-				yoda: 'img/yoda.png'
+				yoda: path+'yoda.png'
 			}
 		}
 	}

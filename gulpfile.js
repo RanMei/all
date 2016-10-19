@@ -197,7 +197,6 @@ const WEBPACK = [{
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 },{
 	name: 'webpack-desktop-presentation', 
-	src: './desktop/presentation/src/presentation.main.jsx', 
 	dest: './desktop/presentation/dist/', 
 	config: './desktop/presentation/webpack.config.js', 
 	watched: ['./desktop/presentation/src/*.*','./desktop/presentation/src/*/*.*']
@@ -247,7 +246,7 @@ const WEBPACK = [{
 WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
 		if( PRODUCTION ){
-			return gulp.src( item.src )
+			return gulp.src( item.src||'' )
 				.pipe( webpack( require(item.config) ) )
 				.pipe( uglify() )
 				.pipe( gulp.dest(item.dest) );

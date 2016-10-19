@@ -2,6 +2,7 @@
 </style>
 
 <script>
+import {path} from '../config.js';
 module.exports = {
 	template: `
 		<li class="item">
@@ -14,7 +15,7 @@ module.exports = {
 						transform: translate3d(20vw,5vw,0);
 					</th></tr></table>
 				</div>
-				<img class="r2d2 translate" src="img/r2d2.png"/>
+				<img class="r2d2 translate" src="${path}r2d2.png"/>
 			</div>
 			<div class="strip">
 				<div class="left">
@@ -22,7 +23,7 @@ module.exports = {
 					transform: scale3d(1.2,1.2,1);
 					</th></tr></table>
 				</div>
-				<img class="r2d2 scale3d" src="img/r2d2.png"/>
+				<img class="r2d2 scale3d" src="${path}r2d2.png"/>
 			</div>
 			<div class="strip">
 				<div class="left">
@@ -30,7 +31,7 @@ module.exports = {
 					transform: skew(30deg,30deg);
 					</th></tr></table>
 				</div>
-				<img class="r2d2 skew" src="img/r2d2.png"/>
+				<img class="r2d2 skew" src="${path}r2d2.png"/>
 			</div>
 		</li>
 		<li class="item">
@@ -43,7 +44,7 @@ module.exports = {
 					transform: rotateY(360deg);
 					</th></tr></table>
 				</div>
-				<img class="r2d2 rotateY" src="img/r2d2.png"/>
+				<img class="r2d2 rotateY" src="${path}r2d2.png"/>
 			</div>
 			<div class="strip">
 				<div class="left">
@@ -75,7 +76,7 @@ module.exports = {
 					opacity: 0;
 					</th></tr></table>
 				</div>
-				<img class="r2d2 opacity" src="img/r2d2.png"/>
+				<img class="r2d2 opacity" src="${path}r2d2.png"/>
 			</div>
 			<div class="strip">
 				<div class="left">

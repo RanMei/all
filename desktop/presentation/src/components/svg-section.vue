@@ -61,14 +61,15 @@
 </style>
 
 <script>
+import {path} from '../config.js';
 module.exports = {
 	data: function(){
 		return {
 			img: {
-				svg_essence: 'img/svg_essence.jpg',
-				pen: 'img/pen.jpg',
-				orange: 'img/orange.png',
-				transformer: 'img/transformer.jpeg'
+				svg_essence: path+'svg_essence.jpg',
+				pen: path+'pen.jpg',
+				orange: path+'/orange.png',
+				transformer: path+'transformer.jpeg'
 			}
 		}
 	}

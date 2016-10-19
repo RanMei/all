@@ -49,8 +49,7 @@ import {HomeContainer} from './containers/HomeContainer.jsx';
 import {ItemContainer} from './containers/ItemContainer.jsx';
 import {MemberContainer} from './containers/MemberContainer.jsx';
 import {SigninContainer} from './containers/SigninContainer.jsx';
-import {ShoppingCartContainer} from './containers/ShoppingCartContainer.jsx';
-
+//import {ShoppingCartContainer} from './containers/ShoppingCartContainer.jsx';
 
 
 var Provider = ReactRedux.Provider;
@@ -65,7 +64,11 @@ ReactDOM.render(
 				<Route path="/" component={AppContainer}>
 					<Route path="/home" component={HomeContainer} />
 					<Route path="/category" component={Category} />
-					<Route path="/shopping_cart" component={ShoppingCartContainer} />
+					<Route path="/shopping_cart" getComponent={function(nextState, cb) {
+						require.ensure([], (require) => {
+							cb( null, require('./containers/ShoppingCartContainer.jsx').ShoppingCartContainer )
+						})
+					}} />
 					<Route path="/member" component={MemberContainer} />
 					<Route path="/di_management" component={DIManagement} />
 
