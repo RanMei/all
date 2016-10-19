@@ -2,6 +2,7 @@ require('./common.less');
 
 Vue.use(VueRouter);
 
+
 const svg_qq_container = function(resolve){
 	require.ensure(['./containers/svg-qq-container.js'], () => {
 		resolve( require('./containers/svg-qq-container.js') )
@@ -74,6 +75,13 @@ const routes = [{
 	component: function(resolve){
 		require.ensure(['./components/Panoramic.vue'], () => {
 			resolve( require('./components/Panoramic.vue') )
+		})
+	}
+},{
+	path: '/rain',
+	component: function(resolve){
+		require.ensure(['./components/Rain.vue'], () => {
+			resolve( require('./components/Rain.vue') )
 		})
 	}
 }];

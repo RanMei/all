@@ -62,8 +62,8 @@ export default {
 
 		SmoothTrail.prototype = {
 
-			rand: function(rMi, rMa){
-				return ~~((Math.random()*(rMa-rMi+1))+rMi);
+			rand: function(min, max){
+				return ~~( (Math.random()*(max-min+1))+min);
 			},
 			hitTest: function(x1, y1, w1, h1, x2, y2, w2, h2){
 				return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
@@ -139,21 +139,17 @@ export default {
 				this.ctx.fillRect(0,0,this.cw,this.ch);					
 				this.ctx.globalCompositeOperation = 'lighter';
 			},
-
-		/*=============================================================================*/	
-		  /* Animation Loop
-		  /*=============================================================================*/
-		  loop: function(){
-		  	var _this = this;
-		  	var loopIt = function(){
-		  		requestAnimationFrame(loopIt, _this.c);
-		  		_this.clearCanvas();
-		  		_this.updateArc();
-		  		_this.updateTrail();
-		  		_this.renderTrail();							
-		  	};
-		  	loopIt();					
-		  }
+			loop: function(){
+				var _this = this;
+				var loopIt = function(){
+					requestAnimationFrame(loopIt, _this.c);
+					_this.clearCanvas();
+					_this.updateArc();
+					_this.updateTrail();
+					_this.renderTrail();							
+				};
+				loopIt();					
+			}
 		  
 		};
 
