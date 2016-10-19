@@ -55,6 +55,27 @@ const routes = [{
 },{
 	path: '/scope',
 	component: Scope
+},{
+	path: '/stroke-circle',
+	component: function(resolve){
+		require.ensure(['./components/StrokeCircle.vue'], () => {
+			resolve( require('./components/StrokeCircle.vue') )
+		})
+	}
+},{
+	path: '/carousel',
+	component: function(resolve){
+		require.ensure(['./components/Carousel.vue'], () => {
+			resolve( require('./components/Carousel.vue') )
+		})
+	}
+},{
+	path: '/panoramic',
+	component: function(resolve){
+		require.ensure(['./components/Panoramic.vue'], () => {
+			resolve( require('./components/Panoramic.vue') )
+		})
+	}
 }];
 
 const router = new VueRouter({
