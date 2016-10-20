@@ -1,16 +1,14 @@
 <template>
 <!-- CSS 3D Carousel -->
-<div>
-	<div class="container">
-		<div class="carousel"
-		:style=" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' ">
-			<div class="item a">A</div>
-			<div class="item b">B</div>
-			<div class="item c">C</div>
-			<div class="item d">D</div>
-			<div class="item e">E</div>
-			<div class="item f">F</div>
-		</div>
+<div class="container">
+	<div class="carousel"
+	:style=" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' ">
+		<div class="item a">A</div>
+		<div class="item b">B</div>
+		<div class="item c">C</div>
+		<div class="item d">D</div>
+		<div class="item e">E</div>
+		<div class="item f">F</div>
 	</div>
 	<div class="next" @click="next">Next</div>
 	<div class="prev" @click="prev">Prev</div>
@@ -22,12 +20,17 @@
 .container {
 	position: relative;
 	width: 100%;
-	margin: 2rem auto;
+	margin: auto;
 	perspective: 1000px;
+	overflow: hidden;
+	._controls {
+		height: 2rem;
+		z-index: -1;
+	}
 	.carousel {
 		position: relative;
 		width: 2.5rem; height: 2rem;
-		margin: auto;
+		margin: 2rem auto;
 		transform-style: preserve-3d;
 		transition: transform 1s;
 	}

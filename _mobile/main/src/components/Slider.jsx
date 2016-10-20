@@ -9,6 +9,8 @@ class Slider extends React.Component {
 				<a href="#/projects">Projects</a>
 				<a href="#/animations">Animation</a>
 				<a href="#/blog">Blog</a>
+				<a href="./_mobile/farm/index.html">Farm</a>
+				<a href="./_mobile/vue/index.html">Vue</a>
 			</div>
 		)
 	}

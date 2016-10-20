@@ -21,6 +21,7 @@ export default [[
 	'./_canvas/lion/index.html',
 	'./_canvas/cube/canvas_geometry_cube.html'
 ],[
+	'./_mobile/vue/index.html',
 	'./_mobile/vue/index.html#/preloader',
 	'./_mobile/vue/index.html#/stroke-circle',
 	'./_mobile/vue/index.html#/svg-qq-container',

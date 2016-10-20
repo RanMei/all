@@ -91,10 +91,10 @@ var swiper = {
 	},
 	mounted: function(){
 		this.copy = JSON.parse( JSON.stringify(this.items) );
-		window.addEventListener('load',()=>{
+		//window.addEventListener('load',()=>{
 			this.setWidth();
 			this.trainOffsetX = -this.width*2;
-		});
+		//});
 		window.addEventListener('resize',()=>{
 			setTimeout(()=>{
 				this.setWidth();
