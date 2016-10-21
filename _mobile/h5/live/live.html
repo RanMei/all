@@ -10,6 +10,7 @@
 
 <body>
 	<div class="root">
+		<!-- <mask-loading></mask-loading> -->
 		<div class="front">
 			<img class="timeleft" src="img/timeleft.png" :style=" hasAlarm?'':'left:0.98rem;top:0.5rem;' "/>
 			<countdown :timeleft="timeleft" :act="act" :style=" hasAlarm?'':'left:2.86rem;top:0.3rem;' "></countdown>
@@ -18,7 +19,7 @@
 		<div class="focus" style="background: url(img/focus.png);background-size: 100% auto;">
 			<div class="margin"></div>
 			<div class="notice">
-				<img src="img/horn.png"/>本次直播延期30分钟，请您耐心等待
+				<img src="img/horn.png"/>{{notice}}
 			</div>
 			
 			
@@ -35,16 +36,16 @@
 			<div class="middle-top">
 				<img class="close-quote" src="img/close-quote.png"/>
 				<p class="p-black">
-					Hi，我是叶非夜,日销15.6万言情天福布斯年度人气作家，直播内容预告如下
+					{{intro}}
 				</p>
 				<ul>
-					<li>◆《日系》获红楼梦奖，现场演讲独家直播</li>
+					<li v-for="a in introList">◆{{a}}</li>
 				</ul>
 			</div>
 			<stack-both
 			:items="items"></stack-both>
 		</div>
-		<div class="chat">
+		<div class="chat" v-show="chat">
 			<div class="content">
 				<img class="chatImg" src="img/chat.png"/>
 				<p>想了解更多，请戳视频哦</p>

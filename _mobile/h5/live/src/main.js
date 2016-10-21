@@ -2,19 +2,28 @@ require('./index.less');
 
 Vue.component( 'imgBlured',require('./components/img-blured.vue') );
 Vue.component( 'stackBoth',require('./components/stack-both.vue') );
-Vue.component( 'countdown',require('./components/countdown.vue') );
+Vue.component( 'countdown',require('./components/Countdown.vue') );
 Vue.component( 'buttonAlarm',require('./components/button-alarm-2.vue') );
-
+Vue.component( 'mask-loading',require('./components/MaskLoading.vue') );
 
 var root = new Vue({
 	el: '.root',
 	data: {
-		items: [],
-		timeleft: 800000000,
+		ios: /ios/.test( document.title )?true:false,
 
+		notice: '本次直播延期30分钟，请您耐心等待',
+		timeleft: 800000000,
 		hasAlarm: true, 
 		// 'pending','unset','resolved','set'
-		alarmState: 'unset'
+		alarmState: 'unset',
+
+		intro: 'Hi，我是叶非夜,日销15.6万言情天福布斯年度人气作家，直播内容预告如下',
+		introList: ['《日系》获红楼梦奖，现场演讲独家直播','','','222'],
+
+		items: [],
+
+		chat: true
+		
 	},
 	created: function(){
 

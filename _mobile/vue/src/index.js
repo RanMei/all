@@ -142,6 +142,13 @@ const routes = [{
 				resolve( require('./canvas/Snowfall.vue') )
 			})
 		}
+	},{
+		path: 'neon-hexagons',
+		component: function(resolve){
+			require.ensure(['./canvas/NeonHexagons.vue'], () => {
+				resolve( require('./canvas/NeonHexagons.vue') )
+			})
+		}
 	}]
 }];
 

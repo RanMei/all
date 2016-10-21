@@ -500,7 +500,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
 	__webpack_require__(9)
 	__vue_script__ = __webpack_require__(12)
 	if (__vue_script__ &&
@@ -510,20 +509,14 @@
 	__vue_template__ = __webpack_require__(13)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-36a466ac/container.vue"
+	  var id = "./container.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -547,8 +540,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-36a466ac&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./container.vue", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-36a466ac&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./container.vue");
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ac9160e6&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./container.vue", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ac9160e6&scoped=true!./../../../../../node_modules/less-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./container.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -566,7 +559,7 @@
 
 
 	// module
-	exports.push([module.id, ".container[_v-36a466ac] {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  background: orange;\n  overflow: hidden;\n}\n.container .train[_v-36a466ac] {\n  width: 100%;\n  height: 1000%;\n  -webkit-transition: -webkit-transform 0.3s;\n  transition: -webkit-transform 0.3s;\n  transition: transform 0.3s;\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.container .train .item[_v-36a466ac] {\n  width: 100%;\n  height: 10%;\n}\n.container .train .item .square[_v-36a466ac] {\n  width: 2rem;\n  height: 1rem;\n}\n", ""]);
+	exports.push([module.id, ".container[_v-ac9160e6] {\n  position: relative;\n  width: 100%;\n  height: 100vh;\n  background: orange;\n  overflow: hidden;\n}\n.container .train[_v-ac9160e6] {\n  width: 100%;\n  height: 1000%;\n  -webkit-transition: -webkit-transform 0.3s;\n  transition: -webkit-transform 0.3s;\n  transition: transform 0.3s;\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.container .train .item[_v-ac9160e6] {\n  width: 100%;\n  height: 10%;\n}\n.container .train .item .square[_v-ac9160e6] {\n  width: 2rem;\n  height: 1rem;\n}\n", ""]);
 
 	// exports
 
@@ -846,7 +839,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"container\" v-show=\"show\" v-on:touchstart=\"touchstart($event)\" v-on:touchend=\"touchend($event)\" @keypress=\"keydown($event)\" _v-36a466ac=\"\">\n\t<ul class=\"train\" style=\"transform: translate3d(0,{{-current*10}}%,0)\" _v-36a466ac=\"\">\n\t\t<li class=\"item\" v-for=\"(i,item) in items\" style=\"background:{{item}}\" _v-36a466ac=\"\">{{i}}\n\t\t\t<div class=\"square\" @mouseenter=\"hover\" style=\"background:{{color}}\" _v-36a466ac=\"\"></div>\n\t\t</li>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"container\" v-show=\"show\" v-on:touchstart=\"touchstart($event)\" v-on:touchend=\"touchend($event)\" @keypress=\"keydown($event)\" _v-ac9160e6=\"\">\n\t<ul class=\"train\" style=\"transform: translate3d(0,{{-current*10}}%,0)\" _v-ac9160e6=\"\">\n\t\t<li class=\"item\" v-for=\"(i,item) in items\" style=\"background:{{item}}\" _v-ac9160e6=\"\">{{i}}\n\t\t\t<div class=\"square\" @mouseenter=\"hover\" style=\"background:{{color}}\" _v-ac9160e6=\"\"></div>\n\t\t</li>\n\t</ul>\n</div>\n";
 
 /***/ }
 /******/ ]);
