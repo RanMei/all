@@ -13,13 +13,13 @@ module.exports = {
 	module: {
 		loaders: [{
 			test: /\.js$/,
-			loader: 'babel'
+			loader: 'babel',
+			query: {
+				presets: ['react','es2015']
+			}
 		},{
 			test: /\.vue$/,
 			loader: 'babel!vue'
-			// query: {
-			// 	presets: ['react','es2015']
-			// }
 		},{
 			test: /\.less$/,
 			loader: 'style!css!less!postcss'
@@ -40,6 +40,6 @@ module.exports = {
     	// 	//'swiper',
     	// 	'svg-qq'
     	// ]),
-    	new ExtractTextPlugin('style.css')
+    	//new ExtractTextPlugin('style.css')
     ]
 };
