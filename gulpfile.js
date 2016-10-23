@@ -28,7 +28,7 @@ var uglify = require('gulp-uglify');
 var PRODUCTION = false;
 
 // var concat = require("gulp-concat");
-// var shell = require('gulp-shell');
+var shell = require('gulp-shell');
 
 gulp.task( 'start_server',function(){
 	nodemon({
@@ -265,7 +265,7 @@ WEBPACK.forEach(function(item){
 
 // babel
 gulp.task( 'babel_fytpy', function () {
-	return gulp.src( "./fytpy/es6/*.es6")
+	return gulp.src( "./fytpy/src/*.*")
 		// './fytpy/.babelrc' will be used.
 		.pipe( babel() )
 		.pipe( gulp.dest("./fytpy/js") );
@@ -310,6 +310,18 @@ gulp.task( 'browserify_fytpy',function(){
 	);
 });
 
+var gulputil = require('gulp-util')
+var webpackkk = require('webpack');
+
+gulp.task('webpack',function(){
+	webpack(require('./_mobile/vue/webpack.config.js'),function(e,s){
+		if(e){throw new gulputil.PluginError('webpack',e)};
+		gulputil.log('[webpack]',s.toString({
+
+		}));
+	});
+})
+
 // concat
 gulp.task( "concat_angular",function(){
 	gulp.src([
@@ -320,9 +332,16 @@ gulp.task( "concat_angular",function(){
 		.pipe( gulp.dest("./angular/public/js/") );
 });
 
-// less
+
+gulp.task('generate',()=>{
+	return gulp.src('./_mobile/vue/generate-list.js')
+		.pipe( shell('node ./_mobile/vue/generate-list.js') )
+})
 
 gulp.task('watch',function(){
+
+	gulp.watch(['./_mobile/vue/generate.js'],['generate']);
+	gulp.watch(['./_mobile/vue/generate-list.js'],['generate'])
 
 	LESS.forEach(function(elem){
 		gulp.watch( elem.src,[elem.name] );
@@ -349,7 +368,7 @@ gulp.task('watch',function(){
 	// gulp.watch( './js/Z/*.js',['browserify_Z'] );
 
 	// fytpy
-	gulp.watch( './fytpy/es6/*.es6',['babel_fytpy'] );
+	gulp.watch( './fytpy/src/*.*',['babel_fytpy'] );
 
 	// react
 	gulp.watch( ['./fytpy/react/jsx/*.jsx','./fytpy/react/jsx/*/*.jsx'],['browserify_react'] );

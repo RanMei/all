@@ -22,22 +22,22 @@ var $$root = 'http://' + location.hostname + '/fytpy/';
 console.log('$$root',$$root);
 
 function insertHeaderFooter(){
-	$.ajax({
-		url: $$root + "tpl/header.html",
-		type:"post"
-	}).done(
-		function(data){
-			$(document).ready(function(){
-				$("#header").prepend(data);
-				$(".a-search").attr( "href",$$root+"search.html" );
-				$(".a_home").attr( "href",$$root );
-				$(".a-cart").attr( "href",$$root+"shopping_cart.html" );
-				$(".a_my_orders").attr( "href",$$root+"orders.html" );
-				console.log($(".a_my_orders").attr("href"));
-			});
-			console.log('Header inserted.');
-		}
-	).done(getUser);
+	// $.ajax({
+	// 	url: $$root + "tpl/header.html",
+	// 	type:"post"
+	// }).done(
+	// 	function(data){
+	// 		$(document).ready(function(){
+	// 			$("#header").prepend(data);
+	// 			$(".a-search").attr( "href",$$root+"search.html" );
+	// 			$(".a_home").attr( "href",$$root );
+	// 			$(".a-cart").attr( "href",$$root+"shopping_cart.html" );
+	// 			$(".a_my_orders").attr( "href",$$root+"orders.html" );
+	// 			console.log($(".a_my_orders").attr("href"));
+	// 		});
+	// 		console.log('Header inserted.');
+	// 	}
+	// ).done(getUser);
 	$.ajax({
 		url: $$root + "tpl/footer.html",
 		type:"post"

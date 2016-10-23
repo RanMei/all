@@ -31,13 +31,13 @@ class NeonHexagons extends Canvas {
 			cy: this.height / 2,
 			repaintAlpha: .04,
 			hueChange: .1
-	  };
-	  this.tick = 0;
-	  this.lines = [];
-	  this.dieX = this.width / 2 / this.opts.len;
-	  this.dieY = this.height / 2 / this.opts.len;
-	  this.ctx.fillStyle = 'black';
-	  this.ctx.fillRect( 0, 0, this.width, this.height );
+		};
+		this.tick = 0;
+		this.lines = [];
+		this.dieX = this.width / 2 / this.opts.len;
+		this.dieY = this.height / 2 / this.opts.len;
+		this.ctx.fillStyle = 'black';
+		this.ctx.fillRect( 0, 0, this.width, this.height );
 	}
 	onResize(){
 		this.opts.cx = this.width/2;
@@ -114,8 +114,9 @@ class Line {
 		++this.time;
 		++this.cumulativeTime;
 
-		if( this.time >= this.targetTime )
+		if( this.time >= this.targetTime ){
 			this.beginPhase();
+		}
 
 		var prop = this.time / this.targetTime,
 		wave = Math.sin( prop * Math.PI / 2  ),

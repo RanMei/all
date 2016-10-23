@@ -1,4 +1,4 @@
-define(['./session', './common'], function (_session, _common) {
+define(['./session', './common', './header'], function (_session, _common) {
 	'use strict';
 
 	$(document).ready(function () {

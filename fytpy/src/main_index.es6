@@ -1,4 +1,5 @@
-﻿import {session} from './session';
+﻿import './header';
+import {session} from './session';
 import {common} from './common';
 
 $(document).ready(function(){

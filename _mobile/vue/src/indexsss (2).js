@@ -1,8 +1,18 @@
-
 require('./common.less');
+//import {list} from './list.js';
 
-import {list} from './list.js';
 Vue.use(VueRouter);
+
+// const p = r=>{
+// 			require.ensure([],()=>{
+// 				r( require('./containers/preloader-container.vue') )
+// 			})
+// 		};
+// const s = r=>{
+// 			require.ensure([],()=>{
+// 				r( require('./containers/swiper-container.js') )
+// 			},'111')
+// 		}
 
 const routes = [{
 	path: '/',
@@ -41,7 +51,13 @@ const routes = [{
 			}
 		}
 	},
-	children: list
+	children: [{
+		path:'preloader-container',
+		component:require('./containers/preloader-container.vue')
+	},{
+		path:'swiper-container',
+		component:require('./containers/swiper-container.js')
+	}]
 }];
 
 const router = new VueRouter({

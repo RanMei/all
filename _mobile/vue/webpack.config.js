@@ -2,13 +2,16 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var entries = require('./src/data/entries.js').entries;
+
 module.exports = {
 	entry: {
 		'index': './_mobile/vue/src/index.js'
 	},
 	output: {
+		//path: './dist/',
 		publicPath: './dist/',
-		filename: '[name].bundle.js'
+		filename: '[name].chunk.js'
 	},
 	module: {
 		loaders: [{
@@ -22,24 +25,35 @@ module.exports = {
 			loader: 'babel!vue'
 		},{
 			test: /\.less$/,
-			loader: 'style!css!less!postcss'
-			//loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
+			//loader: 'style!css!less!postcss'
+			loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
 		}]
 	},
 	vue: {
 		loaders: {
-			//less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
+			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
 	postcss: function () {
         return [autoprefixer];
     },
     plugins: [
+    	// new webpack.optimize.CommonsChunkPlugin({
+    	// 	name: 'common',
+    	// 	minChunks: 2
+    	// }),
+    	new webpack.optimize.LimitChunkCountPlugin({
+    		maxChunks: 10
+    	}),
+    	new webpack.optimize.DedupePlugin(),
+    	//new webpack.optimize.UglifyJsPlugin(),
     	// new webpack.optimize.CommonsChunkPlugin('common.js',[
     	// 	'index',
     	// 	//'swiper',
     	// 	'svg-qq'
     	// ]),
-    	//new ExtractTextPlugin('style.css')
+    	new ExtractTextPlugin('style.css',{
+    		allChunks: true
+    	})
     ]
 };
