@@ -49,6 +49,7 @@ body {
 /* searchbar */
 .searchbar {
   height: 120px;
+  background: -webkit-linear-gradient(white, #E5E5E5);
   background: linear-gradient(white, #E5E5E5);
   overflow: hidden;
 }
@@ -91,6 +92,7 @@ body {
 /**/
 .line {
   height: 4px;
+  background: -webkit-linear-gradient(left, #D2AB1A, #337FAB);
   background: linear-gradient(to right, #D2AB1A, #337FAB);
 }
 .shade {

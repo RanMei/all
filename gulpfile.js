@@ -196,6 +196,17 @@ const WEBPACK = [{
 	config: './_mobile/main/webpack.config.js', 
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 },{
+	name: 'webpack-mobile-vue', 
+	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*','./_mobile/vue/src/*/*/*.*'], 
+	src: './_mobile/vue/src/presentation.main.js', 
+	config: './_mobile/vue/webpack.config.js', 
+	dest: './_mobile/vue/dist/'
+},{
+	name: 'webpack-time', 
+	dest: './time/dist/', 
+	config: './time/webpack.config.js', 
+	watched: ['./time/src/*.*','./time/src/*/*.*']
+},{	
 	name: 'webpack-desktop-presentation', 
 	dest: './desktop/presentation/dist/', 
 	config: './desktop/presentation/webpack.config.js', 
@@ -212,12 +223,6 @@ const WEBPACK = [{
 	dest: './_mobile/svg/dist/', 
 	config: './_mobile/svg/webpack.config.js', 
 	watched: ['./_mobile/svg/src/*.*','./_mobile/svg/src/*/*.*']
-},{
-	name: 'webpack-mobile-vue', 
-	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*','./_mobile/vue/src/*/*/*.*'], 
-	src: './_mobile/vue/src/presentation.main.js', 
-	config: './_mobile/vue/webpack.config.js', 
-	dest: './_mobile/vue/dist/'
 },{
 	name: 'webpack-mobile-project', 
 	watched: ['./_mobile/h5/project/src/*.*','./_mobile/h5/project/src/*/*.*'], 
@@ -251,7 +256,7 @@ WEBPACK.forEach(function(item){
 				.pipe( uglify() )
 				.pipe( gulp.dest(item.dest) );
 		}else{
-			return gulp.src( item.src )
+			return gulp.src( item.src||'' )
 				.pipe( webpack( require(item.config) ) )
 				.pipe( gulp.dest(item.dest) );
 		}

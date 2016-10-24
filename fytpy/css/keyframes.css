@@ -1,3 +1,11 @@
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -6,30 +14,59 @@
     opacity: 1;
   }
 }
-@keyframes fadeInFromBottom {
+@-webkit-keyframes fadeInFromBottom {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
   }
   100% {
     opacity: 1;
-    transform: ;
+    -webkit-transform: ;
+            transform: ;
+  }
+}
+@keyframes fadeInFromBottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: ;
+            transform: ;
+  }
+}
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%) scale(0.5);
+            transform: translateY(-100%) scale(0.5);
+  }
+  100% {
+    -webkit-transform: ;
+            transform: ;
   }
 }
 @keyframes slideDown {
   0% {
-    transform: translateY(-100%) scale(0.5);
+    -webkit-transform: translateY(-100%) scale(0.5);
+            transform: translateY(-100%) scale(0.5);
   }
   100% {
-    transform: ;
+    -webkit-transform: ;
+            transform: ;
   }
 }
 .ka-fadeIn {
-  animation: fadeIn 0.8s forwards;
+  -webkit-animation: fadeIn 0.8s forwards;
+          animation: fadeIn 0.8s forwards;
 }
 .ka-fadeInFromBottom {
-  animation: fadeInFromBottom 0.4s forwards;
+  -webkit-animation: fadeInFromBottom 0.4s forwards;
+          animation: fadeInFromBottom 0.4s forwards;
 }
 .ka-slideDown {
-  animation: slideDown 0.3s forwards;
+  -webkit-animation: slideDown 0.3s forwards;
+          animation: slideDown 0.3s forwards;
 }

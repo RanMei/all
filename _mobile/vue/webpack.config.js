@@ -9,7 +9,7 @@ module.exports = {
 		'index': './_mobile/vue/src/index.js'
 	},
 	output: {
-		//path: './dist/',
+		path: __dirname+'_mobile/vue/dist/',
 		publicPath: './dist/',
 		filename: '[name].chunk.js'
 	},
@@ -46,7 +46,7 @@ module.exports = {
     		maxChunks: 10
     	}),
     	new webpack.optimize.DedupePlugin(),
-    	//new webpack.optimize.UglifyJsPlugin(),
+    	new webpack.optimize.UglifyJsPlugin(),
     	// new webpack.optimize.CommonsChunkPlugin('common.js',[
     	// 	'index',
     	// 	//'swiper',
