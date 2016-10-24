@@ -1,1 +1,313 @@
-!function(n){function t(e){if(o[e])return o[e].exports;var c=o[e]={exports:{},id:e,loaded:!1};return n[e].call(c.exports,c,c.exports,t),c.loaded=!0,c.exports}var e=window.webpackJsonp;window.webpackJsonp=function(o,i){for(var a,r,u=0,p=[];u<o.length;u++)r=o[u],c[r]&&p.push.apply(p,c[r]),c[r]=0;for(a in i){var s=i[a];switch(typeof s){case"object":n[a]=function(t){var e=t.slice(1),o=t[0];return function(t,c,i){n[o].apply(this,[t,c,i].concat(e))}}(s);break;case"function":n[a]=s;break;default:n[a]=n[s]}}for(e&&e(o,i);p.length;)p.shift().call(null,t)};var o={},c={0:0};return t.e=function(n,e){if(0===c[n])return e.call(null,t);if(void 0!==c[n])c[n].push(e);else{c[n]=[e];var o=document.getElementsByTagName("head")[0],i=document.createElement("script");i.type="text/javascript",i.charset="utf-8",i.async=!0,i.src=t.p+""+n+"."+({1:"preloader-container",2:"swiper-container",3:"svg-qq-container",4:"orientation",5:"3d",6:"3d-cube",7:"heart",8:"scope",9:"strokecircle"}[n]||n)+".chunk.js",o.appendChild(i)}},t.m=n,t.c=o,t.p="./dist/",t(0)}(function(n){for(var t in n)if(Object.prototype.hasOwnProperty.call(n,t))switch(typeof n[t]){case"function":break;case"object":n[t]=function(t){var e=t.slice(1),o=n[t[0]];return function(n,t,c){o.apply(this,[n,t,c].concat(e))}}(n[t]);break;default:n[t]=n[n[t]]}return n}({0:function(n,t,e){"use strict";var o=e(1);e(77),Vue.use(VueRouter);var c=[{path:"/",component:{template:'\n			<div class="INDEX">\n				<p v-for="a in list">\n					<a :href=" \'#/item/\'+a.path ">{{a.path}}</a>\n				</p>\n			</div>\n		',data:function(){return{list:[]}},mounted:function(){this.list=JSON.parse(JSON.stringify(this.$root.$options.router.options.routes[1].children))}}},{path:"/item",component:{template:'\n			<div class="ITEM">\n				<div class="TOPBAR">\n					<span @click="back">返回</span>\n				</div>\n				<router-view></router-view>\n			</div>\n		',methods:{back:function(){history.go(-1)}}},children:o.list}],i=new VueRouter({routes:c});new Vue({template:'\n		<div class="ROUTER">\n			<router-view></router-view>\n		</div>\n	',router:i}).$mount("#root")},1:function(n,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=[{path:"preloader-container",component:function(n){e.e(1,function(){n(e(2))})}},{path:"swiper-container",component:function(n){e.e(2,function(){n(e(10))})}},{path:"svg-qq-container",component:function(n){e.e(3,function(){n(e(18))})}},{path:"orientation",component:function(n){e.e(4,function(){n(e(23))})}},{path:"3d",component:function(n){e.e(5,function(){n(e(27))})}},{path:"3d-cube",component:function(n){e.e(6,function(){n(e(31))})}},{path:"heart",component:function(n){e.e(7,function(){n(e(35))})}},{path:"scope",component:function(n){e.e(8,function(){n(e(39))})}},{path:"strokecircle",component:function(n){e.e(9,function(){n(e(45))})}},{path:"carousel",component:function(n){e.e(5,function(){n(e(49))})}},{path:"panoramic",component:function(n){e.e(9,function(){n(e(53))})}},{path:"rain",component:function(n){e.e(8,function(){n(e(57))})}},{path:"circles",component:function(n){e.e(8,function(){n(e(62))})}},{path:"snowfall",component:function(n){e.e(8,function(){n(e(67))})}},{path:"neonhexagons",component:function(n){e.e(8,function(){n(e(72))})}}];t.list=o},77:function(n,t){}}));
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			var _m = moreModules[moduleId];
+
+/******/ 			// Check if module is deduplicated
+/******/ 			switch(typeof _m) {
+/******/ 			case "object":
+/******/ 				// Module can be created from a template
+/******/ 				modules[moduleId] = (function(_m) {
+/******/ 					var args = _m.slice(1), templateId = _m[0];
+/******/ 					return function (a,b,c) {
+/******/ 						modules[templateId].apply(this, [a,b,c].concat(args));
+/******/ 					};
+/******/ 				}(_m));
+/******/ 				break;
+/******/ 			case "function":
+/******/ 				// Normal module
+/******/ 				modules[moduleId] = _m;
+/******/ 				break;
+/******/ 			default:
+/******/ 				// Module is a copy of another module
+/******/ 				modules[moduleId] = modules[_m];
+/******/ 				break;
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+
+/******/ 	};
+
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"1":"preloader-container","2":"swiper-container","3":"svg-qq-container","4":"orientation","5":"3d-cube","6":"heart","7":"scope","8":"strokecircle","9":"panoramic"}[chunkId]||chunkId) + ".chunk.js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "./dist/";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ((function(modules) {
+	// Check all modules for deduplicated modules
+	for(var i in modules) {
+		if(Object.prototype.hasOwnProperty.call(modules, i)) {
+			switch(typeof modules[i]) {
+			case "function": break;
+			case "object":
+				// Module can be created from a template
+				modules[i] = (function(_m) {
+					var args = _m.slice(1), fn = modules[_m[0]];
+					return function (a,b,c) {
+						fn.apply(this, [a,b,c].concat(args));
+					};
+				}(modules[i]));
+				break;
+			default:
+				// Module is a copy of another module
+				modules[i] = modules[modules[i]];
+				break;
+			}
+		}
+	}
+	return modules;
+}({
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _list = __webpack_require__(1);
+
+	__webpack_require__(74);
+
+	Vue.use(VueRouter);
+
+	var routes = [{
+		path: '/',
+		component: {
+			template: '\n\t\t\t<div class="INDEX">\n\t\t\t\t<p v-for="a in list">\n\t\t\t\t\t<a :href=" \'#/item/\'+a.path ">{{a.path}}</a>\n\t\t\t\t</p>\n\t\t\t</div>\n\t\t',
+			data: function data() {
+				return {
+					list: []
+				};
+			},
+			mounted: function mounted() {
+				this.list = JSON.parse(JSON.stringify(this.$root.$options.router.options.routes[1].children));
+				//console.log(this.list);
+			}
+		}
+	}, {
+		path: '/item',
+		component: {
+			template: '\n\t\t\t<div class="ITEM">\n\t\t\t\t<div class="TOPBAR">\n\t\t\t\t\t<span @click="back">返回</span>\n\t\t\t\t</div>\n\t\t\t\t<router-view></router-view>\n\t\t\t</div>\n\t\t',
+			methods: {
+				back: function back() {
+					history.go(-1);
+				}
+			}
+		},
+		children: _list.list
+	}];
+
+	var router = new VueRouter({
+		routes: routes
+	});
+
+	new Vue({
+		template: '\n\t\t<div class="ROUTER">\n\t\t\t<router-view></router-view>\n\t\t</div>\n\t',
+		router: router
+	}).$mount('#root');
+
+/***/ },
+
+/***/ 1:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var list = [{
+		path: 'preloader-container',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(1, function () {
+				r(__webpack_require__(2));
+			});
+		}
+	}, {
+		path: 'swiper-container',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(2, function () {
+				r(__webpack_require__(10));
+			});
+		}
+	}, {
+		path: 'svg-qq-container',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(3, function () {
+				r(__webpack_require__(15));
+			});
+		}
+	}, {
+		path: 'orientation',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(4, function () {
+				r(__webpack_require__(20));
+			});
+		}
+	}, {
+		path: '3d',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(4/* limit */, function () {
+				r(__webpack_require__(24));
+			});
+		}
+	}, {
+		path: '3d-cube',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(5, function () {
+				r(__webpack_require__(28));
+			});
+		}
+	}, {
+		path: 'heart',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(6, function () {
+				r(__webpack_require__(32));
+			});
+		}
+	}, {
+		path: 'scope',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(7, function () {
+				r(__webpack_require__(36));
+			});
+		}
+	}, {
+		path: 'strokecircle',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(8, function () {
+				r(__webpack_require__(42));
+			});
+		}
+	}, {
+		path: 'carousel',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(8/* limit */, function () {
+				r(__webpack_require__(46));
+			});
+		}
+	}, {
+		path: 'panoramic',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(9, function () {
+				r(__webpack_require__(50));
+			});
+		}
+	}, {
+		path: 'rain',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(7/* limit */, function () {
+				r(__webpack_require__(54));
+			});
+		}
+	}, {
+		path: 'circles',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(7/* limit */, function () {
+				r(__webpack_require__(59));
+			});
+		}
+	}, {
+		path: 'snowfall',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(7/* limit */, function () {
+				r(__webpack_require__(64));
+			});
+		}
+	}, {
+		path: 'neonhexagons',
+		component: function component(r) {
+			__webpack_require__.e/* nsure */(7/* limit */, function () {
+				r(__webpack_require__(69));
+			});
+		}
+	}];exports.list = list;
+
+/***/ },
+
+/***/ 74:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ }
+
+/******/ })));

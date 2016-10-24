@@ -24,7 +24,7 @@ var gulp_rollup = require('gulp-rollup');
 
 var uglify = require('gulp-uglify');
 
-
+//console.log(process.env)
 var PRODUCTION = false;
 
 // var concat = require("gulp-concat");

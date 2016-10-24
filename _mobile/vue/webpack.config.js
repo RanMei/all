@@ -15,11 +15,12 @@ module.exports = {
 	},
 	module: {
 		loaders: [{
-			test: /\.js$/,
+			test: /(\.js)|(\.jsx)$/,
 			loader: 'babel',
 			query: {
 				presets: ['react','es2015']
-			}
+			},
+			exclude: /node_modules/
 		},{
 			test: /\.vue$/,
 			loader: 'babel!vue'
@@ -31,6 +32,8 @@ module.exports = {
 	},
 	vue: {
 		loaders: {
+			// html: 'vue-html-loader',
+			// js: 'babel',
 			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
@@ -38,6 +41,11 @@ module.exports = {
         return [autoprefixer];
     },
     plugins: [
+    	new webpack.DefinePlugin({
+    		'process.env': {
+    			NODE_ENV: '"production"'
+    		}
+    	}),
     	// new webpack.optimize.CommonsChunkPlugin({
     	// 	name: 'common',
     	// 	minChunks: 2
@@ -46,7 +54,11 @@ module.exports = {
     		maxChunks: 10
     	}),
     	new webpack.optimize.DedupePlugin(),
-    	new webpack.optimize.UglifyJsPlugin(),
+    	// new webpack.optimize.UglifyJsPlugin({
+    	// 	compress: {
+    	// 		warnings: false
+    	// 	}
+    	// }),
     	// new webpack.optimize.CommonsChunkPlugin('common.js',[
     	// 	'index',
     	// 	//'swiper',
