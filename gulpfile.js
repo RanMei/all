@@ -224,11 +224,10 @@ const WEBPACK = [{
 	config: './_mobile/svg/webpack.config.js', 
 	watched: ['./_mobile/svg/src/*.*','./_mobile/svg/src/*/*.*']
 },{
-	name: 'webpack-mobile-project', 
-	watched: ['./_mobile/h5/project/src/*.*','./_mobile/h5/project/src/*/*.*'], 
-	src: './_mobile/h5/project/src/main.js', 
-	config: './_mobile/h5/project/webpack.config.js', 
-	dest: './_mobile/h5/project/dist/'
+	name: 'webpack-mobile-h5', 
+	watched: ['./_mobile/h5/*/src/*.*','./_mobile/h5/*/src/*/*.*'], 
+	config: './_mobile/h5/webpack.config.js', 
+	dest: './_mobile/h5/'
 },{
 	name: 'webpack-mobile-h5-olympics', 
 	watched: ['./_mobile/h5/olympics/lib/*.*'], 

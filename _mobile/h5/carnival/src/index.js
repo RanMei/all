@@ -1,3 +1,7 @@
+require('./common.less');
+require('./index.less');
+require('./keyframes.less');
+
 function App(){
 	this.btn = document.querySelector('.btn');
 	this.btnImg = document.querySelector('.btn-img');

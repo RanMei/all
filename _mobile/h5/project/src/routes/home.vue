@@ -1,21 +1,18 @@
-require('./common.less');
-require('./index.less');
+<template>
+	<slider 
+	:show="state==='container'"></slider>
+</template>
 
-var container = require('./components/container.vue');
-
-Vue.component( 'container',container );
-
-new Vue({
-	el: 'body',
-	components: {
-		container
-	},
-	data: {
-		state: 'container',
-		maskOpacity: 1,
-		user: {
-			name: '',
-			phone: ''
+<script type="text/javascript">
+export default {
+	data: function(){
+		return {
+			state: 'container',
+			maskOpacity: 1,
+			user: {
+				name: '',
+				phone: ''
+			}
 		}
 	},
 	computed: {
@@ -57,4 +54,5 @@ new Vue({
 			})
 		}
 	}
-})
+}
+</script>

@@ -2,7 +2,7 @@
 //header("Content-type:application/json;charset=utf-8");
 header("Access-Control-Allow-Origin:http://localhost:3000");
 
-require "connect.php";
+require "../connect.php";
 session_start();
 
 if( isset($_POST["data"]) ){

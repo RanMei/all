@@ -21,5 +21,24 @@ new Vue({
 		col2: [
 			DIR.item+'?id=1602091546'
 		]
+	},
+	mounted: function(){
+		fetch( DIR.api+'/items', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			mode: "cors"
+		}).then(function(res) {
+			if (res.status === 200) {
+				return res.json()
+			} else {
+				//return Promise.reject(res.json())
+			}
+		}).then(function(data) {
+			console.log(data);
+		}).catch(function(err) {
+			console.log(err);
+		});
 	}
 })

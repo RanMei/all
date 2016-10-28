@@ -36,7 +36,7 @@ new Vue({
 		},
 		get_item: function(){
 			var self = this;
-			fetch( DIR.php+'item.php', {
+			fetch( DIR.api+'/item/', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

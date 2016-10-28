@@ -57,7 +57,7 @@ webpackJsonp([2],{
 			},
 			get_item: function get_item() {
 				var self = this;
-				fetch(_config.DIR.php + 'item.php', {
+				fetch(_config.DIR.api + '/item/', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'

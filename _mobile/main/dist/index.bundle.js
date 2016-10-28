@@ -1,1 +1,1545 @@
-!function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={exports:{},id:o,loaded:!1};return e[o].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";var o=n(6),r=n(16),a=n(19),i=n(23),l=n(26),c=n(30);n(31);var s=(React.PropTypes,ReactRouter.Router),u=ReactRouter.Route,p=(ReactRouter.Link,ReactRouter.hashHistory),f=ReactRouter.IndexRoute;ReactDOM.render(React.createElement(s,{history:p},React.createElement(u,{path:"/",component:o.AppContainer},React.createElement(u,{path:"/home",component:r.Home}),React.createElement(u,{path:"/projects",component:a.Projects}),React.createElement(u,{path:"/animations",component:i.Animations}),React.createElement(u,{path:"/blog",component:l.BlogContainer}),React.createElement(u,{path:"/post",component:c.Post}),React.createElement(f,{path:"/home",component:r.Home}))),document.getElementById("app"))},,,,function(e,t){"use strict";e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var o={},r=0;r<this.length;r++){var a=this[r][0];"number"==typeof a&&(o[a]=!0)}for(r=0;r<t.length;r++){var i=t[r];"number"==typeof i[0]&&o[i[0]]||(n&&!i[2]?i[2]=n:n&&(i[2]="("+i[2]+") and ("+n+")"),e.push(i))}},e}},function(e,t,n){function o(e,t){for(var n=0;n<e.length;n++){var o=e[n],r=d[o.id];if(r){r.refs++;for(var a=0;a<r.parts.length;a++)r.parts[a](o.parts[a]);for(;a<o.parts.length;a++)r.parts.push(s(o.parts[a],t))}else{for(var i=[],a=0;a<o.parts.length;a++)i.push(s(o.parts[a],t));d[o.id]={id:o.id,refs:1,parts:i}}}}function r(e){for(var t=[],n={},o=0;o<e.length;o++){var r=e[o],a=r[0],i=r[1],l=r[2],c=r[3],s={css:i,media:l,sourceMap:c};n[a]?n[a].parts.push(s):t.push(n[a]={id:a,parts:[s]})}return t}function a(e,t){var n=b(),o=g[g.length-1];if("top"===e.insertAt)o?o.nextSibling?n.insertBefore(t,o.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),g.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(t)}}function i(e){e.parentNode.removeChild(e);var t=g.indexOf(e);t>=0&&g.splice(t,1)}function l(e){var t=document.createElement("style");return t.type="text/css",a(e,t),t}function c(e){var t=document.createElement("link");return t.rel="stylesheet",a(e,t),t}function s(e,t){var n,o,r;if(t.singleton){var a=y++;n=v||(v=l(t)),o=u.bind(null,n,a,!1),r=u.bind(null,n,a,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=c(t),o=f.bind(null,n),r=function(){i(n),n.href&&URL.revokeObjectURL(n.href)}):(n=l(t),o=p.bind(null,n),r=function(){i(n)});return o(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;o(e=t)}else r()}}function u(e,t,n,o){var r=n?"":o.css;if(e.styleSheet)e.styleSheet.cssText=x(t,r);else{var a=document.createTextNode(r),i=e.childNodes;i[t]&&e.removeChild(i[t]),i.length?e.insertBefore(a,i[t]):e.appendChild(a)}}function p(e,t){var n=t.css,o=t.media;if(o&&e.setAttribute("media",o),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}function f(e,t){var n=t.css,o=t.sourceMap;o&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");var r=new Blob([n],{type:"text/css"}),a=e.href;e.href=URL.createObjectURL(r),a&&URL.revokeObjectURL(a)}var d={},m=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},h=m(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),b=m(function(){return document.head||document.getElementsByTagName("head")[0]}),v=null,y=0,g=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=h()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var n=r(e);return o(n,t),function(e){for(var a=[],i=0;i<n.length;i++){var l=n[i],c=d[l.id];c.refs--,a.push(c)}if(e){var s=r(e);o(s,t)}for(var i=0;i<a.length;i++){var c=a[i];if(0===c.refs){for(var u=0;u<c.parts.length;u++)c.parts[u]();delete d[c.id]}}}};var x=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.AppContainer=void 0;var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),l=n(7),c=n(10),s=n(13),u=function(e){function t(){o(this,t);var e=r(this,Object.getPrototypeOf(t).call(this));return console.debug("<App/> constructing"),e}return a(t,e),i(t,[{key:"render",value:function(){return React.createElement("div",{className:"container"},React.createElement(l.Navbar,null),React.createElement(c.Slider,null),this.props.children,React.createElement(s.Footer,null))}}]),t}(React.Component);t.AppContainer=u},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(8);var l=function(e){function t(){o(this,t);var e=r(this,Object.getPrototypeOf(t).call(this));return e.state={show:!1},e}return a(t,e),i(t,[{key:"toggle",value:function(){this.state.show?this.setState({show:!1}):this.setState({show:!0})}},{key:"hide",value:function(){this.setState({show:!1})}},{key:"render",value:function(){return React.createElement("div",{className:"NAVBAR"},React.createElement("div",{className:"navicon",onClick:this.toggle.bind(this)},React.createElement("i",{className:"fa fa-navicon"})),"MadSoap",React.createElement("div",{className:this.state.show?"box _show":"box",onClick:this.hide.bind(this)},React.createElement("div",{className:"section"},React.createElement("div",{className:"tab"},React.createElement("a",{href:"#/home"},React.createElement("i",{className:"fa fa-home"})," Home")),React.createElement("div",{className:"tab"},React.createElement("a",{href:"#/projects"},React.createElement("i",{className:"fa fa-rocket"})," Projects")),React.createElement("div",{className:"tab"},React.createElement("a",{href:"#/animations"},React.createElement("i",{className:"fa fa-cog fa-spin"})," Animations")),React.createElement("div",{className:"tab"},React.createElement("a",{href:"#/blog"},React.createElement("i",{className:"fa fa-book"})," Blog"))),React.createElement("div",{className:"section-bottom"},React.createElement("div",{className:"tab"},React.createElement("a",{href:"./_mobile/farm/index.html",target:"_blank"},React.createElement("i",{className:"fa fa-money"})," Farm")),React.createElement("div",{className:"tab"},React.createElement("a",{href:"./front_end.html",target:"_blank"},React.createElement("i",{className:"fa fa-file-text"})," Animation Library")))))}}]),t}(React.Component);t.Navbar=l},function(e,t,n){var o=n(9);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".NAVBAR {\n  box-sizing: border-box;\n  position: relative;\n  height: 44px;\n  line-height: 44px;\n  text-align: center;\n  font-size: 24px;\n  color: #333;\n  border-bottom: 1px solid #dddddd;\n  z-index: 10;\n}\n.NAVBAR .navicon {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 44px;\n  height: 44px;\n  font-size: 20px;\n  line-height: 44px;\n  text-align: center;\n  cursor: pointer;\n}\n.NAVBAR .box {\n  position: absolute;\n  left: 0;\n  top: 100%;\n  width: 100%;\n  border-top: 1px solid #dddddd;\n  border-bottom: 1px solid #dddddd;\n  background: white;\n  font-size: 15px;\n  text-align: left;\n  display: none;\n  box-shadow: inset 0 1px 0 #fff, 0 8px 10px rgba(0, 0, 0, 0.15);\n}\n.NAVBAR .box .section {\n  padding: 8px 0;\n  border-bottom: 1px solid #dddddd;\n}\n.NAVBAR .box .section-bottom {\n  padding: 8px 0;\n}\n.NAVBAR .box .tab {\n  padding: 8px 15px;\n  line-height: normal;\n}\n.NAVBAR .box .tab:hover {\n  background: #4078c0;\n}\n.NAVBAR .box .tab:hover a {\n  color: white;\n}\n",""])},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.Slider=void 0;var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(11);var l=function(e){function t(){return o(this,t),r(this,Object.getPrototypeOf(t).apply(this,arguments))}return a(t,e),i(t,[{key:"render",value:function(){return React.createElement("div",{className:"SLIDER"},React.createElement("a",{href:"#/home"},"Home"),React.createElement("a",{href:"#/projects"},"Projects"),React.createElement("a",{href:"#/animations"},"Animation"),React.createElement("a",{href:"#/blog"},"Blog"),React.createElement("a",{href:"./_mobile/farm/index.html"},"Farm"),React.createElement("a",{href:"./_mobile/vue/index.html"},"Vue"))}}]),t}(React.Component);t.Slider=l},function(e,t,n){var o=n(12);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".SLIDER {\n  border-bottom: 1px solid #dddddd;\n  overflow: hidden;\n}\n.SLIDER a {\n  display: block;\n  float: left;\n  padding: 10px;\n  font-size: 14px;\n}\n",""])},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(14);var l=function(e){function t(){return o(this,t),r(this,Object.getPrototypeOf(t).call(this))}return a(t,e),i(t,[{key:"render",value:function(){return React.createElement("div",{className:"FOOTER"},"copyright")}}]),t}(React.Component);t.Footer=l},function(e,t,n){var o=n(15);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".FOOTER {\n  padding: 10px 0;\n  text-align: center;\n  font-size: 14px;\n  border-top: 1px solid #dddddd;\n  clear: both;\n}\n",""])},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(17);var l=function(e){function t(){return o(this,t),r(this,Object.getPrototypeOf(t).apply(this,arguments))}return a(t,e),i(t,[{key:"render",value:function(){return React.createElement("div",{className:"HOME col-70"},React.createElement("div",{className:"log"},"Welcome, my friend! This is my personal website! Maybe you want to tap the navicon on top-left?"),React.createElement("div",{className:"panel",href:"./_mobile/farm/index.html",target:"_blank"},React.createElement("div",{className:"panel-header"},"Farm"),React.createElement("div",{className:"panel-footer"},"This is a E-commerce webapp built with react, react-router, redux and webpack.")))}}]),t}(React.Component);t.Home=l},function(e,t,n){var o=n(18);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".HOME {\n  font-size: 14px;\n}\n.HOME .block {\n  display: block;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n",""])},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(20);var l=function(e){function t(e){o(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={list:[]},n}return a(t,e),i(t,[{key:"componentWillMount",value:function(){var e=n(22).default;this.setState({list:e})}},{key:"render",value:function(){return React.createElement("div",{className:"PROJECTS"},React.createElement("div",{className:"log"},"Ah, you finally got here! These are the projects I am maintaining currently."),this.state.list.map(function(e,t){return React.createElement("div",{className:"panel col-70"},React.createElement("div",{className:"panel-footer"},e.map(function(e){return React.createElement("span",null,React.createElement("a",{href:e,target:"_blank"},e),React.createElement("br",null))})))}))}}]),t}(React.Component);t.Projects=l},function(e,t,n){var o=n(21);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".PROJECTS {\n  width: 100%;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=[["./fytpy/index.html","./fytpy/react/index.html","./caredaily/index.html","./desktop/_wolf/index.html","./desktop/presentation/index.html"],["./_mobile/farm/index.html","./_mobile/h5/star_wars/index.html","./_mobile/h5/olympics/index.html","./_mobile/h5/olympics/result.html","./_mobile/h5/carnival/index.html","./_mobile/h5/school/index.html","./_mobile/h5/feast/feast.html","./_mobile/h5/live/live.html","./_mobile/h5/project/index.html"],["./_canvas/Heart.html","./_canvas/NeonHexagons/index.html","./_canvas/DriftingBalls/index.html","./_canvas/lion/index.html","./_canvas/cube/canvas_geometry_cube.html"],["./_mobile/vue/index.html","./_mobile/vue/index.html#/preloader","./_mobile/vue/index.html#/stroke-circle","./_mobile/vue/index.html#/svg-qq-container","./_mobile/vue/index.html#/3d","./_mobile/vue/index.html#/orientation","./_mobile/vue/index.html#/3d-cube","./_mobile/vue/index.html#/swiper-container","./_mobile/vue/index.html#/carousel","./_mobile/vue/index.html#/scope","./_mobile/vue/index.html#/heart"]]},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(24);var l=function(e){function t(e){o(this,t);var n=r(this,Object.getPrototypeOf(t).call(this,e));return n.state={list:[{title:"CSS3 animation",hrefs:["./_mobile/svg/3d-cube.html"]},{title:"interactive",hrefs:["./_mobile/svg/gooey_menu.html","./_mobile/svg/stack.html","./_mobile/svg/stack-both.html"]},{title:"SVG",hrefs:["./_mobile/svg/wave.html","./_mobile/svg/sunset.html","./_mobile/svg/countdown.html"]},{title:"parallax animation",hrefs:["./_mobile/svg/parallax-clouds.html","./_mobile/svg/parallax.html"]},{title:"button animation",hrefs:["./_mobile/svg/button-blobs.html","./_mobile/svg/button-red.html","./_mobile/svg/button-ripple.html"]},{title:"stroke animation",hrefs:["./_mobile/svg/stroke-arsenal.html","./_mobile/svg/stroke-square.html","./_mobile/svg/stroke-circle.html","./_mobile/svg/stroke-gameboy.html","./_mobile/svg/stroke-jar.html","./_mobile/svg/stroke-qq.html"]},{title:"morphing",hrefs:["./_mobile/svg/morphing-phones.html"]},{title:"canvas",hrefs:["./_mobile/canvas/rain.html","./_mobile/canvas/snowfall.html","./_mobile/canvas/fire.html"]},{title:"h5",hrefs:["./_mobile/h5/star_wars/index.html","./_mobile/h5/olympics/index.html","./_mobile/h5/olympics/result.html","./_mobile/h5/carnival/index.html","./_mobile/h5/school/index.html","./_mobile/h5/feast/feast.html","./_mobile/h5/live/live.html","./_mobile/h5/project/index.html","./_mobile/vue/index.html#/preloader","./_mobile/vue/index.html#/svg-qq-container","./_mobile/vue/index.html#/swiper-container"]}]},n}return a(t,e),i(t,[{key:"render",value:function(){var e=this;return React.createElement("div",{className:"ANIMATIONS"},React.createElement("div",{className:"panel"},this.state.list.map(function(t,n){return React.createElement("div",null,React.createElement("div",{className:"panel-header"},t.title),React.createElement("div",{className:n===e.state.list.length-1?"panel-section last":"panel-section"},t.hrefs.map(function(e){return React.createElement("span",null,React.createElement("a",{href:e},e),React.createElement("br",null))})))})))}}]),t}(React.Component);t.Animations=l},function(e,t,n){var o=n(25);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".ANIMATIONS {\n  width: 100%;\n  padding-top: 15px;\n}\n",""])},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0}),t.BlogContainer=void 0;var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),l=n(27),c=[{time:"2016-10-3",title:"What is Functional Programming?"},{time:"2016-10-4",title:"How to learn English?"}],s=function(e){function t(){return o(this,t),r(this,Object.getPrototypeOf(t).call(this))}return a(t,e),i(t,[{key:"componentDidMount",value:function(){}},{key:"toPost",value:function(e){}},{key:"render",value:function(){return React.createElement(l.Blog,{list:c})}}]),t}(React.Component);t.BlogContainer=s},function(e,t,n){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();n(28);var l=function(e){function t(){return o(this,t),r(this,Object.getPrototypeOf(t).call(this))}return a(t,e),i(t,[{key:"componentDidMount",value:function(){}},{key:"render",value:function(){var e=this;return React.createElement("div",{className:"BLOG"},React.createElement("div",{className:"panel"},React.createElement("div",{className:"panel-header"},"This is my blog"),this.props.list.map(function(t,n){return React.createElement("div",{className:n===e.props.list.length-1?"panel-footer":"panel-section"},React.createElement("a",{href:"#/post?time="+t.time},t.title))})))}}]),t}(React.Component);l.defaultProps={list:[]},t.Blog=l},function(e,t,n){var o=n(29);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".BLOG {\n  padding-top: 15px;\n}\n.block__ {\n  display: block;\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 14px;\n}\n.POST .post-title {\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 20px;\n}\n.POST .post-body {\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 14px;\n}\n.POST .post-body p {\n  margin-bottom: 10px;\n}\n",""])},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function r(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),i=(React.PropTypes,[{title:"What is functional programming?",time:"2016-10-3",body:["Functional programming is a programming paradigm.","These are some important concepts in functional programming: higher-order function, pure function, side effects..."]},{title:"How to learn English?",time:"2016-10-4",body:["huh?adsgadga","what the hell?dfadfafa","dgfdgsfdhfdhfsdh"]}]),l=function(e){function t(){n(this,t);var e=o(this,Object.getPrototypeOf(t).call(this));return e.state={post:{title:"--",body:[]}},e}return r(t,e),a(t,[{key:"componentDidMount",value:function(){var e,t=location.hash.match(/time=[\d|-]+/)[0].replace(/time=/,"");i.forEach(function(n){n.time===t&&(e=n)}),this.setState({post:e})}},{key:"render",value:function(){return React.createElement("div",{className:"POST"},React.createElement("div",{className:"post-title"},this.state.post.title),React.createElement("div",{className:"post-body"},this.state.post.body.map(function(e){return React.createElement("p",null,e)})))}}]),t}(React.Component);t.Post=l},function(e,t,n){var o=n(32);"string"==typeof o&&(o=[[e.id,o,""]]);n(5)(o,{});o.locals&&(e.exports=o.locals)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,"* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\nh1 {\n  font-size: 24px;\n}\n/*@pink: #e91e63;*/\na {\n  text-decoration: none;\n}\na:link {\n  color: #4078c0;\n}\na:visited {\n  color: #4078c0;\n}\na:hover {\n  color: #4078c0;\n}\na:active {\n  color: #4078c0;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  margin: auto;\n}\n@media (min-width: 0px) {\n  .container {\n    width: 100%;\n  }\n}\n@media (min-width: 1000px) {\n  .container {\n    width: 1000px;\n  }\n  .col-70 {\n    float: left;\n    width: 70%;\n  }\n  .col-30 {\n    float: left;\n    width: 30%;\n  }\n}\n.log {\n  padding: 10px 15px;\n  font-size: 16px;\n  font-weight: bold;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-section {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-section.last {\n  border-bottom: none!important;\n}\n.panel .panel-footer {\n  padding: 10px 15px;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n",""])}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _AppContainer = __webpack_require__(6);
+
+	var _Home = __webpack_require__(16);
+
+	var _Projects = __webpack_require__(19);
+
+	var _Animations = __webpack_require__(23);
+
+	var _BlogContainer = __webpack_require__(26);
+
+	var _Post = __webpack_require__(30);
+
+	__webpack_require__(31);
+
+	var PropTypes = React.PropTypes;
+
+	var Router = ReactRouter.Router;
+	var Route = ReactRouter.Route;
+	var Link = ReactRouter.Link;
+	var hashHistory = ReactRouter.hashHistory;
+	var IndexRoute = ReactRouter.IndexRoute;
+
+	// The router.
+	ReactDOM.render(React.createElement(
+		Router,
+		{ history: hashHistory },
+		React.createElement(
+			Route,
+			{ path: '/', component: _AppContainer.AppContainer },
+			React.createElement(Route, { path: '/home', component: _Home.Home }),
+			React.createElement(Route, { path: '/projects', component: _Projects.Projects }),
+			React.createElement(Route, { path: '/animations', component: _Animations.Animations }),
+			React.createElement(Route, { path: '/blog', component: _BlogContainer.BlogContainer }),
+			React.createElement(Route, { path: '/post', component: _Post.Post }),
+			React.createElement(IndexRoute, { path: '/home', component: _Home.Home })
+		)
+	), document.getElementById('app'));
+
+/***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function () {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for (var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if (item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function (modules, mediaQuery) {
+			if (typeof modules === "string") modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for (var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if (typeof id === "number") alreadyImportedModules[id] = true;
+			}
+			for (i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if (mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if (mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.AppContainer = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Navbar = __webpack_require__(7);
+
+	var _Slider = __webpack_require__(10);
+
+	var _Footer = __webpack_require__(13);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AppContainer = function (_React$Component) {
+		_inherits(AppContainer, _React$Component);
+
+		function AppContainer() {
+			_classCallCheck(this, AppContainer);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppContainer).call(this));
+
+			console.debug('<App/> constructing');
+			return _this;
+		}
+
+		_createClass(AppContainer, [{
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'container' },
+					React.createElement(_Navbar.Navbar, null),
+					React.createElement(_Slider.Slider, null),
+					this.props.children,
+					React.createElement(_Footer.Footer, null)
+				);
+			}
+		}]);
+
+		return AppContainer;
+	}(React.Component);
+
+	exports.AppContainer = AppContainer;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(8);
+
+	var Navbar = function (_React$Component) {
+		_inherits(Navbar, _React$Component);
+
+		function Navbar() {
+			_classCallCheck(this, Navbar);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+
+			_this.state = {
+				show: false
+			};
+			return _this;
+		}
+
+		_createClass(Navbar, [{
+			key: "toggle",
+			value: function toggle() {
+				if (this.state.show) {
+					this.setState({
+						show: false
+					});
+				} else {
+					this.setState({
+						show: true
+					});
+				}
+			}
+		}, {
+			key: "hide",
+			value: function hide() {
+				this.setState({
+					show: false
+				});
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "NAVBAR" },
+					React.createElement(
+						"div",
+						{ className: "navicon", onClick: this.toggle.bind(this) },
+						React.createElement("i", { className: "fa fa-navicon" })
+					),
+					"MadSoap",
+					React.createElement(
+						"div",
+						{ className: this.state.show ? 'box _show' : 'box', onClick: this.hide.bind(this) },
+						React.createElement(
+							"div",
+							{ className: "section" },
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "#/home" },
+									React.createElement("i", { className: "fa fa-home" }),
+									" Home"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "#/projects" },
+									React.createElement("i", { className: "fa fa-rocket" }),
+									" Projects"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "#/animations" },
+									React.createElement("i", { className: "fa fa-cog fa-spin" }),
+									" Animations"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "#/blog" },
+									React.createElement("i", { className: "fa fa-book" }),
+									" Blog"
+								)
+							)
+						),
+						React.createElement(
+							"div",
+							{ className: "section-bottom" },
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "./_mobile/farm/index.html", target: "_blank" },
+									React.createElement("i", { className: "fa fa-money" }),
+									" Farm"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "./front_end.html", target: "_blank" },
+									React.createElement("i", { className: "fa fa-file-text" }),
+									" Animation Library"
+								)
+							),
+							React.createElement(
+								"div",
+								{ className: "tab" },
+								React.createElement(
+									"a",
+									{ href: "./time/index.html", target: "_blank" },
+									React.createElement("i", { className: "fa fa-file-text" }),
+									" Time"
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Navbar;
+	}(React.Component);
+
+	exports.Navbar = Navbar;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(9);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Navbar.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Navbar.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".NAVBAR {\n  box-sizing: border-box;\n  position: relative;\n  height: 44px;\n  line-height: 44px;\n  text-align: center;\n  font-size: 24px;\n  color: #333;\n  border-bottom: 1px solid #dddddd;\n  z-index: 10;\n}\n.NAVBAR .navicon {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 44px;\n  height: 44px;\n  font-size: 20px;\n  line-height: 44px;\n  text-align: center;\n  cursor: pointer;\n}\n.NAVBAR .box {\n  position: absolute;\n  left: 0;\n  top: 100%;\n  width: 100%;\n  border-top: 1px solid #dddddd;\n  border-bottom: 1px solid #dddddd;\n  background: white;\n  font-size: 15px;\n  text-align: left;\n  display: none;\n  box-shadow: inset 0 1px 0 #fff, 0 8px 10px rgba(0, 0, 0, 0.15);\n}\n.NAVBAR .box .section {\n  padding: 8px 0;\n  border-bottom: 1px solid #dddddd;\n}\n.NAVBAR .box .section-bottom {\n  padding: 8px 0;\n}\n.NAVBAR .box .tab {\n  padding: 8px 15px;\n  line-height: normal;\n}\n.NAVBAR .box .tab:hover {\n  background: #4078c0;\n}\n.NAVBAR .box .tab:hover a {\n  color: white;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Slider = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	__webpack_require__(11);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Slider = function (_React$Component) {
+		_inherits(Slider, _React$Component);
+
+		function Slider() {
+			_classCallCheck(this, Slider);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
+		}
+
+		_createClass(Slider, [{
+			key: "render",
+
+			//constructor(){}
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "SLIDER" },
+					React.createElement(
+						"a",
+						{ href: "#/home" },
+						"Home"
+					),
+					React.createElement(
+						"a",
+						{ href: "#/projects" },
+						"Projects"
+					),
+					React.createElement(
+						"a",
+						{ href: "#/animations" },
+						"Animation"
+					),
+					React.createElement(
+						"a",
+						{ href: "#/blog" },
+						"Blog"
+					),
+					React.createElement(
+						"a",
+						{ href: "./_mobile/farm/index.html" },
+						"Farm"
+					),
+					React.createElement(
+						"a",
+						{ href: "./_mobile/vue/index.html" },
+						"Vue"
+					)
+				);
+			}
+		}]);
+
+		return Slider;
+	}(React.Component);
+
+	exports.Slider = Slider;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(12);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Slider.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Slider.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".SLIDER {\n  border-bottom: 1px solid #dddddd;\n  overflow: hidden;\n}\n.SLIDER a {\n  display: block;\n  float: left;\n  padding: 10px;\n  font-size: 14px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(14);
+
+	var Footer = function (_React$Component) {
+		_inherits(Footer, _React$Component);
+
+		function Footer() {
+			_classCallCheck(this, Footer);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+		}
+
+		_createClass(Footer, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "FOOTER" },
+					"copyright"
+				);
+			}
+		}]);
+
+		return Footer;
+	}(React.Component);
+
+	exports.Footer = Footer;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(15);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Footer.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Footer.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".FOOTER {\n  padding: 10px 0;\n  text-align: center;\n  font-size: 14px;\n  border-top: 1px solid #dddddd;\n  clear: both;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(17);
+
+	var Home = function (_React$Component) {
+		_inherits(Home, _React$Component);
+
+		function Home() {
+			_classCallCheck(this, Home);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+		}
+
+		_createClass(Home, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "HOME col-70" },
+					React.createElement(
+						"div",
+						{ className: "log" },
+						"Welcome, my friend! This is my personal website! Maybe you want to tap the navicon on top-left?"
+					),
+					React.createElement(
+						"div",
+						{ className: "panel", href: "./_mobile/farm/index.html", target: "_blank" },
+						React.createElement(
+							"div",
+							{ className: "panel-header" },
+							"Farm"
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-footer" },
+							"This is a E-commerce webapp built with react, react-router, redux and webpack."
+						)
+					)
+				);
+			}
+		}]);
+
+		return Home;
+	}(React.Component);
+
+	exports.Home = Home;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(18);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Home.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Home.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".HOME {\n  font-size: 14px;\n}\n.HOME .block {\n  display: block;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(20);
+
+	var Projects = function (_React$Component) {
+		_inherits(Projects, _React$Component);
+
+		function Projects(props) {
+			_classCallCheck(this, Projects);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
+
+			_this.state = {
+				list: []
+			};
+			return _this;
+		}
+
+		_createClass(Projects, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				var list = __webpack_require__(22).default;
+				this.setState({
+					list: list
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'PROJECTS' },
+					React.createElement(
+						'div',
+						{ className: 'log' },
+						'Ah, you finally got here! These are the projects I am maintaining currently.'
+					),
+					this.state.list.map(function (a, i) {
+						return React.createElement(
+							'div',
+							{ className: 'panel col-70' },
+							React.createElement(
+								'div',
+								{ className: 'panel-footer' },
+								a.map(function (b) {
+									return React.createElement(
+										'span',
+										null,
+										React.createElement(
+											'a',
+											{ href: b, target: '_blank' },
+											b
+										),
+										React.createElement('br', null)
+									);
+								})
+							)
+						);
+					})
+				);
+			}
+		}]);
+
+		return Projects;
+	}(React.Component);
+
+	exports.Projects = Projects;
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(21);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Projects.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Projects.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".PROJECTS {\n  width: 100%;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = [['./fytpy/index.html', './fytpy/react/index.html', './caredaily/index.html', './desktop/_wolf/index.html', './desktop/presentation/index.html'], ['./_mobile/farm/index.html', './_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html'], ['./_canvas/Heart.html', './_canvas/NeonHexagons/index.html', './_canvas/DriftingBalls/index.html', './_canvas/lion/index.html', './_canvas/cube/canvas_geometry_cube.html'], ['./_mobile/vue/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/stroke-circle', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/3d', './_mobile/vue/index.html#/orientation', './_mobile/vue/index.html#/3d-cube', './_mobile/vue/index.html#/swiper-container', './_mobile/vue/index.html#/carousel', './_mobile/vue/index.html#/scope', './_mobile/vue/index.html#/heart']];
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(24);
+
+	var Animations = function (_React$Component) {
+		_inherits(Animations, _React$Component);
+
+		function Animations(props) {
+			_classCallCheck(this, Animations);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Animations).call(this, props));
+
+			_this.state = {
+				list: [{
+					title: 'CSS3 animation',
+					hrefs: ['./_mobile/svg/3d-cube.html']
+				}, {
+					title: 'interactive',
+					hrefs: ['./_mobile/svg/gooey_menu.html', './_mobile/svg/stack.html', './_mobile/svg/stack-both.html']
+				}, {
+					title: 'SVG',
+					hrefs: ['./_mobile/svg/wave.html', './_mobile/svg/sunset.html', './_mobile/svg/countdown.html']
+				}, {
+					title: 'parallax animation',
+					hrefs: ['./_mobile/svg/parallax-clouds.html', './_mobile/svg/parallax.html']
+				}, {
+					title: 'button animation',
+					hrefs: ['./_mobile/svg/button-blobs.html', './_mobile/svg/button-red.html', './_mobile/svg/button-ripple.html']
+				}, {
+					title: 'stroke animation',
+					hrefs: ['./_mobile/svg/stroke-arsenal.html', './_mobile/svg/stroke-square.html', './_mobile/svg/stroke-circle.html', './_mobile/svg/stroke-gameboy.html', './_mobile/svg/stroke-jar.html', './_mobile/svg/stroke-qq.html']
+				}, {
+					title: 'morphing',
+					hrefs: ['./_mobile/svg/morphing-phones.html']
+				}, {
+					title: 'canvas',
+					hrefs: ['./_mobile/canvas/rain.html', './_mobile/canvas/snowfall.html', './_mobile/canvas/fire.html']
+				}, {
+					title: 'h5',
+					hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/swiper-container']
+				}]
+			};
+			return _this;
+		}
+
+		_createClass(Animations, [{
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				return React.createElement(
+					'div',
+					{ className: 'ANIMATIONS' },
+					React.createElement(
+						'div',
+						{ className: 'panel' },
+						this.state.list.map(function (a, i) {
+							return React.createElement(
+								'div',
+								null,
+								React.createElement(
+									'div',
+									{ className: 'panel-header' },
+									a.title
+								),
+								React.createElement(
+									'div',
+									{ className: i === _this2.state.list.length - 1 ? 'panel-section last' : 'panel-section' },
+									a.hrefs.map(function (b) {
+										return React.createElement(
+											'span',
+											null,
+											React.createElement(
+												'a',
+												{ href: b },
+												b
+											),
+											React.createElement('br', null)
+										);
+									})
+								)
+							);
+						})
+					)
+				);
+			}
+		}]);
+
+		return Animations;
+	}(React.Component);
+
+	exports.Animations = Animations;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(25);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Animations.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Animations.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ANIMATIONS {\n  width: 100%;\n  padding-top: 15px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.BlogContainer = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Blog = __webpack_require__(27);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var list = [{
+		time: '2016-10-3',
+		title: 'What is Functional Programming?'
+	}, {
+		time: '2016-10-4',
+		title: 'How to learn English?'
+	}];
+
+	var BlogContainer = function (_React$Component) {
+		_inherits(BlogContainer, _React$Component);
+
+		function BlogContainer() {
+			_classCallCheck(this, BlogContainer);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(BlogContainer).call(this));
+		}
+
+		_createClass(BlogContainer, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'toPost',
+			value: function toPost(a) {}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(_Blog.Blog, { list: list });
+			}
+		}]);
+
+		return BlogContainer;
+	}(React.Component);
+
+	exports.BlogContainer = BlogContainer;
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//require('./common.less');
+	__webpack_require__(28);
+
+	var Blog = function (_React$Component) {
+		_inherits(Blog, _React$Component);
+
+		function Blog() {
+			_classCallCheck(this, Blog);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Blog).call(this));
+		}
+
+		_createClass(Blog, [{
+			key: "componentDidMount",
+			value: function componentDidMount() {}
+		}, {
+			key: "render",
+			value: function render() {
+				var _this2 = this;
+
+				return React.createElement(
+					"div",
+					{ className: "BLOG" },
+					React.createElement(
+						"div",
+						{ className: "panel" },
+						React.createElement(
+							"div",
+							{ className: "panel-header" },
+							"This is my blog"
+						),
+						this.props.list.map(function (a, i) {
+							return React.createElement(
+								"div",
+								{ className: i === _this2.props.list.length - 1 ? 'panel-footer' : 'panel-section' },
+								React.createElement(
+									"a",
+									{ href: '#/post?time=' + a.time },
+									a.title
+								)
+							);
+						})
+					)
+				);
+			}
+		}]);
+
+		return Blog;
+	}(React.Component);
+
+	Blog.defaultProps = {
+		list: []
+	};
+
+	exports.Blog = Blog;
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(29);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Blog.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Blog.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".BLOG {\n  padding-top: 15px;\n}\n.block__ {\n  display: block;\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 14px;\n}\n.POST .post-title {\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 20px;\n}\n.POST .post-body {\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 14px;\n}\n.POST .post-body p {\n  margin-bottom: 10px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//require('./common.less');
+	//require('./blog.less');
+
+	var PropTypes = React.PropTypes;
+
+	var posts = [{
+		title: 'What is functional programming?',
+		time: '2016-10-3',
+		body: ['Functional programming is a programming paradigm.', 'These are some important concepts in functional programming: higher-order function, pure function, side effects...']
+	}, {
+		title: 'How to learn English?',
+		time: '2016-10-4',
+		body: ['huh?adsgadga', 'what the hell?dfadfafa', 'dgfdgsfdhfdhfsdh']
+	}];
+
+	var Post = function (_React$Component) {
+		_inherits(Post, _React$Component);
+
+		function Post() {
+			_classCallCheck(this, Post);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Post).call(this));
+
+			_this.state = {
+				post: {
+					title: '--',
+					body: []
+				}
+			};
+			return _this;
+		}
+
+		_createClass(Post, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var newPost;
+				var time = location.hash.match(/time=[\d|-]+/)[0].replace(/time=/, '');
+				posts.forEach(function (a) {
+					if (a.time === time) {
+						newPost = a;
+					}
+				});
+				this.setState({
+					post: newPost
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'POST' },
+					React.createElement(
+						'div',
+						{ className: 'post-title' },
+						this.state.post.title
+					),
+					React.createElement(
+						'div',
+						{ className: 'post-body' },
+						this.state.post.body.map(function (a) {
+							return React.createElement(
+								'p',
+								null,
+								a
+							);
+						})
+					)
+				);
+			}
+		}]);
+
+		return Post;
+	}(React.Component);
+
+	exports.Post = Post;
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(32);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./common.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./../../../node_modules/postcss-loader/index.js!./common.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\nh1 {\n  font-size: 24px;\n}\n/*@pink: #e91e63;*/\na {\n  text-decoration: none;\n}\na:link {\n  color: #4078c0;\n}\na:visited {\n  color: #4078c0;\n}\na:hover {\n  color: #4078c0;\n}\na:active {\n  color: #4078c0;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  margin: auto;\n}\n@media (min-width: 0px) {\n  .container {\n    width: 100%;\n  }\n}\n@media (min-width: 1000px) {\n  .container {\n    width: 1000px;\n  }\n  .col-70 {\n    float: left;\n    width: 70%;\n  }\n  .col-30 {\n    float: left;\n    width: 30%;\n  }\n}\n.log {\n  padding: 10px 15px;\n  font-size: 16px;\n  font-weight: bold;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-section {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-section.last {\n  border-bottom: none!important;\n}\n.panel .panel-footer {\n  padding: 10px 15px;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n", ""]);
+
+	// exports
+
+
+/***/ }
+/******/ ]);

@@ -40,6 +40,7 @@ class Navbar extends React.Component {
 					<div className="section-bottom">
 						<div className="tab"><a href="./_mobile/farm/index.html" target="_blank"><i className="fa fa-money"></i> Farm</a></div>
 						<div className="tab"><a href="./front_end.html" target="_blank"><i className="fa fa-file-text"></i> Animation Library</a></div>
+						<div className="tab"><a href="./time/index.html" target="_blank"><i className="fa fa-file-text"></i> Time</a></div>
 					</div>
 				</div>
 			</div>

@@ -5,11 +5,10 @@
 	v-on:touchend="touchend($event)"
 	@keypress="keydown($event)"
 	>
-	<ul class="train" style="transform: translate3d(0,{{-current*10}}%,0)">
+	<ul class="train" :style=" 'transform: translate3d(0,'+(-current*10)+'%,0)' ">
 		<li class="item" 
-			v-for="(i,item) in items"
-			style="background:{{item}}">{{i}}
-			<div class="square" @mouseenter="hover" style="background:{{color}}"></div>
+			v-for="(item,i) in items"
+			:style=" 'background:'+item ">{{i}}
 		</li>
 	</ul>
 </div>
@@ -23,7 +22,7 @@
 	overflow: hidden;
 	.train {
 		width: 100%; height: 1000%;
-		transition: transform 0.3s;
+		transition: transform 0.5s;
 		.item {
 			width: 100%; height: 10%;
 			.square {

@@ -40,6 +40,25 @@ webpackJsonp([1],{
 			DIR: _config.DIR,
 			IMG: '../' + _config.IMG,
 			col2: [_config.DIR.item + '?id=1602091546']
+		},
+		mounted: function mounted() {
+			fetch(_config.DIR.api + '/items', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				mode: "cors"
+			}).then(function (res) {
+				if (res.status === 200) {
+					return res.json();
+				} else {
+					//return Promise.reject(res.json())
+				}
+			}).then(function (data) {
+				console.log(data);
+			}).catch(function (err) {
+				console.log(err);
+			});
 		}
 	});
 
