@@ -212,11 +212,11 @@ const WEBPACK = [{
 	config: './desktop/presentation/webpack.config.js', 
 	watched: ['./desktop/presentation/src/*.*','./desktop/presentation/src/*/*.*']
 },{
-	name: 'webpack-mobile-blog', 
-	src: './_mobile/blog/src/blog.jsx', 
-	dest: './_mobile/blog/dist/', 
-	config: './_mobile/blog/webpack.config.js', 
-	watched: ['./_mobile/blog/src/*.*','./_mobile/blog/src/*/*.*']
+	name: 'webpack-admin', 
+	src: './admin/src/index.js', 
+	dest: './admin/dist/', 
+	config: './admin/webpack.config.js', 
+	watched: ['./admin/src/*.*','./admin/src/*/*.*']
 },{
 	name: 'webpack-mobile-svg', 
 	src: './_mobile/svg/src/preloader.js', 

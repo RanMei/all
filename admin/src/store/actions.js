@@ -1,15 +1,7 @@
-require('../common.less')
-import {DIR} from '../config.js';
+import {DIR} from '../../config.js';
 
-Vue.component( 'items',require('../components/Items.vue') );
-
-new Vue({
-	el: '#root',
-	data: {
-		items: []
-	},
-	mounted: function(){
-		var self = this;
+const actions = {
+	GET_ITEMS: ({commit})=>{
 		fetch( DIR.api+'/items/', {
 			method: 'GET',
 			headers: {
@@ -22,11 +14,21 @@ new Vue({
 			} else {
 				//return Promise.reject(res.json())
 			}
-		}).then(function(data) {
-			self.items = data;
+		}).then(function(items) {
+			items.forEach(a=>{
+				a.checked = false;
+			})
+			console.log(items)
+			commit('GET_ITEMS',items)
 		}).catch(function(err) {
 			console.log(err);
 		});
 	},
-	template: `<items :items="items"></items>`
-})
+	PLUS: ({commit})=>{
+		setTimeout(()=>{
+			commit('PLUS');
+		},2000);
+	}
+}
+
+export {actions};

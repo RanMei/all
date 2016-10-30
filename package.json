@@ -59,6 +59,7 @@
     "vue-loader": "^8.5.2",
     "vue-style-loader": "^1.0.0",
     "vueify": "^8.7.0",
+    "vuex": "^2.0.0",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
   },
@@ -69,6 +70,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "fs": "0.0.2",
+    "lowdb": "^0.14.0",
     "mysql": "^2.10.2",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",

@@ -4,13 +4,16 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
+var low = require('lowdb');
+
+const db = low('./api/main.db');
 
 const DIR = {
 	root: __dirname+'/../',
 	api: __dirname+'/../api/time_json/'
 }
 
-const port = 80;
+const port = 3000;
 var app = express();
 
 app.use( express.static(DIR.root) );
@@ -18,7 +21,7 @@ app.use( bodyParser.json() );
 app.use( cookieParser() );
 //app.use( '/api',express() )
 
-app.get('/',function(req,res){
+app.get('/signup',function(req,res){
 	res.send('hello')
 })
 
@@ -42,27 +45,16 @@ app.post('/login',function(req,res){
 	
 })
 
-app.get('/api/items',function(req,res){
-	var items = fs.readFileSync( DIR.api+'items.json' ).toString();
-	res.set({
-		'Content-Type': 'application/json'
-	})
-	res.send( JSON.stringify(items) );
-})
+require('./items.js')(app,db);
 
-app.post('/api/item',function(req,res){
-	var id = req.body.id;
-	var item = {};
-	var items = JSON.parse( fs.readFileSync(DIR.api+'items.json') );
-	items.forEach(function(elem){
-		if( elem.id===id ){
-			item = elem;
-		}
-	});
+app.get('/api/item',function(req,res){
+	var id = req.query.id;
+	var item = '{}';
+	item = db.get('items').find({id:id}).value();
 	res.set({
 		'Content-Type': 'application/json'
 	})
-	res.send( JSON.stringify(item) );
+	res.send( item );
 })
 
 app.post('/getShoppingCart',function(req,res){
@@ -154,6 +146,8 @@ process.on('uncaughtException',function(e){
 	// app.listen(port+i,function(){
 	// 	console.log( 'Server running at '+(port+i)+'.' );
 	// });
+	console.log(e)
 	console.log('Server is already in running at '+port+'.')
+	//process.kill(process.pid);
 })
 //process.exit();
