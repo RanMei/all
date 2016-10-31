@@ -216,7 +216,7 @@ const WEBPACK = [{
 	src: './admin/src/index.js', 
 	dest: './admin/dist/', 
 	config: './admin/webpack.config.js', 
-	watched: ['./admin/src/*.*','./admin/src/*/*.*']
+	watched: ['./admin/src/*.*','./admin/src/**/*.*']
 },{
 	name: 'webpack-mobile-svg', 
 	src: './_mobile/svg/src/preloader.js', 

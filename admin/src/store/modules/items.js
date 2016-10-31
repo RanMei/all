@@ -7,7 +7,16 @@ const mutations = {
 			state.push(a)
 		})
 	},
-	SAVE_ITEM: function(state,new_item){
+	SAVE_ITEM: function(state,item){
+		state.forEach(a=>{
+			if(a.id===item.id){
+				for(var key in a){
+					a[key] = item[key];
+				}
+			}
+		})
+	},
+	ADD_ITEM: function(state,new_item){
 		state.push(new_item);
 	},
 	DELETE_ITEMS: function(state){

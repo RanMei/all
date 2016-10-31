@@ -1,57 +1,63 @@
 <template>
-<div class="ITEMS panel panel-default">
-	<div class="panel-heading">
-		<div class="_row">
+<div class="ITEMS">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			
+		</div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
 			<li></li>
 			<li>id</li>
 			<li>name</li>
-			<li>specs</li>
+			<li>desc_</li>
 			<li>price</li>
 		</div>
-	</div>
-	<div class="list-group">
-		<div class="_row item list-group-item" 
-		:class=" current===i?'':'' "
-		:style=" a.checked?'background:#d9edf7':'background:white' " 
-		v-for="(a,i) in items"
-		key="a.id">
-			<li>
-				<input type="checkbox" 
-				class="checkbox i-checks" 
-				:checked="a.checked" 
-				@change="CHECK_TOGGLE(i)"/>
-			</li>
-			<li>{{a.id}}</li>
-			<li>{{a.name}}</li>
-			<li>{{a.specs}}</li>
-			<li>{{a.price}}</li>
-			<button class="edit btn btn-primary btn-small" @click="edit(i)">edit</button>
+		<div class="list-group">
+			<div class="list-group-item" 
+			:class=" current===i?'':'' "
+			:style=" a.checked?'background:#d9edf7':'background:white' " 
+			v-for="(a,i) in items"
+			key="a.id">
+				<li>
+					<input type="checkbox" 
+					class="checkbox i-checks" 
+					:checked="a.checked" 
+					@change="CHECK_TOGGLE(i)"/>
+				</li>
+				<li @click="TO_ITEM(i)">{{a.id}}</li>
+				<li>{{a.name}}</li>
+				<li>{{a.desc_}}</li>
+				<li>{{a.price}}</li>
+				<li><a class="edit" @click="edit(i)">edit</a></li>
+			</div>
 		</div>
-	</div>
-	<div class="panel-footer _row">
-		<li></li>
-		<li>{{item.id}}</li>
-		<li><input type="text" placeholder="name" class="form-control" v-model="item.name"/></li>
-		<li><input type="text" placeholder="specs" class="form-control" v-model="item.specs"/></li>
-		<li><input type="text" class="form-control" v-model="item.price"/></li>
-		<button class="save btn btn-success m-b-xs w-xs" 
-		@click="SAVE_ITEM">save</button>
-		<button class="delete btn btn-danger" 
-		@click="DELETE_ITEMS">delete</button>
+		<div class="panel-footer _row">
+			<li></li>
+			<li>{{item.id}}</li>
+			<li><input type="text" placeholder="name" class="form-control" v-model="item.name"/></li>
+			<li><input type="text" placeholder="desc_" class="form-control" v-model="item.desc_"/></li>
+			<li><input type="text" placeholder="price" class="form-control" v-model="item.price"/></li>
+			<button class="save btn btn-success m-b-xs w-xs" 
+			@click="SAVE_ITEM">save</button>
+			<button class="delete btn btn-danger" 
+			@click="DELETE_ITEMS">delete</button>
+		</div>
 	</div>
 </div>
 </template>
 
 <style lang="less" scoped>
 	.ITEMS {
-
-	}
-	._row {
-		overflow: hidden;
-		input[type="checkbox"] {
-			//float: left;
+		a {
+			cursor: pointer;
+		}
+		.panel-heading {
+			overflow: hidden;
 		}
 		li {
+			//display: table-cell;
+			vertical-align: middle;
 			float: left;
 			height: 30px;
 			line-height: 30px;
@@ -73,14 +79,26 @@
 				width: 100px;
 			}
 		}
-		// button {
-		// 	float: left;
-		// 	//width: 40px; height: 30px;
-		// }
-		input[type="text"] {
-			width: 80%;
+		.list-group-item {
+			//display: table;
+			overflow: hidden;
+			input[type="checkbox"] {
+				//float: left;
+			}
+			
+			// button {
+			// 	float: left;
+			// 	//width: 40px; height: 30px;
+			// }
+			input[type="text"] {
+				width: 80%;
+			}
 		}
 	}
+	td {
+		height: 50px;
+	}
+	
 	.item {
 		&:hover {
 			background: lightblue;
@@ -98,7 +116,7 @@
 				item: {
 					id: '',
 					name: '',
-					price: 0,
+					price: '',
 					desc_: '',
 					specs: '',
 					class_: '',
@@ -113,9 +131,17 @@
 			}
 		},
 		mounted: function(){
-			this.$store.dispatch('GET_ITEMS');
 		},
 		methods: {
+			reset: function(){
+				for(var key in this.item){
+					this.item[key] = '';
+				}
+			},
+			TO_ITEM: function(i){
+				this.$store.commit('TO_ITEM',this.items[i]);
+				location.href = '#/item';
+			},
 			CHECK_TOGGLE: function(i){
 				this.$store.commit('CHECK_TOGGLE',i);
 			},
@@ -128,12 +154,17 @@
 			SAVE_ITEM: function(){
 				if(!this.item.id){
 					this.item.id = new Date().getTime()+'';
+					this.$store.dispatch(
+						'ADD_ITEM',
+						JSON.stringify(this.item)
+					);
+				}else{
+					this.$store.dispatch(
+						'SAVE_ITEM',
+						JSON.stringify(this.item)
+					);
 				};
-				this.$store.dispatch(
-					'SAVE_ITEM',
-					JSON.stringify(this.item)
-				);
-				this.item.id = '';
+				this.reset();
 			},
 			DELETE_ITEMS: function(){
 				var ids = [];

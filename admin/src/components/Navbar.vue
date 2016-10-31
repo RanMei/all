@@ -1,17 +1,17 @@
 <template>
-	<div class="Navbar">
-		<div class="nav nav-tabs">
-			<li>
-				<a class="tab" href="#/">
-					users
-				</a>
-			</li>
-			<li>
-				<a class="tab" href="#/">
-					items
-				</a>
-			</li>
-		</div>
+	<div class="Navbar panel">
+		<a class="btn btn-danger btn-rounded" href="#/">
+			users
+		</a>
+
+		<a class="btn btn-danger btn-pill" href="#/">
+			items
+		</a>
+
+		<a class="btn btn-danger btn-pill" href="#/signin">
+			signin
+		</a>
+
 	</div>
 </template>
 

@@ -13,7 +13,7 @@ const DIR = {
 	api: __dirname+'/../api/time_json/'
 }
 
-const port = 3000;
+const port = 80;
 var app = express();
 
 app.use( express.static(DIR.root) );

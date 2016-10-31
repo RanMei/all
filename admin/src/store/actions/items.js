@@ -24,14 +24,14 @@ function GET_ITEMS ({commit}) {
 	});
 }
 
-function SAVE_ITEM ({commit},item) {
+function SAVE_ITEM ({commit},item_json) {
 	fetch( DIR.api+'/items/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		mode: "cors",
-		body: item
+		body: item_json
 	}).then(function(res) {
 		if (res.status === 200) {
 			//return res.json()
@@ -39,9 +39,32 @@ function SAVE_ITEM ({commit},item) {
 			//return Promise.reject(res.json())
 		}
 	}).then(function(data) {
-		var new_item = JSON.parse(item);
+		var new_item = JSON.parse(item_json);
 		new_item.checked = false;
 		commit('SAVE_ITEM',new_item)
+	}).catch(function(err) {
+		console.log(err);
+	});
+}
+
+function ADD_ITEM ({commit},item_json) {
+	fetch( DIR.api+'/items/', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		mode: "cors",
+		body: item_json
+	}).then(function(res) {
+		if (res.status === 200) {
+			//return res.json()
+		} else {
+			//return Promise.reject(res.json())
+		}
+	}).then(function(data) {
+		var new_item = JSON.parse(item_json);
+		new_item.checked = false;
+		commit('ADD_ITEM',new_item)
 	}).catch(function(err) {
 		console.log(err);
 	});
@@ -71,5 +94,6 @@ function DELETE_ITEMS ({commit},ids){
 export {
 	GET_ITEMS,
 	SAVE_ITEM,
+	ADD_ITEM,
 	DELETE_ITEMS
 };

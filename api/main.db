@@ -8,12 +8,13 @@
     {
       "id": "1477759217909",
       "name": "Huawei nova",
-      "price": 2000
+      "price": 2000,
+      "desc_": "女性手机"
     },
     {
       "id": "1477829834593",
       "name": "Mac",
-      "price": 0,
+      "price": "10",
       "desc_": "",
       "specs": "",
       "class_": "",
@@ -29,11 +30,20 @@
       "sub_class": ""
     },
     {
-      "id": "1477839252407",
-      "name": "DASFDS",
-      "price": "20.9",
-      "desc_": "",
+      "id": "1477894297042",
+      "name": "美国队长手办",
+      "price": "2300",
+      "desc_": "栩栩如生",
       "specs": "",
+      "class_": "",
+      "sub_class": ""
+    },
+    {
+      "id": "1477894306327",
+      "name": "钢铁侠Mark-46",
+      "price": "22",
+      "desc_": "金属材质",
+      "specs": "DFAD",
       "class_": "",
       "sub_class": ""
     }
