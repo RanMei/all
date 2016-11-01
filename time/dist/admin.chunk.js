@@ -52,7 +52,6 @@ webpackJsonp([0],[
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__webpack_require__(8);
 	__vue_script__ = __webpack_require__(11);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
@@ -61,24 +60,16 @@ webpackJsonp([0],[
 	__vue_template__ = __webpack_require__(12);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3e00b8fa/Items.vue";
+	    var id = "./Items.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -103,8 +94,8 @@ webpackJsonp([0],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-3e00b8fa&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-3e00b8fa&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ec3c9ab8&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ec3c9ab8&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -122,7 +113,7 @@ webpackJsonp([0],[
 
 
 	// module
-	exports.push([module.id, "ul[_v-3e00b8fa] {\n  overflow: hidden;\n}\nul li[_v-3e00b8fa] {\n  float: left;\n  width: 20%;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\nul button[_v-3e00b8fa] {\n  float: left;\n}\n.row[_v-3e00b8fa]:hover {\n  background: lightblue;\n}\n", ""]);
+	exports.push([module.id, "ul[_v-ec3c9ab8] {\n  overflow: hidden;\n}\nul li[_v-ec3c9ab8] {\n  float: left;\n  width: 20%;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\nul button[_v-ec3c9ab8] {\n  float: left;\n}\n.row[_v-ec3c9ab8]:hover {\n  background: lightblue;\n}\n", ""]);
 
 	// exports
 
@@ -149,7 +140,7 @@ webpackJsonp([0],[
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"ITEMS\" _v-3e00b8fa=\"\">\n\t<ul class=\"row\" _v-3e00b8fa=\"\">\n\t\t<li _v-3e00b8fa=\"\">id</li>\n\t\t<li _v-3e00b8fa=\"\">name</li>\n\t\t<li _v-3e00b8fa=\"\">price</li>\n\t</ul>\n\t<ul class=\"row\" v-for=\"a in items\" _v-3e00b8fa=\"\">\n\t\t<li _v-3e00b8fa=\"\">{{a.id}}</li>\n\t\t<li _v-3e00b8fa=\"\">{{a.name}}</li>\n\t\t<li _v-3e00b8fa=\"\">{{a.price}}</li>\n\t\t<button class=\"edit\" _v-3e00b8fa=\"\">edit</button>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"ITEMS\" _v-ec3c9ab8=\"\">\n\t<ul class=\"row\" _v-ec3c9ab8=\"\">\n\t\t<li _v-ec3c9ab8=\"\">id</li>\n\t\t<li _v-ec3c9ab8=\"\">name</li>\n\t\t<li _v-ec3c9ab8=\"\">price</li>\n\t</ul>\n\t<ul class=\"row\" v-for=\"a in items\" _v-ec3c9ab8=\"\">\n\t\t<li _v-ec3c9ab8=\"\">{{a.id}}</li>\n\t\t<li _v-ec3c9ab8=\"\">{{a.name}}</li>\n\t\t<li _v-ec3c9ab8=\"\">{{a.price}}</li>\n\t\t<button class=\"edit\" _v-ec3c9ab8=\"\">edit</button>\n\t</ul>\n</div>\n";
 
 /***/ }
 ]);

@@ -39,6 +39,7 @@ webpackJsonp([3],{
 		data: {
 			DIR: _config.DIR,
 			id: '',
+			query: '',
 			item: {
 				name: '--',
 				price: 0
@@ -48,6 +49,7 @@ webpackJsonp([3],{
 		},
 		mounted: function mounted() {
 			this.get_id();
+			this.get_query();
 			this.get_item();
 		},
 		methods: {
@@ -55,17 +57,17 @@ webpackJsonp([3],{
 				var id = location.href.match(/id=.+/)[0].split(/&/)[0].replace(/id=/, '');
 				this.id = id;
 			},
+			get_query: function get_query() {
+				this.query = location.href.match(/\?.+/)[0];
+			},
 			get_item: function get_item() {
 				var self = this;
-				fetch(_config.DIR.api + '/item/', {
-					method: 'POST',
+				fetch(_config.DIR.api + '/item' + self.query, {
+					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
 					},
-					mode: "cors",
-					body: JSON.stringify({
-						id: this.id
-					})
+					mode: "cors"
 				}).then(function (res) {
 					if (res.status === 200) {
 						return res.json();

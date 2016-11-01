@@ -1,51 +1,16 @@
 {
   "items": [
     {
-      "id": "1477759217907",
+      "id": "1477994345310",
+      "brand": "Apple",
       "name": "iPad",
       "price": 6000
     },
     {
-      "id": "1477759217909",
+      "id": "1477994345311",
+      "brand": "华为",
       "name": "Huawei nova",
-      "price": 2000,
-      "desc_": "女性手机"
-    },
-    {
-      "id": "1477829834593",
-      "name": "Mac",
-      "price": "10",
-      "desc_": "",
-      "specs": "",
-      "class_": "",
-      "sub_class": ""
-    },
-    {
-      "id": "1477830478609",
-      "name": "honor P8",
-      "price": "10",
-      "desc_": "",
-      "specs": "",
-      "class_": "",
-      "sub_class": ""
-    },
-    {
-      "id": "1477894297042",
-      "name": "美国队长手办",
-      "price": "2300",
-      "desc_": "栩栩如生",
-      "specs": "",
-      "class_": "",
-      "sub_class": ""
-    },
-    {
-      "id": "1477894306327",
-      "name": "钢铁侠Mark-46",
-      "price": "22",
-      "desc_": "金属材质",
-      "specs": "DFAD",
-      "class_": "",
-      "sub_class": ""
+      "price": 2000
     }
   ]
 }

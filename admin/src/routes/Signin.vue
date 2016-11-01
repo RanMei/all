@@ -16,21 +16,27 @@
 						@focus="onFocus('mobile')"
 						@blur="check_mobile"/>
 						<p class="info">{{info.mobile}}</p>
-						<input type="password" name="password" placeholder="密码（6-20位字母、数字与符号的组合）"/>
+						<input type="password" name="password" placeholder="密码（6-20位字母、数字与符号的组合）"
+						v-model="signup_form.password"
+						:class="state.password"
+						@focus="onFocus('password')"
+						@blur="check_password"/>
 						<p class="info"></p>
 						<input type="password" name="password2" placeholder="确认密码"/>
 						<p class="info"></p>
 						<input type="text" name="verif" placeholder="请输入验证码"/>
 						<p class="info"></p>
-						<div class="agree">
+
+						<div class="check_b_container agree">
 							<div class="checkbox_"
 							:class=" signup_form.agreed?'checked':'' "
 							@click="toggle">
 								<div class="square"
-								:style=" signup_form.agreed?'opacity:1':'opacity:0' "></div>
+								:style=" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') "></div>
 							</div>
 							<p>已同意《飞越太平洋服务条款》</p>
 						</div>
+
 						<div class="btn__ register-button">注 册</div>
 					</form>
 				</div>
@@ -46,7 +52,17 @@
 						<p class="info"></p>
 						<input type="password" name="password" placeholder="请输入您的密码">
 						<p class="info"></p>
-						<input type="checkbox" name="login-automatically">下次自动登录</input>
+
+						<div class="check_b_container remember_me">
+							<div class="checkbox_"
+							:class=" signin_form.remember_me?'checked':'' "
+							@click="toggle2">
+								<div class="square"
+								:style=" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') "></div>
+							</div>
+							<p>下次自动登录</p>
+						</div>
+
 						<div class="btn__ login-button">登 录</div>
 					</form>
 				</div>
@@ -82,7 +98,7 @@
 		overflow: hidden;
 		input[type="text"],input[type="password"] {
 			box-sizing: border-box;
-			width: 379px; height: 53px;
+			width: 380px; height: 52px;
 			border-radius: 5px;
 			border: 1px solid @grey;
 			text-indent: 10px;
@@ -117,7 +133,7 @@
 		background: linear-gradient(white,lightgrey,white);
 	}
 
-	.agree {
+	.check_b_container {
 		overflow: hidden;
 		.checkbox_ {
 			float: left;
@@ -185,12 +201,14 @@
 					mobile: ''
 				},
 				state: {
-					mobile: ''
+					mobile: '',
+					password: '',
+					password2: ''
 				},
-				checkbox: {
-					0: {
-						checked: false
-					}
+				signin_form: {
+					mobile: '',
+					password: '',
+					remember_me: false
 				}
 			}
 		},
@@ -202,11 +220,17 @@
 				this.info[str] = '';
 			},
 			toggle: function(){
-				console.log(111)
 				if( this.signup_form.agreed===false ){
 					this.signup_form.agreed = true;
 				}else{
 					this.signup_form.agreed = false;
+				}
+			},
+			toggle2: function(){
+				if( this.signin_form.remember_me===false ){
+					this.signin_form.remember_me = true;
+				}else{
+					this.signin_form.remember_me = false;
 				}
 			},
 			check_mobile: function(){
@@ -217,6 +241,16 @@
 				}else{
 					this.state.mobile = 'error';
 					this.info.mobile = '手机号格式不正确';
+				}
+			},
+			check_password: function(){
+				if( /^\w{6,20}$/.test(this.signup_form.password) ){
+					this.state.password = 'success';
+				}else if( this.signup_form.password==='' ){
+					this.state.password = '';
+				}else{
+					this.state.password = 'error';
+					this.info.password = '密码格式不正确';
 				}
 			}
 		}

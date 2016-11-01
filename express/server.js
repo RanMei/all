@@ -54,6 +54,8 @@ app.get('/api/item',function(req,res){
 	res.set({
 		'Content-Type': 'application/json'
 	})
+	console.log('[GET] /api/item '+req.query.id);
+	console.log(db.get('items').value())
 	res.send( item );
 })
 

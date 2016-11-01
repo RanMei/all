@@ -18,6 +18,7 @@ new Vue({
 	data: {
 		DIR: DIR,
 		id: '',
+		query: '',
 		item: {
 			name: '--',
 			price: 0
@@ -27,6 +28,7 @@ new Vue({
 	},
 	mounted: function(){
 		this.get_id();
+		this.get_query();
 		this.get_item();
 	},
 	methods: {
@@ -34,17 +36,17 @@ new Vue({
 			var id = location.href.match(/id=.+/)[0].split(/&/)[0].replace(/id=/,'');
 			this.id = id;
 		},
+		get_query: function(){
+			this.query = location.href.match(/\?.+/)[0];
+		},
 		get_item: function(){
 			var self = this;
-			fetch( DIR.api+'/item/', {
-				method: 'POST',
+			fetch( DIR.api+'/item'+self.query, {
+				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				mode: "cors",
-				body: JSON.stringify({
-					id: this.id
-				})
+				mode: "cors"
 			}).then(function(res) {
 				if (res.status === 200) {
 					return res.json()

@@ -1499,7 +1499,7 @@
 
 
 	// module
-	exports.push([module.id, ".Signin[_v-26d9c89c] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-26d9c89c] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-26d9c89c] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-26d9c89c] {\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-26d9c89c],\n.Signin .panel__ input[type=\"password\"][_v-26d9c89c] {\n  box-sizing: border-box;\n  width: 379px;\n  height: 53px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-26d9c89c] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-26d9c89c] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-26d9c89c] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-26d9c89c] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-26d9c89c] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-26d9c89c] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .agree[_v-26d9c89c] {\n  overflow: hidden;\n}\n.Signin .agree .checkbox_[_v-26d9c89c] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .agree .checkbox_.checked[_v-26d9c89c] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .agree .checkbox_ .square[_v-26d9c89c] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .agree p[_v-26d9c89c] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-26d9c89c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-26d9c89c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-26d9c89c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-26d9c89c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-26d9c89c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-26d9c89c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-26d9c89c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-26d9c89c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-26d9c89c] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-26d9c89c]:hover {\n  background: #0379C8;\n}\n", ""]);
+	exports.push([module.id, ".Signin[_v-26d9c89c] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-26d9c89c] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-26d9c89c] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-26d9c89c] {\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-26d9c89c],\n.Signin .panel__ input[type=\"password\"][_v-26d9c89c] {\n  box-sizing: border-box;\n  width: 380px;\n  height: 52px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-26d9c89c] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-26d9c89c] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-26d9c89c] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-26d9c89c] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-26d9c89c] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-26d9c89c] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .check_b_container[_v-26d9c89c] {\n  overflow: hidden;\n}\n.Signin .check_b_container .checkbox_[_v-26d9c89c] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .check_b_container .checkbox_.checked[_v-26d9c89c] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .check_b_container .checkbox_ .square[_v-26d9c89c] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .check_b_container p[_v-26d9c89c] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-26d9c89c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-26d9c89c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-26d9c89c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-26d9c89c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-26d9c89c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-26d9c89c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-26d9c89c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-26d9c89c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-26d9c89c] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-26d9c89c]:hover {\n  background: #0379C8;\n}\n", ""]);
 
 	// exports
 
@@ -1527,12 +1527,14 @@
 					mobile: ''
 				},
 				state: {
-					mobile: ''
+					mobile: '',
+					password: '',
+					password2: ''
 				},
-				checkbox: {
-					0: {
-						checked: false
-					}
+				signin_form: {
+					mobile: '',
+					password: '',
+					remember_me: false
 				}
 			};
 		},
@@ -1543,11 +1545,17 @@
 				this.info[str] = '';
 			},
 			toggle: function toggle() {
-				console.log(111);
 				if (this.signup_form.agreed === false) {
 					this.signup_form.agreed = true;
 				} else {
 					this.signup_form.agreed = false;
+				}
+			},
+			toggle2: function toggle2() {
+				if (this.signin_form.remember_me === false) {
+					this.signin_form.remember_me = true;
+				} else {
+					this.signin_form.remember_me = false;
 				}
 			},
 			check_mobile: function check_mobile() {
@@ -1559,6 +1567,16 @@
 					this.state.mobile = 'error';
 					this.info.mobile = '手机号格式不正确';
 				}
+			},
+			check_password: function check_password() {
+				if (/^\w{6,20}$/.test(this.signup_form.password)) {
+					this.state.password = 'success';
+				} else if (this.signup_form.password === '') {
+					this.state.password = '';
+				} else {
+					this.state.password = 'error';
+					this.info.password = '密码格式不正确';
+				}
 			}
 		}
 	};
@@ -1567,7 +1585,7 @@
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Signin wrapper\" _v-26d9c89c=\"\">\n\t<div class=\"shade__\" _v-26d9c89c=\"\">\n\t\t<div _v-26d9c89c=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-26d9c89c=\"\">\n\t\t<div class=\"register\" _v-26d9c89c=\"\">\n\t\t\t<div class=\"register-center\" _v-26d9c89c=\"\">\n\t\t\t\t<div class=\"register-header\" _v-26d9c89c=\"\">\n\t\t\t\t\t<h1 _v-26d9c89c=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-26d9c89c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<div class=\"agree\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" signup_form.agreed?'opacity:1':'opacity:0' \" _v-26d9c89c=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-26d9c89c=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-26d9c89c=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-26d9c89c=\"\"></div>\n\t\t<div class=\"login\" _v-26d9c89c=\"\">\n\t\t\t<div class=\"login-center\" _v-26d9c89c=\"\">\n\t\t\t\t<div class=\"login-header\" _v-26d9c89c=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-26d9c89c=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-26d9c89c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"checkbox\" name=\"login-automatically\" _v-26d9c89c=\"\">下次自动登录\n\t\t\t\t\t<div class=\"btn__ login-button\" _v-26d9c89c=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"Signin wrapper\" _v-26d9c89c=\"\">\n\t<div class=\"shade__\" _v-26d9c89c=\"\">\n\t\t<div _v-26d9c89c=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-26d9c89c=\"\">\n\t\t<div class=\"register\" _v-26d9c89c=\"\">\n\t\t\t<div class=\"register-center\" _v-26d9c89c=\"\">\n\t\t\t\t<div class=\"register-header\" _v-26d9c89c=\"\">\n\t\t\t\t\t<h1 _v-26d9c89c=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-26d9c89c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-26d9c89c=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-26d9c89c=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-26d9c89c=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-26d9c89c=\"\"></div>\n\t\t<div class=\"login\" _v-26d9c89c=\"\">\n\t\t\t<div class=\"login-center\" _v-26d9c89c=\"\">\n\t\t\t\t<div class=\"login-header\" _v-26d9c89c=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-26d9c89c=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-26d9c89c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" _v-26d9c89c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-26d9c89c=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-26d9c89c=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-26d9c89c=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-26d9c89c=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" _v-26d9c89c=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 /******/ ]);
