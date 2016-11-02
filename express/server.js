@@ -21,11 +21,28 @@ app.use( bodyParser.json() );
 app.use( cookieParser() );
 //app.use( '/api',express() )
 
-app.get('/signup',function(req,res){
-	res.send('hello')
+app.post('/api/state',function(req,res){
+	console.log( '[POST] '+req.url );
+	var id = req.body.id;
+	var pswd = req.body.password;
+	var user = db.get('users').find({
+		id: id,
+		password: pswd
+	}).value();
+	if( user ){
+		res.set({
+			'Content-Type': 'application/json'
+		})
+		res.send( JSON.stringify(user) );
+	}else{
+		res.set({
+			'Content-Type': 'text/plain'
+		})
+		res.send('false');
+	}
 })
 
-app.post('/login',function(req,res){
+app.post('/api/user',function(req,res){
 	//console.log(req.body);
 	res.set({
 		'Content-Type': 'text/plain'

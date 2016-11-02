@@ -21,9 +21,12 @@
 						:class="state.password"
 						@focus="onFocus('password')"
 						@blur="check_password"/>
-						<p class="info"></p>
-						<input type="password" name="password2" placeholder="确认密码"/>
-						<p class="info"></p>
+						<p class="info">{{info.password}}</p>
+						<input type="password" name="password2" placeholder="确认密码"
+						:class="state.password2"
+						@focus="onFocus('password2')"
+						@blur="check_password2"/>
+						<p class="info">{{info.password2}}</p>
 						<input type="text" name="verif" placeholder="请输入验证码"/>
 						<p class="info"></p>
 
@@ -48,9 +51,11 @@
 						<h1 class="hydl">会员登录</h1>
 					</div>
 					<form class="login-form">
-						<input type="text" name="username" placeholder="请输入您的用户名">
+						<input type="text" name="username" placeholder="请输入您的用户名"
+						v-model="signin_form.id"/>
 						<p class="info"></p>
-						<input type="password" name="password" placeholder="请输入您的密码">
+						<input type="password" name="password" placeholder="请输入您的密码"
+						v-model="signin_form.password"/>
 						<p class="info"></p>
 
 						<div class="check_b_container remember_me">
@@ -63,7 +68,8 @@
 							<p>下次自动登录</p>
 						</div>
 
-						<div class="btn__ login-button">登 录</div>
+						<div class="btn__ login-button"
+						@click="LOGIN">登 录</div>
 					</form>
 				</div>
 			</div>
@@ -198,7 +204,9 @@
 					agreed: false
 				},
 				info: {
-					mobile: ''
+					mobile: '',
+					password: '',
+					password2: ''
 				},
 				state: {
 					mobile: '',
@@ -206,7 +214,7 @@
 					password2: ''
 				},
 				signin_form: {
-					mobile: '',
+					id: '',
 					password: '',
 					remember_me: false
 				}
@@ -252,6 +260,22 @@
 					this.state.password = 'error';
 					this.info.password = '密码格式不正确';
 				}
+			},
+			check_password2: function(){
+				if( this.signup_form.password2===this.signup_form.password ){
+					this.state.password2 = 'success';
+				}else if( this.signup_form.password2==='' ){
+					this.state.password2 = '';
+				}else{
+					this.state.password2 = 'error';
+					this.info.password2 = '两次输入的密码不一致';
+				}
+			},
+			LOGIN: function(){
+				this.$store.dispatch(
+					'LOGIN',
+					JSON.stringify(this.signin_form)
+				)
 			}
 		}
 	}

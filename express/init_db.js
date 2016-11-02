@@ -4,7 +4,8 @@ const db = low('./api/main.db');
 
 db.defaults({
 	users: [],
-	items: []
+	items: [],
+	carts: []
 }).value();
 
 var users = [{
@@ -12,6 +13,10 @@ var users = [{
 	password: '111111',
 	cart: []
 }]
+
+users.forEach( (a,i)=>{
+	db.get('users').push(a).value();
+})
 
 var items = [{
 	id: null,

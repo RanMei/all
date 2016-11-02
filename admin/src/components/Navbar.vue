@@ -11,7 +11,7 @@
 		<a class="btn btn-danger btn-pill" href="#/signin">
 			signin
 		</a>
-
+		{{id}}
 	</div>
 </template>
 
@@ -23,6 +23,10 @@
 
 <script type="text/javascript">
 	export default {
-
+		computed: {
+			id: function(){
+				return this.$store.state.user.id;
+			}
+		}
 	}
 </script>
