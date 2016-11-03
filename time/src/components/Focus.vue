@@ -3,7 +3,7 @@
 	<a href v-for="(a,i) in items"
 	:class=" i===current?'active':'' ">
 		<li 
-		:style=" 'background:url('+dir+(i+1)+'.jpg) no-repeat center;' ">
+		:style=" 'background:url('+dir.img+(i+1)+'.jpg) no-repeat center;' ">
 		</li>
 	</a>
 	<ul class="focus-tabs">

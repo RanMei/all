@@ -15,39 +15,17 @@ Vue.component('my-footer',MyFooter)
 
 Vue.component('showcase',Showcase);
 
+import {store} from '../store/store_index.js';
 
 new Vue({
 	el: '#root',
+	store,
 	data: {
-		DIR: DIR,
-
-		items: [],
-
-		item: {},
-		current: 0
+		DIR: DIR
 	},
 	mounted: function(){
 		var self = this;
-		fetch( DIR.api+'/items/', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			mode: "cors"
-		}).then(function(res) {
-			if (res.status === 200) {
-				return res.json()
-			} else {
-				//return Promise.reject(res.json())
-			}
-		}).then(function(items) {
-			items.forEach(a=>{
-				a.checked = false;
-				self.items.push(a);
-			})
-		}).catch(function(err) {
-			console.log(err);
-		});
+		self.$store.dispatch('GET_ITEMS');
 	},
 	methods: {
 		pick: function(n){

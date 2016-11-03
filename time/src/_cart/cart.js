@@ -12,13 +12,13 @@ Vue.component('focus',Focus)
 Vue.component('back-to-top',BackToTop)
 Vue.component('my-footer',MyFooter)
 
+import {store} from '../store/store_index.js';
 
 new Vue({
 	el: '#root',
+	store,
 	data: {
-		DIR: DIR,
-		item: {},
-		current: 0
+		DIR: DIR
 	},
 	methods: {
 		pick: function(n){

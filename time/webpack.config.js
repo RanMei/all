@@ -4,11 +4,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'index': './time/src/index.js',
-		'item': './time/src/entries/item.js',
-		'cart': './time/src/entries/cart.js',
-		'search': './time/src/entries/search.js',
-		'admin': './time/src/entries/admin.js'
+		'index': './time/src/_index/index.js',
+		'item': './time/src/_item/item.js',
+		'cart': './time/src/_cart/cart.js',
+		'search': './time/src/_search/search.js',
+		'./_admin/admin': './time/src/_admin/index.js'
 	},
 	output: {
 		path: __dirname+'time/dist/',
@@ -40,20 +40,19 @@ module.exports = {
         return [autoprefixer];
     },
     plugins: [
-    	new webpack.optimize.CommonsChunkPlugin({
-    		name: 'common',
-    		minChunks: 2
-    	}),
+    	// new webpack.optimize.CommonsChunkPlugin({
+    	// 	name: 'common',
+    	// 	minChunks: 2
+    	// },['index','item','search','cart']),
     	new webpack.optimize.LimitChunkCountPlugin({
     		maxChunks: 10
     	}),
-    	new webpack.optimize.DedupePlugin()
+    	new webpack.optimize.DedupePlugin(),
     	//new webpack.optimize.UglifyJsPlugin(),
-    	// new webpack.optimize.CommonsChunkPlugin('common.js',[
-    	// 	'index',
-    	// 	//'swiper',
-    	// 	'svg-qq'
-    	// ]),
+    	new webpack.optimize.CommonsChunkPlugin(
+    		'common.chunk.js',
+    		['index','item','search','cart']
+    	)
     	// new ExtractTextPlugin('style.css',{
     	// 	allChunks: true
     	// })

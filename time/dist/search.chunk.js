@@ -7,29 +7,31 @@ webpackJsonp([4],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(3);
+	__webpack_require__(12);
 
-	__webpack_require__(39);
+	__webpack_require__(70);
 
-	var _MyHeader = __webpack_require__(15);
+	var _MyHeader = __webpack_require__(45);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(20);
+	var _Focus = __webpack_require__(50);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(25);
+	var _BackToTop = __webpack_require__(55);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(30);
+	var _MyFooter = __webpack_require__(60);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _Showcase = __webpack_require__(41);
+	var _Showcase = __webpack_require__(72);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
+
+	var _store_index = __webpack_require__(65);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,36 +46,13 @@ webpackJsonp([4],{
 
 	new Vue({
 		el: '#root',
+		store: _store_index.store,
 		data: {
-			DIR: _config.DIR,
-
-			items: [],
-
-			item: {},
-			current: 0
+			DIR: _config.DIR
 		},
 		mounted: function mounted() {
 			var self = this;
-			fetch(_config.DIR.api + '/items/', {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				mode: "cors"
-			}).then(function (res) {
-				if (res.status === 200) {
-					return res.json();
-				} else {
-					//return Promise.reject(res.json())
-				}
-			}).then(function (items) {
-				items.forEach(function (a) {
-					a.checked = false;
-					self.items.push(a);
-				});
-			}).catch(function (err) {
-				console.log(err);
-			});
+			self.$store.dispatch('GET_ITEMS');
 		},
 		methods: {
 			pick: function pick(n) {
@@ -84,16 +63,16 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 39:
+/***/ 70:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(40);
+	var content = __webpack_require__(71);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -111,10 +90,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 40:
+/***/ 71:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
@@ -126,30 +105,39 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 41:
+/***/ 72:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	__webpack_require__(42);
-	__vue_script__ = __webpack_require__(44);
+	var __vue_styles__ = {};
+	__webpack_require__(73);
+	__vue_script__ = __webpack_require__(75);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(45);
+	__vue_template__ = __webpack_require__(76);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
+	  __vue_options__.template = __vue_template__;
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "./Showcase.vue";
+	    var id = "_v-026ba6ba/Showcase.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -160,23 +148,23 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 42:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(74);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(10)(content, {});
+	var update = __webpack_require__(19)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1d2a37f9&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Showcase.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1d2a37f9&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Showcase.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-026ba6ba&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Showcase.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-026ba6ba&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Showcase.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -187,22 +175,22 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 43:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".Showcase[_v-1d2a37f9] {\n  width: 1000px;\n  margin: auto;\n  padding: 10px 0;\n  background: white;\n  overflow: hidden;\n}\n.Showcase .item__[_v-1d2a37f9] {\n  display: block;\n  box-sizing: border-box;\n  float: left;\n  width: 240px;\n  margin: 5px;\n  padding: 5px;\n  border: 3px solid transparent;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n.Showcase .item__[_v-1d2a37f9]:link {\n  color: black;\n}\n.Showcase .item__[_v-1d2a37f9]:visited {\n  color: black;\n}\n.Showcase .item__[_v-1d2a37f9]:hover {\n  border: 3px solid #c40000;\n}\n.Showcase .item__ .thumb[_v-1d2a37f9] {\n  width: 224px;\n  height: 224px;\n}\n.Showcase .item__ .price[_v-1d2a37f9] {\n  font-size: 20px;\n  color: #c40000;\n}\n", ""]);
+	exports.push([module.id, ".Showcase[_v-026ba6ba] {\n  width: 1000px;\n  margin: auto;\n  padding: 10px 0;\n  background: white;\n  overflow: hidden;\n}\n.Showcase .item__[_v-026ba6ba] {\n  display: block;\n  box-sizing: border-box;\n  float: left;\n  width: 240px;\n  margin: 5px;\n  padding: 5px;\n  border: 3px solid transparent;\n  -webkit-transition: 0.2s;\n  transition: 0.2s;\n}\n.Showcase .item__[_v-026ba6ba]:link {\n  color: black;\n}\n.Showcase .item__[_v-026ba6ba]:visited {\n  color: black;\n}\n.Showcase .item__[_v-026ba6ba]:hover {\n  border: 3px solid #c40000;\n}\n.Showcase .item__ .thumb[_v-026ba6ba] {\n  width: 224px;\n  height: 224px;\n}\n.Showcase .item__ .price[_v-026ba6ba] {\n  font-size: 20px;\n  color: #c40000;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 
-/***/ 44:
+/***/ 75:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -221,10 +209,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 45:
+/***/ 76:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Showcase\" _v-1d2a37f9=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-1d2a37f9=\"\">\n\t\t<img class=\"thumb\" _v-1d2a37f9=\"\">\n\t\t<p class=\"price\" _v-1d2a37f9=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-1d2a37f9=\"\">{{a.name}}</p>\n\t</a>\n</div>\n";
+	module.exports = "\n<div class=\"Showcase\" _v-026ba6ba=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-026ba6ba=\"\">\n\t\t<img class=\"thumb\" _v-026ba6ba=\"\">\n\t\t<p class=\"price\" _v-026ba6ba=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-026ba6ba=\"\">{{a.name}}</p>\n\t</a>\n</div>\n";
 
 /***/ }
 

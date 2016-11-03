@@ -12,54 +12,38 @@ Vue.component('focus',Focus)
 Vue.component('back-to-top',BackToTop)
 Vue.component('my-footer',MyFooter)
 
+import {store} from '../store/store_index.js';
 
 new Vue({
 	el: '#root',
+	store,
 	data: {
 		DIR: DIR,
 		id: '',
 		query: '',
-		item: {
-			name: '--',
-			price: 0
-		},
 		current: 0,
 		quantity: 1
 	},
 	mounted: function(){
-		this.get_id();
+		//this.get_id();
 		this.get_query();
-		this.get_item();
+		this.$store.dispatch( 'GET_ITEM',this.get_id() );
+	},
+	computed: {
+		item: function(){
+			return this.$store.state.item;
+		}
 	},
 	methods: {
 		get_id: function(){
 			var id = location.href.match(/id=.+/)[0].split(/&/)[0].replace(/id=/,'');
-			this.id = id;
+			return id;
 		},
 		get_query: function(){
 			this.query = location.href.match(/\?.+/)[0];
 		},
 		get_item: function(){
 			var self = this;
-			fetch( DIR.api+'/item'+self.query, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				mode: "cors"
-			}).then(function(res) {
-				if (res.status === 200) {
-					return res.json()
-				} else {
-					//return Promise.reject(res.json())
-				}
-			}).then(function(data) {
-				data.price = Number(data.price)
-				console.log(data);
-				self.item = data;
-			}).catch(function(err) {
-				console.log(err);
-			});
 		},
 		plus: function(){
 			this.quantity++;

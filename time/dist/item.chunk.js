@@ -7,25 +7,27 @@ webpackJsonp([3],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(3);
+	__webpack_require__(12);
 
-	__webpack_require__(37);
+	__webpack_require__(68);
 
-	var _MyHeader = __webpack_require__(15);
+	var _MyHeader = __webpack_require__(45);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(20);
+	var _Focus = __webpack_require__(50);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(25);
+	var _BackToTop = __webpack_require__(55);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(30);
+	var _MyFooter = __webpack_require__(60);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
+
+	var _store_index = __webpack_require__(65);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -36,51 +38,34 @@ webpackJsonp([3],{
 
 	new Vue({
 		el: '#root',
+		store: _store_index.store,
 		data: {
 			DIR: _config.DIR,
 			id: '',
 			query: '',
-			item: {
-				name: '--',
-				price: 0
-			},
 			current: 0,
 			quantity: 1
 		},
 		mounted: function mounted() {
-			this.get_id();
+			//this.get_id();
 			this.get_query();
-			this.get_item();
+			this.$store.dispatch('GET_ITEM', this.get_id());
+		},
+		computed: {
+			item: function item() {
+				return this.$store.state.item;
+			}
 		},
 		methods: {
 			get_id: function get_id() {
 				var id = location.href.match(/id=.+/)[0].split(/&/)[0].replace(/id=/, '');
-				this.id = id;
+				return id;
 			},
 			get_query: function get_query() {
 				this.query = location.href.match(/\?.+/)[0];
 			},
 			get_item: function get_item() {
 				var self = this;
-				fetch(_config.DIR.api + '/item' + self.query, {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					mode: "cors"
-				}).then(function (res) {
-					if (res.status === 200) {
-						return res.json();
-					} else {
-						//return Promise.reject(res.json())
-					}
-				}).then(function (data) {
-					data.price = Number(data.price);
-					console.log(data);
-					self.item = data;
-				}).catch(function (err) {
-					console.log(err);
-				});
 			},
 			plus: function plus() {
 				this.quantity++;
@@ -98,16 +83,16 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 37:
+/***/ 68:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(38);
+	var content = __webpack_require__(69);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -125,10 +110,10 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 38:
+/***/ 69:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 

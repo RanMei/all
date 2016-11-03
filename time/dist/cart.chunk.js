@@ -7,25 +7,27 @@ webpackJsonp([1],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(3);
+	__webpack_require__(12);
 
-	__webpack_require__(13);
+	__webpack_require__(43);
 
-	var _MyHeader = __webpack_require__(15);
+	var _MyHeader = __webpack_require__(45);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(20);
+	var _Focus = __webpack_require__(50);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(25);
+	var _BackToTop = __webpack_require__(55);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(30);
+	var _MyFooter = __webpack_require__(60);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
+
+	var _store_index = __webpack_require__(65);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -36,10 +38,9 @@ webpackJsonp([1],{
 
 	new Vue({
 		el: '#root',
+		store: _store_index.store,
 		data: {
-			DIR: _config.DIR,
-			item: {},
-			current: 0
+			DIR: _config.DIR
 		},
 		methods: {
 			pick: function pick(n) {
@@ -50,16 +51,16 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 13:
+/***/ 43:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(14);
+	var content = __webpack_require__(44);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -77,10 +78,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 14:
+/***/ 44:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(5)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
