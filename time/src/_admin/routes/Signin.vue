@@ -95,6 +95,7 @@
 	}
 
 	.panel__ {
+		box-sizing: border-box;
 		position: relative;
 		width: 1000px; height: 600px;
 		margin: auto; margin-bottom: 150px;

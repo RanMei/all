@@ -4,7 +4,6 @@
 </template>
 
 <style lang="less" scoped>
-/* back_to_top button */
 .BACK-TO-TOP {
 	position:fixed;
 	right:10px;
@@ -21,10 +20,31 @@
 </style>
 
 <script type="text/javascript">
+var body = document.querySelector('body');
 export default {
+	data: function(){
+		return {
+			scrolling: false
+		}
+	},
 	methods: {
 		back: function(){
-			window.scroll(0,0);
+			if(!this.scrolling){
+				this.scrolling = true;
+				var duration = 300;
+				var distance = body.scrollTop;
+				var dy = 10*distance/duration;
+				var interval = setInterval(()=>{
+					if( body.scrollTop-dy>0 ){
+						body.scrollTop -= dy;
+					}else{
+						body.scrollTop = 0;
+						clearInterval(interval);
+						this.scrolling = false;
+					}
+				},10)
+			}
+			//window.scroll(0,0);
 		}
 	}
 }

@@ -4,12 +4,21 @@ import {notice} from './notice.jsx';
 import {mask} from './mask.jsx';
 import {homeSwiper} from './homeSwiper.jsx';
 import {items} from './items.jsx';
+import {item} from './item.js';
 
 var createStore = Redux.createStore;
 var compose = Redux.compose;
 var combineReducers =  Redux.combineReducers;
 
-var $$reducer = Redux.combineReducers({user,shoppingCart,notice,mask,homeSwiper,items});
+var $$reducer = Redux.combineReducers({
+	user,
+	shoppingCart,
+	notice,
+	mask,
+	homeSwiper,
+	items,
+	item
+});
 
 // actions
 var LOGIN = {type:'LOGIN'};

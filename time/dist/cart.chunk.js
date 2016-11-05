@@ -27,7 +27,7 @@ webpackJsonp([1],{
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _store_index = __webpack_require__(65);
+	var _store = __webpack_require__(3);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -38,7 +38,7 @@ webpackJsonp([1],{
 
 	new Vue({
 		el: '#root',
-		store: _store_index.store,
+		store: _store.store,
 		data: {
 			DIR: _config.DIR
 		},

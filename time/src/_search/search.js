@@ -15,7 +15,7 @@ Vue.component('my-footer',MyFooter)
 
 Vue.component('showcase',Showcase);
 
-import {store} from '../store/store_index.js';
+import {store} from '../store/store.js';
 
 new Vue({
 	el: '#root',

@@ -12,7 +12,7 @@ Vue.component('focus',Focus)
 Vue.component('back-to-top',BackToTop)
 Vue.component('my-footer',MyFooter)
 
-import {store} from '../store/store_index.js';
+import {store} from '../store/store.js';
 
 new Vue({
 	el: '#root',

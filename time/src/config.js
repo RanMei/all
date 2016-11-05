@@ -1,26 +1,23 @@
-console.log(location)
 
-var _DOMAIN;
+var _root;
 if( /^http/.test(location.href) ){
-	_DOMAIN = location.origin+'/time';
+	_root = location.origin+'/time';
 }else{
-	_DOMAIN = 'file:///D:/git/all/time';
+	_root = 'file:///D:/git/all/time';
 }
 
-console.log(_DOMAIN)
-
 const DIR = {
-	root: _DOMAIN,
-	img: _DOMAIN+'/../fytpy/images',
-	//api: _DOMAIN+'/../api/time',
+	root: _root,
+	img: _root+'/../fytpy/images',
+	//api: _root+'/../api/time',
 	api: 'http://localhost:80/api',
 
-	admin: _DOMAIN+'/admin.html',
+	admin: _root+'/admin.html',
 
-	index: _DOMAIN+'/index.html',
-	cart: _DOMAIN+'/cart.html',
-	item: _DOMAIN+'/item.html',
-	search: _DOMAIN+'/search.html'
+	index: _root+'/index.html',
+	cart: _root+'/cart.html',
+	item: _root+'/item.html',
+	search: _root+'/search.html'
 }
 
 export {DIR};

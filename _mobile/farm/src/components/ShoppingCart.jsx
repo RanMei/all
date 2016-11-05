@@ -2,6 +2,8 @@ require('./ShoppingCart.less');
 
 import {Navbar} from './Navbar.jsx';
 
+import {API} from '../API/API.js';
+
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
@@ -45,20 +47,13 @@ class ShoppingCart extends React.Component {
 	// methods
 	checkAll(){
 		if( this.allChecked() ){
-			this.props.act({
-				type: 'UNCHECK_ALL'
-			})
+			API.UNCHECK_ALL();
 		}else{
-			this.props.act({
-				type: 'CHECK_ALL'
-			})
+			API.CHECK_ALL();
 		};
 	}
 	checkThis(i){
-		this.props.act({
-			type: 'CHECK_THIS',
-			i: i
-		})
+		API.CHECK_THIS(i);
 	}
 	minusOne(i) {
 		if( this.props.items[i].quantity>1 ){
@@ -76,15 +71,9 @@ class ShoppingCart extends React.Component {
 	}
 	remove(i){
 		if( this.props.items.length===0 ){
-			this.props.act({
-				type: 'ALERT',
-				text: '您的的购物车是空的！'
-			})
+			API.ALERT( '您的购物车是空的！' );
 		}else{
-			this.props.act({
-				type: 'CONFIRM',
-				text: '确认删除选中的商品吗？'
-			})
+			API.CONFIRM( '确认删除选中的商品吗？' );
 		}
 	}
 	render() {
@@ -142,6 +131,10 @@ class ShoppingCart extends React.Component {
 			</div>
 		);
 	}
+}
+
+ShoppingCart.defaultProps = {
+	items: []
 }
 
 export {ShoppingCart};

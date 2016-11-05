@@ -99,29 +99,29 @@
 
 	var _index = __webpack_require__(2);
 
-	var _App = __webpack_require__(10);
+	var _App = __webpack_require__(11);
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
 
-	var _Signin = __webpack_require__(16);
+	var _Signin = __webpack_require__(17);
 
-	var _Signup = __webpack_require__(22);
+	var _Signup = __webpack_require__(27);
 
-	var _Category = __webpack_require__(25);
+	var _Category = __webpack_require__(30);
 
-	var _ConfirmOrder = __webpack_require__(29);
+	var _ConfirmOrder = __webpack_require__(33);
 
-	var _DIManagement = __webpack_require__(31);
+	var _DIManagement = __webpack_require__(35);
 
-	var _AppContainer = __webpack_require__(34);
+	var _AppContainer = __webpack_require__(38);
 
-	var _HomeContainer = __webpack_require__(40);
+	var _HomeContainer = __webpack_require__(44);
 
-	var _ItemContainer = __webpack_require__(47);
+	var _ItemContainer = __webpack_require__(51);
 
-	var _MemberContainer = __webpack_require__(51);
+	var _MemberContainer = __webpack_require__(55);
 
-	var _SigninContainer = __webpack_require__(55);
+	var _SigninContainer = __webpack_require__(59);
 
 	var PropTypes = React.PropTypes; //import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 	//import {createStore,combineReducers} from 'redux';
@@ -173,7 +173,7 @@
 				React.createElement(Route, { path: '/category', component: _Category.Category }),
 				React.createElement(Route, { path: '/shopping_cart', getComponent: function getComponent(nextState, cb) {
 						__webpack_require__.e/* nsure */(1, function (require) {
-							cb(null, __webpack_require__(56).ShoppingCartContainer);
+							cb(null, __webpack_require__(60).ShoppingCartContainer);
 						});
 					} }),
 				React.createElement(Route, { path: '/member', component: _MemberContainer.MemberContainer }),
@@ -194,7 +194,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	exports.$$store = undefined;
 
@@ -210,11 +210,21 @@
 
 	var _items = __webpack_require__(9);
 
+	var _item = __webpack_require__(10);
+
 	var createStore = Redux.createStore;
 	var compose = Redux.compose;
 	var combineReducers = Redux.combineReducers;
 
-	var $$reducer = Redux.combineReducers({ user: _user.user, shoppingCart: _shoppingCart.shoppingCart, notice: _notice.notice, mask: _mask.mask, homeSwiper: _homeSwiper.homeSwiper, items: _items.items });
+	var $$reducer = Redux.combineReducers({
+		user: _user.user,
+		shoppingCart: _shoppingCart.shoppingCart,
+		notice: _notice.notice,
+		mask: _mask.mask,
+		homeSwiper: _homeSwiper.homeSwiper,
+		items: _items.items,
+		item: _item.item
+	});
 
 	// actions
 	var LOGIN = { type: 'LOGIN' };
@@ -478,6 +488,38 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	function item() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? {
+			id: '',
+			name: '--',
+			specs: {},
+			price: 0
+		} : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case 'SET_ITEM':
+				var new_state = JSON.parse(JSON.stringify(state));
+				for (var key in action.item) {
+					new_state[key] = action.item[key];
+				}
+				return new_state;
+			default:
+				return state;
+		}
+	}
+
+	exports.item = item;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -932,7 +974,7 @@
 	exports.BackToTop = BackToTop;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -949,7 +991,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(12);
+	__webpack_require__(13);
 
 	var Navbar = function (_React$Component) {
 		_inherits(Navbar, _React$Component);
@@ -1039,16 +1081,16 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(13);
+	var content = __webpack_require__(14);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1065,10 +1107,10 @@
 	}
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -1079,7 +1121,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1134,7 +1176,7 @@
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1386,7 +1428,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1398,9 +1440,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Notice = __webpack_require__(17);
+	var _Notice = __webpack_require__(18);
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
+
+	var _API = __webpack_require__(21);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1408,7 +1452,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(20);
+	__webpack_require__(25);
 
 	// import 'babel-polyfill';
 
@@ -1454,17 +1498,12 @@
 			key: 'login',
 			value: function login() {
 				var self = this;
-				self.props.act({
-					type: 'LOGIN',
-					user: self.state.user
-				});
+				_API.API.LOGIN(self.state.user);
 			}
 		}, {
 			key: 'loginAsGuest',
 			value: function loginAsGuest() {
-				this.props.act({
-					type: 'LOGIN_AS_GUEST'
-				});
+				_API.API.LOGIN_AS_GUEST();
 			}
 		}, {
 			key: 'render',
@@ -1515,7 +1554,7 @@
 	exports.Signin = Signin;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1532,7 +1571,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(18);
+	__webpack_require__(19);
 
 	var Notice = function (_React$Component) {
 		_inherits(Notice, _React$Component);
@@ -1593,16 +1632,16 @@
 	exports.Notice = Notice;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(19);
+	var content = __webpack_require__(20);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1619,10 +1658,10 @@
 	}
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -1633,16 +1672,265 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.API = undefined;
+
+	var _index = __webpack_require__(2);
+
+	var _user = __webpack_require__(22);
+
+	var _cart = __webpack_require__(23);
+
+	var API = {};
+
+	(0, _user.user)(API, _index.$$store);
+	(0, _cart.cart)(API, _index.$$store);
+
+	API.INIT_HOME = function () {
+		var user = {};
+		var shoppingCart = [];
+		if (sessionStorage.user) {
+			user = JSON.parse(sessionStorage.user);
+		};
+		if (sessionStorage.shoppingCart) {
+			shoppingCart = JSON.parse(sessionStorage.shoppingCart);
+		};
+		var items = __webpack_require__(24).dataItems;
+		var homeSwiper = [{
+			background: 'img/index/banner_0.jpg',
+			href: '#/shopping_cart'
+		}, {
+			background: 'img/index/banner_1.jpg'
+		}, {
+			background: 'img/index/banner_2.jpg'
+		}, {
+			background: 'img/index/banner_3.jpg'
+		}];
+		console.log(sessionStorage);
+		_index.$$store.dispatch({
+			type: 'INIT',
+			user: user,
+			shoppingCart: shoppingCart,
+			items: items,
+			homeSwiper: homeSwiper
+		});
+	};
+
+	API.ADD_TO_CART = function (item) {
+		if (sessionStorage.shoppingCart) {
+			var shoppingCart = JSON.parse(sessionStorage.shoppingCart);
+			shoppingCart.push(item);
+			console.log(shoppingCart);
+			sessionStorage.shoppingCart = JSON.stringify(shoppingCart);
+		} else {
+			sessionStorage.shoppingCart = '[]';
+		}
+		_index.$$store.dispatch({
+			type: 'ADD_TO_CART',
+			item: item
+		});
+		_index.$$store.dispatch({
+			type: 'ALERT',
+			text: '成功加入购物车'
+		});
+	};
+
+	API.GET_ITEM = function (id) {
+		var item = {};
+		var items = __webpack_require__(24).dataItems;
+		items.forEach(function (a) {
+			if (id === a.id) {
+				item = a;
+				item.quantity = 1;
+			}
+		});
+		_index.$$store.dispatch({
+			type: 'SET_ITEM',
+			item: item
+		});
+	};
+
+	API.ALERT = function (text) {
+		_index.$$store.dispatch({
+			type: 'ALERT',
+			text: text
+		});
+	};
+
+	API.CONFIRM = function (text) {
+		_index.$$store.dispatch({
+			type: 'CONFIRM',
+			text: text
+		});
+	};
+
+	exports.API = API;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.user = user;
+	function user(API, $$store) {
+		API.LOGIN = function (user) {
+			if (user.id === '15911111111' && user.password === '111111') {
+				sessionStorage.user = '{"id":"15911111111"}';
+				sessionStorage.shoppingCart = '[]';
+				$$store.dispatch({
+					type: 'LOGIN',
+					user: {
+						id: '15911111111'
+					},
+					shoppingCart: []
+				});
+				$$store.dispatch({
+					type: 'ALERT',
+					text: '登录成功！'
+				});
+			} else {
+				$$store.dispatch({
+					type: 'ALERT',
+					text: '您输入的用户名或密码有误！'
+				});
+			}
+		};
+
+		API.LOGIN_AS_GUEST = function () {
+			sessionStorage.user = '{"id":"guest"}';
+			sessionStorage.shoppingCart = '[]';
+			$$store.dispatch({
+				type: 'LOGIN',
+				user: {
+					id: 'guest'
+				},
+				shoppingCart: []
+			});
+			$$store.dispatch({
+				type: 'ALERT',
+				text: '登录成功！'
+			});
+		};
+
+		API.LOGOUT = function () {
+			delete sessionStorage.user;
+			setTimeout(function () {
+				$$store.dispatch({
+					type: 'LOGOUT'
+				});
+			}, 10);
+		};
+	}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.cart = cart;
+	function cart(API, store) {
+		API.CHECK_ALL = function () {
+			store.dispatch({
+				type: 'CHECK_ALL'
+			});
+		};
+
+		API.UNCHECK_ALL = function () {
+			store.dispatch({
+				type: 'UNCHECK_ALL'
+			});
+		};
+
+		API.CHECK_THIS = function (i) {
+			store.dispatch({
+				type: 'CHECK_THIS',
+				i: i
+			});
+		};
+	}
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var dataItems = [{
+		"id": "1609291750",
+		"className": "watch",
+		"name": "Issey Miyake/三宅一生 W系列三眼计时中性石英手表",
+		"desc": "--",
+		"price": 4233
+	}, {
+		"id": "1609291813",
+		"className": "bag",
+		"name": "HERMES/爱马仕 Birkin 30 CCQ5 草莓红 EPSOM皮 金扣 X刻",
+		"desc": "--",
+		price: 139768
+	}, {
+		"id": "1609301428",
+		"className": "clothes",
+		"name": "By Creations Lite/By Creations Lite 桑蚕丝真丝领带 男士斜条纹时尚窄领带",
+		"desc": "--",
+		"price": 320
+	}, {
+		"id": "1609301441",
+		"className": "jewelry",
+		"name": "GZUAN/古钻珠宝 初见 2.5克拉紫晶女戒指彩宝首饰古钻品牌商品订单满2000赠送精美品",
+		"desc": "--",
+		"price": 599
+	}, {
+		"id": "1609301449",
+		"className": "shoes",
+		"name": "AJ ARMANI JEANS/阿玛尼牛仔酒红色牛皮材质镂空元素男士休闲鞋,B6562 NG LACED ",
+		"desc": "--",
+		"specs": {
+			"尺码": ["41", "42", "43", "44"]
+		},
+		"price": 1805
+	}, {
+		"id": "1609301450",
+		"className": "clothes",
+		"name": "ARMANI JEANS/阿玛尼牛仔 男士经典时尚圆领套头T恤",
+		"desc": "--",
+		"specs": {
+			"尺码": ["M", "L", "XL"],
+			"颜色": ["黑色", "白色", "红色"]
+		},
+		"price": 789
+	}];
+
+	exports.dataItems = dataItems;
+
+/***/ },
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1659,10 +1947,10 @@
 	}
 
 /***/ },
-/* 21 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -1673,7 +1961,7 @@
 
 
 /***/ },
-/* 22 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1690,7 +1978,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(23);
+	__webpack_require__(28);
 
 	var Signup = function (_React$Component) {
 		_inherits(Signup, _React$Component);
@@ -1813,16 +2101,16 @@
 	exports.Signup = Signup;
 
 /***/ },
-/* 23 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(24);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1839,10 +2127,10 @@
 	}
 
 /***/ },
-/* 24 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -1853,7 +2141,7 @@
 
 
 /***/ },
-/* 25 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1865,7 +2153,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1873,7 +2161,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(26);
+	__webpack_require__(31);
 
 	var Category = function (_React$Component) {
 		_inherits(Category, _React$Component);
@@ -1896,7 +2184,7 @@
 			key: 'getItems',
 			value: function getItems() {
 				var self = this;
-				this.state.items = __webpack_require__(28).dataItems;
+				this.state.items = __webpack_require__(24).dataItems;
 				// fetch('/getItems', {
 				// 	method: 'POST',
 				// 	headers: {
@@ -1936,16 +2224,16 @@
 	exports.Category = Category;
 
 /***/ },
-/* 26 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(27);
+	var content = __webpack_require__(32);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1962,10 +2250,10 @@
 	}
 
 /***/ },
-/* 27 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -1976,63 +2264,7 @@
 
 
 /***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var dataItems = [{
-		"id": "1609291750",
-		"className": "watch",
-		"name": "Issey Miyake/三宅一生 W系列三眼计时中性石英手表",
-		"desc": "--",
-		"price": 4233
-	}, {
-		"id": "1609291813",
-		"className": "bag",
-		"name": "HERMES/爱马仕 Birkin 30 CCQ5 草莓红 EPSOM皮 金扣 X刻",
-		"desc": "--",
-		price: 139768
-	}, {
-		"id": "1609301428",
-		"className": "clothes",
-		"name": "By Creations Lite/By Creations Lite 桑蚕丝真丝领带 男士斜条纹时尚窄领带",
-		"desc": "--",
-		"price": 320
-	}, {
-		"id": "1609301441",
-		"className": "jewelry",
-		"name": "GZUAN/古钻珠宝 初见 2.5克拉紫晶女戒指彩宝首饰古钻品牌商品订单满2000赠送精美品",
-		"desc": "--",
-		"price": 599
-	}, {
-		"id": "1609301449",
-		"className": "shoes",
-		"name": "AJ ARMANI JEANS/阿玛尼牛仔酒红色牛皮材质镂空元素男士休闲鞋,B6562 NG LACED ",
-		"desc": "--",
-		"specs": {
-			"尺码": ["41", "42", "43", "44"]
-		},
-		"price": 1805
-	}, {
-		"id": "1609301450",
-		"className": "clothes",
-		"name": "ARMANI JEANS/阿玛尼牛仔 男士经典时尚圆领套头T恤",
-		"desc": "--",
-		"specs": {
-			"尺码": ["M", "L", "XL"],
-			"颜色": ["黑色", "白色", "红色"]
-		},
-		"price": 789
-	}];
-
-	exports.dataItems = dataItems;
-
-/***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2046,7 +2278,7 @@
 
 	var _common = __webpack_require__(4);
 
-	var _CommentBox = __webpack_require__(30);
+	var _CommentBox = __webpack_require__(34);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2428,7 +2660,7 @@
 	exports.ConfirmOrder = ConfirmOrder;
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2583,7 +2815,7 @@
 	exports.CommentBox = CommentBox;
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2600,7 +2832,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(32);
+	__webpack_require__(36);
 
 	var DIManagement = function (_React$Component) {
 		_inherits(DIManagement, _React$Component);
@@ -2761,16 +2993,16 @@
 	exports.DIManagement = DIManagement;
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(33);
+	var content = __webpack_require__(37);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2787,10 +3019,10 @@
 	}
 
 /***/ },
-/* 33 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -2801,7 +3033,7 @@
 
 
 /***/ },
-/* 34 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2815,13 +3047,15 @@
 
 	var _index = __webpack_require__(2);
 
-	var _config = __webpack_require__(35);
+	var _config = __webpack_require__(39);
 
-	var _Mask = __webpack_require__(36);
+	var _Mask = __webpack_require__(40);
 
-	var _Notice = __webpack_require__(17);
+	var _Notice = __webpack_require__(18);
 
-	var _NoticePretty = __webpack_require__(39);
+	var _NoticePretty = __webpack_require__(43);
+
+	var _API = __webpack_require__(21);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2831,35 +3065,6 @@
 
 	function act(action) {
 		switch (action.type) {
-			case 'GET_DATA':
-				var user = {};
-				var shoppingCart = [];
-				if (sessionStorage.user) {
-					user = JSON.parse(sessionStorage.user);
-				};
-				if (sessionStorage.shoppingCart) {
-					shoppingCart = JSON.parse(sessionStorage.shoppingCart);
-				};
-				var items = __webpack_require__(28).dataItems;
-				var homeSwiper = [{
-					background: 'img/index/banner_0.jpg',
-					href: '#/shopping_cart'
-				}, {
-					background: 'img/index/banner_1.jpg'
-				}, {
-					background: 'img/index/banner_2.jpg'
-				}, {
-					background: 'img/index/banner_3.jpg'
-				}];
-				console.log(sessionStorage);
-				_index.$$store.dispatch({
-					type: 'INIT',
-					user: user,
-					shoppingCart: shoppingCart,
-					items: items,
-					homeSwiper: homeSwiper
-				});
-				break;
 			default:
 				_index.$$store.dispatch(action);
 		}
@@ -2880,7 +3085,7 @@
 		_createClass(App, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				act({ type: 'GET_DATA' });
+				_API.API.INIT_HOME();
 			}
 		}, {
 			key: 'render',
@@ -2909,7 +3114,7 @@
 	exports.AppContainer = AppContainer;
 
 /***/ },
-/* 35 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2924,7 +3129,7 @@
 	exports.$$production = $$production;
 
 /***/ },
-/* 36 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2941,7 +3146,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(37);
+	__webpack_require__(41);
 
 	var Mask = function (_React$Component) {
 		_inherits(Mask, _React$Component);
@@ -3019,16 +3224,16 @@
 	exports.Mask = Mask;
 
 /***/ },
-/* 37 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(38);
+	var content = __webpack_require__(42);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3045,10 +3250,10 @@
 	}
 
 /***/ },
-/* 38 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -3059,7 +3264,7 @@
 
 
 /***/ },
-/* 39 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3144,7 +3349,7 @@
 	exports.NoticePretty = NoticePretty;
 
 /***/ },
-/* 40 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3156,7 +3361,7 @@
 
 	var _index = __webpack_require__(2);
 
-	var _Home = __webpack_require__(41);
+	var _Home = __webpack_require__(45);
 
 	var HomeContainer = ReactRedux.connect(function (state) {
 		return {
@@ -3168,7 +3373,7 @@
 	exports.HomeContainer = HomeContainer;
 
 /***/ },
-/* 41 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3182,9 +3387,9 @@
 
 	var _common = __webpack_require__(4);
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
 
-	var _Swiper = __webpack_require__(42);
+	var _Swiper = __webpack_require__(46);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3192,7 +3397,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(45);
+	__webpack_require__(49);
 
 	var Home = function (_React$Component) {
 		_inherits(Home, _React$Component);
@@ -3330,7 +3535,7 @@
 	exports.Home = Home;
 
 /***/ },
-/* 42 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3347,7 +3552,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(43);
+	__webpack_require__(47);
 
 	var Swiper = function (_React$Component) {
 		_inherits(Swiper, _React$Component);
@@ -3624,16 +3829,16 @@
 	exports.Swiper = Swiper;
 
 /***/ },
-/* 43 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(44);
+	var content = __webpack_require__(48);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3650,10 +3855,10 @@
 	}
 
 /***/ },
-/* 44 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -3664,16 +3869,16 @@
 
 
 /***/ },
-/* 45 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(46);
+	var content = __webpack_require__(50);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3690,10 +3895,10 @@
 	}
 
 /***/ },
-/* 46 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -3704,7 +3909,7 @@
 
 
 /***/ },
-/* 47 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3716,37 +3921,19 @@
 
 	var _index = __webpack_require__(2);
 
-	var _Item = __webpack_require__(48);
-
-	function act(action) {
-		switch (action.type) {
-			case 'ADD_TO_CART':
-				if (sessionStorage.shoppingCart) {
-					var shoppingCart = JSON.parse(sessionStorage.shoppingCart);
-					shoppingCart.push(action.item);
-					console.log(shoppingCart);
-					sessionStorage.shoppingCart = JSON.stringify(shoppingCart);
-				} else {
-					sessionStorage.shoppingCart = '[]';
-				}
-				_index.$$store.dispatch(action);
-				break;
-			default:
-				_index.$$store.dispatch(action);
-		}
-	}
+	var _Item = __webpack_require__(52);
 
 	var ItemContainer = ReactRedux.connect(function (state) {
 		return {
 			inCart: state.shoppingCart.length,
-			act: act
+			item: state.item
 		};
 	})(_Item.Item);
 
 	exports.ItemContainer = ItemContainer;
 
 /***/ },
-/* 48 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3760,9 +3947,11 @@
 
 	var _common = __webpack_require__(4);
 
-	var _CommentBox = __webpack_require__(30);
+	var _CommentBox = __webpack_require__(34);
 
-	var _Swiper = __webpack_require__(42);
+	var _Swiper = __webpack_require__(46);
+
+	var _API = __webpack_require__(21);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3770,7 +3959,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(49);
+	__webpack_require__(53);
 
 	var Item = function (_React$Component) {
 		_inherits(Item, _React$Component);
@@ -3781,15 +3970,9 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
 
 			_this.state = {
-				item: {
-					name: '--',
-					price: 0,
-					desc: '--',
-					quantity: 1
-				},
-				thumbnails: [],
-				options: {},
+				quantity: 1,
 				tabPanel: 0,
+				options: {},
 				thumbnail: 0
 			};
 			window.scroll(0, 0);
@@ -3803,25 +3986,23 @@
 				this.getItem();
 			}
 		}, {
-			key: 'getItem',
-			value: function getItem() {
-				var self = this;
-				var id = location.hash.match(/\?id=(\w+)/)[1];
-				var item;
-				var options = {};
-				var items = __webpack_require__(28).dataItems;
-				items.forEach(function (a) {
-					if (id === a.id) {
-						item = a;
-						item.quantity = 1;
-						if (item.specs) {
-							for (var key in item.specs) {
-								options[key] = '';
-							}
-						};
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(new_props) {
+				var new_options = JSON.parse(JSON.stringify(this.state.options));
+				if (new_props.item.specs) {
+					for (var key in new_props.item.specs) {
+						new_options[key] = '';
 					}
+				};
+				this.setState({
+					options: new_options
 				});
-				var newThumbnails = [{
+			}
+		}, {
+			key: 'thumbnails',
+			value: function thumbnails() {
+				var id = this.props.item.id;
+				return [{
 					img: 'img/items/' + id + '/t.jpg'
 				}, {
 					img: 'img/items/' + id + '/t.jpg'
@@ -3830,46 +4011,30 @@
 				}, {
 					img: 'img/items/' + id + '/t.jpg'
 				}];
-				self.setState({
-					item: item,
-					options: options,
-					thumbnails: newThumbnails
-				});
-
-				// fetch('/getItem', {
-				// 	method: 'POST',
-				// 	headers: {
-				// 		// 'Accept': 'application/json',
-				// 		'Content-Type': 'application/json'
-				// 	},
-				// 	body: JSON.stringify({itemID:itemID})
-				// }).then(function(res){
-				// 	return res.json();
-				// }).then(function(data){
-				// 	console.log('<Item/> item received');
-				// 	data.quantity = 1;
-				// 	self.setState({
-				// 		item: data
-				// 	})	
-				// }).catch(function(e,f,g){
-				// 	console.log(e,f,g);
-				// })
+			}
+		}, {
+			key: 'getItem',
+			value: function getItem() {
+				var self = this;
+				var id = location.hash.match(/\?id=(\w+)/)[1];
+				_API.API.GET_ITEM(id);
 			}
 		}, {
 			key: 'increase',
 			value: function increase() {
-				this.state.item.quantity++;
+				var val = this.state.quantity + 1;
 				this.setState({
-					item: this.state.item
+					quantity: val
 				});
 			}
 		}, {
 			key: 'decrease',
 			value: function decrease() {
-				this.state.item.quantity > 1 ? this.state.item.quantity-- : '';
-				this.setState({
-					item: this.state.item
-				});
+				if (this.state.quantity > 1) {
+					this.setState({
+						quantity: this.state.quantity - 1
+					});
+				};
 			}
 		}, {
 			key: 'toImg',
@@ -3886,29 +4051,19 @@
 				});
 			}
 		}, {
-			key: 'addToCart',
-			value: function addToCart() {
+			key: 'ADD_TO_CART',
+			value: function ADD_TO_CART() {
 				for (var key in this.state.options) {
 					if (this.state.options[key] === '') {
-						this.props.act({
-							type: 'ALERT',
-							text: '请选择' + key + '!'
-						});
+						_API.API.ALERT('请选择' + key + '!');
 						return;
 					}
 				}
-				var newItem = JSON.parse(JSON.stringify(this.state.item));
+				var newItem = JSON.parse(JSON.stringify(this.props.item));
 				newItem.selected = false;
 				newItem.spec = this.getSpec(this.state.options);
 				// Perform an action.
-				this.props.act({
-					type: 'ADD_TO_CART',
-					item: newItem
-				});
-				this.props.act({
-					type: 'ALERT',
-					text: '成功加入购物车'
-				});
+				_API.API.ADD_TO_CART(newItem);
 			}
 		}, {
 			key: 'getSpec',
@@ -3950,7 +4105,7 @@
 			value: function render() {
 				console.log('<Item/> rendering', this.props, this.state);
 				var self = this;
-				var item = this.state.item;
+				var item = this.props.item;
 				return React.createElement(
 					'div',
 					{ className: 'ITEM' },
@@ -3972,7 +4127,7 @@
 					React.createElement(_Swiper.Swiper, {
 						sticky: false,
 						autoplay: false,
-						items: this.state.thumbnails }),
+						items: this.thumbnails() }),
 					React.createElement(
 						'div',
 						{ className: 'info' },
@@ -4030,7 +4185,7 @@
 							React.createElement(
 								'p',
 								{ className: 'quantity' },
-								item.quantity
+								this.state.quantity
 							),
 							React.createElement(
 								'p',
@@ -4083,7 +4238,7 @@
 						),
 						React.createElement(
 							'a',
-							{ className: 'to_cart', onClick: this.addToCart.bind(this) },
+							{ className: 'to_cart', onClick: this.ADD_TO_CART.bind(this) },
 							'加入购物车'
 						),
 						React.createElement(
@@ -4099,19 +4254,29 @@
 		return Item;
 	}(React.Component);
 
+	Item.defaultProps = {
+		item: {
+			id: '',
+			name: '',
+			specs: [],
+			price: 0
+		},
+		inCart: 0
+	};
+
 	exports.Item = Item;
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(54);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4128,10 +4293,10 @@
 	}
 
 /***/ },
-/* 50 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -4142,7 +4307,7 @@
 
 
 /***/ },
-/* 51 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4154,20 +4319,9 @@
 
 	var _index = __webpack_require__(2);
 
-	var _Member = __webpack_require__(52);
+	var _Member = __webpack_require__(56);
 
-	function act(action) {
-		switch (action.type) {
-			case 'LOGOUT':
-				delete sessionStorage.user;
-				setTimeout(function () {
-					_index.$$store.dispatch(action);
-				}, 10);
-				break;
-			default:
-				_index.$$store.dispatch(action);
-		}
-	}
+	function act(action) {}
 
 	var MemberContainer = ReactRedux.connect(function (state) {
 		return {
@@ -4179,7 +4333,7 @@
 	exports.MemberContainer = MemberContainer;
 
 /***/ },
-/* 52 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4193,7 +4347,9 @@
 
 	var _common = __webpack_require__(4);
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
+
+	var _API = __webpack_require__(21);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4201,7 +4357,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(53);
+	__webpack_require__(57);
 
 	var Member = function (_React$Component) {
 		_inherits(Member, _React$Component);
@@ -4218,9 +4374,7 @@
 		_createClass(Member, [{
 			key: 'logout',
 			value: function logout() {
-				this.props.act({
-					type: 'LOGOUT'
-				});
+				_API.API.LOGOUT();
 			}
 		}, {
 			key: 'toDIManagement',
@@ -4303,16 +4457,16 @@
 	exports.Member = Member;
 
 /***/ },
-/* 53 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(54);
+	var content = __webpack_require__(58);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4329,10 +4483,10 @@
 	}
 
 /***/ },
-/* 54 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 
@@ -4343,7 +4497,7 @@
 
 
 /***/ },
-/* 55 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4355,52 +4509,9 @@
 
 	var _index = __webpack_require__(2);
 
-	var _Signin = __webpack_require__(16);
+	var _Signin = __webpack_require__(17);
 
-	function act(action) {
-		switch (action.type) {
-			case 'LOGIN':
-				if (action.user.id === '15911111111' && action.user.password === '111111') {
-					sessionStorage.user = '{"id":"15911111111"}';
-					sessionStorage.shoppingCart = '[]';
-					_index.$$store.dispatch({
-						type: 'LOGIN',
-						user: {
-							id: '15911111111'
-						},
-						shoppingCart: []
-					});
-					_index.$$store.dispatch({
-						type: 'ALERT',
-						text: '登录成功！'
-					});
-				} else {
-					_index.$$store.dispatch({
-						type: 'ALERT',
-						text: '您输入的用户名或密码有误！'
-					});
-				}
-				break;
-			case 'LOGIN_AS_GUEST':
-				sessionStorage.user = '{"id":"guest"}';
-				sessionStorage.shoppingCart = '[]';
-				_index.$$store.dispatch({
-					type: 'LOGIN',
-					user: {
-						id: 'guest'
-					},
-					shoppingCart: []
-				});
-				_index.$$store.dispatch({
-					type: 'ALERT',
-					text: '登录成功！'
-				});
-				break;
-			default:
-				_index.$$store.dispatch(action);
-				break;
-		}
-	}
+	function act(action) {}
 
 	var SigninContainer = ReactRedux.connect(function (state) {
 		return {

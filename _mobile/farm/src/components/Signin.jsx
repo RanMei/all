@@ -4,6 +4,8 @@ require('./Signin.less');
 import {Notice} from './Notice.jsx';
 import {Navbar} from './Navbar.jsx';
 
+import {API} from '../API/API.js';
+
 class Signin extends React.Component {
 	constructor(){
 		super();
@@ -33,15 +35,10 @@ class Signin extends React.Component {
 	}
 	login(){
 		var self = this;
-		self.props.act({
-			type: 'LOGIN',
-			user: self.state.user
-		})
+		API.LOGIN(self.state.user);
 	}
 	loginAsGuest(){
-		this.props.act({
-			type: 'LOGIN_AS_GUEST'
-		})
+		API.LOGIN_AS_GUEST();
 	}
 	render(){
 		return (

@@ -26,7 +26,7 @@ new Vue({
 	store,
 	router,
 	template: `
-	<div id="ROOT" class="container">
+	<div id="ROOT">
 		<navbar></navbar>
 		<router-view></router-view>
 	</div>`,

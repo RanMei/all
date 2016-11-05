@@ -4,20 +4,16 @@ import {$$rootDir,$$itemDir,$$phpDir,$$imgDir} from '../common.jsx';
 import {CommentBox} from './CommentBox.jsx';
 import {Swiper} from './Swiper.jsx';
 
+import {API} from '../API/API.js';
+
 class Item extends React.Component {
 	constructor(){
 		super();
 
 		this.state = {
-			item: {
-				name: '--',
-				price: 0,
-				desc: '--',
-				quantity: 1
-			},
-			thumbnails: [],
-			options: {},
+			quantity: 1,
 			tabPanel: 0,
+			options: {},
 			thumbnail: 0
 		};
 		window.scroll(0,0);
@@ -26,24 +22,20 @@ class Item extends React.Component {
 	componentWillMount(){
 		this.getItem();
 	}
-	getItem(){
-		var self = this;
-		var id = location.hash.match(/\?id=(\w+)/)[1];
-		var item;
-		var options = {};
-		var items = require('../data/items.js').dataItems;
-		items.forEach((a)=>{
-			if( id===a.id ){
-				item = a;
-				item.quantity = 1;
-				if( item.specs ){
-					for( var key in item.specs ){
-						options[key] = '';
-					}
-				};
+	componentWillReceiveProps(new_props){
+		var new_options = JSON.parse( JSON.stringify(this.state.options) )
+		if( new_props.item.specs ){
+			for( var key in new_props.item.specs ){
+				new_options[key] = '';
 			}
+		};
+		this.setState({
+			options: new_options
 		})
-		var newThumbnails = [{
+	}
+	thumbnails(){
+		var id = this.props.item.id;
+		return [{
 			img: 'img/items/'+id+'/t.jpg'
 		},{
 			img: 'img/items/'+id+'/t.jpg'
@@ -52,42 +44,24 @@ class Item extends React.Component {
 		},{
 			img: 'img/items/'+id+'/t.jpg'
 		}];
-		self.setState({
-			item: item,
-			options: options,
-			thumbnails: newThumbnails
-		})
-
-		// fetch('/getItem', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		// 'Accept': 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify({itemID:itemID})
-		// }).then(function(res){
-		// 	return res.json();
-		// }).then(function(data){
-		// 	console.log('<Item/> item received');
-		// 	data.quantity = 1;
-		// 	self.setState({
-		// 		item: data
-		// 	})	
-		// }).catch(function(e,f,g){
-		// 	console.log(e,f,g);
-		// })
+	}
+	getItem(){
+		var self = this;
+		var id = location.hash.match(/\?id=(\w+)/)[1];
+		API.GET_ITEM(id);
 	}
 	increase(){
-		this.state.item.quantity++;
+		var val = this.state.quantity + 1;
 		this.setState({
-			item:this.state.item
+			quantity: val
 		});
 	}
 	decrease(){
-		this.state.item.quantity>1?this.state.item.quantity--:'';
-		this.setState({
-			item:this.state.item
-		});		
+		if( this.state.quantity>1 ){
+			this.setState({
+				quantity: this.state.quantity - 1
+			});
+		};
 	}
 	toImg( index ){
 		this.setState({
@@ -99,28 +73,18 @@ class Item extends React.Component {
 			tabPanel: index
 		});
 	}
-	addToCart(){
+	ADD_TO_CART(){
 		for( var key in this.state.options ){
 			if( this.state.options[key] === '' ){
-				this.props.act({
-					type: 'ALERT',
-					text: `请选择${key}!`
-				})
+				API.ALERT( `请选择${key}!` );
 				return;
 			}
 		}
-		var newItem = JSON.parse( JSON.stringify(this.state.item) );
+		var newItem = JSON.parse( JSON.stringify(this.props.item) );
 		newItem.selected = false;
 		newItem.spec = this.getSpec(this.state.options);
 		// Perform an action.
-		this.props.act({
-			type:'ADD_TO_CART',
-			item: newItem
-		});
-		this.props.act({
-			type: 'ALERT',
-			text: '成功加入购物车'
-		});
+		API.ADD_TO_CART( newItem );
 	}
 	getSpec( options ){
 		var spec = '';
@@ -150,7 +114,7 @@ class Item extends React.Component {
 	render(){
 		console.log('<Item/> rendering',this.props,this.state);
 		var self = this;
-		var item = this.state.item;
+		var item = this.props.item;
 		return (
 			<div className="ITEM">
 				<div className="topbar c-topbar">
@@ -164,7 +128,7 @@ class Item extends React.Component {
 				<Swiper 
 					sticky={false}
 					autoplay={false}
-					items={this.state.thumbnails}/>
+					items={this.thumbnails()}/>
 				
 				<div className="info">
 					<p className="name">{item.name}</p>
@@ -195,7 +159,7 @@ class Item extends React.Component {
 					<p>购买数量</p>
 					<div className="counter">
 						<p className="minus" onClick={this.decrease.bind(this)}>-</p>
-						<p className="quantity">{item.quantity}</p>
+						<p className="quantity">{this.state.quantity}</p>
 						<p className="plus" onClick={this.increase.bind(this)}>+</p>
 					</div>
 				</div>
@@ -225,12 +189,22 @@ class Item extends React.Component {
 							</p>
 						</div>
 					</div>
-					<a className="to_cart" onClick={this.addToCart.bind(this)}>加入购物车</a>
+					<a className="to_cart" onClick={this.ADD_TO_CART.bind(this)}>加入购物车</a>
 					<a className="to-buy" onClick={this.buyNow.bind(this)}>立即购买</a>
 				</div>
 			</div>
 		)
 	}
+}
+
+Item.defaultProps = {
+	item: {
+		id: '',
+		name: '',
+		specs: [],
+		price: 0
+	},
+	inCart: 0
 }
 
 export {Item};

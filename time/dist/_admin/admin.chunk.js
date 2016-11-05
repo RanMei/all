@@ -75,7 +75,7 @@
 		el: '#root',
 		store: _store.store,
 		router: router,
-		template: '\n\t<div id="ROOT" class="container">\n\t\t<navbar></navbar>\n\t\t<router-view></router-view>\n\t</div>',
+		template: '\n\t<div id="ROOT">\n\t\t<navbar></navbar>\n\t\t<router-view></router-view>\n\t</div>',
 		data: {
 			age: 32
 		},
@@ -106,29 +106,26 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	console.log(location);
 
-	var _DOMAIN;
+	var _root;
 	if (/^http/.test(location.href)) {
-		_DOMAIN = location.origin + '/time';
+		_root = location.origin + '/time';
 	} else {
-		_DOMAIN = 'file:///D:/git/all/time';
+		_root = 'file:///D:/git/all/time';
 	}
 
-	console.log(_DOMAIN);
-
 	var DIR = {
-		root: _DOMAIN,
-		img: _DOMAIN + '/../fytpy/images',
-		//api: _DOMAIN+'/../api/time',
+		root: _root,
+		img: _root + '/../fytpy/images',
+		//api: _root+'/../api/time',
 		api: 'http://localhost:80/api',
 
-		admin: _DOMAIN + '/admin.html',
+		admin: _root + '/admin.html',
 
-		index: _DOMAIN + '/index.html',
-		cart: _DOMAIN + '/cart.html',
-		item: _DOMAIN + '/item.html',
-		search: _DOMAIN + '/search.html'
+		index: _root + '/index.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
 	};
 
 	exports.DIR = DIR;
@@ -1358,7 +1355,7 @@
 
 
 	// module
-	exports.push([module.id, ".ITEMS a[_v-918ce126] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS li[_v-918ce126] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-918ce126]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-918ce126]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-918ce126]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-918ce126] {\n  width: 80%;\n}\ntd[_v-918ce126] {\n  height: 50px;\n}\n.item[_v-918ce126]:hover {\n  background: lightblue;\n}\n.item.active[_v-918ce126] {\n  background: #d9edf7;\n}\n", ""]);
+	exports.push([module.id, ".ITEMS a[_v-918ce126] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS li[_v-918ce126] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-918ce126]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-918ce126]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-918ce126]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-918ce126] {\n  width: 80%;\n}\n.ITEMS .panel-footer input[type=\"text\"][_v-918ce126] {\n  width: 80%;\n}\ntd[_v-918ce126] {\n  height: 50px;\n}\n.item[_v-918ce126]:hover {\n  background: lightblue;\n}\n.item.active[_v-918ce126] {\n  background: #d9edf7;\n}\n", ""]);
 
 	// exports
 
@@ -1481,7 +1478,7 @@
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"ITEMS\" _v-918ce126=\"\">\n\t<div class=\"panel panel-default\" _v-918ce126=\"\">\n\t\t<div class=\"panel-body\" _v-918ce126=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-918ce126=\"\">\n\t\t<div class=\"panel-heading\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">id</li>\n\t\t\t<li _v-918ce126=\"\">name</li>\n\t\t\t<li _v-918ce126=\"\">desc_</li>\n\t\t\t<li _v-918ce126=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-918ce126=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-918ce126=\"\">\n\t\t\t\t<li _v-918ce126=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-918ce126=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-918ce126=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-918ce126=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-918ce126=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">{{item.id}}</li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-918ce126=\"\"></li>\n\t\t\t<button class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-918ce126=\"\">save</button>\n\t\t\t<button class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-918ce126=\"\">delete</button>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"ITEMS\" _v-918ce126=\"\">\n\t<div class=\"panel panel-default\" _v-918ce126=\"\">\n\t\t<div class=\"panel-body\" _v-918ce126=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-918ce126=\"\">\n\t\t<div class=\"panel-heading\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">id</li>\n\t\t\t<li _v-918ce126=\"\">name</li>\n\t\t\t<li _v-918ce126=\"\">desc_</li>\n\t\t\t<li _v-918ce126=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-918ce126=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-918ce126=\"\">\n\t\t\t\t<li _v-918ce126=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-918ce126=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-918ce126=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-918ce126=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-918ce126=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">{{item.id}}</li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-918ce126=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-918ce126=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-918ce126=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -1671,7 +1668,7 @@
 
 
 	// module
-	exports.push([module.id, ".Signin[_v-6d5878b1] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-6d5878b1] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-6d5878b1] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-6d5878b1] {\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-6d5878b1],\n.Signin .panel__ input[type=\"password\"][_v-6d5878b1] {\n  box-sizing: border-box;\n  width: 380px;\n  height: 52px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-6d5878b1] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-6d5878b1] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-6d5878b1] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-6d5878b1] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-6d5878b1] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-6d5878b1] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .check_b_container[_v-6d5878b1] {\n  overflow: hidden;\n}\n.Signin .check_b_container .checkbox_[_v-6d5878b1] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .check_b_container .checkbox_.checked[_v-6d5878b1] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .check_b_container .checkbox_ .square[_v-6d5878b1] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .check_b_container p[_v-6d5878b1] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-6d5878b1] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-6d5878b1]:hover {\n  background: #0379C8;\n}\n", ""]);
+	exports.push([module.id, ".Signin[_v-6d5878b1] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-6d5878b1] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-6d5878b1] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-6d5878b1] {\n  box-sizing: border-box;\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-6d5878b1],\n.Signin .panel__ input[type=\"password\"][_v-6d5878b1] {\n  box-sizing: border-box;\n  width: 380px;\n  height: 52px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-6d5878b1] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-6d5878b1] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-6d5878b1] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-6d5878b1] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-6d5878b1] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-6d5878b1] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .check_b_container[_v-6d5878b1] {\n  overflow: hidden;\n}\n.Signin .check_b_container .checkbox_[_v-6d5878b1] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .check_b_container .checkbox_.checked[_v-6d5878b1] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .check_b_container .checkbox_ .square[_v-6d5878b1] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .check_b_container p[_v-6d5878b1] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-6d5878b1] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-6d5878b1]:hover {\n  background: #0379C8;\n}\n", ""]);
 
 	// exports
 

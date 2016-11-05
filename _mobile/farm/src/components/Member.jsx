@@ -4,15 +4,15 @@ import {$$imgDir} from '../common.jsx';
 
 import {Navbar} from './Navbar.jsx';
 
+import {API} from '../API/API.js';
+
 class Member extends React.Component {
 	constructor() {
 		super();
 		console.log('<Member/> constructing');
 	}
 	logout() {
-		this.props.act({
-			type: 'LOGOUT'
-		})
+		API.LOGOUT();
 	}
 	toDIManagement(){
 		location.hash = 'di_management';

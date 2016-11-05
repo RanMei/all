@@ -102,35 +102,74 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	console.log(location);
 
-	var _DOMAIN;
+	var _root;
 	if (/^http/.test(location.href)) {
-		_DOMAIN = location.origin + '/time';
+		_root = location.origin + '/time';
 	} else {
-		_DOMAIN = 'file:///D:/git/all/time';
+		_root = 'file:///D:/git/all/time';
 	}
 
-	console.log(_DOMAIN);
-
 	var DIR = {
-		root: _DOMAIN,
-		img: _DOMAIN + '/../fytpy/images',
-		//api: _DOMAIN+'/../api/time',
+		root: _root,
+		img: _root + '/../fytpy/images',
+		//api: _root+'/../api/time',
 		api: 'http://localhost:80/api',
 
-		admin: _DOMAIN + '/admin.html',
+		admin: _root + '/admin.html',
 
-		index: _DOMAIN + '/index.html',
-		cart: _DOMAIN + '/cart.html',
-		item: _DOMAIN + '/item.html',
-		search: _DOMAIN + '/search.html'
+		index: _root + '/index.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
 	};
 
 	exports.DIR = DIR;
 
 /***/ },
-/* 3 */,
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.store = undefined;
+
+	var _items = __webpack_require__(4);
+
+	var _items2 = _interopRequireDefault(_items);
+
+	var _item = __webpack_require__(5);
+
+	var _item2 = _interopRequireDefault(_item);
+
+	var _user = __webpack_require__(6);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	var _num = __webpack_require__(7);
+
+	var _actions = __webpack_require__(8);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//Vue.use( Vuex );
+
+	var store = new Vuex.Store({
+		modules: {
+			user: _user2.default,
+			items: _items2.default,
+			item: _item2.default,
+			num: _num.num
+		},
+		actions: _actions.actions
+	});
+
+	exports.store = store;
+
+/***/ },
 /* 4 */
 /***/ function(module, exports) {
 
@@ -1268,7 +1307,7 @@
 
 
 	// module
-	exports.push([module.id, "/* focus */\n.focus[_v-7eb276ca] {\n  position: relative;\n  width: 100%;\n  height: 500px;\n  margin: auto;\n  background: white;\n  overflow: hidden;\n}\n.focus > a[_v-7eb276ca] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: none;\n}\n.focus > a.active[_v-7eb276ca] {\n  display: block;\n}\n.focus > a li[_v-7eb276ca] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.focus > a img[_v-7eb276ca] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  height: 100%;\n}\n.focus-tabs[_v-7eb276ca] {\n  display: table;\n  margin: auto;\n  margin-top: 400px;\n  overflow: hidden;\n}\n.focus-tabs .dot[_v-7eb276ca] {\n  float: left;\n  width: 15px;\n  height: 15px;\n  margin: 0 5px;\n  border-radius: 50%;\n  border: 1px solid black;\n  background: white;\n  cursor: pointer;\n  opacity: 0.5;\n}\n.focus-tabs .dot.active[_v-7eb276ca] {\n  background: red;\n}\n.focus-last[_v-7eb276ca] {\n  position: absolute;\n  left: 10px;\n  top: 200px;\n  width: 49px;\n  height: 104px;\n  background: black;\n  line-height: 104px;\n  text-align: center;\n  bottom: 0px;\n  cursor: pointer;\n  font-size: 300%;\n  color: white;\n  z-index: 1;\n  opacity: 0.5;\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.focus-last[_v-7eb276ca]:hover {\n  opacity: 0.7;\n}\n.focus-next[_v-7eb276ca] {\n  position: absolute;\n  right: 10px;\n  top: 200px;\n  width: 49px;\n  height: 104px;\n  background: black;\n  line-height: 104px;\n  text-align: center;\n  bottom: 0px;\n  cursor: pointer;\n  font-size: 300%;\n  color: white;\n  z-index: 1;\n  opacity: 0.5;\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.focus-next[_v-7eb276ca]:hover {\n  opacity: 0.7;\n}\n", ""]);
+	exports.push([module.id, ".Focus[_v-7eb276ca] {\n  position: relative;\n  width: 100%;\n  height: 500px;\n  margin: auto;\n  background: white;\n  overflow: hidden;\n}\n.Focus .item[_v-7eb276ca] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: none;\n}\n.Focus .item.active[_v-7eb276ca] {\n  display: block;\n}\n.Focus .item li[_v-7eb276ca] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n}\n.Focus .item img[_v-7eb276ca] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  margin: auto;\n  height: 100%;\n}\n.Focus .pagination[_v-7eb276ca] {\n  display: table;\n  margin: auto;\n  margin-top: 400px;\n  overflow: hidden;\n  z-index: 99;\n}\n.Focus .pagination .dot[_v-7eb276ca] {\n  float: left;\n  width: 15px;\n  height: 15px;\n  margin: 0 5px;\n  border-radius: 50%;\n  border: 1px solid black;\n  background: white;\n  cursor: pointer;\n  opacity: 0.5;\n}\n.Focus .pagination .dot.active[_v-7eb276ca] {\n  opacity: 0.99;\n}\n.Focus .focus-last[_v-7eb276ca] {\n  position: absolute;\n  left: 10px;\n  top: 200px;\n  width: 49px;\n  height: 104px;\n  background: black;\n  line-height: 104px;\n  text-align: center;\n  cursor: pointer;\n  font-size: 50px;\n  color: white;\n  z-index: 1;\n  opacity: 0.5;\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n.Focus .focus-last[_v-7eb276ca]:hover {\n  opacity: 0.7;\n}\n.Focus .focus-next[_v-7eb276ca] {\n  position: absolute;\n  right: 10px;\n  top: 200px;\n  width: 49px;\n  height: 104px;\n  background: black;\n  line-height: 104px;\n  text-align: center;\n  cursor: pointer;\n  font-size: 50px;\n  color: white;\n  z-index: 1;\n  opacity: 0.5;\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n.Focus .focus-next[_v-7eb276ca]:hover {\n  opacity: 0.7;\n}\n", ""]);
 
 	// exports
 
@@ -1291,12 +1330,22 @@
 			};
 		},
 		methods: {
+			prev: function prev() {
+				if (this.current > 0) {
+					this.current--;
+				} else {
+					this.current = 3;
+				}
+			},
 			next: function next() {
 				if (this.current < 3) {
 					this.current++;
 				} else {
 					this.current = 0;
 				}
+			},
+			jump: function jump(i) {
+				this.current = i;
 			}
 		}
 	};
@@ -1305,7 +1354,7 @@
 /* 54 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"focus wrapper\" _v-7eb276ca=\"\">\n\t<a href=\"\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-7eb276ca=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+(i+1)+'.jpg) no-repeat center;' \" _v-7eb276ca=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"focus-tabs\" _v-7eb276ca=\"\">\n\t\t<li key=\"i\" class=\"dot\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-7eb276ca=\"\"></li>\n\t</ul>\n\t<div class=\"focus-last\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-left\" _v-7eb276ca=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-right\" _v-7eb276ca=\"\"></i></div>\t\t\n</ul>\n";
+	module.exports = "\n<ul class=\"Focus wrapper\" _v-7eb276ca=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-7eb276ca=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-7eb276ca=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-7eb276ca=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-7eb276ca=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-left\" _v-7eb276ca=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-right\" _v-7eb276ca=\"\"></i></div>\t\t\n</ul>\n";
 
 /***/ },
 /* 55 */
@@ -1384,7 +1433,7 @@
 
 
 	// module
-	exports.push([module.id, "/* back_to_top button */\n.BACK-TO-TOP[_v-7b4f24f6] {\n  position: fixed;\n  right: 10px;\n  bottom: 10px;\n  width: 50px;\n  height: 50px;\n  background: lightgrey;\n  z-index: 100;\n  font-size: 30px;\n  line-height: 50px;\n  text-align: center;\n  cursor: pointer;\n}\n", ""]);
+	exports.push([module.id, ".BACK-TO-TOP[_v-7b4f24f6] {\n  position: fixed;\n  right: 10px;\n  bottom: 10px;\n  width: 50px;\n  height: 50px;\n  background: lightgrey;\n  z-index: 100;\n  font-size: 30px;\n  line-height: 50px;\n  text-align: center;\n  cursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -1393,15 +1442,38 @@
 /* 58 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+
+	var body = document.querySelector('body');
 	exports.default = {
+		data: function data() {
+			return {
+				scrolling: false
+			};
+		},
 		methods: {
 			back: function back() {
-				window.scroll(0, 0);
+				var _this = this;
+
+				if (!this.scrolling) {
+					this.scrolling = true;
+					var duration = 300;
+					var distance = body.scrollTop;
+					var dy = 10 * distance / duration;
+					var interval = setInterval(function () {
+						if (body.scrollTop - dy > 0) {
+							body.scrollTop -= dy;
+						} else {
+							body.scrollTop = 0;
+							clearInterval(interval);
+							_this.scrolling = false;
+						}
+					}, 10);
+				}
 			}
 		}
 	};
@@ -1510,49 +1582,6 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-abfa2f18=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-abfa2f18=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-abfa2f18=\"\">\n\t\t<ul class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">新用户注册</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">购物流程</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">常见问题</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">发票制度</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">在线付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">余额付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">邮费说明</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送服务范围</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送速度查询</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">售后政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-abfa2f18=\"\">4006-118-118</p>\n\t\t\t\t<p _v-abfa2f18=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-abfa2f18=\"\">\n\t\t<div class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<p _v-abfa2f18=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.store = undefined;
-
-	var _items = __webpack_require__(4);
-
-	var _items2 = _interopRequireDefault(_items);
-
-	var _item = __webpack_require__(5);
-
-	var _item2 = _interopRequireDefault(_item);
-
-	var _user = __webpack_require__(6);
-
-	var _user2 = _interopRequireDefault(_user);
-
-	var _num = __webpack_require__(7);
-
-	var _actions = __webpack_require__(8);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//Vue.use( Vuex );
-
-	var store = new Vuex.Store({
-		modules: {
-			user: _user2.default,
-			items: _items2.default,
-			item: _item2.default,
-			num: _num.num
-		},
-		actions: _actions.actions
-	});
-
-	exports.store = store;
 
 /***/ }
 /******/ ]);

@@ -21,7 +21,7 @@
 						<div class="menu-head">全部商品分类</div>
 						<li>
 							<div class="upper">
-								<a href="" class="a_a"><img :src=" DIR.img+'150714.61617376.png' "></a>
+								<a href="" class="a_a"><img :src=" DIR.img+'/icons/0.png' "></a>
 								<a href="" class="a_b">玩具模型</a>
 							</div>
 							<div class="lower">
@@ -35,7 +35,7 @@
 						</li>
 						<li>
 							<div class="upper">
-								<a href="" class="a_a"><img :src=" DIR.img+'150725.38017135.png' "></a>
+								<a href="" class="a_a"><img :src=" DIR.img+'/icons/1.png' "></a>
 								<a href="" class="a_b">数码配件</a>
 							</div>
 							<div class="lower">
@@ -49,7 +49,7 @@
 						</li>
 						<li>
 							<div class="upper">
-								<a href="" class="a_a"><img :src=" DIR.img+'150734.55497434.png' "></a>
+								<a href="" class="a_a"><img :src=" DIR.img+'/icons/2.png' "></a>
 								<a href="" class="a_b">服装服饰</a>
 							</div>
 							<div class="lower">
@@ -63,7 +63,7 @@
 						</li>
 						<li>
 							<div class="upper">
-								<a href="" class="a_a"><img :src=" DIR.img+'150815.26291024.png' "></a>
+								<a href="" class="a_a"><img :src=" DIR.img+'/icons/3.png' "></a>
 								<a href="" class="a_b">居家日用</a>
 							</div>
 							<div class="lower">
@@ -85,7 +85,7 @@
 				</div>
 			</div>
 			
-			<focus :dir="IMG"></focus>
+			<focus :dir="DIR"></focus>
 
 			<!-- main -->
 			<div class="main wrapper">
@@ -94,7 +94,7 @@
 						<ul class="col1">
 							<li>
 								<div class="upper">
-									<div class="icon"><a href=""><img :src=" DIR.img+'/084337.png' "></a></div>
+									<div class="icon"><a href=""><img :src=" DIR.img+'/icons/4.png' "></a></div>
 									<a href="" class="title">玩具模型</a>
 								</div>
 								<div class="lower">
@@ -102,7 +102,7 @@
 							</li>
 							<li>
 								<div class="upper">
-									<div class="icon"><a href=""><img :src=" DIR.img+'/153449.png' "></a></div>
+									<div class="icon"><a href=""><img :src=" DIR.img+'/icons/5.png' "></a></div>
 									<a href="" class="title">数码配件</a>
 								</div>
 								<div class="lower">
@@ -110,7 +110,7 @@
 							</li>
 							<li>
 								<div class="upper">
-									<div class="icon"><a href=""><img :src=" DIR.img+'/160245.png' "></a></div>
+									<div class="icon"><a href=""><img :src=" DIR.img+'/icons/6.png' "></a></div>
 									<a href="" class="title">服装服饰</a>
 								</div>
 								<div class="lower">
@@ -118,7 +118,7 @@
 							</li>
 							<li>
 								<div class="upper">
-									<div class="icon"><a href=""><img :src=" DIR.img+'/161113.png' "></a></div>
+									<div class="icon"><a href=""><img :src=" DIR.img+'/icons/7.png' "></a></div>
 									<a href="" class="title">居家日用</a>
 								</div>
 								<div class="lower">
@@ -127,12 +127,12 @@
 						</ul>
 						<div class="col2">
 							<dl>
-								<dt><a :href=" col2[0] "><img :src=" DIR.img+'/index/1602091546.jpg' "></a></dt>
-								<dt><a :href=" col2[0] "><img :src=" DIR.img+'/index/144118.jpg' "></a></dt>
-								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/144233.jpg' "></a></dd>
-								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/144245.jpg' "></a></dd>
-								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/144256.jpg' "></a></dd>
-								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/144311.jpg' "></a></dd>		
+								<dt><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/0.jpg' "></a></dt>
+								<dt><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/1.jpg' "></a></dt>
+								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/2.jpg' "></a></dd>
+								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/3.jpg' "></a></dd>
+								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/4.jpg' "></a></dd>
+								<dd><a :href=" col2[0] "><img :src=" DIR.img+'/index/showcase/5.jpg' "></a></dd>		
 							</dl>
 						</div>
 					</div>
@@ -140,7 +140,7 @@
 
 					<div class="showcase">
 						<ul class="left">
-							<li :style=" 'background:url('+DIR.img+'/index/1602091458.jpg)' ">
+							<li :style=" 'background:url('+DIR.img+'/index/toys/0.jpg)' ">
 								<a href="item.html?id=1602091458">
 									<div class="words">
 										<p class="name">星球大战BB-8智能球形机器人</p>
@@ -149,7 +149,7 @@
 									</div>
 								</a>
 							</li>
-							<li style="background:url(images/174620.41792002.jpg)">
+							<li :style=" 'background:url('+DIR.img+'/index/toys/1.jpg)' ">
 								<a href="">
 									<div class="words">
 										<p class="name">复仇者联盟2迷你公仔套装</p>
@@ -162,7 +162,7 @@
 						<ul class="middle">
 							<li>
 								<div class="middle_left">
-									<a href="" class="icon"><img src="images/084337.35875451.png"></a>
+									<a href="" class="icon"><img :src=" DIR.img+'/icons/4.png' "></a>
 									<div class="title"><a href="">玩具模型</a></div>
 								</div>
 								<div class="middle_right">
@@ -174,10 +174,10 @@
 									<a href="" class="more">查看更多</a>
 								</div>
 							</li>
-							<li><a href=""><img src="images/174908.65085217.jpg"></a></li>
+							<li><a href=""><img :src=" DIR.img+'/index/toys/2.jpg' "></a></li>
 						</ul>
 						<ul class="right">
-							<li style="background:url(images/174712.35565204.jpg)">
+							<li :style=" 'background:url('+DIR.img+'/index/toys/3.jpg)' ">
 								<a href="items/item.html?id=1602091557">
 									<div class="words">
 										<p class="name">HEROCROSS星球大战白兵</p>
@@ -186,7 +186,7 @@
 									</div>
 								</a>
 							</li>
-							<li style="background:url(images/174536.23717919.jpg)">
+							<li :style=" 'background:url('+DIR.img+'/index/toys/4.jpg)' ">
 								<a href="">
 									<div class="words">
 										<p class="name">复仇者联盟2 Q版收藏公仔</p>

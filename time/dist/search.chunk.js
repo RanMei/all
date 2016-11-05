@@ -9,7 +9,7 @@ webpackJsonp([4],{
 
 	__webpack_require__(12);
 
-	__webpack_require__(70);
+	__webpack_require__(69);
 
 	var _MyHeader = __webpack_require__(45);
 
@@ -27,11 +27,11 @@ webpackJsonp([4],{
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _Showcase = __webpack_require__(72);
+	var _Showcase = __webpack_require__(71);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
-	var _store_index = __webpack_require__(65);
+	var _store = __webpack_require__(3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46,7 +46,7 @@ webpackJsonp([4],{
 
 	new Vue({
 		el: '#root',
-		store: _store_index.store,
+		store: _store.store,
 		data: {
 			DIR: _config.DIR
 		},
@@ -63,13 +63,13 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 70:
+/***/ 69:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(71);
+	var content = __webpack_require__(70);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(15)(content, {});
@@ -90,7 +90,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 71:
+/***/ 70:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(14)();
@@ -105,19 +105,19 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 72:
+/***/ 71:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(73);
-	__vue_script__ = __webpack_require__(75);
+	__webpack_require__(72);
+	__vue_script__ = __webpack_require__(74);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(76);
+	__vue_template__ = __webpack_require__(75);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -148,13 +148,13 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 73:
+/***/ 72:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(74);
+	var content = __webpack_require__(73);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(19)(content, {});
@@ -175,7 +175,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 74:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(14)();
@@ -190,7 +190,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 75:
+/***/ 74:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -209,7 +209,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 76:
+/***/ 75:
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"Showcase\" _v-026ba6ba=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-026ba6ba=\"\">\n\t\t<img class=\"thumb\" _v-026ba6ba=\"\">\n\t\t<p class=\"price\" _v-026ba6ba=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-026ba6ba=\"\">{{a.name}}</p>\n\t</a>\n</div>\n";

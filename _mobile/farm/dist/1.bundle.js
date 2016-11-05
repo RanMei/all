@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 56:
+/***/ 60:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12,7 +12,7 @@ webpackJsonp([1],{
 
 	var _index = __webpack_require__(2);
 
-	var _ShoppingCart = __webpack_require__(57);
+	var _ShoppingCart = __webpack_require__(61);
 
 	function act(action) {
 		_index.$$store.dispatch(action);
@@ -29,7 +29,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 57:
+/***/ 61:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41,7 +41,9 @@ webpackJsonp([1],{
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(11);
+	var _Navbar = __webpack_require__(12);
+
+	var _API = __webpack_require__(21);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49,7 +51,7 @@ webpackJsonp([1],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(58);
+	__webpack_require__(62);
 
 	var ShoppingCart = function (_React$Component) {
 		_inherits(ShoppingCart, _React$Component);
@@ -113,22 +115,15 @@ webpackJsonp([1],{
 			key: 'checkAll',
 			value: function checkAll() {
 				if (this.allChecked()) {
-					this.props.act({
-						type: 'UNCHECK_ALL'
-					});
+					_API.API.UNCHECK_ALL();
 				} else {
-					this.props.act({
-						type: 'CHECK_ALL'
-					});
+					_API.API.CHECK_ALL();
 				};
 			}
 		}, {
 			key: 'checkThis',
 			value: function checkThis(i) {
-				this.props.act({
-					type: 'CHECK_THIS',
-					i: i
-				});
+				_API.API.CHECK_THIS(i);
 			}
 		}, {
 			key: 'minusOne',
@@ -152,15 +147,9 @@ webpackJsonp([1],{
 			key: 'remove',
 			value: function remove(i) {
 				if (this.props.items.length === 0) {
-					this.props.act({
-						type: 'ALERT',
-						text: '您的的购物车是空的！'
-					});
+					_API.API.ALERT('您的购物车是空的！');
 				} else {
-					this.props.act({
-						type: 'CONFIRM',
-						text: '确认删除选中的商品吗？'
-					});
+					_API.API.CONFIRM('确认删除选中的商品吗？');
 				}
 			}
 		}, {
@@ -295,20 +284,24 @@ webpackJsonp([1],{
 		return ShoppingCart;
 	}(React.Component);
 
+	ShoppingCart.defaultProps = {
+		items: []
+	};
+
 	exports.ShoppingCart = ShoppingCart;
 
 /***/ },
 
-/***/ 58:
+/***/ 62:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(59);
+	var content = __webpack_require__(63);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(16)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -326,10 +319,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 59:
+/***/ 63:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(15)();
 	// imports
 
 

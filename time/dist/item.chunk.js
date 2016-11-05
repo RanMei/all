@@ -9,7 +9,7 @@ webpackJsonp([3],{
 
 	__webpack_require__(12);
 
-	__webpack_require__(68);
+	__webpack_require__(67);
 
 	var _MyHeader = __webpack_require__(45);
 
@@ -27,7 +27,7 @@ webpackJsonp([3],{
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _store_index = __webpack_require__(65);
+	var _store = __webpack_require__(3);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -38,7 +38,7 @@ webpackJsonp([3],{
 
 	new Vue({
 		el: '#root',
-		store: _store_index.store,
+		store: _store.store,
 		data: {
 			DIR: _config.DIR,
 			id: '',
@@ -83,13 +83,13 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 68:
+/***/ 67:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(69);
+	var content = __webpack_require__(68);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(15)(content, {});
@@ -110,7 +110,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 69:
+/***/ 68:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(14)();

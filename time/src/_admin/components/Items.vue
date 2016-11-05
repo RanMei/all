@@ -38,10 +38,10 @@
 			<li><input type="text" placeholder="name" class="form-control" v-model="item.name"/></li>
 			<li><input type="text" placeholder="desc_" class="form-control" v-model="item.desc_"/></li>
 			<li><input type="text" placeholder="price" class="form-control" v-model="item.price"/></li>
-			<button class="save btn btn-success m-b-xs w-xs" 
-			@click="SAVE_ITEM">save</button>
-			<button class="delete btn btn-danger" 
-			@click="DELETE_ITEMS">delete</button>
+			<a class="save btn btn-success m-b-xs w-xs" 
+			@click="SAVE_ITEM">save</a>
+			<a class="delete btn btn-danger" 
+			@click="DELETE_ITEMS">delete</a>
 		</div>
 	</div>
 </div>
@@ -90,6 +90,11 @@
 			// 	float: left;
 			// 	//width: 40px; height: 30px;
 			// }
+			input[type="text"] {
+				width: 80%;
+			}
+		}
+		.panel-footer {
 			input[type="text"] {
 				width: 80%;
 			}
