@@ -1,8 +1,6 @@
-import {$$rootDir,$$phpDir} from '../common.jsx';
-
 function shoppingCart (state=[],action){
 
-	var newState = JSON.parse( JSON.stringify(state) );
+	var newState = [...state];
 
 	switch (action.type) {
 		case 'INIT':
@@ -10,33 +8,33 @@ function shoppingCart (state=[],action){
 		case 'LOGIN':
 			return action.shoppingCart;
 		case 'PLUS':
-			// console.log( newState[action.i] )
 			newState[action.i].quantity++;
-			sessionStorage.shoppingCart = JSON.stringify( newState );
 			return newState;
 		case 'MINUS':
 			newState[action.i].quantity--;
-			sessionStorage.shoppingCart = JSON.stringify( newState );
 			return newState;
 		case 'CHECK_THIS':
-			if( newState[action.i].selected===true ){
-				newState[action.i].selected = false;
-			}else{
-				newState[action.i].selected = true;
-			}
-			sessionStorage.shoppingCart = JSON.stringify( newState );
-			return newState;
+			return state.map( (a,i)=>{
+				if(i===action.i){
+					var new_item = {};
+					for(var key in a){
+						new_item[key] = a[key];
+						new_item.selected = a.selected?false:true;
+					}
+					return new_item;
+				}else{
+					return a;
+				}
+			});
 		case 'CHECK_ALL':
 			newState.forEach(a=>{
 				a.selected = true;
 			})
-			sessionStorage.shoppingCart = JSON.stringify( newState );
 			return newState;
 		case 'UNCHECK_ALL':
 			newState.forEach(a=>{
 				a.selected = false;
 			})
-			sessionStorage.shoppingCart = JSON.stringify( newState );
 			return newState;
 		case 'REMOVE':
 			var _newState = [];
@@ -45,11 +43,9 @@ function shoppingCart (state=[],action){
 					_newState.push(a);
 				};
 			})
-			sessionStorage.shoppingCart = JSON.stringify( _newState );
 			return _newState;
 		case 'ADD_TO_CART':
-			newState.push(action.item);
-			return newState;
+			return [...state,action.item];
 		case 'LOGOUT':
 			return [];
 		default:

@@ -10,6 +10,7 @@ export function user(API,$$store){
 				},
 				shoppingCart: []
 			});
+			location.hash = 'member';
 			$$store.dispatch({
 				type: 'ALERT',
 				text: '登录成功！'
@@ -32,6 +33,7 @@ export function user(API,$$store){
 			},
 			shoppingCart: []
 		})
+		location.hash = 'member';
 		$$store.dispatch({
 			type: 'ALERT',
 			text: '登录成功！'
@@ -44,6 +46,11 @@ export function user(API,$$store){
 			$$store.dispatch({
 				type: 'LOGOUT'
 			});
+			$$store.dispatch({
+				type: 'ALERT',
+				text: '注销成功！'
+			});
+			location.hash = 'signin';
 		},10);
 	}
 }

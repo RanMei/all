@@ -74,7 +74,11 @@ webpackJsonp([1],{
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {}
-
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				sessionStorage.shoppingCart = JSON.stringify(this.props.items);
+			}
 			// computed
 
 		}, {

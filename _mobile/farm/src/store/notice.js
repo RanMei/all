@@ -1,5 +1,3 @@
-import {$$rootDir,$$phpDir} from '../common.jsx';
-
 function notice (state={tick:0,text:''},action){
 	switch (action.type) {
 		case 'ALERT':

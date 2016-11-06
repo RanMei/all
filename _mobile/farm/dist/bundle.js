@@ -200,11 +200,11 @@
 
 	var _user = __webpack_require__(3);
 
-	var _shoppingCart = __webpack_require__(5);
+	var _shoppingCart = __webpack_require__(4);
 
-	var _notice = __webpack_require__(6);
+	var _notice = __webpack_require__(5);
 
-	var _mask = __webpack_require__(7);
+	var _mask = __webpack_require__(6);
 
 	var _homeSwiper = __webpack_require__(8);
 
@@ -239,17 +239,13 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.user = undefined;
-
-	var _common = __webpack_require__(4);
-
 	function user() {
 		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 		var action = arguments[1];
@@ -259,10 +255,8 @@
 			case 'INIT':
 				return action.user;
 			case 'LOGIN':
-				location.hash = 'member';
 				return action.user;
 			case 'LOGOUT':
-				location.hash = 'signin';
 				return {};
 			default:
 				return state;
@@ -275,40 +269,20 @@
 /* 4 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var $$rootDir = "http://localhost/fytpy/react/";
-	var $$phpDir = "http://localhost/fytpy/php/";
-	var $$itemDir = "http://localhost/fytpy/items/";
-	var $$imgDir = "http://localhost/fytpy/images/";
-
-	exports.$$rootDir = $$rootDir;
-	exports.$$phpDir = $$phpDir;
-	exports.$$itemDir = $$itemDir;
-	exports.$$imgDir = $$imgDir;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.shoppingCart = undefined;
 
-	var _common = __webpack_require__(4);
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function shoppingCart() {
 		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 		var action = arguments[1];
 
 
-		var newState = JSON.parse(JSON.stringify(state));
+		var newState = [].concat(_toConsumableArray(state));
 
 		switch (action.type) {
 			case 'INIT':
@@ -316,33 +290,33 @@
 			case 'LOGIN':
 				return action.shoppingCart;
 			case 'PLUS':
-				// console.log( newState[action.i] )
 				newState[action.i].quantity++;
-				sessionStorage.shoppingCart = JSON.stringify(newState);
 				return newState;
 			case 'MINUS':
 				newState[action.i].quantity--;
-				sessionStorage.shoppingCart = JSON.stringify(newState);
 				return newState;
 			case 'CHECK_THIS':
-				if (newState[action.i].selected === true) {
-					newState[action.i].selected = false;
-				} else {
-					newState[action.i].selected = true;
-				}
-				sessionStorage.shoppingCart = JSON.stringify(newState);
-				return newState;
+				return state.map(function (a, i) {
+					if (i === action.i) {
+						var new_item = {};
+						for (var key in a) {
+							new_item[key] = a[key];
+							new_item.selected = a.selected ? false : true;
+						}
+						return new_item;
+					} else {
+						return a;
+					}
+				});
 			case 'CHECK_ALL':
 				newState.forEach(function (a) {
 					a.selected = true;
 				});
-				sessionStorage.shoppingCart = JSON.stringify(newState);
 				return newState;
 			case 'UNCHECK_ALL':
 				newState.forEach(function (a) {
 					a.selected = false;
 				});
-				sessionStorage.shoppingCart = JSON.stringify(newState);
 				return newState;
 			case 'REMOVE':
 				var _newState = [];
@@ -351,11 +325,9 @@
 						_newState.push(a);
 					};
 				});
-				sessionStorage.shoppingCart = JSON.stringify(_newState);
 				return _newState;
 			case 'ADD_TO_CART':
-				newState.push(action.item);
-				return newState;
+				return [].concat(_toConsumableArray(state), [action.item]);
 			case 'LOGOUT':
 				return [];
 			default:
@@ -366,18 +338,14 @@
 	exports.shoppingCart = shoppingCart;
 
 /***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/* 5 */
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.notice = undefined;
-
-	var _common = __webpack_require__(4);
-
 	function notice() {
 		var state = arguments.length <= 0 || arguments[0] === undefined ? { tick: 0, text: '' } : arguments[0];
 		var action = arguments[1];
@@ -397,7 +365,7 @@
 	exports.notice = notice;
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -407,7 +375,7 @@
 	});
 	exports.mask = undefined;
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	function mask() {
 		var state = arguments.length <= 0 || arguments[0] === undefined ? {
@@ -431,6 +399,25 @@
 	}
 
 	exports.mask = mask;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var $$rootDir = "http://localhost/fytpy/react/";
+	var $$phpDir = "http://localhost/fytpy/php/";
+	var $$itemDir = "http://localhost/fytpy/items/";
+	var $$imgDir = "http://localhost/fytpy/images/";
+
+	exports.$$rootDir = $$rootDir;
+	exports.$$phpDir = $$phpDir;
+	exports.$$itemDir = $$itemDir;
+	exports.$$imgDir = $$imgDir;
 
 /***/ },
 /* 8 */
@@ -458,23 +445,17 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.items = undefined;
-
-	var _common = __webpack_require__(4);
-
 	function items() {
 		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 		var action = arguments[1];
 
-
-		var newState = JSON.parse(JSON.stringify(state));
 
 		switch (action.type) {
 			case 'INIT':
@@ -531,7 +512,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1795,6 +1776,7 @@
 					},
 					shoppingCart: []
 				});
+				location.hash = 'member';
 				$$store.dispatch({
 					type: 'ALERT',
 					text: '登录成功！'
@@ -1817,6 +1799,7 @@
 				},
 				shoppingCart: []
 			});
+			location.hash = 'member';
 			$$store.dispatch({
 				type: 'ALERT',
 				text: '登录成功！'
@@ -1829,6 +1812,11 @@
 				$$store.dispatch({
 					type: 'LOGOUT'
 				});
+				$$store.dispatch({
+					type: 'ALERT',
+					text: '注销成功！'
+				});
+				location.hash = 'signin';
 			}, 10);
 		};
 	}
@@ -2276,7 +2264,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	var _CommentBox = __webpack_require__(34);
 
@@ -3385,7 +3373,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	var _Navbar = __webpack_require__(12);
 
@@ -3945,7 +3933,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	var _CommentBox = __webpack_require__(34);
 
@@ -4345,7 +4333,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(4);
+	var _common = __webpack_require__(7);
 
 	var _Navbar = __webpack_require__(12);
 

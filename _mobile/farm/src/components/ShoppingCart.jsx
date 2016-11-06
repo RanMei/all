@@ -16,7 +16,9 @@ class ShoppingCart extends React.Component {
 	}
 	componentDidUpdate(){
 	}
-
+	componentWillUnmount(){
+		sessionStorage.shoppingCart = JSON.stringify( this.props.items );
+	}
 	// computed
 	allChecked(){
 		for(var i=0;i<this.props.items.length;i++){

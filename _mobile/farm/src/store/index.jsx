@@ -1,9 +1,9 @@
-import {user} from './user.jsx';
-import {shoppingCart} from './shoppingCart.jsx';
-import {notice} from './notice.jsx';
-import {mask} from './mask.jsx';
-import {homeSwiper} from './homeSwiper.jsx';
-import {items} from './items.jsx';
+import {user} from './user.js';
+import {shoppingCart} from './shoppingCart.js';
+import {notice} from './notice.js';
+import {mask} from './mask.js';
+import {homeSwiper} from './homeSwiper.js';
+import {items} from './items.js';
 import {item} from './item.js';
 
 var createStore = Redux.createStore;

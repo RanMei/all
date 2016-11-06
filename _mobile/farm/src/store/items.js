@@ -1,8 +1,4 @@
-import {$$rootDir,$$phpDir} from '../common.jsx';
-
 function items (state=[],action){
-
-	var newState = JSON.parse( JSON.stringify(state) );
 
 	switch (action.type) {
 		case 'INIT':
