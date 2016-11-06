@@ -2,7 +2,7 @@
 
 A state tree in Redux is like this:
 
-```
+```javascript
 var state = {
 	items: []
 }
