@@ -123,10 +123,20 @@
 
 	var _SigninContainer = __webpack_require__(59);
 
-	var PropTypes = React.PropTypes; //import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
+	//import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 	//import {createStore,combineReducers} from 'redux';
 	//import {Provider,connect} from 'react-redux';
 
+	if (!Object.assign) {
+		Object.assign = function (dest, src) {
+			for (var key in src) {
+				dest[key] = src[key];
+			}
+			return dest;
+		};
+	};
+
+	var PropTypes = React.PropTypes;
 
 	var Router = ReactRouter.Router;
 	var Route = ReactRouter.Route;

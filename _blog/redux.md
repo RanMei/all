@@ -2,7 +2,7 @@
 
 The most efficient way to learn coding is to rewrite the masters' codes in your own way.
 
-How does Redux works?
+How does Redux work?
 
 When Redux.dispatch was called,
 ```javascript
@@ -17,6 +17,8 @@ function dispatch(action) {
 	})
 }
 ```
+applyMiddleware
+changed dispatch function
 
 
 A state tree in Redux is like this:
@@ -36,3 +38,7 @@ The state change would not be detected if you directly mutate "items".
 
 Immutable.js is not necessary for redux.
 It will just make the performance better.
+
+A thunk is a function that wraps an expression and will return the value when called.
+
+currying

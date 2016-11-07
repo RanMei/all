@@ -1,6 +1,16 @@
 //import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 //import {createStore,combineReducers} from 'redux';
 //import {Provider,connect} from 'react-redux';
+
+if( !Object.assign ){
+	Object.assign = function(dest,src){
+		for(var key in src){
+			dest[key] = src[key];
+		}
+		return dest;
+	}
+};
+
 import {$$store} from './store/index.jsx';
 
 
