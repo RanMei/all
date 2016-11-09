@@ -50,19 +50,20 @@ watcher: {
 	}
 }
 
-function Observer
+function Observer()
 
-function Watcher
+function Watcher()
 
-function Dep
+function Dep()
 // the current target watcher being evaluated.
 Dep.target = null;
 
-function Vue
+function Vue()
 // add some methods to Vue.prototype
 initMixin(Vue)
 	Vue.prototype._init = 
 stateMixin(Vue)
+	// vm.$data -> 
 	Object.defineProperty(Vue.prototype, '$data', dataDef)
 	Vue.prototype.$set = 
 	Vue.prototype.$delete = 
@@ -91,27 +92,38 @@ Vue(options)
 		vm._uid = 
 		vm.$options = mergeOptions(parent,options||{},vm)
 		vm._self = vm
-		initLifecycle
+		initLifecycle(vm)
 			vm.$parent = 
 			vm.$root =
 			vm.$children = [];
 			vm.isMounted = false;
-		initEvents
+		initEvents(vm)
 			vm._updateListeners = 
 		callHook(vm,'beforeCreate')
 		initState(vm)
 			vm._watchers = [];
 			initProps(vm)
-
+				var props = vm.$options.props;
+				defineReactive( vm,key, )
 			initData(vm)
 				var data = vm.$options.data;
-				data = vm._data = 
+				// all the variables point to the data object you placed in
+				// options
+				vm._data = typeof data==='function'? data() : data||{};
+				data = vm._data;
 				var keys = Object.keys(data);
 				while(i--)
-					// connect vm[key] with vm._data[key]
+					// create a new reference for vm._data[key]
 					proxy(vm,keys[i])
 						Object.defineProperty(vm,key,{
-
+							configurable: true,
+							enumerable: true,
+							get: function proxyGetter () {
+								return vm._data[key]
+							},
+							set: function proxySetter (val) {
+								vm._data[key] = val
+							}
 						})
 				// create an observer for data
 				observe(data)
@@ -134,32 +146,38 @@ Vue(options)
 						def(data, '__ob__', this)
 						// 
 						observer.walk(data)
+							// for(var key in data)
+							// make every data[key] reactive
 							defineReactive(data, key, data[key])
+								// create a closure
 								// create a new dependency representing data[key]
-								var dep_of_data_key = new Dep();
+								var dep_key = new Dep();
 								// create a new observer for data[key] 
 								// if it is a plain object or an array
 								var childObserver = observe(data[key])
     							// create getter and setter for data[key]
     							// start observe the changing of data[key]
-								Object.defineProperty(data, key, {})
-									*********
-									// when data[key] was used,
-									// which means that data[key] became a dependency for a watcher
-									// push the watcher into dep_key.subs
-									if (Dep.target) {
-										dep_key.depend()
-											if (Dep.target) {
-												var watcher = Dep.target
-												watcher.addDep(dep_key)
-													dep_key.subs.push(watcher)
-									*********
-									// when data[key] was changed
-									// the setter of data[key] was invoked
-									data[key].set(newVal)
+								Object.defineProperty(data, key, {
+									enumerable: true,
+									configurable: true,
+									get: function(){
+										// when data[key] was used,
+										// which means that data[key] became a dependency for a watcher
+										// push the watcher into dep_key.subs, which means that this
+										// watcher becomes a subscriber
+										if (Dep.target) {
+											dep_key.depend()
+												if (Dep.target) {
+													var watcher = Dep.target
+													watcher.addDep(dep_key)
+														dep_key.subs.push(watcher)
+									},
+									set: function(){
+										// when data[key] was changed
+										// the setter of data[key] was invoked
 										// create a new observer to replace the old one
 										childObserver = observe(newVal);
-										// notify all the watchers to update view depending on it
+										// notify all the subscribers to update view
 										dep_key.notify()
 											var subs = dep_key.subs.slice();
 											var watcher = subs[i];
@@ -173,7 +191,8 @@ Vue(options)
 														var value = this.getter.call(this.vm, this.vm);
 														popTarget();
 													watcher.callback.call(wathcer.vm, value, oldValue)
-									********* 
+									}
+								})
 					retrun ob;
 			initComputed(vm)
 				Object.defineProperty(vm, key, computedSharedDefinition);
@@ -205,23 +224,34 @@ Vue(options)
 		callHook(vm,'created')
 			vm.$emit('created')
 		initRender(vm)
+			vm.$vnode = null;
 			if (vm.$options.el) {
 				vm.$mount(vm.$options.el)
+					var options = this.$options
 					if (!options.render) {
 						var template = options.template;
-						if (template) {
+						if (template) {}
 						if (template) {
 							var ref = compileToFunctions(template, {
-								var ast = parse(template.trim(), options);
-									parseHTML()
-										
-								optimize(ast, options);
-				vm._mount()
-					callHook(vm, 'beforeMount')
-					// create a watcher for vm
-					vm._watcher = new Watcher(vm, function () {
-						vm._update(vm._render(), hydrating)
-					}, noop);
-					*********
-					reactiveSetter
-					*********
+								// compile the template into ?
+								var compiled = compile$$1(template, options)
+									// Convert HTML string to AST
+									var ast = parse( template.trim(), options );
+										var root;
+										parseHTML()
+										return root;
+									optimize(ast, options);
+									var code = generate(ast, options);
+							var render = ref.render;
+							options.render = render;
+							return vm._mount()
+								callHook(vm, 'beforeMount')
+								// create a watcher for vm
+								vm._watcher = new Watcher(vm, function () {
+									vm._update(vm._render(), hydrating)
+								}, noop);
+								if(vm.$root===vm){
+									vm._isMounted = true
+									callHook(vm, 'mounted')
+								}
+								return vm;
