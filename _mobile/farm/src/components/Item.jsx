@@ -20,7 +20,9 @@ class Item extends React.Component {
 		console.log('<Item/> constructing',this.props,this.state);
 	}
 	componentWillMount(){
-		this.getItem();
+		var self = this;
+		var id = location.hash.match(/\?id=(\w+)/)[1];
+		API.GET_ITEM(id);
 	}
 	componentWillReceiveProps(new_props){
 		var new_options = JSON.parse( JSON.stringify(this.state.options) )
@@ -44,11 +46,6 @@ class Item extends React.Component {
 		},{
 			img: 'img/items/'+id+'/t.jpg'
 		}];
-	}
-	getItem(){
-		var self = this;
-		var id = location.hash.match(/\?id=(\w+)/)[1];
-		API.GET_ITEM(id);
 	}
 	increase(){
 		var val = this.state.quantity + 1;
@@ -112,7 +109,7 @@ class Item extends React.Component {
     	})
     }
 	render(){
-		console.log('<Item/> rendering',this.props,this.state);
+		console.debug('<Item/> rendering');
 		var self = this;
 		var item = this.props.item;
 		return (

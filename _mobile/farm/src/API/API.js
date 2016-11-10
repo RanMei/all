@@ -27,7 +27,7 @@ API.INIT_HOME = function(){
 	},{
 		background: 'img/index/banner_3.jpg'
 	}];
-	console.log(sessionStorage)
+	// console.log(sessionStorage)
 	$$store.dispatch({
 		type: 'INIT',
 		user: user,
@@ -41,7 +41,6 @@ API.ADD_TO_CART = function(item){
 	if( sessionStorage.shoppingCart ){
 		var shoppingCart = JSON.parse( sessionStorage.shoppingCart );
 		shoppingCart.push( item )
-		console.log(shoppingCart)
 		sessionStorage.shoppingCart = JSON.stringify( shoppingCart );
 	}else{
 		sessionStorage.shoppingCart = '[]';

@@ -902,6 +902,20 @@
 							{ className: "panel-footer" },
 							"This is a E-commerce webapp built with react, react-router, redux and webpack."
 						)
+					),
+					React.createElement(
+						"div",
+						{ className: "panel", href: "./_mobile/farm/index.html", target: "_blank" },
+						React.createElement(
+							"div",
+							{ className: "panel-header" },
+							"Time"
+						),
+						React.createElement(
+							"div",
+							{ className: "panel-footer" },
+							"This is a E-commerce webapp built with vue, vue-router, vuex and webpack."
+						)
 					)
 				);
 			}

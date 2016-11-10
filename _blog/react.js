@@ -20,7 +20,7 @@ componentWillUpdate ()
 componentDidUpdate ()
 componentWillUnmount ()
 
-function ReactElement
+function ReactElement()
 
 ReactMount.render =
 

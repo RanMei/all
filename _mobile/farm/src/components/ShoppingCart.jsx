@@ -7,6 +7,7 @@ import {API} from '../API/API.js';
 class ShoppingCart extends React.Component {
 	constructor (props){
 		super(props);
+		console.log('<ShoppingCart/> constructing')
 	}
 	componentWillMount(){
 	}

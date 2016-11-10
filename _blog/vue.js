@@ -96,6 +96,7 @@ Vue(options)
 			vm.$parent = 
 			vm.$root =
 			vm.$children = [];
+			vm._watcher = null;
 			vm.isMounted = false;
 		initEvents(vm)
 			vm._updateListeners = 
@@ -189,6 +190,13 @@ Vue(options)
 															if (Dep.target) { targetStack.push(Dep.target) }
 															Dep.target = watcher;
 														var value = this.getter.call(this.vm, this.vm);
+															// take vm._watcher for example
+															var vnode = vm._render();
+																vnode = render.call(vm._renderProxy, vm.$createElement)
+															vm._update( vnode, hydrating )
+																vm._vnode = vnode;
+																// perform DOM manipulations
+																vm.$el = vm.__patch__(prevVnode, vnode);
 														popTarget();
 													watcher.callback.call(wathcer.vm, value, oldValue)
 									}
@@ -214,6 +222,7 @@ Vue(options)
 									watcher.getter = expOrFn
 								} else {
 									watcher.getter = parsePath(expOrFn)
+								}
 								watcher.value = this.get();
 									pushTarget(watcher)
 										if (Dep.target) { targetStack.push(Dep.target) }
@@ -228,12 +237,14 @@ Vue(options)
 			if (vm.$options.el) {
 				vm.$mount(vm.$options.el)
 					var options = this.$options
+					// create a render function if there isn't one
 					if (!options.render) {
 						var template = options.template;
 						if (template) {}
 						if (template) {
 							var ref = compileToFunctions(template, {
-								// compile the template into ?
+								var res = {};
+								// compile the template:string into ?
 								var compiled = compile$$1(template, options)
 									// Convert HTML string to AST
 									var ast = parse( template.trim(), options );
@@ -242,11 +253,14 @@ Vue(options)
 										return root;
 									optimize(ast, options);
 									var code = generate(ast, options);
+								res.render = makeFunction(compiled.render)
+									return new Function(compiled.render)
+								return res;
 							var render = ref.render;
 							options.render = render;
 							return vm._mount()
 								callHook(vm, 'beforeMount')
-								// create a watcher for vm
+								// create a watcher for vm and its callback is noop
 								vm._watcher = new Watcher(vm, function () {
 									vm._update(vm._render(), hydrating)
 								}, noop);

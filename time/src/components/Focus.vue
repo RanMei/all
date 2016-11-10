@@ -107,6 +107,11 @@ export default {
 			current: 0
 		}
 	},
+	watch: {
+		curernt: function(val,prev_val){
+			
+		}
+	},
 	methods: {
 		prev: function(){
 			if(this.current>0){

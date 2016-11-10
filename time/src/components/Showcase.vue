@@ -5,7 +5,7 @@
 		:href=" DIR.root+'/item.html?id='+a.id ">
 			<img class="thumb"/>
 			<p class="price">￥{{a.price}}</p>
-			<p class="name">{{a.name}}</p>
+			<p class="name">{{a.name||'--'}}</p>
 		</a>
 	</div>
 </template>

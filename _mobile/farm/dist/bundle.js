@@ -1704,7 +1704,7 @@
 		}, {
 			background: 'img/index/banner_3.jpg'
 		}];
-		console.log(sessionStorage);
+		// console.log(sessionStorage)
 		_index.$$store.dispatch({
 			type: 'INIT',
 			user: user,
@@ -1718,7 +1718,6 @@
 		if (sessionStorage.shoppingCart) {
 			var shoppingCart = JSON.parse(sessionStorage.shoppingCart);
 			shoppingCart.push(item);
-			console.log(shoppingCart);
 			sessionStorage.shoppingCart = JSON.stringify(shoppingCart);
 		} else {
 			sessionStorage.shoppingCart = '[]';
@@ -3981,7 +3980,9 @@
 		_createClass(Item, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.getItem();
+				var self = this;
+				var id = location.hash.match(/\?id=(\w+)/)[1];
+				_API.API.GET_ITEM(id);
 			}
 		}, {
 			key: 'componentWillReceiveProps',
@@ -4009,13 +4010,6 @@
 				}, {
 					img: 'img/items/' + id + '/t.jpg'
 				}];
-			}
-		}, {
-			key: 'getItem',
-			value: function getItem() {
-				var self = this;
-				var id = location.hash.match(/\?id=(\w+)/)[1];
-				_API.API.GET_ITEM(id);
 			}
 		}, {
 			key: 'increase',
@@ -4101,7 +4095,7 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				console.log('<Item/> rendering', this.props, this.state);
+				console.debug('<Item/> rendering');
 				var self = this;
 				var item = this.props.item;
 				return React.createElement(

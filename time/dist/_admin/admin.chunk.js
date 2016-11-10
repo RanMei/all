@@ -893,7 +893,6 @@
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__webpack_require__(17);
 	__vue_script__ = __webpack_require__(20);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
@@ -902,24 +901,16 @@
 	__vue_template__ = __webpack_require__(21);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1fca1f5a/Navbar.vue";
+	    var id = "./Navbar.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -944,8 +935,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1fca1f5a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1fca1f5a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-935f6318&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-935f6318&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -963,7 +954,7 @@
 
 
 	// module
-	exports.push([module.id, ".Navbar[_v-1fca1f5a] {\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, ".Navbar[_v-935f6318] {\n  overflow: hidden;\n}\n", ""]);
 
 	// exports
 
@@ -1211,7 +1202,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Navbar panel\" _v-1fca1f5a=\"\">\n\t<a class=\"btn btn-danger btn-rounded\" href=\"#/\" _v-1fca1f5a=\"\">\n\t\tusers\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/\" _v-1fca1f5a=\"\">\n\t\titems\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/signin\" _v-1fca1f5a=\"\">\n\t\tsignin\n\t</a>\n\t{{id}}\n</div>\n";
+	module.exports = "\n<div class=\"Navbar panel\" _v-935f6318=\"\">\n\t<a class=\"btn btn-danger btn-rounded\" href=\"#/\" _v-935f6318=\"\">\n\t\tusers\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/\" _v-935f6318=\"\">\n\t\titems\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/signin\" _v-935f6318=\"\">\n\t\tsignin\n\t</a>\n\t{{id}}\n</div>\n";
 
 /***/ },
 /* 22 */
@@ -1220,7 +1211,6 @@
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__vue_script__ = __webpack_require__(23);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\_admin\\routes\\items.vue: named exports in *.vue files are ignored.");
@@ -1228,24 +1218,16 @@
 	__vue_template__ = __webpack_require__(32);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-13614fbe/items.vue";
+	    var id = "./items.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -1285,7 +1267,6 @@
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__webpack_require__(25);
 	__vue_script__ = __webpack_require__(27);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
@@ -1294,24 +1275,16 @@
 	__vue_template__ = __webpack_require__(31);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-918ce126/items.vue";
+	    var id = "./items.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -1336,8 +1309,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-918ce126&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./items.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-918ce126&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./items.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-41bf692c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./items.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-41bf692c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./items.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1355,7 +1328,7 @@
 
 
 	// module
-	exports.push([module.id, ".ITEMS a[_v-918ce126] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS li[_v-918ce126] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-918ce126]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-918ce126]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-918ce126]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-918ce126]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-918ce126] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-918ce126] {\n  width: 80%;\n}\n.ITEMS .panel-footer input[type=\"text\"][_v-918ce126] {\n  width: 80%;\n}\ntd[_v-918ce126] {\n  height: 50px;\n}\n.item[_v-918ce126]:hover {\n  background: lightblue;\n}\n.item.active[_v-918ce126] {\n  background: #d9edf7;\n}\n", ""]);
+	exports.push([module.id, ".ITEMS a[_v-41bf692c] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-41bf692c] {\n  overflow: hidden;\n}\n.ITEMS li[_v-41bf692c] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-41bf692c]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-41bf692c]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-41bf692c]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-41bf692c]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-41bf692c]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-41bf692c] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-41bf692c] {\n  width: 80%;\n}\n.ITEMS .panel-footer input[type=\"text\"][_v-41bf692c] {\n  width: 80%;\n}\ntd[_v-41bf692c] {\n  height: 50px;\n}\n.item[_v-41bf692c]:hover {\n  background: lightblue;\n}\n.item.active[_v-41bf692c] {\n  background: #d9edf7;\n}\n", ""]);
 
 	// exports
 
@@ -1478,7 +1451,7 @@
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"ITEMS\" _v-918ce126=\"\">\n\t<div class=\"panel panel-default\" _v-918ce126=\"\">\n\t\t<div class=\"panel-body\" _v-918ce126=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-918ce126=\"\">\n\t\t<div class=\"panel-heading\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">id</li>\n\t\t\t<li _v-918ce126=\"\">name</li>\n\t\t\t<li _v-918ce126=\"\">desc_</li>\n\t\t\t<li _v-918ce126=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-918ce126=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-918ce126=\"\">\n\t\t\t\t<li _v-918ce126=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-918ce126=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-918ce126=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-918ce126=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-918ce126=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-918ce126=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-918ce126=\"\">\n\t\t\t<li _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\">{{item.id}}</li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-918ce126=\"\"></li>\n\t\t\t<li _v-918ce126=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-918ce126=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-918ce126=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-918ce126=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"ITEMS\" _v-41bf692c=\"\">\n\t<div class=\"panel panel-default\" _v-41bf692c=\"\">\n\t\t<div class=\"panel-body\" _v-41bf692c=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-41bf692c=\"\">\n\t\t<div class=\"panel-heading\" _v-41bf692c=\"\">\n\t\t\t<li _v-41bf692c=\"\"></li>\n\t\t\t<li _v-41bf692c=\"\">id</li>\n\t\t\t<li _v-41bf692c=\"\">name</li>\n\t\t\t<li _v-41bf692c=\"\">desc_</li>\n\t\t\t<li _v-41bf692c=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-41bf692c=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-41bf692c=\"\">\n\t\t\t\t<li _v-41bf692c=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-41bf692c=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-41bf692c=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-41bf692c=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-41bf692c=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-41bf692c=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-41bf692c=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-41bf692c=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-41bf692c=\"\">\n\t\t\t<li _v-41bf692c=\"\"></li>\n\t\t\t<li _v-41bf692c=\"\">{{item.id}}</li>\n\t\t\t<li _v-41bf692c=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-41bf692c=\"\"></li>\n\t\t\t<li _v-41bf692c=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-41bf692c=\"\"></li>\n\t\t\t<li _v-41bf692c=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-41bf692c=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-41bf692c=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-41bf692c=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -1493,7 +1466,6 @@
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__webpack_require__(34);
 	__vue_script__ = __webpack_require__(36);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
@@ -1502,24 +1474,16 @@
 	__vue_template__ = __webpack_require__(37);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-9993bf14/item.vue";
+	    var id = "./item.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -1544,8 +1508,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-9993bf14&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./item.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-9993bf14&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./item.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0c82da52&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./item.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0c82da52&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./item.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1563,7 +1527,7 @@
 
 
 	// module
-	exports.push([module.id, ".Item .row_[_v-9993bf14] {\n  padding: 4px 0;\n  overflow: hidden;\n}\n.Item .row_ li[_v-9993bf14] {\n  float: left;\n}\n.Item .row_ .label_[_v-9993bf14] {\n  padding: 7px;\n  width: 100px;\n}\n", ""]);
+	exports.push([module.id, ".Item .row_[_v-0c82da52] {\n  padding: 4px 0;\n  overflow: hidden;\n}\n.Item .row_ li[_v-0c82da52] {\n  float: left;\n}\n.Item .row_ .label_[_v-0c82da52] {\n  padding: 7px;\n  width: 100px;\n}\n", ""]);
 
 	// exports
 
@@ -1589,7 +1553,7 @@
 /* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Item\" _v-9993bf14=\"\">\n\t<div class=\"panel panel-default\" _v-9993bf14=\"\">\n\t\t<div class=\"panel-heading\" _v-9993bf14=\"\">\n\t\t\t{{item.id}}\n\t\t</div>\n\t\t<div class=\"panel-body\" _v-9993bf14=\"\">\n\t\t\t<div class=\"row_\" _v-9993bf14=\"\">\n\t\t\t\t<li class=\"label_\" _v-9993bf14=\"\">name</li>\n\t\t\t\t<li _v-9993bf14=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-9993bf14=\"\">\n\t\t\t\t</li>\n\t\t\t</div>\n\t\t\t<div class=\"row_\" _v-9993bf14=\"\">\n\t\t\t\t<li class=\"label_\" _v-9993bf14=\"\">desc</li>\n\t\t\t\t<li _v-9993bf14=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"desc\" class=\"form-control\" v-model=\"item.desc_\" _v-9993bf14=\"\">\n\t\t\t\t</li>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"Item\" _v-0c82da52=\"\">\n\t<div class=\"panel panel-default\" _v-0c82da52=\"\">\n\t\t<div class=\"panel-heading\" _v-0c82da52=\"\">\n\t\t\t{{item.id}}\n\t\t</div>\n\t\t<div class=\"panel-body\" _v-0c82da52=\"\">\n\t\t\t<div class=\"row_\" _v-0c82da52=\"\">\n\t\t\t\t<li class=\"label_\" _v-0c82da52=\"\">name</li>\n\t\t\t\t<li _v-0c82da52=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-0c82da52=\"\">\n\t\t\t\t</li>\n\t\t\t</div>\n\t\t\t<div class=\"row_\" _v-0c82da52=\"\">\n\t\t\t\t<li class=\"label_\" _v-0c82da52=\"\">desc</li>\n\t\t\t\t<li _v-0c82da52=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"desc\" class=\"form-control\" v-model=\"item.desc_\" _v-0c82da52=\"\">\n\t\t\t\t</li>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 38 */
@@ -1598,7 +1562,6 @@
 	"use strict";
 
 	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
 	__webpack_require__(39);
 	__vue_script__ = __webpack_require__(41);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
@@ -1607,24 +1570,16 @@
 	__vue_template__ = __webpack_require__(42);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	  (typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports).template = __vue_template__;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
 	if (false) {
 	  (function () {
 	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6d5878b1/Signin.vue";
+	    var id = "./Signin.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -1649,8 +1604,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6d5878b1&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Signin.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6d5878b1&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Signin.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ab27e15c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Signin.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ab27e15c&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Signin.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1668,7 +1623,7 @@
 
 
 	// module
-	exports.push([module.id, ".Signin[_v-6d5878b1] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-6d5878b1] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-6d5878b1] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-6d5878b1] {\n  box-sizing: border-box;\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-6d5878b1],\n.Signin .panel__ input[type=\"password\"][_v-6d5878b1] {\n  box-sizing: border-box;\n  width: 380px;\n  height: 52px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-6d5878b1] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-6d5878b1] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-6d5878b1] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-6d5878b1] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-6d5878b1] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-6d5878b1] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .check_b_container[_v-6d5878b1] {\n  overflow: hidden;\n}\n.Signin .check_b_container .checkbox_[_v-6d5878b1] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .check_b_container .checkbox_.checked[_v-6d5878b1] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .check_b_container .checkbox_ .square[_v-6d5878b1] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .check_b_container p[_v-6d5878b1] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-6d5878b1] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-6d5878b1] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-6d5878b1] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-6d5878b1] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-6d5878b1] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-6d5878b1]:hover {\n  background: #0379C8;\n}\n", ""]);
+	exports.push([module.id, ".Signin[_v-ab27e15c] {\n  overflow: hidden;\n  background: -webkit-linear-gradient(#E2E2E4, #E0E0E2);\n  background: linear-gradient(#E2E2E4, #E0E0E2);\n}\n.Signin .shade__[_v-ab27e15c] {\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .shade__ > div[_v-ab27e15c] {\n  box-shadow: 0 0 50px 35px grey;\n}\n.Signin .panel__[_v-ab27e15c] {\n  box-sizing: border-box;\n  position: relative;\n  width: 1000px;\n  height: 600px;\n  margin: auto;\n  margin-bottom: 150px;\n  border-radius: 5px;\n  background: white;\n  box-shadow: 0 0 10px lightgrey;\n  overflow: hidden;\n}\n.Signin .panel__ input[type=\"text\"][_v-ab27e15c],\n.Signin .panel__ input[type=\"password\"][_v-ab27e15c] {\n  box-sizing: border-box;\n  width: 380px;\n  height: 52px;\n  border-radius: 5px;\n  border: 1px solid #a5a5a5;\n  text-indent: 10px;\n  font-size: 16px;\n}\n.Signin .panel__ input[_v-ab27e15c] {\n  outline: none;\n}\n.Signin .panel__ input.active[_v-ab27e15c] {\n  border: 1px solid #2B9DD5 !important;\n  box-shadow: 0 0 2px #2B9DD5;\n}\n.Signin .panel__ input.success[_v-ab27e15c] {\n  border: 1px solid #69B91F !important;\n  box-shadow: 0 0 2px #69B91F;\n}\n.Signin .panel__ input.error[_v-ab27e15c] {\n  border: 1px solid #D2291E !important;\n  box-shadow: 0 0 2px #D2291E;\n}\n.Signin .info[_v-ab27e15c] {\n  height: 20px;\n  color: #D2291E;\n  line-height: 20px;\n  text-indent: 5px;\n}\n.Signin .middle-line[_v-ab27e15c] {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  width: 1px;\n  height: 100%;\n  background: -webkit-linear-gradient(white, lightgrey, white);\n  background: linear-gradient(white, lightgrey, white);\n}\n.Signin .check_b_container[_v-ab27e15c] {\n  overflow: hidden;\n}\n.Signin .check_b_container .checkbox_[_v-ab27e15c] {\n  float: left;\n  box-sizing: border-box;\n  width: 20px;\n  height: 20px;\n  margin-right: 10px;\n  border: 2px solid #a5a5a5;\n  cursor: pointer;\n}\n.Signin .check_b_container .checkbox_.checked[_v-ab27e15c] {\n  border: 2px solid #2B9DD5;\n}\n.Signin .check_b_container .checkbox_ .square[_v-ab27e15c] {\n  width: 10px;\n  height: 10px;\n  margin: 3px 0 0 3px;\n  background: #2B9DD5;\n  -webkit-transition: 0.1s;\n  transition: 0.1s;\n}\n.Signin .check_b_container p[_v-ab27e15c] {\n  float: left;\n  height: 20px;\n  line-height: 20px;\n}\n.Signin .register[_v-ab27e15c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .register-center[_v-ab27e15c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .register-header[_v-ab27e15c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .register-header > h1[_v-ab27e15c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .login[_v-ab27e15c] {\n  position: relative;\n  width: 50%;\n  float: left;\n}\n.Signin .login-center[_v-ab27e15c] {\n  width: 380px;\n  margin: auto;\n}\n.Signin .login-header[_v-ab27e15c] {\n  width: 100%;\n  height: 100px;\n  overflow: hidden;\n}\n.Signin .login-header > h1[_v-ab27e15c] {\n  text-align: center;\n  margin: 20px 0 0 0;\n}\n.Signin .btn__[_v-ab27e15c] {\n  width: 257px;\n  height: 53px;\n  margin: auto;\n  margin-top: 20px;\n  border-radius: 26.5px;\n  background: #2B9DD5;\n  color: white;\n  text-align: center;\n  line-height: 53px;\n  font-size: 18px;\n  cursor: pointer;\n}\n.Signin .btn__[_v-ab27e15c]:hover {\n  background: #0379C8;\n}\n", ""]);
 
 	// exports
 
@@ -1776,7 +1731,7 @@
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Signin wrapper\" _v-6d5878b1=\"\">\n\t<div class=\"shade__\" _v-6d5878b1=\"\">\n\t\t<div _v-6d5878b1=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-6d5878b1=\"\">\n\t\t<div class=\"register\" _v-6d5878b1=\"\">\n\t\t\t<div class=\"register-center\" _v-6d5878b1=\"\">\n\t\t\t\t<div class=\"register-header\" _v-6d5878b1=\"\">\n\t\t\t\t\t<h1 _v-6d5878b1=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-6d5878b1=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\">{{info.password}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" :class=\"state.password2\" @focus=\"onFocus('password2')\" @blur=\"check_password2\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\">{{info.password2}}</p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-6d5878b1=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-6d5878b1=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-6d5878b1=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-6d5878b1=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-6d5878b1=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-6d5878b1=\"\"></div>\n\t\t<div class=\"login\" _v-6d5878b1=\"\">\n\t\t\t<div class=\"login-center\" _v-6d5878b1=\"\">\n\t\t\t\t<div class=\"login-header\" _v-6d5878b1=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-6d5878b1=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-6d5878b1=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" v-model=\"signin_form.id\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" v-model=\"signin_form.password\" _v-6d5878b1=\"\">\n\t\t\t\t\t<p class=\"info\" _v-6d5878b1=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-6d5878b1=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-6d5878b1=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-6d5878b1=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-6d5878b1=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" @click=\"LOGIN\" _v-6d5878b1=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"Signin wrapper\" _v-ab27e15c=\"\">\n\t<div class=\"shade__\" _v-ab27e15c=\"\">\n\t\t<div _v-ab27e15c=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-ab27e15c=\"\">\n\t\t<div class=\"register\" _v-ab27e15c=\"\">\n\t\t\t<div class=\"register-center\" _v-ab27e15c=\"\">\n\t\t\t\t<div class=\"register-header\" _v-ab27e15c=\"\">\n\t\t\t\t\t<h1 _v-ab27e15c=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-ab27e15c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\">{{info.password}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" :class=\"state.password2\" @focus=\"onFocus('password2')\" @blur=\"check_password2\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\">{{info.password2}}</p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-ab27e15c=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-ab27e15c=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-ab27e15c=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-ab27e15c=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-ab27e15c=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-ab27e15c=\"\"></div>\n\t\t<div class=\"login\" _v-ab27e15c=\"\">\n\t\t\t<div class=\"login-center\" _v-ab27e15c=\"\">\n\t\t\t\t<div class=\"login-header\" _v-ab27e15c=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-ab27e15c=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-ab27e15c=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" v-model=\"signin_form.id\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" v-model=\"signin_form.password\" _v-ab27e15c=\"\">\n\t\t\t\t\t<p class=\"info\" _v-ab27e15c=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-ab27e15c=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-ab27e15c=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-ab27e15c=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-ab27e15c=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" @click=\"LOGIN\" _v-ab27e15c=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 /******/ ]);

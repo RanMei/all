@@ -59,7 +59,10 @@ webpackJsonp([1],{
 		function ShoppingCart(props) {
 			_classCallCheck(this, ShoppingCart);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
+
+			console.log('<ShoppingCart/> constructing');
+			return _this;
 		}
 
 		_createClass(ShoppingCart, [{
