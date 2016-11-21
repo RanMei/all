@@ -1,6 +1,0 @@
-Redux.createStore(reducer,initialState,enhancer)
-	return {
-		getState,
-		dispatch,
-		
-	}

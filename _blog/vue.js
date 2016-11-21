@@ -114,7 +114,8 @@ Vue(options)
 				data = vm._data;
 				var keys = Object.keys(data);
 				while(i--)
-					// create a new reference for vm._data[key]
+					// define a property on vm and turn it into a getter/setter
+					// to proxy vm._data[key]
 					proxy(vm,keys[i])
 						Object.defineProperty(vm,key,{
 							configurable: true,
@@ -128,11 +129,12 @@ Vue(options)
 						})
 				// create an observer for data
 				observe(data)
+					// primitive-typed values need no observer
 					if (!isObject(data)) {
 						return
 					}
-					var ob;
-					ob = new Observer(data);
+					var observer;
+					observer = new Observer(data);
 						var observer = this;
 						observer.value = data;
 						// create a dependency representing data
@@ -156,7 +158,7 @@ Vue(options)
 								// create a new observer for data[key] 
 								// if it is a plain object or an array
 								var childObserver = observe(data[key])
-    							// create getter and setter for data[key]
+    							// create a getter/setter for data[key]
     							// start observe the changing of data[key]
 								Object.defineProperty(data, key, {
 									enumerable: true,
@@ -201,7 +203,7 @@ Vue(options)
 													watcher.callback.call(wathcer.vm, value, oldValue)
 									}
 								})
-					retrun ob;
+					retrun observer;
 			initComputed(vm)
 				Object.defineProperty(vm, key, computedSharedDefinition);
 			initMethods(vm)
