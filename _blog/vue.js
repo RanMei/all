@@ -105,6 +105,7 @@ Vue(options)
 			vm._watchers = [];
 			initProps(vm)
 				var props = vm.$options.props;
+				// for every prop
 				defineReactive( vm,key, )
 			initData(vm)
 				var data = vm.$options.data;
@@ -128,7 +129,7 @@ Vue(options)
 							}
 						})
 				// create an observer for data
-				observe(data)
+				observe(data:value)
 					// primitive-typed values need no observer
 					if (!isObject(data)) {
 						return
@@ -163,7 +164,7 @@ Vue(options)
 								Object.defineProperty(data, key, {
 									enumerable: true,
 									configurable: true,
-									get: function(){
+									get: function reactiveGetter(){
 										// when data[key] was used,
 										// which means that data[key] became a dependency for a watcher
 										// push the watcher into dep_key.subs, which means that this
@@ -175,7 +176,7 @@ Vue(options)
 													watcher.addDep(dep_key)
 														dep_key.subs.push(watcher)
 									},
-									set: function(){
+									set: function reactiveSetter(){
 										// when data[key] was changed
 										// the setter of data[key] was invoked
 										// create a new observer to replace the old one
@@ -183,6 +184,7 @@ Vue(options)
 										// notify all the subscribers to update view
 										dep_key.notify()
 											var subs = dep_key.subs.slice();
+											// for every watcher
 											var watcher = subs[i];
 											watcher.update();
 												watcher.run();
