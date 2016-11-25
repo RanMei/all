@@ -176,7 +176,7 @@ Vue(options)
 													watcher.addDep(dep_key)
 														dep_key.subs.push(watcher)
 									},
-									set: function reactiveSetter(){
+									set: function reactiveSetter(newVal){
 										// when data[key] was changed
 										// the setter of data[key] was invoked
 										// create a new observer to replace the old one
@@ -196,6 +196,8 @@ Vue(options)
 														var value = this.getter.call(this.vm, this.vm);
 															// take vm._watcher for example
 															var vnode = vm._render();
+																// call the render-function
+																// vm._renderProxy is actually vm?
 																vnode = render.call(vm._renderProxy, vm.$createElement)
 															vm._update( vnode, hydrating )
 																vm._vnode = vnode;
@@ -253,7 +255,8 @@ Vue(options)
 									// Convert HTML string to AST
 									var ast = parse( template.trim(), options );
 										var root;
-										parseHTML()
+										parseHTML(html,options)
+
 										return root;
 									optimize(ast, options);
 									var code = generate(ast, options);
