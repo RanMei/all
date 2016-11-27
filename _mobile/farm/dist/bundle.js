@@ -3560,9 +3560,12 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this, props));
 
 			var self = _this;
-
+			_this.width = 0;
+			_this.Swiper = null;
+			_this.train = null;
+			_this.dots = null;
 			_this.$trainOffset = 0;
-			_this.$currentOne = _this.props.items.length;
+			_this.$currentOne = 0;
 
 			_this.X0 = null;
 			_this.X1 = null;
@@ -3571,13 +3574,13 @@
 
 			_this.cycle = false;
 			_this.switching = false;
+			_this.moveCount = 0;
+			_this.canScroll = false;
 			//console.log(this.props)
 
 			_this.state = {
 				items: _this.getNewItems(_this.props.items),
-				trainStyle: {
-					marginLeft: '-' + _this.props.items.length + '00%'
-				},
+				trainStyle: {},
 				itemStyle: {},
 				currentDot: 0
 			};
@@ -3591,10 +3594,12 @@
 
 				//console.log(this.props)
 				var self = this;
-				//self.setWidth();
+				this.train = this.refs.train;
+
+				self.setWidth();
 				window.addEventListener('resize', function () {
-					//self.setWidth();
-				});
+					self.setWidth();
+				}, 50);
 				if (this.props.autoplay === true) {
 					setInterval(function () {
 						if (_this2.cycle === false && _this2.switching === false) {
@@ -3603,27 +3608,23 @@
 						};
 					}, self.props.interval);
 				};
-				this.$currentOne = this.props.items.length;
 				//console.log(this.$currentOne)
 			}
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(newProps) {
 				this.$trainOffset = 0;
-				this.$currentOne = newProps.items.length;
+				this.$currentOne = 0;
+				this.train.style.transition = '0s';
+				this.train.style.transform = 'translate3d(0,0,0)';
 				this.setState({
-					items: this.getNewItems(newProps.items),
-					trainStyle: {
-						marginLeft: '-' + newProps.items.length + '00%'
-					}
+					items: this.getNewItems(newProps.items)
 				});
 			}
 		}, {
 			key: 'getNewItems',
 			value: function getNewItems(items) {
-				var items1 = JSON.parse(JSON.stringify(items));
-				var items2 = JSON.parse(JSON.stringify(items));
-				var newItems = items1.concat(items2);
+				var newItems = JSON.parse(JSON.stringify(items));
 				newItems.forEach(function (a, i) {
 					a._id = i;
 				});
@@ -3642,46 +3643,46 @@
 			key: 'setWidth',
 			value: function setWidth() {
 				var self = this;
-				var _Swiper = React.findDOMNode(self.refs.Swiper);
-				self.$width = Number(document.defaultView.getComputedStyle(_Swiper).width.replace(/px/, ''));
+				var swiper = self.refs.Swiper;
+				self.width = Number(document.defaultView.getComputedStyle(swiper).width.replace(/px/, ''));
+				self.$trainOffset = -self.width * self.$currentOne;
+				self.train.style.transition = '0s';
+				self.train.style.transform = 'translate3d(' + self.$trainOffset + ',0,0)';
 			}
+		}, {
+			key: 'updatePagi',
+			value: function updatePagi() {}
 		}, {
 			key: 'toNext',
 			value: function toNext() {
 				var _this3 = this;
 
 				var self = this;
-				if (this.switching === false) {
+				if (this.cycle) {
 					this.switching = true;
 					if (self.$currentOne < self.state.items.length - 1) {
 						self.$currentOne++;
+						self.$trainOffset = -self.$currentOne * self.width;
 					} else {
-						self.$currentOne = 0;
+						if (self.props.carousel) {
+							self.$currentOne = 0;
+							self.$trainOffset = -self.state.items.length * self.width;
+						} else if (self.props.autoplay) {
+							self.$currentOne = 0;
+							self.$trainOffset = 0;
+						} else {
+							self.$trainOffset = -self.$currentOne * self.width;
+						}
 					};
-					//console.log(self.$currentOne)
-					this.setState({
-						trainStyle: {
-							marginLeft: '-' + this.props.items.length + '00%',
-							transition: this.props.duration / 1000 + 's',
-							transform: 'translate3d(-5%,0,0)',
-							webkitTransform: 'translate3d(-5%,0,0)'
-						},
-						currentDot: self.getCurrentDot(self)
-					});
+					self.setState({ currentDot: self.$currentOne });
+					self.train.style.transition = self.props.duration + 'ms';
+					self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
 					setTimeout(function () {
-						var newItems = JSON.parse(JSON.stringify(_this3.state.items));
-						var a = newItems.splice(0, 1)[0];
-						newItems.push(a);
-						//console.log(newItems)
-						_this3.setState({
-							items: newItems,
-							trainStyle: {
-								marginLeft: '-' + _this3.props.items.length + '00%',
-								transition: '0s',
-								transform: 'translate3d(0,0,0)',
-								webkitTransform: 'translate3d(0,0,0)'
-							}
-						});
+						self.train.style.transition = '0s';
+						if (self.props.carousel && self.$currentOne === 0) {
+							self.$trainOffset = 0;
+							self.train.style.transform = 'translate3d(0,0,0)';
+						};
 						_this3.switching = false;
 						_this3.cycle = false;
 					}, self.props.duration);
@@ -3693,36 +3694,28 @@
 				var _this4 = this;
 
 				var self = this;
-				if (this.switching === false) {
+				if (this.cycle) {
 					this.switching = true;
 					if (self.$currentOne > 0) {
 						self.$currentOne--;
+						self.$trainOffset = -self.$currentOne * self.width;
 					} else {
-						self.$currentOne = self.state.items.length - 1;
+						if (self.props.carousel) {
+							self.$currentOne = self.state.items.length - 1;
+							self.$trainOffset = self.width;
+						} else {
+							self.$trainOffset = 0;
+						};
 					};
-					this.setState({
-						trainStyle: {
-							marginLeft: '-' + this.props.items.length + '00%',
-							transition: this.props.duration / 1000 + 's',
-							transform: 'translate3d(5%,0,0)',
-							webkitTransform: 'translate3d(5%,0,0)'
-						},
-						currentDot: self.getCurrentDot(self)
-					});
+					self.setState({ currentDot: self.$currentOne });
+					self.train.style.transition = self.props.duration + 'ms';
+					self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
 					setTimeout(function () {
-						var newItems = JSON.parse(JSON.stringify(_this4.state.items));
-						var a = newItems.splice(newItems.length - 1, 1)[0];
-						newItems.unshift(a);
-						//console.log(newItems)
-						_this4.setState({
-							items: newItems,
-							trainStyle: {
-								marginLeft: '-' + _this4.props.items.length + '00%',
-								transition: '0s',
-								transform: 'translate3d(0,0,0)',
-								webkitTransform: 'translate3d(0,0,0)'
-							}
-						});
+						self.train.style.transition = '0s';
+						if (self.props.carousel && self.$currentOne === self.state.items.length - 1) {
+							self.$trainOffset = -(self.state.items.length - 1) * self.width;
+							self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+						};
 						_this4.switching = false;
 						_this4.cycle = false;
 					}, self.props.duration);
@@ -3731,51 +3724,49 @@
 		}, {
 			key: 'handleTouchStart',
 			value: function handleTouchStart(e) {
-				if (this.cycle === false && this.switching === false) {
+				if (!this.cycle) {
 					this.cycle = true;
+					this.moveCount = 0;
 					this.X0 = this.X1 = e.changedTouches[0].pageX;
 				}
 			}
 		}, {
 			key: 'handleTouchMove',
 			value: function handleTouchMove(e) {
-				if (this.cycle === true && this.switching === false) {
+				if (this.cycle) {
+					this.moveCount++;
+
 					if (this.props.sticky === true) {
 						this.X2 = e.changedTouches[0].pageX;
 						var distance = this.X2 - this.X1;
 						this.$trainOffset += distance;
+						this.train.style.transition = '0s';
+						this.train.style.transform = 'translate3d(' + this.$trainOffset + 'px,0,0)';
 						this.X1 = this.X2;
-						var trainStyle = {
-							marginLeft: '-' + this.props.items.length + '00%',
-							transition: '0s',
-							transform: 'translate3d(' + this.$trainOffset + 'px,0,0)',
-							webkitTransform: 'translate3d(' + this.$trainOffset + 'px,0,0)'
-						};
-						this.setState({
-							trainStyle: trainStyle
-						});
 					};
 				};
 			}
 		}, {
 			key: 'handleTouchEnd',
 			value: function handleTouchEnd(e) {
-				if (this.cycle === true && this.switching === false) {
+				if (this.cycle) {
 					this.X2 = e.changedTouches[0].pageX;
 					var distance = this.X2 - this.X0;
-					//console.log(distance);
-					this.$trainOffset = 0;
 					if (distance > 0) {
 						this.toPrev();
 					} else if (distance < 0) {
 						this.toNext();
-					} else {}
+					} else {
+						this.switching = false;
+						this.cycle = false;
+					}
 				};
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var self = this;
+				var items = this.state.items;
 				return React.createElement(
 					'div',
 					{ className: 'Swiper', ref: 'Swiper',
@@ -3785,8 +3776,13 @@
 						onTouchEnd: this.handleTouchEnd.bind(this) },
 					React.createElement(
 						'ul',
-						{ className: 'train', style: this.state.trainStyle },
-						this.state.items.map(function (a, i) {
+						{ className: 'train',
+							style: { marginLeft: self.props.carousel ? '-100%' : '0' },
+							ref: 'train' },
+						this.props.carousel && items.length > 0 ? React.createElement('a', { className: 'item', style: {
+								backgroundImage: items[items.length - 1].background ? 'url(' + items[items.length - 1].background + ')' : ''
+							} }) : null,
+						items.map(function (a, i) {
 							return React.createElement(
 								'a',
 								{ className: 'item', href: a.href || '#/', key: i, style: {
@@ -3794,7 +3790,10 @@
 									} },
 								a.img ? React.createElement('img', { src: a.img }) : null
 							);
-						})
+						}),
+						this.props.carousel && items.length > 0 ? React.createElement('a', { className: 'item', style: {
+								backgroundImage: items[0].background ? 'url(' + items[0].background + ')' : ''
+							} }) : null
 					),
 					React.createElement(
 						'div',
@@ -3816,8 +3815,9 @@
 
 	Swiper.defaultProps = {
 		items: [],
-		duration: 500,
-		interval: 3000,
+		duration: 300,
+		interval: 1500,
+		carousel: false,
 		sticky: true,
 		autoplay: true,
 		pagi: true
