@@ -1,0 +1,31 @@
+@import '../vars.less';
+
+.Topbar {
+	box-sizing: border-box;
+	position: relative;
+	width: 100%; height: 1rem;
+	.content__ {
+		box-sizing: border-box;
+		position: fixed; left: 0; top: 0; z-index: 10;
+		width: 100%; height: 1rem;
+		padding: 0 0.2rem;
+		background: white;
+		border-bottom: 1px solid @grey-border;
+		overflow: hidden;
+		font-size: 0.3rem; line-height: 1rem;
+		box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0, 0, 0, 0.15);
+		.c-icon {
+			float: left;
+			margin-right: 0.2rem;
+			i {
+				font-size: 0.5rem;
+				line-height: 1rem; 
+			}
+		}
+		.c-text {
+			float: left;
+			font-size: 0.3rem;
+			line-height: 1rem;
+		}
+	}
+}

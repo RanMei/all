@@ -1,5 +1,7 @@
 require('./DIManagement.less');
 
+import {Topbar} from './Topbar.js';
+
 class DIManagement extends React.Component {
 	constructor(){
 		super();
@@ -99,12 +101,7 @@ class DIManagement extends React.Component {
 		console.log('<DIManagement/> rendering');
 		return (
 			<div className="DIMANAGEMENT">
-				<div className="c-topbar topbar">
-					<div className="c-icon">
-						<i className="fa fa-angle-left" onClick={this.back.bind(this)}></i>
-					</div>
-					<div className="c-text">收货地址管理</div>
-				</div>
+				<Topbar name="收货地址管理"/>
 				<div className="add">新增收货地址</div>
 			</div>
 		)

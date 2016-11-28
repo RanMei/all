@@ -2,6 +2,8 @@ require('./Item.less');
 
 import {$$rootDir,$$itemDir,$$phpDir,$$imgDir} from '../common.jsx';
 import {CommentBox} from './CommentBox.jsx';
+
+import {Topbar} from './Topbar.js';
 import {Swiper} from './Swiper.jsx';
 
 import {API} from '../API/API.js';
@@ -114,16 +116,10 @@ class Item extends React.Component {
 		var item = this.props.item;
 		return (
 			<div className="ITEM">
-				<div className="topbar c-topbar">
-					<div className="c-icon">
-						<i className="fa fa-angle-left" onClick={this.back.bind(this)}></i>
-					</div>
-					<div className="c-text">商品详情</div>
-				</div>
-				<div className="topbar-shadow"></div>
 				
+				<Topbar name="商品详情"/>
 				<Swiper 
-					sticky={false}
+					sticky={true} carousel={false}
 					autoplay={false}
 					items={this.thumbnails()}/>
 				
@@ -176,7 +172,7 @@ class Item extends React.Component {
 								收藏
 							</p>
 						</div>
-						<div className="favor" onClick={this.toCart.bind(this)}>
+						<div className="favor favor_cart" onClick={this.toCart.bind(this)}>
 							<div className="redDot" style={{display:(this.props.inCart===0?'none':'block')}}></div>
 							<p className="icon-star">
 								<i className="fa fa-shopping-cart"></i>

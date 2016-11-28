@@ -17,4 +17,8 @@ export function cart(API,store){
 			i
 		})
 	}
+
+	API.REMOVE = function(is){
+		
+	}
 }

@@ -1,0 +1,37 @@
+@import (reference) '../common.less';
+
+.Showcase {
+	overflow: hidden;
+	.item-2 {
+		display: block;
+		float: left; box-sizing: border-box;
+		width: 50%;
+		padding: 0.2rem;
+		background: white;
+		border-bottom: 1px solid @grey-border;
+		&:nth-child(odd) {
+			border-right: 1px solid @grey-border;
+		}
+		&:nth-child(even) {
+			border-right: 1px solid white;
+		}
+		img {
+			width: 100%;
+			margin: auto;
+		}
+		.tag {
+			background: white;
+			.name {
+				height: 0.72rem;
+				font-size: 0.24rem;
+				line-height: 0.36rem;
+				overflow: hidden;
+				color: @black;
+			}
+			.price {
+				font-size: 0.22rem;
+				color: @red;
+			}
+		}
+	}
+}

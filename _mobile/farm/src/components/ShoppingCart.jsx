@@ -38,7 +38,7 @@ class ShoppingCart extends React.Component {
 		}
 		return totalPrice;
 	}
-	getTotalQuantity( items ){
+	totalQuantity( items ){
 		var totalQuantity = 0;
 		for(var i=0;i<items.length;i++){
 			if( items[i].selected===true ){
@@ -120,15 +120,17 @@ class ShoppingCart extends React.Component {
 				})}
 
 				<div className="footer">
-					<div className={this.allChecked()?'circle active':'circle'} onClick={this.checkAll.bind(this)}>
-						<i className="fa fa-check"></i>
+					<div className="content__">
+						<div className={this.allChecked()?'circle active':'circle'} onClick={this.checkAll.bind(this)}>
+							<i className="fa fa-check"></i>
+						</div>
+						<p className="text-all">全选</p>
+						<a className={
+							this.totalQuantity(this.props.items)>0?'pay':'pay disabled'
+						} href="">去结算({this.totalQuantity(this.props.items)})</a>
+						<p className="sum">总计：<span className="money">￥{this.getTotalPrice().toFixed(2)}</span></p>
 					</div>
-					<p className="text-all">全选</p>
-					<a className="pay" href="">去结算({this.getTotalQuantity(this.props.items)})</a>
-					<p className="sum">总计：<span className="money">￥{this.getTotalPrice().toFixed(2)}</span></p>
-					
 				</div>
-				<div className="navbarShadow"></div>
 				<Navbar name="shoppingCart"/>
 			
 			</div>

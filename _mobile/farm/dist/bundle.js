@@ -97,31 +97,31 @@
 
 	'use strict';
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _App = __webpack_require__(11);
+	var _App = __webpack_require__(12);
 
-	var _Navbar = __webpack_require__(12);
+	var _Navbar = __webpack_require__(13);
 
-	var _Signin = __webpack_require__(17);
+	var _Signin = __webpack_require__(18);
 
-	var _Signup = __webpack_require__(27);
+	var _Signup = __webpack_require__(28);
 
-	var _Category = __webpack_require__(30);
+	var _CategoryContainer = __webpack_require__(31);
 
-	var _ConfirmOrder = __webpack_require__(33);
+	var _ConfirmOrder = __webpack_require__(41);
 
-	var _DIManagement = __webpack_require__(35);
+	var _DIManagement = __webpack_require__(43);
 
-	var _AppContainer = __webpack_require__(38);
+	var _AppContainer = __webpack_require__(46);
 
-	var _HomeContainer = __webpack_require__(44);
+	var _HomeContainer = __webpack_require__(52);
 
-	var _ItemContainer = __webpack_require__(51);
+	var _ItemContainer = __webpack_require__(62);
 
-	var _MemberContainer = __webpack_require__(55);
+	var _MemberContainer = __webpack_require__(66);
 
-	var _SigninContainer = __webpack_require__(59);
+	var _SigninContainer = __webpack_require__(70);
 
 	//import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 	//import {createStore,combineReducers} from 'redux';
@@ -148,7 +148,7 @@
 	// import LogMonitor from 'redux-devtools-log-monitor';
 	// import DockMonitor from 'redux-devtools-dock-monitor';
 	// var DevTools = createDevTools(
-	// 	<DockMonitor
+	// 	<DockMonitor 
 	// 		toggleVisibilityKey='ctrl-h'
 	// 		changePositionKey='ctrl-q'>
 	// 		<LogMonitor />
@@ -166,6 +166,7 @@
 
 	//import {ShoppingCartContainer} from './containers/ShoppingCartContainer.jsx';
 
+
 	var Provider = ReactRedux.Provider;
 	var connect = ReactRedux.connect;
 
@@ -180,10 +181,10 @@
 				Route,
 				{ path: '/', component: _AppContainer.AppContainer },
 				React.createElement(Route, { path: '/home', component: _HomeContainer.HomeContainer }),
-				React.createElement(Route, { path: '/category', component: _Category.Category }),
+				React.createElement(Route, { path: '/category', component: _CategoryContainer.CategoryContainer }),
 				React.createElement(Route, { path: '/shopping_cart', getComponent: function getComponent(nextState, cb) {
 						__webpack_require__.e/* nsure */(1, function (require) {
-							cb(null, __webpack_require__(60).ShoppingCartContainer);
+							cb(null, __webpack_require__(71).ShoppingCartContainer);
 						});
 					} }),
 				React.createElement(Route, { path: '/member', component: _MemberContainer.MemberContainer }),
@@ -198,7 +199,8 @@
 
 /***/ },
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -208,19 +210,19 @@
 	});
 	exports.$$store = undefined;
 
-	var _user = __webpack_require__(3);
+	var _user = __webpack_require__(4);
 
-	var _shoppingCart = __webpack_require__(4);
+	var _shoppingCart = __webpack_require__(5);
 
-	var _notice = __webpack_require__(5);
+	var _notice = __webpack_require__(6);
 
-	var _mask = __webpack_require__(6);
+	var _mask = __webpack_require__(7);
 
-	var _homeSwiper = __webpack_require__(8);
+	var _homeSwiper = __webpack_require__(9);
 
-	var _items = __webpack_require__(9);
+	var _items = __webpack_require__(10);
 
-	var _item = __webpack_require__(10);
+	var _item = __webpack_require__(11);
 
 	var createStore = Redux.createStore;
 	var compose = Redux.compose;
@@ -248,7 +250,7 @@
 	exports.$$store = $$store;
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -257,7 +259,7 @@
 		value: true
 	});
 	function user() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 		var action = arguments[1];
 
 
@@ -276,7 +278,7 @@
 	exports.user = user;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -288,7 +290,7 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function shoppingCart() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -348,7 +350,7 @@
 	exports.shoppingCart = shoppingCart;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -357,7 +359,7 @@
 		value: true
 	});
 	function notice() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? { tick: 0, text: '' } : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { tick: 0, text: '' };
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -375,7 +377,7 @@
 	exports.notice = notice;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -385,12 +387,12 @@
 	});
 	exports.mask = undefined;
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
 	function mask() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			text: ''
-		} : arguments[0];
+		};
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -411,7 +413,7 @@
 	exports.mask = mask;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -430,7 +432,7 @@
 	exports.$$imgDir = $$imgDir;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -439,7 +441,7 @@
 		value: true
 	});
 	function homeSwiper() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -454,7 +456,7 @@
 	exports.homeSwiper = homeSwiper;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -463,7 +465,7 @@
 		value: true
 	});
 	function items() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -478,7 +480,7 @@
 	exports.items = items;
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -487,12 +489,12 @@
 		value: true
 	});
 	function item() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			id: '',
 			name: '--',
 			specs: {},
 			price: 0
-		} : arguments[0];
+		};
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -510,7 +512,7 @@
 	exports.item = item;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -522,7 +524,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -541,7 +543,7 @@
 		function SearchBar() {
 			_classCallCheck(this, SearchBar);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBar).apply(this, arguments));
+			return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).apply(this, arguments));
 		}
 
 		_createClass(SearchBar, [{
@@ -559,7 +561,7 @@
 							React.createElement(
 								"form",
 								null,
-								React.createElement("input", { type: "text", placeholder: "请输入您想搜索的商品名称" }),
+								React.createElement("input", { type: "text", placeholder: "\u8BF7\u8F93\u5165\u60A8\u60F3\u641C\u7D22\u7684\u5546\u54C1\u540D\u79F0" }),
 								React.createElement(
 									"a",
 									{ href: "search.html", className: "a-search search_btn" },
@@ -581,7 +583,7 @@
 		function Topbar() {
 			_classCallCheck(this, Topbar);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Topbar).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Topbar.__proto__ || Object.getPrototypeOf(Topbar)).apply(this, arguments));
 		}
 
 		_createClass(Topbar, [{
@@ -612,7 +614,7 @@
 							React.createElement(
 								Link,
 								{ to: "/home", className: "a_home" },
-								"欢迎来到飞越太平洋海淘网站"
+								"\u6B22\u8FCE\u6765\u5230\u98DE\u8D8A\u592A\u5E73\u6D0B\u6D77\u6DD8\u7F51\u7AD9"
 							)
 						),
 						React.createElement(
@@ -624,7 +626,7 @@
 								user.username || React.createElement(
 									Link,
 									{ to: "/signin", className: "a-signin login" },
-									"登录"
+									"\u767B\u5F55"
 								)
 							),
 							React.createElement(
@@ -638,11 +640,11 @@
 								user.username ? React.createElement(
 									"a",
 									{ onClick: this.props.onLogout.bind(this) },
-									"注销"
+									"\u6CE8\u9500"
 								) : React.createElement(
 									"a",
 									{ href: "#/signin", className: "a-signup register" },
-									"注册"
+									"\u6CE8\u518C"
 								)
 							),
 							React.createElement(
@@ -658,7 +660,7 @@
 								React.createElement(
 									"a",
 									{ className: "a_my_orders", href: "./orders.html" },
-									"我的订单"
+									"\u6211\u7684\u8BA2\u5355"
 								)
 							),
 							React.createElement(
@@ -678,7 +680,7 @@
 								React.createElement(
 									Link,
 									{ to: "/shopping_cart", className: "a-cart" },
-									"我的购物车(",
+									"\u6211\u7684\u8D2D\u7269\u8F66(",
 									React.createElement(
 										"span",
 										{ className: "quantityIn" },
@@ -689,7 +691,7 @@
 								React.createElement(
 									"div",
 									{ className: "cart_panel" },
-									"我的购物车"
+									"\u6211\u7684\u8D2D\u7269\u8F66"
 								)
 							)
 						),
@@ -708,7 +710,7 @@
 		function List() {
 			_classCallCheck(this, List);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(List).apply(this, arguments));
+			return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
 		}
 
 		_createClass(List, [{
@@ -737,7 +739,7 @@
 		function SearchBox() {
 			_classCallCheck(this, SearchBox);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBox).apply(this, arguments));
+			return _possibleConstructorReturn(this, (SearchBox.__proto__ || Object.getPrototypeOf(SearchBox)).apply(this, arguments));
 		}
 
 		_createClass(SearchBox, [{
@@ -765,7 +767,7 @@
 		function Footer() {
 			_classCallCheck(this, Footer);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
 		}
 
 		_createClass(Footer, [{
@@ -783,36 +785,36 @@
 							React.createElement(
 								"h4",
 								null,
-								"购物指南"
+								"\u8D2D\u7269\u6307\u5357"
 							),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"新用户注册"
-							),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ href: "" },
-								"购物流程"
+								"\u65B0\u7528\u6237\u6CE8\u518C"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"常见问题"
+								"\u8D2D\u7269\u6D41\u7A0B"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"发票制度"
+								"\u5E38\u89C1\u95EE\u9898"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"联系我们"
+								"\u53D1\u7968\u5236\u5EA6"
+							),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ href: "" },
+								"\u8054\u7CFB\u6211\u4EEC"
 							)
 						),
 						React.createElement(
@@ -821,24 +823,24 @@
 							React.createElement(
 								"h4",
 								null,
-								"支付方式"
+								"\u652F\u4ED8\u65B9\u5F0F"
 							),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"在线付款"
-							),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ href: "" },
-								"余额付款"
+								"\u5728\u7EBF\u4ED8\u6B3E"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"优惠券使用说明"
+								"\u4F59\u989D\u4ED8\u6B3E"
+							),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ href: "" },
+								"\u4F18\u60E0\u5238\u4F7F\u7528\u8BF4\u660E"
 							)
 						),
 						React.createElement(
@@ -847,30 +849,30 @@
 							React.createElement(
 								"h4",
 								null,
-								"配送方式"
+								"\u914D\u9001\u65B9\u5F0F"
 							),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"邮费说明"
-							),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ href: "" },
-								"配送服务范围"
+								"\u90AE\u8D39\u8BF4\u660E"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"配送速度查询"
+								"\u914D\u9001\u670D\u52A1\u8303\u56F4"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"验货与签收"
+								"\u914D\u9001\u901F\u5EA6\u67E5\u8BE2"
+							),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ href: "" },
+								"\u9A8C\u8D27\u4E0E\u7B7E\u6536"
 							)
 						),
 						React.createElement(
@@ -879,24 +881,24 @@
 							React.createElement(
 								"h4",
 								null,
-								"售后服务"
+								"\u552E\u540E\u670D\u52A1"
 							),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"售后政策"
-							),
-							React.createElement("br", null),
-							React.createElement(
-								"a",
-								{ href: "" },
-								"退货政策"
+								"\u552E\u540E\u653F\u7B56"
 							),
 							React.createElement("br", null),
 							React.createElement(
 								"a",
 								{ href: "" },
-								"退货流程"
+								"\u9000\u8D27\u653F\u7B56"
+							),
+							React.createElement("br", null),
+							React.createElement(
+								"a",
+								{ href: "" },
+								"\u9000\u8D27\u6D41\u7A0B"
 							)
 						),
 						React.createElement(
@@ -905,7 +907,7 @@
 							React.createElement(
 								"h4",
 								null,
-								"客服电话"
+								"\u5BA2\u670D\u7535\u8BDD"
 							),
 							React.createElement(
 								"p",
@@ -915,7 +917,7 @@
 							React.createElement(
 								"p",
 								null,
-								"周一至周日9:00~22:00"
+								"\u5468\u4E00\u81F3\u5468\u65E59:00~22:00"
 							)
 						)
 					)
@@ -932,7 +934,7 @@
 		function BackToTop() {
 			_classCallCheck(this, BackToTop);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BackToTop).apply(this, arguments));
+			return _possibleConstructorReturn(this, (BackToTop.__proto__ || Object.getPrototypeOf(BackToTop)).apply(this, arguments));
 		}
 
 		_createClass(BackToTop, [{
@@ -965,7 +967,7 @@
 	exports.BackToTop = BackToTop;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -982,7 +984,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(13);
+	__webpack_require__(14);
 
 	var Navbar = function (_React$Component) {
 		_inherits(Navbar, _React$Component);
@@ -990,7 +992,7 @@
 		function Navbar() {
 			_classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+			var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
 
 			_this.state = {};
 			return _this;
@@ -1016,7 +1018,7 @@
 							React.createElement(
 								"p",
 								null,
-								"首页"
+								"\u9996\u9875"
 							)
 						),
 						React.createElement(
@@ -1030,7 +1032,7 @@
 							React.createElement(
 								"p",
 								null,
-								"分类"
+								"\u5206\u7C7B"
 							)
 						),
 						React.createElement(
@@ -1044,7 +1046,7 @@
 							React.createElement(
 								"p",
 								null,
-								"购物车"
+								"\u8D2D\u7269\u8F66"
 							)
 						),
 						React.createElement(
@@ -1058,7 +1060,7 @@
 							React.createElement(
 								"p",
 								null,
-								"我"
+								"\u6211"
 							)
 						)
 					)
@@ -1072,16 +1074,16 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(14);
+	var content = __webpack_require__(15);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1098,21 +1100,21 @@
 	}
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n* :focus {\n  outline: none;\n}\nhtml {\n  font-size: 100px;\n  font-family: 'Microsoft Yahei';\n}\nul {\n  list-style: none;\n}\nimg {\n  display: block;\n}\na:link {\n  color: ;\n  text-decoration: none;\n}\n.c-topbar {\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  height: 1rem;\n  padding: 0 0.2rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  overflow: hidden;\n  font-size: 0.3rem;\n  line-height: 1rem;\n  box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0, 0, 0, 0.15);\n}\n.c-topbar .c-icon {\n  float: left;\n  margin-right: 0.2rem;\n}\n.c-topbar .c-icon i {\n  font-size: 0.5rem;\n  line-height: 1rem;\n}\n.c-topbar .c-text {\n  float: left;\n  font-size: 0.3rem;\n  line-height: 1rem;\n}\n.container {\n  background: orange;\n  overflow: hidden;\n  display: none;\n}\n.clearfix {\n  clear: both;\n}\nbody {\n  background: #ECEBEB;\n}\n/* Media Queries */\n@media (-webkit-min-device-pixel-ratio: 2) {\n}\n.wrapper {\n  width: 7.2rem;\n}\n.shown {\n  display: block!important;\n}\n.NAVBAR {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 1rem;\n  border-top: 1px solid #dfdfdf;\n  background: white;\n  overflow: hidden;\n}\n.NAVBAR .nav a {\n  position: relative;\n  width: 25%;\n  height: 1rem;\n  float: left;\n  color: black;\n  display: block;\n  color: #999999;\n}\n.NAVBAR .nav a .icon {\n  width: 100%;\n  font-size: 0.4rem;\n  line-height: 0.6rem;\n  text-align: center;\n}\n.NAVBAR .nav a p {\n  line-height: 0.4rem;\n  font-size: 0.2rem;\n  text-align: center;\n}\n.NAVBAR .nav a .line {\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 1px;\n  height: 100%;\n  background: lightgrey;\n}\n.NAVBAR .nav a:link {\n  color: #999999;\n}\n.NAVBAR .nav a:visited {\n  color: #999999;\n}\n.NAVBAR .nav a.active {\n  color: #0f88eb !important;\n}\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n* :focus {\n  outline: none;\n}\nhtml {\n  font-size: 100px;\n  font-family: 'Microsoft Yahei';\n}\nul {\n  list-style: none;\n}\nimg {\n  display: block;\n}\na:link {\n  color: ;\n  text-decoration: none;\n}\n.c-topbar {\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  height: 1rem;\n  padding: 0 0.2rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  overflow: hidden;\n  font-size: 0.3rem;\n  line-height: 1rem;\n  box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0, 0, 0, 0.15);\n}\n.c-topbar .c-icon {\n  float: left;\n  margin-right: 0.2rem;\n}\n.c-topbar .c-icon i {\n  font-size: 0.5rem;\n  line-height: 1rem;\n}\n.c-topbar .c-text {\n  float: left;\n  font-size: 0.3rem;\n  line-height: 1rem;\n}\n.container {\n  background: orange;\n  overflow: hidden;\n  display: none;\n}\n.clearfix {\n  clear: both;\n}\nbody {\n  background: #ECEBEB;\n}\n/* Media Queries */\n@media (-webkit-min-device-pixel-ratio: 2) {\n}\n.wrapper {\n  width: 7.2rem;\n}\n.shown {\n  display: block!important;\n}\n.NAVBAR {\n  box-sizing: border-box;\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 1rem;\n}\n.NAVBAR .nav {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 1rem;\n  border-top: 1px solid #dfdfdf;\n  background: white;\n  overflow: hidden;\n}\n.NAVBAR .nav a {\n  position: relative;\n  width: 25%;\n  height: 1rem;\n  float: left;\n  color: black;\n  display: block;\n  color: #999999;\n}\n.NAVBAR .nav a .icon {\n  width: 100%;\n  font-size: 0.4rem;\n  line-height: 0.6rem;\n  text-align: center;\n}\n.NAVBAR .nav a p {\n  line-height: 0.4rem;\n  font-size: 0.2rem;\n  text-align: center;\n}\n.NAVBAR .nav a .line {\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 1px;\n  height: 100%;\n  background: lightgrey;\n}\n.NAVBAR .nav a:link {\n  color: #999999;\n}\n.NAVBAR .nav a:visited {\n  color: #999999;\n}\n.NAVBAR .nav a.active {\n  color: #0f88eb !important;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1167,7 +1169,7 @@
 	};
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1419,7 +1421,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1431,11 +1433,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Notice = __webpack_require__(18);
+	var _Notice = __webpack_require__(19);
 
-	var _Navbar = __webpack_require__(12);
+	var _Navbar = __webpack_require__(13);
 
-	var _API = __webpack_require__(21);
+	var _API = __webpack_require__(22);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1443,7 +1445,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(25);
+	__webpack_require__(26);
 
 	// import 'babel-polyfill';
 
@@ -1453,7 +1455,7 @@
 		function Signin() {
 			_classCallCheck(this, Signin);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
+			var _this = _possibleConstructorReturn(this, (Signin.__proto__ || Object.getPrototypeOf(Signin)).call(this));
 
 			_this.state = {
 				user: {
@@ -1505,20 +1507,20 @@
 					React.createElement(
 						'div',
 						{ className: 'header c-topbar' },
-						'登录',
+						'\u767B\u5F55',
 						React.createElement(
 							'span',
 							{ className: 'a-guest', onClick: this.loginAsGuest.bind(this) },
-							'游客登录 >'
+							'\u6E38\u5BA2\u767B\u5F55 >'
 						)
 					),
-					React.createElement('input', { type: 'text', name: 'user_id', placeholder: '手机号/邮箱',
+					React.createElement('input', { type: 'text', name: 'user_id', placeholder: '\u624B\u673A\u53F7/\u90AE\u7BB1',
 						onChange: this.setUserID.bind(this) }),
-					React.createElement('input', { type: 'password', name: 'password', placeholder: '密码', onChange: this.setPassword.bind(this) }),
+					React.createElement('input', { type: 'password', name: 'password', placeholder: '\u5BC6\u7801', onChange: this.setPassword.bind(this) }),
 					React.createElement(
 						'a',
 						{ className: 'login', onClick: this.login.bind(this) },
-						'登录'
+						'\u767B\u5F55'
 					),
 					React.createElement(
 						'div',
@@ -1526,12 +1528,12 @@
 						React.createElement(
 							'a',
 							{ className: 'a-signup', href: '#/signup' },
-							'注册账号'
+							'\u6CE8\u518C\u8D26\u53F7'
 						),
 						React.createElement(
 							'a',
 							{ className: 'a-retrive', href: 'retrive_password.html' },
-							'忘记密码'
+							'\u5FD8\u8BB0\u5BC6\u7801'
 						)
 					),
 					React.createElement(_Navbar.Navbar, { name: 'mine' })
@@ -1545,7 +1547,7 @@
 	exports.Signin = Signin;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1562,7 +1564,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(19);
+	__webpack_require__(20);
 
 	var Notice = function (_React$Component) {
 		_inherits(Notice, _React$Component);
@@ -1570,7 +1572,7 @@
 		function Notice() {
 			_classCallCheck(this, Notice);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Notice).call(this));
+			var _this = _possibleConstructorReturn(this, (Notice.__proto__ || Object.getPrototypeOf(Notice)).call(this));
 
 			_this.state = {
 				show: false
@@ -1623,16 +1625,16 @@
 	exports.Notice = Notice;
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(20);
+	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1649,10 +1651,10 @@
 	}
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -1663,7 +1665,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1673,11 +1675,11 @@
 	});
 	exports.API = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _user = __webpack_require__(22);
+	var _user = __webpack_require__(23);
 
-	var _cart = __webpack_require__(23);
+	var _cart = __webpack_require__(24);
 
 	var API = {};
 
@@ -1693,7 +1695,7 @@
 		if (sessionStorage.shoppingCart) {
 			shoppingCart = JSON.parse(sessionStorage.shoppingCart);
 		};
-		var items = __webpack_require__(24).dataItems;
+		var items = __webpack_require__(25).dataItems;
 		var homeSwiper = [{
 			background: 'img/index/banner_0.jpg',
 			href: '#/shopping_cart'
@@ -1734,7 +1736,7 @@
 
 	API.GET_ITEM = function (id) {
 		var item = {};
-		var items = __webpack_require__(24).dataItems;
+		var items = __webpack_require__(25).dataItems;
 		items.forEach(function (a) {
 			if (id === a.id) {
 				item = a;
@@ -1764,7 +1766,7 @@
 	exports.API = API;
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1831,7 +1833,7 @@
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1859,10 +1861,12 @@
 				i: i
 			});
 		};
+
+		API.REMOVE = function (is) {};
 	}
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1918,16 +1922,16 @@
 	exports.dataItems = dataItems;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(26);
+	var content = __webpack_require__(27);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1944,10 +1948,10 @@
 	}
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -1958,7 +1962,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1975,7 +1979,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(28);
+	__webpack_require__(29);
 
 	var Signup = function (_React$Component) {
 		_inherits(Signup, _React$Component);
@@ -1983,7 +1987,7 @@
 		function Signup() {
 			_classCallCheck(this, Signup);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signup).call(this));
+			var _this = _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).call(this));
 
 			_this.state = {};
 			return _this;
@@ -2027,45 +2031,45 @@
 						React.createElement(
 							'div',
 							{ className: 'word' },
-							'多利农庄'
+							'\u591A\u5229\u519C\u5E84'
 						)
 					),
 					React.createElement(
 						'p',
 						{ className: 'words' },
-						'切换到 ',
+						'\u5207\u6362\u5230 ',
 						React.createElement(
 							'a',
 							{ href: '' },
-							'邮箱注册'
+							'\u90AE\u7BB1\u6CE8\u518C'
 						),
 						React.createElement(
 							'span',
 							null,
 							' | '
 						),
-						'已经有账号了？点此 ',
+						'\u5DF2\u7ECF\u6709\u8D26\u53F7\u4E86\uFF1F\u70B9\u6B64 ',
 						React.createElement(
 							'a',
 							{ href: '#/signin' },
-							'登录'
+							'\u767B\u5F55'
 						)
 					),
 					React.createElement(
 						'form',
 						null,
-						React.createElement('input', { className: 'input1', type: 'text', name: 'phonenumber', placeholder: '请输入手机号码' }),
+						React.createElement('input', { className: 'input1', type: 'text', name: 'phonenumber', placeholder: '\u8BF7\u8F93\u5165\u624B\u673A\u53F7\u7801' }),
 						React.createElement('br', null),
-						React.createElement('input', { className: 'input1', type: 'text', name: 'verif', placeholder: '请输入短信验证码' }),
+						React.createElement('input', { className: 'input1', type: 'text', name: 'verif', placeholder: '\u8BF7\u8F93\u5165\u77ED\u4FE1\u9A8C\u8BC1\u7801' }),
 						React.createElement(
 							'a',
 							{ href: '', className: 'get-verif' },
-							'获取验证码(60)'
+							'\u83B7\u53D6\u9A8C\u8BC1\u7801(60)'
 						),
 						React.createElement('br', null),
-						React.createElement('input', { className: 'input1', type: 'password', name: 'password', placeholder: '设置新密码（6-18位数字或字母）' }),
+						React.createElement('input', { className: 'input1', type: 'password', name: 'password', placeholder: '\u8BBE\u7F6E\u65B0\u5BC6\u7801\uFF086-18\u4F4D\u6570\u5B57\u6216\u5B57\u6BCD\uFF09' }),
 						React.createElement('br', null),
-						React.createElement('input', { className: 'input1', type: 'password', name: 'password2', placeholder: '再次输入密码' }),
+						React.createElement('input', { className: 'input1', type: 'password', name: 'password2', placeholder: '\u518D\u6B21\u8F93\u5165\u5BC6\u7801' }),
 						React.createElement('br', null),
 						React.createElement(
 							'div',
@@ -2079,14 +2083,14 @@
 							React.createElement(
 								'p',
 								null,
-								'同意多利庄园使用协议'
+								'\u540C\u610F\u591A\u5229\u5E84\u56ED\u4F7F\u7528\u534F\u8BAE'
 							)
 						)
 					),
 					React.createElement(
 						'a',
 						{ className: 'register', href: '' },
-						'注 册'
+						'\u6CE8 \u518C'
 					)
 				);
 			}
@@ -2098,16 +2102,16 @@
 	exports.Signup = Signup;
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(29);
+	var content = __webpack_require__(30);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2124,10 +2128,10 @@
 	}
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -2138,7 +2142,28 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.CategoryContainer = undefined;
+
+	var _Category = __webpack_require__(32);
+
+	var CategoryContainer = ReactRedux.connect(function (state) {
+		return {
+			items: state.items
+		};
+	})(_Category.Category);
+
+	exports.CategoryContainer = CategoryContainer;
+
+/***/ },
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2150,7 +2175,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(12);
+	var _Topbar = __webpack_require__(33);
+
+	var _Navbar = __webpack_require__(13);
+
+	var _Showcase = __webpack_require__(36);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2158,7 +2187,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(31);
+	__webpack_require__(39);
 
 	var Category = function (_React$Component) {
 		_inherits(Category, _React$Component);
@@ -2166,38 +2195,14 @@
 		function Category(props) {
 			_classCallCheck(this, Category);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Category).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this, props));
 
 			var self = _this;
-			self.state = {
-				items: []
-			};
-			self.getItems();
 			console.log('<Home/> constructing', self.state);
 			return _this;
 		}
 
 		_createClass(Category, [{
-			key: 'getItems',
-			value: function getItems() {
-				var self = this;
-				this.state.items = __webpack_require__(24).dataItems;
-				// fetch('/getItems', {
-				// 	method: 'POST',
-				// 	headers: {
-				// 		// 'Accept': 'application/json',
-				// 		'Content-Type': 'application/json'
-				// 	},
-				// 	body: JSON.stringify( self.state.user )
-				// }).then(function(res){
-				// 	return res.json();
-				// }).then(function(data){
-				// 	self.setState({
-				// 		items: data
-				// 	})
-				// })
-			}
-		}, {
 			key: 'back',
 			value: function back() {
 				console.log(111);
@@ -2210,6 +2215,8 @@
 				return React.createElement(
 					'div',
 					{ className: 'CATEGORY' },
+					React.createElement(_Topbar.Topbar, { name: '\u5546\u54C1\u5206\u7C7B' }),
+					React.createElement(_Showcase.Showcase, { items: this.props.items }),
 					React.createElement(_Navbar.Navbar, { name: 'category' })
 				);
 			}
@@ -2218,19 +2225,242 @@
 		return Category;
 	}(React.Component);
 
+	Category.defaultProps = {
+		items: []
+	};
+
 	exports.Category = Category;
 
 /***/ },
-/* 31 */
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Topbar = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	__webpack_require__(34);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Topbar = function (_React$Component) {
+		_inherits(Topbar, _React$Component);
+
+		function Topbar(props) {
+			_classCallCheck(this, Topbar);
+
+			return _possibleConstructorReturn(this, (Topbar.__proto__ || Object.getPrototypeOf(Topbar)).call(this, props));
+		}
+
+		_createClass(Topbar, [{
+			key: "back",
+			value: function back() {
+				history.go(-1);
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "Topbar" },
+					React.createElement(
+						"div",
+						{ className: "content__" },
+						React.createElement(
+							"div",
+							{ className: "c-icon" },
+							React.createElement("i", { className: "fa fa-angle-left", onClick: this.back.bind(this) })
+						),
+						React.createElement(
+							"div",
+							{ className: "c-text" },
+							this.props.name
+						)
+					)
+				);
+			}
+		}]);
+
+		return Topbar;
+	}(React.Component);
+
+	Topbar.defaultProps = {
+		name: ''
+	};
+
+	exports.Topbar = Topbar;
+
+/***/ },
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(32);
+	var content = __webpack_require__(35);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Topbar.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Topbar.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(16)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".Topbar {\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  height: 1rem;\n}\n.Topbar .content__ {\n  box-sizing: border-box;\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 10;\n  width: 100%;\n  height: 1rem;\n  padding: 0 0.2rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  overflow: hidden;\n  font-size: 0.3rem;\n  line-height: 1rem;\n  box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0, 0, 0, 0.15);\n}\n.Topbar .content__ .c-icon {\n  float: left;\n  margin-right: 0.2rem;\n}\n.Topbar .content__ .c-icon i {\n  font-size: 0.5rem;\n  line-height: 1rem;\n}\n.Topbar .content__ .c-text {\n  float: left;\n  font-size: 0.3rem;\n  line-height: 1rem;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Showcase = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	__webpack_require__(37);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Showcase = function (_React$Component) {
+		_inherits(Showcase, _React$Component);
+
+		function Showcase() {
+			_classCallCheck(this, Showcase);
+
+			return _possibleConstructorReturn(this, (Showcase.__proto__ || Object.getPrototypeOf(Showcase)).apply(this, arguments));
+		}
+
+		_createClass(Showcase, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "Showcase" },
+					this.props.items.map(function (a) {
+						return React.createElement(
+							"a",
+							{ className: "item-2", href: '#/item?id=' + a.id },
+							React.createElement("img", { src: 'img/items/' + a.id + '/t.jpg' }),
+							React.createElement(
+								"div",
+								{ className: "tag" },
+								React.createElement(
+									"p",
+									{ className: "name" },
+									a.name
+								),
+								React.createElement(
+									"p",
+									{ className: "price" },
+									"\uFFE5",
+									a.price.toFixed(2)
+								)
+							)
+						);
+					})
+				);
+			}
+		}]);
+
+		return Showcase;
+	}(React.Component);
+
+	Showcase.defaultProps = {
+		items: []
+	};
+
+	exports.Showcase = Showcase;
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(38);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(17)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Showcase.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Showcase.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(16)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".Showcase {\n  overflow: hidden;\n}\n.Showcase .item-2 {\n  display: block;\n  float: left;\n  box-sizing: border-box;\n  width: 50%;\n  padding: 0.2rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n}\n.Showcase .item-2:nth-child(odd) {\n  border-right: 1px solid #dfdfdf;\n}\n.Showcase .item-2:nth-child(even) {\n  border-right: 1px solid white;\n}\n.Showcase .item-2 img {\n  width: 100%;\n  margin: auto;\n}\n.Showcase .item-2 .tag {\n  background: white;\n}\n.Showcase .item-2 .tag .name {\n  height: 0.72rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  overflow: hidden;\n  color: #3A3A3A;\n}\n.Showcase .item-2 .tag .price {\n  font-size: 0.22rem;\n  color: #0f88eb;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(40);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2247,10 +2477,10 @@
 	}
 
 /***/ },
-/* 32 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -2261,7 +2491,7 @@
 
 
 /***/ },
-/* 33 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2273,9 +2503,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
-	var _CommentBox = __webpack_require__(34);
+	var _CommentBox = __webpack_require__(42);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2289,7 +2519,7 @@
 		function ConfirmOrder() {
 			_classCallCheck(this, ConfirmOrder);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ConfirmOrder).call(this));
+			var _this = _possibleConstructorReturn(this, (ConfirmOrder.__proto__ || Object.getPrototypeOf(ConfirmOrder)).call(this));
 
 			_this.state = {
 				items: JSON.parse(sessionStorage.items),
@@ -2430,24 +2660,24 @@
 							React.createElement('input', {
 								type: 'text',
 								name: 'consignee',
-								placeholder: '收货人姓名',
+								placeholder: '\u6536\u8D27\u4EBA\u59D3\u540D',
 								value: this.state.targetDI.consignee || '',
 								onChange: this.setConsignee.bind(this) }),
 							React.createElement('input', {
 								type: 'text',
 								name: 'phoneNumber',
-								placeholder: '请输入11位手机号码',
+								placeholder: '\u8BF7\u8F93\u516511\u4F4D\u624B\u673A\u53F7\u7801',
 								value: this.state.targetDI.phoneNumber || '',
 								onChange: this.setPhoneNumber.bind(this) }),
 							React.createElement('textarea', {
-								placeholder: '请输入详细收货地址',
+								placeholder: '\u8BF7\u8F93\u5165\u8BE6\u7EC6\u6536\u8D27\u5730\u5740',
 								value: this.state.targetDI.deliveryAddress || '',
 								onChange: this.setDeliveryAddress.bind(this) }),
 							React.createElement('div', { className: 'date' }),
 							React.createElement(
 								'button',
 								{ className: 'save', onClick: this.savetargetDI.bind(this) },
-								'保存收货信息'
+								'\u4FDD\u5B58\u6536\u8D27\u4FE1\u606F'
 							)
 						)
 					) : '',
@@ -2463,12 +2693,12 @@
 								React.createElement(
 									'p',
 									{ className: 'title' },
-									'收货信息'
+									'\u6536\u8D27\u4FE1\u606F'
 								),
 								React.createElement(
 									'button',
 									{ className: 'add', onClick: this.addDI.bind(this) },
-									'添加收货信息'
+									'\u6DFB\u52A0\u6536\u8D27\u4FE1\u606F'
 								)
 							),
 							React.createElement(
@@ -2484,7 +2714,7 @@
 											React.createElement(
 												'p',
 												null,
-												'收货人：',
+												'\u6536\u8D27\u4EBA\uFF1A',
 												React.createElement(
 													'span',
 													{ className: 'consignee' },
@@ -2494,7 +2724,7 @@
 											React.createElement(
 												'p',
 												null,
-												'联系电话：',
+												'\u8054\u7CFB\u7535\u8BDD\uFF1A',
 												React.createElement(
 													'span',
 													{ className: 'phoneNumber' },
@@ -2504,7 +2734,7 @@
 											React.createElement(
 												'p',
 												null,
-												'收货地址：',
+												'\u6536\u8D27\u5730\u5740\uFF1A',
 												React.createElement(
 													'span',
 													{ className: 'deliveryAddress' },
@@ -2517,12 +2747,12 @@
 												React.createElement(
 													'button',
 													{ className: 'remove', onClick: self.deleteDI.bind(self, i) },
-													'删除'
+													'\u5220\u9664'
 												),
 												React.createElement(
 													'button',
 													{ className: 'edit', onClick: self.editDI.bind(self, i) },
-													'编辑'
+													'\u7F16\u8F91'
 												)
 											)
 										)
@@ -2539,7 +2769,7 @@
 								React.createElement(
 									'p',
 									{ className: 'title' },
-									'确认商品'
+									'\u786E\u8BA4\u5546\u54C1'
 								)
 							),
 							React.createElement(
@@ -2548,22 +2778,22 @@
 								React.createElement(
 									'li',
 									null,
-									'商品信息'
+									'\u5546\u54C1\u4FE1\u606F'
 								),
 								React.createElement(
 									'li',
 									null,
-									'单价'
+									'\u5355\u4EF7'
 								),
 								React.createElement(
 									'li',
 									null,
-									'数量'
+									'\u6570\u91CF'
 								),
 								React.createElement(
 									'li',
 									null,
-									'小计'
+									'\u5C0F\u8BA1'
 								)
 							),
 							items.map(function (item) {
@@ -2591,7 +2821,7 @@
 										React.createElement(
 											'p',
 											{ className: 'price' },
-											'￥',
+											'\uFFE5',
 											item.price
 										)
 									),
@@ -2625,24 +2855,24 @@
 								React.createElement(
 									'p',
 									null,
-									'共',
+									'\u5171',
 									React.createElement(
 										'span',
 										{ className: 'totalQuantity' },
 										items.length
 									),
-									'件商品，总价',
+									'\u4EF6\u5546\u54C1\uFF0C\u603B\u4EF7',
 									React.createElement(
 										'span',
 										{ className: 'totalPrice' },
-										'￥',
+										'\uFFE5',
 										this.getTotal()
 									)
 								),
 								React.createElement(
 									'div',
 									{ className: 'submit' },
-									'提交订单'
+									'\u63D0\u4EA4\u8BA2\u5355'
 								)
 							)
 						)
@@ -2657,7 +2887,7 @@
 	exports.ConfirmOrder = ConfirmOrder;
 
 /***/ },
-/* 34 */
+/* 42 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -2695,7 +2925,7 @@
 		function CommentList() {
 			_classCallCheck(this, CommentList);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentList).apply(this, arguments));
+			return _possibleConstructorReturn(this, (CommentList.__proto__ || Object.getPrototypeOf(CommentList)).apply(this, arguments));
 		}
 
 		_createClass(CommentList, [{
@@ -2733,7 +2963,7 @@
 		function CommentBox(props) {
 			_classCallCheck(this, CommentBox);
 
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentBox).call(this, props));
+			var _this2 = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this, props));
 
 			_this2.state = { //MODEL //this.state={}
 				comments: [{
@@ -2812,7 +3042,7 @@
 	exports.CommentBox = CommentBox;
 
 /***/ },
-/* 35 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2820,8 +3050,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.DIManagement = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Topbar = __webpack_require__(33);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2829,7 +3062,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(36);
+	__webpack_require__(44);
 
 	var DIManagement = function (_React$Component) {
 		_inherits(DIManagement, _React$Component);
@@ -2837,7 +3070,7 @@
 		function DIManagement() {
 			_classCallCheck(this, DIManagement);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DIManagement).call(this));
+			var _this = _possibleConstructorReturn(this, (DIManagement.__proto__ || Object.getPrototypeOf(DIManagement)).call(this));
 
 			_this.state = {};
 			//console.log('<ConfirmOrder/> creating',this.props,this.state);
@@ -2961,24 +3194,11 @@
 				return React.createElement(
 					'div',
 					{ className: 'DIMANAGEMENT' },
-					React.createElement(
-						'div',
-						{ className: 'c-topbar topbar' },
-						React.createElement(
-							'div',
-							{ className: 'c-icon' },
-							React.createElement('i', { className: 'fa fa-angle-left', onClick: this.back.bind(this) })
-						),
-						React.createElement(
-							'div',
-							{ className: 'c-text' },
-							'收货地址管理'
-						)
-					),
+					React.createElement(_Topbar.Topbar, { name: '\u6536\u8D27\u5730\u5740\u7BA1\u7406' }),
 					React.createElement(
 						'div',
 						{ className: 'add' },
-						'新增收货地址'
+						'\u65B0\u589E\u6536\u8D27\u5730\u5740'
 					)
 				);
 			}
@@ -2990,16 +3210,16 @@
 	exports.DIManagement = DIManagement;
 
 /***/ },
-/* 36 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(45);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3016,10 +3236,10 @@
 	}
 
 /***/ },
-/* 37 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -3030,7 +3250,7 @@
 
 
 /***/ },
-/* 38 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3042,17 +3262,17 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _config = __webpack_require__(39);
+	var _config = __webpack_require__(47);
 
-	var _Mask = __webpack_require__(40);
+	var _Mask = __webpack_require__(48);
 
-	var _Notice = __webpack_require__(18);
+	var _Notice = __webpack_require__(19);
 
-	var _NoticePretty = __webpack_require__(43);
+	var _NoticePretty = __webpack_require__(51);
 
-	var _API = __webpack_require__(21);
+	var _API = __webpack_require__(22);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3073,7 +3293,7 @@
 		function App() {
 			_classCallCheck(this, App);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 			console.debug('<App/> constructing');
 			return _this;
@@ -3111,7 +3331,7 @@
 	exports.AppContainer = AppContainer;
 
 /***/ },
-/* 39 */
+/* 47 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3126,7 +3346,7 @@
 	exports.$$production = $$production;
 
 /***/ },
-/* 40 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3143,7 +3363,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(41);
+	__webpack_require__(49);
 
 	var Mask = function (_React$Component) {
 		_inherits(Mask, _React$Component);
@@ -3151,7 +3371,7 @@
 		function Mask(props) {
 			_classCallCheck(this, Mask);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this, props));
+			return _possibleConstructorReturn(this, (Mask.__proto__ || Object.getPrototypeOf(Mask)).call(this, props));
 		}
 
 		_createClass(Mask, [{
@@ -3190,7 +3410,7 @@
 							React.createElement(
 								'div',
 								{ className: '_header' },
-								'确认删除'
+								'\u786E\u8BA4\u5220\u9664'
 							),
 							React.createElement(
 								'p',
@@ -3200,12 +3420,12 @@
 							React.createElement(
 								'div',
 								{ className: 'btn cancel', onClick: this.cancel.bind(this) },
-								'取消'
+								'\u53D6\u6D88'
 							),
 							React.createElement(
 								'div',
 								{ className: 'btn confirm', onClick: this.confirm.bind(this) },
-								'确认'
+								'\u786E\u8BA4'
 							)
 						)
 					)
@@ -3221,16 +3441,16 @@
 	exports.Mask = Mask;
 
 /***/ },
-/* 41 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(42);
+	var content = __webpack_require__(50);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3247,21 +3467,21 @@
 	}
 
 /***/ },
-/* 42 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".MASK {\n  display: table;\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.8);\n}\n.MASK .__container {\n  display: table-cell;\n  vertical-align: middle;\n}\n.MASK .__container ._panel {\n  position: relative;\n  margin: auto;\n  width: 5.4rem;\n  padding: 0 0.3rem 0.2rem 0.3rem;\n  border-radius: 0.05rem;\n  background: white;\n  overflow: hidden;\n}\n.MASK .__container ._panel ._header {\n  box-sizing: border-box;\n  padding: 0.2rem 0;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.26rem;\n  text-align: center;\n}\n.MASK .__container ._panel ._text {\n  padding: 0.2rem 0;\n  font-size: 0.3rem;\n}\n.MASK .__container ._panel .btn {\n  box-sizing: border-box;\n  width: 2.6rem;\n  height: 1rem;\n  line-height: 1rem;\n  border-radius: 0.05rem;\n  font-size: 0.3rem;\n  text-align: center;\n}\n.MASK .__container ._panel .cancel {\n  float: left;\n  border: 1px solid #0f88eb;\n  color: #0f88eb;\n}\n.MASK .__container ._panel .confirm {\n  float: right;\n  background: #0f88eb;\n  color: white;\n}\n", ""]);
+	exports.push([module.id, ".MASK {\n  display: table;\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 9999;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.8);\n}\n.MASK .__container {\n  display: table-cell;\n  vertical-align: middle;\n}\n.MASK .__container ._panel {\n  position: relative;\n  margin: auto;\n  width: 5.4rem;\n  padding: 0 0.3rem 0.3rem 0.3rem;\n  border-radius: 0.05rem;\n  background: white;\n  overflow: hidden;\n}\n.MASK .__container ._panel ._header {\n  box-sizing: border-box;\n  padding: 0.2rem 0;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.26rem;\n  text-align: center;\n}\n.MASK .__container ._panel ._text {\n  padding: 0.2rem 0;\n  font-size: 0.3rem;\n}\n.MASK .__container ._panel .btn {\n  box-sizing: border-box;\n  width: 2.6rem;\n  height: 1rem;\n  line-height: 1rem;\n  border-radius: 0.05rem;\n  font-size: 0.3rem;\n  text-align: center;\n}\n.MASK .__container ._panel .cancel {\n  float: left;\n  border: 1px solid #0f88eb;\n  color: #0f88eb;\n}\n.MASK .__container ._panel .confirm {\n  float: right;\n  background: #0f88eb;\n  color: white;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 43 */
+/* 51 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3284,7 +3504,7 @@
 		function NoticePretty() {
 			_classCallCheck(this, NoticePretty);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NoticePretty).call(this));
+			var _this = _possibleConstructorReturn(this, (NoticePretty.__proto__ || Object.getPrototypeOf(NoticePretty)).call(this));
 
 			_this.style = {
 				position: 'fixed',
@@ -3346,7 +3566,7 @@
 	exports.NoticePretty = NoticePretty;
 
 /***/ },
-/* 44 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3356,9 +3576,9 @@
 	});
 	exports.HomeContainer = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _Home = __webpack_require__(45);
+	var _Home = __webpack_require__(53);
 
 	var HomeContainer = ReactRedux.connect(function (state) {
 		return {
@@ -3370,7 +3590,7 @@
 	exports.HomeContainer = HomeContainer;
 
 /***/ },
-/* 45 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3382,11 +3602,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
-	var _Navbar = __webpack_require__(12);
+	var _Navbar = __webpack_require__(13);
 
-	var _Swiper = __webpack_require__(46);
+	var _Swiper = __webpack_require__(54);
+
+	var _Showcase = __webpack_require__(36);
+
+	var _Showcase2 = __webpack_require__(57);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3394,7 +3618,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(49);
+	__webpack_require__(60);
 
 	var Home = function (_React$Component) {
 		_inherits(Home, _React$Component);
@@ -3402,7 +3626,7 @@
 		function Home(props) {
 			_classCallCheck(this, Home);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
 			var self = _this;
 			console.log('<Home/> constructing');
@@ -3439,7 +3663,7 @@
 								{ className: 'icon' },
 								React.createElement('i', { className: 'fa fa-search' })
 							),
-							React.createElement('input', { type: 'text', name: '', placeholder: '请输入产品名称' })
+							React.createElement('input', { type: 'text', name: '', placeholder: '\u8BF7\u8F93\u5165\u4EA7\u54C1\u540D\u79F0' })
 						)
 					),
 					React.createElement(_Swiper.Swiper, {
@@ -3447,32 +3671,7 @@
 						items: this.props.homeSwiper,
 						style: { height: '4rem' } }),
 					[0, 1, 2].map(function () {
-						return React.createElement(
-							'div',
-							{ className: 'block' },
-							_this2.props.items.map(function (a) {
-								return React.createElement(
-									'a',
-									{ className: 'item-2', href: '#/item?id=' + a.id },
-									React.createElement('img', { src: 'img/items/' + a.id + '/t.jpg' }),
-									React.createElement(
-										'div',
-										{ className: 'tag' },
-										React.createElement(
-											'p',
-											{ className: 'name' },
-											a.name
-										),
-										React.createElement(
-											'p',
-											{ className: 'price' },
-											'￥',
-											a.price.toFixed(2)
-										)
-									)
-								);
-							})
-						);
+						return React.createElement(_Showcase.Showcase, { items: _this2.props.items });
 					}),
 					React.createElement(
 						'div',
@@ -3481,37 +3680,10 @@
 							'div',
 							{ className: 'block-header' },
 							React.createElement('i', { className: 'fa fa-heart-o' }),
-							' 猜你喜欢'
+							' \u731C\u4F60\u559C\u6B22'
 						),
-						this.props.items.map(function (item, i) {
-							var href = '#/item?id=' + item.id;
-							var src = 'img/items/' + item.id + '/t.jpg';
-							var style = {
-								float: i % 2 === 0 ? 'left' : 'right'
-							};
-							return React.createElement(
-								'div',
-								{ className: 'item' },
-								React.createElement(
-									'a',
-									{ href: href },
-									React.createElement('img', { className: 'thumbnail', src: src }),
-									React.createElement(
-										'p',
-										{ className: 'name' },
-										item.name
-									),
-									React.createElement(
-										'p',
-										{ className: 'price' },
-										'￥',
-										item.price.toFixed(2)
-									)
-								)
-							);
-						})
+						React.createElement(_Showcase2.Showcase2, { items: this.props.items })
 					),
-					React.createElement('div', { className: 'nav_shadow' }),
 					React.createElement(_Navbar.Navbar, { name: 'home' })
 				);
 			}
@@ -3532,7 +3704,7 @@
 	exports.Home = Home;
 
 /***/ },
-/* 46 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3549,7 +3721,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(47);
+	__webpack_require__(55);
 
 	var Swiper = function (_React$Component) {
 		_inherits(Swiper, _React$Component);
@@ -3557,7 +3729,7 @@
 		function Swiper(props) {
 			_classCallCheck(this, Swiper);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Swiper.__proto__ || Object.getPrototypeOf(Swiper)).call(this, props));
 
 			var self = _this;
 			_this.width = 0;
@@ -3569,8 +3741,8 @@
 
 			_this.X0 = null;
 			_this.X1 = null;
-			_this.Y0 = null;
 			_this.Y1 = null;
+			_this.Y2 = null;
 
 			_this.cycle = false;
 			_this.switching = false;
@@ -3616,7 +3788,9 @@
 				this.$trainOffset = 0;
 				this.$currentOne = 0;
 				this.train.style.transition = '0s';
+				this.train.style.webkitTransition = '0s';
 				this.train.style.transform = 'translate3d(0,0,0)';
+				this.train.style.webkitTransform = 'translate3d(0,0,0)';
 				this.setState({
 					items: this.getNewItems(newProps.items)
 				});
@@ -3647,7 +3821,9 @@
 				self.width = Number(document.defaultView.getComputedStyle(swiper).width.replace(/px/, ''));
 				self.$trainOffset = -self.width * self.$currentOne;
 				self.train.style.transition = '0s';
+				self.train.style.webkitTransition = '0s';
 				self.train.style.transform = 'translate3d(' + self.$trainOffset + ',0,0)';
+				self.train.style.webkitTransform = 'translate3d(' + self.$trainOffset + ',0,0)';
 			}
 		}, {
 			key: 'updatePagi',
@@ -3658,7 +3834,7 @@
 				var _this3 = this;
 
 				var self = this;
-				if (this.cycle) {
+				if (!this.switching) {
 					this.switching = true;
 					if (self.$currentOne < self.state.items.length - 1) {
 						self.$currentOne++;
@@ -3676,12 +3852,16 @@
 					};
 					self.setState({ currentDot: self.$currentOne });
 					self.train.style.transition = self.props.duration + 'ms';
+					self.train.style.webkitTransition = self.props.duration + 'ms';
 					self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+					self.train.style.webkitTransform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
 					setTimeout(function () {
 						self.train.style.transition = '0s';
+						self.train.style.webkitTransition = '0s';
 						if (self.props.carousel && self.$currentOne === 0) {
 							self.$trainOffset = 0;
 							self.train.style.transform = 'translate3d(0,0,0)';
+							self.train.style.webkitTransform = 'translate3d(0,0,0)';
 						};
 						_this3.switching = false;
 						_this3.cycle = false;
@@ -3694,7 +3874,7 @@
 				var _this4 = this;
 
 				var self = this;
-				if (this.cycle) {
+				if (!this.switching) {
 					this.switching = true;
 					if (self.$currentOne > 0) {
 						self.$currentOne--;
@@ -3709,15 +3889,42 @@
 					};
 					self.setState({ currentDot: self.$currentOne });
 					self.train.style.transition = self.props.duration + 'ms';
+					self.train.style.webkitTransition = self.props.duration + 'ms';
 					self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+					self.train.style.webkitTransform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
 					setTimeout(function () {
 						self.train.style.transition = '0s';
+						self.train.style.webkitTransition = '0s';
 						if (self.props.carousel && self.$currentOne === self.state.items.length - 1) {
 							self.$trainOffset = -(self.state.items.length - 1) * self.width;
 							self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+							self.train.style.webkitTransform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
 						};
 						_this4.switching = false;
 						_this4.cycle = false;
+					}, self.props.duration);
+				};
+			}
+		}, {
+			key: 'toItem',
+			value: function toItem(i) {
+				var _this5 = this;
+
+				var self = this;
+				if (!this.switching) {
+					this.switching = true;
+					this.$currentOne = i;
+					this.$trainOffset = -i * this.width;
+					self.setState({ currentDot: self.$currentOne });
+					self.train.style.transition = self.props.duration + 'ms';
+					self.train.style.webkitTransition = self.props.duration + 'ms';
+					self.train.style.transform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+					self.train.style.webkitTransform = 'translate3d(' + self.$trainOffset + 'px,0,0)';
+					setTimeout(function () {
+						self.train.style.transition = '0s';
+						self.train.style.webkitTransition = '0s';
+						_this5.switching = false;
+						_this5.cycle = false;
 					}, self.props.duration);
 				};
 			}
@@ -3726,23 +3933,40 @@
 			value: function handleTouchStart(e) {
 				if (!this.cycle) {
 					this.cycle = true;
+					this.canScroll = false;
 					this.moveCount = 0;
 					this.X0 = this.X1 = e.changedTouches[0].pageX;
+					this.Y1 = e.changedTouches[0].pageY;
 				}
 			}
 		}, {
 			key: 'handleTouchMove',
 			value: function handleTouchMove(e) {
-				if (this.cycle) {
+				if (this.cycle && !this.switching) {
 					this.moveCount++;
+					if (!this.canScroll) {
+						if (this.moveCount === 1) {
+							this.X2 = e.changedTouches[0].pageX;
+							this.Y2 = e.changedTouches[0].pageY;
+							var distanceY = this.Y2 - this.Y1;
+							var distanceX = this.X2 - this.X1;
+							if (Math.abs(distanceY) > Math.abs(distanceX)) {
+								this.canScroll = true;
+							} else {
+								e.preventDefault();
+							}
+						}
 
-					if (this.props.sticky === true) {
-						this.X2 = e.changedTouches[0].pageX;
-						var distance = this.X2 - this.X1;
-						this.$trainOffset += distance;
-						this.train.style.transition = '0s';
-						this.train.style.transform = 'translate3d(' + this.$trainOffset + 'px,0,0)';
-						this.X1 = this.X2;
+						if (!this.canScroll && this.props.sticky) {
+							this.X2 = e.changedTouches[0].pageX;
+							var distance = this.X2 - this.X1;
+							this.$trainOffset += distance;
+							this.train.style.transition = '0s';
+							this.train.style.webkitTransition = '0s';
+							this.train.style.transform = 'translate3d(' + this.$trainOffset + 'px,0,0)';
+							this.train.style.webkitTransform = 'translate3d(' + this.$trainOffset + 'px,0,0)';
+							this.X1 = this.X2;
+						};
 					};
 				};
 			}
@@ -3750,12 +3974,17 @@
 			key: 'handleTouchEnd',
 			value: function handleTouchEnd(e) {
 				if (this.cycle) {
-					this.X2 = e.changedTouches[0].pageX;
-					var distance = this.X2 - this.X0;
-					if (distance > 0) {
-						this.toPrev();
-					} else if (distance < 0) {
-						this.toNext();
+					if (!this.canScroll) {
+						this.X2 = e.changedTouches[0].pageX;
+						var distance = this.X2 - this.X0;
+						if (distance > 0) {
+							this.toPrev();
+						} else if (distance < 0) {
+							this.toNext();
+						} else {
+							this.switching = false;
+							this.cycle = false;
+						}
 					} else {
 						this.switching = false;
 						this.cycle = false;
@@ -3785,7 +4014,7 @@
 						items.map(function (a, i) {
 							return React.createElement(
 								'a',
-								{ className: 'item', href: a.href || '#/', key: i, style: {
+								{ className: 'item', href: a.href || '#/shopping_cart', key: i, style: {
 										backgroundImage: a.background ? 'url(' + a.background + ')' : ''
 									} },
 								a.img ? React.createElement('img', { src: a.img }) : null
@@ -3802,7 +4031,8 @@
 							'ul',
 							{ className: 'pagination', ref: 'pagination' },
 							this.props.pagi ? this.props.items.map(function (elem, i) {
-								return React.createElement('li', { className: i === self.state.currentDot ? 'dot active' : 'dot' });
+								return React.createElement('li', { className: i === self.state.currentDot ? 'dot active' : 'dot',
+									onClick: self.toItem.bind(self, i) });
 							}) : null
 						)
 					)
@@ -3816,8 +4046,8 @@
 	Swiper.defaultProps = {
 		items: [],
 		duration: 300,
-		interval: 1500,
-		carousel: false,
+		interval: 3000,
+		carousel: true,
 		sticky: true,
 		autoplay: true,
 		pagi: true
@@ -3826,16 +4056,16 @@
 	exports.Swiper = Swiper;
 
 /***/ },
-/* 47 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(48);
+	var content = __webpack_require__(56);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3852,10 +4082,10 @@
 	}
 
 /***/ },
-/* 48 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
@@ -3866,16 +4096,132 @@
 
 
 /***/ },
-/* 49 */
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Showcase2 = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	__webpack_require__(58);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Showcase2 = function (_React$Component) {
+		_inherits(Showcase2, _React$Component);
+
+		function Showcase2() {
+			_classCallCheck(this, Showcase2);
+
+			return _possibleConstructorReturn(this, (Showcase2.__proto__ || Object.getPrototypeOf(Showcase2)).apply(this, arguments));
+		}
+
+		_createClass(Showcase2, [{
+			key: 'render',
+			value: function render() {
+				return React.createElement(
+					'div',
+					{ className: 'Showcase2' },
+					this.props.items.map(function (item, i) {
+						var href = '#/item?id=' + item.id;
+						var src = 'img/items/' + item.id + '/t.jpg';
+						var style = {
+							float: i % 2 === 0 ? 'left' : 'right'
+						};
+						return React.createElement(
+							'div',
+							{ className: 'item' },
+							React.createElement(
+								'a',
+								{ href: href },
+								React.createElement('img', { className: 'thumbnail', src: src }),
+								React.createElement(
+									'p',
+									{ className: 'name' },
+									item.name
+								),
+								React.createElement(
+									'p',
+									{ className: 'price' },
+									'\uFFE5',
+									item.price.toFixed(2)
+								)
+							)
+						);
+					})
+				);
+			}
+		}]);
+
+		return Showcase2;
+	}(React.Component);
+
+	Showcase2.defaultProps = {
+		items: []
+	};
+
+	exports.Showcase2 = Showcase2;
+
+/***/ },
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(59);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Showcase2.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Showcase2.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 59 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(16)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".Showcase2 {\n  overflow: hidden;\n}\n.Showcase2 .item {\n  float: left;\n  width: 50%;\n  padding-bottom: 0.15rem;\n  background: white;\n  overflow: hidden;\n}\n.Showcase2 .item a {\n  display: block;\n  width: 80%;\n  margin: auto;\n}\n.Showcase2 .item a .name {\n  height: 0.6rem;\n  font-size: 0.2rem;\n  line-height: 0.3rem;\n  color: black;\n  overflow: hidden;\n}\n.Showcase2 .item a .thumbnail {\n  width: 100%;\n  display: block;\n}\n.Showcase2 .item a p {\n  width: 100%;\n  font-size: .2rem;\n}\n.Showcase2 .item a .description {\n  color: grey;\n}\n.Showcase2 .item a .price {\n  color: #0f88eb;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(61);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3892,21 +4238,21 @@
 	}
 
 /***/ },
-/* 50 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".HOME {\n  background: #ECEBEB;\n}\n.HOME .searchbar {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 0.8rem;\n  background: rgba(255, 255, 255, 0.6);\n  overflow: hidden;\n  z-index: 10;\n}\n.HOME .searchbar .search {\n  position: relative;\n  width: 6.20rem;\n  height: .60rem;\n  border-radius: .30rem;\n  background: white;\n  margin: auto;\n  margin-top: 0.1rem;\n}\n.HOME .searchbar .search .icon {\n  float: left;\n  width: 1rem;\n  text-align: center;\n  color: #999999;\n  font-size: 0.3rem;\n  line-height: 0.6rem;\n}\n.HOME .searchbar .search img {\n  width: 0.35rem;\n  margin: .10rem .40rem 0 .20rem;\n  float: left;\n}\n.HOME .searchbar .search input {\n  font-family: 'Microsoft Yahei';\n  display: block;\n  -webkit-appearance: none;\n  font-size: 0.26rem;\n  line-height: 0.6rem;\n  border: none;\n}\n.HOME .slider {\n  position: relative;\n  width: 7.20rem;\n  height: 4.90rem;\n  margin-bottom: .20rem;\n  overflow: hidden;\n}\n.HOME .slider-imgs {\n  width: 36rem;\n  overflow: hidden;\n}\n.HOME .slider li {\n  float: left;\n  width: 7.2rem;\n}\n.HOME .slider img {\n  width: 100%;\n}\n.HOME .slider-tabs {\n  position: absolute;\n  width: 1.29rem;\n  height: .22rem;\n  border-radius: .11rem;\n  background: white;\n  padding: 0 .10rem 0 .10rem;\n  left: 2.8rem;\n  top: 4.50rem;\n}\n.HOME .slider-tabs li {\n  width: .12rem;\n  height: .12rem;\n  border-radius: .06rem;\n  background: grey;\n  float: left;\n  margin: .05rem .10rem .05rem .10rem;\n}\n.HOME .slider-tabs .selected {\n  background: #66CC66;\n}\n.HOME .block {\n  overflow: hidden;\n}\n.HOME .block .block-header {\n  padding: 0.15rem 0;\n  font-size: 0.24rem;\n  color: #0f88eb;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  text-align: center;\n}\n.HOME .block .item-2 {\n  display: block;\n  float: left;\n  box-sizing: border-box;\n  width: 50%;\n  padding: 0.2rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n}\n.HOME .block .item-2:nth-child(odd) {\n  border-right: 1px solid #dfdfdf;\n}\n.HOME .block .item-2:nth-child(even) {\n  border-right: 1px solid white;\n}\n.HOME .block .item-2 img {\n  width: 100%;\n  margin: auto;\n}\n.HOME .block .item-2 .tag {\n  background: white;\n}\n.HOME .block .item-2 .tag .name {\n  height: 0.72rem;\n  font-size: 0.24rem;\n  line-height: 0.36rem;\n  overflow: hidden;\n  color: #3A3A3A;\n}\n.HOME .block .item-2 .tag .price {\n  font-size: 0.22rem;\n  color: #0f88eb;\n}\n.HOME .block .item {\n  float: left;\n  width: 50%;\n  padding-bottom: 0.15rem;\n  background: white;\n  overflow: hidden;\n}\n.HOME .block .item a {\n  display: block;\n  width: 80%;\n  margin: auto;\n}\n.HOME .block .item a .name {\n  height: 0.6rem;\n  font-size: 0.2rem;\n  line-height: 0.3rem;\n  color: black;\n  overflow: hidden;\n}\n.HOME .block .item a .thumbnail {\n  width: 100%;\n  display: block;\n}\n.HOME .block .item a p {\n  width: 100%;\n  font-size: .2rem;\n}\n.HOME .block .item a .description {\n  color: grey;\n}\n.HOME .block .item a .price {\n  color: #0f88eb;\n}\n.HOME .nav_shadow {\n  height: 1rem;\n}\n", ""]);
+	exports.push([module.id, ".HOME {\n  background: #ECEBEB;\n}\n.HOME .searchbar {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 0.8rem;\n  background: rgba(255, 255, 255, 0.6);\n  overflow: hidden;\n  z-index: 10;\n}\n.HOME .searchbar .search {\n  position: relative;\n  width: 6.20rem;\n  height: .60rem;\n  border-radius: .30rem;\n  background: white;\n  margin: auto;\n  margin-top: 0.1rem;\n}\n.HOME .searchbar .search .icon {\n  float: left;\n  width: 1rem;\n  text-align: center;\n  color: #999999;\n  font-size: 0.3rem;\n  line-height: 0.6rem;\n}\n.HOME .searchbar .search img {\n  width: 0.35rem;\n  margin: .10rem .40rem 0 .20rem;\n  float: left;\n}\n.HOME .searchbar .search input {\n  font-family: 'Microsoft Yahei';\n  display: block;\n  -webkit-appearance: none;\n  font-size: 0.26rem;\n  line-height: 0.6rem;\n  border: none;\n}\n.HOME .block {\n  overflow: hidden;\n}\n.HOME .block .block-header {\n  padding: 0.15rem 0;\n  font-size: 0.24rem;\n  color: #0f88eb;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  text-align: center;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 51 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3916,9 +4262,9 @@
 	});
 	exports.ItemContainer = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _Item = __webpack_require__(52);
+	var _Item = __webpack_require__(63);
 
 	var ItemContainer = ReactRedux.connect(function (state) {
 		return {
@@ -3930,7 +4276,7 @@
 	exports.ItemContainer = ItemContainer;
 
 /***/ },
-/* 52 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3942,13 +4288,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
-	var _CommentBox = __webpack_require__(34);
+	var _CommentBox = __webpack_require__(42);
 
-	var _Swiper = __webpack_require__(46);
+	var _Topbar = __webpack_require__(33);
 
-	var _API = __webpack_require__(21);
+	var _Swiper = __webpack_require__(54);
+
+	var _API = __webpack_require__(22);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3956,7 +4304,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(53);
+	__webpack_require__(64);
 
 	var Item = function (_React$Component) {
 		_inherits(Item, _React$Component);
@@ -3964,7 +4312,7 @@
 		function Item() {
 			_classCallCheck(this, Item);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
+			var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this));
 
 			_this.state = {
 				quantity: 1,
@@ -4047,7 +4395,7 @@
 			value: function ADD_TO_CART() {
 				for (var key in this.state.options) {
 					if (this.state.options[key] === '') {
-						_API.API.ALERT('请选择' + key + '!');
+						_API.API.ALERT('\u8BF7\u9009\u62E9' + key + '!');
 						return;
 					}
 				}
@@ -4101,23 +4449,9 @@
 				return React.createElement(
 					'div',
 					{ className: 'ITEM' },
-					React.createElement(
-						'div',
-						{ className: 'topbar c-topbar' },
-						React.createElement(
-							'div',
-							{ className: 'c-icon' },
-							React.createElement('i', { className: 'fa fa-angle-left', onClick: this.back.bind(this) })
-						),
-						React.createElement(
-							'div',
-							{ className: 'c-text' },
-							'商品详情'
-						)
-					),
-					React.createElement('div', { className: 'topbar-shadow' }),
+					React.createElement(_Topbar.Topbar, { name: '\u5546\u54C1\u8BE6\u60C5' }),
 					React.createElement(_Swiper.Swiper, {
-						sticky: false,
+						sticky: true, carousel: false,
 						autoplay: false,
 						items: this.thumbnails() }),
 					React.createElement(
@@ -4131,7 +4465,7 @@
 						React.createElement(
 							'p',
 							{ className: 'price' },
-							'￥',
+							'\uFFE5',
 							item.price.toFixed(2)
 						)
 					),
@@ -4164,7 +4498,7 @@
 						React.createElement(
 							'p',
 							null,
-							'购买数量'
+							'\u8D2D\u4E70\u6570\u91CF'
 						),
 						React.createElement(
 							'div',
@@ -4209,12 +4543,12 @@
 								React.createElement(
 									'p',
 									{ className: 'text-favor' },
-									'收藏'
+									'\u6536\u85CF'
 								)
 							),
 							React.createElement(
 								'div',
-								{ className: 'favor', onClick: this.toCart.bind(this) },
+								{ className: 'favor favor_cart', onClick: this.toCart.bind(this) },
 								React.createElement('div', { className: 'redDot', style: { display: this.props.inCart === 0 ? 'none' : 'block' } }),
 								React.createElement(
 									'p',
@@ -4224,19 +4558,19 @@
 								React.createElement(
 									'p',
 									{ className: 'text-favor' },
-									'购物车'
+									'\u8D2D\u7269\u8F66'
 								)
 							)
 						),
 						React.createElement(
 							'a',
 							{ className: 'to_cart', onClick: this.ADD_TO_CART.bind(this) },
-							'加入购物车'
+							'\u52A0\u5165\u8D2D\u7269\u8F66'
 						),
 						React.createElement(
 							'a',
 							{ className: 'to-buy', onClick: this.buyNow.bind(this) },
-							'立即购买'
+							'\u7ACB\u5373\u8D2D\u4E70'
 						)
 					)
 				);
@@ -4259,16 +4593,16 @@
 	exports.Item = Item;
 
 /***/ },
-/* 53 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(54);
+	var content = __webpack_require__(65);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4285,21 +4619,21 @@
 	}
 
 /***/ },
-/* 54 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".ITEM {\n  width: 100%;\n  height: 15rem;\n  background: #ECEBEB;\n}\n.ITEM .topbar {\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 10;\n}\n.ITEM .topbar-shadow {\n  height: 1rem;\n}\n.ITEM .info {\n  padding: 0.1rem 0.15rem;\n  border-bottom: 1px solid #dfdfdf;\n  background: white;\n}\n.ITEM .info .name {\n  width: 5.6rem;\n  font-size: 0.26rem;\n  line-height: 0.4rem;\n  font-weight: normal;\n}\n.ITEM .info .price {\n  font-size: 0.4rem;\n  color: #0f88eb;\n}\n.ITEM .spec {\n  padding: 0.15rem;\n  font-size: 0.28rem;\n  line-height: 0.5rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  overflow: hidden;\n}\n.ITEM .spec li {\n  float: left;\n}\n.ITEM .spec li._key {\n  width: 2rem;\n}\n.ITEM .spec li._option {\n  box-sizing: border-box;\n  height: 0.5rem;\n  padding: 0 0.2rem;\n  margin-right: 0.2rem;\n  font-size: 0.28rem;\n  color: #3A3A3A;\n  background: #ECEBEB;\n}\n.ITEM .spec li._option.active {\n  background: #0f88eb;\n  color: white;\n}\n.ITEM .block-quantity {\n  padding: 0.2rem 0.15rem;\n  border-bottom: 1px solid #dfdfdf;\n  margin-bottom: 0.2rem;\n  font-size: 0.28rem;\n  background: white;\n  overflow: hidden;\n}\n.ITEM .block-quantity p {\n  float: left;\n  line-height: 0.5rem;\n}\n.ITEM .block-quantity .counter {\n  float: right;\n}\n.ITEM .block-quantity .counter .minus {\n  float: left;\n  box-sizing: border-box;\n  width: 0.50rem;\n  height: 0.50rem;\n  border: 1px solid #dfdfdf;\n  background: white;\n  font-size: .32rem;\n  line-height: .50rem;\n  text-align: center;\n  cursor: pointer;\n}\n.ITEM .block-quantity .counter .quantity {\n  box-sizing: border-box;\n  float: left;\n  width: 1rem;\n  height: .50rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.28rem;\n  line-height: .50rem;\n  text-align: center;\n}\n.ITEM .block-quantity .counter .plus {\n  box-sizing: border-box;\n  float: left;\n  width: 0.50rem;\n  height: 0.50rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.28rem;\n  line-height: 0.50rem;\n  text-align: center;\n  cursor: pointer;\n}\n.ITEM .details img {\n  width: 100%;\n}\n.ITEM .desc {\n  position: relative;\n  width: 100%;\n  height: 2.20rem;\n  background: white;\n  border-top: 1px solid grey;\n  margin: .05rem 0 .20rem 0;\n}\n.ITEM .desc .upper {\n  position: relative;\n  width: 6.60rem;\n  height: 1.00rem;\n  border-bottom: 1px solid grey;\n  margin: 0 0 0 .30rem;\n}\n.ITEM .desc .upper .price {\n  position: absolute;\n  left: .05rem;\n  top: .30rem;\n  color: #FF9900;\n  font-size: .4rem;\n}\n.ITEM .desc .lower {\n  position: relative;\n  width: 6.60rem;\n  height: 1rem;\n  margin-left: .30rem;\n}\n.ITEM .desc .lower p {\n  font-size: .2rem;\n  margin: .10rem 0 .10rem 0;\n}\n.ITEM .desc .lower p:last-child {\n  color: grey;\n}\n.ITEM .item_spec {\n  position: relative;\n  width: 7.20rem;\n  height: 1.80rem;\n  background: white;\n  margin-bottom: .20rem;\n}\n.ITEM .item_spec p {\n  width: 6.60rem;\n  margin-left: .30rem;\n  padding: .20rem 0 .10rem 0;\n  font-size: .2rem;\n  border-bottom: 1px solid grey;\n  color: grey;\n}\n.ITEM .spec1 {\n  margin: .35rem 0 0 .60rem;\n  float: left;\n}\n.ITEM .spec2 {\n  margin: .35rem 0 0 1.20rem;\n}\n.ITEM .details {\n  position: relative;\n  width: 7.20rem;\n  background: white;\n}\n.ITEM .details ul {\n  position: relative;\n  width: 6.63rem;\n  height: .25rem;\n  margin-left: .30rem;\n  padding: .15rem 0 .15rem 0;\n}\n.ITEM .details ul li {\n  width: 2.18rem;\n  height: .25rem;\n  float: left;\n  font-size: .2rem;\n  color: grey;\n  line-height: .20rem;\n  text-align: center;\n  border-right: 1px solid grey;\n  cursor: pointer;\n}\n.ITEM .details ul li:last-child {\n  border: none;\n}\n.ITEM .details ul li.selected {\n  color: #66CC66!important;\n}\n.ITEM .line {\n  position: relative;\n  width: 6.60rem;\n  height: .01rem;\n  background: grey;\n  margin: 0 0 .20rem .30rem;\n}\n.ITEM .square {\n  position: relative;\n  width: 6.90rem;\n  margin: 0 0 0 .15rem;\n}\n.ITEM .square img {\n  width: 100%;\n}\n.ITEM .item_nav_shadow {\n  width: 7.20rem;\n  height: .80rem;\n  background: white;\n}\n.ITEM .item_nav {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 0.80rem;\n  background: white;\n}\n.ITEM .item_nav .part-left {\n  float: left;\n  width: 33.333333%;\n  height: 0.8rem;\n}\n.ITEM .item_nav .favor {\n  position: relative;\n  float: left;\n  box-sizing: border-box;\n  width: 50%;\n  height: 0.8rem;\n  border-right: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: 0.3rem;\n  text-align: center;\n}\n.ITEM .item_nav .favor .redDot {\n  position: absolute;\n  right: 0.3rem;\n  top: 0.05rem;\n  width: 0.18rem;\n  height: 0.18rem;\n  border-radius: 1000px;\n  background: #0f88eb;\n}\n.ITEM .item_nav .favor .icon-star {\n  position: relative;\n  padding: 0.1rem 0;\n}\n.ITEM .item_nav .favor .text-favor {\n  font-size: 0.2rem;\n  text-align: center;\n}\n.ITEM .item_nav .to_cart {\n  float: left;\n  display: block;\n  width: 33.333333%;\n  height: 0.80rem;\n  background: orange;\n  color: white;\n  line-height: 0.80rem;\n  text-align: center;\n  font-size: 0.28rem;\n}\n.ITEM .item_nav .to-buy {\n  float: left;\n  display: block;\n  width: 33.333333%;\n  height: 0.8rem;\n  background: #0f88eb;\n  color: white;\n  line-height: 0.8rem;\n  text-align: center;\n  font-size: 0.28rem;\n}\n.ITEM .home:link {\n  float: left;\n  width: 0.42rem;\n  display: block;\n  margin: 0.1rem 1.3rem 0 1.14rem;\n  color: black;\n}\n.ITEM .home:visited {\n  color: black;\n}\n.ITEM .home img {\n  width: 0.4rem;\n  display: block;\n  margin: auto;\n}\n.ITEM .home p {\n  font-size: 0.19rem;\n  text-align: center;\n}\n", ""]);
+	exports.push([module.id, ".ITEM {\n  width: 100%;\n  height: 15rem;\n  background: #ECEBEB;\n}\n.ITEM .topbar {\n  position: fixed;\n  left: 0;\n  top: 0;\n  z-index: 10;\n}\n.ITEM .topbar-shadow {\n  height: 1rem;\n}\n.ITEM .info {\n  padding: 0.1rem 0.15rem;\n  border-bottom: 1px solid #dfdfdf;\n  background: white;\n}\n.ITEM .info .name {\n  width: 5.6rem;\n  font-size: 0.26rem;\n  line-height: 0.4rem;\n  font-weight: normal;\n}\n.ITEM .info .price {\n  font-size: 0.4rem;\n  color: #0f88eb;\n}\n.ITEM .spec {\n  padding: 0.15rem;\n  font-size: 0.28rem;\n  line-height: 0.5rem;\n  background: white;\n  border-bottom: 1px solid #dfdfdf;\n  overflow: hidden;\n}\n.ITEM .spec li {\n  float: left;\n}\n.ITEM .spec li._key {\n  width: 2rem;\n}\n.ITEM .spec li._option {\n  box-sizing: border-box;\n  height: 0.5rem;\n  padding: 0 0.2rem;\n  margin-right: 0.2rem;\n  font-size: 0.28rem;\n  color: #3A3A3A;\n  background: #ECEBEB;\n}\n.ITEM .spec li._option.active {\n  background: #0f88eb;\n  color: white;\n}\n.ITEM .block-quantity {\n  padding: 0.2rem 0.15rem;\n  border-bottom: 1px solid #dfdfdf;\n  margin-bottom: 0.2rem;\n  font-size: 0.28rem;\n  background: white;\n  overflow: hidden;\n}\n.ITEM .block-quantity p {\n  float: left;\n  line-height: 0.5rem;\n}\n.ITEM .block-quantity .counter {\n  float: right;\n}\n.ITEM .block-quantity .counter .minus {\n  float: left;\n  box-sizing: border-box;\n  width: 0.50rem;\n  height: 0.50rem;\n  border: 1px solid #dfdfdf;\n  background: white;\n  font-size: .32rem;\n  line-height: .50rem;\n  text-align: center;\n  cursor: pointer;\n}\n.ITEM .block-quantity .counter .quantity {\n  box-sizing: border-box;\n  float: left;\n  width: 1rem;\n  height: .50rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.28rem;\n  line-height: .50rem;\n  text-align: center;\n}\n.ITEM .block-quantity .counter .plus {\n  box-sizing: border-box;\n  float: left;\n  width: 0.50rem;\n  height: 0.50rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.28rem;\n  line-height: 0.50rem;\n  text-align: center;\n  cursor: pointer;\n}\n.ITEM .details img {\n  width: 100%;\n}\n.ITEM .desc {\n  position: relative;\n  width: 100%;\n  height: 2.20rem;\n  background: white;\n  border-top: 1px solid grey;\n  margin: .05rem 0 .20rem 0;\n}\n.ITEM .desc .upper {\n  position: relative;\n  width: 6.60rem;\n  height: 1.00rem;\n  border-bottom: 1px solid grey;\n  margin: 0 0 0 .30rem;\n}\n.ITEM .desc .upper .price {\n  position: absolute;\n  left: .05rem;\n  top: .30rem;\n  color: #FF9900;\n  font-size: .4rem;\n}\n.ITEM .desc .lower {\n  position: relative;\n  width: 6.60rem;\n  height: 1rem;\n  margin-left: .30rem;\n}\n.ITEM .desc .lower p {\n  font-size: .2rem;\n  margin: .10rem 0 .10rem 0;\n}\n.ITEM .desc .lower p:last-child {\n  color: grey;\n}\n.ITEM .item_spec {\n  position: relative;\n  width: 7.20rem;\n  height: 1.80rem;\n  background: white;\n  margin-bottom: .20rem;\n}\n.ITEM .item_spec p {\n  width: 6.60rem;\n  margin-left: .30rem;\n  padding: .20rem 0 .10rem 0;\n  font-size: .2rem;\n  border-bottom: 1px solid grey;\n  color: grey;\n}\n.ITEM .spec1 {\n  margin: .35rem 0 0 .60rem;\n  float: left;\n}\n.ITEM .spec2 {\n  margin: .35rem 0 0 1.20rem;\n}\n.ITEM .details {\n  position: relative;\n  width: 7.20rem;\n  background: white;\n}\n.ITEM .details ul {\n  position: relative;\n  width: 6.63rem;\n  height: .25rem;\n  margin-left: .30rem;\n  padding: .15rem 0 .15rem 0;\n}\n.ITEM .details ul li {\n  width: 2.18rem;\n  height: .25rem;\n  float: left;\n  font-size: .2rem;\n  color: grey;\n  line-height: .20rem;\n  text-align: center;\n  border-right: 1px solid grey;\n  cursor: pointer;\n}\n.ITEM .details ul li:last-child {\n  border: none;\n}\n.ITEM .details ul li.selected {\n  color: #66CC66!important;\n}\n.ITEM .line {\n  position: relative;\n  width: 6.60rem;\n  height: .01rem;\n  background: grey;\n  margin: 0 0 .20rem .30rem;\n}\n.ITEM .square {\n  position: relative;\n  width: 6.90rem;\n  margin: 0 0 0 .15rem;\n}\n.ITEM .square img {\n  width: 100%;\n}\n.ITEM .item_nav_shadow {\n  width: 7.20rem;\n  height: .80rem;\n  background: white;\n}\n.ITEM .item_nav {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 0.80rem;\n  background: white;\n}\n.ITEM .item_nav .part-left {\n  float: left;\n  width: 33.333333%;\n  height: 0.8rem;\n}\n.ITEM .item_nav .favor {\n  position: relative;\n  float: left;\n  box-sizing: border-box;\n  width: 50%;\n  height: 0.8rem;\n  border-right: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: 0.3rem;\n  text-align: center;\n}\n.ITEM .item_nav .favor.favor_cart {\n  border-right: 1px solid transparent;\n}\n.ITEM .item_nav .favor .redDot {\n  position: absolute;\n  right: 0.3rem;\n  top: 0.05rem;\n  width: 0.18rem;\n  height: 0.18rem;\n  border-radius: 1000px;\n  background: #0f88eb;\n}\n.ITEM .item_nav .favor .icon-star {\n  position: relative;\n  padding: 0.1rem 0;\n}\n.ITEM .item_nav .favor .text-favor {\n  font-size: 0.2rem;\n  text-align: center;\n}\n.ITEM .item_nav .to_cart {\n  float: left;\n  display: block;\n  width: 33.333333%;\n  height: 0.80rem;\n  background: orange;\n  color: white;\n  line-height: 0.80rem;\n  text-align: center;\n  font-size: 0.28rem;\n}\n.ITEM .item_nav .to-buy {\n  float: left;\n  display: block;\n  width: 33.333333%;\n  height: 0.8rem;\n  background: #0f88eb;\n  color: white;\n  line-height: 0.8rem;\n  text-align: center;\n  font-size: 0.28rem;\n}\n.ITEM .home:link {\n  float: left;\n  width: 0.42rem;\n  display: block;\n  margin: 0.1rem 1.3rem 0 1.14rem;\n  color: black;\n}\n.ITEM .home:visited {\n  color: black;\n}\n.ITEM .home img {\n  width: 0.4rem;\n  display: block;\n  margin: auto;\n}\n.ITEM .home p {\n  font-size: 0.19rem;\n  text-align: center;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 55 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4309,9 +4643,9 @@
 	});
 	exports.MemberContainer = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _Member = __webpack_require__(56);
+	var _Member = __webpack_require__(67);
 
 	function act(action) {}
 
@@ -4325,7 +4659,7 @@
 	exports.MemberContainer = MemberContainer;
 
 /***/ },
-/* 56 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4337,11 +4671,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(7);
+	var _common = __webpack_require__(8);
 
-	var _Navbar = __webpack_require__(12);
+	var _Navbar = __webpack_require__(13);
 
-	var _API = __webpack_require__(21);
+	var _API = __webpack_require__(22);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4349,7 +4683,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(57);
+	__webpack_require__(68);
 
 	var Member = function (_React$Component) {
 		_inherits(Member, _React$Component);
@@ -4357,7 +4691,7 @@
 		function Member() {
 			_classCallCheck(this, Member);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Member).call(this));
+			var _this = _possibleConstructorReturn(this, (Member.__proto__ || Object.getPrototypeOf(Member)).call(this));
 
 			console.log('<Member/> constructing');
 			return _this;
@@ -4411,7 +4745,7 @@
 								React.createElement(
 									'div',
 									{ className: 'row' },
-									'全部订单',
+									'\u5168\u90E8\u8BA2\u5355',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								)
 							),
@@ -4421,20 +4755,20 @@
 								React.createElement(
 									'div',
 									{ className: 'row' },
-									'修改密码',
+									'\u4FEE\u6539\u5BC6\u7801',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								),
 								React.createElement(
 									'div',
 									{ className: 'row', onClick: this.toDIManagement.bind(this) },
-									'收货地址管理',
+									'\u6536\u8D27\u5730\u5740\u7BA1\u7406',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								)
 							),
 							React.createElement(
 								'a',
 								{ className: 'logout', onClick: this.logout.bind(this) },
-								'退出登录'
+								'\u9000\u51FA\u767B\u5F55'
 							)
 						),
 						React.createElement(_Navbar.Navbar, { name: 'mine' })
@@ -4449,16 +4783,16 @@
 	exports.Member = Member;
 
 /***/ },
-/* 57 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(58);
+	var content = __webpack_require__(69);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4475,21 +4809,21 @@
 	}
 
 /***/ },
-/* 58 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".MEMBER {\n  width: 100%;\n  background: #ECEBEB;\n}\n.MEMBER .header {\n  position: relative;\n  height: 3.60rem;\n  background: #0f88eb;\n  overflow: hidden;\n}\n.MEMBER .outerRound {\n  position: relative;\n  width: 1.80rem;\n  height: 1.80rem;\n  border-radius: 10rem;\n  margin: auto;\n  margin-top: 0.60rem;\n  background: #EE9393;\n}\n.MEMBER .innerRound {\n  position: absolute;\n  left: 0.20rem;\n  top: 0.20rem;\n  width: 1.40rem;\n  height: 1.40rem;\n  border-radius: 10rem;\n  background: white;\n  opacity: 1;\n  overflow: hidden;\n}\n.MEMBER .innerRound img {\n  width: 100%;\n  height: 100%;\n}\n.MEMBER .account {\n  position: relative;\n  height: 0.30rem;\n  margin: auto;\n  margin-top: 0.20rem;\n  color: white;\n  font-size: 0.3rem;\n  text-align: center;\n}\n.MEMBER .block {\n  margin-bottom: 0.2rem;\n  background: white;\n}\n.MEMBER .block .row {\n  box-sizing: border-box;\n  padding: 0.2rem;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.26rem;\n}\n.MEMBER .block .row i {\n  float: right;\n  font-size: 0.4rem;\n}\n.MEMBER .box1 {\n  position: relative;\n  background: white;\n  overflow: hidden;\n  margin-bottom: 0.20rem;\n}\n.MEMBER .box a:link {\n  position: relative;\n  width: 6.40rem;\n  height: 0.60rem;\n  border-bottom: 0.01rem solid grey;\n  margin-left: 0.30rem;\n  display: block;\n  color: black;\n}\n.MEMBER .box a:visited {\n  color: black;\n}\n.MEMBER .box .icon {\n  width: 0.2rem;\n  float: left;\n  margin: 0.2rem 0.2rem 0 0.2rem;\n}\n.MEMBER .box a p {\n  float: left;\n  margin-top: 0.15rem;\n  font-size: 0.2rem;\n}\n.MEMBER .box .arrow {\n  float: right;\n  width: 0.19rem;\n  margin: 0.1rem 0.2rem 0 0;\n}\n.MEMBER .box .tip {\n  position: absolute;\n  left: 4rem;\n  bottom: 0.18rem;\n  font-size: 0.2rem;\n  color: #FFB340;\n}\n.MEMBER .box2 {\n  position: relative;\n  height: 2.43rem;\n  background: white;\n  overflow: hidden;\n  margin-bottom: 0.20rem;\n}\n.MEMBER .logout {\n  width: 6.80rem;\n  height: 0.80rem;\n  border-radius: 0.10rem;\n  background: #0f88eb;\n  text-align: center;\n  line-height: 0.80rem;\n  color: white;\n  font-size: 0.32rem;\n  margin: 0.20rem 0px 0px 0.20rem;\n  display: block;\n}\n", ""]);
+	exports.push([module.id, ".MEMBER {\n  width: 100%;\n  background: #ECEBEB;\n}\n.MEMBER .header {\n  position: relative;\n  height: 3.60rem;\n  background: #0f88eb;\n  overflow: hidden;\n}\n.MEMBER .outerRound {\n  position: relative;\n  width: 1.80rem;\n  height: 1.80rem;\n  border-radius: 10rem;\n  margin: auto;\n  margin-top: 0.60rem;\n  background: rgba(255, 255, 255, 0.5);\n}\n.MEMBER .innerRound {\n  position: absolute;\n  left: 0.20rem;\n  top: 0.20rem;\n  width: 1.40rem;\n  height: 1.40rem;\n  border-radius: 10rem;\n  background: white;\n  opacity: 1;\n  overflow: hidden;\n}\n.MEMBER .innerRound img {\n  width: 100%;\n  height: 100%;\n}\n.MEMBER .account {\n  position: relative;\n  height: 0.30rem;\n  margin: auto;\n  margin-top: 0.20rem;\n  color: white;\n  font-size: 0.3rem;\n  text-align: center;\n}\n.MEMBER .block {\n  margin-bottom: 0.2rem;\n  background: white;\n}\n.MEMBER .block .row {\n  box-sizing: border-box;\n  padding: 0.2rem;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.26rem;\n}\n.MEMBER .block .row i {\n  float: right;\n  font-size: 0.4rem;\n}\n.MEMBER .box1 {\n  position: relative;\n  background: white;\n  overflow: hidden;\n  margin-bottom: 0.20rem;\n}\n.MEMBER .box a:link {\n  position: relative;\n  width: 6.40rem;\n  height: 0.60rem;\n  border-bottom: 0.01rem solid grey;\n  margin-left: 0.30rem;\n  display: block;\n  color: black;\n}\n.MEMBER .box a:visited {\n  color: black;\n}\n.MEMBER .box .icon {\n  width: 0.2rem;\n  float: left;\n  margin: 0.2rem 0.2rem 0 0.2rem;\n}\n.MEMBER .box a p {\n  float: left;\n  margin-top: 0.15rem;\n  font-size: 0.2rem;\n}\n.MEMBER .box .arrow {\n  float: right;\n  width: 0.19rem;\n  margin: 0.1rem 0.2rem 0 0;\n}\n.MEMBER .box .tip {\n  position: absolute;\n  left: 4rem;\n  bottom: 0.18rem;\n  font-size: 0.2rem;\n  color: #FFB340;\n}\n.MEMBER .box2 {\n  position: relative;\n  height: 2.43rem;\n  background: white;\n  overflow: hidden;\n  margin-bottom: 0.20rem;\n}\n.MEMBER .logout {\n  width: 6.80rem;\n  height: 0.80rem;\n  border-radius: 0.10rem;\n  background: #0f88eb;\n  text-align: center;\n  line-height: 0.80rem;\n  color: white;\n  font-size: 0.32rem;\n  margin: 0.20rem 0px 0px 0.20rem;\n  display: block;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 59 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4499,9 +4833,9 @@
 	});
 	exports.SigninContainer = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _Signin = __webpack_require__(17);
+	var _Signin = __webpack_require__(18);
 
 	function act(action) {}
 

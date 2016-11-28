@@ -1,15 +1,17 @@
 @import '../common.less';
 
 .NAVBAR {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 1rem;
-	border-top: 1px solid @grey-border;
-	background: white;
-	overflow:hidden;
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+	width: 100%; height: 1rem;
 	.nav {
+		position: fixed; left: 0; bottom: 0;
+		width: 100%;
+		height: 1rem;
+		border-top: 1px solid @grey-border;
+		background: white;
+		overflow:hidden;
 		a {
 			position: relative;
 			width: 25%;

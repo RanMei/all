@@ -1,0 +1,32 @@
+@import (reference) '../common.less';
+
+.Showcase2 {
+	overflow: hidden;
+	.item {
+		float: left;
+		width: 50%;
+		padding-bottom: 0.15rem;
+		background: white;
+		overflow: hidden;
+		a {
+			display: block;
+			width: 80%;
+			margin: auto;
+			.name {
+				height: 0.6rem;
+				font-size: 0.2rem; line-height: 0.3rem;
+				color: black;
+				overflow: hidden;
+			}
+			.thumbnail {
+				width: 100%;
+				display:block;}
+			p {
+				width: 100%;
+				font-size: .2rem;
+			}
+			.description {color:grey;}
+			.price {color: @red;}
+		}
+	}
+}

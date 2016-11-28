@@ -49,7 +49,7 @@ import {Navbar} from './components/Navbar.jsx';
 import {Signin} from './components/Signin.jsx';
 import {Signup} from './components/Signup.jsx';
 
-import {Category} from './components/Category.jsx';
+import {CategoryContainer} from './_category/CategoryContainer.jsx';
 
 import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 import {DIManagement} from './components/DIManagement.jsx';
@@ -73,7 +73,7 @@ ReactDOM.render(
 			<Router history={ hashHistory } >
 				<Route path="/" component={AppContainer}>
 					<Route path="/home" component={HomeContainer} />
-					<Route path="/category" component={Category} />
+					<Route path="/category" component={CategoryContainer} />
 					<Route path="/shopping_cart" getComponent={function(nextState, cb) {
 						require.ensure([], (require) => {
 							cb( null, require('./containers/ShoppingCartContainer.jsx').ShoppingCartContainer )

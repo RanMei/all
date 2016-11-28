@@ -13,8 +13,8 @@ class Swiper extends React.Component {
 		
 		this.X0 = null;
 		this.X1 = null;
-		this.Y0 = null;
 		this.Y1 = null;
+		this.Y2 = null;
 
 		this.cycle = false;
 		this.switching = false;
@@ -54,7 +54,9 @@ class Swiper extends React.Component {
 		this.$trainOffset = 0;
 		this.$currentOne = 0;
 		this.train.style.transition = '0s';
+		this.train.style.webkitTransition = '0s';
 		this.train.style.transform = 'translate3d(0,0,0)';
+		this.train.style.webkitTransform = 'translate3d(0,0,0)';
 		this.setState({
 			items: this.getNewItems(newProps.items)
 		})
@@ -79,14 +81,16 @@ class Swiper extends React.Component {
 		self.width = Number( document.defaultView.getComputedStyle( swiper ).width.replace(/px/,'') );
 		self.$trainOffset = -self.width*self.$currentOne;
 		self.train.style.transition = '0s';
+		self.train.style.webkitTransition = '0s';
 		self.train.style.transform = 'translate3d('+self.$trainOffset+',0,0)';
+		self.train.style.webkitTransform = 'translate3d('+self.$trainOffset+',0,0)';
 	}
 	updatePagi(){
 
 	}
 	toNext(){
 		var self = this;
-		if( this.cycle ){
+		if( !this.switching ){
 			this.switching = true;
 			if( self.$currentOne<self.state.items.length-1 ){
 				self.$currentOne++;
@@ -104,12 +108,16 @@ class Swiper extends React.Component {
 			};
 			self.setState({currentDot:self.$currentOne})
 			self.train.style.transition = self.props.duration+'ms';
+			self.train.style.webkitTransition = self.props.duration+'ms';
 			self.train.style.transform = 'translate3d('+self.$trainOffset+'px,0,0)';
+			self.train.style.webkitTransform = 'translate3d('+self.$trainOffset+'px,0,0)';
 			setTimeout(()=>{
 				self.train.style.transition = '0s';
+				self.train.style.webkitTransition = '0s';
 				if( self.props.carousel&&self.$currentOne===0 ){
 					self.$trainOffset = 0;
 					self.train.style.transform = 'translate3d(0,0,0)';
+					self.train.style.webkitTransform = 'translate3d(0,0,0)';
 				};
 				this.switching = false;
 				this.cycle = false;
@@ -118,7 +126,7 @@ class Swiper extends React.Component {
 	}
 	toPrev(){
 		var self = this;
-		if( this.cycle ){
+		if( !this.switching ){
 			this.switching = true;
 			if( self.$currentOne>0 ){
 				self.$currentOne--;
@@ -133,13 +141,36 @@ class Swiper extends React.Component {
 			};
 			self.setState({currentDot:self.$currentOne})
 			self.train.style.transition = self.props.duration+'ms';
+			self.train.style.webkitTransition = self.props.duration+'ms';
 			self.train.style.transform = 'translate3d('+self.$trainOffset+'px,0,0)';
+			self.train.style.webkitTransform = 'translate3d('+self.$trainOffset+'px,0,0)';
 			setTimeout(()=>{
 				self.train.style.transition = '0s';
+				self.train.style.webkitTransition = '0s';
 				if( self.props.carousel&&self.$currentOne===self.state.items.length-1 ){
 					self.$trainOffset = -(self.state.items.length-1)*self.width;
 					self.train.style.transform = 'translate3d('+self.$trainOffset+'px,0,0)';
+					self.train.style.webkitTransform = 'translate3d('+self.$trainOffset+'px,0,0)';
 				};
+				this.switching = false;
+				this.cycle = false;
+			},self.props.duration)
+		};
+	}
+	toItem(i){
+		var self = this;
+		if( !this.switching ){
+			this.switching = true;
+			this.$currentOne = i;
+			this.$trainOffset = -i*this.width;
+			self.setState({currentDot:self.$currentOne})
+			self.train.style.transition = self.props.duration+'ms';
+			self.train.style.webkitTransition = self.props.duration+'ms';
+			self.train.style.transform = 'translate3d('+self.$trainOffset+'px,0,0)';
+			self.train.style.webkitTransform = 'translate3d('+self.$trainOffset+'px,0,0)';
+			setTimeout(()=>{
+				self.train.style.transition = '0s';
+				self.train.style.webkitTransition = '0s';
 				this.switching = false;
 				this.cycle = false;
 			},self.props.duration)
@@ -148,32 +179,54 @@ class Swiper extends React.Component {
 	handleTouchStart(e){
 		if( !this.cycle ){
 			this.cycle = true;
+			this.canScroll = false;
 			this.moveCount = 0;
 			this.X0 = this.X1 = e.changedTouches[0].pageX;
+			this.Y1 = e.changedTouches[0].pageY;
 		}
 	}
 	handleTouchMove(e){
-		if( this.cycle ){
+		if( this.cycle&&!this.switching ){
 			this.moveCount++;
-			
-			if( this.props.sticky===true ){
-				this.X2 = e.changedTouches[0].pageX;
-				var distance = this.X2 - this.X1;
-				this.$trainOffset += distance;
-				this.train.style.transition = '0s';
-				this.train.style.transform = 'translate3d('+this.$trainOffset+'px,0,0)';
-				this.X1 = this.X2;
+			if( !this.canScroll ){
+				if( this.moveCount===1 ){
+					this.X2 = e.changedTouches[0].pageX;
+					this.Y2 = e.changedTouches[0].pageY;
+					var distanceY = this.Y2 - this.Y1;
+					var distanceX = this.X2 - this.X1;
+					if( Math.abs(distanceY)>Math.abs(distanceX) ){
+						this.canScroll = true;
+					}else{
+						e.preventDefault();
+					}
+				}
+				
+				if( !this.canScroll&&this.props.sticky ){
+					this.X2 = e.changedTouches[0].pageX;
+					var distance = this.X2 - this.X1;
+					this.$trainOffset += distance;
+					this.train.style.transition = '0s';
+					this.train.style.webkitTransition = '0s';
+					this.train.style.transform = 'translate3d('+this.$trainOffset+'px,0,0)';
+					this.train.style.webkitTransform = 'translate3d('+this.$trainOffset+'px,0,0)';
+					this.X1 = this.X2;
+				};
 			};
 		};
 	}
 	handleTouchEnd(e){
 		if( this.cycle ){
-			this.X2 = e.changedTouches[0].pageX;
-			var distance = this.X2 - this.X0;
-			if( distance>0 ){
-				this.toPrev();
-			}else if( distance<0 ){
-				this.toNext();
+			if( !this.canScroll ){
+				this.X2 = e.changedTouches[0].pageX;
+				var distance = this.X2 - this.X0;
+				if( distance>0 ){
+					this.toPrev();
+				}else if( distance<0 ){
+					this.toNext();
+				}else{
+					this.switching = false;
+					this.cycle = false;
+				}
 			}else{
 				this.switching = false;
 				this.cycle = false;
@@ -199,7 +252,7 @@ class Swiper extends React.Component {
 					}
 					{items.map(function(a,i){
 						return(
-							<a className="item" href={a.href||'#/'} key={i} style={{
+							<a className="item" href={a.href||'#/shopping_cart'} key={i} style={{
 								backgroundImage: a.background?`url(${a.background})`:''
 							}}>
 								{a.img?<img src={a.img}/>:null}
@@ -215,7 +268,8 @@ class Swiper extends React.Component {
 					<ul className="pagination" ref="pagination">
 						{this.props.pagi?this.props.items.map(function(elem,i){
 							return(
-								<li className={i===self.state.currentDot?'dot active':'dot'}>
+								<li className={i===self.state.currentDot?'dot active':'dot'}
+								onClick={self.toItem.bind(self,i)}>
 								</li>
 							)
 						}):null}
@@ -229,8 +283,8 @@ class Swiper extends React.Component {
 Swiper.defaultProps = {
 	items: [],
 	duration: 300,
-	interval: 1500,
-	carousel: false,
+	interval: 3000,
+	carousel: true,
 	sticky: true,
 	autoplay: true,
 	pagi: true

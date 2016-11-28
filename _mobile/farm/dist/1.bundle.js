@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 60:
+/***/ 71:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,9 +10,9 @@ webpackJsonp([1],{
 	});
 	exports.ShoppingCartContainer = undefined;
 
-	var _index = __webpack_require__(2);
+	var _index = __webpack_require__(3);
 
-	var _ShoppingCart = __webpack_require__(61);
+	var _ShoppingCart = __webpack_require__(72);
 
 	function act(action) {
 		_index.$$store.dispatch(action);
@@ -29,7 +29,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 61:
+/***/ 72:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41,9 +41,9 @@ webpackJsonp([1],{
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(12);
+	var _Navbar = __webpack_require__(13);
 
-	var _API = __webpack_require__(21);
+	var _API = __webpack_require__(22);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51,7 +51,7 @@ webpackJsonp([1],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(62);
+	__webpack_require__(73);
 
 	var ShoppingCart = function (_React$Component) {
 		_inherits(ShoppingCart, _React$Component);
@@ -59,7 +59,7 @@ webpackJsonp([1],{
 		function ShoppingCart(props) {
 			_classCallCheck(this, ShoppingCart);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ShoppingCart.__proto__ || Object.getPrototypeOf(ShoppingCart)).call(this, props));
 
 			console.log('<ShoppingCart/> constructing');
 			return _this;
@@ -106,8 +106,8 @@ webpackJsonp([1],{
 				return totalPrice;
 			}
 		}, {
-			key: 'getTotalQuantity',
-			value: function getTotalQuantity(items) {
+			key: 'totalQuantity',
+			value: function totalQuantity(items) {
 				var totalQuantity = 0;
 				for (var i = 0; i < items.length; i++) {
 					if (items[i].selected === true) {
@@ -173,17 +173,17 @@ webpackJsonp([1],{
 					React.createElement(
 						'div',
 						{ className: 'header c-topbar' },
-						'购物车',
+						'\u8D2D\u7269\u8F66',
 						React.createElement(
 							'span',
 							{ className: 'remove', onClick: this.remove.bind(this) },
-							'删除'
+							'\u5220\u9664'
 						)
 					),
 					this.props.items.length === 0 ? React.createElement(
 						'p',
 						{ className: '_info' },
-						'您的购物车是空的'
+						'\u60A8\u7684\u8D2D\u7269\u8F66\u662F\u7A7A\u7684'
 					) : null,
 					this.props.items.map(function (item, i) {
 						return React.createElement(
@@ -238,7 +238,7 @@ webpackJsonp([1],{
 								React.createElement(
 									'p',
 									{ className: 'price' },
-									'￥',
+									'\uFFE5',
 									item.price.toFixed(2)
 								),
 								React.createElement(
@@ -255,34 +255,37 @@ webpackJsonp([1],{
 						{ className: 'footer' },
 						React.createElement(
 							'div',
-							{ className: this.allChecked() ? 'circle active' : 'circle', onClick: this.checkAll.bind(this) },
-							React.createElement('i', { className: 'fa fa-check' })
-						),
-						React.createElement(
-							'p',
-							{ className: 'text-all' },
-							'全选'
-						),
-						React.createElement(
-							'a',
-							{ className: 'pay', href: '' },
-							'去结算(',
-							this.getTotalQuantity(this.props.items),
-							')'
-						),
-						React.createElement(
-							'p',
-							{ className: 'sum' },
-							'总计：',
+							{ className: 'content__' },
 							React.createElement(
-								'span',
-								{ className: 'money' },
-								'￥',
-								this.getTotalPrice().toFixed(2)
+								'div',
+								{ className: this.allChecked() ? 'circle active' : 'circle', onClick: this.checkAll.bind(this) },
+								React.createElement('i', { className: 'fa fa-check' })
+							),
+							React.createElement(
+								'p',
+								{ className: 'text-all' },
+								'\u5168\u9009'
+							),
+							React.createElement(
+								'a',
+								{ className: this.totalQuantity(this.props.items) > 0 ? 'pay' : 'pay disabled', href: '' },
+								'\u53BB\u7ED3\u7B97(',
+								this.totalQuantity(this.props.items),
+								')'
+							),
+							React.createElement(
+								'p',
+								{ className: 'sum' },
+								'\u603B\u8BA1\uFF1A',
+								React.createElement(
+									'span',
+									{ className: 'money' },
+									'\uFFE5',
+									this.getTotalPrice().toFixed(2)
+								)
 							)
 						)
 					),
-					React.createElement('div', { className: 'navbarShadow' }),
 					React.createElement(_Navbar.Navbar, { name: 'shoppingCart' })
 				);
 			}
@@ -299,16 +302,16 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 62:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(63);
+	var content = __webpack_require__(74);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(16)(content, {});
+	var update = __webpack_require__(17)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -326,15 +329,15 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 63:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(15)();
+	exports = module.exports = __webpack_require__(16)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".SHOPPING_CART {\n  background: #ECEBEB;\n}\n.SHOPPING_CART .header {\n  margin-bottom: .20rem;\n}\n.SHOPPING_CART .header .remove {\n  float: right;\n}\n.SHOPPING_CART ._info {\n  font-size: 0.28rem;\n  color: #999999;\n  text-align: center;\n}\n.SHOPPING_CART .item {\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  padding: 0.15rem;\n  margin-bottom: .20rem;\n  background: white;\n  overflow: hidden;\n}\n.SHOPPING_CART .item .part {\n  float: left;\n}\n.SHOPPING_CART .item .part .circle {\n  width: 0.3rem;\n  height: 0.3rem;\n  margin-top: 0.7rem;\n  border-radius: 1rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.1rem;\n  text-align: center;\n  line-height: 0.3rem;\n  color: white;\n}\n.SHOPPING_CART .item .part .circle.active {\n  background: #0f88eb;\n  border-color: #0f88eb;\n}\n.SHOPPING_CART .item .part-left {\n  margin-right: 0.15rem;\n}\n.SHOPPING_CART .item .thumbnail {\n  width: 1.90rem;\n  height: 1.90rem;\n  margin-right: 0.15rem;\n}\n.SHOPPING_CART .item .thumbnail img {\n  width: 100%;\n}\n.SHOPPING_CART .item .part-3 {\n  position: relative;\n  width: 2.2rem;\n  height: 1.9rem;\n}\n.SHOPPING_CART .item .part-3 .name {\n  width: 100%;\n  height: 0.6rem;\n  font-size: 0.22rem;\n  line-height: 0.3rem;\n  overflow: hidden;\n}\n.SHOPPING_CART .item .part-3 .spec {\n  font-size: 0.22rem;\n  color: #999999;\n}\n.SHOPPING_CART .item .part-3 .counter {\n  position: absolute;\n  left: 0;\n  bottom: 0.3rem;\n}\n.SHOPPING_CART .item .part-3 .counter1 {\n  width: .30rem;\n  height: .30rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n  color: grey;\n}\n.SHOPPING_CART .item .part-3 .counter2 {\n  width: 1rem;\n  height: .30rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.2rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n}\n.SHOPPING_CART .item .part-3 .counter3 {\n  width: .30rem;\n  height: .30rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n}\n.SHOPPING_CART .item .part-4 {\n  width: 2rem;\n  float: right;\n  text-align: right;\n}\n.SHOPPING_CART .item .part-4 .price {\n  color: #0f88eb;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .item .part-4 .quantity {\n  color: #999999;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .footer {\n  position: fixed;\n  left: 0;\n  bottom: 1rem;\n  width: 100%;\n  height: 1rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  background: white;\n}\n.SHOPPING_CART .footer .circle {\n  float: left;\n  width: 0.3rem;\n  height: 0.3rem;\n  margin-left: 0.15rem;\n  margin-top: 0.3rem;\n  margin-right: 0.2rem;\n  border-radius: 1rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.1rem;\n  text-align: center;\n  line-height: 0.3rem;\n  color: white;\n}\n.SHOPPING_CART .footer .circle.active {\n  background: #0f88eb;\n  border-color: #0f88eb;\n}\n.SHOPPING_CART .footer .text-all {\n  float: left;\n  line-height: 1rem;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .footer .back {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  border-right: 1px solid black;\n  overflow: hidden;\n  display: block;\n}\n.SHOPPING_CART .footer .back img {\n  width: 0.19rem;\n  height: 0.37rem;\n  margin: auto;\n  margin-top: .30rem;\n  display: block;\n}\n.SHOPPING_CART .footer .discount {\n  position: absolute;\n  left: 1.25rem;\n  top: .15rem;\n  color: grey;\n  font-size: 0.2rem;\n}\n.SHOPPING_CART .footer .sum {\n  float: right;\n  padding-right: 0.15rem;\n  font-size: 0.3rem;\n  line-height: 1rem;\n}\n.SHOPPING_CART .footer .sum .money {\n  color: #0f88eb;\n}\n.SHOPPING_CART .footer .pay {\n  float: right;\n  height: 100%;\n  padding: 0 0.2rem;\n  background: #0f88eb;\n  color: white;\n  text-align: center;\n  font-size: 0.32rem;\n  line-height: 1rem;\n}\n.SHOPPING_CART .navbarShadow {\n  width: 100%;\n  height: 2rem;\n}\n", ""]);
+	exports.push([module.id, ".SHOPPING_CART {\n  background: #ECEBEB;\n}\n.SHOPPING_CART .header {\n  margin-bottom: .20rem;\n}\n.SHOPPING_CART .header .remove {\n  float: right;\n}\n.SHOPPING_CART ._info {\n  font-size: 0.28rem;\n  color: #999999;\n  text-align: center;\n}\n.SHOPPING_CART .item {\n  box-sizing: border-box;\n  position: relative;\n  width: 100%;\n  padding: 0.15rem;\n  margin-bottom: .20rem;\n  background: white;\n  overflow: hidden;\n}\n.SHOPPING_CART .item .part {\n  float: left;\n}\n.SHOPPING_CART .item .part .circle {\n  width: 0.3rem;\n  height: 0.3rem;\n  margin-top: 0.7rem;\n  border-radius: 1rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.1rem;\n  text-align: center;\n  line-height: 0.3rem;\n  color: white;\n}\n.SHOPPING_CART .item .part .circle.active {\n  background: #0f88eb;\n  border-color: #0f88eb;\n}\n.SHOPPING_CART .item .part-left {\n  margin-right: 0.15rem;\n}\n.SHOPPING_CART .item .thumbnail {\n  width: 1.90rem;\n  height: 1.90rem;\n  margin-right: 0.15rem;\n}\n.SHOPPING_CART .item .thumbnail img {\n  width: 100%;\n}\n.SHOPPING_CART .item .part-3 {\n  position: relative;\n  width: 2.2rem;\n  height: 1.9rem;\n}\n.SHOPPING_CART .item .part-3 .name {\n  width: 100%;\n  height: 0.6rem;\n  font-size: 0.22rem;\n  line-height: 0.3rem;\n  overflow: hidden;\n}\n.SHOPPING_CART .item .part-3 .spec {\n  font-size: 0.22rem;\n  color: #999999;\n}\n.SHOPPING_CART .item .part-3 .counter {\n  position: absolute;\n  left: 0;\n  bottom: 0.3rem;\n}\n.SHOPPING_CART .item .part-3 .counter1 {\n  width: .30rem;\n  height: .30rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n  color: grey;\n}\n.SHOPPING_CART .item .part-3 .counter2 {\n  width: 1rem;\n  height: .30rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  font-size: 0.2rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n}\n.SHOPPING_CART .item .part-3 .counter3 {\n  width: .30rem;\n  height: .30rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.3rem;\n  line-height: .30rem;\n  text-align: center;\n  float: left;\n}\n.SHOPPING_CART .item .part-4 {\n  width: 2rem;\n  float: right;\n  text-align: right;\n}\n.SHOPPING_CART .item .part-4 .price {\n  color: #0f88eb;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .item .part-4 .quantity {\n  color: #999999;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .footer {\n  position: relative;\n  width: 100%;\n  height: 1rem;\n}\n.SHOPPING_CART .footer .content__ {\n  box-sizing: border-box;\n  position: fixed;\n  left: 0;\n  bottom: 1rem;\n  width: 100%;\n  height: 1rem;\n  border-top: 1px solid #dfdfdf;\n  border-bottom: 1px solid #dfdfdf;\n  background: white;\n}\n.SHOPPING_CART .footer .content__ .circle {\n  float: left;\n  width: 0.3rem;\n  height: 0.3rem;\n  margin-left: 0.15rem;\n  margin-top: 0.3rem;\n  margin-right: 0.2rem;\n  border-radius: 1rem;\n  border: 1px solid #dfdfdf;\n  font-size: 0.1rem;\n  text-align: center;\n  line-height: 0.3rem;\n  color: white;\n}\n.SHOPPING_CART .footer .content__ .circle.active {\n  background: #0f88eb;\n  border-color: #0f88eb;\n}\n.SHOPPING_CART .footer .content__ .text-all {\n  float: left;\n  line-height: 1rem;\n  font-size: 0.3rem;\n}\n.SHOPPING_CART .footer .content__ .back {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  border-right: 1px solid black;\n  overflow: hidden;\n  display: block;\n}\n.SHOPPING_CART .footer .content__ .back img {\n  width: 0.19rem;\n  height: 0.37rem;\n  margin: auto;\n  margin-top: .30rem;\n  display: block;\n}\n.SHOPPING_CART .footer .content__ .discount {\n  position: absolute;\n  left: 1.25rem;\n  top: .15rem;\n  color: grey;\n  font-size: 0.2rem;\n}\n.SHOPPING_CART .footer .content__ .sum {\n  float: right;\n  padding-right: 0.15rem;\n  font-size: 0.3rem;\n  line-height: 1rem;\n}\n.SHOPPING_CART .footer .content__ .sum .money {\n  color: #0f88eb;\n}\n.SHOPPING_CART .footer .content__ .pay {\n  float: right;\n  height: 100%;\n  padding: 0 0.2rem;\n  background: #0f88eb;\n  color: white;\n  text-align: center;\n  font-size: 0.32rem;\n  line-height: 1rem;\n}\n.SHOPPING_CART .footer .content__ .pay.disabled {\n  background: #999999 !important;\n}\n", ""]);
 
 	// exports
 
