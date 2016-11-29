@@ -426,7 +426,7 @@
 		function AppContainer() {
 			_classCallCheck(this, AppContainer);
 
-			var _this = _possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).call(this));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppContainer).call(this));
 
 			console.debug('<App/> constructing');
 			return _this;
@@ -477,7 +477,7 @@
 		function Navbar() {
 			_classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
 
 			_this.state = {
 				show: false
@@ -675,7 +675,7 @@
 		function Slider() {
 			_classCallCheck(this, Slider);
 
-			return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
 		}
 
 		_createClass(Slider, [{
@@ -703,7 +703,8 @@
 					),
 					React.createElement(
 						"a",
-						{ href: "#/blog" },
+						{ href: "#/blog",
+							style: { background: 'orange', color: 'white' } },
 						"Blog"
 					),
 					React.createElement(
@@ -722,6 +723,14 @@
 
 		return Slider;
 	}(React.Component);
+
+	Slider.defaultProps = {
+		items: [{
+			name: 'Home',
+			href: '#/home',
+			background: 'red'
+		}]
+	};
 
 	exports.Slider = Slider;
 
@@ -791,7 +800,7 @@
 		function Footer() {
 			_classCallCheck(this, Footer);
 
-			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
 		}
 
 		_createClass(Footer, [{
@@ -800,7 +809,7 @@
 				return React.createElement(
 					"div",
 					{ className: "FOOTER" },
-					"Copyright \xA92016 SoapTech"
+					"Copyright ©2016 SoapTech"
 				);
 			}
 		}]);
@@ -876,7 +885,7 @@
 		function Home() {
 			_classCallCheck(this, Home);
 
-			return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
 		}
 
 		_createClass(Home, [{
@@ -884,39 +893,11 @@
 			value: function render() {
 				return React.createElement(
 					"div",
-					{ className: "HOME col-70" },
+					{ className: "HOME" },
 					React.createElement(
 						"div",
-						{ className: "log" },
+						{ className: "block" },
 						"Welcome, my friend! This is my personal website! Maybe you want to tap the navicon on top-left?"
-					),
-					React.createElement(
-						"div",
-						{ className: "panel", href: "./_mobile/farm/index.html", target: "_blank" },
-						React.createElement(
-							"div",
-							{ className: "panel-header" },
-							"Farm"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-footer" },
-							"This is a E-commerce webapp built with react, react-router, redux and webpack."
-						)
-					),
-					React.createElement(
-						"div",
-						{ className: "panel", href: "./_mobile/farm/index.html", target: "_blank" },
-						React.createElement(
-							"div",
-							{ className: "panel-header" },
-							"Time"
-						),
-						React.createElement(
-							"div",
-							{ className: "panel-footer" },
-							"This is a E-commerce webapp built with vue, vue-router, vuex and webpack."
-						)
 					)
 				);
 			}
@@ -962,7 +943,7 @@
 
 
 	// module
-	exports.push([module.id, ".HOME {\n  font-size: 14px;\n}\n.HOME .block {\n  display: block;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n.HOME {\n  font-size: 14px;\n}\n.HOME .block {\n  display: block;\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n", ""]);
 
 	// exports
 
@@ -993,7 +974,7 @@
 		function Projects(props) {
 			_classCallCheck(this, Projects);
 
-			var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
 
 			_this.state = {
 				list: __webpack_require__(23).default
@@ -1095,7 +1076,7 @@
 
 
 	// module
-	exports.push([module.id, "/*@pink: #e91e63;*/\n.PROJECTS {\n  width: 100%;\n}\n.PROJECTS .panel-- {\n  font-size: 14px;\n}\n.PROJECTS .panel-- .heading__ {\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n.PROJECTS .panel-- .heading__ .title {\n  font-size: 16px;\n}\n.PROJECTS .panel-- .desc {\n  padding: 10px 15px;\n  border-bottom: 1px solid #9dccb6;\n  font-size: 14px;\n  color: #999999;\n}\n.PROJECTS .panel-- .panel-body {\n  padding: 10px 15px;\n}\n.PROJECTS .panel-- .panel-body a:link {\n  color: #009a61;\n}\n.PROJECTS .panel-- .panel-body a:visited {\n  color: #009a61;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n.PROJECTS {\n  width: 100%;\n}\n.PROJECTS .panel-- {\n  font-size: 14px;\n}\n.PROJECTS .panel-- .heading__ {\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n.PROJECTS .panel-- .heading__ .title {\n  font-size: 16px;\n}\n.PROJECTS .panel-- .desc {\n  padding: 10px 15px;\n  border-bottom: 1px dashed #9dccb6;\n  font-size: 14px;\n  color: #999999;\n}\n.PROJECTS .panel-- .panel-body {\n  padding: 10px 15px;\n}\n.PROJECTS .panel-- .panel-body a:link {\n  color: #009a61;\n}\n.PROJECTS .panel-- .panel-body a:visited {\n  color: #009a61;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
 
 	// exports
 
@@ -1131,7 +1112,7 @@
 		hrefs: ['./_canvas/Heart.html', './_canvas/NeonHexagons/index.html', './_canvas/DriftingBalls/index.html', './_canvas/lion/index.html', './_canvas/cube/canvas_geometry_cube.html']
 	}, {
 		title: 'Vue Components',
-		desc: '',
+		desc: 'Some animated vue components',
 		hrefs: ['./_mobile/vue/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/stroke-circle', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/3d', './_mobile/vue/index.html#/orientation', './_mobile/vue/index.html#/3d-cube', './_mobile/vue/index.html#/swiper-container', './_mobile/vue/index.html#/carousel', './_mobile/vue/index.html#/scope', './_mobile/vue/index.html#/heart']
 	}];
 
@@ -1161,7 +1142,7 @@
 		function Animations(props) {
 			_classCallCheck(this, Animations);
 
-			var _this = _possibleConstructorReturn(this, (Animations.__proto__ || Object.getPrototypeOf(Animations)).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Animations).call(this, props));
 
 			_this.state = {
 				list: __webpack_require__(27).default
@@ -1328,7 +1309,7 @@
 		function BlogContainer() {
 			_classCallCheck(this, BlogContainer);
 
-			return _possibleConstructorReturn(this, (BlogContainer.__proto__ || Object.getPrototypeOf(BlogContainer)).call(this));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(BlogContainer).call(this));
 		}
 
 		_createClass(BlogContainer, [{
@@ -1379,7 +1360,7 @@
 		function List() {
 			_classCallCheck(this, List);
 
-			return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(List).call(this));
 		}
 
 		_createClass(List, [{
@@ -1516,7 +1497,7 @@
 		function PostContainer() {
 			_classCallCheck(this, PostContainer);
 
-			var _this = _possibleConstructorReturn(this, (PostContainer.__proto__ || Object.getPrototypeOf(PostContainer)).call(this));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PostContainer).call(this));
 
 			_this.state = {
 				post: {
@@ -1585,7 +1566,7 @@
 		function Post() {
 			_classCallCheck(this, Post);
 
-			return _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Post).call(this));
 		}
 
 		_createClass(Post, [{

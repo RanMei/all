@@ -100,10 +100,14 @@
 
 <script type="text/javascript">
 export default {
-	props: ['dir'],
+	props: {
+		dir: {},
+		items: {
+			default: [0,1,2,3]
+		}
+	},
 	data: function(){
 		return {
-			items: [0,1,2,3],
 			current: 0
 		}
 	},

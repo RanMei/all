@@ -46,7 +46,7 @@ export default [{
 	]
 },{
 	title: 'Vue Components',
-	desc: '',
+	desc: 'Some animated vue components',
 	hrefs: [
 		'./_mobile/vue/index.html',
 		'./_mobile/vue/index.html#/preloader',

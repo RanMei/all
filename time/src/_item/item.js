@@ -17,6 +17,9 @@ import {store} from '../store/store.js';
 new Vue({
 	el: '#root',
 	store,
+	components: {
+		TabbedBox: require('./TabbedBox.vue')
+	},
 	data: {
 		DIR: DIR,
 		id: '',

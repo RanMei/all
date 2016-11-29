@@ -8,12 +8,21 @@ class Slider extends React.Component {
 				<a href="#/home">Home</a>
 				<a href="#/projects">Projects</a>
 				<a href="#/animations">Animation</a>
-				<a href="#/blog">Blog</a>
+				<a href="#/blog"
+				style={{background:'orange',color:'white'}}>Blog</a>
 				<a href="./_mobile/farm/index.html">Farm</a>
 				<a href="./_mobile/vue/index.html">Vue</a>
 			</div>
 		)
 	}
+}
+
+Slider.defaultProps = {
+	items: [{
+		name: 'Home',
+		href: '#/home',
+		background: 'red'
+	}]
 }
 
 export {Slider};
