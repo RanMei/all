@@ -1021,15 +1021,22 @@
 							{ className: 'panel--' },
 							React.createElement(
 								'div',
-								{ className: 'title' },
-								a.title,
-								React.createElement('br', null),
-								a.desc
+								{ className: 'heading__' },
+								React.createElement(
+									'span',
+									{ className: 'title' },
+									a.title
+								)
 							),
+							a.desc ? React.createElement(
+								'div',
+								{ className: 'desc' },
+								a.desc
+							) : null,
 							React.createElement(
 								'div',
 								{ className: 'panel-body' },
-								a.hrefs.map(function (b) {
+								a.hrefs ? a.hrefs.map(function (b) {
 									return React.createElement(
 										'span',
 										null,
@@ -1040,7 +1047,7 @@
 										),
 										React.createElement('br', null)
 									);
-								})
+								}) : null
 							)
 						);
 					})
@@ -1088,7 +1095,7 @@
 
 
 	// module
-	exports.push([module.id, "/*@pink: #e91e63;*/\n.PROJECTS {\n  width: 100%;\n}\n.PROJECTS .panel-- {\n  font-size: 14px;\n}\n.PROJECTS .panel-- .title {\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n.PROJECTS .panel-- .panel-body {\n  padding: 10px 15px;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n.PROJECTS {\n  width: 100%;\n}\n.PROJECTS .panel-- {\n  font-size: 14px;\n}\n.PROJECTS .panel-- .heading__ {\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n.PROJECTS .panel-- .heading__ .title {\n  font-size: 16px;\n}\n.PROJECTS .panel-- .desc {\n  padding: 10px 15px;\n  border-bottom: 1px solid #9dccb6;\n  font-size: 14px;\n  color: #999999;\n}\n.PROJECTS .panel-- .panel-body {\n  padding: 10px 15px;\n}\n.PROJECTS .panel-- .panel-body a:link {\n  color: #009a61;\n}\n.PROJECTS .panel-- .panel-body a:visited {\n  color: #009a61;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
 
 	// exports
 
@@ -1103,6 +1110,14 @@
 		value: true
 	});
 	exports.default = [{
+		title: 'Farm',
+		desc: 'An E-commerce mobile webapp built with react, react-router, redux and webpack.',
+		hrefs: ['./_mobile/farm/index.html']
+	}, {
+		title: 'Time',
+		desc: 'An E-commerce website with an admin system built using vue, vue-router, vuex and webpack.',
+		hrefs: ['./time/index.html']
+	}, {
 		title: 'Desktop',
 		desc: 'Some desktop website projects.',
 		hrefs: ['./fytpy/index.html', './fytpy/react/index.html', './caredaily/index.html', './desktop/_wolf/index.html', './desktop/presentation/index.html']

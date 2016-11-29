@@ -18,16 +18,20 @@ class Projects extends React.Component {
 				{this.state.list.map((a,i)=>{
 					return (
 						<div className="panel--">
-							<div className="title">
-								{a.title}<br/>
-								{a.desc}
+							<div className="heading__">
+								<span className="title">{a.title}</span>
 							</div>
+							{a.desc?
+								<div className="desc">
+									{a.desc}
+								</div>
+							:null}
 							<div className="panel-body">
-								{a.hrefs.map(b=>{
+								{a.hrefs? a.hrefs.map(b=>{
 									return (
 										<span><a href={b} target="_blank">{b}</a><br/></span>
 									)
-								})}
+								}):null}
 							</div>
 						</div>
 					)

@@ -1,4 +1,16 @@
 export default [{
+	title: 'Farm',
+	desc: 'An E-commerce mobile webapp built with react, react-router, redux and webpack.',
+	hrefs: [
+		'./_mobile/farm/index.html'
+	]
+},{
+	title: 'Time',
+	desc: 'An E-commerce website with an admin system built using vue, vue-router, vuex and webpack.',
+	hrefs: [
+		'./time/index.html'
+	]
+},{
 	title: 'Desktop',
 	desc: 'Some desktop website projects.',
 	hrefs: [
