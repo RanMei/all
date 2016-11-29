@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node express.js",
     "init_db": "node express/init_db.js",
-    "build": "cross-env NODE_ENV=production browserify -e _mobile/vue/lib/main_swiper.js | uglifyjs -c warnings=false -m > dist/build.js"
+    "build": "cross-env NODE_ENV=production browserify -e _mobile/vue/lib/main_swiper.js | uglifyjs -c warnings=false -m > dist/build.js",
+    "express": "taskkill /f /im node.exe & gulp express"
   },
   "author": "soap",
   "license": "ISC",

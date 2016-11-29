@@ -46,19 +46,19 @@
 
 	'use strict';
 
-	var _AppContainer = __webpack_require__(6);
+	var _AppContainer = __webpack_require__(7);
 
-	var _Home = __webpack_require__(16);
+	var _Home = __webpack_require__(17);
 
-	var _Projects = __webpack_require__(19);
+	var _Projects = __webpack_require__(20);
 
-	var _Animations = __webpack_require__(23);
+	var _Animations = __webpack_require__(24);
 
-	var _BlogContainer = __webpack_require__(26);
+	var _BlogContainer = __webpack_require__(28);
 
-	var _Post = __webpack_require__(30);
+	var _PostContainer = __webpack_require__(33);
 
-	__webpack_require__(31);
+	__webpack_require__(37);
 
 	var PropTypes = React.PropTypes;
 
@@ -79,7 +79,7 @@
 			React.createElement(Route, { path: '/projects', component: _Projects.Projects }),
 			React.createElement(Route, { path: '/animations', component: _Animations.Animations }),
 			React.createElement(Route, { path: '/blog', component: _BlogContainer.BlogContainer }),
-			React.createElement(Route, { path: '/post', component: _Post.Post }),
+			React.createElement(Route, { path: '/post', component: _PostContainer.PostContainer }),
 			React.createElement(IndexRoute, { path: '/home', component: _Home.Home })
 		)
 	), document.getElementById('app'));
@@ -88,7 +88,8 @@
 /* 1 */,
 /* 2 */,
 /* 3 */,
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -143,7 +144,7 @@
 	};
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -395,7 +396,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -407,11 +408,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(7);
+	var _Navbar = __webpack_require__(8);
 
-	var _Slider = __webpack_require__(10);
+	var _Slider = __webpack_require__(11);
 
-	var _Footer = __webpack_require__(13);
+	var _Footer = __webpack_require__(14);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -425,7 +426,7 @@
 		function AppContainer() {
 			_classCallCheck(this, AppContainer);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppContainer).call(this));
+			var _this = _possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).call(this));
 
 			console.debug('<App/> constructing');
 			return _this;
@@ -451,7 +452,7 @@
 	exports.AppContainer = AppContainer;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -468,7 +469,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(8);
+	__webpack_require__(9);
 
 	var Navbar = function (_React$Component) {
 		_inherits(Navbar, _React$Component);
@@ -476,7 +477,7 @@
 		function Navbar() {
 			_classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+			var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
 
 			_this.state = {
 				show: false
@@ -608,16 +609,16 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(9);
+	var content = __webpack_require__(10);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -634,10 +635,10 @@
 	}
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -648,7 +649,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -660,7 +661,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(11);
+	__webpack_require__(12);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -674,7 +675,7 @@
 		function Slider() {
 			_classCallCheck(this, Slider);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
 		}
 
 		_createClass(Slider, [{
@@ -725,16 +726,16 @@
 	exports.Slider = Slider;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(12);
+	var content = __webpack_require__(13);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -751,10 +752,10 @@
 	}
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -765,7 +766,7 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -782,7 +783,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 	var Footer = function (_React$Component) {
 		_inherits(Footer, _React$Component);
@@ -790,7 +791,7 @@
 		function Footer() {
 			_classCallCheck(this, Footer);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this));
 		}
 
 		_createClass(Footer, [{
@@ -799,7 +800,7 @@
 				return React.createElement(
 					"div",
 					{ className: "FOOTER" },
-					"copyright"
+					"Copyright \xA92016 SoapTech"
 				);
 			}
 		}]);
@@ -810,16 +811,16 @@
 	exports.Footer = Footer;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -836,21 +837,21 @@
 	}
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".FOOTER {\n  padding: 10px 0;\n  text-align: center;\n  font-size: 14px;\n  border-top: 1px solid #dddddd;\n  clear: both;\n}\n", ""]);
+	exports.push([module.id, ".FOOTER {\n  padding: 10px 0;\n  text-align: center;\n  font-size: 14px;\n  clear: both;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -867,7 +868,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(17);
+	__webpack_require__(18);
 
 	var Home = function (_React$Component) {
 		_inherits(Home, _React$Component);
@@ -875,7 +876,7 @@
 		function Home() {
 			_classCallCheck(this, Home);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
 		}
 
 		_createClass(Home, [{
@@ -927,16 +928,16 @@
 	exports.Home = Home;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(18);
+	var content = __webpack_require__(19);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -953,10 +954,10 @@
 	}
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -967,7 +968,7 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -984,7 +985,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(20);
+	__webpack_require__(21);
 
 	var Projects = function (_React$Component) {
 		_inherits(Projects, _React$Component);
@@ -992,22 +993,17 @@
 		function Projects(props) {
 			_classCallCheck(this, Projects);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this, props));
 
 			_this.state = {
-				list: []
+				list: __webpack_require__(23).default
 			};
 			return _this;
 		}
 
 		_createClass(Projects, [{
 			key: 'componentWillMount',
-			value: function componentWillMount() {
-				var list = __webpack_require__(22).default;
-				this.setState({
-					list: list
-				});
-			}
+			value: function componentWillMount() {}
 		}, {
 			key: 'render',
 			value: function render() {
@@ -1022,11 +1018,18 @@
 					this.state.list.map(function (a, i) {
 						return React.createElement(
 							'div',
-							{ className: 'panel col-70' },
+							{ className: 'panel--' },
 							React.createElement(
 								'div',
-								{ className: 'panel-footer' },
-								a.map(function (b) {
+								{ className: 'title' },
+								a.title,
+								React.createElement('br', null),
+								a.desc
+							),
+							React.createElement(
+								'div',
+								{ className: 'panel-body' },
+								a.hrefs.map(function (b) {
 									return React.createElement(
 										'span',
 										null,
@@ -1051,16 +1054,16 @@
 	exports.Projects = Projects;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(22);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1077,21 +1080,21 @@
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".PROJECTS {\n  width: 100%;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n.PROJECTS {\n  width: 100%;\n}\n.PROJECTS .panel-- {\n  font-size: 14px;\n}\n.PROJECTS .panel-- .title {\n  padding: 10px 15px;\n  background: #9dccb6;\n  color: #009a61;\n}\n.PROJECTS .panel-- .panel-body {\n  padding: 10px 15px;\n}\n.PROJECTS .__block {\n  margin-bottom: 15px;\n  font-size: 14px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1099,10 +1102,26 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.default = [['./fytpy/index.html', './fytpy/react/index.html', './caredaily/index.html', './desktop/_wolf/index.html', './desktop/presentation/index.html'], ['./_mobile/farm/index.html', './_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html'], ['./_canvas/Heart.html', './_canvas/NeonHexagons/index.html', './_canvas/DriftingBalls/index.html', './_canvas/lion/index.html', './_canvas/cube/canvas_geometry_cube.html'], ['./_mobile/vue/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/stroke-circle', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/3d', './_mobile/vue/index.html#/orientation', './_mobile/vue/index.html#/3d-cube', './_mobile/vue/index.html#/swiper-container', './_mobile/vue/index.html#/carousel', './_mobile/vue/index.html#/scope', './_mobile/vue/index.html#/heart']];
+	exports.default = [{
+		title: 'Desktop',
+		desc: 'Some desktop website projects.',
+		hrefs: ['./fytpy/index.html', './fytpy/react/index.html', './caredaily/index.html', './desktop/_wolf/index.html', './desktop/presentation/index.html']
+	}, {
+		title: 'H5',
+		desc: 'So-called H5 projects',
+		hrefs: ['./_mobile/farm/index.html', './_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html']
+	}, {
+		title: 'Canvas',
+		desc: '',
+		hrefs: ['./_canvas/Heart.html', './_canvas/NeonHexagons/index.html', './_canvas/DriftingBalls/index.html', './_canvas/lion/index.html', './_canvas/cube/canvas_geometry_cube.html']
+	}, {
+		title: 'Vue Components',
+		desc: '',
+		hrefs: ['./_mobile/vue/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/stroke-circle', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/3d', './_mobile/vue/index.html#/orientation', './_mobile/vue/index.html#/3d-cube', './_mobile/vue/index.html#/swiper-container', './_mobile/vue/index.html#/carousel', './_mobile/vue/index.html#/scope', './_mobile/vue/index.html#/heart']
+	}];
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1119,7 +1138,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(24);
+	__webpack_require__(25);
 
 	var Animations = function (_React$Component) {
 		_inherits(Animations, _React$Component);
@@ -1127,37 +1146,10 @@
 		function Animations(props) {
 			_classCallCheck(this, Animations);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Animations).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Animations.__proto__ || Object.getPrototypeOf(Animations)).call(this, props));
 
 			_this.state = {
-				list: [{
-					title: 'CSS3 animation',
-					hrefs: ['./_mobile/svg/3d-cube.html']
-				}, {
-					title: 'interactive',
-					hrefs: ['./_mobile/svg/gooey_menu.html', './_mobile/svg/stack.html', './_mobile/svg/stack-both.html']
-				}, {
-					title: 'SVG',
-					hrefs: ['./_mobile/svg/wave.html', './_mobile/svg/sunset.html', './_mobile/svg/countdown.html']
-				}, {
-					title: 'parallax animation',
-					hrefs: ['./_mobile/svg/parallax-clouds.html', './_mobile/svg/parallax.html']
-				}, {
-					title: 'button animation',
-					hrefs: ['./_mobile/svg/button-blobs.html', './_mobile/svg/button-red.html', './_mobile/svg/button-ripple.html']
-				}, {
-					title: 'stroke animation',
-					hrefs: ['./_mobile/svg/stroke-arsenal.html', './_mobile/svg/stroke-square.html', './_mobile/svg/stroke-circle.html', './_mobile/svg/stroke-gameboy.html', './_mobile/svg/stroke-jar.html', './_mobile/svg/stroke-qq.html']
-				}, {
-					title: 'morphing',
-					hrefs: ['./_mobile/svg/morphing-phones.html']
-				}, {
-					title: 'canvas',
-					hrefs: ['./_mobile/canvas/rain.html', './_mobile/canvas/snowfall.html', './_mobile/canvas/fire.html']
-				}, {
-					title: 'h5',
-					hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/swiper-container']
-				}]
+				list: __webpack_require__(27).default
 			};
 			return _this;
 		}
@@ -1211,16 +1203,16 @@
 	exports.Animations = Animations;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(25);
+	var content = __webpack_require__(26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1237,10 +1229,10 @@
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
@@ -1251,7 +1243,45 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = [{
+		title: 'CSS3 animation',
+		hrefs: ['./_mobile/svg/3d-cube.html']
+	}, {
+		title: 'interactive',
+		hrefs: ['./_mobile/svg/gooey_menu.html', './_mobile/svg/stack.html', './_mobile/svg/stack-both.html']
+	}, {
+		title: 'SVG',
+		hrefs: ['./_mobile/svg/wave.html', './_mobile/svg/sunset.html', './_mobile/svg/countdown.html']
+	}, {
+		title: 'parallax animation',
+		hrefs: ['./_mobile/svg/parallax-clouds.html', './_mobile/svg/parallax.html']
+	}, {
+		title: 'button animation',
+		hrefs: ['./_mobile/svg/button-blobs.html', './_mobile/svg/button-red.html', './_mobile/svg/button-ripple.html']
+	}, {
+		title: 'stroke animation',
+		hrefs: ['./_mobile/svg/stroke-arsenal.html', './_mobile/svg/stroke-square.html', './_mobile/svg/stroke-circle.html', './_mobile/svg/stroke-gameboy.html', './_mobile/svg/stroke-jar.html', './_mobile/svg/stroke-qq.html']
+	}, {
+		title: 'morphing',
+		hrefs: ['./_mobile/svg/morphing-phones.html']
+	}, {
+		title: 'canvas',
+		hrefs: ['./_mobile/canvas/rain.html', './_mobile/canvas/snowfall.html', './_mobile/canvas/fire.html']
+	}, {
+		title: 'h5',
+		hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/swiper-container']
+	}];
+
+/***/ },
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1263,7 +1293,13 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Blog = __webpack_require__(27);
+	var _List = __webpack_require__(29);
+
+	var _posts = __webpack_require__(32);
+
+	var _posts2 = _interopRequireDefault(_posts);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1271,21 +1307,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var list = [{
-		time: '2016-10-3',
-		title: 'What is Functional Programming?'
-	}, {
-		time: '2016-10-4',
-		title: 'How to learn English?'
-	}];
-
 	var BlogContainer = function (_React$Component) {
 		_inherits(BlogContainer, _React$Component);
 
 		function BlogContainer() {
 			_classCallCheck(this, BlogContainer);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BlogContainer).call(this));
+			return _possibleConstructorReturn(this, (BlogContainer.__proto__ || Object.getPrototypeOf(BlogContainer)).call(this));
 		}
 
 		_createClass(BlogContainer, [{
@@ -1297,7 +1325,11 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				return React.createElement(_Blog.Blog, { list: list });
+				return React.createElement(
+					'div',
+					{ className: 'Blog' },
+					React.createElement(_List.List, { list: _posts2.default })
+				);
 			}
 		}]);
 
@@ -1307,7 +1339,7 @@
 	exports.BlogContainer = BlogContainer;
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1324,80 +1356,73 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	//require('./common.less');
-	__webpack_require__(28);
+	__webpack_require__(30);
 
-	var Blog = function (_React$Component) {
-		_inherits(Blog, _React$Component);
+	var List = function (_React$Component) {
+		_inherits(List, _React$Component);
 
-		function Blog() {
-			_classCallCheck(this, Blog);
+		function List() {
+			_classCallCheck(this, List);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Blog).call(this));
+			return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
 		}
 
-		_createClass(Blog, [{
+		_createClass(List, [{
 			key: "componentDidMount",
 			value: function componentDidMount() {}
 		}, {
 			key: "render",
 			value: function render() {
-				var _this2 = this;
-
 				return React.createElement(
 					"div",
-					{ className: "BLOG" },
-					React.createElement(
-						"div",
-						{ className: "panel" },
-						React.createElement(
+					{ className: "List" },
+					this.props.list.map(function (a, i) {
+						return React.createElement(
 							"div",
-							{ className: "panel-header" },
-							"This is my blog"
-						),
-						this.props.list.map(function (a, i) {
-							return React.createElement(
-								"div",
-								{ className: i === _this2.props.list.length - 1 ? 'panel-footer' : 'panel-section' },
-								React.createElement(
-									"a",
-									{ href: '#/post?time=' + a.time },
-									a.title
-								)
-							);
-						})
-					)
+							{ className: "list-item" },
+							React.createElement(
+								"a",
+								{ className: "title", href: '#/post?time=' + a.time },
+								a.title
+							),
+							React.createElement(
+								"p",
+								{ className: "time" },
+								a.time
+							)
+						);
+					})
 				);
 			}
 		}]);
 
-		return Blog;
+		return List;
 	}(React.Component);
 
-	Blog.defaultProps = {
+	List.defaultProps = {
 		list: []
 	};
 
-	exports.Blog = Blog;
+	exports.List = List;
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(29);
+	var content = __webpack_require__(31);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Blog.less", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Blog.less");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./List.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./List.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1407,21 +1432,21 @@
 	}
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".BLOG {\n  padding-top: 15px;\n}\n.block__ {\n  display: block;\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 14px;\n}\n.POST .post-title {\n  width: 100%;\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-size: 20px;\n}\n.POST .post-body {\n  width: 100%;\n  padding: 10px 15px;\n  font-size: 14px;\n}\n.POST .post-body p {\n  margin-bottom: 10px;\n}\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n.List .list-item {\n  padding: 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.List .list-item .title {\n  font-size: 16px;\n}\n.List .list-item .time {\n  font-size: 14px;\n  color: #999999;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1429,37 +1454,54 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	//require('./common.less');
-	//require('./blog.less');
-
-	var PropTypes = React.PropTypes;
-
-	var posts = [{
+	exports.default = [{
 		title: 'What is functional programming?',
 		time: '2016-10-3',
-		body: ['Functional programming is a programming paradigm.', 'These are some important concepts in functional programming: higher-order function, pure function, side effects...']
+		body: ['Functional programming is a programming paradigm. Functional programming is a programming paradigm.', 'These are some important concepts in functional programming: higher-order function, pure function, side effects... These are some important concepts in functional programming: higher-order function, pure function, side effects...']
 	}, {
 		title: 'How to learn English?',
 		time: '2016-10-4',
 		body: ['huh?adsgadga', 'what the hell?dfadfafa', 'dgfdgsfdhfdhfsdh']
 	}];
 
-	var Post = function (_React$Component) {
-		_inherits(Post, _React$Component);
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
 
-		function Post() {
-			_classCallCheck(this, Post);
+	'use strict';
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Post).call(this));
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.PostContainer = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _posts = __webpack_require__(32);
+
+	var _posts2 = _interopRequireDefault(_posts);
+
+	var _Post = __webpack_require__(34);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //require('./common.less');
+	//require('./blog.less');
+
+
+	var PropTypes = React.PropTypes;
+
+	var PostContainer = function (_React$Component) {
+		_inherits(PostContainer, _React$Component);
+
+		function PostContainer() {
+			_classCallCheck(this, PostContainer);
+
+			var _this = _possibleConstructorReturn(this, (PostContainer.__proto__ || Object.getPrototypeOf(PostContainer)).call(this));
 
 			_this.state = {
 				post: {
@@ -1470,12 +1512,12 @@
 			return _this;
 		}
 
-		_createClass(Post, [{
+		_createClass(PostContainer, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				var newPost;
 				var time = location.hash.match(/time=[\d|-]+/)[0].replace(/time=/, '');
-				posts.forEach(function (a) {
+				_posts2.default.forEach(function (a) {
 					if (a.time === time) {
 						newPost = a;
 					}
@@ -1489,18 +1531,73 @@
 			value: function render() {
 				return React.createElement(
 					'div',
-					{ className: 'POST' },
+					{ className: 'PostContainer' },
+					React.createElement(_Post.Post, { post: this.state.post })
+				);
+			}
+		}]);
+
+		return PostContainer;
+	}(React.Component);
+
+	exports.PostContainer = PostContainer;
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(35);
+
+	var PropTypes = React.PropTypes;
+
+	var Post = function (_React$Component) {
+		_inherits(Post, _React$Component);
+
+		function Post() {
+			_classCallCheck(this, Post);
+
+			return _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this));
+		}
+
+		_createClass(Post, [{
+			key: "componentDidMount",
+			value: function componentDidMount() {}
+		}, {
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "Post" },
 					React.createElement(
-						'div',
-						{ className: 'post-title' },
-						this.state.post.title
+						"div",
+						{ className: "post-title" },
+						this.props.post.title
 					),
 					React.createElement(
-						'div',
-						{ className: 'post-body' },
-						this.state.post.body.map(function (a) {
+						"div",
+						{ className: "post-time" },
+						this.props.post.time
+					),
+					React.createElement(
+						"div",
+						{ className: "post-body" },
+						this.props.post.body.map(function (a) {
 							return React.createElement(
-								'p',
+								"p",
 								null,
 								a
 							);
@@ -1513,19 +1610,64 @@
 		return Post;
 	}(React.Component);
 
+	Post.defaultProps = {
+		title: '--',
+		body: []
+	};
+
 	exports.Post = Post;
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(32);
+	var content = __webpack_require__(36);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(6)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Post.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./Post.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(5)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".Post {\n  padding: 0 15px;\n  overflow: hidden;\n}\n.Post .post-title {\n  margin: 15px 0;\n  font-size: 20px;\n}\n.Post p {\n  margin: 15px 0;\n  font-size: 14px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(38);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(6)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1542,15 +1684,15 @@
 	}
 
 /***/ },
-/* 32 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(4)();
+	exports = module.exports = __webpack_require__(5)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\nh1 {\n  font-size: 24px;\n}\n/*@pink: #e91e63;*/\na {\n  text-decoration: none;\n}\na:link {\n  color: #4078c0;\n}\na:visited {\n  color: #4078c0;\n}\na:hover {\n  color: #4078c0;\n}\na:active {\n  color: #4078c0;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  margin: auto;\n}\n@media (min-width: 0px) {\n  .container {\n    width: 100%;\n  }\n}\n@media (min-width: 1000px) {\n  .container {\n    width: 1000px;\n  }\n  .col-70 {\n    float: left;\n    width: 70%;\n  }\n  .col-30 {\n    float: left;\n    width: 30%;\n  }\n}\n.log {\n  padding: 10px 15px;\n  font-size: 16px;\n  font-weight: bold;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-section {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-section.last {\n  border-bottom: none!important;\n}\n.panel .panel-footer {\n  padding: 10px 15px;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n", ""]);
+	exports.push([module.id, "/*@pink: #e91e63;*/\n* {\n  margin: 0;\n  padding: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nhtml {\n  font-family: 'Microsoft Yahei';\n}\nul,\nli {\n  list-style: none;\n}\nbutton,\ninput {\n  -webkit-appearance: none;\n}\nimg {\n  display: block;\n}\nh1 {\n  font-size: 24px;\n}\na {\n  text-decoration: none;\n}\na:link {\n  color: #4078c0;\n}\na:visited {\n  color: #4078c0;\n}\na:hover {\n  color: #4078c0;\n}\na:active {\n  color: #4078c0;\n}\n.mask {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.7);\n}\n.block {\n  position: relative;\n  width: 100%;\n}\n._show {\n  display: block!important;\n}\n.container {\n  position: relative;\n  margin: auto;\n}\n@media (min-width: 0px) {\n  .container {\n    width: 100%;\n  }\n}\n@media (min-width: 1000px) {\n  .container {\n    width: 1000px;\n  }\n  .col-70 {\n    float: left;\n    width: 70%;\n  }\n  .col-30 {\n    float: left;\n    width: 30%;\n  }\n}\n.log {\n  padding: 10px 15px;\n  font-size: 16px;\n  font-weight: bold;\n}\n.panel__ {\n  box-sizing: border-box;\n  padding: 15px;\n  background: orange;\n}\n.panel {\n  margin: 0 15px 15px 15px;\n  border: 1px solid #dddddd;\n  border-radius: 3px;\n  font-size: 14px;\n}\n.panel .panel-header {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n  font-weight: bold;\n}\n.panel .item {\n  padding: 10px 15px;\n}\n.panel .panel-section {\n  padding: 10px 15px;\n  border-bottom: 1px solid #dddddd;\n}\n.panel .panel-section.last {\n  border-bottom: none!important;\n}\n.panel .panel-footer {\n  padding: 10px 15px;\n}\n.clearfix {\n  clear: both;\n}\n/* Media Queries */\n", ""]);
 
 	// exports
 

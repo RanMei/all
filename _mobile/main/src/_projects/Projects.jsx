@@ -4,14 +4,10 @@ class Projects extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			list: []
+			list: require('../api/projects.js').default
 		};
 	}
 	componentWillMount(){
-		var list = require('../data/list.js').default;
-		this.setState({
-			list: list
-		})
 	}
 	render() {
 		return (
@@ -21,13 +17,17 @@ class Projects extends React.Component {
 				</div>
 				{this.state.list.map((a,i)=>{
 					return (
-						<div className="panel col-70">
-							<div className="panel-footer">
-							{a.map(b=>{
-								return (
-									<span><a href={b} target="_blank">{b}</a><br/></span>
-								)
-							})}
+						<div className="panel--">
+							<div className="title">
+								{a.title}<br/>
+								{a.desc}
+							</div>
+							<div className="panel-body">
+								{a.hrefs.map(b=>{
+									return (
+										<span><a href={b} target="_blank">{b}</a><br/></span>
+									)
+								})}
 							</div>
 						</div>
 					)
