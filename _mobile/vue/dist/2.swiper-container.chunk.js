@@ -1,22 +1,13 @@
-webpackJsonp([2],[
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
+webpackJsonp([2],{
+
+/***/ 12:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	module.exports = {
 		components: {
-			swiper: __webpack_require__(11)
+			swiper: __webpack_require__(13)
 		},
 		template: '\n\t\t<div style="width:100%;height:100vh;background:black;overflow:hidden">\n\t\t\t<swiper :items="items"></swiper>\n\t\t</div>\n\t',
 		data: function data() {
@@ -37,19 +28,20 @@ webpackJsonp([2],[
 	};
 
 /***/ },
-/* 11 */
+
+/***/ 13:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(12);
-	__vue_script__ = __webpack_require__(13);
+	__webpack_require__(14);
+	__vue_script__ = __webpack_require__(15);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\swiper.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(14);
+	__vue_template__ = __webpack_require__(19);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -79,54 +71,21 @@ webpackJsonp([2],[
 	}
 
 /***/ },
-/* 12 */
-74,
-/* 13 */
-/***/ function(module, exports) {
+
+/***/ 14:
+1,
+
+/***/ 15:
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	// <template>
-	// <div class="swiper"
-	// 	:style="style"
-	// 	v-on:touchstart="touchstart($event)"
-	// 	v-on:touchmove="touchmove($event)"
-	// 	v-on:touchend="touchend($event)">
-	// 	<ul class="train"
-	// 		:style=" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' ">
-	// 		<li :class=" 'item '+(i===currentOne?'active':'') "
-	// 			v-for="(item,i) in copy"
-	// 			:key="item.background"
-	// 			:style=" `background:${item.background}` "></li>
-	// 	</ul>
-	// </div>
-	// </template>
-	//
-	// <style lang="less" scoped>
-	// .swiper {
-	// 	position: relative;
-	// 	width: 50%; height: 20vw;
-	// 	background: grey;
-	// 	margin: auto;
-	// 	.train {
-	// 		width: 1000%;
-	// 		height: 100%;
-	// 		.item {
-	// 			float: left;
-	// 			width: 10%; height: 100%;
-	// 			transform: scale(0.8);
-	// 			opacity: 0.6;
-	// 			transition: 0.5s;
-	// 		}
-	// 		.item.active {
-	// 			transform: scale(1);
-	// 			opacity: 1;
-	// 		}
-	// 	}
-	// }
-	// </style>
-	//
-	// <script>
+	var _stringify = __webpack_require__(16);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var swiper = {
 		props: {
 			items: {
@@ -180,11 +139,11 @@ webpackJsonp([2],[
 		mounted: function mounted() {
 			var _this = this;
 
-			this.copy = JSON.parse(JSON.stringify(this.items));
-			//window.addEventListener('load',()=>{
+			this.copy = JSON.parse((0, _stringify2.default)(this.items));
+
 			this.setWidth();
 			this.trainOffsetX = -this.width * 2;
-			//});
+
 			window.addEventListener('resize', function () {
 				setTimeout(function () {
 					_this.setWidth();
@@ -245,7 +204,7 @@ webpackJsonp([2],[
 				console.log(this.switching);
 				if (this.switching === false) {
 					this.inCycle = true;
-					// reset states of this touch cycle
+
 					this.moveCount = 0;
 					this.scrolling = false;
 					this.transition = '0s';
@@ -292,13 +251,14 @@ webpackJsonp([2],[
 		}
 	};
 	module.exports = swiper;
-	// </script>
 
 /***/ },
-/* 14 */
+
+/***/ 19:
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"swiper\" :style=\"style\" v-on:touchstart=\"touchstart($event)\" v-on:touchmove=\"touchmove($event)\" v-on:touchend=\"touchend($event)\" _v-01d39757=\"\">\n\t<ul class=\"train\" :style=\" 'transform:translate3d('+trainOffsetX+'px,0,0);transition:'+transition+';' \" _v-01d39757=\"\">\n\t\t<li :class=\" 'item '+(i===currentOne?'active':'') \" v-for=\"(item,i) in copy\" :key=\"item.background\" :style=\" `background:${item.background}` \" _v-01d39757=\"\"></li>\n\t</ul>\n</div>\n";
 
 /***/ }
-]);
+
+});

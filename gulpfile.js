@@ -344,7 +344,7 @@ gulp.task('generate',()=>{
 
 gulp.task('watch',function(){
 
-	gulp.watch(['./_mobile/vue/generate.js'],['generate']);
+	gulp.watch(['./_mobile/vue/src/api/items.js'],['generate']);
 	gulp.watch(['./_mobile/vue/generate-list.js'],['generate'])
 
 	LESS.forEach(function(elem){

@@ -1,28 +1,12 @@
 var fs = require('fs');
 
-var files = [
-	'./containers/preloader-container.vue',
-	'./containers/swiper-container.js',
-	'./containers/svg-qq-container.js',
-	'./components/orientation.vue',
-	'./components/3d.vue',
-	'./components/3d-cube.vue',
-	'./components/Heart.vue',
-	'./canvas/Scope.vue',
-	'./components/StrokeCircle.vue',
-	'./components/Carousel.vue',
-	'./components/Panoramic.vue',
-	'./canvas/Rain.vue',
-	'./canvas/Circles.vue',
-	'./canvas/Snowfall.vue',
-	'./canvas/NeonHexagons.vue'
-];
+var items = require('./src/api/items.js');
 
 var list = [];
-files.forEach(a=>{
+items.forEach(a=>{
 	list.push({
-		path: a.split('/').pop().split('.')[0].toLowerCase(),
-		file: a
+		path: a.component.toLowerCase(),
+		file: a.path
 	})
 })
 
@@ -39,6 +23,6 @@ list.forEach((a,i)=>{
 
 text.replace(/\,$/,'');
 
-text += `];export {list};`
+text += `];\nexport {list};`
 
-fs.writeFileSync( './_mobile/vue/src/list.js',text );
+fs.writeFileSync( './_mobile/vue/src/router/list.js',text );

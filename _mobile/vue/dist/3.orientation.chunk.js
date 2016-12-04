@@ -1,18 +1,18 @@
-webpackJsonp([4],{
+webpackJsonp([3],{
 
-/***/ 25:
+/***/ 12:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(26);
-	__vue_script__ = __webpack_require__(27);
+	__webpack_require__(13);
+	__vue_script__ = __webpack_require__(14);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\orientation.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(28);
+	__vue_template__ = __webpack_require__(15);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -43,10 +43,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 26:
+/***/ 13:
 1,
 
-/***/ 27:
+/***/ 14:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -110,7 +110,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 28:
+/***/ 15:
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"space\" _v-8069c6fe=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-8069c6fe=\"\">\n\t\t{{rotationRate.alpha}}<br _v-8069c6fe=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";

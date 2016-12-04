@@ -5,12 +5,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	entry: {
 		'carnival/dist/': './_mobile/h5/carnival/src/index.js',
-		'project/dist/': './_mobile/h5/project/src/index.js'
+		'project/dist/': './_mobile/h5/project/src/index.js',
+		'wolf/dist/index': './_mobile/h5/wolf/src/_index/index.js'
 	},
 	output: {
 		//path: __dirname+'_mobile/vue/dist/',
 		publicPath: './dist/',
-		filename: '[name]bundle.js'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		loaders: [{
@@ -63,7 +64,7 @@ module.exports = {
     	// 	//'swiper',
     	// 	'svg-qq'
     	// ]),
-    	new ExtractTextPlugin('[name]style.css',{
+    	new ExtractTextPlugin('[name].style.css',{
     		allChunks: true
     	})
     ]

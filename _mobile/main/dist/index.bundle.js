@@ -897,6 +897,12 @@
 					React.createElement(
 						"div",
 						{ className: "block" },
+						"Greetings! I am a front-end developer.",
+						React.createElement("br", null),
+						"Github: github.com/403177368",
+						React.createElement("br", null),
+						"Website: madsoap.net",
+						React.createElement("br", null),
 						"Welcome, my friend! This is my personal website! Maybe you want to tap the navicon on top-left?"
 					)
 				);

@@ -1,18 +1,18 @@
-webpackJsonp([4],{
+webpackJsonp([6],{
 
-/***/ 25:
+/***/ 33:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(26);
-	__vue_script__ = __webpack_require__(27);
+	__webpack_require__(34);
+	__vue_script__ = __webpack_require__(35);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\orientation.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\3d-cube.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(28);
+	__vue_template__ = __webpack_require__(36);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -32,7 +32,7 @@ webpackJsonp([4],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-8069c6fe/orientation.vue";
+	    var id = "_v-0d8274a2/3d-cube.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -43,10 +43,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 26:
+/***/ 34:
 1,
 
-/***/ 27:
+/***/ 35:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -70,7 +70,7 @@ webpackJsonp([4],{
 			if (window.DeviceMotionEvent) {
 				window.addEventListener('devicemotion', self.handler.bind(self), false);
 			} else {
-				console.log('');
+				console.log('Sorry, your browser doesn\'t support DeviceMotionEvent.');
 			}
 		},
 		methods: {
@@ -88,20 +88,12 @@ webpackJsonp([4],{
 				if (!this.recalibrating) {
 					this.rotationRate.alpha = e.rotationRate.alpha;
 
-					var nextX = this.rotateX + e.rotationRate.alpha * 3;
-					if (nextX >= 45) {
-						nextX = 45;
-					} else if (nextX <= -45) {
-						nextX = -45;
-					}
+					var nextX = this.rotateX - e.rotationRate.alpha * 3;
+
 					this.rotateX = nextX;
 
 					var nextY = this.rotateY + e.rotationRate.beta * 3;
-					if (nextY >= 45) {
-						nextY = 45;
-					} else if (nextY <= -45) {
-						nextY = -45;
-					}
+
 					this.rotateY = nextY;
 				}
 			}
@@ -110,10 +102,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 28:
+/***/ 36:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-8069c6fe=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-8069c6fe=\"\">\n\t\t{{rotationRate.alpha}}<br _v-8069c6fe=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space3d\" _v-0d8274a2=\"\">\n\t<div class=\"cube\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-0d8274a2=\"\">\n\t\t<div class=\"face face-front\" _v-0d8274a2=\"\"></div>\n\t\t<div class=\"face face-top\" _v-0d8274a2=\"\"></div>\n\t\t<div class=\"face face-bottom\" _v-0d8274a2=\"\"></div>\n\t\t<div class=\"face face-left\" _v-0d8274a2=\"\"></div>\n\t\t<div class=\"face face-right\" _v-0d8274a2=\"\"></div>\n\t\t<div class=\"face face-back\" _v-0d8274a2=\"\"></div>\n\t</div>\n</div>\n";
 
 /***/ }
 

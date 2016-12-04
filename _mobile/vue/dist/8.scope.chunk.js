@@ -1,17 +1,17 @@
-webpackJsonp([7],Array(28).concat([
-/* 28 */
+webpackJsonp([8],Array(41).concat([
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(29);
-	__vue_script__ = __webpack_require__(30);
+	__webpack_require__(42);
+	__vue_script__ = __webpack_require__(43);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Scope.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(33);
+	__vue_template__ = __webpack_require__(46);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -41,9 +41,9 @@ webpackJsonp([7],Array(28).concat([
 	}
 
 /***/ },
-/* 29 */
+/* 42 */
 1,
-/* 30 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52,7 +52,7 @@ webpackJsonp([7],Array(28).concat([
 		value: true
 	});
 
-	var _Scope = __webpack_require__(31);
+	var _Scope = __webpack_require__(44);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -65,7 +65,7 @@ webpackJsonp([7],Array(28).concat([
 	};
 
 /***/ },
-/* 31 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77,7 +77,7 @@ webpackJsonp([7],Array(28).concat([
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(32);
+	var _Canvas2 = __webpack_require__(45);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -273,7 +273,7 @@ webpackJsonp([7],Array(28).concat([
 	// }
 
 /***/ },
-/* 32 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -411,37 +411,37 @@ webpackJsonp([7],Array(28).concat([
 	exports.Canvas = Canvas;
 
 /***/ },
-/* 33 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<!-- Abstract Canvas Visualization -->\n<div class=\"_space\" _v-5cd558e7=\"\">\n\t<canvas id=\"scope\" width=\"400\" height=\"400\" _v-5cd558e7=\"\"></canvas>\n</div>\n";
 
 /***/ },
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(47);
-	__vue_script__ = __webpack_require__(48);
+	__webpack_require__(60);
+	__vue_script__ = __webpack_require__(61);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Rain.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(50);
+	__vue_template__ = __webpack_require__(63);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -471,9 +471,9 @@ webpackJsonp([7],Array(28).concat([
 	}
 
 /***/ },
-/* 47 */
+/* 60 */
 1,
-/* 48 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -482,7 +482,7 @@ webpackJsonp([7],Array(28).concat([
 		value: true
 	});
 
-	var _Rain = __webpack_require__(49);
+	var _Rain = __webpack_require__(62);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -496,7 +496,7 @@ webpackJsonp([7],Array(28).concat([
 	};
 
 /***/ },
-/* 49 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -508,7 +508,7 @@ webpackJsonp([7],Array(28).concat([
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(32);
+	var _Canvas2 = __webpack_require__(45);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -664,25 +664,25 @@ webpackJsonp([7],Array(28).concat([
 	exports.Rain = Rain;
 
 /***/ },
-/* 50 */
+/* 63 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<canvas id=\"RAIN\" width=\"1000\" height=\"1000\" _v-1e9db6d1=\"\"></canvas>\n";
 
 /***/ },
-/* 51 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(52);
-	__vue_script__ = __webpack_require__(53);
+	__webpack_require__(65);
+	__vue_script__ = __webpack_require__(66);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Circles.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(55);
+	__vue_template__ = __webpack_require__(68);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -712,9 +712,9 @@ webpackJsonp([7],Array(28).concat([
 	}
 
 /***/ },
-/* 52 */
+/* 65 */
 1,
-/* 53 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -723,7 +723,7 @@ webpackJsonp([7],Array(28).concat([
 		value: true
 	});
 
-	var _Circles = __webpack_require__(54);
+	var _Circles = __webpack_require__(67);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -734,7 +734,7 @@ webpackJsonp([7],Array(28).concat([
 	};
 
 /***/ },
-/* 54 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -746,7 +746,7 @@ webpackJsonp([7],Array(28).concat([
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(32);
+	var _Canvas2 = __webpack_require__(45);
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -858,25 +858,25 @@ webpackJsonp([7],Array(28).concat([
 	exports.Circles = Circles;
 
 /***/ },
-/* 55 */
+/* 68 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<canvas id=\"CIRCLES\" _v-2e8a25f6=\"\"></canvas>\n";
 
 /***/ },
-/* 56 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(57);
-	__vue_script__ = __webpack_require__(58);
+	__webpack_require__(70);
+	__vue_script__ = __webpack_require__(71);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Snowfall.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(60);
+	__vue_template__ = __webpack_require__(73);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -906,9 +906,9 @@ webpackJsonp([7],Array(28).concat([
 	}
 
 /***/ },
-/* 57 */
+/* 70 */
 1,
-/* 58 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -917,7 +917,7 @@ webpackJsonp([7],Array(28).concat([
 		value: true
 	});
 
-	var _Snowfall = __webpack_require__(59);
+	var _Snowfall = __webpack_require__(72);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -928,7 +928,7 @@ webpackJsonp([7],Array(28).concat([
 	};
 
 /***/ },
-/* 59 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -940,7 +940,7 @@ webpackJsonp([7],Array(28).concat([
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(32);
+	var _Canvas2 = __webpack_require__(45);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1069,25 +1069,25 @@ webpackJsonp([7],Array(28).concat([
 	exports.Snowfall = Snowfall;
 
 /***/ },
-/* 60 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<canvas id=\"SNOWFALL\" width=\"1000\" height=\"1000\" _v-733fdb3b=\"\"></canvas>\n";
 
 /***/ },
-/* 61 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(62);
-	__vue_script__ = __webpack_require__(63);
+	__webpack_require__(75);
+	__vue_script__ = __webpack_require__(76);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\NeonHexagons.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(65);
+	__vue_template__ = __webpack_require__(78);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -1117,9 +1117,9 @@ webpackJsonp([7],Array(28).concat([
 	}
 
 /***/ },
-/* 62 */
+/* 75 */
 1,
-/* 63 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1128,7 +1128,7 @@ webpackJsonp([7],Array(28).concat([
 		value: true
 	});
 
-	var _NeonHexagons = __webpack_require__(64);
+	var _NeonHexagons = __webpack_require__(77);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -1139,7 +1139,7 @@ webpackJsonp([7],Array(28).concat([
 	};
 
 /***/ },
-/* 64 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1151,7 +1151,7 @@ webpackJsonp([7],Array(28).concat([
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(32);
+	var _Canvas2 = __webpack_require__(45);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1338,7 +1338,7 @@ webpackJsonp([7],Array(28).concat([
 	// });
 
 /***/ },
-/* 65 */
+/* 78 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<canvas id=\"NEON\" width=\"500\" height=\"500\" _v-021c4bf4=\"\"></canvas>\n";
