@@ -426,7 +426,7 @@
 		function AppContainer() {
 			_classCallCheck(this, AppContainer);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppContainer).call(this));
+			var _this = _possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).call(this));
 
 			console.debug('<App/> constructing');
 			return _this;
@@ -477,7 +477,7 @@
 		function Navbar() {
 			_classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+			var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
 
 			_this.state = {
 				show: false
@@ -675,7 +675,7 @@
 		function Slider() {
 			_classCallCheck(this, Slider);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).apply(this, arguments));
 		}
 
 		_createClass(Slider, [{
@@ -800,7 +800,7 @@
 		function Footer() {
 			_classCallCheck(this, Footer);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Footer).call(this));
+			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this));
 		}
 
 		_createClass(Footer, [{
@@ -809,7 +809,7 @@
 				return React.createElement(
 					"div",
 					{ className: "FOOTER" },
-					"Copyright ©2016 SoapTech"
+					"Copyright \xA92016 SoapTech"
 				);
 			}
 		}]);
@@ -885,7 +885,7 @@
 		function Home() {
 			_classCallCheck(this, Home);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
 		}
 
 		_createClass(Home, [{
@@ -980,7 +980,7 @@
 		function Projects(props) {
 			_classCallCheck(this, Projects);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this, props));
 
 			_this.state = {
 				list: __webpack_require__(23).default
@@ -1111,7 +1111,7 @@
 	}, {
 		title: 'H5',
 		desc: 'So-called H5 projects',
-		hrefs: ['./_mobile/farm/index.html', './_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html']
+		hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html', './_mobile/h5/wolf/index.html']
 	}, {
 		title: 'Canvas',
 		desc: '',
@@ -1148,7 +1148,7 @@
 		function Animations(props) {
 			_classCallCheck(this, Animations);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Animations).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Animations.__proto__ || Object.getPrototypeOf(Animations)).call(this, props));
 
 			_this.state = {
 				list: __webpack_require__(27).default
@@ -1315,7 +1315,7 @@
 		function BlogContainer() {
 			_classCallCheck(this, BlogContainer);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BlogContainer).call(this));
+			return _possibleConstructorReturn(this, (BlogContainer.__proto__ || Object.getPrototypeOf(BlogContainer)).call(this));
 		}
 
 		_createClass(BlogContainer, [{
@@ -1366,7 +1366,7 @@
 		function List() {
 			_classCallCheck(this, List);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(List).call(this));
+			return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this));
 		}
 
 		_createClass(List, [{
@@ -1503,7 +1503,7 @@
 		function PostContainer() {
 			_classCallCheck(this, PostContainer);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PostContainer).call(this));
+			var _this = _possibleConstructorReturn(this, (PostContainer.__proto__ || Object.getPrototypeOf(PostContainer)).call(this));
 
 			_this.state = {
 				post: {
@@ -1572,7 +1572,7 @@
 		function Post() {
 			_classCallCheck(this, Post);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Post).call(this));
+			return _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this));
 		}
 
 		_createClass(Post, [{

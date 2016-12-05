@@ -42,7 +42,7 @@
 		<item0 :img="img" :active="active[0]"></item0>
 		<item1 :img="img" :active="active[1]"></item1>
 		<item2 :img="img" :active="active[2]"></item2>
-		<item0 :img="img" :active="active[0]"></item0>
+		<item3 :img="img" :active="active[3]"></item3>
 		<item4 :img="img" :active="active[4]"></item4>
 	</ul>
 </div>
@@ -65,13 +65,14 @@ export default {
 		Item0: require('./Item0.vue'),
 		Item1: require('./Item1.vue'),
 		Item2: require('./Item2.vue'),
+		Item3: require('./Item3.vue'),
 		Item4: require('./Item4.vue')
 	},
 	data: function(){
 		return {
 			viewportHeight: 0,
 			color: 'black',
-			current: 4,
+			current: 0,
 			Y1: null,
 			Y2: null,
 
@@ -86,8 +87,10 @@ export default {
 	},
 	watch: {
 		current: function(neo,old){
-			this.active[old] = false;
 			this.active[neo] = true;
+			setTimeout(()=>{
+				this.active[old] = false;
+			},this.duration);
 			// switch(neo){
 			// 	case 0:
 			// 		this.active[1] = false;
