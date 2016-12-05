@@ -82,7 +82,7 @@ class="SvgPenguin">
 
 <style lang="less" scoped>
 .SvgPenguin {
-	@bg: #8BC34A;
+	@bg: #388bff;
 	@time: 2s;
 	display: block;
 	width: 50%;

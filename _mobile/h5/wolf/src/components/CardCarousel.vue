@@ -2,9 +2,9 @@
 	.CardCarousel {
 		position: relative;
 		width: 100%; height: 3.8rem;
-		margin-top: 1rem;
 		transform: translate3d(0,50%,0);
 		opacity: 0;
+		@duration: 500ms;
 		&.active {
 			transition-property: transform,opacity;
 			transition-duration: 1s;
@@ -12,12 +12,12 @@
 			opacity: 1;
 		}
 		.prev {
-			position: absolute; left: 0.2rem; top: 45%;
+			position: absolute; left: 0.2rem; top: 1.5rem;
 			width: 0.3rem;
 			cursor: pointer;
 		}
 		.next {
-			position: absolute; right: 0.2rem; top: 45%;
+			position: absolute; right: 0.2rem; top: 1.5rem;
 			width: 0.3rem;
 			z-index:99; cursor: pointer;
 		}
@@ -40,6 +40,9 @@
 				width: 100%; 
 				opacity: 0.9; 
 				transform-origin: 50% 50%;
+				&._0to1 {
+					animation: _0to1 @duration forwards;
+				}
 			}
 			.card1 {
 				transform: @p0;
@@ -201,6 +204,7 @@
 		props: {
 			img: {},
 			active: {},
+			autoplay: {},
 			duration: {
 				default: 500
 			}
@@ -272,7 +276,9 @@
 						if( target>6 ){
 							target = 0;
 						};
-						a.style = 'animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards';
+						a.style = 
+							'animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards;'+
+							'-webkit-animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards;';
 						a.p = target;
 					})
 
@@ -297,7 +303,9 @@
 						if( target<0 ){
 							target = 6;
 						};
-						a.style = 'animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards';
+						a.style = 
+							'animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards;'+
+							'-webkit-animation: '+self.duration+'ms _'+a.p+'to'+target+' forwards;';
 						a.p = target;
 					})
 

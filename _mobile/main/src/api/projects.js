@@ -24,7 +24,6 @@ export default [{
 	title: 'H5',
 	desc: 'So-called H5 projects',
 	hrefs: [
-		'./_mobile/farm/index.html',
 		'./_mobile/h5/star_wars/index.html',
 		'./_mobile/h5/olympics/index.html',
 		'./_mobile/h5/olympics/result.html',
@@ -32,7 +31,8 @@ export default [{
 		'./_mobile/h5/school/index.html',
 		'./_mobile/h5/feast/feast.html',
 		'./_mobile/h5/live/live.html',
-		'./_mobile/h5/project/index.html'
+		'./_mobile/h5/project/index.html',
+		'./_mobile/h5/wolf/index.html'
 	]
 },{
 	title: 'Canvas',

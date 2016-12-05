@@ -26,7 +26,7 @@
 			position: absolute; top: 40%;
 			width: 0.2rem; height: 0.2rem;
 			border-radius: 1000px;
-			border: 0.02rem solid white;
+			border: 1px solid white;
 			opacity: 0;
 			&.active {
 				opacity: 0.8;

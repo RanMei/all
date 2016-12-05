@@ -1,6 +1,7 @@
 import '../rem.js';
 
-require('../common.less');
+import '../common.less';
+import '../animations.less';
 
 new Vue({
 	el: '#root',
