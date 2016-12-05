@@ -131,7 +131,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1d86a2c5/Slider.vue";
+	    var id = "_v-1c504fe6/Slider.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -195,7 +195,7 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"container\" v-show=\"show\" v-on:touchstart=\"touchstart($event)\" v-on:touchend=\"touchend($event)\" @keypress=\"keydown($event)\" _v-1d86a2c5=\"\">\n\t<ul class=\"train\" :style=\" 'transform: translate3d(0,'+(-current*10)+'%,0)' \" _v-1d86a2c5=\"\">\n\t\t<li class=\"item\" v-for=\"(item,i) in items\" :style=\" 'background:'+item \" _v-1d86a2c5=\"\">{{i}}\n\t\t</li>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"container\" v-show=\"show\" v-on:touchstart=\"touchstart($event)\" v-on:touchend=\"touchend($event)\" @keypress=\"keydown($event)\" _v-1c504fe6=\"\">\n\t<ul class=\"train\" :style=\" 'transform: translate3d(0,'+(-current*10)+'%,0)' \" _v-1c504fe6=\"\">\n\t\t<li class=\"item\" v-for=\"(item,i) in items\" :style=\" 'background:'+item \" _v-1c504fe6=\"\">{{i}}\n\t\t</li>\n\t</ul>\n</div>\n";
 
 /***/ },
 /* 9 */
@@ -229,7 +229,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-5a929022/home.vue";
+	    var id = "_v-3de5dc60/home.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {

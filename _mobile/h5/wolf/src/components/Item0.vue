@@ -3,7 +3,7 @@
 style="background:white;">
 	<div class="cell">
 		<img class="logo" 
-		:src=" img+'/Logo.png' "
+		:src=" img+'/logo.png' "
 		:class=" an.logo.s ">
 		<circles :active=" an.circles.s "></circles>
 		<p class="text_new"
