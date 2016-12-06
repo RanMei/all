@@ -4,11 +4,11 @@
 	@click="handleClick">
 		<div class="face front">
 			<p>front</p>
-			<img :src="img.iron_man"/>
+			<img :src=" '../../img/icons/iron_man.png' "/>
 		</div>
 		<div class="face back">
 			<p>back</p>
-			<img :src="img.storm_trooper"/>
+			<img :src=" '../../img/icons/storm-trooper.png' "/>
 		</div>
 	</div>
 </div>

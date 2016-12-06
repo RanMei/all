@@ -2,15 +2,19 @@
 	.Navbar {
 		position: relative;
 		box-sizing: border-box;
-		height: 100px;
+		height: 70px;
 		ul {
 			position: fixed; left: 0; bottom: 0;
-			width: 100%; height: 100px;
+			width: 100%; height: 70px;
 			border-top: 1px solid lightgrey;
+			background: white;
 			overflow: hidden;
-			li {
+			a {
+				display: block;
 				float: left;
 				width: 25%;
+				font-size: 20px; text-align: center; line-height: 70px;
+				text-decoration: none; color: red;
 			}
 		}
 	}
@@ -19,12 +23,8 @@
 <template>
 	<div class="Navbar">
 		<ul>
-			<li>
-				Home
-			</li>
-			<li>
-				List
-			</li>
+			<a href="#/home">Home</a>
+			<a href="#/list">List</a>
 		</ul>
 	</div>
 </template>

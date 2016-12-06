@@ -2,10 +2,11 @@ var fs = require('fs');
 
 var gulp = require('gulp'); 
 var nodemon = require('gulp-nodemon');
+var rename = require('gulp-rename');
 
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
-
+var ejs = require('gulp-ejs');
 
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -342,13 +343,48 @@ gulp.task('generate',()=>{
 		.pipe( shell('node ./_mobile/vue/generate-list.js') )
 })
 
+var EJS = [{
+	name: 'ejs-vue',
+	src: './_mobile/vue/tpl/item.ejs',
+	data: require('./_mobile/vue/src/api/items.js'),
+	rename: '[name].html',
+	dest: './_mobile/vue/item/'
+},{
+	name: 'ejs-wolf',
+	src: './desktop/_wolf/src/index.ejs',
+	data: {img: '../../img/wolf'},
+	rename: 'index.html',
+	dest: './desktop/_wolf/'
+}]
+
+EJS.forEach(a=>{
+	gulp.task(a.name,()=>{
+		if(a.name==='ejs.vue'){
+			a.data.forEach(b=>{
+				gulp.src( a.src )
+					.pipe( ejs(b) )
+					.pipe( rename(b.name+'.html') )
+					.pipe( gulp.dest(a.dest) )
+			})
+		}else{
+			gulp.src( a.src )
+				.pipe( ejs() )
+				.pipe( rename(a.rename) )
+				.pipe( gulp.dest(a.dest) )
+		}
+	})
+});
+
 gulp.task('watch',function(){
+	EJS.forEach(a=>{
+		gulp.watch( a.src,[a.name] );
+	});
 
 	gulp.watch(['./_mobile/vue/src/api/items.js'],['generate']);
 	gulp.watch(['./_mobile/vue/generate-list.js'],['generate'])
 
-	LESS.forEach(function(elem){
-		gulp.watch( elem.src,[elem.name] );
+	LESS.forEach(a=>{
+		gulp.watch( a.src,[a.name] );
 	});
 
 	WEBPACK.forEach(function(elem){

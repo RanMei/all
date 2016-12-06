@@ -17,6 +17,9 @@
 			&:visited {
 				color: red;
 			}
+			img {
+				width: 100%;
+			}
 		}
 	}
 </style>
@@ -26,6 +29,7 @@
 		<a class="item__"
 		v-for="a in items"
 		:href=" '#/item/'+a.name.toLowerCase() ">
+			<img :src=" '../../img/vue/GooeyMenu.png' "/>
 			{{a.name}}
 		</a>
 	</div>

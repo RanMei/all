@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 71:
+/***/ 72:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,9 +10,9 @@ webpackJsonp([1],{
 	});
 	exports.ShoppingCartContainer = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _ShoppingCart = __webpack_require__(72);
+	var _ShoppingCart = __webpack_require__(73);
 
 	function act(action) {
 		_index.$$store.dispatch(action);
@@ -29,7 +29,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 72:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41,9 +41,9 @@ webpackJsonp([1],{
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Navbar = __webpack_require__(13);
+	var _Navbar = __webpack_require__(14);
 
-	var _API = __webpack_require__(22);
+	var _API = __webpack_require__(23);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51,7 +51,7 @@ webpackJsonp([1],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(73);
+	__webpack_require__(74);
 
 	var ShoppingCart = function (_React$Component) {
 		_inherits(ShoppingCart, _React$Component);
@@ -302,16 +302,16 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 73:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(74);
+	var content = __webpack_require__(75);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -329,10 +329,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 74:
+/***/ 75:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 

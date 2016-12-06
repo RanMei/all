@@ -2,7 +2,7 @@
 	<div class="List">
 		<div class="item__"
 		v-for="a in items">
-			{{a.name}}
+			<a :href=" '#/item/'+a.name.toLowerCase() ">{{a.name}}</a>
 		</div>
 	</div>
 </template>
@@ -13,6 +13,15 @@
 		.item__ {
 			padding: 8px 15px;
 			border-bottom: 1px solid lightgrey;
+			a {
+				text-decoration: none;
+			}
+			a:link {
+				color: red;
+			}
+			a:visited {
+				color: red;
+			}
 		}
 	}
 </style>

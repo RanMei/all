@@ -7,7 +7,7 @@ class Showcase extends React.Component {
 				{this.props.items.map(function(a){
 					return (
 						<a className="item-2" href={'#/item?id='+a.id}>
-							<img src={'img/items/'+a.id+'/t.jpg'}/>
+							<img src={DIR.img+'/items/'+a.id+'/t.jpg'}/>
 							<div className="tag">
 								<p className="name">
 									{a.name}

@@ -17,16 +17,7 @@ API.INIT_HOME = function(){
 		shoppingCart = JSON.parse( sessionStorage.shoppingCart );
 	};
 	var items = require('../data/items.js').dataItems;
-	var homeSwiper = [{
-		background: 'img/index/banner_0.jpg',
-		href: '#/shopping_cart'
-	},{
-		background: 'img/index/banner_1.jpg'
-	},{
-		background: 'img/index/banner_2.jpg'
-	},{
-		background: 'img/index/banner_3.jpg'
-	}];
+	var homeSwiper = require('../data/homeSwiper.js').default;
 	// console.log(sessionStorage)
 	$$store.dispatch({
 		type: 'INIT',

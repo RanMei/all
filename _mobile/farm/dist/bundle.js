@@ -97,31 +97,33 @@
 
 	'use strict';
 
-	var _index = __webpack_require__(3);
+	__webpack_require__(3);
 
-	var _App = __webpack_require__(12);
+	var _index = __webpack_require__(4);
 
-	var _Navbar = __webpack_require__(13);
+	var _App = __webpack_require__(13);
 
-	var _Signin = __webpack_require__(18);
+	var _Navbar = __webpack_require__(14);
 
-	var _Signup = __webpack_require__(28);
+	var _Signin = __webpack_require__(19);
 
-	var _CategoryContainer = __webpack_require__(31);
+	var _Signup = __webpack_require__(30);
 
-	var _ConfirmOrder = __webpack_require__(41);
+	var _CategoryContainer = __webpack_require__(33);
 
-	var _DIManagement = __webpack_require__(43);
+	var _ConfirmOrder = __webpack_require__(43);
 
-	var _AppContainer = __webpack_require__(46);
+	var _DIManagement = __webpack_require__(45);
 
-	var _HomeContainer = __webpack_require__(52);
+	var _AppContainer = __webpack_require__(48);
 
-	var _ItemContainer = __webpack_require__(62);
+	var _HomeContainer = __webpack_require__(53);
 
-	var _MemberContainer = __webpack_require__(66);
+	var _ItemContainer = __webpack_require__(63);
 
-	var _SigninContainer = __webpack_require__(70);
+	var _MemberContainer = __webpack_require__(67);
+
+	var _SigninContainer = __webpack_require__(71);
 
 	//import { Router,Route,IndexRoute,Link,hashHistory } from 'react-router';
 	//import {createStore,combineReducers} from 'redux';
@@ -135,6 +137,7 @@
 			return dest;
 		};
 	};
+
 
 	var PropTypes = React.PropTypes;
 
@@ -184,7 +187,7 @@
 				React.createElement(Route, { path: '/category', component: _CategoryContainer.CategoryContainer }),
 				React.createElement(Route, { path: '/shopping_cart', getComponent: function getComponent(nextState, cb) {
 						__webpack_require__.e/* nsure */(1, function (require) {
-							cb(null, __webpack_require__(71).ShoppingCartContainer);
+							cb(null, __webpack_require__(72).ShoppingCartContainer);
 						});
 					} }),
 				React.createElement(Route, { path: '/member', component: _MemberContainer.MemberContainer }),
@@ -201,6 +204,25 @@
 /* 1 */,
 /* 2 */,
 /* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	console.log(location);
+
+	var $$production = false;
+
+	window.DIR = {
+		img: '../../img/farm'
+	};
+
+	exports.$$production = $$production;
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -210,19 +232,19 @@
 	});
 	exports.$$store = undefined;
 
-	var _user = __webpack_require__(4);
+	var _user = __webpack_require__(5);
 
-	var _shoppingCart = __webpack_require__(5);
+	var _shoppingCart = __webpack_require__(6);
 
-	var _notice = __webpack_require__(6);
+	var _notice = __webpack_require__(7);
 
-	var _mask = __webpack_require__(7);
+	var _mask = __webpack_require__(8);
 
-	var _homeSwiper = __webpack_require__(9);
+	var _homeSwiper = __webpack_require__(10);
 
-	var _items = __webpack_require__(10);
+	var _items = __webpack_require__(11);
 
-	var _item = __webpack_require__(11);
+	var _item = __webpack_require__(12);
 
 	var createStore = Redux.createStore;
 	var compose = Redux.compose;
@@ -250,7 +272,7 @@
 	exports.$$store = $$store;
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -278,7 +300,7 @@
 	exports.user = user;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -350,7 +372,7 @@
 	exports.shoppingCart = shoppingCart;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -377,7 +399,7 @@
 	exports.notice = notice;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -387,7 +409,7 @@
 	});
 	exports.mask = undefined;
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
 	function mask() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
@@ -413,7 +435,7 @@
 	exports.mask = mask;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -432,7 +454,7 @@
 	exports.$$imgDir = $$imgDir;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -456,7 +478,7 @@
 	exports.homeSwiper = homeSwiper;
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -480,7 +502,7 @@
 	exports.items = items;
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -512,7 +534,7 @@
 	exports.item = item;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -524,7 +546,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -967,7 +989,7 @@
 	exports.BackToTop = BackToTop;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -984,7 +1006,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(14);
+	__webpack_require__(15);
 
 	var Navbar = function (_React$Component) {
 		_inherits(Navbar, _React$Component);
@@ -1074,16 +1096,16 @@
 	exports.Navbar = Navbar;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(15);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1100,10 +1122,10 @@
 	}
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -1114,7 +1136,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1169,7 +1191,7 @@
 	};
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1421,7 +1443,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1433,11 +1455,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Notice = __webpack_require__(19);
+	var _Notice = __webpack_require__(20);
 
-	var _Navbar = __webpack_require__(13);
+	var _Navbar = __webpack_require__(14);
 
-	var _API = __webpack_require__(22);
+	var _API = __webpack_require__(23);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1445,7 +1467,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(26);
+	__webpack_require__(28);
 
 	// import 'babel-polyfill';
 
@@ -1547,7 +1569,7 @@
 	exports.Signin = Signin;
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1564,7 +1586,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(20);
+	__webpack_require__(21);
 
 	var Notice = function (_React$Component) {
 		_inherits(Notice, _React$Component);
@@ -1625,16 +1647,16 @@
 	exports.Notice = Notice;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(22);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1651,10 +1673,10 @@
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -1665,7 +1687,7 @@
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1675,11 +1697,11 @@
 	});
 	exports.API = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _user = __webpack_require__(23);
+	var _user = __webpack_require__(24);
 
-	var _cart = __webpack_require__(24);
+	var _cart = __webpack_require__(25);
 
 	var API = {};
 
@@ -1695,17 +1717,8 @@
 		if (sessionStorage.shoppingCart) {
 			shoppingCart = JSON.parse(sessionStorage.shoppingCart);
 		};
-		var items = __webpack_require__(25).dataItems;
-		var homeSwiper = [{
-			background: 'img/index/banner_0.jpg',
-			href: '#/shopping_cart'
-		}, {
-			background: 'img/index/banner_1.jpg'
-		}, {
-			background: 'img/index/banner_2.jpg'
-		}, {
-			background: 'img/index/banner_3.jpg'
-		}];
+		var items = __webpack_require__(26).dataItems;
+		var homeSwiper = __webpack_require__(27).default;
 		// console.log(sessionStorage)
 		_index.$$store.dispatch({
 			type: 'INIT',
@@ -1736,7 +1749,7 @@
 
 	API.GET_ITEM = function (id) {
 		var item = {};
-		var items = __webpack_require__(25).dataItems;
+		var items = __webpack_require__(26).dataItems;
 		items.forEach(function (a) {
 			if (id === a.id) {
 				item = a;
@@ -1766,7 +1779,7 @@
 	exports.API = API;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1833,7 +1846,7 @@
 	}
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1866,7 +1879,7 @@
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1922,16 +1935,36 @@
 	exports.dataItems = dataItems;
 
 /***/ },
-/* 26 */
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = [{
+		background: DIR.img + '/index/banner_0.jpg',
+		href: '#/shopping_cart'
+	}, {
+		background: DIR.img + '/index/banner_1.jpg'
+	}, {
+		background: DIR.img + '/index/banner_2.jpg'
+	}, {
+		background: DIR.img + '/index/banner_3.jpg'
+	}];
+
+/***/ },
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(27);
+	var content = __webpack_require__(29);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1948,10 +1981,10 @@
 	}
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -1962,7 +1995,7 @@
 
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1979,7 +2012,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(29);
+	__webpack_require__(31);
 
 	var Signup = function (_React$Component) {
 		_inherits(Signup, _React$Component);
@@ -2102,16 +2135,16 @@
 	exports.Signup = Signup;
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(30);
+	var content = __webpack_require__(32);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2128,10 +2161,10 @@
 	}
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -2142,7 +2175,7 @@
 
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2152,7 +2185,7 @@
 	});
 	exports.CategoryContainer = undefined;
 
-	var _Category = __webpack_require__(32);
+	var _Category = __webpack_require__(34);
 
 	var CategoryContainer = ReactRedux.connect(function (state) {
 		return {
@@ -2163,7 +2196,7 @@
 	exports.CategoryContainer = CategoryContainer;
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2175,11 +2208,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Topbar = __webpack_require__(33);
+	var _Topbar = __webpack_require__(35);
 
-	var _Navbar = __webpack_require__(13);
+	var _Navbar = __webpack_require__(14);
 
-	var _Showcase = __webpack_require__(36);
+	var _Showcase = __webpack_require__(38);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2187,7 +2220,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(39);
+	__webpack_require__(41);
 
 	var Category = function (_React$Component) {
 		_inherits(Category, _React$Component);
@@ -2232,7 +2265,7 @@
 	exports.Category = Category;
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2244,7 +2277,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(34);
+	__webpack_require__(36);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2300,16 +2333,16 @@
 	exports.Topbar = Topbar;
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(35);
+	var content = __webpack_require__(37);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2326,10 +2359,10 @@
 	}
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -2340,7 +2373,7 @@
 
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2352,7 +2385,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(37);
+	__webpack_require__(39);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2379,7 +2412,7 @@
 						return React.createElement(
 							"a",
 							{ className: "item-2", href: '#/item?id=' + a.id },
-							React.createElement("img", { src: 'img/items/' + a.id + '/t.jpg' }),
+							React.createElement("img", { src: DIR.img + '/items/' + a.id + '/t.jpg' }),
 							React.createElement(
 								"div",
 								{ className: "tag" },
@@ -2411,16 +2444,16 @@
 	exports.Showcase = Showcase;
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(38);
+	var content = __webpack_require__(40);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2437,10 +2470,10 @@
 	}
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -2451,16 +2484,16 @@
 
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(40);
+	var content = __webpack_require__(42);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2477,10 +2510,10 @@
 	}
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -2491,7 +2524,7 @@
 
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2503,9 +2536,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
-	var _CommentBox = __webpack_require__(42);
+	var _CommentBox = __webpack_require__(44);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2887,7 +2920,7 @@
 	exports.ConfirmOrder = ConfirmOrder;
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3042,7 +3075,7 @@
 	exports.CommentBox = CommentBox;
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3054,7 +3087,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Topbar = __webpack_require__(33);
+	var _Topbar = __webpack_require__(35);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3062,7 +3095,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(44);
+	__webpack_require__(46);
 
 	var DIManagement = function (_React$Component) {
 		_inherits(DIManagement, _React$Component);
@@ -3210,16 +3243,16 @@
 	exports.DIManagement = DIManagement;
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(45);
+	var content = __webpack_require__(47);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3236,10 +3269,10 @@
 	}
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -3250,7 +3283,7 @@
 
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3262,17 +3295,17 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _config = __webpack_require__(47);
+	var _config = __webpack_require__(3);
 
-	var _Mask = __webpack_require__(48);
+	var _Mask = __webpack_require__(49);
 
-	var _Notice = __webpack_require__(19);
+	var _Notice = __webpack_require__(20);
 
-	var _NoticePretty = __webpack_require__(51);
+	var _NoticePretty = __webpack_require__(52);
 
-	var _API = __webpack_require__(22);
+	var _API = __webpack_require__(23);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3331,22 +3364,7 @@
 	exports.AppContainer = AppContainer;
 
 /***/ },
-/* 47 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	console.log(location);
-
-	var $$production = false;
-
-	exports.$$production = $$production;
-
-/***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3363,7 +3381,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(49);
+	__webpack_require__(50);
 
 	var Mask = function (_React$Component) {
 		_inherits(Mask, _React$Component);
@@ -3441,16 +3459,16 @@
 	exports.Mask = Mask;
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(51);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -3467,10 +3485,10 @@
 	}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -3481,7 +3499,7 @@
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3566,7 +3584,7 @@
 	exports.NoticePretty = NoticePretty;
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3576,9 +3594,9 @@
 	});
 	exports.HomeContainer = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _Home = __webpack_require__(53);
+	var _Home = __webpack_require__(54);
 
 	var HomeContainer = ReactRedux.connect(function (state) {
 		return {
@@ -3590,7 +3608,7 @@
 	exports.HomeContainer = HomeContainer;
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3602,15 +3620,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
-	var _Navbar = __webpack_require__(13);
+	var _Navbar = __webpack_require__(14);
 
-	var _Swiper = __webpack_require__(54);
+	var _Swiper = __webpack_require__(55);
 
-	var _Showcase = __webpack_require__(36);
+	var _Showcase = __webpack_require__(38);
 
-	var _Showcase2 = __webpack_require__(57);
+	var _Showcase2 = __webpack_require__(58);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3618,7 +3636,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(60);
+	__webpack_require__(61);
 
 	var Home = function (_React$Component) {
 		_inherits(Home, _React$Component);
@@ -3704,7 +3722,7 @@
 	exports.Home = Home;
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3721,7 +3739,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(55);
+	__webpack_require__(56);
 
 	var Swiper = function (_React$Component) {
 		_inherits(Swiper, _React$Component);
@@ -4056,16 +4074,16 @@
 	exports.Swiper = Swiper;
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(56);
+	var content = __webpack_require__(57);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4082,10 +4100,10 @@
 	}
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -4096,7 +4114,7 @@
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4108,7 +4126,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(58);
+	__webpack_require__(59);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4133,7 +4151,7 @@
 					{ className: 'Showcase2' },
 					this.props.items.map(function (item, i) {
 						var href = '#/item?id=' + item.id;
-						var src = 'img/items/' + item.id + '/t.jpg';
+						var src = DIR.img + '/items/' + item.id + '/t.jpg';
 						var style = {
 							float: i % 2 === 0 ? 'left' : 'right'
 						};
@@ -4172,16 +4190,16 @@
 	exports.Showcase2 = Showcase2;
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(59);
+	var content = __webpack_require__(60);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4198,10 +4216,10 @@
 	}
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -4212,16 +4230,16 @@
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(61);
+	var content = __webpack_require__(62);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4238,10 +4256,10 @@
 	}
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -4252,7 +4270,7 @@
 
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4262,9 +4280,9 @@
 	});
 	exports.ItemContainer = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _Item = __webpack_require__(63);
+	var _Item = __webpack_require__(64);
 
 	var ItemContainer = ReactRedux.connect(function (state) {
 		return {
@@ -4276,7 +4294,7 @@
 	exports.ItemContainer = ItemContainer;
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4288,15 +4306,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
-	var _CommentBox = __webpack_require__(42);
+	var _CommentBox = __webpack_require__(44);
 
-	var _Topbar = __webpack_require__(33);
+	var _Topbar = __webpack_require__(35);
 
-	var _Swiper = __webpack_require__(54);
+	var _Swiper = __webpack_require__(55);
 
-	var _API = __webpack_require__(22);
+	var _API = __webpack_require__(23);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4304,7 +4322,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(64);
+	__webpack_require__(65);
 
 	var Item = function (_React$Component) {
 		_inherits(Item, _React$Component);
@@ -4593,16 +4611,16 @@
 	exports.Item = Item;
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(65);
+	var content = __webpack_require__(66);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4619,10 +4637,10 @@
 	}
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -4633,7 +4651,7 @@
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4643,9 +4661,9 @@
 	});
 	exports.MemberContainer = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _Member = __webpack_require__(67);
+	var _Member = __webpack_require__(68);
 
 	function act(action) {}
 
@@ -4659,7 +4677,7 @@
 	exports.MemberContainer = MemberContainer;
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4671,11 +4689,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(8);
+	var _common = __webpack_require__(9);
 
-	var _Navbar = __webpack_require__(13);
+	var _Navbar = __webpack_require__(14);
 
-	var _API = __webpack_require__(22);
+	var _API = __webpack_require__(23);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4683,7 +4701,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(68);
+	__webpack_require__(69);
 
 	var Member = function (_React$Component) {
 		_inherits(Member, _React$Component);
@@ -4783,16 +4801,16 @@
 	exports.Member = Member;
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(69);
+	var content = __webpack_require__(70);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(17)(content, {});
+	var update = __webpack_require__(18)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -4809,10 +4827,10 @@
 	}
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(16)();
+	exports = module.exports = __webpack_require__(17)();
 	// imports
 
 
@@ -4823,7 +4841,7 @@
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4833,9 +4851,9 @@
 	});
 	exports.SigninContainer = undefined;
 
-	var _index = __webpack_require__(3);
+	var _index = __webpack_require__(4);
 
-	var _Signin = __webpack_require__(18);
+	var _Signin = __webpack_require__(19);
 
 	function act(action) {}
 

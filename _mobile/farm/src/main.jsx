@@ -10,7 +10,7 @@ if( !Object.assign ){
 		return dest;
 	}
 };
-
+import './config.js';
 import {$$store} from './store/index.jsx';
 
 

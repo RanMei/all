@@ -704,7 +704,7 @@
 					React.createElement(
 						"a",
 						{ href: "#/blog",
-							style: { background: 'orange', color: 'white' } },
+							style: {} },
 						"Blog"
 					),
 					React.createElement(
@@ -1119,7 +1119,7 @@
 	}, {
 		title: 'Vue Components',
 		desc: 'Some animated vue components',
-		hrefs: ['./_mobile/vue/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/stroke-circle', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/3d', './_mobile/vue/index.html#/orientation', './_mobile/vue/index.html#/3d-cube', './_mobile/vue/index.html#/swiper-container', './_mobile/vue/index.html#/carousel', './_mobile/vue/index.html#/scope', './_mobile/vue/index.html#/heart']
+		hrefs: ['./_mobile/vue/index.html']
 	}];
 
 /***/ },

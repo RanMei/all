@@ -6,7 +6,7 @@ class Showcase2 extends React.Component {
 			<div className="Showcase2">
 				{this.props.items.map(function(item,i){
 					var href = '#/item?id='+item.id;
-					var src = 'img/items/'+item.id+'/t.jpg';
+					var src = DIR.img+'/items/'+item.id+'/t.jpg';
 					var style = {
 						float: i%2===0?'left':'right'
 					};

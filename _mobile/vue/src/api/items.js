@@ -1,7 +1,7 @@
 module.exports = [{
 	name: 'Preloader',
 	component: 'Preloader',
-	path: '../components/Preloader.vue'
+	path: '../lib/Preloader.vue'
 },{
 	name: 'Card',
 	component: 'Card',
@@ -11,9 +11,17 @@ module.exports = [{
 	component: 'GooeyMenu',
 	path: '../lib/GooeyMenu.vue'
 },{
+	name: 'Wave',
+	component: 'Wave',
+	path: '../lib/Wave.vue'
+},{
 	name: '3dCube',
 	component: '3dCube',
 	path: '../components/3dCube.vue'
+},{
+	name: 'ButtonRipple',
+	component: 'ButtonRipple',
+	path: '../lib/ButtonRipple.vue'
 },{
 	name: 'SvgPenguin',
 	component: 'SvgPenguin',
@@ -23,15 +31,19 @@ module.exports = [{
 	component: 'Carousel',
 	path: '../components/Carousel.vue'
 },{
-	name: 'Heart',
-	component: 'Heart',
-	path: '../components/Heart.vue'
-},{
 	name: 'StrokeCircle',
 	component: 'StrokeCircle',
 	path: '../components/StrokeCircle.vue'
+},{
+	name: 'Orientation',
+	component: 'Orientation',
+	path: '../lib/Orientation.vue'
 
 
+},{
+	name: 'Heart',
+	component: 'Heart',
+	path: '../components/Heart.vue'
 },{
 	name: 'Scope',
 	tags: ['canvas'],

@@ -82,7 +82,7 @@ class="SvgPenguin">
 
 <style lang="less" scoped>
 .SvgPenguin {
-	@bg: grey;
+	@bg: #388bff;
 	@time: 2s;
 	display: block;
 	width: 50%;
@@ -320,13 +320,15 @@ class="SvgPenguin">
 </style>
 
 <script>
-// version: 0.0.1
+// version: 0.0.2
 export default {
 	props: {
 		active: {}
 	},
 	data: function(){
 		return {
+			cycle: 0,
+
 			coversC: '',
 			backbone: '',
 
@@ -342,7 +344,9 @@ export default {
 	},
 	watch: {
 		active: function(neo){
+			console.log(neo)
 			if( neo ){
+				this.cycle++;
 				this.go();
 			}else{
 				this.reset();
@@ -355,26 +359,30 @@ export default {
 	methods: {
 		go: function(){
 			var self = this;
+			var cycle = this.cycle;
+			if( cycle!==this.cycle )return;
+			self.reset();
 			self.coversC = 'active';
 			self.backbone = 'active';
-			if(!self.active)return;
-			setTimeout(function(){
-				if(!self.active)return;
+			setTimeout(()=>{
+				if( cycle!==this.cycle )return;
 				self.coversA = 'active';
 				self.coversB = 'active';
 				self.pages = 'active';
-				setTimeout(function(){
-					if(!self.active)return;
+				setTimeout(()=>{
+					if( cycle!==this.cycle )return;
 					self.markA = 'active';
 					self.markB = 'active';
-					setTimeout(function(){
-						if(!self.active)return;
+					setTimeout(()=>{
+						if( cycle!==this.cycle )return;
 						self.second = 'active';
 					},2000);
 				},2000);
 			},2000);
 		},
 		reset: function(){
+			this.coversC = '__';
+			this.backbone = '';
 			this.coversA = '';
 			this.coversB = '';
 			this.pages = '';

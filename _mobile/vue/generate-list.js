@@ -14,10 +14,14 @@ var text = `var list = [`
 
 list.forEach((a,i)=>{
 	text += 
-	`{
-		path:'${a.path}',
-		component: require('${a.file}')
-	}`;
+`{
+	path:'${a.path}',
+	component: resolve => {
+		require.ensure( ['${a.file}'], ()=>{
+			resolve( require('${a.file}') );
+		});
+	}
+}`;
 	text += i===list.length-1?'':',';
 })
 

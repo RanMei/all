@@ -6,9 +6,7 @@
 
 <template>
 	<div class="Home">
-		<showcase :items="items"></showcase>
-		<list :items="items"></list>
-
+		<router-view :items="items"></router-view>
 		<navbar></navbar>
 	</div>
 </template>
@@ -24,7 +22,7 @@
 		},
 		data: function(){
 			return {
-				items: items,
+				items: items.sort(),
 				list: []
 			}
 		},
