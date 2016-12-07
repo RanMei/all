@@ -69,6 +69,13 @@ var list = [{
 		});
 	}
 },{
+	path:'morphingphones',
+	component: resolve => {
+		require.ensure( ['../lib/MorphingPhones.vue'], ()=>{
+			resolve( require('../lib/MorphingPhones.vue') );
+		});
+	}
+},{
 	path:'heart',
 	component: resolve => {
 		require.ensure( ['../components/Heart.vue'], ()=>{

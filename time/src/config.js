@@ -8,7 +8,7 @@ if( /^http/.test(location.href) ){
 
 const DIR = {
 	root: _root,
-	img: _root+'/../fytpy/images',
+	img: _root+'/../img/time',
 	//api: _root+'/../api/time',
 	api: 'http://localhost:80/api',
 

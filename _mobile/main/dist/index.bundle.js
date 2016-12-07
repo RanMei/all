@@ -1277,9 +1277,6 @@
 	}, {
 		title: 'canvas',
 		hrefs: ['./_mobile/canvas/rain.html', './_mobile/canvas/snowfall.html', './_mobile/canvas/fire.html']
-	}, {
-		title: 'h5',
-		hrefs: ['./_mobile/h5/star_wars/index.html', './_mobile/h5/olympics/index.html', './_mobile/h5/olympics/result.html', './_mobile/h5/carnival/index.html', './_mobile/h5/school/index.html', './_mobile/h5/feast/feast.html', './_mobile/h5/live/live.html', './_mobile/h5/project/index.html', './_mobile/vue/index.html#/preloader', './_mobile/vue/index.html#/svg-qq-container', './_mobile/vue/index.html#/swiper-container']
 	}];
 
 /***/ },

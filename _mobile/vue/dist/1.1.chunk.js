@@ -32,7 +32,7 @@ webpackJsonp([1],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-ca90dcce/Preloader.vue";
+	    var id = "_v-3d2a65b9/Preloader.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -62,7 +62,7 @@ webpackJsonp([1],{
 /***/ 7:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"PreloaderContainer\" _v-ca90dcce=\"\">\n\t<svg class=\"Preloader\" viewBox=\"0 0 120 120\" _v-ca90dcce=\"\">\n\t\t<symbol id=\"s-circle\" _v-ca90dcce=\"\">\n\t\t\t<circle r=\"10\" cx=\"20\" cy=\"20\" _v-ca90dcce=\"\"></circle>\n\t\t</symbol>\n\t\t<g class=\"g-circles\" _v-ca90dcce=\"\">\n\t\t\t<g class=\"g-circle\" v-for=\"a in 12\" _v-ca90dcce=\"\">\n\t\t\t\t<use xlink:href=\"#s-circle\" _v-ca90dcce=\"\"></use>\n\t\t\t</g>\n\t\t</g>\n\t</svg>\n</div>\n";
+	module.exports = "\n<div class=\"PreloaderContainer\" _v-3d2a65b9=\"\">\n\t<svg class=\"Preloader\" viewBox=\"0 0 120 120\" _v-3d2a65b9=\"\">\n\t\t<symbol id=\"s-circle\" _v-3d2a65b9=\"\">\n\t\t\t<circle r=\"10\" cx=\"20\" cy=\"20\" _v-3d2a65b9=\"\"></circle>\n\t\t</symbol>\n\t\t<g class=\"g-circles\" _v-3d2a65b9=\"\">\n\t\t\t<g class=\"g-circle\" v-for=\"a in 12\" _v-3d2a65b9=\"\">\n\t\t\t\t<use xlink:href=\"#s-circle\" _v-3d2a65b9=\"\"></use>\n\t\t\t</g>\n\t\t</g>\n\t</svg>\n</div>\n";
 
 /***/ },
 
@@ -98,7 +98,7 @@ webpackJsonp([1],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-74dc202f/ButtonRipple.vue";
+	    var id = "_v-74d14fe2/ButtonRipple.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -127,7 +127,7 @@ webpackJsonp([1],{
 /***/ 27:
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"ButtonRipple\" _v-74dc202f=\"\">\n\t<div class=\"button\" _v-74dc202f=\"\">\n\t\t<div class=\"ripple\" _v-74dc202f=\"\"></div>\n\t\t<span _v-74dc202f=\"\">Stark</span>\n\t</div>\n\n\t<div class=\"button raised\" _v-74dc202f=\"\">\n\t\t<div class=\"ripple\" _v-74dc202f=\"\"></div>\n\t\t<span _v-74dc202f=\"\">Lannister</span>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"ButtonRipple\" _v-74d14fe2=\"\">\n\t<div class=\"button\" _v-74d14fe2=\"\">\n\t\t<div class=\"ripple\" _v-74d14fe2=\"\"></div>\n\t\t<span _v-74d14fe2=\"\">Stark</span>\n\t</div>\n\n\t<div class=\"button raised\" _v-74d14fe2=\"\">\n\t\t<div class=\"ripple\" _v-74d14fe2=\"\"></div>\n\t\t<span _v-74d14fe2=\"\">Lannister</span>\n\t</div>\n</div>\n";
 
 /***/ }
 

@@ -11,7 +11,7 @@ var svgSection = require('./components/svg-section.vue');
 
 //var swiper = require('./components/swiper.vue');
 
-var strokeCircle = require('./components/stroke-circle.vue');
+//var strokeCircle = require('./components/stroke-circle.vue');
 
 
 Vue.component( 'css3Transitions',css3Transitions );
@@ -19,7 +19,7 @@ Vue.component( 'css3Animations',css3Animations );
 Vue.component( 'svgSection',svgSection );
 Vue.component( 'technology',technology );
 //Vue.component( 'swiper',swiper );
-Vue.component( 'stroke-circle',strokeCircle );
+//Vue.component( 'stroke-circle',strokeCircle );
 
 new Vue({
 	el: 'body',

@@ -38,7 +38,10 @@ module.exports = [{
 	name: 'Orientation',
 	component: 'Orientation',
 	path: '../lib/Orientation.vue'
-
+},{
+	name: 'MorphingPhones',
+	component: 'MorphingPhones',
+	path: '../lib/MorphingPhones.vue'
 
 },{
 	name: 'Heart',
