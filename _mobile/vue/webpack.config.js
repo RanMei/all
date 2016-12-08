@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var entries = require('./src/data/entries.js').entries;
+//var entries = require('./src/data/entries.js').entries;
 
 module.exports = {
 	entry: {

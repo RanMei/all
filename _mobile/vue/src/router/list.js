@@ -8,8 +8,8 @@ var list = [{
 },{
 	path:'card',
 	component: resolve => {
-		require.ensure( ['../components/Card.vue'], ()=>{
-			resolve( require('../components/Card.vue') );
+		require.ensure( ['../lib/Card.vue'], ()=>{
+			resolve( require('../lib/Card.vue') );
 		});
 	}
 },{
@@ -29,8 +29,8 @@ var list = [{
 },{
 	path:'3dcube',
 	component: resolve => {
-		require.ensure( ['../components/3dCube.vue'], ()=>{
-			resolve( require('../components/3dCube.vue') );
+		require.ensure( ['../lib/3dCube.vue'], ()=>{
+			resolve( require('../lib/3dCube.vue') );
 		});
 	}
 },{
@@ -43,22 +43,22 @@ var list = [{
 },{
 	path:'svgpenguin',
 	component: resolve => {
-		require.ensure( ['../components/SvgPenguin.vue'], ()=>{
-			resolve( require('../components/SvgPenguin.vue') );
+		require.ensure( ['../lib/SvgPenguin.vue'], ()=>{
+			resolve( require('../lib/SvgPenguin.vue') );
 		});
 	}
 },{
 	path:'carousel',
 	component: resolve => {
-		require.ensure( ['../components/Carousel.vue'], ()=>{
-			resolve( require('../components/Carousel.vue') );
+		require.ensure( ['../lib/Carousel.vue'], ()=>{
+			resolve( require('../lib/Carousel.vue') );
 		});
 	}
 },{
 	path:'strokecircle',
 	component: resolve => {
-		require.ensure( ['../components/StrokeCircle.vue'], ()=>{
-			resolve( require('../components/StrokeCircle.vue') );
+		require.ensure( ['../lib/StrokeCircle.vue'], ()=>{
+			resolve( require('../lib/StrokeCircle.vue') );
 		});
 	}
 },{
@@ -76,10 +76,24 @@ var list = [{
 		});
 	}
 },{
+	path:'rain',
+	component: resolve => {
+		require.ensure( ['../canvas/Rain.vue'], ()=>{
+			resolve( require('../canvas/Rain.vue') );
+		});
+	}
+},{
+	path:'snowfall',
+	component: resolve => {
+		require.ensure( ['../canvas/Snowfall.vue'], ()=>{
+			resolve( require('../canvas/Snowfall.vue') );
+		});
+	}
+},{
 	path:'heart',
 	component: resolve => {
-		require.ensure( ['../components/Heart.vue'], ()=>{
-			resolve( require('../components/Heart.vue') );
+		require.ensure( ['../canvas/Heart.vue'], ()=>{
+			resolve( require('../canvas/Heart.vue') );
 		});
 	}
 },{

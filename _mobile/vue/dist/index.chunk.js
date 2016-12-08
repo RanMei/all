@@ -173,18 +173,18 @@
 
 	var routes = [{
 		path: '/',
-		component: __webpack_require__(58),
+		component: __webpack_require__(69),
 		redirect: '/list',
 		children: [{
 			path: 'home',
-			component: __webpack_require__(69)
+			component: __webpack_require__(80)
 		}, {
 			path: 'list',
-			component: __webpack_require__(73)
+			component: __webpack_require__(84)
 		}]
 	}, {
 		path: '/item',
-		component: __webpack_require__(78),
+		component: __webpack_require__(89),
 		children: _list.list
 	}];
 
@@ -220,21 +220,21 @@
 	}, {
 		path: 'gooeymenu',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(3, function () {
+			__webpack_require__.e/* nsure */(1/* limit */, function () {
 				resolve(__webpack_require__(12));
 			});
 		}
 	}, {
 		path: 'wave',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(4, function () {
+			__webpack_require__.e/* nsure */(3, function () {
 				resolve(__webpack_require__(16));
 			});
 		}
 	}, {
 		path: '3dcube',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(4/* limit */, function () {
+			__webpack_require__.e/* nsure */(3/* limit */, function () {
 				resolve(__webpack_require__(20));
 			});
 		}
@@ -248,21 +248,21 @@
 	}, {
 		path: 'svgpenguin',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(5, function () {
+			__webpack_require__.e/* nsure */(4, function () {
 				resolve(__webpack_require__(28));
 			});
 		}
 	}, {
 		path: 'carousel',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(6, function () {
+			__webpack_require__.e/* nsure */(5, function () {
 				resolve(__webpack_require__(32));
 			});
 		}
 	}, {
 		path: 'strokecircle',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(6/* limit */, function () {
+			__webpack_require__.e/* nsure */(5/* limit */, function () {
 				resolve(__webpack_require__(36));
 			});
 		}
@@ -276,22 +276,36 @@
 	}, {
 		path: 'morphingphones',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(7, function () {
+			__webpack_require__.e/* nsure */(6, function () {
 				resolve(__webpack_require__(44));
+			});
+		}
+	}, {
+		path: 'rain',
+		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(7, function () {
+				resolve(__webpack_require__(48));
+			});
+		}
+	}, {
+		path: 'snowfall',
+		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(7/* limit */, function () {
+				resolve(__webpack_require__(54));
 			});
 		}
 	}, {
 		path: 'heart',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(8, function () {
-				resolve(__webpack_require__(48));
+				resolve(__webpack_require__(59));
 			});
 		}
 	}, {
 		path: 'scope',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(9, function () {
-				resolve(__webpack_require__(52));
+				resolve(__webpack_require__(63));
 			});
 		}
 	}];
@@ -352,19 +366,30 @@
 /* 55 */,
 /* 56 */,
 /* 57 */,
-/* 58 */
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(59);
-	__vue_script__ = __webpack_require__(60);
+	__webpack_require__(70);
+	__vue_script__ = __webpack_require__(71);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\Home.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(77);
+	__vue_template__ = __webpack_require__(88);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -394,9 +419,9 @@
 	}
 
 /***/ },
-/* 59 */
+/* 70 */
 1,
-/* 60 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -405,25 +430,35 @@
 		value: true
 	});
 
-	var _stringify = __webpack_require__(61);
+	var _stringify = __webpack_require__(72);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
-	var _items = __webpack_require__(64);
+	var _items = __webpack_require__(75);
 
 	var _items2 = _interopRequireDefault(_items);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	_items2.default.sort(function (a, b) {
+		if (a.name < b.name) {
+			return -1;
+		}
+		if (a.name > b.name) {
+			return 1;
+		}
+		return 0;
+	});
+
 	exports.default = {
 		components: {
-			Navbar: __webpack_require__(65),
-			Showcase: __webpack_require__(69),
-			List: __webpack_require__(73)
+			Navbar: __webpack_require__(76),
+			Showcase: __webpack_require__(80),
+			List: __webpack_require__(84)
 		},
 		data: function data() {
 			return {
-				items: _items2.default.sort(),
+				items: _items2.default,
 				list: []
 			};
 		},
@@ -433,30 +468,30 @@
 	};
 
 /***/ },
-/* 61 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(62), __esModule: true };
+	module.exports = { "default": __webpack_require__(73), __esModule: true };
 
 /***/ },
-/* 62 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(63)
+	var core  = __webpack_require__(74)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 63 */
+/* 74 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 64 */
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -468,7 +503,7 @@
 	}, {
 		name: 'Card',
 		component: 'Card',
-		path: '../components/Card.vue'
+		path: '../lib/Card.vue'
 	}, {
 		name: 'GooeyMenu',
 		component: 'GooeyMenu',
@@ -480,7 +515,7 @@
 	}, {
 		name: '3dCube',
 		component: '3dCube',
-		path: '../components/3dCube.vue'
+		path: '../lib/3dCube.vue'
 	}, {
 		name: 'ButtonRipple',
 		component: 'ButtonRipple',
@@ -488,15 +523,15 @@
 	}, {
 		name: 'SvgPenguin',
 		component: 'SvgPenguin',
-		path: '../components/SvgPenguin.vue'
+		path: '../lib/SvgPenguin.vue'
 	}, {
 		name: 'Carousel',
 		component: 'Carousel',
-		path: '../components/Carousel.vue'
+		path: '../lib/Carousel.vue'
 	}, {
 		name: 'StrokeCircle',
 		component: 'StrokeCircle',
-		path: '../components/StrokeCircle.vue'
+		path: '../lib/StrokeCircle.vue'
 	}, {
 		name: 'Orientation',
 		component: 'Orientation',
@@ -507,9 +542,17 @@
 		path: '../lib/MorphingPhones.vue'
 
 	}, {
+		name: 'Rain',
+		component: 'Rain',
+		path: '../canvas/Rain.vue'
+	}, {
+		name: 'Snowfall',
+		component: 'Snowfall',
+		path: '../canvas/Snowfall.vue'
+	}, {
 		name: 'Heart',
 		component: 'Heart',
-		path: '../components/Heart.vue'
+		path: '../canvas/Heart.vue'
 	}, {
 		name: 'Scope',
 		tags: ['canvas'],
@@ -518,19 +561,19 @@
 	}];
 
 /***/ },
-/* 65 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(66);
-	__vue_script__ = __webpack_require__(67);
+	__webpack_require__(77);
+	__vue_script__ = __webpack_require__(78);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Navbar.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(68);
+	__vue_template__ = __webpack_require__(79);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -560,9 +603,9 @@
 	}
 
 /***/ },
-/* 66 */
+/* 77 */
 1,
-/* 67 */
+/* 78 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -573,25 +616,25 @@
 	exports.default = {};
 
 /***/ },
-/* 68 */
+/* 79 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-168eb930=\"\">\n\t<ul _v-168eb930=\"\">\n\t\t<a href=\"#/home\" _v-168eb930=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-168eb930=\"\">List</a>\n\t</ul>\n</div>\n";
 
 /***/ },
-/* 69 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(70);
-	__vue_script__ = __webpack_require__(71);
+	__webpack_require__(81);
+	__vue_script__ = __webpack_require__(82);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(72);
+	__vue_template__ = __webpack_require__(83);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -621,9 +664,9 @@
 	}
 
 /***/ },
-/* 70 */
+/* 81 */
 1,
-/* 71 */
+/* 82 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -638,25 +681,25 @@
 	};
 
 /***/ },
-/* 72 */
+/* 83 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Showcase\">\n\t<a class=\"item__\"\n\tv-for=\"a in items\"\n\t:href=\" '#/item/'+a.name.toLowerCase() \">\n\t\t<img :src=\" '../../img/vue/GooeyMenu.png' \"/>\n\t\t{{a.name}}\n\t</a>\n</div>\n";
 
 /***/ },
-/* 73 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(74);
-	__vue_script__ = __webpack_require__(75);
+	__webpack_require__(85);
+	__vue_script__ = __webpack_require__(86);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\List.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(76);
+	__vue_template__ = __webpack_require__(87);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -686,35 +729,35 @@
 	}
 
 /***/ },
-/* 74 */
+/* 85 */
 1,
-/* 75 */
-71,
-/* 76 */
+/* 86 */
+82,
+/* 87 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"List\" _v-64b058be=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-64b058be=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-64b058be=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 77 */
+/* 88 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-66d00aac=\"\">\n\t<router-view :items=\"items\" _v-66d00aac=\"\"></router-view>\n\t<navbar _v-66d00aac=\"\"></navbar>\n</div>\n";
 
 /***/ },
-/* 78 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(79);
-	__vue_script__ = __webpack_require__(80);
+	__webpack_require__(90);
+	__vue_script__ = __webpack_require__(91);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\RouteItem.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(81);
+	__vue_template__ = __webpack_require__(92);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -744,9 +787,9 @@
 	}
 
 /***/ },
-/* 79 */
+/* 90 */
 1,
-/* 80 */
+/* 91 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -763,7 +806,7 @@
 	};
 
 /***/ },
-/* 81 */
+/* 92 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-4308a7ff=\"\">\n\t<div class=\"TOPBAR\" _v-4308a7ff=\"\">\n\t\t<span @click=\"back\" _v-4308a7ff=\"\">返回</span>\n\t</div>\n\t<router-view _v-4308a7ff=\"\"></router-view>\n</div>\n";

@@ -2,23 +2,8 @@ require('../common.less')
 //import {store} from './store/index.js';
 import {DIR} from '../config.js';
 
-Vue.component('navbar',require('./components/Navbar.vue'));
 
-Vue.use(VueRouter);
-
-var router = new VueRouter({
-	routes: [{
-		path: '/',
-		component: require('./routes/items.vue')
-	},{
-		path: '/item',
-		component: require('./components/item.vue')
-	},{
-		path: '/signin',
-		component: require('./routes/Signin.vue')
-	}]
-});
-
+import {router} from './router/router.js';
 import {store} from '../store/store.js';
 
 new Vue({
@@ -27,7 +12,6 @@ new Vue({
 	router,
 	template: `
 	<div id="ROOT">
-		<navbar></navbar>
 		<router-view></router-view>
 	</div>`,
 	data: {

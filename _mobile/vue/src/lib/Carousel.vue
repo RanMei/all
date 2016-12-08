@@ -1,7 +1,7 @@
 <template>
-<!-- CSS 3D Carousel -->
-<div class="container">
-	<div class="carousel"
+<div class="Carousel">
+	<!-- CSS 3D Carousel -->
+	<div class="cards"
 	:style=" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' ">
 		<div class="item a">A</div>
 		<div class="item b">B</div>
@@ -17,7 +17,7 @@
 
 <style lang="less" scoped>
 @w: 2.5rem;
-.container {
+.Carousel {
 	position: relative;
 	width: 100%;
 	margin: auto;
@@ -27,7 +27,7 @@
 		height: 2rem;
 		z-index: -1;
 	}
-	.carousel {
+	.cards {
 		position: relative;
 		width: 2.5rem; height: 2rem;
 		margin: 2rem auto;

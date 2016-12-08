@@ -1,18 +1,18 @@
 webpackJsonp([8],{
 
-/***/ 48:
+/***/ 59:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(49);
-	__vue_script__ = __webpack_require__(50);
+	__webpack_require__(60);
+	__vue_script__ = __webpack_require__(61);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Heart.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Heart.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(51);
+	__vue_template__ = __webpack_require__(62);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -32,7 +32,7 @@ webpackJsonp([8],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-ee37a754/Heart.vue";
+	    var id = "_v-080b5318/Heart.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -43,10 +43,10 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 49:
+/***/ 60:
 1,
 
-/***/ 50:
+/***/ 61:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -206,10 +206,10 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 51:
+/***/ 62:
 /***/ function(module, exports) {
 
-	module.exports = "\n<canvas id=\"heart\" _v-ee37a754=\"\"></canvas>\n";
+	module.exports = "\n<canvas id=\"heart\" _v-080b5318=\"\"></canvas>\n";
 
 /***/ }
 

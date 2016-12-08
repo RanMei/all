@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'carnival/dist/': './_mobile/h5/carnival/src/index.js',
+		'carnival/dist/index': './_mobile/h5/carnival/src/_index/index.js',
 		'project/dist/': './_mobile/h5/project/src/index.js',
 		'wolf/dist/index': './_mobile/h5/wolf/src/_index/index.js'
 	},

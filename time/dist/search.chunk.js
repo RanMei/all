@@ -7,31 +7,31 @@ webpackJsonp([4],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(12);
+	__webpack_require__(39);
 
-	__webpack_require__(74);
+	__webpack_require__(73);
 
-	var _MyHeader = __webpack_require__(45);
+	var _MyHeader = __webpack_require__(44);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(50);
+	var _Focus = __webpack_require__(49);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(55);
+	var _BackToTop = __webpack_require__(54);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(60);
+	var _MyFooter = __webpack_require__(59);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _Showcase = __webpack_require__(76);
+	var _Showcase = __webpack_require__(75);
 
 	var _Showcase2 = _interopRequireDefault(_Showcase);
 
-	var _store = __webpack_require__(3);
+	var _store = __webpack_require__(30);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63,16 +63,16 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 74:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(75);
+	var content = __webpack_require__(74);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(41)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -90,10 +90,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 75:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(9)();
 	// imports
 
 
@@ -105,19 +105,19 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 76:
+/***/ 75:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(77);
-	__vue_script__ = __webpack_require__(79);
+	__webpack_require__(76);
+	__vue_script__ = __webpack_require__(78);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(80);
+	__vue_template__ = __webpack_require__(79);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -148,16 +148,16 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 77:
+/***/ 76:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(78);
+	var content = __webpack_require__(77);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(19)(content, {});
+	var update = __webpack_require__(10)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -175,10 +175,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 78:
+/***/ 77:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(9)();
 	// imports
 
 
@@ -190,7 +190,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 79:
+/***/ 78:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -209,7 +209,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 80:
+/***/ 79:
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"Showcase\" _v-1d2a37f9=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-1d2a37f9=\"\">\n\t\t<img class=\"thumb\" _v-1d2a37f9=\"\">\n\t\t<p class=\"price\" _v-1d2a37f9=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-1d2a37f9=\"\">{{a.name||'--'}}</p>\n\t</a>\n</div>\n";

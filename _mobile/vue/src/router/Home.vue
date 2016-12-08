@@ -13,6 +13,15 @@
 
 <script type="text/javascript">
 	import items from '../api/items.js';
+	items.sort((a,b)=>{
+		if (a.name < b.name) {
+			return -1;
+		}
+		if (a.name > b.name) {
+			return 1;
+		}
+		return 0;
+	})
 
 	export default {
 		components: {
@@ -22,7 +31,7 @@
 		},
 		data: function(){
 			return {
-				items: items.sort(),
+				items: items,
 				list: []
 			}
 		},

@@ -5,7 +5,7 @@ module.exports = [{
 },{
 	name: 'Card',
 	component: 'Card',
-	path: '../components/Card.vue'
+	path: '../lib/Card.vue'
 },{
 	name: 'GooeyMenu',
 	component: 'GooeyMenu',
@@ -17,7 +17,7 @@ module.exports = [{
 },{
 	name: '3dCube',
 	component: '3dCube',
-	path: '../components/3dCube.vue'
+	path: '../lib/3dCube.vue'
 },{
 	name: 'ButtonRipple',
 	component: 'ButtonRipple',
@@ -25,15 +25,15 @@ module.exports = [{
 },{
 	name: 'SvgPenguin',
 	component: 'SvgPenguin',
-	path: '../components/SvgPenguin.vue'
+	path: '../lib/SvgPenguin.vue'
 },{
 	name: 'Carousel',
 	component: 'Carousel',
-	path: '../components/Carousel.vue'
+	path: '../lib/Carousel.vue'
 },{
 	name: 'StrokeCircle',
 	component: 'StrokeCircle',
-	path: '../components/StrokeCircle.vue'
+	path: '../lib/StrokeCircle.vue'
 },{
 	name: 'Orientation',
 	component: 'Orientation',
@@ -43,10 +43,19 @@ module.exports = [{
 	component: 'MorphingPhones',
 	path: '../lib/MorphingPhones.vue'
 
+
+},{
+	name: 'Rain',
+	component: 'Rain',
+	path: '../canvas/Rain.vue'
+},{
+	name: 'Snowfall',
+	component: 'Snowfall',
+	path: '../canvas/Snowfall.vue'
 },{
 	name: 'Heart',
 	component: 'Heart',
-	path: '../components/Heart.vue'
+	path: '../canvas/Heart.vue'
 },{
 	name: 'Scope',
 	tags: ['canvas'],

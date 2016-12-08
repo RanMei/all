@@ -354,7 +354,7 @@ export default {
 		}
 	},
 	mounted: function(){
-		this.go();
+		//this.go();
 	},
 	methods: {
 		go: function(){

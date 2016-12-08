@@ -206,7 +206,7 @@ const WEBPACK = [{
 	name: 'webpack-time', 
 	dest: './time/dist/', 
 	config: './time/webpack.config.js', 
-	watched: ['./time/src/*.*','./time/src/*/*.*']
+	watched: ['./time/src/*.*','./time/src/**/*.*']
 },{	
 	name: 'webpack-desktop-presentation', 
 	dest: './desktop/presentation/dist/', 

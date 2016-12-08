@@ -7,28 +7,28 @@ webpackJsonp([2],{
 
 	var _config = __webpack_require__(2);
 
-	var _MyHeader = __webpack_require__(45);
+	var _MyHeader = __webpack_require__(44);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(50);
+	var _Focus = __webpack_require__(49);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(55);
+	var _BackToTop = __webpack_require__(54);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(60);
+	var _MyFooter = __webpack_require__(59);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _store = __webpack_require__(3);
+	var _store = __webpack_require__(30);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	__webpack_require__(12);
-	__webpack_require__(65);
+	__webpack_require__(39);
+	__webpack_require__(64);
 
 
 	Vue.component('my-header', MyHeader);
@@ -51,16 +51,16 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 65:
+/***/ 64:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(66);
+	var content = __webpack_require__(65);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(15)(content, {});
+	var update = __webpack_require__(41)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78,10 +78,10 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 66:
+/***/ 65:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(14)();
+	exports = module.exports = __webpack_require__(9)();
 	// imports
 
 

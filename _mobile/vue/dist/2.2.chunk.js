@@ -10,7 +10,7 @@ webpackJsonp([2],{
 	__webpack_require__(9);
 	__vue_script__ = __webpack_require__(10);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Card.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\Card.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(11);
 	module.exports = __vue_script__ || {};
@@ -32,7 +32,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-13fd9a30/Card.vue";
+	    var id = "_v-44c1c51d/Card.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -87,7 +87,7 @@ webpackJsonp([2],{
 /***/ 11:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-13fd9a30=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-13fd9a30=\"\">\n\t\t<div class=\"face front\" _v-13fd9a30=\"\">\n\t\t\t<p _v-13fd9a30=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-13fd9a30=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-13fd9a30=\"\">\n\t\t\t<p _v-13fd9a30=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-13fd9a30=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-44c1c51d=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-44c1c51d=\"\">\n\t\t<div class=\"face front\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 

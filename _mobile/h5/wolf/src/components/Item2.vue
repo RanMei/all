@@ -5,6 +5,7 @@
 		width: 100%; height: 10%;
 		overflow: hidden;
 		background: #A176EA;
+		background: linear-gradient(45deg, #8C379F, #A176EA);
 		.cell {
 			display: table-cell; vertical-align: middle;
 			.title {
