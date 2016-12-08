@@ -1,16 +1,3 @@
-<template>
-	<canvas id="RAIN" width="1000" height="1000"></canvas>
-</template>
-
-<style lang="less" scoped>
-	#RAIN {
-		display: block;
-		margin: auto;
-		width: 100%;
-	}
-</style>
-
-<script>
 import {Canvas} from './lib/Canvas.js';
 
 function Drop(host){
@@ -142,14 +129,25 @@ class Rain extends Canvas {
 	}
 }
 
-export default {
+export default Vue.extend({
+	template: `<canvas id="Rain" width="1000" height="1000" ref="canvas" style="display:block;width:100%;"></canvas>`
+	,
+	render: function(h){
+		return h('canvas',{
+			attrs: {
+				width: '1000',
+				height: '1000',
+				ref: 'canvas',
+				style: 'display:block;width:100%;'
+			}
+		})
+	},
 	mounted: function(){
 		new Rain({
-			el: '#RAIN',
+			el: this.$refs.canvas,
 			data: {
 				dropCount: 500
 			}
 		})
 	}
-}
-</script>
+});

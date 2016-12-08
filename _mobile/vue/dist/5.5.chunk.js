@@ -32,7 +32,7 @@ webpackJsonp([5],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4acd40ed/Carousel.vue";
+	    var id = "_v-300eafae/Carousel.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -75,7 +75,7 @@ webpackJsonp([5],{
 /***/ 35:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Carousel\" _v-4acd40ed=\"\">\n\t<!-- CSS 3D Carousel -->\n\t<div class=\"cards\" :style=\" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' \" _v-4acd40ed=\"\">\n\t\t<div class=\"item a\" _v-4acd40ed=\"\">A</div>\n\t\t<div class=\"item b\" _v-4acd40ed=\"\">B</div>\n\t\t<div class=\"item c\" _v-4acd40ed=\"\">C</div>\n\t\t<div class=\"item d\" _v-4acd40ed=\"\">D</div>\n\t\t<div class=\"item e\" _v-4acd40ed=\"\">E</div>\n\t\t<div class=\"item f\" _v-4acd40ed=\"\">F</div>\n\t</div>\n\t<div class=\"next\" @click=\"next\" _v-4acd40ed=\"\">Next</div>\n\t<div class=\"prev\" @click=\"prev\" _v-4acd40ed=\"\">Prev</div>\n</div>\n";
+	module.exports = "\n<div class=\"Carousel\" _v-300eafae=\"\">\n\t<!-- CSS 3D Carousel -->\n\t<div class=\"cards\" :style=\" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' \" _v-300eafae=\"\">\n\t\t<div class=\"item a\" _v-300eafae=\"\">A</div>\n\t\t<div class=\"item b\" _v-300eafae=\"\">B</div>\n\t\t<div class=\"item c\" _v-300eafae=\"\">C</div>\n\t\t<div class=\"item d\" _v-300eafae=\"\">D</div>\n\t\t<div class=\"item e\" _v-300eafae=\"\">E</div>\n\t\t<div class=\"item f\" _v-300eafae=\"\">F</div>\n\t</div>\n\t<div class=\"next\" @click=\"next\" _v-300eafae=\"\">Next</div>\n\t<div class=\"prev\" @click=\"prev\" _v-300eafae=\"\">Prev</div>\n</div>\n";
 
 /***/ },
 
@@ -111,7 +111,7 @@ webpackJsonp([5],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6f13ce35/StrokeCircle.vue";
+	    var id = "_v-36e41714/StrokeCircle.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -138,7 +138,7 @@ webpackJsonp([5],{
 /***/ 39:
 /***/ function(module, exports) {
 
-	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f13ce35=\"\">\n\t<defs _v-6f13ce35=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-6f13ce35=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-6f13ce35=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\n</svg>\n";
+	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-36e41714=\"\">\n\t<defs _v-36e41714=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-36e41714=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-36e41714=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-36e41714=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-36e41714=\"\"></circle>\n\n</svg>\n";
 
 /***/ }
 

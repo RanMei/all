@@ -1,18 +1,18 @@
 webpackJsonp([9],{
 
-/***/ 63:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(64);
-	__vue_script__ = __webpack_require__(65);
+	__webpack_require__(149);
+	__vue_script__ = __webpack_require__(150);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\Canvas\\Scope.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(68);
+	__vue_template__ = __webpack_require__(153);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -32,7 +32,7 @@ webpackJsonp([9],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-45582e46/Scope.vue";
+	    var id = "_v-2a999d07/Scope.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -43,10 +43,10 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 64:
+/***/ 149:
 1,
 
-/***/ 65:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55,7 +55,7 @@ webpackJsonp([9],{
 		value: true
 	});
 
-	var _Scope = __webpack_require__(66);
+	var _Scope = __webpack_require__(151);
 
 	exports.default = {
 		mounted: function mounted() {
@@ -69,7 +69,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 66:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81,7 +81,7 @@ webpackJsonp([9],{
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(67);
+	var _Canvas2 = __webpack_require__(152);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -95,7 +95,7 @@ webpackJsonp([9],{
 		function Scope(options) {
 			_classCallCheck(this, Scope);
 
-			var _this = _possibleConstructorReturn(this, (Scope.__proto__ || Object.getPrototypeOf(Scope)).call(this, options));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Scope).call(this, options));
 
 			_this._init(options);
 			return _this;
@@ -130,7 +130,7 @@ webpackJsonp([9],{
 		}, {
 			key: 'rand',
 			value: function rand(min, max) {
-				return ~~(Math.random() * (max - min + 1) + min);
+				return ~ ~(Math.random() * (max - min + 1) + min);
 			}
 		}, {
 			key: 'hitTest',
@@ -278,7 +278,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 67:
+/***/ 152:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -417,10 +417,10 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 68:
+/***/ 153:
 /***/ function(module, exports) {
 
-	module.exports = "\n<!-- Abstract Canvas Visualization -->\n<div class=\"_space\" _v-45582e46=\"\">\n\t<canvas id=\"scope\" width=\"400\" height=\"400\" _v-45582e46=\"\"></canvas>\n</div>\n";
+	module.exports = "\n<!-- Abstract Canvas Visualization -->\n<div class=\"_space\" _v-2a999d07=\"\">\n\t<canvas id=\"scope\" width=\"400\" height=\"400\" _v-2a999d07=\"\"></canvas>\n</div>\n";
 
 /***/ }
 

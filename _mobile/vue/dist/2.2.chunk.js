@@ -32,7 +32,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-44c1c51d/Card.vue";
+	    var id = "_v-0dc2bc5e/Card.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -87,7 +87,7 @@ webpackJsonp([2],{
 /***/ 11:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-44c1c51d=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-44c1c51d=\"\">\n\t\t<div class=\"face front\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-0dc2bc5e=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-0dc2bc5e=\"\">\n\t\t<div class=\"face front\" _v-0dc2bc5e=\"\">\n\t\t\t<p _v-0dc2bc5e=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-0dc2bc5e=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-0dc2bc5e=\"\">\n\t\t\t<p _v-0dc2bc5e=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-0dc2bc5e=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 
@@ -123,7 +123,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3eb24353/Orientation.vue";
+	    var id = "_v-0fac5e1c/Orientation.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -204,7 +204,7 @@ webpackJsonp([2],{
 /***/ 43:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-3eb24353=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-3eb24353=\"\">\n\t\t{{rotationRate.alpha}}<br _v-3eb24353=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-0fac5e1c=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-0fac5e1c=\"\">\n\t\t{{rotationRate.alpha}}<br _v-0fac5e1c=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
 
 /***/ }
 

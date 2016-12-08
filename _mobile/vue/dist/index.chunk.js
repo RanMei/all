@@ -135,8 +135,9 @@
 		}
 	}
 	return modules;
-}([
-/* 0 */
+}({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -151,13 +152,15 @@
 	}).$mount('#root');
 
 /***/ },
-/* 1 */
+
+/***/ 1:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 2 */
+
+/***/ 2:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -173,18 +176,18 @@
 
 	var routes = [{
 		path: '/',
-		component: __webpack_require__(69),
+		component: __webpack_require__(154),
 		redirect: '/list',
 		children: [{
 			path: 'home',
-			component: __webpack_require__(80)
+			component: __webpack_require__(164)
 		}, {
 			path: 'list',
-			component: __webpack_require__(84)
+			component: __webpack_require__(168)
 		}]
 	}, {
 		path: '/item',
-		component: __webpack_require__(89),
+		component: __webpack_require__(173),
 		children: _list.list
 	}];
 
@@ -195,7 +198,8 @@
 	exports.router = router;
 
 /***/ },
-/* 3 */
+
+/***/ 3:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -291,105 +295,49 @@
 		path: 'snowfall',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(7/* limit */, function () {
-				resolve(__webpack_require__(54));
+				resolve(__webpack_require__(139));
 			});
 		}
 	}, {
 		path: 'heart',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(8, function () {
-				resolve(__webpack_require__(59));
+				resolve(__webpack_require__(144));
 			});
 		}
 	}, {
 		path: 'scope',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(9, function () {
-				resolve(__webpack_require__(63));
+				resolve(__webpack_require__(148));
 			});
 		}
 	}];
 	exports.list = list;
 
 /***/ },
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */
+
+/***/ 64:
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+
+/***/ 154:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(70);
-	__vue_script__ = __webpack_require__(71);
+	__webpack_require__(155);
+	__vue_script__ = __webpack_require__(156);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\Home.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(88);
+	__vue_template__ = __webpack_require__(172);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -409,7 +357,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-66d00aac/Home.vue";
+	    var id = "_v-6e353fcb/Home.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -419,9 +367,11 @@
 	}
 
 /***/ },
-/* 70 */
+
+/***/ 155:
 1,
-/* 71 */
+
+/***/ 156:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -430,11 +380,11 @@
 		value: true
 	});
 
-	var _stringify = __webpack_require__(72);
+	var _stringify = __webpack_require__(157);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
-	var _items = __webpack_require__(75);
+	var _items = __webpack_require__(159);
 
 	var _items2 = _interopRequireDefault(_items);
 
@@ -452,9 +402,9 @@
 
 	exports.default = {
 		components: {
-			Navbar: __webpack_require__(76),
-			Showcase: __webpack_require__(80),
-			List: __webpack_require__(84)
+			Navbar: __webpack_require__(160),
+			Showcase: __webpack_require__(164),
+			List: __webpack_require__(168)
 		},
 		data: function data() {
 			return {
@@ -468,30 +418,26 @@
 	};
 
 /***/ },
-/* 72 */
+
+/***/ 157:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(73), __esModule: true };
+	module.exports = { "default": __webpack_require__(158), __esModule: true };
 
 /***/ },
-/* 73 */
+
+/***/ 158:
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(74)
+	var core  = __webpack_require__(64)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 74 */
-/***/ function(module, exports) {
 
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 75 */
+/***/ 159:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -561,19 +507,20 @@
 	}];
 
 /***/ },
-/* 76 */
+
+/***/ 160:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(77);
-	__vue_script__ = __webpack_require__(78);
+	__webpack_require__(161);
+	__vue_script__ = __webpack_require__(162);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Navbar.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(79);
+	__vue_template__ = __webpack_require__(163);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -593,7 +540,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-168eb930/Navbar.vue";
+	    var id = "_v-50595b0f/Navbar.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -603,9 +550,11 @@
 	}
 
 /***/ },
-/* 77 */
+
+/***/ 161:
 1,
-/* 78 */
+
+/***/ 162:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -616,25 +565,27 @@
 	exports.default = {};
 
 /***/ },
-/* 79 */
+
+/***/ 163:
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-168eb930=\"\">\n\t<ul _v-168eb930=\"\">\n\t\t<a href=\"#/home\" _v-168eb930=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-168eb930=\"\">List</a>\n\t</ul>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-50595b0f=\"\">\n\t<ul _v-50595b0f=\"\">\n\t\t<a href=\"#/home\" _v-50595b0f=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-50595b0f=\"\">List</a>\n\t</ul>\n</div>\n";
 
 /***/ },
-/* 80 */
+
+/***/ 164:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(81);
-	__vue_script__ = __webpack_require__(82);
+	__webpack_require__(165);
+	__vue_script__ = __webpack_require__(166);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(83);
+	__vue_template__ = __webpack_require__(167);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -654,7 +605,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-2340944d/Showcase.vue";
+	    var id = "_v-14ea3a6c/Showcase.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -664,9 +615,11 @@
 	}
 
 /***/ },
-/* 81 */
+
+/***/ 165:
 1,
-/* 82 */
+
+/***/ 166:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -681,25 +634,27 @@
 	};
 
 /***/ },
-/* 83 */
+
+/***/ 167:
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Showcase\">\n\t<a class=\"item__\"\n\tv-for=\"a in items\"\n\t:href=\" '#/item/'+a.name.toLowerCase() \">\n\t\t<img :src=\" '../../img/vue/GooeyMenu.png' \"/>\n\t\t{{a.name}}\n\t</a>\n</div>\n";
 
 /***/ },
-/* 84 */
+
+/***/ 168:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(85);
-	__vue_script__ = __webpack_require__(86);
+	__webpack_require__(169);
+	__vue_script__ = __webpack_require__(170);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\List.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(87);
+	__vue_template__ = __webpack_require__(171);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -719,7 +674,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-64b058be/List.vue";
+	    var id = "_v-1e27e65d/List.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -729,35 +684,40 @@
 	}
 
 /***/ },
-/* 85 */
+
+/***/ 169:
 1,
-/* 86 */
-82,
-/* 87 */
+
+/***/ 170:
+166,
+
+/***/ 171:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"List\" _v-64b058be=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-64b058be=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-64b058be=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"List\" _v-1e27e65d=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-1e27e65d=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-1e27e65d=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 88 */
+
+/***/ 172:
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-66d00aac=\"\">\n\t<router-view :items=\"items\" _v-66d00aac=\"\"></router-view>\n\t<navbar _v-66d00aac=\"\"></navbar>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-6e353fcb=\"\">\n\t<router-view :items=\"items\" _v-6e353fcb=\"\"></router-view>\n\t<navbar _v-6e353fcb=\"\"></navbar>\n</div>\n";
 
 /***/ },
-/* 89 */
+
+/***/ 173:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(90);
-	__vue_script__ = __webpack_require__(91);
+	__webpack_require__(174);
+	__vue_script__ = __webpack_require__(175);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\RouteItem.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(92);
+	__vue_template__ = __webpack_require__(176);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -777,7 +737,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4308a7ff/RouteItem.vue";
+	    var id = "_v-8efa6380/RouteItem.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -787,9 +747,11 @@
 	}
 
 /***/ },
-/* 90 */
+
+/***/ 174:
 1,
-/* 91 */
+
+/***/ 175:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -806,10 +768,12 @@
 	};
 
 /***/ },
-/* 92 */
+
+/***/ 176:
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-4308a7ff=\"\">\n\t<div class=\"TOPBAR\" _v-4308a7ff=\"\">\n\t\t<span @click=\"back\" _v-4308a7ff=\"\">返回</span>\n\t</div>\n\t<router-view _v-4308a7ff=\"\"></router-view>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-8efa6380=\"\">\n\t<div class=\"TOPBAR\" _v-8efa6380=\"\">\n\t\t<span @click=\"back\" _v-8efa6380=\"\">返回</span>\n\t</div>\n\t<router-view _v-8efa6380=\"\"></router-view>\n</div>\n";
 
 /***/ }
-/******/ ])));
+
+/******/ })));

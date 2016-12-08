@@ -35,7 +35,7 @@ webpackJsonp([1],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3d2a65b9/Preloader.vue";
+	    var id = "_v-0016cf18/Preloader.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -62,7 +62,7 @@ webpackJsonp([1],[
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"PreloaderContainer\" _v-3d2a65b9=\"\">\n\t<svg class=\"Preloader\" viewBox=\"0 0 120 120\" _v-3d2a65b9=\"\">\n\t\t<symbol id=\"s-circle\" _v-3d2a65b9=\"\">\n\t\t\t<circle r=\"10\" cx=\"20\" cy=\"20\" _v-3d2a65b9=\"\"></circle>\n\t\t</symbol>\n\t\t<g class=\"g-circles\" _v-3d2a65b9=\"\">\n\t\t\t<g class=\"g-circle\" v-for=\"a in 12\" _v-3d2a65b9=\"\">\n\t\t\t\t<use xlink:href=\"#s-circle\" _v-3d2a65b9=\"\"></use>\n\t\t\t</g>\n\t\t</g>\n\t</svg>\n</div>\n";
+	module.exports = "\n<div class=\"PreloaderContainer\" _v-0016cf18=\"\">\n\t<svg class=\"Preloader\" viewBox=\"0 0 120 120\" _v-0016cf18=\"\">\n\t\t<symbol id=\"s-circle\" _v-0016cf18=\"\">\n\t\t\t<circle r=\"10\" cx=\"20\" cy=\"20\" _v-0016cf18=\"\"></circle>\n\t\t</symbol>\n\t\t<g class=\"g-circles\" _v-0016cf18=\"\">\n\t\t\t<g class=\"g-circle\" v-for=\"a in 12\" _v-0016cf18=\"\">\n\t\t\t\t<use xlink:href=\"#s-circle\" _v-0016cf18=\"\"></use>\n\t\t\t</g>\n\t\t</g>\n\t</svg>\n</div>\n";
 
 /***/ },
 /* 8 */,
@@ -101,7 +101,7 @@ webpackJsonp([1],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-502fda86/GooeyMenu.vue";
+	    var id = "_v-ca5707c8/GooeyMenu.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -149,7 +149,7 @@ webpackJsonp([1],[
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"GooeyMenuContainer\" _v-502fda86=\"\">\n\t<div class=\"GooeyMenu\" _v-502fda86=\"\">\n\t\t<!-- CSS Gooey Menu (Version 2) -->\n\t\t<input type=\"checkbox\" href=\"#\" class=\"menu-open\" name=\"menu-open\" id=\"menu-open\" _v-502fda86=\"\">\n\t\t<label class=\"menu-open-button\" for=\"menu-open\" _v-502fda86=\"\">\n\t\t\t<span class=\"hamburger hamburger-1\" _v-502fda86=\"\"></span>\n\t\t\t<span class=\"hamburger hamburger-2\" _v-502fda86=\"\"></span>\n\t\t\t<span class=\"hamburger hamburger-3\" _v-502fda86=\"\"></span>\n\t\t</label>\n\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-bar-chart\" _v-502fda86=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-plus\" _v-502fda86=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-heart\" _v-502fda86=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-envelope\" _v-502fda86=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-cog\" _v-502fda86=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-502fda86=\"\"> <i class=\"fa fa-ellipsis-h\" _v-502fda86=\"\"></i> </a>\n\n\t\t<!-- filters -->\n\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 100 100\" _v-502fda86=\"\">\n\t\t\t<circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"red\" _v-502fda86=\"\"></circle>\n\t\t\t<defs _v-502fda86=\"\">\n\t\t\t\t<filter id=\"shadowed-goo\" _v-502fda86=\"\">\n\t\t\t\t\t<feGaussianBlur in=\"SourceGraphic\" result=\"blur\" stdDeviation=\"10\" _v-502fda86=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"blur\" mode=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\" result=\"goo\" _v-502fda86=\"\"></feColorMatrix>\n\t\t\t\t\t<feGaussianBlur in=\"goo\" stdDeviation=\"3\" result=\"shadow\" _v-502fda86=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"shadow\" mode=\"matrix\" values=\"0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2\" result=\"shadow\" _v-502fda86=\"\"></feColorMatrix>\n\t\t\t\t\t<feOffset in=\"shadow\" dx=\"1\" dy=\"1\" result=\"shadow\" _v-502fda86=\"\"></feOffset>\n\t\t\t\t\t<feComposite in2=\"shadow\" in=\"goo\" result=\"goo\" _v-502fda86=\"\"></feComposite>\n\t\t\t\t\t<feComposite in2=\"goo\" in=\"SourceGraphic\" result=\"mix\" _v-502fda86=\"\"></feComposite>\n\t\t\t\t</filter>\n\t\t\t\t<filter id=\"goo\" x=\"-300%\" y=\"-300%\" width=\"600%\" height=\"600%\" _v-502fda86=\"\">\n\t\t\t\t\t<feGaussianBlur id=\"feGB\" in=\"SourceGraphic\" result=\"blur\" stdDeviation=\"8\" _v-502fda86=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"blur\" mode=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\" result=\"goo\" _v-502fda86=\"\"></feColorMatrix>\n\t\t\t\t\t<feComposite in2=\"goo\" in=\"SourceGraphic\" result=\"mix\" _v-502fda86=\"\"></feComposite>\n\t\t\t\t</filter>\n\t\t\t</defs>\n\t\t</svg>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"GooeyMenuContainer\" _v-ca5707c8=\"\">\n\t<div class=\"GooeyMenu\" _v-ca5707c8=\"\">\n\t\t<!-- CSS Gooey Menu (Version 2) -->\n\t\t<input type=\"checkbox\" href=\"#\" class=\"menu-open\" name=\"menu-open\" id=\"menu-open\" _v-ca5707c8=\"\">\n\t\t<label class=\"menu-open-button\" for=\"menu-open\" _v-ca5707c8=\"\">\n\t\t\t<span class=\"hamburger hamburger-1\" _v-ca5707c8=\"\"></span>\n\t\t\t<span class=\"hamburger hamburger-2\" _v-ca5707c8=\"\"></span>\n\t\t\t<span class=\"hamburger hamburger-3\" _v-ca5707c8=\"\"></span>\n\t\t</label>\n\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-bar-chart\" _v-ca5707c8=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-plus\" _v-ca5707c8=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-heart\" _v-ca5707c8=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-envelope\" _v-ca5707c8=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-cog\" _v-ca5707c8=\"\"></i> </a>\n\t\t<a class=\"menu-item\" _v-ca5707c8=\"\"> <i class=\"fa fa-ellipsis-h\" _v-ca5707c8=\"\"></i> </a>\n\n\t\t<!-- filters -->\n\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 100 100\" _v-ca5707c8=\"\">\n\t\t\t<circle cx=\"50\" cy=\"50\" r=\"20\" fill=\"red\" _v-ca5707c8=\"\"></circle>\n\t\t\t<defs _v-ca5707c8=\"\">\n\t\t\t\t<filter id=\"shadowed-goo\" _v-ca5707c8=\"\">\n\t\t\t\t\t<feGaussianBlur in=\"SourceGraphic\" result=\"blur\" stdDeviation=\"10\" _v-ca5707c8=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"blur\" mode=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\" result=\"goo\" _v-ca5707c8=\"\"></feColorMatrix>\n\t\t\t\t\t<feGaussianBlur in=\"goo\" stdDeviation=\"3\" result=\"shadow\" _v-ca5707c8=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"shadow\" mode=\"matrix\" values=\"0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2\" result=\"shadow\" _v-ca5707c8=\"\"></feColorMatrix>\n\t\t\t\t\t<feOffset in=\"shadow\" dx=\"1\" dy=\"1\" result=\"shadow\" _v-ca5707c8=\"\"></feOffset>\n\t\t\t\t\t<feComposite in2=\"shadow\" in=\"goo\" result=\"goo\" _v-ca5707c8=\"\"></feComposite>\n\t\t\t\t\t<feComposite in2=\"goo\" in=\"SourceGraphic\" result=\"mix\" _v-ca5707c8=\"\"></feComposite>\n\t\t\t\t</filter>\n\t\t\t\t<filter id=\"goo\" x=\"-300%\" y=\"-300%\" width=\"600%\" height=\"600%\" _v-ca5707c8=\"\">\n\t\t\t\t\t<feGaussianBlur id=\"feGB\" in=\"SourceGraphic\" result=\"blur\" stdDeviation=\"8\" _v-ca5707c8=\"\"></feGaussianBlur>\n\t\t\t\t\t<feColorMatrix in=\"blur\" mode=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\" result=\"goo\" _v-ca5707c8=\"\"></feColorMatrix>\n\t\t\t\t\t<feComposite in2=\"goo\" in=\"SourceGraphic\" result=\"mix\" _v-ca5707c8=\"\"></feComposite>\n\t\t\t\t</filter>\n\t\t\t</defs>\n\t\t</svg>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 16 */,
@@ -192,7 +192,7 @@ webpackJsonp([1],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-74d14fe2/ButtonRipple.vue";
+	    var id = "_v-3b117e50/ButtonRipple.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -218,7 +218,7 @@ webpackJsonp([1],[
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"ButtonRipple\" _v-74d14fe2=\"\">\n\t<div class=\"button\" _v-74d14fe2=\"\">\n\t\t<div class=\"ripple\" _v-74d14fe2=\"\"></div>\n\t\t<span _v-74d14fe2=\"\">Stark</span>\n\t</div>\n\n\t<div class=\"button raised\" _v-74d14fe2=\"\">\n\t\t<div class=\"ripple\" _v-74d14fe2=\"\"></div>\n\t\t<span _v-74d14fe2=\"\">Lannister</span>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"ButtonRipple\" _v-3b117e50=\"\">\n\t<div class=\"button\" _v-3b117e50=\"\">\n\t\t<div class=\"ripple\" _v-3b117e50=\"\"></div>\n\t\t<span _v-3b117e50=\"\">Stark</span>\n\t</div>\n\n\t<div class=\"button raised\" _v-3b117e50=\"\">\n\t\t<div class=\"ripple\" _v-3b117e50=\"\"></div>\n\t\t<span _v-3b117e50=\"\">Lannister</span>\n\t</div>\n</div>\n";
 
 /***/ }
 ]);

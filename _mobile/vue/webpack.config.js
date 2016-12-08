@@ -37,6 +37,11 @@ module.exports = {
 			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
+	resolve: {
+		alias: {
+			vue: 'vue/dist/vue.min.js'
+		}
+	},
 	postcss: function () {
         return [autoprefixer];
     },

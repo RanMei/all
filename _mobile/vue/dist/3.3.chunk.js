@@ -47,7 +47,7 @@ webpackJsonp([3],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-693ac086/Wave.vue";
+	    var id = "_v-323bb7c7/Wave.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -77,7 +77,7 @@ webpackJsonp([3],[
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Wave\" _v-693ac086=\"\">\n\t<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" style=\"display: none;\" _v-693ac086=\"\">\n\t\t<symbol id=\"wave\" _v-693ac086=\"\">\n\t\t\t<path d=\"M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z\" _v-693ac086=\"\"></path>\n\t\t\t<path d=\"M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z\" _v-693ac086=\"\"></path>\n\t\t\t<path d=\"M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z\" _v-693ac086=\"\"></path>\n\t\t\t<path d=\"M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z\" _v-693ac086=\"\"></path>\n\t\t</symbol>\n\t</svg>\n\n\t<svg class=\"WATER\" viewBox=\"0 0 560 20\" _v-693ac086=\"\">\n\t\t<use xlink:href=\"#wave\" _v-693ac086=\"\"></use>\n\t</svg>\n\t\n\t<div class=\"box\" _v-693ac086=\"\">\n\t\t<!-- <div class=\"percent\">\n\t\t\t<div class=\"percentNum\" id=\"count\">0</div>\n\t\t\t<div class=\"percentB\">%</div>\n\t\t</div> -->\n\t\t<div id=\"water\" class=\"water\" _v-693ac086=\"\">\n\t\t\t<svg class=\"wave wave_back\" viewBox=\"0 0 560 20\" _v-693ac086=\"\">\n\t\t\t\t<use xlink:href=\"#wave\" _v-693ac086=\"\"></use>\n\t\t\t</svg>\n\t\t\t<svg class=\"wave wave_front\" viewBox=\"0 0 560 20\" _v-693ac086=\"\">\n\t\t\t\t<use xlink:href=\"#wave\" _v-693ac086=\"\"></use>\n\t\t\t</svg>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Wave\" _v-323bb7c7=\"\">\n\t<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" style=\"display: none;\" _v-323bb7c7=\"\">\n\t\t<symbol id=\"wave\" _v-323bb7c7=\"\">\n\t\t\t<path d=\"M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z\" _v-323bb7c7=\"\"></path>\n\t\t\t<path d=\"M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z\" _v-323bb7c7=\"\"></path>\n\t\t\t<path d=\"M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z\" _v-323bb7c7=\"\"></path>\n\t\t\t<path d=\"M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z\" _v-323bb7c7=\"\"></path>\n\t\t</symbol>\n\t</svg>\n\n\t<svg class=\"WATER\" viewBox=\"0 0 560 20\" _v-323bb7c7=\"\">\n\t\t<use xlink:href=\"#wave\" _v-323bb7c7=\"\"></use>\n\t</svg>\n\t\n\t<div class=\"box\" _v-323bb7c7=\"\">\n\t\t<!-- <div class=\"percent\">\n\t\t\t<div class=\"percentNum\" id=\"count\">0</div>\n\t\t\t<div class=\"percentB\">%</div>\n\t\t</div> -->\n\t\t<div id=\"water\" class=\"water\" _v-323bb7c7=\"\">\n\t\t\t<svg class=\"wave wave_back\" viewBox=\"0 0 560 20\" _v-323bb7c7=\"\">\n\t\t\t\t<use xlink:href=\"#wave\" _v-323bb7c7=\"\"></use>\n\t\t\t</svg>\n\t\t\t<svg class=\"wave wave_front\" viewBox=\"0 0 560 20\" _v-323bb7c7=\"\">\n\t\t\t\t<use xlink:href=\"#wave\" _v-323bb7c7=\"\"></use>\n\t\t\t</svg>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 20 */
@@ -112,7 +112,7 @@ webpackJsonp([3],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-5c3a5813/3dCube.vue";
+	    var id = "_v-2e4af9d8/3dCube.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -182,7 +182,7 @@ webpackJsonp([3],[
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space3d\" _v-5c3a5813=\"\">\n\t<div class=\"cube\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-5c3a5813=\"\">\n\t\t<div class=\"face face-front\" _v-5c3a5813=\"\"></div>\n\t\t<div class=\"face face-top\" _v-5c3a5813=\"\"></div>\n\t\t<div class=\"face face-bottom\" _v-5c3a5813=\"\"></div>\n\t\t<div class=\"face face-left\" _v-5c3a5813=\"\"></div>\n\t\t<div class=\"face face-right\" _v-5c3a5813=\"\"></div>\n\t\t<div class=\"face face-back\" _v-5c3a5813=\"\"></div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space3d\" _v-2e4af9d8=\"\">\n\t<div class=\"cube\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-2e4af9d8=\"\">\n\t\t<div class=\"face face-front\" _v-2e4af9d8=\"\"></div>\n\t\t<div class=\"face face-top\" _v-2e4af9d8=\"\"></div>\n\t\t<div class=\"face face-bottom\" _v-2e4af9d8=\"\"></div>\n\t\t<div class=\"face face-left\" _v-2e4af9d8=\"\"></div>\n\t\t<div class=\"face face-right\" _v-2e4af9d8=\"\"></div>\n\t\t<div class=\"face face-back\" _v-2e4af9d8=\"\"></div>\n\t</div>\n</div>\n";
 
 /***/ }
 ]);
