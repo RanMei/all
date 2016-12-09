@@ -1468,7 +1468,7 @@
 /* 68 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Slider\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" @keypress=\"keydown($event)\" ref=\"slider\" :style=\" 'height:'+viewportHeight+'px' \" _v-01df543c=\"\">\n\t<ul class=\"train\" :style=\" 'transform: translate3d(0,'+(-current*10)+'%,0)' \" _v-01df543c=\"\">\n\t\t<item0 :img=\"img\" :active=\"active[0]\" _v-01df543c=\"\"></item0>\n\t\t<item1 :img=\"img\" :active=\"active[1]\" _v-01df543c=\"\"></item1>\n\t\t<item2 :img=\"img\" :active=\"active[2]\" _v-01df543c=\"\"></item2>\n\t\t<item3 :img=\"img\" :active=\"active[3]\" _v-01df543c=\"\"></item3>\n\t\t<item4 :img=\"img\" :active=\"active[4]\" _v-01df543c=\"\"></item4>\n\t</ul>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Slider\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" @keypress=\"keydown($event)\" ref=\"slider\" :style=\" 'height:'+viewportHeight+'px' \" _v-01df543c=\"\">\n\t<ul class=\"train\" :style=\" 'transform: translate3d(0,'+(-current*10)+'%,0);-webkit-transform:translate3d(0,'+(-current*10)+'%,0);' \" _v-01df543c=\"\">\n\t\t<item0 :img=\"img\" :active=\"active[0]\" _v-01df543c=\"\"></item0>\n\t\t<item1 :img=\"img\" :active=\"active[1]\" _v-01df543c=\"\"></item1>\n\t\t<item2 :img=\"img\" :active=\"active[2]\" _v-01df543c=\"\"></item2>\n\t\t<item3 :img=\"img\" :active=\"active[3]\" _v-01df543c=\"\"></item3>\n\t\t<item4 :img=\"img\" :active=\"active[4]\" _v-01df543c=\"\"></item4>\n\t</ul>\n</div>\n";
 
 /***/ },
 /* 69 */

@@ -18,6 +18,7 @@ function extend (target) {
 function Particle (opts) {
     this.opts = opts;
 
+    this.cv = opts.cv;
     this.color = this.opts.color;
     this.x = this.opts.x;
     this.y = this.opts.y;
@@ -27,8 +28,8 @@ function Particle (opts) {
 };
 Particle.prototype = {
     update: function () {
-        var width = this.opts.host.width;
-        var height = this.opts.host.height;
+        var width = this.cv.$width;
+        var height = this.cv.$height;
         var x, y;
 
         x = this.x + Math.cos(0) * this.d * 2;
@@ -57,49 +58,68 @@ Particle.prototype = {
     }
 }
 
-import {Canvas} from './Canvas.js';
+import {Canvas} from './CanvasNew.js';
 
-class Snowfall extends Canvas {
-    constructor (opts) {
-        super(opts);
-        this._init(opts);
-    }
-    beforePlay(){
-        this.config = {
+var Snow = Canvas.extend({
+    props: function(){
+        return {
             color: 'white',
             speed: 2,
             count: 100,
             maxRadius: 5
         }
-        this.particles = [];
-        this.angle = 0;
-
-        this.createParticles();
-    }
-    createParticles() {
-        var self = this;
-        for( var i=0;i<this.config.count;i++ ){
-            self.particles.push(new Particle({
-                color: 'white',
-                x: Math.round( Math.random()*self.width ),
-                y: Math.round( Math.random()*self.height ),
-                d: Math.random(),
-                radius: getRandomInt(2, self.config.maxRadius),
-                host: self,
-                ctx: self.ctx
-            }))
+    },
+    data: function(){
+        return {
+            particles: [],
+            angle: 0
         }
-    }
-    render() {
+    },
+    beforePlay: function(){
+        this.createParticles();
+    },
+    render: function(){
         var self = this;
         this.angle = this.angle - 0.0001;
 
-        this.ctx.clearRect(0, 0, this.width, this.height);
+        this.$ctx.clearRect(0, 0, this.$width, this.$height);
         this.particles.forEach( function(p){
             p.update();
-            p.draw(self.ctx);
+            p.draw(self.$ctx);
         });
+    },
+    methods: {
+        createParticles: function(){
+            var self = this;
+            for( var i=0;i<this.count;i++ ){
+                self.particles.push(new Particle({
+                    color: self.color,
+                    x: Math.round( Math.random()*self.$width ),
+                    y: Math.round( Math.random()*self.$height ),
+                    d: Math.random(),
+                    radius: getRandomInt(2, self.maxRadius),
+                    cv: self,
+                    ctx: self.$ctx
+                }))
+            }
+        }
+    }
+})
+
+module.exports = {
+    template: `
+        <canvas ref="snowfall" width="1000" height="1000"
+        style="display:block;width:100%;background:#0BA2FF;"></canvas>
+    `,
+    mounted: function(){
+        new Snow({
+            el: this.$refs.snowfall,
+            props: {
+                color: 'white',
+                speed: 2,
+                count: 100,
+                maxRadius: 5
+            }
+        })
     }
 }
-
-export {Snowfall};

@@ -1,11 +1,11 @@
 class Canvas {
-	constructor(options){
+	constructor(opts){
 
 	}
 	_init(options){
 		this._options = options;
 
-		this.el = document.querySelector(options.el);
+		this.el = (typeof options.el==='string')?document.querySelector(options.el):options.el;
 		this.ctx = this.el.getContext('2d');
 		this.width = this.el.width||1000;
 		this.height = this.el.height||1000;
@@ -78,6 +78,15 @@ class Canvas {
 			//this._render();
 		};
 	}
+}
+
+// create a subclass of Canvas
+Canvas.extend = function(opts){
+	function Sub(){
+		this._init(opts);
+	}
+	Sub.prototype = new Canvas(opts);
+	return Sub;
 }
 
 Canvas.prototype._renderFPS = function(){

@@ -160,3 +160,21 @@ var setupRAF = function(){
 //     //setupRAF();
 //     cl.init();
 // }
+
+module.exports = {
+	template: `
+		<div class="Scope"
+		style="width:100%;height:100vh;background:black;">
+			<!-- Abstract Canvas Visualization -->
+			<canvas ref="canvas" width="400" height="400"
+			style="display:block;width:60%;margin:auto;background:black;"></canvas>
+		</div>
+	`,
+	mounted: function(){
+		new Scope({
+			el: this.$refs.canvas,
+			width: 400,
+			height: 400
+		})
+	}
+}

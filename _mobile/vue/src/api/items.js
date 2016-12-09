@@ -7,6 +7,10 @@ module.exports = [{
 	component: 'Card',
 	path: '../lib/Card.vue'
 },{
+	name: 'CardsTwo',
+	component: 'CardsTwo',
+	path: '../lib/CardsTwo.vue'
+},{
 	name: 'GooeyMenu',
 	component: 'GooeyMenu',
 	path: '../lib/GooeyMenu.vue'
@@ -47,11 +51,15 @@ module.exports = [{
 },{
 	name: 'Rain',
 	component: 'Rain',
-	path: '../canvas/Rain.vue'
+	path: '../canvas/Rain.js'
 },{
 	name: 'Snowfall',
 	component: 'Snowfall',
-	path: '../canvas/Snowfall.vue'
+	path: '../canvas/Snowfall.js'
+},{
+	name: 'Snow',
+	component: 'Snow',
+	path: '../canvas/Snow.js'
 },{
 	name: 'Heart',
 	component: 'Heart',
@@ -60,5 +68,5 @@ module.exports = [{
 	name: 'Scope',
 	tags: ['canvas'],
 	component: 'Scope',
-	path: '../Canvas/Scope.vue'
+	path: '../Canvas/Scope.js'
 }]

@@ -13,6 +13,13 @@ var list = [{
 		});
 	}
 },{
+	path:'cardstwo',
+	component: resolve => {
+		require.ensure( ['../lib/CardsTwo.vue'], ()=>{
+			resolve( require('../lib/CardsTwo.vue') );
+		});
+	}
+},{
 	path:'gooeymenu',
 	component: resolve => {
 		require.ensure( ['../lib/GooeyMenu.vue'], ()=>{
@@ -78,15 +85,22 @@ var list = [{
 },{
 	path:'rain',
 	component: resolve => {
-		require.ensure( ['../canvas/Rain.vue'], ()=>{
-			resolve( require('../canvas/Rain.vue') );
+		require.ensure( ['../canvas/Rain.js'], ()=>{
+			resolve( require('../canvas/Rain.js') );
 		});
 	}
 },{
 	path:'snowfall',
 	component: resolve => {
-		require.ensure( ['../canvas/Snowfall.vue'], ()=>{
-			resolve( require('../canvas/Snowfall.vue') );
+		require.ensure( ['../canvas/Snowfall.js'], ()=>{
+			resolve( require('../canvas/Snowfall.js') );
+		});
+	}
+},{
+	path:'snow',
+	component: resolve => {
+		require.ensure( ['../canvas/Snow.js'], ()=>{
+			resolve( require('../canvas/Snow.js') );
 		});
 	}
 },{
@@ -99,8 +113,8 @@ var list = [{
 },{
 	path:'scope',
 	component: resolve => {
-		require.ensure( ['../Canvas/Scope.vue'], ()=>{
-			resolve( require('../Canvas/Scope.vue') );
+		require.ensure( ['../Canvas/Scope.js'], ()=>{
+			resolve( require('../Canvas/Scope.js') );
 		});
 	}
 }];

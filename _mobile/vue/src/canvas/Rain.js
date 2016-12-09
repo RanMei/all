@@ -1,9 +1,9 @@
-import {Canvas} from './lib/Canvas.js';
+import {Canvas} from './CanvasNew.js';
 
-function Drop(host){
+function Drop(cv){
 	var self = this;
-	this.w = host.width;
-	this.ctx = host.ctx;
+	this.w = cv.$width;
+	this.ctx = cv.$ctx;
 	this.x = Math.random()*this.w;
 	this.y = -Math.random()*800;
 	//this.lightness = 50;
@@ -54,8 +54,8 @@ Drop.prototype = {
 	}
 }
 
-function Splash(x,y,host){
-	this.ctx = host.ctx;
+function Splash(x,y,cv){
+	this.ctx = cv.$ctx;
 	this.x = x;
 	this.y = y;
 	this.r = 2;
@@ -79,44 +79,35 @@ Splash.prototype = {
 	}
 }
 
-class Rain extends Canvas {
-	constructor(options){
-		super(options);
-		this.drops = [];
-		this.splashes = [];
-
-		for(var key in options.data){
-			this[key] = options.data[key];
+var Rain = Canvas.extend({
+	props: function(){
+		return {
+			dropCount: 500
 		}
-
-		this._init(options);
-	}
-	listen(){
-		
-	}
-	beforePlay(){
+	},
+	data: function(){
+		return {
+			drops: [],
+			splashes: []
+		}
+	},
+	beforePlay: function(){
 		this.createDrops();
-	}
-	createDrops(){
-		for(var i=0;i<this.dropCount;i++){
-			this.drops[i] = new Drop(this);
-		}
-	}
-	render(){
-		//console.log(111)
+	},
+	render: function(){
 		var self = this;
-		var ctx = this.ctx;
+		var ctx = this.$ctx;
 		ctx.globalCompositeOperation = 'source-over';
 		ctx.fillStyle = 'rgba(0,0,0,0.5)';
-		ctx.fillRect( 0,0,this.width,this.height );
+		ctx.fillRect( 0,0,this.$width,this.$height );
 		ctx.globalCompositeOperation = 'lighter';
 
 		self.drops.forEach(function(drop,i){
 			drop.draw();
 			drop.step();			
-			if( drop.y>self.height ){
+			if( drop.y>self.$height ){
 				self.drops[i] = new Drop(self);
-				self.splashes.push( new Splash(drop.x,self.height,self) );
+				self.splashes.push( new Splash(drop.x,self.$height,self) );
 			}
 		})
 		self.splashes.forEach(function(splash,i){
@@ -126,28 +117,24 @@ class Rain extends Canvas {
 				self.splashes.splice(i,1);
 			}
 		})
-	}
-}
-
-export default Vue.extend({
-	template: `<canvas id="Rain" width="1000" height="1000" ref="canvas" style="display:block;width:100%;"></canvas>`
-	,
-	render: function(h){
-		return h('canvas',{
-			attrs: {
-				width: '1000',
-				height: '1000',
-				ref: 'canvas',
-				style: 'display:block;width:100%;'
-			}
-		})
 	},
+	methods: {
+		createDrops: function(){
+			for(var i=0;i<this.dropCount;i++){
+				this.drops[i] = new Drop(this);
+			}
+		}
+	}
+})
+
+module.exports = {
+	template: `<canvas id="Rain" width="1000" height="1000" ref="canvas" style="display:block;width:100%;"></canvas>`,
 	mounted: function(){
 		new Rain({
 			el: this.$refs.canvas,
-			data: {
+			props: {
 				dropCount: 500
 			}
 		})
 	}
-});
+};

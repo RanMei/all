@@ -38,7 +38,7 @@
 	ref="slider"
 	:style=" 'height:'+viewportHeight+'px' "
 	>
-	<ul class="train" :style=" 'transform: translate3d(0,'+(-current*10)+'%,0)' ">
+	<ul class="train" :style=" 'transform: translate3d(0,'+(-current*10)+'%,0);-webkit-transform:translate3d(0,'+(-current*10)+'%,0);' ">
 		<item0 :img="img" :active="active[0]"></item0>
 		<item1 :img="img" :active="active[1]"></item1>
 		<item2 :img="img" :active="active[2]"></item2>

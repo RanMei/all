@@ -1,75 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 148:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(149);
-	__vue_script__ = __webpack_require__(150);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\Canvas\\Scope.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(153);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-2a999d07/Scope.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-
-/***/ 149:
-1,
-
-/***/ 150:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _Scope = __webpack_require__(151);
-
-	exports.default = {
-		mounted: function mounted() {
-			new _Scope.Scope({
-				el: '#scope',
-				width: 400,
-				height: 400
-			});
-		}
-	};
-
-/***/ },
-
-/***/ 151:
+/***/ 61:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -81,7 +12,7 @@ webpackJsonp([9],{
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas2 = __webpack_require__(152);
+	var _Canvas2 = __webpack_require__(62);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -95,7 +26,7 @@ webpackJsonp([9],{
 		function Scope(options) {
 			_classCallCheck(this, Scope);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Scope).call(this, options));
+			var _this = _possibleConstructorReturn(this, (Scope.__proto__ || Object.getPrototypeOf(Scope)).call(this, options));
 
 			_this._init(options);
 			return _this;
@@ -130,7 +61,7 @@ webpackJsonp([9],{
 		}, {
 			key: 'rand',
 			value: function rand(min, max) {
-				return ~ ~(Math.random() * (max - min + 1) + min);
+				return ~~(Math.random() * (max - min + 1) + min);
 			}
 		}, {
 			key: 'hitTest',
@@ -276,9 +207,20 @@ webpackJsonp([9],{
 	//     cl.init();
 	// }
 
+	module.exports = {
+		template: '\n\t\t<div class="Scope"\n\t\tstyle="width:100%;height:100vh;background:black;">\n\t\t\t<!-- Abstract Canvas Visualization -->\n\t\t\t<canvas ref="canvas" width="400" height="400"\n\t\t\tstyle="display:block;width:60%;margin:auto;background:black;"></canvas>\n\t\t</div>\n\t',
+		mounted: function mounted() {
+			new Scope({
+				el: this.$refs.canvas,
+				width: 400,
+				height: 400
+			});
+		}
+	};
+
 /***/ },
 
-/***/ 152:
+/***/ 62:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -292,7 +234,7 @@ webpackJsonp([9],{
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var Canvas = function () {
-		function Canvas(options) {
+		function Canvas(opts) {
 			_classCallCheck(this, Canvas);
 		}
 
@@ -301,7 +243,7 @@ webpackJsonp([9],{
 			value: function _init(options) {
 				this._options = options;
 
-				this.el = document.querySelector(options.el);
+				this.el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el;
 				this.ctx = this.el.getContext('2d');
 				this.width = this.el.width || 1000;
 				this.height = this.el.height || 1000;
@@ -399,6 +341,17 @@ webpackJsonp([9],{
 		return Canvas;
 	}();
 
+	// create a subclass of Canvas
+
+
+	Canvas.extend = function (opts) {
+		function Sub() {
+			this._init(opts);
+		}
+		Sub.prototype = new Canvas(opts);
+		return Sub;
+	};
+
 	Canvas.prototype._renderFPS = function () {
 		this._tick++;
 		if (this._tick === 60) {
@@ -414,13 +367,6 @@ webpackJsonp([9],{
 	};
 
 	exports.Canvas = Canvas;
-
-/***/ },
-
-/***/ 153:
-/***/ function(module, exports) {
-
-	module.exports = "\n<!-- Abstract Canvas Visualization -->\n<div class=\"_space\" _v-2a999d07=\"\">\n\t<canvas id=\"scope\" width=\"400\" height=\"400\" _v-2a999d07=\"\"></canvas>\n</div>\n";
 
 /***/ }
 
