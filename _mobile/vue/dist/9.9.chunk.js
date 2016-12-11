@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 61:
+/***/ 60:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,89 +10,54 @@ webpackJsonp([9],{
 	});
 	exports.Scope = undefined;
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _Canvas = __webpack_require__(61);
 
-	var _Canvas2 = __webpack_require__(62);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Scope = function (_Canvas) {
-		_inherits(Scope, _Canvas);
-
-		function Scope(options) {
-			_classCallCheck(this, Scope);
-
-			var _this = _possibleConstructorReturn(this, (Scope.__proto__ || Object.getPrototypeOf(Scope)).call(this, options));
-
-			_this._init(options);
-			return _this;
-		}
-
-		_createClass(Scope, [{
-			key: 'beforePlay',
-			value: function beforePlay() {
-				this.c = this.el;
-				this.cw = this.width;
-				this.ch = this.height;
-				this.mx = 0;
-				this.my = 0;
-
+	var Scope = _Canvas.Canvas.extend({
+		data: function data() {
+			return {
+				mx: 0,
+				my: 0,
 				//trail
-				this.trail = [];
-				this.maxTrail = 200;
-				this.mouseDown = false;
+				trail: [],
+				maxTrail: 200,
+				mouseDown: false,
 
-				this.ctx.lineWidth = .1;
-				this.ctx.lineJoin = 'round';
-
-				this.radius = 1;
-				this.speed = 0.4;
-				this.angle = 0;
-				this.arcx = 0;
-				this.arcy = 0;
-				this.growRadius = true;
-				this.seconds = 0;
-				this.milliseconds = 0;
-			}
-		}, {
-			key: 'rand',
-			value: function rand(min, max) {
-				return ~~(Math.random() * (max - min + 1) + min);
-			}
-		}, {
-			key: 'hitTest',
-			value: function hitTest(x1, y1, w1, h1, x2, y2, w2, h2) {
+				radius: 1,
+				speed: 0.4,
+				angle: 0,
+				arcx: 0,
+				arcy: 0,
+				growRadius: true,
+				seconds: 0,
+				milliseconds: 0
+			};
+		},
+		beforePlay: function beforePlay() {
+			this.$ctx.lineWidth = .1;
+			this.$ctx.lineJoin = 'round';
+		},
+		render: function render() {
+			this.clearCanvas();
+			this.updateArc();
+			this.updateTrail();
+			this.renderTrail();
+		},
+		methods: {
+			rand: function rand(min, max) {
+				return ~ ~(Math.random() * (max - min + 1) + min);
+			},
+			hitTest: function hitTest(x1, y1, w1, h1, x2, y2, w2, h2) {
 				return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
-			}
-		}, {
-			key: 'createPoint',
-			value: function createPoint(x, y) {
+			},
+			createPoint: function createPoint(x, y) {
 				this.trail.push({
 					x: x,
 					y: y
 				});
-			}
-		}, {
-			key: 'updateTrail',
-			value: function updateTrail() {
-
-				if (this.trail.length < this.maxTrail) {
-					this.createPoint(this.arcx, this.arcy);
-				}
-
-				if (this.trail.length >= this.maxTrail) {
-					this.trail.splice(0, 1);
-				}
-			}
-		}, {
-			key: 'updateArc',
-			value: function updateArc() {
-				this.arcx = this.cw / 2 + Math.sin(this.angle) * this.radius;
-				this.arcy = this.ch / 2 + Math.cos(this.angle) * this.radius;
+			},
+			updateArc: function updateArc() {
+				this.arcx = this.$width / 2 + Math.sin(this.angle) * this.radius;
+				this.arcy = this.$height / 2 + Math.cos(this.angle) * this.radius;
 				var d = new Date();
 				this.seconds = d.getSeconds();
 				this.milliseconds = d.getMilliseconds();
@@ -110,49 +75,41 @@ webpackJsonp([9],{
 				} else {
 					this.radius -= 1;
 				}
-			}
-		}, {
-			key: 'renderTrail',
-			value: function renderTrail() {
+			},
+			renderTrail: function renderTrail() {
 				var i = this.trail.length;
 
-				this.ctx.beginPath();
+				this.$ctx.beginPath();
 				while (i--) {
 					var point = this.trail[i];
 					var nextPoint = i == this.trail.length ? this.trail[i + 1] : this.trail[i];
 
 					var c = (point.x + nextPoint.x) / 2;
 					var d = (point.y + nextPoint.y) / 2;
-					this.ctx.quadraticCurveTo(Math.round(this.arcx), Math.round(this.arcy), c, d);
+					this.$ctx.quadraticCurveTo(Math.round(this.arcx), Math.round(this.arcy), c, d);
 				};
-				this.ctx.strokeStyle = 'hsla(' + this.rand(170, 300) + ', 100%, ' + this.rand(50, 75) + '%, 1)';
-				this.ctx.stroke();
-				this.ctx.closePath();
-			}
-		}, {
-			key: 'clearCanvas',
-			value: function clearCanvas() {
+				this.$ctx.strokeStyle = 'hsla(' + this.rand(170, 300) + ', 100%, ' + this.rand(50, 75) + '%, 1)';
+				this.$ctx.stroke();
+				this.$ctx.closePath();
+			},
+			updateTrail: function updateTrail() {
+				if (this.trail.length < this.maxTrail) {
+					this.createPoint(this.arcx, this.arcy);
+				};
+				if (this.trail.length >= this.maxTrail) {
+					this.trail.splice(0, 1);
+				};
+			},
+			clearCanvas: function clearCanvas() {
 				//this.ctx.globalCompositeOperation = 'source-over';
 				//this.ctx.clearRect(0,0,this.cw,this.ch);
-
-				this.ctx.globalCompositeOperation = 'destination-out';
-				this.ctx.fillStyle = 'rgba(0,0,0,.1)';
-				this.ctx.fillRect(0, 0, this.cw, this.ch);
-				this.ctx.globalCompositeOperation = 'lighter';
+				this.$ctx.globalCompositeOperation = 'destination-out';
+				this.$ctx.fillStyle = 'rgba(0,0,0,.1)';
+				this.$ctx.fillRect(0, 0, this.$width, this.$height);
+				this.$ctx.globalCompositeOperation = 'lighter';
 			}
-		}, {
-			key: 'render',
-			value: function render() {
-				this.clearCanvas();
-				this.updateArc();
-				this.updateTrail();
-				this.renderTrail();
-			}
-		}]);
-
-		return Scope;
-	}(_Canvas2.Canvas);
-
+		}
+	});
 	exports.Scope = Scope;
 
 
@@ -220,7 +177,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 62:
+/***/ 61:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -236,19 +193,45 @@ webpackJsonp([9],{
 	var Canvas = function () {
 		function Canvas(opts) {
 			_classCallCheck(this, Canvas);
+
+			this._options = opts;
+			this._props = opts.props;
+			this._data = opts.data;
+
+			this.beforePlay = opts.beforePlay;
+			this.render = opts.render;
+
+			for (var key in opts.methods) {
+				this[key] = opts.methods[key];
+			}
 		}
 
 		_createClass(Canvas, [{
-			key: '_init',
-			value: function _init(options) {
-				this._options = options;
+			key: '_init_cv',
+			value: function _init_cv(kkk) {
+				var cv = this;
+				cv.$el = typeof kkk.el === 'string' ? document.querySelector(kkk.el) : kkk.el;
+				cv.$ctx = cv.$el.getContext('2d');
 
-				this.el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el;
-				this.ctx = this.el.getContext('2d');
-				this.width = this.el.width || 1000;
-				this.height = this.el.height || 1000;
+				cv.$width = cv.$el.width || 1000;
+				cv.$height = cv.$el.height || 1000;
+
+				// init props
+				var props = this._props ? this._props() : {};
+				for (var key in props) {
+					cv[key] = props[key];
+				}
+				for (var key in kkk.props) {
+					cv[key] = kkk.props[key];
+				}
+				// init data
+				var data = this._data();
+				for (var key in data) {
+					cv[key] = data[key];
+				}
+
 				this._listen();
-				if (options.responsive === true) {
+				if (kkk.responsive === true) {
 					this._response();
 				}
 
@@ -274,8 +257,8 @@ webpackJsonp([9],{
 				var _this = this;
 
 				window.addEventListener('resize', function () {
-					_this.width = _this.el.width = window.innerWidth;
-					_this.height = _this.el.height = window.innerHeight;
+					_this.$width = _this.$el.width = window.innerWidth;
+					_this.$height = _this.$el.height = window.innerHeight;
 				});
 			}
 			//onResize(){}
@@ -286,24 +269,24 @@ webpackJsonp([9],{
 				this._cache = document.createElement('canvas');
 				this._cache.width = 1000;
 				this._cache.height = 1000;
-				this.ctx = this._cache.getContext('2d');
+				this.$ctx = this._cache.getContext('2d');
 			}
 		}, {
 			key: '_render',
 			value: function _render() {
-				this._ctx.clearRect(0, 0, this.width, this.height);
-				this._ctx.drawImage(this._cache, 0, 0);
+				this.$ctx.clearRect(0, 0, this.$width, this.$height);
+				this.$ctx.drawImage(this._cache, 0, 0);
 			}
 		}, {
 			key: '_listen',
 			value: function _listen() {
 				var _this2 = this;
 
-				this.el.addEventListener('click', function () {
+				this.$el.addEventListener('click', function () {
 					if (_this2._playing) {
-						_this2._pause();
+						_this2.$pause();
 					} else {
-						_this2._resume();
+						_this2.$resume();
 					}
 				});
 				// document.addEventListener('keydown',()=>{
@@ -316,15 +299,21 @@ webpackJsonp([9],{
 				// })
 			}
 		}, {
-			key: '_pause',
-			value: function _pause() {
+			key: '$pause',
+			value: function $pause() {
 				this._playing = false;
 			}
 		}, {
-			key: '_resume',
-			value: function _resume() {
+			key: '$resume',
+			value: function $resume() {
 				this._playing = true;
 				this._play();
+			}
+		}, {
+			key: '$setSize',
+			value: function $setSize(width, height) {
+				this.$el.width = this.$width = width;
+				this.$el.height = this.$height = height;
 			}
 		}, {
 			key: '_play',
@@ -345,8 +334,8 @@ webpackJsonp([9],{
 
 
 	Canvas.extend = function (opts) {
-		function Sub() {
-			this._init(opts);
+		function Sub(kkk) {
+			this._init_cv(kkk);
 		}
 		Sub.prototype = new Canvas(opts);
 		return Sub;
@@ -361,10 +350,16 @@ webpackJsonp([9],{
 			this._time = newTime;
 			this._tick = 0;
 		}
-		this.ctx.fillStyle = 'red';
-		this.ctx.font = '14px Microsoft Yahei';
-		this.ctx.fillText(this._fps + ' FPS', 10, 20, 100);
+		this.$ctx.fillStyle = 'red';
+		this.$ctx.font = '14px Microsoft Yahei';
+		this.$ctx.fillText(this._fps + ' FPS', 10, 20, 100);
 	};
+
+	Canvas.random = function (min, max) {
+		return min + Math.random() * (max - min);
+	};
+
+	window.Canvas = Canvas;
 
 	exports.Canvas = Canvas;
 

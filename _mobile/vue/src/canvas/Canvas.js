@@ -1,16 +1,40 @@
 class Canvas {
 	constructor(opts){
-
+		this._options = opts;
+		this._props = opts.props;
+		this._data = opts.data;
+		
+		this.beforePlay = opts.beforePlay;
+		this.render = opts.render;
+		
+		for( var key in opts.methods ){
+			this[key] = opts.methods[key];
+		}
 	}
-	_init(options){
-		this._options = options;
+	_init_cv(kkk){
+		var cv = this;
+		cv.$el = (typeof kkk.el==='string')?document.querySelector(kkk.el):kkk.el;
+		cv.$ctx = cv.$el.getContext('2d');
 
-		this.el = (typeof options.el==='string')?document.querySelector(options.el):options.el;
-		this.ctx = this.el.getContext('2d');
-		this.width = this.el.width||1000;
-		this.height = this.el.height||1000;
+		cv.$width = cv.$el.width||1000;
+		cv.$height = cv.$el.height||1000;
+
+		// init props
+		var props = this._props?this._props():{};
+		for(var key in props){
+			cv[key] = props[key];
+		}
+		for(var key in kkk.props){
+			cv[key] = kkk.props[key];
+		}
+		// init data
+		var data = this._data();
+		for(var key in data){
+			cv[key] = data[key];
+		}
+
 		this._listen();
-		if(options.responsive===true){
+		if(kkk.responsive===true){
 			this._response();
 		}
 
@@ -31,8 +55,8 @@ class Canvas {
 	}
 	_response(){
 		window.addEventListener('resize',()=>{
-			this.width = this.el.width = window.innerWidth;
-			this.height = this.el.height = window.innerHeight;
+			this.$width = this.$el.width = window.innerWidth;
+			this.$height = this.$el.height = window.innerHeight;
 		})
 	}
 	//onResize(){}
@@ -40,18 +64,18 @@ class Canvas {
 		this._cache = document.createElement('canvas');
 		this._cache.width = 1000;
 		this._cache.height = 1000;
-		this.ctx = this._cache.getContext('2d'); 
+		this.$ctx = this._cache.getContext('2d'); 
 	}
 	_render(){
-		this._ctx.clearRect(0,0,this.width,this.height);
-		this._ctx.drawImage(this._cache, 0, 0);
+		this.$ctx.clearRect(0,0,this.$width,this.$height);
+		this.$ctx.drawImage(this._cache, 0, 0);
 	}
 	_listen(){
-		this.el.addEventListener('click',()=>{
+		this.$el.addEventListener('click',()=>{
 			if(this._playing){
-				this._pause();
+				this.$pause();
 			}else{
-				this._resume();		
+				this.$resume();		
 			}
 		})
 		// document.addEventListener('keydown',()=>{
@@ -63,12 +87,16 @@ class Canvas {
 			
 		// })
 	}
-	_pause(){
+	$pause(){
 		this._playing = false;
 	}
-	_resume(){
+	$resume(){
 		this._playing = true;
 		this._play();
+	}
+	$setSize( width,height ){
+		this.$el.width = this.$width = width;
+		this.$el.height = this.$height = height;
 	}
 	_play(){
 		if( this._playing ){
@@ -82,8 +110,8 @@ class Canvas {
 
 // create a subclass of Canvas
 Canvas.extend = function(opts){
-	function Sub(){
-		this._init(opts);
+	function Sub(kkk){
+		this._init_cv(kkk);
 	}
 	Sub.prototype = new Canvas(opts);
 	return Sub;
@@ -98,9 +126,15 @@ Canvas.prototype._renderFPS = function(){
 		this._time = newTime;
 		this._tick = 0;
 	}
-	this.ctx.fillStyle = 'red';
-	this.ctx.font = '14px Microsoft Yahei';
-	this.ctx.fillText(this._fps+' FPS', 10,20,100);
+	this.$ctx.fillStyle = 'red';
+	this.$ctx.font = '14px Microsoft Yahei';
+	this.$ctx.fillText(this._fps+' FPS', 10,20,100);
 }
+
+Canvas.random = function(min,max){
+	return min + Math.random() * ( max - min );
+}
+
+window.Canvas = Canvas;
 
 export {Canvas};

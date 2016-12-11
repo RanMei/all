@@ -12,6 +12,8 @@ class Slider extends React.Component {
 				style={{}}>Blog</a>
 				<a href="./_mobile/farm/index.html">Farm</a>
 				<a href="./_mobile/vue/index.html">Vue</a>
+				<a href="./time/index.html">Time</a>
+				<a href="./time/admin.html">Admin</a>
 			</div>
 		)
 	}

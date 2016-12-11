@@ -184,7 +184,7 @@ App.prototype = {
 	pop: function(){
 		var i=0;
 		function pop(){
-			$(".gallery img").eq(i)
+			$(".Gallery img").eq(i)
 			.animate( {bottom:"-=20px"},200 )
 			.animate( {bottom:"+=80px"},200 )
 			.animate( {bottom:"-=60px"},500 );

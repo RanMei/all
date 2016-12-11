@@ -85,8 +85,18 @@ LESS.forEach(function(elem){
 
 var BROWSERIFY = [
 	// { name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
-	{ name: 'browserify-mobile-time', main: './_mobile/time/jsx/main.jsx', dest: './_mobile/time', files: './_mobile/time/jsx/*/*.jsx' },
-	{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
+{
+	name: 'browserify-mobile-time', 
+	main: './_mobile/time/jsx/main.jsx', 
+	dest: './_mobile/time', 
+	files: './_mobile/time/jsx/*/*.jsx' 
+},{
+	name: 'browserify-canvas',
+	main: './_mobile/vue/src/canvas/Canvas.js',
+	output: 'canvas.js',
+	dest: './vendor',
+	files: './_mobile/vue/src/canvas/Canvas.js'
+},{ name: 'browserify-mobile-cards', main: './_mobile/cards/src/index.js', dest: './_mobile/cards', files: './_mobile/cards/src/*.js' },
 	// { 	name: 'browserify-mobile-zeal', 
 	// 	main: './_mobile/wheels/zeal/src/zeal.main.js', 
 	// 	dest: './_mobile/wheels/zeal/dist/', 
@@ -136,6 +146,12 @@ var ROLLUP = [{
 	entry: './_mobile/wheels/vue/src/index.js',
 	output: 'vue.js',
 	dest: './_mobile/wheels/vue/dist/'
+// },{
+// 	name: 'rollup-canvas',
+// 	watch: ['./_mobile/vue/src/canvas/Canvas.js'],
+// 	entry: './_mobile/vue/src/canvas/Canvas.js',
+// 	output: 'canvas.js',
+// 	dest: './vendor/'
 }]
 ROLLUP.forEach((a)=>{
 	gulp.task(a.name,function(){
@@ -143,8 +159,8 @@ ROLLUP.forEach((a)=>{
 			return (
 				rollup({
 					entry: a.entry,
-					format: 'umd'// 'cjs', 'umd'
-					//plugins: [require('rollup-plugin-babel')({})]
+					format: 'umd',// 'cjs', 'umd'
+					plugins: [require('rollup-plugin-babel')({})]
 				})
 				.pipe( source(a.output) )
 				.pipe( gulp.dest(a.dest) )
@@ -213,11 +229,11 @@ const WEBPACK = [{
 	config: './desktop/presentation/webpack.config.js', 
 	watched: ['./desktop/presentation/src/*.*','./desktop/presentation/src/*/*.*']
 },{
-	name: 'webpack-admin', 
-	src: './admin/src/index.js', 
-	dest: './admin/dist/', 
-	config: './admin/webpack.config.js', 
-	watched: ['./admin/src/*.*','./admin/src/**/*.*']
+	name: 'webpack-canvas', 
+	src: './_canvas/src/index.js', 
+	dest: './_canvas/dist/', 
+	config: './_canvas/webpack.config.js', 
+	watched: ['./_canvas/src/*.*','./_canvas/src/**/*.*']
 },{
 	name: 'webpack-mobile-svg', 
 	src: './_mobile/svg/src/preloader.js', 

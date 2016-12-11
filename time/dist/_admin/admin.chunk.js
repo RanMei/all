@@ -50,9 +50,9 @@
 
 	var _router = __webpack_require__(3);
 
-	var _store = __webpack_require__(30);
+	var _store = __webpack_require__(35);
 
-	__webpack_require__(39);
+	__webpack_require__(44);
 	//import {store} from './store/index.js';
 
 
@@ -136,11 +136,11 @@
 			redirect: '/admin/items',
 			children: [{
 				path: 'items',
-				component: __webpack_require__(14)
+				component: __webpack_require__(19)
 			}]
 		}, {
 			path: '/test',
-			component: __webpack_require__(22)
+			component: __webpack_require__(27)
 		}]
 	});
 
@@ -156,9 +156,9 @@
 	var __vue_styles__ = {};
 	__vue_script__ = __webpack_require__(5);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\router\\Admin.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\_admin\\_admin\\Admin.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(13);
+	__vue_template__ = __webpack_require__(18);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -178,7 +178,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-737d128e/Admin.vue";
+	    var id = "_v-126118d4/Admin.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -198,7 +198,8 @@
 	});
 	exports.default = {
 		components: {
-			Navbar: __webpack_require__(6)
+			NavbarRed: __webpack_require__(6),
+			Navbar: __webpack_require__(13)
 		}
 	};
 
@@ -213,7 +214,7 @@
 	__webpack_require__(7);
 	__vue_script__ = __webpack_require__(11);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\components\\Navbar.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\_admin\\components\\NavbarRed.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(12);
 	module.exports = __vue_script__ || {};
@@ -235,7 +236,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-935f6318/Navbar.vue";
+	    var id = "_v-bd881224/NavbarRed.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -260,8 +261,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-935f6318&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-935f6318&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-bd881224&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarRed.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-bd881224&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarRed.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -279,7 +280,7 @@
 
 
 	// module
-	exports.push([module.id, ".Navbar[_v-935f6318] {\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, ".NavbarRed[_v-bd881224] {\n  position: relative;\n  width: 100%;\n  min-width: 1000px;\n  height: 50px;\n  background: #c0392b;\n}\n.NavbarRed .inner[_v-bd881224] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background: #c0392b;\n}\n.NavbarRed .inner.fixed[_v-bd881224] {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 50px;\n}\n.NavbarRed .inner .container__[_v-bd881224] {\n  width: 1000px;\n  margin: auto;\n  background: #c0392b;\n}\n.NavbarRed .inner .container__ .tabs[_v-bd881224] {\n  overflow: hidden;\n}\n.NavbarRed .inner .container__ .tabs a[_v-bd881224] {\n  display: block;\n  float: left;\n  width: 83px;\n  height: 50px;\n  line-height: 50px;\n  text-align: center;\n  font-size: 15px;\n  color: white;\n  cursor: pointer;\n}\n.NavbarRed .inner .container__ .tabs a[_v-bd881224]:hover {\n  background: #e67e22;\n}\n", ""]);
 
 	// exports
 
@@ -565,15 +566,56 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.default = {
-		computed: {
-			id: function id() {
-				return this.$store.state.user.id;
+		props: {
+			items: {
+				default: function _default() {
+					return [{
+						name: 'Home',
+						href: './index.html'
+					}, {
+						name: 'Admin',
+						href: '#/admin'
+					}, {
+						name: 'Test',
+						href: '#/test'
+					}];
+				}
+			}
+		},
+		data: function data() {
+			return {
+				fixed: false,
+				current: 0
+			};
+		},
+		mounted: function mounted() {
+			var _this = this;
+
+			window.addEventListener('scroll', function () {
+				var a = document.body.scrollTop;
+				var b = _this.$refs.bar.scrollHeight;
+				if (a >= b) {
+					_this.fixed = true;
+				} else {
+					_this.fixed = false;
+				}
+			});
+		},
+		methods: {
+			mouseenter: function mouseenter(e, i) {
+				this.current = i;
+			},
+			mouseleave: function mouseleave() {
+				this.current = 0;
+			},
+			haha: function haha(e) {
+				console.log(e);
 			}
 		}
 	};
@@ -582,28 +624,22 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Navbar panel\" _v-935f6318=\"\">\n\t<a class=\"btn btn-danger btn-rounded\" href=\"#/\" _v-935f6318=\"\">\n\t\tusers\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/\" _v-935f6318=\"\">\n\t\titems\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/signin\" _v-935f6318=\"\">\n\t\tsignin\n\t</a>\n\t{{id}}\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarRed\" ref=\"bar\" _v-bd881224=\"\">\n\t<div class=\"inner\" :class=\" fixed?'fixed':'' \" _v-bd881224=\"\">\n\t\t<div class=\"container__\" _v-bd881224=\"\">\n\t\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-bd881224=\"\">\n\t\t\t\t<a v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" :href=\"a.href\" _v-bd881224=\"\">{{a.name}}</a>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 13 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Admin\">\n\t<navbar></navbar>\n\t<router-view></router-view>\n</div>\n";
-
-/***/ },
-/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(15);
-	__vue_script__ = __webpack_require__(17);
+	__webpack_require__(14);
+	__vue_script__ = __webpack_require__(16);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\components\\Items.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\_admin\\components\\Navbar.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(21);
+	__vue_template__ = __webpack_require__(17);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -623,7 +659,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-8d9cede8/Items.vue";
+	    var id = "_v-1fca1f5a/Navbar.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -633,13 +669,13 @@
 	}
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(16);
+	var content = __webpack_require__(15);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(10)(content, {});
@@ -648,8 +684,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8d9cede8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8d9cede8&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1fca1f5a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1fca1f5a&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Navbar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -659,7 +695,7 @@
 	}
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -667,13 +703,124 @@
 
 
 	// module
-	exports.push([module.id, ".ITEMS a[_v-8d9cede8] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-8d9cede8] {\n  overflow: hidden;\n}\n.ITEMS li[_v-8d9cede8] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-8d9cede8]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-8d9cede8]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-8d9cede8]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-8d9cede8]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-8d9cede8]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-8d9cede8] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-8d9cede8] {\n  width: 80%;\n}\n.ITEMS .panel-footer input[type=\"text\"][_v-8d9cede8] {\n  width: 80%;\n}\ntd[_v-8d9cede8] {\n  height: 50px;\n}\n.item[_v-8d9cede8]:hover {\n  background: lightblue;\n}\n.item.active[_v-8d9cede8] {\n  background: #d9edf7;\n}\n", ""]);
+	exports.push([module.id, ".Navbar[_v-1fca1f5a] {\n  overflow: hidden;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		computed: {
+			id: function id() {
+				return this.$store.state.user.id;
+			}
+		}
+	};
+
+/***/ },
 /* 17 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"Navbar panel\" _v-1fca1f5a=\"\">\n\t<a class=\"btn btn-danger btn-rounded\" href=\"#/\" _v-1fca1f5a=\"\">\n\t\tusers\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/\" _v-1fca1f5a=\"\">\n\t\titems\n\t</a>\n\n\t<a class=\"btn btn-danger btn-pill\" href=\"#/signin\" _v-1fca1f5a=\"\">\n\t\tsignin\n\t</a>\n\t{{id}}\n</div>\n";
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"Admin\">\n\t<navbar-red></navbar-red>\n\t<navbar></navbar>\n\t<router-view></router-view>\n</div>\n";
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(20);
+	__vue_script__ = __webpack_require__(22);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\_admin\\components\\Items.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(26);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-2eabaf4d/Items.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(21);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2eabaf4d&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2eabaf4d&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Items.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ITEMS a[_v-2eabaf4d] {\n  cursor: pointer;\n}\n.ITEMS .panel-heading[_v-2eabaf4d] {\n  overflow: hidden;\n}\n.ITEMS li[_v-2eabaf4d] {\n  vertical-align: middle;\n  float: left;\n  height: 30px;\n  line-height: 30px;\n  list-style: none;\n}\n.ITEMS li[_v-2eabaf4d]:nth-child(1) {\n  width: 20px;\n}\n.ITEMS li[_v-2eabaf4d]:nth-child(2) {\n  width: 150px;\n}\n.ITEMS li[_v-2eabaf4d]:nth-child(3) {\n  width: 200px;\n}\n.ITEMS li[_v-2eabaf4d]:nth-child(4) {\n  width: 150px;\n}\n.ITEMS li[_v-2eabaf4d]:nth-child(5) {\n  width: 100px;\n}\n.ITEMS .list-group-item[_v-2eabaf4d] {\n  overflow: hidden;\n}\n.ITEMS .list-group-item input[type=\"text\"][_v-2eabaf4d] {\n  width: 80%;\n}\n.ITEMS .panel-footer input[type=\"text\"][_v-2eabaf4d] {\n  width: 80%;\n}\ntd[_v-2eabaf4d] {\n  height: 50px;\n}\n.item[_v-2eabaf4d]:hover {\n  background: lightblue;\n}\n.item.active[_v-2eabaf4d] {\n  background: #d9edf7;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -682,7 +829,7 @@
 		value: true
 	});
 
-	var _stringify = __webpack_require__(18);
+	var _stringify = __webpack_require__(23);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -757,20 +904,20 @@
 	};
 
 /***/ },
-/* 18 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = { "default": __webpack_require__(19), __esModule: true };
+	module.exports = { "default": __webpack_require__(24), __esModule: true };
 
 /***/ },
-/* 19 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var core = __webpack_require__(20),
+	var core = __webpack_require__(25),
 	    $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
 	module.exports = function stringify(it) {
 	  // eslint-disable-line no-unused-vars
@@ -778,7 +925,7 @@
 	};
 
 /***/ },
-/* 20 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -787,24 +934,24 @@
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 21 */
+/* 26 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"ITEMS\" _v-8d9cede8=\"\">\n\t<div class=\"panel panel-default\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-body\" _v-8d9cede8=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-heading\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">id</li>\n\t\t\t<li _v-8d9cede8=\"\">name</li>\n\t\t\t<li _v-8d9cede8=\"\">desc_</li>\n\t\t\t<li _v-8d9cede8=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-8d9cede8=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-8d9cede8=\"\">\n\t\t\t\t<li _v-8d9cede8=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-8d9cede8=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-8d9cede8=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-8d9cede8=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">{{item.id}}</li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-8d9cede8=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-8d9cede8=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-8d9cede8=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"ITEMS\" _v-2eabaf4d=\"\">\n\t<div class=\"panel panel-default\" _v-2eabaf4d=\"\">\n\t\t<div class=\"panel-body\" _v-2eabaf4d=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-2eabaf4d=\"\">\n\t\t<div class=\"panel-heading\" _v-2eabaf4d=\"\">\n\t\t\t<li _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\">id</li>\n\t\t\t<li _v-2eabaf4d=\"\">name</li>\n\t\t\t<li _v-2eabaf4d=\"\">desc_</li>\n\t\t\t<li _v-2eabaf4d=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-2eabaf4d=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-2eabaf4d=\"\">\n\t\t\t\t<li _v-2eabaf4d=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-2eabaf4d=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-2eabaf4d=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-2eabaf4d=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-2eabaf4d=\"\">\n\t\t\t<li _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\">{{item.id}}</li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-2eabaf4d=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-2eabaf4d=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-2eabaf4d=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 22 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(23);
+	__vue_script__ = __webpack_require__(28);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\_admin\\_test\\Test.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(29);
+	__vue_template__ = __webpack_require__(34);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -824,7 +971,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-ddf08822/Test.vue";
+	    var id = "_v-1da7e6f0/Test.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -834,7 +981,7 @@
 	}
 
 /***/ },
-/* 23 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -844,24 +991,25 @@
 	});
 	exports.default = {
 		components: {
-			NavbarWeifeng: __webpack_require__(24)
+			NavbarWeifeng: __webpack_require__(29),
+			NavbarRed: __webpack_require__(6)
 		}
 	};
 
 /***/ },
-/* 24 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(25);
-	__vue_script__ = __webpack_require__(27);
+	__webpack_require__(30);
+	__vue_script__ = __webpack_require__(32);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\_admin\\components\\NavbarWeifeng.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(28);
+	__vue_template__ = __webpack_require__(33);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -881,7 +1029,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1bc60ba2/NavbarWeifeng.vue";
+	    var id = "_v-1b714f70/NavbarWeifeng.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -891,13 +1039,13 @@
 	}
 
 /***/ },
-/* 25 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(26);
+	var content = __webpack_require__(31);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(10)(content, {});
@@ -906,8 +1054,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1bc60ba2&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarWeifeng.vue", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1bc60ba2&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarWeifeng.vue");
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1b714f70&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarWeifeng.vue", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-1b714f70&scoped=true!./../../../../node_modules/less-loader/index.js!./../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NavbarWeifeng.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -917,7 +1065,7 @@
 	}
 
 /***/ },
-/* 26 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -925,13 +1073,13 @@
 
 
 	// module
-	exports.push([module.id, ".NavbarWeifeng[_v-1bc60ba2] {\n  width: 100%;\n  min-width: 1000px;\n  background: #3D455F;\n}\n.NavbarWeifeng .container__[_v-1bc60ba2] {\n  width: 1000px;\n  margin: auto;\n  background: #3D455F;\n}\n.NavbarWeifeng .container__ .tabs[_v-1bc60ba2] {\n  padding: 10px 0 10px 0;\n  overflow: hidden;\n}\n.NavbarWeifeng .container__ .tabs li[_v-1bc60ba2] {\n  width: 83px;\n  height: 28px;\n  line-height: 28px;\n  text-align: center;\n  float: left;\n  font-size: 15px;\n  color: white;\n  cursor: pointer;\n}\n.NavbarWeifeng .container__ .tabs li[_v-1bc60ba2]:hover {\n  color: #00CCFF;\n}\n.NavbarWeifeng .container__ .bar-wrapper[_v-1bc60ba2] {\n  position: relative;\n  height: 3px;\n}\n.NavbarWeifeng .container__ .bar[_v-1bc60ba2] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 83px;\n  height: 3px;\n  background: #00CCFF;\n  -webkit-transition: -webkit-transform 300ms;\n  transition: -webkit-transform 300ms;\n  transition: transform 300ms;\n  transition: transform 300ms, -webkit-transform 300ms;\n}\n", ""]);
+	exports.push([module.id, ".NavbarWeifeng[_v-1b714f70] {\n  width: 100%;\n  min-width: 1000px;\n  background: #3D455F;\n}\n.NavbarWeifeng .container__[_v-1b714f70] {\n  width: 1000px;\n  margin: auto;\n  background: #3D455F;\n}\n.NavbarWeifeng .container__ .tabs[_v-1b714f70] {\n  padding: 10px 0 10px 0;\n  overflow: hidden;\n}\n.NavbarWeifeng .container__ .tabs li[_v-1b714f70] {\n  width: 83px;\n  height: 28px;\n  line-height: 28px;\n  text-align: center;\n  float: left;\n  font-size: 15px;\n  color: white;\n  cursor: pointer;\n}\n.NavbarWeifeng .container__ .tabs li[_v-1b714f70]:hover {\n  color: #00CCFF;\n}\n.NavbarWeifeng .container__ .bar-wrapper[_v-1b714f70] {\n  position: relative;\n  height: 3px;\n}\n.NavbarWeifeng .container__ .bar[_v-1b714f70] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 83px;\n  height: 3px;\n  background: #00CCFF;\n  -webkit-transition: -webkit-transform 300ms;\n  transition: -webkit-transform 300ms;\n  transition: transform 300ms;\n  transition: transform 300ms, -webkit-transform 300ms;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 27 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -990,19 +1138,19 @@
 	};
 
 /***/ },
-/* 28 */
+/* 33 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-1bc60ba2=\"\">\n\t<div class=\"container__\" _v-1bc60ba2=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-1bc60ba2=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-1bc60ba2=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-1bc60ba2=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-1bc60ba2=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-1b714f70=\"\">\n\t<div class=\"container__\" _v-1b714f70=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-1b714f70=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-1b714f70=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-1b714f70=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-1b714f70=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 29 */
+/* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Test\">\n\t<navbar-weifeng></navbar-weifeng>\n\t<router-view></router-view>\n</div>\t\n";
+	module.exports = "\n<div class=\"Test\">\n\t<navbar-weifeng></navbar-weifeng>\n\t<navbar-red></navbar-red>\n\t<div style=\"height:5000px\"></div>\n\t<router-view></router-view>\n</div>\t\n";
 
 /***/ },
-/* 30 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1012,21 +1160,21 @@
 	});
 	exports.store = undefined;
 
-	var _items = __webpack_require__(31);
+	var _items = __webpack_require__(36);
 
 	var _items2 = _interopRequireDefault(_items);
 
-	var _item = __webpack_require__(32);
+	var _item = __webpack_require__(37);
 
 	var _item2 = _interopRequireDefault(_item);
 
-	var _user = __webpack_require__(33);
+	var _user = __webpack_require__(38);
 
 	var _user2 = _interopRequireDefault(_user);
 
-	var _num = __webpack_require__(34);
+	var _num = __webpack_require__(39);
 
-	var _actions = __webpack_require__(35);
+	var _actions = __webpack_require__(40);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1045,7 +1193,7 @@
 	exports.store = store;
 
 /***/ },
-/* 31 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1095,7 +1243,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 32 */
+/* 37 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1124,7 +1272,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 33 */
+/* 38 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1147,7 +1295,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 34 */
+/* 39 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1173,7 +1321,7 @@
 	exports.num = num;
 
 /***/ },
-/* 35 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1185,11 +1333,11 @@
 
 	var _config = __webpack_require__(2);
 
-	var _items = __webpack_require__(36);
+	var _items = __webpack_require__(41);
 
-	var _item = __webpack_require__(37);
+	var _item = __webpack_require__(42);
 
-	var _user = __webpack_require__(38);
+	var _user = __webpack_require__(43);
 
 	var actions = {
 
@@ -1214,7 +1362,7 @@
 	exports.actions = actions;
 
 /***/ },
-/* 36 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1331,7 +1479,7 @@
 	exports.DELETE_ITEMS = DELETE_ITEMS;
 
 /***/ },
-/* 37 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1369,7 +1517,7 @@
 	exports.GET_ITEM = GET_ITEM;
 
 /***/ },
-/* 38 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1411,16 +1559,16 @@
 	exports.LOGIN = LOGIN;
 
 /***/ },
-/* 39 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(40);
+	var content = __webpack_require__(45);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(41)(content, {});
+	var update = __webpack_require__(46)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1437,7 +1585,7 @@
 	}
 
 /***/ },
-/* 40 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -1451,7 +1599,7 @@
 
 
 /***/ },
-/* 41 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

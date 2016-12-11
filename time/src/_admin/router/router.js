@@ -6,7 +6,7 @@ var router = new VueRouter({
 		redirect: '/admin'
 	},{
 		path: '/admin',
-		component: require('./Admin.vue'),
+		component: require('../_admin/Admin.vue'),
 		redirect: '/admin/items',
 		children: [{
 			path: 'items',

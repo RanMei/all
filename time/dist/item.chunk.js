@@ -7,27 +7,27 @@ webpackJsonp([3],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(39);
+	__webpack_require__(44);
 
-	__webpack_require__(66);
+	__webpack_require__(71);
 
-	var _MyHeader = __webpack_require__(44);
+	var _MyHeader = __webpack_require__(49);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(49);
+	var _Focus = __webpack_require__(54);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(54);
+	var _BackToTop = __webpack_require__(59);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(59);
+	var _MyFooter = __webpack_require__(64);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _store = __webpack_require__(30);
+	var _store = __webpack_require__(35);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -40,7 +40,7 @@ webpackJsonp([3],{
 		el: '#root',
 		store: _store.store,
 		components: {
-			TabbedBox: __webpack_require__(68)
+			TabbedBox: __webpack_require__(73)
 		},
 		data: {
 			DIR: _config.DIR,
@@ -86,16 +86,16 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 66:
+/***/ 71:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(67);
+	var content = __webpack_require__(72);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(41)(content, {});
+	var update = __webpack_require__(46)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -113,7 +113,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 67:
+/***/ 72:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -128,19 +128,19 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 68:
+/***/ 73:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(69);
-	__vue_script__ = __webpack_require__(71);
+	__webpack_require__(74);
+	__vue_script__ = __webpack_require__(76);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\_item\\TabbedBox.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(72);
+	__vue_template__ = __webpack_require__(77);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -160,7 +160,7 @@ webpackJsonp([3],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-dfc8e40a/TabbedBox.vue";
+	    var id = "_v-591c853c/TabbedBox.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -171,13 +171,13 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 69:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(70);
+	var content = __webpack_require__(75);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(10)(content, {});
@@ -186,8 +186,8 @@ webpackJsonp([3],{
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-dfc8e40a&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./TabbedBox.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-dfc8e40a&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./TabbedBox.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-591c853c&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./TabbedBox.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-591c853c&scoped=true!./../../../node_modules/less-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./TabbedBox.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -198,7 +198,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 70:
+/***/ 75:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
@@ -206,14 +206,14 @@ webpackJsonp([3],{
 
 
 	// module
-	exports.push([module.id, ".TabbedBox[_v-dfc8e40a] {\n  width: 1000px;\n  margin: 30px auto 40px auto;\n}\n.TabbedBox .tabs[_v-dfc8e40a] {\n  width: 100%;\n  height: 60px;\n  background: white;\n  overflow: hidden;\n  border-bottom: 1px solid #BABABA;\n}\n.TabbedBox .tabs li[_v-dfc8e40a] {\n  float: left;\n  margin: 20px;\n  color: #127BAB;\n  cursor: pointer;\n}\n.TabbedBox .tabs li.active[_v-dfc8e40a] {\n  border-bottom: 4px solid orange;\n}\n.TabbedBox .content[_v-dfc8e40a] {\n  position: relative;\n}\n.TabbedBox .content > li[_v-dfc8e40a] {\n  box-sizing: border-box;\n  width: 100%;\n  padding: 20px;\n  background: white;\n}\n.TabbedBox .content img[_v-dfc8e40a] {\n  margin-bottom: 20px;\n}\n", ""]);
+	exports.push([module.id, ".TabbedBox[_v-591c853c] {\n  width: 1000px;\n  margin: 30px auto 40px auto;\n}\n.TabbedBox .tabs[_v-591c853c] {\n  width: 100%;\n  height: 60px;\n  background: white;\n  overflow: hidden;\n  border-bottom: 1px solid #BABABA;\n}\n.TabbedBox .tabs li[_v-591c853c] {\n  float: left;\n  margin: 20px;\n  color: #127BAB;\n  cursor: pointer;\n}\n.TabbedBox .tabs li.active[_v-591c853c] {\n  border-bottom: 4px solid orange;\n}\n.TabbedBox .content[_v-591c853c] {\n  position: relative;\n}\n.TabbedBox .content > li[_v-591c853c] {\n  box-sizing: border-box;\n  width: 100%;\n  padding: 20px;\n  background: white;\n}\n.TabbedBox .content img[_v-591c853c] {\n  margin-bottom: 20px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 
-/***/ 71:
+/***/ 76:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -241,10 +241,10 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 72:
+/***/ 77:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"TabbedBox\" _v-dfc8e40a=\"\">\n\t<ul class=\"tabs\" _v-dfc8e40a=\"\">\n\t\t<li v-for=\"(a,i) in tabs\" :class=\" current===i?'active':'' \" @click=\"pick(i)\" _v-dfc8e40a=\"\">\n\t\t{{a}}</li>\n\t</ul>\n\t<ul class=\"content\" _v-dfc8e40a=\"\">\n\t\t<li class=\"imgs_detailed\" v-show=\" current===0 \" _v-dfc8e40a=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.81550942060778460.8729399904293997xxx\" _v-dfc8e40a=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.70193684019035390.504475421929184xxx\" _v-dfc8e40a=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.88341179501969910.3436036901475594xxx\" _v-dfc8e40a=\"\">\n\t\t</li>\n\t\t<li v-show=\" current===1 \" _v-dfc8e40a=\"\">\n\t\t尚无评价晒单</li>\n\t\t<li v-show=\" current===2 \" _v-dfc8e40a=\"\">\n\t\t\t<h3 _v-dfc8e40a=\"\">退货政策</h3>\n\t\t\t<p _v-dfc8e40a=\"\">\n\t\t\t\t自实际收到商品之日起15日内可以退货。<br _v-dfc8e40a=\"\">    3C类商品：此类所退换商品要求不影响二次销售，配件完整，包装齐全（不带有店铺或商品商标logo的非密封性包装除外），商品外观无磨损，无使用痕迹，整体无磕碰。如有赠品，需如数退回。\n\t\t\t</p>\n\t\t\t<h3 _v-dfc8e40a=\"\">配送速度查询</h3>\n\t\t\t<p _v-dfc8e40a=\"\">\n\t\t\t\t1.下单成功之后，订单会随时更新您的订单状态。<br _v-dfc8e40a=\"\">\n\t\t\t\t2.您可以登录到您的时光网账户中，实时查看您订单的生产及配送情况。<br _v-dfc8e40a=\"\">\n\t\t\t\t3.订单显示已发货状态，即可看到物流信息更新显示。<br _v-dfc8e40a=\"\">\t4.当您的包裹发货时，我们将会以短信的方式附上运单号码告知您，您可以到时光网账户跟踪物流信息或者根据快递单号直接进行查询。\n\t\t\t</p>\n\t\t\t<h3 _v-dfc8e40a=\"\">服务承诺</h3>\n\t\t\t<p _v-dfc8e40a=\"\">\n\t\t\t\t1.时光网所售的产品都是官方授权，100%正品保证，您可以放心购买。<br _v-dfc8e40a=\"\">\n\t\t\t\t2.如您的商品自签收之日起15天内出现质量问题、商品破损等问题可申请退货(特殊商品除外)。<br _v-dfc8e40a=\"\">\n\t\t\t\t3.订单取消成功后，退款大约3-7个工作日内退至原支付账户。\n\t\t\t</p>\n\t\t\t<h3 _v-dfc8e40a=\"\">权利声明</h3>\n\t\t\t<p _v-dfc8e40a=\"\">\t\t\t\t\t\t\t\t\t\t\t\t\t\t时光网上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是时光网重要的经营资源，未经许可，禁止非法转载使用。<br _v-dfc8e40a=\"\">\t\t\t\t注：因部分品牌会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与网站图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本网站没有及时更新，请大家谅解！\n\t\t\t</p>\n\t\t</li>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"TabbedBox\" _v-591c853c=\"\">\n\t<ul class=\"tabs\" _v-591c853c=\"\">\n\t\t<li v-for=\"(a,i) in tabs\" :class=\" current===i?'active':'' \" @click=\"pick(i)\" _v-591c853c=\"\">\n\t\t{{a}}</li>\n\t</ul>\n\t<ul class=\"content\" _v-591c853c=\"\">\n\t\t<li class=\"imgs_detailed\" v-show=\" current===0 \" _v-591c853c=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.73654231987893580.0948569888714701xxx\" _v-591c853c=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.39750162395648660.8983184776734561xxx\" _v-591c853c=\"\">\n\t\t\t<img src=\"xxxHTMLLINKxxx0.0126773188821971420.46302896458655596xxx\" _v-591c853c=\"\">\n\t\t</li>\n\t\t<li v-show=\" current===1 \" _v-591c853c=\"\">\n\t\t尚无评价晒单</li>\n\t\t<li v-show=\" current===2 \" _v-591c853c=\"\">\n\t\t\t<h3 _v-591c853c=\"\">退货政策</h3>\n\t\t\t<p _v-591c853c=\"\">\n\t\t\t\t自实际收到商品之日起15日内可以退货。<br _v-591c853c=\"\">    3C类商品：此类所退换商品要求不影响二次销售，配件完整，包装齐全（不带有店铺或商品商标logo的非密封性包装除外），商品外观无磨损，无使用痕迹，整体无磕碰。如有赠品，需如数退回。\n\t\t\t</p>\n\t\t\t<h3 _v-591c853c=\"\">配送速度查询</h3>\n\t\t\t<p _v-591c853c=\"\">\n\t\t\t\t1.下单成功之后，订单会随时更新您的订单状态。<br _v-591c853c=\"\">\n\t\t\t\t2.您可以登录到您的时光网账户中，实时查看您订单的生产及配送情况。<br _v-591c853c=\"\">\n\t\t\t\t3.订单显示已发货状态，即可看到物流信息更新显示。<br _v-591c853c=\"\">\t4.当您的包裹发货时，我们将会以短信的方式附上运单号码告知您，您可以到时光网账户跟踪物流信息或者根据快递单号直接进行查询。\n\t\t\t</p>\n\t\t\t<h3 _v-591c853c=\"\">服务承诺</h3>\n\t\t\t<p _v-591c853c=\"\">\n\t\t\t\t1.时光网所售的产品都是官方授权，100%正品保证，您可以放心购买。<br _v-591c853c=\"\">\n\t\t\t\t2.如您的商品自签收之日起15天内出现质量问题、商品破损等问题可申请退货(特殊商品除外)。<br _v-591c853c=\"\">\n\t\t\t\t3.订单取消成功后，退款大约3-7个工作日内退至原支付账户。\n\t\t\t</p>\n\t\t\t<h3 _v-591c853c=\"\">权利声明</h3>\n\t\t\t<p _v-591c853c=\"\">\t\t\t\t\t\t\t\t\t\t\t\t\t\t时光网上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是时光网重要的经营资源，未经许可，禁止非法转载使用。<br _v-591c853c=\"\">\t\t\t\t注：因部分品牌会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与网站图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本网站没有及时更新，请大家谅解！\n\t\t\t</p>\n\t\t</li>\n\t</ul>\n</div>\n";
 
 /***/ }
 

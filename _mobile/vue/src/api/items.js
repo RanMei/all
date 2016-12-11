@@ -53,9 +53,9 @@ module.exports = [{
 	component: 'Rain',
 	path: '../canvas/Rain.js'
 },{
-	name: 'Snowfall',
-	component: 'Snowfall',
-	path: '../canvas/Snowfall.js'
+	name: 'Circles',
+	component: 'Circles',
+	path: '../canvas/Circles.js'
 },{
 	name: 'Snow',
 	component: 'Snow',

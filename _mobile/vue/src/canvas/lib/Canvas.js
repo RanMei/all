@@ -1,39 +1,16 @@
 class Canvas {
 	constructor(opts){
-		this._options = opts;
-		this._props = opts.props;
-		this._data = opts.data;
-		
-		this.beforePlay = opts.beforePlay;
-		this.render = opts.render;
-		
-		for( var key in opts.methods ){
-			this[key] = opts.methods[key];
-		}
+
 	}
-	_init_cv(kkk){
-		this.$el = (typeof kkk.el==='string')?document.querySelector(kkk.el):kkk.el;
-		this.$ctx = this.$el.getContext('2d');
+	_init(options){
+		this._options = options;
 
-		this.$width = this.$el.width||1000;
-		this.$height = this.$el.height||1000;
-
-		// init props
-		var props = this._props();
-		for(var key in props){
-			this[key] = props[key];
-		}
-		for(var key in kkk.props){
-			this[key] = kkk.props[key];
-		}
-		// init data
-		var data = this._data();
-		for(var key in data){
-			this[key] = data[key];
-		}
-
+		this.el = (typeof options.el==='string')?document.querySelector(options.el):options.el;
+		this.ctx = this.el.getContext('2d');
+		this.width = this.el.width||1000;
+		this.height = this.el.height||1000;
 		this._listen();
-		if(kkk.responsive===true){
+		if(options.responsive===true){
 			this._response();
 		}
 
@@ -54,8 +31,8 @@ class Canvas {
 	}
 	_response(){
 		window.addEventListener('resize',()=>{
-			this.$width = this.$el.width = window.innerWidth;
-			this.$height = this.$el.height = window.innerHeight;
+			this.width = this.el.width = window.innerWidth;
+			this.height = this.el.height = window.innerHeight;
 		})
 	}
 	//onResize(){}
@@ -63,14 +40,14 @@ class Canvas {
 		this._cache = document.createElement('canvas');
 		this._cache.width = 1000;
 		this._cache.height = 1000;
-		this.$ctx = this._cache.getContext('2d'); 
+		this.ctx = this._cache.getContext('2d'); 
 	}
 	_render(){
-		this.$ctx.clearRect(0,0,this.$width,this.$height);
-		this.$ctx.drawImage(this._cache, 0, 0);
+		this._ctx.clearRect(0,0,this.width,this.height);
+		this._ctx.drawImage(this._cache, 0, 0);
 	}
 	_listen(){
-		this.$el.addEventListener('click',()=>{
+		this.el.addEventListener('click',()=>{
 			if(this._playing){
 				this._pause();
 			}else{
@@ -105,8 +82,8 @@ class Canvas {
 
 // create a subclass of Canvas
 Canvas.extend = function(opts){
-	function Sub(kkk){
-		this._init_cv(kkk);
+	function Sub(){
+		this._init(opts);
 	}
 	Sub.prototype = new Canvas(opts);
 	return Sub;
@@ -121,9 +98,9 @@ Canvas.prototype._renderFPS = function(){
 		this._time = newTime;
 		this._tick = 0;
 	}
-	this.$ctx.fillStyle = 'red';
-	this.$ctx.font = '14px Microsoft Yahei';
-	this.$ctx.fillText(this._fps+' FPS', 10,20,100);
+	this.ctx.fillStyle = 'red';
+	this.ctx.font = '14px Microsoft Yahei';
+	this.ctx.fillText(this._fps+' FPS', 10,20,100);
 }
 
 export {Canvas};
