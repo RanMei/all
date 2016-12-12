@@ -2,10 +2,10 @@
 	.Navbar {
 		position: relative;
 		box-sizing: border-box;
-		height: 70px;
+		height: 50px;
 		ul {
 			position: fixed; left: 0; bottom: 0;
-			width: 100%; height: 70px;
+			width: 100%; height: 50px;
 			border-top: 1px solid lightgrey;
 			background: white;
 			overflow: hidden;
@@ -13,7 +13,7 @@
 				display: block;
 				float: left;
 				width: 25%;
-				font-size: 20px; text-align: center; line-height: 70px;
+				font-size: 20px; text-align: center; line-height: 50px;
 				text-decoration: none; color: red;
 			}
 		}

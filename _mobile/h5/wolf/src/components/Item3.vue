@@ -7,6 +7,7 @@
 		background: #E6E4E5;
 		.cell {
 			display: table-cell; vertical-align: middle;
+			background: radial-gradient(circle, white, lightgrey);
 			.title {
 				margin-bottom: 0.3rem;
 				font-size: 0.4rem; color: grey; text-align: center;
@@ -58,7 +59,7 @@
 					.desc {
 						height: 1rem;
 						padding: 0 0.15rem 0.1rem 0.15rem;
-						font-size: 0.2rem;
+						font-size: 0.14rem;
 					}
 				}
 			}

@@ -1420,14 +1420,14 @@ img {
 .Navbar[_v-168eb930] {
   position: relative;
   box-sizing: border-box;
-  height: 70px;
+  height: 50px;
 }
 .Navbar ul[_v-168eb930] {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 70px;
+  height: 50px;
   border-top: 1px solid lightgrey;
   background: white;
   overflow: hidden;
@@ -1438,7 +1438,7 @@ img {
   width: 25%;
   font-size: 20px;
   text-align: center;
-  line-height: 70px;
+  line-height: 50px;
   text-decoration: none;
   color: red;
 }

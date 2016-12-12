@@ -766,7 +766,7 @@
 /* 47 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item1\" _v-c69f151a=\"\">\n\t<div class=\"cell\" _v-c69f151a=\"\">\n\t\t<img class=\"warrior\" :src=\" img+'/cont2_m.png' \" :class=\" an.warrior.s \" _v-c69f151a=\"\">\n\n\t\t<p class=\"title\" :class=\" an.title.s \" _v-c69f151a=\"\">做业内最优秀的游戏开拓者</p>\n\n\t\t<p class=\"text text_0\" :class=\" an.text_0.s \" _v-c69f151a=\"\">紫狼游戏是一家专业从事游戏开发的高科技企业</p>\n\t\t<p class=\"text text_1\" :class=\" an.text_1.s \" _v-c69f151a=\"\">由一群经验丰富、技术扎实、严谨的年轻人创建</p>\n\t\t<p class=\"text text_2\" :class=\" an.text_2.s \" _v-c69f151a=\"\">是一个具有创造力和核心竞争力的团队</p>\n\t\t<p class=\"text text_3\" :class=\" an.text_3.s \" _v-c69f151a=\"\">致力于为玩家及用户带来高品质的游戏</p>\n\t\t<div style=\"height:0.8rem\" _v-c69f151a=\"\"></div>\n\t</div>\n\n\t<arrow :img=\"img\" _v-c69f151a=\"\"></arrow>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item1\" _v-c69f151a=\"\">\n\t<div class=\"cell\" _v-c69f151a=\"\">\n\t\t<img class=\"warrior\" :src=\" img+'/cont2_m.png' \" :class=\" an.warrior.s \" _v-c69f151a=\"\">\n\n\t\t<p class=\"title\" :class=\" an.title.s \" _v-c69f151a=\"\">做业内最优秀的游戏开拓者</p>\n\n\t\t<p class=\"text text_0\" :class=\" an.text_0.s \" _v-c69f151a=\"\">紫狼游戏是一家专业从事游戏开发的高科技企业</p>\n\t\t<p class=\"text text_1\" :class=\" an.text_1.s \" _v-c69f151a=\"\">由一群经验丰富、技术扎实、严谨的年轻人创建</p>\n\t\t<p class=\"text text_2\" :class=\" an.text_2.s \" _v-c69f151a=\"\">是一个具有创造力和核心竞争力的团队</p>\n\t\t<p class=\"text text_3\" :class=\" an.text_3.s \" _v-c69f151a=\"\">致力于为玩家及用户带来高品质的游戏</p>\n\t\t<div style=\"height:0.8rem\" _v-c69f151a=\"\"></div>\n\t</div>\n\n\t<arrow :img=\"img\" _v-c69f151a=\"\"></arrow>\n</div>\n";
 
 /***/ },
 /* 48 */
@@ -1209,7 +1209,7 @@
 /* 59 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item3\" _v-c666b716=\"\">\n\t<div class=\"cell\" _v-c666b716=\"\">\n\t\t<p class=\"title\" _v-c666b716=\"\">公司分布</p>\n\t\t<div class=\"cities\" _v-c666b716=\"\">\n\t\t\t<div class=\"city_c\" v-for=\"a in cities\" _v-c666b716=\"\">\n\t\t\t\t<div class=\"city\" :class=\"a.s\" _v-c666b716=\"\">\n\t\t\t\t\t<img :src=\" img+a.img \" _v-c666b716=\"\">\n\t\t\t\t\t<p class=\"name\" _v-c666b716=\"\">{{a.name}}</p>\n\t\t\t\t\t<p class=\"desc\" _v-c666b716=\"\">{{a.desc}}</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div style=\"height:0.8rem\" _v-c666b716=\"\"></div>\n\t</div>\n\n\t<arrow :img=\"img\" _v-c666b716=\"\"></arrow>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item3\" _v-c666b716=\"\">\n\t<div class=\"cell\" _v-c666b716=\"\">\n\t\t<p class=\"title\" _v-c666b716=\"\">公司分布</p>\n\t\t<div class=\"cities\" _v-c666b716=\"\">\n\t\t\t<div class=\"city_c\" v-for=\"a in cities\" _v-c666b716=\"\">\n\t\t\t\t<div class=\"city\" :class=\"a.s\" _v-c666b716=\"\">\n\t\t\t\t\t<img :src=\" img+a.img \" _v-c666b716=\"\">\n\t\t\t\t\t<p class=\"name\" _v-c666b716=\"\">{{a.name}}</p>\n\t\t\t\t\t<p class=\"desc\" _v-c666b716=\"\">{{a.desc}}</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div style=\"height:0.8rem\" _v-c666b716=\"\"></div>\n\t</div>\n\n\t<arrow :img=\"img\" _v-c666b716=\"\"></arrow>\n</div>\n";
 
 /***/ },
 /* 60 */
@@ -1462,7 +1462,7 @@
 /* 67 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item4\" _v-c64a8814=\"\">\n\t<div class=\"cell\" _v-c64a8814=\"\">\n\t\t<svg-penguin :active=\"an.svg_penguin.s\" _v-c64a8814=\"\"></svg-penguin>\n\t\t<p class=\"text text_0\" :class=\"an.text_0.s\" _v-c64a8814=\"\">海量原著</p>\n\t\t<p class=\"text text_1\" :class=\"an.text_1.s\" _v-c64a8814=\"\">想读就读</p>\n\t\t<div style=\"height:0.8rem\" _v-c64a8814=\"\"></div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Item4\" _v-c64a8814=\"\">\n\t<div class=\"cell\" _v-c64a8814=\"\">\n\t\t<svg-penguin :active=\"an.svg_penguin.s\" _v-c64a8814=\"\"></svg-penguin>\n\t\t<p class=\"text text_0\" :class=\"an.text_0.s\" _v-c64a8814=\"\">海量原著</p>\n\t\t<p class=\"text text_1\" :class=\"an.text_1.s\" _v-c64a8814=\"\">想读就读</p>\n\t\t<div style=\"height:0.8rem\" _v-c64a8814=\"\"></div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 68 */

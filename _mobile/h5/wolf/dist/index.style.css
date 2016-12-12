@@ -332,6 +332,8 @@ img {
   height: 10%;
   overflow: hidden;
   background: #B35539;
+  background: -webkit-linear-gradient(45deg, #B35539, orange);
+  background: linear-gradient(45deg, #B35539, orange);
 }
 .Item1 .cell[_v-c69f151a] {
   display: table-cell;
@@ -864,6 +866,8 @@ img {
 .Item3 .cell[_v-c666b716] {
   display: table-cell;
   vertical-align: middle;
+  background: -webkit-radial-gradient(circle, white, lightgrey);
+  background: radial-gradient(circle, white, lightgrey);
 }
 .Item3 .cell .title[_v-c666b716] {
   margin-bottom: 0.3rem;
@@ -927,7 +931,7 @@ img {
 .Item3 .cell .city_c .city .desc[_v-c666b716] {
   height: 1rem;
   padding: 0 0.15rem 0.1rem 0.15rem;
-  font-size: 0.2rem;
+  font-size: 0.14rem;
 }
 .Item4[_v-c64a8814] {
   box-sizing: border-box;
@@ -953,7 +957,7 @@ img {
 }
 .Item4 .cell .text_0[_v-c64a8814],
 .Item4 .cell .text_1[_v-c64a8814] {
-  margin-top: 0.3rem;
+  margin-top: 0.15rem;
 }
 .Item4 .cell .text_0.active[_v-c64a8814],
 .Item4 .cell .text_1.active[_v-c64a8814] {

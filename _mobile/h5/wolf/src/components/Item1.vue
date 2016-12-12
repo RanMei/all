@@ -6,6 +6,7 @@
 		overflow: hidden;
 		background: #B35539;
 		//perspective: 1000px;
+		background: linear-gradient(45deg, #B35539, orange);
 		.cell {
 			display: table-cell; vertical-align: middle;
 			.title {
