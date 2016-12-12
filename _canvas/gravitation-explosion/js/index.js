@@ -1,41 +1,3 @@
-function Canvas(config){
-	this.elem = config.elem;
-	this.ctx = this.elem.getContext('2d');
-	this.width = this.elem.width = 1000;
-	this.height = this.elem.height = 1000;
-
-	this.gravityStrength = 10;
-
-	this.particles = [];
-}
-
-Canvas.prototype = {
-	init: function(){
-
-	},
-	createParticles: function(){
-
-	},
-	draw: function(){
-		this.ctx.clearRect(0,0,this.width,this.height);
-	}
-}
-
-function Particle(){
-	this.x = 0;
-	this.y = 0;
-}
-
-Particle.prototype = {
-	draw: function(ctx){
-		ctx.globalAlpha = this.a;
-		ctx.fillStyle = this.c;
-		ctx.beginPath();
-		ctx.arc( this.x,this.y,this.s,0,2*Math.PI );
-		ctx.fill();
-	}
-}
-
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
 
 onload = function (){
@@ -89,6 +51,7 @@ newParticle = function(){
 }
 
 startLoop = function(newTime){
+	console.log(newTime)
 	time = newTime
 	requestAnimationFrame(loop)
 }

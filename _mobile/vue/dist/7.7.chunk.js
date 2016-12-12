@@ -5,7 +5,7 @@ webpackJsonp([7],{
 
 	'use strict';
 
-	var _CanvasNew = __webpack_require__(53);
+	var _Canvas = __webpack_require__(53);
 
 	function Drop(cv) {
 		var self = this;
@@ -86,7 +86,7 @@ webpackJsonp([7],{
 		}
 	};
 
-	var Rain = _CanvasNew.Canvas.extend({
+	var Rain = _Canvas.Canvas.extend({
 		props: function props() {
 			return {
 				dropCount: 500
@@ -180,24 +180,25 @@ webpackJsonp([7],{
 		_createClass(Canvas, [{
 			key: '_init_cv',
 			value: function _init_cv(kkk) {
-				this.$el = typeof kkk.el === 'string' ? document.querySelector(kkk.el) : kkk.el;
-				this.$ctx = this.$el.getContext('2d');
+				var cv = this;
+				cv.$el = typeof kkk.el === 'string' ? document.querySelector(kkk.el) : kkk.el;
+				cv.$ctx = cv.$el.getContext('2d');
 
-				this.$width = this.$el.width || 1000;
-				this.$height = this.$el.height || 1000;
+				cv.$width = cv.$el.width || 1000;
+				cv.$height = cv.$el.height || 1000;
 
 				// init props
-				var props = this._props();
+				var props = this._props ? this._props() : {};
 				for (var key in props) {
-					this[key] = props[key];
+					cv[key] = props[key];
 				}
 				for (var key in kkk.props) {
-					this[key] = kkk.props[key];
+					cv[key] = kkk.props[key];
 				}
 				// init data
 				var data = this._data();
 				for (var key in data) {
-					this[key] = data[key];
+					cv[key] = data[key];
 				}
 
 				this._listen();
@@ -254,9 +255,9 @@ webpackJsonp([7],{
 
 				this.$el.addEventListener('click', function () {
 					if (_this2._playing) {
-						_this2._pause();
+						_this2.$pause();
 					} else {
-						_this2._resume();
+						_this2.$resume();
 					}
 				});
 				// document.addEventListener('keydown',()=>{
@@ -269,15 +270,21 @@ webpackJsonp([7],{
 				// })
 			}
 		}, {
-			key: '_pause',
-			value: function _pause() {
+			key: '$pause',
+			value: function $pause() {
 				this._playing = false;
 			}
 		}, {
-			key: '_resume',
-			value: function _resume() {
+			key: '$resume',
+			value: function $resume() {
 				this._playing = true;
 				this._play();
+			}
+		}, {
+			key: '$setSize',
+			value: function $setSize(width, height) {
+				this.$el.width = this.$width = width;
+				this.$el.height = this.$height = height;
 			}
 		}, {
 			key: '_play',
@@ -319,16 +326,139 @@ webpackJsonp([7],{
 		this.$ctx.fillText(this._fps + ' FPS', 10, 20, 100);
 	};
 
+	Canvas.random = function (min, max) {
+		return min + Math.random() * (max - min);
+	};
+
+	window.Canvas = Canvas;
+
 	exports.Canvas = Canvas;
 
 /***/ },
 
-/***/ 56:
+/***/ 54:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _CanvasNew = __webpack_require__(53);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Canvas = __webpack_require__(53);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Circle = function () {
+		function Circle(x, y, cv) {
+			_classCallCheck(this, Circle);
+
+			this.x = x;
+			this.y = y;
+			this.cv = cv;
+			this.r = Math.round(cv.circleMaxRadius * Math.random());
+			this.alpha = 1;
+			this.color = 'rgba(200,30,200,1)';
+			this.tick = 0;
+		}
+
+		_createClass(Circle, [{
+			key: 'step',
+			value: function step() {
+				this.x += Math.random() * 6 - 3;
+				this.y += Math.random() * 6 - 3;
+				this.alpha -= this.cv.circleFadingRate;
+				this.color = 'rgba(10,30,200,' + this.alpha + ')';
+				this.tick++;
+				if (this.alpha <= 0) {
+					//self.circles.splice(i,1);
+					this.x = this.cv.$width / 2;
+					this.y = this.cv.$height / 2;
+					this.r = Math.round(this.cv.circleMaxRadius * Math.random());
+					this.alpha = 1;
+					this.tick = 0;
+				}
+				this.draw();
+			}
+		}, {
+			key: 'draw',
+			value: function draw() {
+				var ctx = this.cv.$ctx;
+				ctx.beginPath();
+				ctx.strokeStyle = this.color;
+				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.closePath();
+			}
+		}]);
+
+		return Circle;
+	}();
+
+	var Circles = _Canvas.Canvas.extend({
+		props: function props() {
+			return {
+				circleCount: 15,
+				circleMaxRadius: 400,
+				circleFadingRate: 0.04,
+				lineWidth: 5
+			};
+		},
+		data: function data() {
+			return {
+				circles: []
+			};
+		},
+		beforePlay: function beforePlay() {
+			this.$ctx.lineWidth = this.lineWidth;
+			this.$ctx.lineCap = "round";
+			this.$ctx.lineJoin = "round";
+			//this.create();
+			this.listen();
+		},
+		render: function render() {
+			var self = this;
+			var ctx = this.$ctx;
+			if (this.circles.length < this.circleCount) {
+				this.circles.push(new Circle(this.$width / 2, this.$height / 2, this /*Math.random()*$w,Math.random()*$h*/));
+			};
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.fillStyle = 'rgba(0,0,0,0.5)';
+			ctx.fillRect(0, 0, this.$width, this.$height);
+			ctx.globalCompositeOperation = 'lighter';
+
+			this.circles.forEach(function (a, i) {
+				a.step();
+			});
+		},
+		methods: {
+			listen: function listen() {
+				var self = this;
+				self.$el.addEventListener("mousedown", function (e) {
+					console.log(e);
+					var x = e.offsetX * 1000 / Number(document.defaultView.getComputedStyle(self.$el).width.replace(/px/, ''));
+					var y = e.offsetY * 1000 / Number(document.defaultView.getComputedStyle(self.$el).height.replace(/px/, ''));
+					self.circles.push(new Circle(x, y, self));
+				});
+			}
+		}
+	});
+
+	module.exports = {
+		template: '<canvas ref="cv" width="1000" height="1000"\n\tstyle="display:block;width:100%;"></canvas>',
+		mounted: function mounted() {
+			new Circles({
+				el: this.$refs.cv
+			});
+		}
+	};
+
+/***/ },
+
+/***/ 55:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _Canvas = __webpack_require__(53);
 
 	function getRandomInt(min, max) {
 	    return Math.floor(Math.random() * (max - min)) + min;
@@ -390,7 +520,7 @@ webpackJsonp([7],{
 	    }
 	};
 
-	var Snow = _CanvasNew.Canvas.extend({
+	var Snow = _Canvas.Canvas.extend({
 	    props: function props() {
 	        return {
 	            color: 'white',

@@ -1,115 +1,103 @@
 import {Canvas} from './Canvas.js';
 
-class Scope extends Canvas {
-	constructor(options){
-		super(options);
-		this._init(options);
-	}
-	beforePlay(){
-		this.c = this.el;
-		this.cw = this.width;
-		this.ch = this.height;
-		this.mx = 0;
-		this.my = 0;
+var Scope = Canvas.extend({
+	data: function(){
+		return {
+			mx: 0,
+			my: 0,
+			//trail
+			trail: [],
+			maxTrail: 200,
+			mouseDown: false,
 
-		//trail
-		this.trail = [];
-		this.maxTrail = 200;
-		this.mouseDown = false;
-
-		this.ctx.lineWidth = .1;
-		this.ctx.lineJoin = 'round';
-
-		this.radius = 1;
-		this.speed = 0.4;
-		this.angle = 0;
-		this.arcx = 0;
-		this.arcy = 0;
-		this.growRadius = true;
-		this.seconds = 0;
-		this.milliseconds = 0;
-	}
-	rand(min, max){
-		return ~~( (Math.random()*(max-min+1))+min);
-	}
-	hitTest(x1, y1, w1, h1, x2, y2, w2, h2){
-		return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
-	}
-	createPoint(x, y){					
-		this.trail.push({
-			x: x,
-			y: y						
-		});
-	}
-	updateTrail(){					
-
-		if(this.trail.length < this.maxTrail){
-			this.createPoint(this.arcx, this.arcy);
-		}					
-
-		if(this.trail.length >= this.maxTrail){
-			this.trail.splice(0, 1);
-		}					
-	}
-	updateArc(){
-		this.arcx = (this.cw/2) + Math.sin(this.angle) * this.radius;
-		this.arcy = (this.ch/2) + Math.cos(this.angle) * this.radius;					
-		var d = new Date();
-		this.seconds = d.getSeconds();
-		this.milliseconds = d.getMilliseconds();
-		this.angle += this.speed*(this.seconds+1+(this.milliseconds/1000));
-
-		if(this.radius <= 1){
-			this.growRadius = true;
-		} 
-		if(this.radius >= 200){
-			this.growRadius = false;
+			radius: 1,
+			speed: 0.4,
+			angle: 0,
+			arcx: 0,
+			arcy: 0,
+			growRadius: true,
+			seconds: 0,
+			milliseconds: 0
 		}
-
-		if(this.growRadius){
-			this.radius += 1;	
-		} else {
-			this.radius -= 1;	
-		}
-	}
-	renderTrail(){
-		var i = this.trail.length;					
-
-		this.ctx.beginPath();
-		while(i--){
-			var point = this.trail[i];
-			var nextPoint = (i == this.trail.length) ? this.trail[i+1] : this.trail[i];
-
-			var c = (point.x + nextPoint.x) / 2;
-			var d = (point.y + nextPoint.y) / 2;						
-			this.ctx.quadraticCurveTo(Math.round(this.arcx), Math.round(this.arcy), c, d);
-
-
-
-		};
-		this.ctx.strokeStyle = 'hsla('+this.rand(170,300)+', 100%, '+this.rand(50, 75)+'%, 1)';	
-		this.ctx.stroke();
-		this.ctx.closePath();
-
-	}
-	clearCanvas(){
-		//this.ctx.globalCompositeOperation = 'source-over';
-		//this.ctx.clearRect(0,0,this.cw,this.ch);
-
-		this.ctx.globalCompositeOperation = 'destination-out';
-		this.ctx.fillStyle = 'rgba(0,0,0,.1)';
-		this.ctx.fillRect(0,0,this.cw,this.ch);					
-		this.ctx.globalCompositeOperation = 'lighter';
-	}
-	render(){
+	},
+	beforePlay: function(){
+		this.$ctx.lineWidth = .1;
+		this.$ctx.lineJoin = 'round';
+	},
+	render: function(){
 		this.clearCanvas();
 		this.updateArc();
 		this.updateTrail();
 		this.renderTrail();
+	},
+	methods: {
+		rand: function(min, max){
+			return ~~( (Math.random()*(max-min+1))+min );
+		},
+		hitTest: function(x1, y1, w1, h1, x2, y2, w2, h2){
+			return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
+		},
+		createPoint: function(x, y){					
+			this.trail.push({
+				x: x,
+				y: y						
+			});
+		},
+		updateArc: function(){
+			this.arcx = (this.$width/2) + Math.sin(this.angle) * this.radius;
+			this.arcy = (this.$height/2) + Math.cos(this.angle) * this.radius;					
+			var d = new Date();
+			this.seconds = d.getSeconds();
+			this.milliseconds = d.getMilliseconds();
+			this.angle += this.speed*(this.seconds+1+(this.milliseconds/1000));
+
+			if(this.radius <= 1){
+				this.growRadius = true;
+			} 
+			if(this.radius >= 200){
+				this.growRadius = false;
+			}
+
+			if(this.growRadius){
+				this.radius += 1;	
+			} else {
+				this.radius -= 1;	
+			}
+		},
+		renderTrail: function(){
+			var i = this.trail.length;					
+
+			this.$ctx.beginPath();
+			while(i--){
+				var point = this.trail[i];
+				var nextPoint = (i == this.trail.length) ? this.trail[i+1] : this.trail[i];
+
+				var c = (point.x + nextPoint.x) / 2;
+				var d = (point.y + nextPoint.y) / 2;						
+				this.$ctx.quadraticCurveTo(Math.round(this.arcx), Math.round(this.arcy), c, d);
+			};
+			this.$ctx.strokeStyle = 'hsla('+this.rand(170,300)+', 100%, '+this.rand(50, 75)+'%, 1)';	
+			this.$ctx.stroke();
+			this.$ctx.closePath();
+		},
+		updateTrail: function(){					
+			if(this.trail.length < this.maxTrail){
+				this.createPoint(this.arcx, this.arcy);
+			};
+			if(this.trail.length >= this.maxTrail){
+				this.trail.splice(0, 1);
+			};					
+		},
+		clearCanvas: function(){
+			//this.ctx.globalCompositeOperation = 'source-over';
+			//this.ctx.clearRect(0,0,this.cw,this.ch);
+			this.$ctx.globalCompositeOperation = 'destination-out';
+			this.$ctx.fillStyle = 'rgba(0,0,0,.1)';
+			this.$ctx.fillRect(0,0,this.$width,this.$height);					
+			this.$ctx.globalCompositeOperation = 'lighter';
+		}
 	}
-
-}
-
+})
 export {Scope};
 
 var isCanvasSupported = function(){

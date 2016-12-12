@@ -90,10 +90,10 @@ var list = [{
 		});
 	}
 },{
-	path:'snowfall',
+	path:'circles',
 	component: resolve => {
-		require.ensure( ['../canvas/Snowfall.js'], ()=>{
-			resolve( require('../canvas/Snowfall.js') );
+		require.ensure( ['../canvas/Circles.js'], ()=>{
+			resolve( require('../canvas/Circles.js') );
 		});
 	}
 },{

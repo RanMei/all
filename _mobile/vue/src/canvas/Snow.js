@@ -58,7 +58,7 @@ Particle.prototype = {
     }
 }
 
-import {Canvas} from './CanvasNew.js';
+import {Canvas} from './Canvas.js';
 
 var Snow = Canvas.extend({
     props: function(){

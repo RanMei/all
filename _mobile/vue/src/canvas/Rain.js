@@ -1,4 +1,4 @@
-import {Canvas} from './CanvasNew.js';
+import {Canvas} from './Canvas.js';
 
 function Drop(cv){
 	var self = this;

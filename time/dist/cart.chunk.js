@@ -7,27 +7,27 @@ webpackJsonp([1],{
 
 	var _config = __webpack_require__(2);
 
-	__webpack_require__(39);
+	__webpack_require__(44);
 
-	__webpack_require__(42);
+	__webpack_require__(47);
 
-	var _MyHeader = __webpack_require__(44);
+	var _MyHeader = __webpack_require__(49);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(49);
+	var _Focus = __webpack_require__(54);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(54);
+	var _BackToTop = __webpack_require__(59);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(59);
+	var _MyFooter = __webpack_require__(64);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
-	var _store = __webpack_require__(30);
+	var _store = __webpack_require__(35);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -51,16 +51,16 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 42:
+/***/ 47:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(48);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(41)(content, {});
+	var update = __webpack_require__(46)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -78,7 +78,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 43:
+/***/ 48:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(9)();
