@@ -27,19 +27,24 @@ module.exports = {
 			loader: 'babel!vue'
 		},{
 			test: /\.less$/,
-			loader: 'style!css!less!postcss'
-			//loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
+			//loader: 'style!css!less!postcss'
+			loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
 		}]
 	},
 	vue: {
 		loaders: {
-			//less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
+			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
 	postcss: function () {
         return [autoprefixer];
     },
     plugins: [
+    	new webpack.DefinePlugin({
+		  "process.env": {
+		    NODE_ENV: JSON.stringify("production")
+		  }
+		}),
     	// new webpack.optimize.CommonsChunkPlugin({
     	// 	name: 'common',
     	// 	minChunks: 2
@@ -52,9 +57,11 @@ module.exports = {
     	new webpack.optimize.CommonsChunkPlugin(
     		'common.chunk.js',
     		['index','item','search','cart']
-    	)
-    	// new ExtractTextPlugin('style.css',{
-    	// 	allChunks: true
-    	// })
+    	),
+    	new ExtractTextPlugin('[name].style.css',{
+    		allChunks: true
+    	})
     ]
 };
+
+console.log( process.env.NODE_ENV )

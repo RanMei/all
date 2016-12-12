@@ -1,0 +1,304 @@
+#home {
+  background: #F2F2F2;
+  overflow: hidden;
+  /*----------------------------------------------------------------------------------------------------------------------------*/
+}
+#home .navbar {
+  position: relative;
+  height: 60px;
+  background: #2378BA;
+}
+#home .navbar .container {
+  position: relative;
+  height: 60px;
+}
+#home .menu {
+  position: absolute;
+  top: 4px;
+  width: 240px;
+  overflow: hidden;
+  z-index: 1;
+}
+#home .menu-head {
+  width: 240px;
+  height: 56px;
+  background: #2784CC;
+  font-size: 18px;
+  line-height: 56px;
+  text-indent: 30px;
+  color: white;
+}
+#home .menu > li {
+  width: 240px;
+  height: 110px;
+  background: white;
+  overflow: hidden;
+}
+#home .menu .upper {
+  height: 36px;
+  margin: 10px 0 10px 15px;
+  overflow: hidden;
+}
+#home .menu .a_a {
+  float: left;
+}
+#home .menu .a_b:link {
+  color: #0088E3;
+  font-size: 20px;
+  margin-left: 5px;
+  height: 36px;
+  line-height: 36px;
+}
+#home .menu .a_b:visited {
+  color: #0088E3;
+}
+#home .menu .lower {
+  margin-left: 15px;
+}
+#home .menu .lower a:link {
+  color: #757575;
+  font-size: 13px;
+  margin-right: 15px;
+}
+#home .menu .lower a:visited {
+  color: #757575;
+  font-size: 14px;
+}
+#home .navbar .tabs {
+  position: absolute;
+  left: 260px;
+}
+#home .navbar .tabs > li {
+  position: relative;
+  float: left;
+  margin: 0 20px 0 20px;
+  font-size: 18px;
+  padding: 18px 0 5px 0;
+}
+#home .navbar .tabs > li:hover {
+  border-bottom: 4px solid white;
+}
+#home .navbar .tabs a:link {
+  color: white;
+}
+#home .navbar .tabs a:visited {
+  color: white;
+}
+#home .box2 {
+  width: 960px;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+#home .box2 a:link {
+  color: white;
+}
+#home .box2 a:visited {
+  color: white;
+}
+#home .box2 .col1 {
+  float: left;
+}
+#home .box2 .col1 li {
+  width: 192px;
+  height: 96px;
+  color: white;
+  overflow: hidden;
+}
+#home .box2 .col1 li p:nth-child(1) {
+  margin: 15px 0 0 15px;
+}
+#home .box2 .col1 li p:nth-child(2) {
+  margin: 0 0 0 15px;
+  font-size: 80%;
+}
+#home .box2 .col1 li:nth-child(1) {
+  background: #FA881E;
+}
+#home .box2 .col1 li:nth-child(2) {
+  background: #2378B9;
+}
+#home .box2 .col1 li:nth-child(3) {
+  background: #49B67C;
+}
+#home .box2 .col1 li:nth-child(4) {
+  background: #1A9EA5;
+}
+#home .box2 .upper {
+  margin: 15px 0 0 20px;
+  overflow: hidden;
+}
+#home .box2 .upper img {
+  width: 36px;
+}
+#home .box2 .title {
+  height: 36px;
+  line-height: 36px;
+  font-size: 18px;
+  margin-left: 5px;
+}
+#home .box2 .icon {
+  float: left;
+}
+#home .box2 .lower {
+  margin: 0 0 0 15px;
+  font-size: 14px;
+}
+#home .box2 .col2 dt {
+  float: left;
+  width: 383px;
+  height: 186px;
+  border-bottom: 1px solid #E9E9E9;
+  border-right: 1px solid #E9E9E9;
+  border-top: 1px solid #E9E9E9;
+}
+#home .box2 .col2 dt:hover {
+  position: relative;
+  box-shadow: 0 0 10px grey;
+}
+#home .box2 .col2 dd {
+  float: left;
+  width: 191px;
+  height: 195px;
+  border-bottom: 1px solid #E9E9E9;
+  border-right: 1px solid #E9E9E9;
+}
+#home .box2 .col2 dd:hover {
+  position: relative;
+  box-shadow: 0 0 10px grey;
+}
+#home .showcase {
+  height: 480px;
+  margin-bottom: 50px;
+}
+#home .showcase li {
+  box-shadow: 0 0 2px grey;
+  position: relative;
+}
+#home .showcase li:hover {
+  box-shadow: 0 0 5px grey;
+}
+#home .showcase .left a:link {
+  width: 100%;
+  height: 100%;
+  color: black;
+  display: block;
+  z-index: 2;
+}
+#home .showcase .left a:visited {
+  color: black;
+}
+#home .showcase .right a:link {
+  width: 100%;
+  height: 100%;
+  color: black;
+  display: block;
+  z-index: 2;
+}
+#home .showcase .right a:visited {
+  color: black;
+}
+#home .showcase .words {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+#home .showcase .name {
+  font-size: 20px;
+}
+#home .showcase .desc {
+  font-size: 14px;
+  color: grey;
+}
+#home .showcase .price {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#home .showcase .left {
+  float: left;
+  width: 325px;
+  margin: 7px 10px 0 0;
+}
+#home .showcase .left > li:first-child {
+  width: 325px;
+  height: 250px;
+  margin: 0 0 10px 0;
+}
+#home .showcase .left > li:last-child {
+  width: 325px;
+  height: 200px;
+  margin: 0 0 0 0;
+}
+#home .showcase .middle {
+  float: left;
+  width: 325px;
+}
+#home .showcase .middle > li:first-child {
+  height: 120px;
+  padding: 30px 0 30px 0;
+  background: #FA881E;
+}
+#home .showcase .middle > li:last-child {
+  width: 325px;
+  height: 287px;
+}
+#home .showcase .middle_left {
+  float: left;
+  width: 40%;
+  height: 100%;
+  border-right: 1px solid white;
+}
+#home .showcase .middle_left .icon {
+  width: 88px;
+  margin: auto;
+  display: block;
+}
+#home .showcase .middle_left .title {
+  font-size: 20px;
+  text-align: center;
+}
+#home .showcase .middle_left .title a:visited {
+  color: white;
+}
+#home .showcase .middle_right {
+  overflow: hidden;
+}
+#home .showcase .middle_right .list a:link {
+  color: white;
+  font-size: 14px;
+  margin-left: 20px;
+}
+#home .showcase .middle_right .list a:visited {
+  color: white;
+}
+#home .showcase .middle_right .list a:hover {
+  text-decoration: underline;
+}
+#home .showcase .more {
+  width: 100px;
+  height: 30px;
+  margin: 20px 0 0 20px;
+  border-radius: 15px;
+  background: white;
+  display: block;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  color: #FA881E;
+}
+#home .showcase .right {
+  float: left;
+  width: 325px;
+  margin: 7px 0 0 10px;
+}
+#home .showcase .right > li:first-child {
+  width: 325px;
+  height: 200px;
+  margin: 0 0 10px 0;
+}
+#home .showcase .right > li:last-child {
+  width: 325px;
+  height: 250px;
+  margin: 0 0 0 0;
+}

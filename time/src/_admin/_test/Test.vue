@@ -1,7 +1,7 @@
 <template>
 	<div class="Test">
-		<navbar-weifeng></navbar-weifeng>
 		<navbar-red></navbar-red>
+		<navbar-weifeng></navbar-weifeng>
 		<div style="height:5000px"></div>
 		<router-view></router-view>
 	</div>	

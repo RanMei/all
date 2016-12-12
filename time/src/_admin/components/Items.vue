@@ -49,6 +49,7 @@
 
 <style lang="less" scoped>
 	.ITEMS {
+		width: 1000px; margin: auto;
 		a {
 			cursor: pointer;
 		}
@@ -86,10 +87,12 @@
 				//float: left;
 			}
 			
-			// button {
-			// 	float: left;
-			// 	//width: 40px; height: 30px;
-			// }
+			/*
+			button {
+				float: left;
+				//width: 40px; height: 30px;
+			}
+			*/
 			input[type="text"] {
 				width: 80%;
 			}

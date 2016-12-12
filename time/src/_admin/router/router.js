@@ -11,6 +11,9 @@ var router = new VueRouter({
 		children: [{
 			path: 'items',
 			component: require('../components/Items.vue')
+		},{
+			path: 'signin',
+			component: require('../_signin/Signin.vue')
 		}]
 	},{
 		path: '/test',

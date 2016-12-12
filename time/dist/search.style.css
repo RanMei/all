@@ -1,0 +1,77 @@
+#SEARCH {
+  height: 1000px;
+  background: #127BAB;
+  overflow: hidden;
+}
+#SEARCH .center {
+  width: 970px;
+  background: white;
+  padding: 0 15px 0 15px;
+  margin-top: 80px;
+}
+#SEARCH .center .all {
+  padding: 20px 0 10px 0;
+  border-bottom: 1px solid lightgrey;
+  color: grey;
+}
+#SEARCH .center .all a:link {
+  color: black;
+}
+#SEARCH .center .all a:visited {
+  color: black;
+}
+#SEARCH .center .Row {
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid lightgrey;
+}
+#SEARCH .center .Row .title {
+  float: left;
+  margin-right: 15px;
+  color: grey;
+  font-size: 15px;
+}
+#SEARCH .center .Row a:link {
+  color: black;
+  margin-right: 15px;
+}
+#SEARCH .center .Row a:visited {
+  color: black;
+}
+#SEARCH .center .Row a:hover {
+  color: maroon;
+}
+.Showcase[_v-1d2a37f9] {
+  width: 1000px;
+  margin: auto;
+  padding: 10px 0;
+  background: white;
+  overflow: hidden;
+}
+.Showcase .item__[_v-1d2a37f9] {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  width: 240px;
+  margin: 5px;
+  padding: 5px;
+  border: 3px solid transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.Showcase .item__[_v-1d2a37f9]:link {
+  color: black;
+}
+.Showcase .item__[_v-1d2a37f9]:visited {
+  color: black;
+}
+.Showcase .item__[_v-1d2a37f9]:hover {
+  border: 3px solid #c40000;
+}
+.Showcase .item__ .thumb[_v-1d2a37f9] {
+  width: 224px;
+  height: 224px;
+}
+.Showcase .item__ .price[_v-1d2a37f9] {
+  font-size: 20px;
+  color: #c40000;
+}
