@@ -626,22 +626,36 @@
 	__webpack_require__(44);
 	__vue_script__ = __webpack_require__(45);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	    console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(46);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	    __vue_options__.template = __vue_template__;
+	  __vue_options__.template = __vue_template__;
 	}
 	if (!__vue_options__.computed) __vue_options__.computed = {};
 	Object.keys(__vue_styles__).forEach(function (key) {
-	    var module = __vue_styles__[key];
-	    __vue_options__.computed[key] = function () {
-	        return module;
-	    };
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
 	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-341844b6/MyHeader.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
 
 /***/ },
 /* 44 */
@@ -672,22 +686,36 @@
 	__webpack_require__(48);
 	__vue_script__ = __webpack_require__(49);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	    console.warn("[vue-loader] time\\src\\components\\Focus.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\Focus.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(50);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	    __vue_options__.template = __vue_template__;
+	  __vue_options__.template = __vue_template__;
 	}
 	if (!__vue_options__.computed) __vue_options__.computed = {};
 	Object.keys(__vue_styles__).forEach(function (key) {
-	    var module = __vue_styles__[key];
-	    __vue_options__.computed[key] = function () {
-	        return module;
-	    };
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
 	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-6988d3bc/Focus.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
 
 /***/ },
 /* 48 */
@@ -753,22 +781,36 @@
 	__webpack_require__(52);
 	__vue_script__ = __webpack_require__(53);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	    console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(54);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	    __vue_options__.template = __vue_template__;
+	  __vue_options__.template = __vue_template__;
 	}
 	if (!__vue_options__.computed) __vue_options__.computed = {};
 	Object.keys(__vue_styles__).forEach(function (key) {
-	    var module = __vue_styles__[key];
-	    __vue_options__.computed[key] = function () {
-	        return module;
-	    };
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
 	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-8f3a88d2/BackToTop.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
 
 /***/ },
 /* 52 */
@@ -829,22 +871,36 @@
 	__webpack_require__(56);
 	__vue_script__ = __webpack_require__(57);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	    console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
 	}
 	__vue_template__ = __webpack_require__(58);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
 	if (__vue_template__) {
-	    __vue_options__.template = __vue_template__;
+	  __vue_options__.template = __vue_template__;
 	}
 	if (!__vue_options__.computed) __vue_options__.computed = {};
 	Object.keys(__vue_styles__).forEach(function (key) {
-	    var module = __vue_styles__[key];
-	    __vue_options__.computed[key] = function () {
-	        return module;
-	    };
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
 	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-767d0c9a/MyFooter.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
 
 /***/ },
 /* 56 */

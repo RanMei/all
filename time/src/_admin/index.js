@@ -6,15 +6,18 @@ import {DIR} from '../config.js';
 import {router} from './router/router.js';
 import {store} from '../store/store.js';
 
-new Vue({
+var vm = new Vue({
 	el: '#root',
 	store,
 	router,
 	template: `
 	<div id="ROOT">
+		<div>{{name}} {{sex}}</div>
 		<router-view></router-view>
 	</div>`,
 	data: {
+		name: 'John',
+		sex: 'male',
 		age: 32
 	},
 	mounted: function(){
@@ -33,3 +36,5 @@ new Vue({
 		act: function(){}
 	}
 })
+
+console.log(vm)

@@ -128,6 +128,7 @@ Vue(options)
 								vm._data[key] = val
 							}
 						})
+				// make data observable
 				// create an observer for data
 				observe(data:value)
 					// primitive-typed values need no observer
@@ -184,17 +185,19 @@ Vue(options)
 										// notify all the subscribers to update view
 										dep_key.notify()
 											var subs = dep_key.subs.slice();
-											// for every watcher
+											// for every watcher depending on data[key]
 											var watcher = subs[i];
 											watcher.update();
 												watcher.run();
 													var value = watcher.get();
 														// the current watcher is the target
+														// var targetStack = [];
 														pushTarget(watcher);
 															if (Dep.target) { targetStack.push(Dep.target) }
 															Dep.target = watcher;
-														var value = this.getter.call(this.vm, this.vm);
-															// take vm._watcher for example
+														var value = watcher.getter.call(watcher.vm, watcher.vm);
+
+															// if the watcher is vm._watcher
 															var vnode = vm._render();
 																// call the render-function
 																// vm._renderProxy is actually vm?
@@ -203,28 +206,44 @@ Vue(options)
 																vm._vnode = vnode;
 																// perform DOM manipulations
 																vm.$el = vm.__patch__(prevVnode, vnode);
+
+															// if the watcher is vm._watchers[i]
+															// 
 														popTarget();
+															Dep.target = targetStack.pop();
+														watcher.cleanupDeps();
+														return value;
 													watcher.callback.call(wathcer.vm, value, oldValue)
 									}
 								})
 					retrun observer;
 			initComputed(vm)
-				Object.defineProperty(vm, key, computedSharedDefinition);
+				var computed = vm.$options.computed;
+				if (computed) {
+					for (var key in computed) {
+						Object.defineProperty(vm, key, computedSharedDefinition);
+					};
+				};
 			initMethods(vm)
 			initWatch(vm)
-				if(vm.$options.watch)
+			// create the value of vm._watchers
+				if(vm.$options.watch){
 					// create a watcher for watch[key] and
 					// push it into vm._watchers
 					createWatcher(vm,key,watch[key])
 						vm.$watch(key,watch[key])
-							const watcher = new Watcher(vm,key,watch[key])
+							const watcher = new Watcher(vm,key:expOrFn,watch[key]:cb)
 								var watcher = this;
 								watcher.vm = vm;
 								vm._watchers.push(this);
 								watcher.expression = expOrFn.toString();
 								watcher.cb = watch[key];
 								watcher.id = ++uid;
+								watcher.active = true;
+								watcher.deps = [];
+								watcher.newDeps = [];
 								if (typeof expOrFn === 'function') {
+									// for vm._watcher
 									watcher.getter = expOrFn
 								} else {
 									watcher.getter = parsePath(expOrFn)
@@ -234,12 +253,16 @@ Vue(options)
 										if (Dep.target) { targetStack.push(Dep.target) }
 										Dep.target = watcher;
 									var value = watcher.getter.call(watcher.vm, watcher.vm);
+				}
 
 
 		callHook(vm,'created')
 			vm.$emit('created')
 		initRender(vm)
+		// vm._vnode = null;
+		// vm._watcher = new Watcher
 			vm.$vnode = null;
+			vm._vnode = null;
 			if (vm.$options.el) {
 				vm.$mount(vm.$options.el)
 					var options = this.$options
@@ -269,8 +292,8 @@ Vue(options)
 								callHook(vm, 'beforeMount')
 								// create a watcher for vm and its callback is noop
 								vm._watcher = new Watcher(vm, function () {
-									vm._update(vm._render(), hydrating)
-								}, noop);
+									vm._update(vm._render():vnode, hydrating)
+								}:expOrFn, noop);
 								if(vm.$root===vm){
 									vm._isMounted = true
 									callHook(vm, 'mounted')
