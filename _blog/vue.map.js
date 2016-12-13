@@ -157,6 +157,8 @@ Vue(options)
 								// create a closure
 								// create a new dependency representing data[key]
 								var dep_key = new Dep();
+									dep.id = uid++;
+									dep.subs = [];
 								// create a new observer for data[key] 
 								// if it is a plain object or an array
 								var childObserver = observe(data[key])
@@ -170,14 +172,27 @@ Vue(options)
 										// which means that data[key] became a dependency for a watcher
 										// push the watcher into dep_key.subs, which means that this
 										// watcher becomes a subscriber
+
+										// when data[key] was used and a watcher is being evaluated
 										if (Dep.target) {
 											dep_key.depend()
 												if (Dep.target) {
 													var watcher = Dep.target
-													watcher.addDep(dep_key)
-														dep_key.subs.push(watcher)
+													watcher.addDep(dep_key:dep)
+														var id = dep.id
+														if (!watcher.newDepIds.has(id)) {
+															watcher.newDepIds.add(id)
+															watcher.newDeps.push(dep)
+															if (!watcher.depIds.has(id)) {
+																dep.addSub(watcher)
+																	dep_key.subs.push(watcher)
+															}
+														}
 									},
 									set: function reactiveSetter(newVal){
+										if (newVal === value) {
+											return
+										}
 										// when data[key] was changed
 										// the setter of data[key] was invoked
 										// create a new observer to replace the old one
@@ -185,10 +200,12 @@ Vue(options)
 										// notify all the subscribers to update view
 										dep_key.notify()
 											var subs = dep_key.subs.slice();
+											// do nothing if dep_key.subs is empty
 											// for every watcher depending on data[key]
 											var watcher = subs[i];
 											watcher.update();
 												watcher.run();
+													// get the new value of this watcher
 													var value = watcher.get();
 														// the current watcher is the target
 														// var targetStack = [];
@@ -198,6 +215,7 @@ Vue(options)
 														var value = watcher.getter.call(watcher.vm, watcher.vm);
 
 															// if the watcher is vm._watcher
+															// regenerate the virtual DOM every time
 															var vnode = vm._render();
 																// call the render-function
 																// vm._renderProxy is actually vm?
@@ -210,6 +228,8 @@ Vue(options)
 															// if the watcher is vm._watchers[i]
 															// 
 														popTarget();
+															// Dep.target will be undefined if targetStack is already empty
+															// which means that evaluation of watchers is over
 															Dep.target = targetStack.pop();
 														watcher.cleanupDeps();
 														return value;
