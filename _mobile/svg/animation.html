@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0; padding: 0;
+		}
+		.space {
+			position: relative;
+			width: 100%; height: 100vh;
+			overflow: hidden;
+		}
+		.square {
+			position: absolute; right: -4rem; top: 2rem;
+			width: 4rem; height: 4rem;
+			background: orange;
+		}
+		.square2 {
+			position: absolute; left: -4rem; top: 1rem;
+			width: 4rem; height: 4rem;
+			background: orange;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="space">
+		<div class="square">
+			
+		</div>
+		<div class="square2">
+
+		</div>
+	</div>
+
+<script type="text/javascript" src="../vendor/rem.js"></script>
+<script type="text/javascript" src="../../vendor/GSAP/TweenMax.min.js"></script>
+<script type="text/javascript">
+	var tl = new TimelineMax();
+	var square = document.querySelector('.square');
+	var square2 = document.querySelector('.square2');
+	//console.log(square)
+	tl.fromTo( square, 1, {
+		transformOrigin: '0% 100%',
+		x: 0
+  	},{
+  		x: 0,
+  		rotation: -30
+  	}).to( square,1,{
+  		x: '200%'
+  	}).fromTo( square2,1,{
+  		transformOrigin: '100% 100%'
+  	},{
+  		rotation: 30
+  	}).to( square2,1,{
+  		x: '-200%'
+  	})
+</script>
+</body>
+</html>
