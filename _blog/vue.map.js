@@ -57,6 +57,7 @@ function Watcher()
 function Dep()
 // the current target watcher being evaluated.
 Dep.target = null;
+var targetStack = [];
 
 function Vue()
 // add some methods to Vue.prototype
@@ -107,6 +108,7 @@ Vue(options)
 				var props = vm.$options.props;
 				// for every prop
 				defineReactive( vm,key, )
+			// data-driven view-changing
 			initData(vm)
 				var data = vm.$options.data;
 				// all the variables point to the data object you placed in
@@ -114,6 +116,9 @@ Vue(options)
 				vm._data = typeof data==='function'? data() : data||{};
 				data = vm._data;
 				var keys = Object.keys(data);
+				// for every data[key]
+				// define a property on vm and turn it into a getter/setter
+				// to proxy vm._data[key]
 				while(i--)
 					// define a property on vm and turn it into a getter/setter
 					// to proxy vm._data[key]
@@ -162,22 +167,19 @@ Vue(options)
 								// create a new observer for data[key] 
 								// if it is a plain object or an array
 								var childObserver = observe(data[key])
-    							// create a getter/setter for data[key]
-    							// start observe the changing of data[key]
+    							// turn data[key] into a getter/setter
 								Object.defineProperty(data, key, {
 									enumerable: true,
 									configurable: true,
 									get: function reactiveGetter(){
-										// when data[key] was used,
-										// which means that data[key] became a dependency for a watcher
-										// push the watcher into dep_key.subs, which means that this
-										// watcher becomes a subscriber
-
-										// when data[key] was used and a watcher is being evaluated
+										// when data[key] was used
+										// if a watcher is currently being evaluated
 										if (Dep.target) {
+											// which means that data[key] is a dependency of current watcher
 											dep_key.depend()
 												if (Dep.target) {
 													var watcher = Dep.target
+													// push dep into current watcher's watcher.deps
 													watcher.addDep(dep_key:dep)
 														var id = dep.id
 														if (!watcher.newDepIds.has(id)) {
@@ -185,7 +187,7 @@ Vue(options)
 															watcher.newDeps.push(dep)
 															if (!watcher.depIds.has(id)) {
 																dep.addSub(watcher)
-																	dep_key.subs.push(watcher)
+																	dep.subs.push(watcher)
 															}
 														}
 									},
@@ -196,22 +198,27 @@ Vue(options)
 										// when data[key] was changed
 										// the setter of data[key] was invoked
 										// create a new observer to replace the old one
+										// but nothing will happen if newVal is primitive-typed
 										childObserver = observe(newVal);
-										// notify all the subscribers to update view
+										// notify all the subscribers of this dep to update view
 										dep_key.notify()
 											var subs = dep_key.subs.slice();
-											// do nothing if dep_key.subs is empty
+											// do nothing if dep.subs is empty
+											// which means that no watcher needs to update
 											// for every watcher depending on data[key]
 											var watcher = subs[i];
 											watcher.update();
 												watcher.run();
-													// get the new value of this watcher
+													// evaluate this watcher
 													var value = watcher.get();
 														// the current watcher is the target
 														// var targetStack = [];
 														pushTarget(watcher);
 															if (Dep.target) { targetStack.push(Dep.target) }
 															Dep.target = watcher;
+														// get the new value of this watcher
+														// and all the deps of current watcher will be recollected
+														// into watcher.newDeps in this process
 														var value = watcher.getter.call(watcher.vm, watcher.vm);
 
 															// if the watcher is vm._watcher
@@ -231,7 +238,9 @@ Vue(options)
 															// Dep.target will be undefined if targetStack is already empty
 															// which means that evaluation of watchers is over
 															Dep.target = targetStack.pop();
+														// 
 														watcher.cleanupDeps();
+															watcher.deps = watcher.newDeps;
 														return value;
 													watcher.callback.call(wathcer.vm, value, oldValue)
 									}
@@ -253,26 +262,6 @@ Vue(options)
 					createWatcher(vm,key,watch[key])
 						vm.$watch(key,watch[key])
 							const watcher = new Watcher(vm,key:expOrFn,watch[key]:cb)
-								var watcher = this;
-								watcher.vm = vm;
-								vm._watchers.push(this);
-								watcher.expression = expOrFn.toString();
-								watcher.cb = watch[key];
-								watcher.id = ++uid;
-								watcher.active = true;
-								watcher.deps = [];
-								watcher.newDeps = [];
-								if (typeof expOrFn === 'function') {
-									// for vm._watcher
-									watcher.getter = expOrFn
-								} else {
-									watcher.getter = parsePath(expOrFn)
-								}
-								watcher.value = this.get();
-									pushTarget(watcher)
-										if (Dep.target) { targetStack.push(Dep.target) }
-										Dep.target = watcher;
-									var value = watcher.getter.call(watcher.vm, watcher.vm);
 				}
 
 
@@ -314,6 +303,28 @@ Vue(options)
 								vm._watcher = new Watcher(vm, function () {
 									vm._update(vm._render():vnode, hydrating)
 								}:expOrFn, noop);
+									var watcher = this;
+									watcher.vm = vm;
+									vm._watchers.push(this);
+									watcher.expression = expOrFn.toString();
+									watcher.cb = watch[key];
+									watcher.id = ++uid;
+									watcher.active = true;
+									watcher.deps = [];
+									watcher.newDeps = [];
+									if (typeof expOrFn === 'function') {
+										// for vm._watcher
+										watcher.getter = expOrFn
+									} else {
+										watcher.getter = parsePath(expOrFn)
+									}
+									// collect all the deps
+									// the value of vm._watcher will always be undefined
+									watcher.value = this.get();
+										pushTarget(watcher)
+											if (Dep.target) { targetStack.push(Dep.target) }
+											Dep.target = watcher;
+										var value = watcher.getter.call(watcher.vm, watcher.vm);
 								if(vm.$root===vm){
 									vm._isMounted = true
 									callHook(vm, 'mounted')
