@@ -50,6 +50,10 @@ watcher: {
 	}
 }
 
+var observerState = {
+	shouldConvert: true,
+	isSettingProps: false
+};
 function Observer()
 
 function Watcher()
@@ -90,9 +94,12 @@ initGlobalAPI(Vue)
 // create a Vue instance
 Vue(options)
 	_init(options)
-		vm._uid = 
+		vm._uid = uid++;
 		vm.$options = mergeOptions(parent,options||{},vm)
-		vm._self = vm
+			checkComponents(options);
+			normalizeProps(options);
+		initProxy(vm)
+		vm._self = vm;
 		initLifecycle(vm)
 			vm.$parent = 
 			vm.$root =
@@ -107,7 +114,7 @@ Vue(options)
 			initProps(vm)
 				var props = vm.$options.props;
 				// for every prop
-				defineReactive( vm,key, )
+				defineReactive( vm,key,props[key]:value )
 			// data-driven view-changing
 			initData(vm)
 				var data = vm.$options.data;
@@ -158,7 +165,7 @@ Vue(options)
 						observer.walk(data)
 							// for(var key in data)
 							// make every data[key] reactive
-							defineReactive(data, key, data[key])
+							defineReactive(data, key, data[key]:value)
 								// create a closure
 								// create a new dependency representing data[key]
 								var dep_key = new Dep();
