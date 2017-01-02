@@ -648,7 +648,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-341844b6/MyHeader.vue";
+	    var id = "_v-69956734/MyHeader.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -673,7 +673,7 @@
 /* 46 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"MY-HEADER\" _v-341844b6=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<div class=\"search_box\" _v-341844b6=\"\">\n\t\t\t\t<form _v-341844b6=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-341844b6=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-341844b6=\"\"><i class=\"fa fa-search\" _v-341844b6=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-341844b6=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<p _v-341844b6=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-341844b6=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-341844b6=\"\">\n\t\t\t\t<li _v-341844b6=\"\"><a href=\"register.html\" class=\"a-signin login\" _v-341844b6=\"\">登录</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><a href=\"register.html\" class=\"a-signup register\" _v-341844b6=\"\">注册</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><i class=\"fa fa-file\" _v-341844b6=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-341844b6=\"\">我的订单</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-341844b6=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-341844b6=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-341844b6=\"\">我的购物车(<span class=\"quantityIn\" _v-341844b6=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-341844b6=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-341844b6=\"\"></div>\n\t\t</div>\n\t\t<!--\n\t\t<div class=\"banner container\">\n\t\t\t<ul>\n\t\t\t\t<a href=\"\" style=\"background:url(images/165404.24885127.jpg)\">\n\t\t\t\t\t<div class=\"label\">新品</div>\n\t\t\t\t\t<div>星球大战入耳式耳机</div>\n\t\t\t\t</a>\n\t\t\t</ul>\n\t\t</div>\n\t\t-->\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"MY-HEADER\" _v-69956734=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<div class=\"search_box\" _v-69956734=\"\">\n\t\t\t\t<form _v-69956734=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-69956734=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-69956734=\"\"><i class=\"fa fa-search\" _v-69956734=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-69956734=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<p _v-69956734=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-69956734=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-69956734=\"\">\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signin login\" _v-69956734=\"\">登录</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signup register\" _v-69956734=\"\">注册</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><i class=\"fa fa-file\" _v-69956734=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-69956734=\"\">我的订单</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-69956734=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-69956734=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-69956734=\"\">我的购物车(<span class=\"quantityIn\" _v-69956734=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-69956734=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-69956734=\"\"></div>\n\t\t</div>\n\t\t<!--\n\t\t<div class=\"banner container\">\n\t\t\t<ul>\n\t\t\t\t<a href=\"\" style=\"background:url(images/165404.24885127.jpg)\">\n\t\t\t\t\t<div class=\"label\">新品</div>\n\t\t\t\t\t<div>星球大战入耳式耳机</div>\n\t\t\t\t</a>\n\t\t\t</ul>\n\t\t</div>\n\t\t-->\n\t</div>\n</div>\n";
 
 /***/ },
 /* 47 */
@@ -708,7 +708,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6988d3bc/Focus.vue";
+	    var id = "_v-7eb276ca/Focus.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -768,7 +768,7 @@
 /* 50 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"Focus wrapper\" _v-6988d3bc=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-6988d3bc=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-6988d3bc=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-6988d3bc=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-6988d3bc=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-left\" _v-6988d3bc=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-right\" _v-6988d3bc=\"\"></i></div>\t\t\n</ul>\n";
+	module.exports = "\n<ul class=\"Focus wrapper\" _v-7eb276ca=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-7eb276ca=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-7eb276ca=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-7eb276ca=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-7eb276ca=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-left\" _v-7eb276ca=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-right\" _v-7eb276ca=\"\"></i></div>\t\t\n</ul>\n";
 
 /***/ },
 /* 51 */
@@ -803,7 +803,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-8f3a88d2/BackToTop.vue";
+	    var id = "_v-7b4f24f6/BackToTop.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -858,7 +858,7 @@
 /* 54 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-8f3a88d2=\"\"><i class=\"fa fa-angle-up\" _v-8f3a88d2=\"\"></i></div>\n";
+	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-7b4f24f6=\"\"><i class=\"fa fa-angle-up\" _v-7b4f24f6=\"\"></i></div>\n";
 
 /***/ },
 /* 55 */
@@ -893,7 +893,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-767d0c9a/MyFooter.vue";
+	    var id = "_v-abfa2f18/MyFooter.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -919,7 +919,7 @@
 /* 58 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-767d0c9a=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-767d0c9a=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-767d0c9a=\"\">\n\t\t<ul class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">新用户注册</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">购物流程</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">常见问题</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">发票制度</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">在线付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">余额付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">邮费说明</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送服务范围</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送速度查询</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">售后政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-767d0c9a=\"\">4006-118-118</p>\n\t\t\t\t<p _v-767d0c9a=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-767d0c9a=\"\">\n\t\t<div class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<p _v-767d0c9a=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-abfa2f18=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-abfa2f18=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-abfa2f18=\"\">\n\t\t<ul class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">新用户注册</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">购物流程</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">常见问题</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">发票制度</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">在线付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">余额付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">邮费说明</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送服务范围</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送速度查询</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">售后政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-abfa2f18=\"\">4006-118-118</p>\n\t\t\t\t<p _v-abfa2f18=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-abfa2f18=\"\">\n\t\t<div class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<p _v-abfa2f18=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 /******/ ])));

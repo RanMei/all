@@ -17,6 +17,9 @@ import {store} from '../store/store.js';
 new Vue({
 	el: '#root',
 	store: store,
+	components: {
+		MyHeader: require('../components/MyHeader.vue').default
+	},
 	data: {
 		DIR: DIR,
 		IMG: '../'+IMG,
@@ -26,5 +29,6 @@ new Vue({
 	},
 	mounted: function(){
 		this.$store.dispatch('GET_ITEMS');
+		console.log(this);
 	}
 })

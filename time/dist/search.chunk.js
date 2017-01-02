@@ -98,7 +98,7 @@ webpackJsonp([4],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1d2a37f9/Showcase.vue";
+	    var id = "_v-026ba6ba/Showcase.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -134,7 +134,7 @@ webpackJsonp([4],{
 /***/ 69:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Showcase\" _v-1d2a37f9=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-1d2a37f9=\"\">\n\t\t<img class=\"thumb\" _v-1d2a37f9=\"\">\n\t\t<p class=\"price\" _v-1d2a37f9=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-1d2a37f9=\"\">{{a.name||'--'}}</p>\n\t</a>\n</div>\n";
+	module.exports = "\n<div class=\"Showcase\" _v-026ba6ba=\"\">\n\t<a class=\"item__\" v-for=\"a in items\" :href=\" DIR.root+'/item.html?id='+a.id \" _v-026ba6ba=\"\">\n\t\t<img class=\"thumb\" _v-026ba6ba=\"\">\n\t\t<p class=\"price\" _v-026ba6ba=\"\">￥{{a.price}}</p>\n\t\t<p class=\"name\" _v-026ba6ba=\"\">{{a.name||'--'}}</p>\n\t</a>\n</div>\n";
 
 /***/ }
 

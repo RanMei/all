@@ -179,77 +179,10 @@ Vue(options)
 									enumerable: true,
 									configurable: true,
 									get: function reactiveGetter(){
-										// when data[key] was used
-										// if a watcher is currently being evaluated
-										if (Dep.target) {
-											// which means that data[key] is a dependency of current watcher
-											dep_key.depend()
-												if (Dep.target) {
-													var watcher = Dep.target
-													// push dep into current watcher's watcher.deps
-													watcher.addDep(dep_key:dep)
-														var id = dep.id
-														if (!watcher.newDepIds.has(id)) {
-															watcher.newDepIds.add(id)
-															watcher.newDeps.push(dep)
-															if (!watcher.depIds.has(id)) {
-																dep.addSub(watcher)
-																	dep.subs.push(watcher)
-															}
-														}
+										
 									},
 									set: function reactiveSetter(newVal){
-										if (newVal === value) {
-											return
-										}
-										// when data[key] was changed
-										// the setter of data[key] was invoked
-										// create a new observer to replace the old one
-										// but nothing will happen if newVal is primitive-typed
-										childObserver = observe(newVal);
-										// notify all the subscribers of this dep to update view
-										dep_key.notify()
-											var subs = dep_key.subs.slice();
-											// do nothing if dep.subs is empty
-											// which means that no watcher needs to update
-											// for every watcher depending on data[key]
-											var watcher = subs[i];
-											watcher.update();
-												watcher.run();
-													// evaluate this watcher
-													var value = watcher.get();
-														// the current watcher is the target
-														// var targetStack = [];
-														pushTarget(watcher);
-															if (Dep.target) { targetStack.push(Dep.target) }
-															Dep.target = watcher;
-														// get the new value of this watcher
-														// and all the deps of current watcher will be recollected
-														// into watcher.newDeps in this process
-														var value = watcher.getter.call(watcher.vm, watcher.vm);
-
-															// if the watcher is vm._watcher
-															// regenerate the virtual DOM every time
-															var vnode = vm._render();
-																// call the render-function
-																// vm._renderProxy is actually vm?
-																vnode = render.call(vm._renderProxy, vm.$createElement)
-															vm._update( vnode, hydrating )
-																vm._vnode = vnode;
-																// perform DOM manipulations
-																vm.$el = vm.__patch__(prevVnode, vnode);
-
-															// if the watcher is vm._watchers[i]
-															// 
-														popTarget();
-															// Dep.target will be undefined if targetStack is already empty
-															// which means that evaluation of watchers is over
-															Dep.target = targetStack.pop();
-														// 
-														watcher.cleanupDeps();
-															watcher.deps = watcher.newDeps;
-														return value;
-													watcher.callback.call(wathcer.vm, value, oldValue)
+										
 									}
 								})
 					retrun observer;
@@ -337,3 +270,85 @@ Vue(options)
 									callHook(vm, 'mounted')
 								}
 								return vm;
+
+vm[key] = val;
+	proxySetter(val);
+		vm._data[key] = val;
+	reactiveSetter( newVal );
+		if (newVal === value) {
+			return
+		}
+		// when data[key] was changed
+		// the setter of data[key] was invoked
+		// create a new observer to replace the old one
+		// but nothing will happen if newVal is primitive-typed
+		childObserver = observe(newVal);
+		// notify all the subscribers of this dep to update view
+		dep.notify()
+			var subs = dep.subs.slice();
+			// do nothing if dep.subs is empty
+			// which means that no watcher needs to update
+			// for every watcher depending on data[key]
+			var watcher = subs[i];
+			watcher.update();
+				watcher.run();
+					// evaluate this watcher
+					// get the new value of the watcher
+					var value = watcher.get();
+						// the current watcher is the target
+						// var targetStack = [];
+						pushTarget(watcher);
+							if (Dep.target) { targetStack.push(Dep.target) }
+							Dep.target = watcher;
+						// get the new value of this watcher
+						// and all the deps of current watcher will be recollected
+						// into watcher.newDeps in this process
+						var value = watcher.getter.call(watcher.vm, watcher.vm);
+
+							// if the watcher is vm._watcher
+							// regenerate the virtual DOM every time
+							// vnode is just a plain old object
+							var vnode = vm._render();
+								// call the render-function
+								// vm._renderProxy is actually vm?
+								vnode = render.call(vm._renderProxy, vm.$createElement)
+							vm._update( vnode, hydrating )
+								vm._vnode = vnode;
+								// perform DOM manipulations
+								vm.$el = vm.__patch__(prevVnode, vnode);
+
+							// if the watcher is vm._watchers[i]
+							// 
+
+							// for all the values used in the evaluation
+							proxyGetter();
+							reactiveGetter();
+								// when data[key] was used
+								// if a watcher is currently being evaluated
+								if (Dep.target) {
+									// which means that data[key] is a dependency of current watcher
+									dep.depend()
+										if (Dep.target) {
+											var watcher = Dep.target
+											
+											watcher.addDep(dep:dep)
+												var id = dep.id
+												// push dep into current watcher's watcher.deps
+												// if it is not in it
+												if (!watcher.newDepIds.has(id)) {
+													watcher.newDepIds.add(id)
+													watcher.newDeps.push(dep)
+													if (!watcher.depIds.has(id)) {
+														dep.addSub(watcher)
+															dep.subs.push(watcher)
+													}
+												}
+						popTarget();
+							// Dep.target will be undefined if targetStack is already empty
+							// which means that evaluation of watchers is over
+							Dep.target = targetStack.pop();
+						// 
+						watcher.cleanupDeps();
+							watcher.deps = watcher.newDeps;
+						return value;
+					watcher.callback.call(wathcer.vm, value, oldValue)
