@@ -17,7 +17,7 @@
 <style lang="less" scoped>
 .space3d {
 	@num: 3rem;
-	position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+	//position: absolute; left: 0; top: 0; right: 0; bottom: 0;
 	margin: auto;
 	width: @num; height: @num;
 	perspective: 1000px;
