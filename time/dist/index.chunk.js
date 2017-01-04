@@ -39,6 +39,9 @@ webpackJsonp([2],{
 	new Vue({
 		el: '#root',
 		store: _store.store,
+		components: {
+			MyHeader: __webpack_require__(43).default
+		},
 		data: {
 			DIR: _config.DIR,
 			IMG: '../' + _config.IMG,
@@ -46,6 +49,7 @@ webpackJsonp([2],{
 		},
 		mounted: function mounted() {
 			this.$store.dispatch('GET_ITEMS');
+			console.log(this);
 		}
 	});
 
