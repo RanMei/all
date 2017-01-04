@@ -1,11 +1,11 @@
 webpackJsonp([7],{
 
-/***/ 52:
+/***/ 57:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _Canvas = __webpack_require__(53);
+	var _Canvas = __webpack_require__(58);
 
 	function Drop(cv) {
 		var self = this;
@@ -148,7 +148,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 53:
+/***/ 58:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -336,14 +336,14 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 54:
+/***/ 59:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _Canvas = __webpack_require__(53);
+	var _Canvas = __webpack_require__(58);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -449,136 +449,6 @@ webpackJsonp([7],{
 				el: this.$refs.cv
 			});
 		}
-	};
-
-/***/ },
-
-/***/ 55:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _Canvas = __webpack_require__(53);
-
-	function getRandomInt(min, max) {
-	    return Math.floor(Math.random() * (max - min)) + min;
-	}
-	function extend(target) {
-	    target = arguments[0];
-
-	    var objects = Array.prototype.splice.call(arguments, 1);
-
-	    objects.forEach(function (obj) {
-	        for (var prop in obj) {
-	            target[prop] = obj[prop];
-	        }
-	    });
-
-	    return target;
-	}
-
-	function Particle(opts) {
-	    this.opts = opts;
-
-	    this.cv = opts.cv;
-	    this.color = this.opts.color;
-	    this.x = this.opts.x;
-	    this.y = this.opts.y;
-	    this.d = this.opts.d;
-
-	    this.radius = this.opts.radius;
-	};
-	Particle.prototype = {
-	    update: function update() {
-	        var width = this.cv.$width;
-	        var height = this.cv.$height;
-	        var x, y;
-
-	        x = this.x + Math.cos(0) * this.d * 2;
-	        y = this.y + Math.sin(0) + 1 + this.radius / 3 * this.d * 2;
-
-	        if (x > width) {
-	            x = 0;
-	        };
-	        if (x < 0) {
-	            x = width;
-	        };
-	        if (y > height) {
-	            y = 0;
-	            x = getRandomInt(0, width);
-	        };
-
-	        this.x = x;
-	        this.y = y;
-	    },
-	    draw: function draw(ctx) {
-	        ctx.beginPath();
-	        ctx.moveTo(this.x, this.y);
-	        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-	        ctx.fillStyle = this.color;
-	        ctx.fill();
-	    }
-	};
-
-	var Snow = _Canvas.Canvas.extend({
-	    props: function props() {
-	        return {
-	            color: 'white',
-	            speed: 2,
-	            count: 100,
-	            maxRadius: 5
-	        };
-	    },
-	    data: function data() {
-	        return {
-	            particles: [],
-	            angle: 0
-	        };
-	    },
-	    beforePlay: function beforePlay() {
-	        this.createParticles();
-	    },
-	    render: function render() {
-	        var self = this;
-	        this.angle = this.angle - 0.0001;
-
-	        this.$ctx.clearRect(0, 0, this.$width, this.$height);
-	        this.particles.forEach(function (p) {
-	            p.update();
-	            p.draw(self.$ctx);
-	        });
-	    },
-	    methods: {
-	        createParticles: function createParticles() {
-	            var self = this;
-	            for (var i = 0; i < this.count; i++) {
-	                self.particles.push(new Particle({
-	                    color: self.color,
-	                    x: Math.round(Math.random() * self.$width),
-	                    y: Math.round(Math.random() * self.$height),
-	                    d: Math.random(),
-	                    radius: getRandomInt(2, self.maxRadius),
-	                    cv: self,
-	                    ctx: self.$ctx
-	                }));
-	            }
-	        }
-	    }
-	});
-
-	module.exports = {
-	    template: '\n        <canvas ref="snowfall" width="1000" height="1000"\n        style="display:block;width:100%;background:#0BA2FF;"></canvas>\n    ',
-	    mounted: function mounted() {
-	        new Snow({
-	            el: this.$refs.snowfall,
-	            props: {
-	                color: 'white',
-	                speed: 2,
-	                count: 100,
-	                maxRadius: 5
-	            }
-	        });
-	    }
 	};
 
 /***/ }

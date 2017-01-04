@@ -46,8 +46,15 @@ module.exports = [{
 	name: 'MorphingPhones',
 	component: 'MorphingPhones',
 	path: '../lib/MorphingPhones.vue'
+},{
+	name: 'MachineGunText',
+	component: 'MachineGunText',
+	path: '../lib/MachineGunText.vue'
 
-
+},{
+	name: 'Blizzard',
+	component: 'Blizzard',
+	path: '../canvas/Blizzard.js'
 },{
 	name: 'Rain',
 	component: 'Rain',

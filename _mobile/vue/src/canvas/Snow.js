@@ -58,14 +58,12 @@ Particle.prototype = {
     }
 }
 
-import {Canvas} from './Canvas.js';
-
 var Snow = Canvas.extend({
     props: function(){
         return {
             color: 'white',
             speed: 2,
-            count: 100,
+            count: 50,
             maxRadius: 5
         }
     },
@@ -76,6 +74,10 @@ var Snow = Canvas.extend({
         }
     },
     beforePlay: function(){
+        this.$setSize( window.innerWidth,window.innerHeight );
+        window.addEventListener('resize',()=>{
+            this.$setSize( window.innerWidth,window.innerHeight );
+        })
         this.createParticles();
     },
     render: function(){
@@ -109,7 +111,7 @@ var Snow = Canvas.extend({
 module.exports = {
     template: `
         <canvas ref="snowfall" width="1000" height="1000"
-        style="display:block;width:100%;background:#0BA2FF;"></canvas>
+        style="display:block;background:#0BA2FF;"></canvas>
     `,
     mounted: function(){
         new Snow({
@@ -117,7 +119,7 @@ module.exports = {
             props: {
                 color: 'white',
                 speed: 2,
-                count: 100,
+                count: 20,
                 maxRadius: 5
             }
         })

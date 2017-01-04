@@ -1,18 +1,18 @@
 webpackJsonp([8],{
 
-/***/ 56:
+/***/ 61:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(57);
-	__vue_script__ = __webpack_require__(58);
+	__webpack_require__(62);
+	__vue_script__ = __webpack_require__(63);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Heart.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(59);
+	__vue_template__ = __webpack_require__(64);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -32,7 +32,7 @@ webpackJsonp([8],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-25667c4e/Heart.vue";
+	    var id = "_v-080b5318/Heart.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -43,10 +43,10 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 57:
+/***/ 62:
 1,
 
-/***/ 58:
+/***/ 63:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -132,10 +132,10 @@ webpackJsonp([8],{
 											vy: 0,
 											R: 2,
 											speed: rand() + 5,
-											q: ~ ~(rand() * heartPointsCount),
+											q: ~~(rand() * heartPointsCount),
 											D: 2 * (i % 2) - 1,
 											force: 0.2 * rand() + 0.7,
-											f: "hsla(0," + ~ ~(40 * rand() + 60) + "%," + ~ ~(60 * rand() + 20) + "%,.3)",
+											f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
 											trace: []
 									};
 									for (var k = 0; k < traceCount; k++) {
@@ -163,7 +163,7 @@ webpackJsonp([8],{
 											var length = Math.sqrt(dx * dx + dy * dy);
 											if (10 > length) {
 													if (0.95 < rand()) {
-															u.q = ~ ~(rand() * heartPointsCount);
+															u.q = ~~(rand() * heartPointsCount);
 													} else {
 															if (0.99 < rand()) {
 																	u.D *= -1;
@@ -206,10 +206,10 @@ webpackJsonp([8],{
 
 /***/ },
 
-/***/ 59:
+/***/ 64:
 /***/ function(module, exports) {
 
-	module.exports = "\n<canvas id=\"heart\" _v-25667c4e=\"\"></canvas>\n";
+	module.exports = "\n<canvas id=\"heart\" _v-080b5318=\"\"></canvas>\n";
 
 /***/ }
 

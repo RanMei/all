@@ -83,6 +83,20 @@ var list = [{
 		});
 	}
 },{
+	path:'machineguntext',
+	component: resolve => {
+		require.ensure( ['../lib/MachineGunText.vue'], ()=>{
+			resolve( require('../lib/MachineGunText.vue') );
+		});
+	}
+},{
+	path:'blizzard',
+	component: resolve => {
+		require.ensure( ['../canvas/Blizzard.js'], ()=>{
+			resolve( require('../canvas/Blizzard.js') );
+		});
+	}
+},{
 	path:'rain',
 	component: resolve => {
 		require.ensure( ['../canvas/Rain.js'], ()=>{

@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 60:
+/***/ 65:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,7 +10,7 @@ webpackJsonp([9],{
 	});
 	exports.Scope = undefined;
 
-	var _Canvas = __webpack_require__(61);
+	var _Canvas = __webpack_require__(66);
 
 	var Scope = _Canvas.Canvas.extend({
 		data: function data() {
@@ -44,7 +44,7 @@ webpackJsonp([9],{
 		},
 		methods: {
 			rand: function rand(min, max) {
-				return ~ ~(Math.random() * (max - min + 1) + min);
+				return ~~(Math.random() * (max - min + 1) + min);
 			},
 			hitTest: function hitTest(x1, y1, w1, h1, x2, y2, w2, h2) {
 				return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
@@ -177,7 +177,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 61:
+/***/ 66:
 /***/ function(module, exports) {
 
 	'use strict';
