@@ -1,5 +1,3 @@
-import {Canvas} from './Canvas.js';
-
 function Drop(cv){
 	var self = this;
 	this.w = cv.$width;

@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 65:
+/***/ 75:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,7 +10,7 @@ webpackJsonp([9],{
 	});
 	exports.Scope = undefined;
 
-	var _Canvas = __webpack_require__(66);
+	var _Canvas = __webpack_require__(76);
 
 	var Scope = _Canvas.Canvas.extend({
 		data: function data() {
@@ -177,7 +177,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 66:
+/***/ 76:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -339,6 +339,10 @@ webpackJsonp([9],{
 		}
 		Sub.prototype = new Canvas(opts);
 		return Sub;
+	};
+
+	Canvas.random = function (min, max) {
+		return min + (max - min) * Math.random();
 	};
 
 	Canvas.prototype._renderFPS = function () {

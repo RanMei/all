@@ -173,18 +173,18 @@
 
 	var routes = [{
 		path: '/',
-		component: __webpack_require__(67),
+		component: __webpack_require__(77),
 		redirect: '/list',
 		children: [{
 			path: 'home',
-			component: __webpack_require__(78)
+			component: __webpack_require__(88)
 		}, {
 			path: 'list',
-			component: __webpack_require__(82)
+			component: __webpack_require__(92)
 		}]
 	}, {
 		path: '/item',
-		component: __webpack_require__(87),
+		component: __webpack_require__(97),
 		children: _list.list
 	}];
 
@@ -262,14 +262,14 @@
 	}, {
 		path: 'carousel',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(2/* limit */, function () {
+			__webpack_require__.e/* nsure */(6, function () {
 				resolve(__webpack_require__(36));
 			});
 		}
 	}, {
 		path: 'strokecircle',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(2/* limit */, function () {
+			__webpack_require__.e/* nsure */(6/* limit */, function () {
 				resolve(__webpack_require__(40));
 			});
 		}
@@ -283,57 +283,85 @@
 	}, {
 		path: 'morphingphones',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(6, function () {
+			__webpack_require__.e/* nsure */(7, function () {
 				resolve(__webpack_require__(48));
 			});
 		}
 	}, {
 		path: 'machineguntext',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(4/* limit */, function () {
+			__webpack_require__.e/* nsure */(2/* limit */, function () {
 				resolve(__webpack_require__(52));
+			});
+		}
+	}, {
+		path: 'smokytext',
+		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(8, function () {
+				resolve(__webpack_require__(56));
+			});
+		}
+	}, {
+		path: 'farm',
+		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(8/* limit */, function () {
+				resolve(__webpack_require__(60));
+			});
+		}
+	}, {
+		path: 'snowconfetti',
+		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(8/* limit */, function () {
+				resolve(__webpack_require__(63));
 			});
 		}
 	}, {
 		path: 'blizzard',
 		component: function component(resolve) {
+			__webpack_require__.e/* nsure */(6/* limit */, function () {
+				resolve(__webpack_require__(65));
+			});
+		}
+	}, {
+		path: 'confetti',
+		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(2/* limit */, function () {
-				resolve(__webpack_require__(56));
+				resolve(__webpack_require__(66));
 			});
 		}
 	}, {
 		path: 'rain',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(7, function () {
-				resolve(__webpack_require__(57));
+			__webpack_require__.e/* nsure */(6/* limit */, function () {
+				resolve(__webpack_require__(67));
 			});
 		}
 	}, {
 		path: 'circles',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(7/* limit */, function () {
-				resolve(__webpack_require__(59));
+			__webpack_require__.e/* nsure */(8/* limit */, function () {
+				resolve(__webpack_require__(68));
 			});
 		}
 	}, {
 		path: 'snow',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(4/* limit */, function () {
-				resolve(__webpack_require__(60));
+			__webpack_require__.e/* nsure */(2/* limit */, function () {
+				resolve(__webpack_require__(70));
 			});
 		}
 	}, {
 		path: 'heart',
 		component: function component(resolve) {
-			__webpack_require__.e/* nsure */(8, function () {
-				resolve(__webpack_require__(61));
+			__webpack_require__.e/* nsure */(4/* limit */, function () {
+				resolve(__webpack_require__(71));
 			});
 		}
 	}, {
 		path: 'scope',
 		component: function component(resolve) {
 			__webpack_require__.e/* nsure */(9, function () {
-				resolve(__webpack_require__(65));
+				resolve(__webpack_require__(75));
 			});
 		}
 	}];
@@ -403,19 +431,29 @@
 /* 64 */,
 /* 65 */,
 /* 66 */,
-/* 67 */
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(68);
-	__vue_script__ = __webpack_require__(69);
+	__webpack_require__(78);
+	__vue_script__ = __webpack_require__(79);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\Home.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(86);
+	__vue_template__ = __webpack_require__(96);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -445,9 +483,9 @@
 	}
 
 /***/ },
-/* 68 */
+/* 78 */
 1,
-/* 69 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -456,11 +494,11 @@
 		value: true
 	});
 
-	var _stringify = __webpack_require__(70);
+	var _stringify = __webpack_require__(80);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
-	var _items = __webpack_require__(73);
+	var _items = __webpack_require__(83);
 
 	var _items2 = _interopRequireDefault(_items);
 
@@ -478,9 +516,9 @@
 
 	exports.default = {
 		components: {
-			Navbar: __webpack_require__(74),
-			Showcase: __webpack_require__(78),
-			List: __webpack_require__(82)
+			Navbar: __webpack_require__(84),
+			Showcase: __webpack_require__(88),
+			List: __webpack_require__(92)
 		},
 		data: function data() {
 			return {
@@ -494,30 +532,30 @@
 	};
 
 /***/ },
-/* 70 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(71), __esModule: true };
+	module.exports = { "default": __webpack_require__(81), __esModule: true };
 
 /***/ },
-/* 71 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core  = __webpack_require__(72)
+	var core  = __webpack_require__(82)
 	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 	  return $JSON.stringify.apply($JSON, arguments);
 	};
 
 /***/ },
-/* 72 */
+/* 82 */
 /***/ function(module, exports) {
 
 	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 73 */
+/* 83 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -574,11 +612,27 @@
 		name: 'MachineGunText',
 		component: 'MachineGunText',
 		path: '../lib/MachineGunText.vue'
+	}, {
+		name: 'SmokyText',
+		component: 'SmokyText',
+		path: '../lib/SmokyText.vue'
+	}, {
+		name: 'Farm',
+		component: 'Farm',
+		path: '../lib/Farm.vue'
 
+	}, {
+		name: 'SnowConfetti',
+		component: 'SnowConfetti',
+		path: '../canvas/SnowConfetti.js'
 	}, {
 		name: 'Blizzard',
 		component: 'Blizzard',
 		path: '../canvas/Blizzard.js'
+	}, {
+		name: 'Confetti',
+		component: 'Confetti',
+		path: '../canvas/Confetti.js'
 	}, {
 		name: 'Rain',
 		component: 'Rain',
@@ -603,19 +657,19 @@
 	}];
 
 /***/ },
-/* 74 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(75);
-	__vue_script__ = __webpack_require__(76);
+	__webpack_require__(85);
+	__vue_script__ = __webpack_require__(86);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Navbar.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(77);
+	__vue_template__ = __webpack_require__(87);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -645,9 +699,9 @@
 	}
 
 /***/ },
-/* 75 */
+/* 85 */
 1,
-/* 76 */
+/* 86 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -658,25 +712,25 @@
 	exports.default = {};
 
 /***/ },
-/* 77 */
+/* 87 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-168eb930=\"\">\n\t<ul _v-168eb930=\"\">\n\t\t<a href=\"#/home\" _v-168eb930=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-168eb930=\"\">List</a>\n\t</ul>\n</div>\n";
 
 /***/ },
-/* 78 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(79);
-	__vue_script__ = __webpack_require__(80);
+	__webpack_require__(89);
+	__vue_script__ = __webpack_require__(90);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\Showcase.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(81);
+	__vue_template__ = __webpack_require__(91);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -706,9 +760,9 @@
 	}
 
 /***/ },
-/* 79 */
+/* 89 */
 1,
-/* 80 */
+/* 90 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -723,25 +777,25 @@
 	};
 
 /***/ },
-/* 81 */
+/* 91 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Showcase\">\n\t<a class=\"item__\"\n\tv-for=\"a in items\"\n\t:href=\" '#/item/'+a.name.toLowerCase() \">\n\t\t<img :src=\" '../../img/vue/GooeyMenu.png' \"/>\n\t\t{{a.name}}\n\t</a>\n</div>\n";
 
 /***/ },
-/* 82 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(83);
-	__vue_script__ = __webpack_require__(84);
+	__webpack_require__(93);
+	__vue_script__ = __webpack_require__(94);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\components\\List.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(85);
+	__vue_template__ = __webpack_require__(95);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -771,35 +825,35 @@
 	}
 
 /***/ },
-/* 83 */
+/* 93 */
 1,
-/* 84 */
-80,
-/* 85 */
+/* 94 */
+90,
+/* 95 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"List\" _v-64b058be=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-64b058be=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-64b058be=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 86 */
+/* 96 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-66d00aac=\"\">\n\t<router-view :items=\"items\" _v-66d00aac=\"\"></router-view>\n\t<navbar _v-66d00aac=\"\"></navbar>\n</div>\n";
 
 /***/ },
-/* 87 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(88);
-	__vue_script__ = __webpack_require__(89);
+	__webpack_require__(98);
+	__vue_script__ = __webpack_require__(99);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] _mobile\\vue\\src\\router\\RouteItem.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(90);
+	__vue_template__ = __webpack_require__(100);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -829,9 +883,9 @@
 	}
 
 /***/ },
-/* 88 */
+/* 98 */
 1,
-/* 89 */
+/* 99 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -848,7 +902,7 @@
 	};
 
 /***/ },
-/* 90 */
+/* 100 */
 /***/ function(module, exports) {
 
 	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-4308a7ff=\"\">\n\t<div class=\"TOPBAR\" _v-4308a7ff=\"\">\n\t\t<span @click=\"back\" _v-4308a7ff=\"\">返回</span>\n\t</div>\n\t<router-view _v-4308a7ff=\"\"></router-view>\n</div>\n";

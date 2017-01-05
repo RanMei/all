@@ -91,19 +91,19 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 36:
+/***/ 52:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(37);
-	__vue_script__ = __webpack_require__(38);
+	__webpack_require__(53);
+	__vue_script__ = __webpack_require__(54);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\Carousel.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\MachineGunText.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(39);
+	__vue_template__ = __webpack_require__(55);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -123,7 +123,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4acd40ed/Carousel.vue";
+	    var id = "_v-e0ccbdda/MachineGunText.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -134,237 +134,345 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 37:
+/***/ 53:
 1,
 
-/***/ 38:
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		data: function data() {
-			return {
-				rotateY: 0
-			};
-		},
-		methods: {
-			next: function next() {
-				this.rotateY -= 60;
-			},
-			prev: function prev() {
-				this.rotateY += 60;
-			}
-		}
-	};
-
-/***/ },
-
-/***/ 39:
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Carousel\" _v-4acd40ed=\"\">\n\t<!-- CSS 3D Carousel -->\n\t<div class=\"cards\" :style=\" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' \" _v-4acd40ed=\"\">\n\t\t<div class=\"item a\" _v-4acd40ed=\"\">A</div>\n\t\t<div class=\"item b\" _v-4acd40ed=\"\">B</div>\n\t\t<div class=\"item c\" _v-4acd40ed=\"\">C</div>\n\t\t<div class=\"item d\" _v-4acd40ed=\"\">D</div>\n\t\t<div class=\"item e\" _v-4acd40ed=\"\">E</div>\n\t\t<div class=\"item f\" _v-4acd40ed=\"\">F</div>\n\t</div>\n\t<div class=\"next\" @click=\"next\" _v-4acd40ed=\"\">Next</div>\n\t<div class=\"prev\" @click=\"prev\" _v-4acd40ed=\"\">Prev</div>\n</div>\n";
-
-/***/ },
-
-/***/ 40:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(41);
-	__vue_script__ = __webpack_require__(42);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\StrokeCircle.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(43);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-6f13ce35/StrokeCircle.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-
-/***/ 41:
-1,
-
-/***/ 42:
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var strokeCircle = {};
-	module.exports = strokeCircle;
-
-/***/ },
-
-/***/ 43:
-/***/ function(module, exports) {
-
-	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f13ce35=\"\">\n\t<defs _v-6f13ce35=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-6f13ce35=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-6f13ce35=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\n</svg>\n";
-
-/***/ },
-
-/***/ 56:
+/***/ 54:
 /***/ function(module, exports) {
 
 	'use strict';
 
-	function haha(el) {
-		// hyperstellar
-		var c = el;
-		var $ = c.getContext('2d');
-		var u = 0;
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
 
-		var go = function go() {
-			var sc,
-			    g,
-			    g1,
-			    i,
-			    j,
-			    p,
-			    x,
-			    y,
-			    z,
-			    w,
-			    a,
-			    cur,
-			    d = new Date() / 1000,
-			    rnd = shift(),
-			    rnd1 = d,
-			    rnd2 = 2.4,
-			    rnd3 = d * 0.2,
-			    rnd1c = Math.cos(rnd1),
-			    rnd1s = Math.sin(rnd1),
-			    rnd2c = Math.cos(rnd2),
-			    rnd2s = Math.sin(rnd2);
+	function haha() {
+		var container = document.querySelector('.MachineGunText');
+		var _sentenceEndExp = /(榜)$/g;
 
-			c.width = window.innerWidth;
-			c.height = window.innerHeight;
-			sc = Math.max(c.width, c.height);
-			$.translate(c.width * 0.5, c.height * 0.5);
-			$.scale(sc, sc);
-			g = $.createLinearGradient(-1, -2, 1, 2);
-			g.addColorStop(0.0, 'hsla(338, 95%, 25%, 1)');
-			g.addColorStop(0.5, 'hsla(260, 95%, 5%, 1)');
-			g.addColorStop(1.0, 'hsla(338, 95%, 30%, 1)');
-			$.fillStyle = g;
-			$.fillRect(-0.5, -0.5, 1, 1);
-			$.globalCompositeOperation = 'lighter';
-			$.rotate(rnd3 % Math.PI * 2);
+		function machineGun(text) {
+			var words = text.split(" "),
+			    tl = new TimelineMax({ delay: 0.6, repeat: 2, repeatDelay: 4 }),
+			    wordCount = words.length,
+			    time = 0,
+			    word,
+			    element,
+			    duration,
+			    isSentenceEnd,
+			    i;
 
-			for (i = 0; i < 50; i += 1) {
-				p = rnd();
-				x = (p & 0xff) / 128 - 1;
-				y = (p >>> 8 & 0xff) / 128 - 1;
-				z = (p >>> 16 & 0xff) / 128 - 1;
-				w = (p >>> 24 & 0xff) / 256;
-				z += d * 0.5;
-				z = (z + 1) % 2 - 1;
-				a = (z + 1) * 0.5;
-				if (a < 0.9) {
-					$.globalAlpha = a / 0.7;
-				} else {
-					a -= 0.9;
-					$.globalAlpha = 1 - a / 0.1;
+			for (i = 0; i < wordCount; i++) {
+				word = words[i];
+				isSentenceEnd = _sentenceEndExp.test(word);
+				element = function () {
+					var child = document.createElement('h3');
+					child.innerHTML = word;
+					container.appendChild(child);
+					return child;
+				}();
+
+				duration = Math.max(0.5, word.length * 0.15);
+				if (isSentenceEnd) {
+					duration += 0.6;
 				}
-				cur = x * rnd1c + y * rnd1s;
-				y = x * rnd1s - y * rnd1c;
-				x = cur;
-				cur = y * rnd2c + z * rnd2s;
-				z = y * rnd2s - z * rnd2c;
-				y = cur;
-				z -= 0.65;
-				if (z >= 0) {
-					continue;
+
+				TweenLite.set(element, { autoAlpha: 0, scale: 0, z: 0.01 });
+
+				tl.to(element, duration, {
+					scale: 1.2,
+					ease: SlowMo.ease.config(0.25, 0.9)
+				}, time).to(element, duration, { autoAlpha: 1, ease: SlowMo.ease.config(0.25, 0.9, true) }, time);
+				time += duration - 0.05;
+				if (isSentenceEnd) {
+					time += 0.6;
 				}
-				sc = 0.1 / z;
-				x *= sc;
-				y *= sc;
-				$.save();
-				// g1 = $.createRadialGradient(1, 1, 2, 1, 1, 1);
-				// g1.addColorStop(0.0, 'hsla('+i+', 70%, 40%,.8)');
-				// g1.addColorStop(0.5, 'hsla('+i+', 75%, 50%, 1)');
-				// g1.addColorStop(1.0, 'hsla('+i+', 80%, 60%, .8)');
-				$.fillStyle = 'white';
-				$.translate(x, y);
-				$.scale(sc * 0.017, sc * 0.017);
-				$.beginPath();
-				$.moveTo(2, 0);
-				for (j = 0; j < 10; j += 1) {
-					$.rotate(Math.PI * 2 * 0.1);
-					$.lineTo(j % 2 + 1, 0);
-				}
-				$.arc(10, 10, 2, 0, Math.PI * 2);
-				$.rotate(Math.PI * 2 * 0.1);
-				$.closePath();
-				$.fill();
-				$.restore();
 			}
-		};
-		/*
-	 Marsaglia's Xorshift128 PRG: http://en.wikipedia.org/wiki/Xorshift
-	 */
-		var shift = function shift(x, y, z, w) {
-			x = x || 123456789;
-			y = y || 362436069;
-			z = z || 521288629;
-			w = w || 88675123;
+		}
 
-			return function () {
-				var s = x ^ x << 11;
-				x = y;
-				y = z;
-				z = w;
-				w = w ^ w >>> 19 ^ (s ^ s >>> 8);
-				return w;
-			};
-		};
-		window.addEventListener('resize', function () {
-			c.width = window.innerWidth;
-			c.height = window.innerHeight;
-		}, false);
-
-		var run = function run() {
-			window.requestAnimationFrame(run);
-			go();
-		};
-		run();
+		machineGun("阅文集团 年度庆典 原创 文学 风 云 榜");
 	};
 
-	module.exports = {
-		template: '\n\t<canvas ref="Blizzard" width="1000" height="1000"\n\tstyle="display:block;background:#0BA2FF;"></canvas>\n\t',
+	exports.default = {
 		mounted: function mounted() {
-			haha(this.$refs.Blizzard);
+			haha();
 		}
+	};
+
+/***/ },
+
+/***/ 55:
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"MachineGunText\"></div>\n";
+
+/***/ },
+
+/***/ 66:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function haha(elem) {
+	  var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
+
+	  NUM_CONFETTI = 60;
+
+	  COLORS = [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]];
+
+	  PI_2 = 2 * Math.PI;
+
+	  canvas = elem;
+
+	  context = canvas.getContext("2d");
+
+	  window.w = 0;
+
+	  window.h = 0;
+
+	  resizeWindow = function resizeWindow() {
+	    window.w = canvas.width = window.innerWidth;
+	    return window.h = canvas.height = window.innerHeight;
+	  };
+
+	  resizeWindow();
+
+	  window.addEventListener('resize', resizeWindow, false);
+
+	  window.onload = function () {
+	    return setTimeout(resizeWindow, 0);
+	  };
+
+	  range = function range(a, b) {
+	    return (b - a) * Math.random() + a;
+	  };
+
+	  drawCircle = function drawCircle(x, y, r, style) {
+	    context.beginPath();
+	    context.arc(x, y, r, 0, PI_2, false);
+	    context.fillStyle = style;
+	    return context.fill();
+	  };
+
+	  xpos = 0.5;
+
+	  // document.onmousemove = function(e) {
+	  //   return xpos = e.pageX / w;
+	  // };
+
+	  window.requestAnimationFrame = function () {
+	    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+	      return window.setTimeout(callback, 1000 / 60);
+	    };
+	  }();
+
+	  Confetti = function () {
+	    function Confetti() {
+	      this.style = COLORS[~~range(0, 5)];
+	      //this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
+	      this.rgb = 'rgba(255,255,255';
+	      //this.r = ~~range(2, 6);
+	      this.r = ~~range(2, 6);
+	      this.r2 = 2 * this.r;
+	      this.replace();
+	    }
+
+	    Confetti.prototype.replace = function () {
+	      this.opacity = 0;
+	      this.dop = 0.03 * range(1, 4);
+	      this.x = range(-this.r2, w - this.r2);
+	      this.y = range(-20, h - this.r2);
+	      this.xmax = w - this.r;
+	      this.ymax = h - this.r;
+	      //this.vx = range(0, 2) + 8 * xpos - 5;
+	      this.vx = range(-3, 0);
+	      //this.vy = 0.7 * this.r + range(-1, 1);
+	      this.vy = 1 * this.r + range(-1, 1);
+	    };
+
+	    Confetti.prototype.draw = function () {
+	      var ref;
+	      this.x += this.vx;
+	      this.y += this.vy;
+	      this.opacity += this.dop;
+	      if (this.opacity > 1) {
+	        this.opacity = 1;
+	        this.dop *= -1;
+	      }
+	      if (this.opacity < 0 || this.y > this.ymax) {
+	        this.replace();
+	      }
+	      if (!(0 < (ref = this.x) && ref < this.xmax)) {
+	        this.x = (this.x + this.xmax) % this.xmax;
+	      }
+	      return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
+	    };
+
+	    return Confetti;
+	  }();
+
+	  confetti = function () {
+	    var j, ref, results;
+	    results = [];
+	    for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+	      results.push(new Confetti());
+	    }
+	    return results;
+	  }();
+
+	  window.step = function () {
+	    var c, j, len, results;
+	    requestAnimationFrame(step);
+	    context.clearRect(0, 0, w, h);
+	    results = [];
+	    for (j = 0, len = confetti.length; j < len; j++) {
+	      c = confetti[j];
+	      results.push(c.draw());
+	    }
+	    return results;
+	  };
+
+	  step();
+	}
+
+	module.exports = {
+	  template: '\n        <canvas ref="confetti"\n        style="display:block;background:url(./cover.jpg);background-size:100% auto;"></canvas>\n    ',
+	  mounted: function mounted() {
+	    haha(this.$refs.confetti);
+	  }
+	};
+
+/***/ },
+
+/***/ 70:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function getRandomInt(min, max) {
+	    return Math.floor(Math.random() * (max - min)) + min;
+	}
+	function extend(target) {
+	    target = arguments[0];
+
+	    var objects = Array.prototype.splice.call(arguments, 1);
+
+	    objects.forEach(function (obj) {
+	        for (var prop in obj) {
+	            target[prop] = obj[prop];
+	        }
+	    });
+
+	    return target;
+	}
+
+	function Particle(opts) {
+	    this.opts = opts;
+
+	    this.cv = opts.cv;
+	    this.color = this.opts.color;
+	    this.x = this.opts.x;
+	    this.y = this.opts.y;
+	    this.d = this.opts.d;
+
+	    this.radius = this.opts.radius;
+	};
+	Particle.prototype = {
+	    update: function update() {
+	        var width = this.cv.$width;
+	        var height = this.cv.$height;
+	        var x, y;
+
+	        x = this.x + Math.cos(0) * this.d * 2;
+	        y = this.y + Math.sin(0) + 1 + this.radius / 3 * this.d * 2;
+
+	        if (x > width) {
+	            x = 0;
+	        };
+	        if (x < 0) {
+	            x = width;
+	        };
+	        if (y > height) {
+	            y = 0;
+	            x = getRandomInt(0, width);
+	        };
+
+	        this.x = x;
+	        this.y = y;
+	    },
+	    draw: function draw(ctx) {
+	        ctx.beginPath();
+	        ctx.moveTo(this.x, this.y);
+	        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+	        ctx.fillStyle = this.color;
+	        ctx.fill();
+	    }
+	};
+
+	var Snow = Canvas.extend({
+	    props: function props() {
+	        return {
+	            color: 'white',
+	            speed: 2,
+	            count: 50,
+	            maxRadius: 5
+	        };
+	    },
+	    data: function data() {
+	        return {
+	            particles: [],
+	            angle: 0
+	        };
+	    },
+	    beforePlay: function beforePlay() {
+	        var _this = this;
+
+	        this.$setSize(window.innerWidth, window.innerHeight);
+	        window.addEventListener('resize', function () {
+	            _this.$setSize(window.innerWidth, window.innerHeight);
+	        });
+	        this.createParticles();
+	    },
+	    render: function render() {
+	        var self = this;
+	        this.angle = this.angle - 0.0001;
+
+	        this.$ctx.clearRect(0, 0, this.$width, this.$height);
+	        this.particles.forEach(function (p) {
+	            p.update();
+	            p.draw(self.$ctx);
+	        });
+	    },
+	    methods: {
+	        createParticles: function createParticles() {
+	            var self = this;
+	            for (var i = 0; i < this.count; i++) {
+	                self.particles.push(new Particle({
+	                    color: self.color,
+	                    x: Math.round(Math.random() * self.$width),
+	                    y: Math.round(Math.random() * self.$height),
+	                    d: Math.random(),
+	                    radius: getRandomInt(2, self.maxRadius),
+	                    cv: self,
+	                    ctx: self.$ctx
+	                }));
+	            }
+	        }
+	    }
+	});
+
+	module.exports = {
+	    template: '\n        <canvas ref="snowfall" width="1000" height="1000"\n        style="display:block;background:#0BA2FF;"></canvas>\n    ',
+	    mounted: function mounted() {
+	        new Snow({
+	            el: this.$refs.snowfall,
+	            props: {
+	                color: 'white',
+	                speed: 2,
+	                count: 20,
+	                maxRadius: 5
+	            }
+	        });
+	    }
 	};
 
 /***/ }

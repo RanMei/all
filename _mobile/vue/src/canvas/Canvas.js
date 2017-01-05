@@ -117,6 +117,10 @@ Canvas.extend = function(opts){
 	return Sub;
 }
 
+Canvas.random = function(min,max){
+	return min + (max-min)*Math.random();
+}
+
 Canvas.prototype._renderFPS = function(){
 	this._tick++;
 	if(this._tick===60){
