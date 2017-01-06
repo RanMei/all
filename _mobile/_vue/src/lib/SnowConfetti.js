@@ -1,3 +1,5 @@
+var Canvas = window.Canvas;
+
 function Confetti(cv) {
 	this.cv = cv;
 	//this.style = COLORS[~~range(0, 5)];

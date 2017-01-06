@@ -51,20 +51,9 @@ module.exports = [{
 	component: 'MachineGunText',
 	path: '../lib/MachineGunText.vue'
 },{
-	name: 'SmokyText',
-	component: 'SmokyText',
-	path: '../lib/SmokyText.vue'
-},{
-	name: 'Farm',
-	component: 'Farm',
-	path: '../lib/Farm.vue'
 
 
-},{
-	name: 'SnowConfetti',
-	component: 'SnowConfetti',
-	path: '../canvas/SnowConfetti.js'
-},{
+
 	name: 'Blizzard',
 	component: 'Blizzard',
 	path: '../canvas/Blizzard.js'

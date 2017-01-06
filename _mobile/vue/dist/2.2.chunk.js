@@ -91,6 +91,69 @@ webpackJsonp([2],{
 
 /***/ },
 
+/***/ 40:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(41);
+	__vue_script__ = __webpack_require__(42);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\StrokeCircle.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(43);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-6f13ce35/StrokeCircle.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+
+/***/ 41:
+1,
+
+/***/ 42:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var strokeCircle = {};
+	module.exports = strokeCircle;
+
+/***/ },
+
+/***/ 43:
+/***/ function(module, exports) {
+
+	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f13ce35=\"\">\n\t<defs _v-6f13ce35=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-6f13ce35=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-6f13ce35=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\n</svg>\n";
+
+/***/ },
+
 /***/ 52:
 /***/ function(module, exports, __webpack_require__) {
 
@@ -207,143 +270,7 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 66:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	function haha(elem) {
-	  var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
-
-	  NUM_CONFETTI = 60;
-
-	  COLORS = [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]];
-
-	  PI_2 = 2 * Math.PI;
-
-	  canvas = elem;
-
-	  context = canvas.getContext("2d");
-
-	  window.w = 0;
-
-	  window.h = 0;
-
-	  resizeWindow = function resizeWindow() {
-	    window.w = canvas.width = window.innerWidth;
-	    return window.h = canvas.height = window.innerHeight;
-	  };
-
-	  resizeWindow();
-
-	  window.addEventListener('resize', resizeWindow, false);
-
-	  window.onload = function () {
-	    return setTimeout(resizeWindow, 0);
-	  };
-
-	  range = function range(a, b) {
-	    return (b - a) * Math.random() + a;
-	  };
-
-	  drawCircle = function drawCircle(x, y, r, style) {
-	    context.beginPath();
-	    context.arc(x, y, r, 0, PI_2, false);
-	    context.fillStyle = style;
-	    return context.fill();
-	  };
-
-	  xpos = 0.5;
-
-	  // document.onmousemove = function(e) {
-	  //   return xpos = e.pageX / w;
-	  // };
-
-	  window.requestAnimationFrame = function () {
-	    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
-	      return window.setTimeout(callback, 1000 / 60);
-	    };
-	  }();
-
-	  Confetti = function () {
-	    function Confetti() {
-	      this.style = COLORS[~~range(0, 5)];
-	      //this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
-	      this.rgb = 'rgba(255,255,255';
-	      //this.r = ~~range(2, 6);
-	      this.r = ~~range(2, 6);
-	      this.r2 = 2 * this.r;
-	      this.replace();
-	    }
-
-	    Confetti.prototype.replace = function () {
-	      this.opacity = 0;
-	      this.dop = 0.03 * range(1, 4);
-	      this.x = range(-this.r2, w - this.r2);
-	      this.y = range(-20, h - this.r2);
-	      this.xmax = w - this.r;
-	      this.ymax = h - this.r;
-	      //this.vx = range(0, 2) + 8 * xpos - 5;
-	      this.vx = range(-3, 0);
-	      //this.vy = 0.7 * this.r + range(-1, 1);
-	      this.vy = 1 * this.r + range(-1, 1);
-	    };
-
-	    Confetti.prototype.draw = function () {
-	      var ref;
-	      this.x += this.vx;
-	      this.y += this.vy;
-	      this.opacity += this.dop;
-	      if (this.opacity > 1) {
-	        this.opacity = 1;
-	        this.dop *= -1;
-	      }
-	      if (this.opacity < 0 || this.y > this.ymax) {
-	        this.replace();
-	      }
-	      if (!(0 < (ref = this.x) && ref < this.xmax)) {
-	        this.x = (this.x + this.xmax) % this.xmax;
-	      }
-	      return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
-	    };
-
-	    return Confetti;
-	  }();
-
-	  confetti = function () {
-	    var j, ref, results;
-	    results = [];
-	    for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
-	      results.push(new Confetti());
-	    }
-	    return results;
-	  }();
-
-	  window.step = function () {
-	    var c, j, len, results;
-	    requestAnimationFrame(step);
-	    context.clearRect(0, 0, w, h);
-	    results = [];
-	    for (j = 0, len = confetti.length; j < len; j++) {
-	      c = confetti[j];
-	      results.push(c.draw());
-	    }
-	    return results;
-	  };
-
-	  step();
-	}
-
-	module.exports = {
-	  template: '\n        <canvas ref="confetti"\n        style="display:block;background:url(./cover.jpg);background-size:100% auto;"></canvas>\n    ',
-	  mounted: function mounted() {
-	    haha(this.$refs.confetti);
-	  }
-	};
-
-/***/ },
-
-/***/ 70:
+/***/ 61:
 /***/ function(module, exports) {
 
 	'use strict';

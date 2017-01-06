@@ -1,18 +1,18 @@
 webpackJsonp([6],{
 
-/***/ 36:
+/***/ 44:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(37);
-	__vue_script__ = __webpack_require__(38);
+	__webpack_require__(45);
+	__vue_script__ = __webpack_require__(46);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\Carousel.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\Orientation.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(39);
+	__vue_template__ = __webpack_require__(47);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -32,7 +32,7 @@ webpackJsonp([6],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4acd40ed/Carousel.vue";
+	    var id = "_v-3eb24353/Orientation.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -43,13 +43,13 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 37:
+/***/ 45:
 1,
 
-/***/ 38:
+/***/ 46:
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -57,41 +57,215 @@ webpackJsonp([6],{
 	exports.default = {
 		data: function data() {
 			return {
-				rotateY: 0
+				rotationRate: {
+					alpha: '111'
+				},
+				rotateX: 0,
+				rotateY: 0,
+				recalibrating: false
 			};
 		},
+		created: function created() {
+			var self = this;
+			if (window.DeviceMotionEvent) {
+				window.addEventListener('devicemotion', self.handler.bind(self), false);
+			} else {
+				console.log('');
+			}
+		},
 		methods: {
-			next: function next() {
-				this.rotateY -= 60;
+			recalibrate: function recalibrate(e) {
+				var _this = this;
+
+				this.recalibrating = true;
+				this.rotateX = 0;
+				this.rotateY = 0;
+				setTimeout(function () {
+					_this.recalibrating = false;
+				}, 1000);
 			},
-			prev: function prev() {
-				this.rotateY += 60;
+			handler: function handler(e) {
+				if (!this.recalibrating) {
+					this.rotationRate.alpha = e.rotationRate.alpha;
+
+					var nextX = this.rotateX + e.rotationRate.alpha * 3;
+					if (nextX >= 45) {
+						nextX = 45;
+					} else if (nextX <= -45) {
+						nextX = -45;
+					}
+					this.rotateX = nextX;
+
+					var nextY = this.rotateY + e.rotationRate.beta * 3;
+					if (nextY >= 45) {
+						nextY = 45;
+					} else if (nextY <= -45) {
+						nextY = -45;
+					}
+					this.rotateY = nextY;
+				}
 			}
 		}
 	};
 
 /***/ },
 
-/***/ 39:
+/***/ 47:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Carousel\" _v-4acd40ed=\"\">\n\t<!-- CSS 3D Carousel -->\n\t<div class=\"cards\" :style=\" 'transform: rotateY('+rotateY+'deg);-webkit-transform: rotateY('+rotateY+'deg);' \" _v-4acd40ed=\"\">\n\t\t<div class=\"item a\" _v-4acd40ed=\"\">A</div>\n\t\t<div class=\"item b\" _v-4acd40ed=\"\">B</div>\n\t\t<div class=\"item c\" _v-4acd40ed=\"\">C</div>\n\t\t<div class=\"item d\" _v-4acd40ed=\"\">D</div>\n\t\t<div class=\"item e\" _v-4acd40ed=\"\">E</div>\n\t\t<div class=\"item f\" _v-4acd40ed=\"\">F</div>\n\t</div>\n\t<div class=\"next\" @click=\"next\" _v-4acd40ed=\"\">Next</div>\n\t<div class=\"prev\" @click=\"prev\" _v-4acd40ed=\"\">Prev</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-3eb24353=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-3eb24353=\"\">\n\t\t{{rotationRate.alpha}}<br _v-3eb24353=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
 
 /***/ },
 
-/***/ 40:
+/***/ 57:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function haha(elem) {
+	  var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
+
+	  NUM_CONFETTI = 60;
+
+	  COLORS = [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]];
+
+	  PI_2 = 2 * Math.PI;
+
+	  canvas = elem;
+
+	  context = canvas.getContext("2d");
+
+	  window.w = 0;
+
+	  window.h = 0;
+
+	  resizeWindow = function resizeWindow() {
+	    window.w = canvas.width = window.innerWidth;
+	    return window.h = canvas.height = window.innerHeight;
+	  };
+
+	  resizeWindow();
+
+	  window.addEventListener('resize', resizeWindow, false);
+
+	  window.onload = function () {
+	    return setTimeout(resizeWindow, 0);
+	  };
+
+	  range = function range(a, b) {
+	    return (b - a) * Math.random() + a;
+	  };
+
+	  drawCircle = function drawCircle(x, y, r, style) {
+	    context.beginPath();
+	    context.arc(x, y, r, 0, PI_2, false);
+	    context.fillStyle = style;
+	    return context.fill();
+	  };
+
+	  xpos = 0.5;
+
+	  // document.onmousemove = function(e) {
+	  //   return xpos = e.pageX / w;
+	  // };
+
+	  window.requestAnimationFrame = function () {
+	    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+	      return window.setTimeout(callback, 1000 / 60);
+	    };
+	  }();
+
+	  Confetti = function () {
+	    function Confetti() {
+	      this.style = COLORS[~~range(0, 5)];
+	      //this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
+	      this.rgb = 'rgba(255,255,255';
+	      //this.r = ~~range(2, 6);
+	      this.r = ~~range(2, 6);
+	      this.r2 = 2 * this.r;
+	      this.replace();
+	    }
+
+	    Confetti.prototype.replace = function () {
+	      this.opacity = 0;
+	      this.dop = 0.03 * range(1, 4);
+	      this.x = range(-this.r2, w - this.r2);
+	      this.y = range(-20, h - this.r2);
+	      this.xmax = w - this.r;
+	      this.ymax = h - this.r;
+	      //this.vx = range(0, 2) + 8 * xpos - 5;
+	      this.vx = range(-3, 0);
+	      //this.vy = 0.7 * this.r + range(-1, 1);
+	      this.vy = 1 * this.r + range(-1, 1);
+	    };
+
+	    Confetti.prototype.draw = function () {
+	      var ref;
+	      this.x += this.vx;
+	      this.y += this.vy;
+	      this.opacity += this.dop;
+	      if (this.opacity > 1) {
+	        this.opacity = 1;
+	        this.dop *= -1;
+	      }
+	      if (this.opacity < 0 || this.y > this.ymax) {
+	        this.replace();
+	      }
+	      if (!(0 < (ref = this.x) && ref < this.xmax)) {
+	        this.x = (this.x + this.xmax) % this.xmax;
+	      }
+	      return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
+	    };
+
+	    return Confetti;
+	  }();
+
+	  confetti = function () {
+	    var j, ref, results;
+	    results = [];
+	    for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+	      results.push(new Confetti());
+	    }
+	    return results;
+	  }();
+
+	  window.step = function () {
+	    var c, j, len, results;
+	    requestAnimationFrame(step);
+	    context.clearRect(0, 0, w, h);
+	    results = [];
+	    for (j = 0, len = confetti.length; j < len; j++) {
+	      c = confetti[j];
+	      results.push(c.draw());
+	    }
+	    return results;
+	  };
+
+	  step();
+	}
+
+	module.exports = {
+	  template: '\n        <canvas ref="confetti"\n        style="display:block;background:url(./cover.jpg);background-size:100% auto;"></canvas>\n    ',
+	  mounted: function mounted() {
+	    haha(this.$refs.confetti);
+	  }
+	};
+
+/***/ },
+
+/***/ 62:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(41);
-	__vue_script__ = __webpack_require__(42);
+	__webpack_require__(63);
+	__vue_script__ = __webpack_require__(64);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\StrokeCircle.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] _mobile\\vue\\src\\canvas\\Heart.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(43);
+	__vue_template__ = __webpack_require__(65);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -111,7 +285,7 @@ webpackJsonp([6],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6f13ce35/StrokeCircle.vue";
+	    var id = "_v-080b5318/Heart.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -122,305 +296,173 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 41:
+/***/ 63:
 1,
 
-/***/ 42:
+/***/ 64:
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
-	var strokeCircle = {};
-	module.exports = strokeCircle;
+	Object.defineProperty(exports, "__esModule", {
+			value: true
+	});
+	exports.default = {
+			data: function data() {
+					return {};
+			},
+			mounted: function mounted() {
+					window.requestAnimationFrame = window.__requestAnimationFrame || window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function () {
+							return function (callback, element) {
+									var lastTime = element.__lastTime;
+									if (lastTime === undefined) {
+											lastTime = 0;
+									}
+									var currTime = Date.now();
+									var timeToCall = Math.max(1, 33 - (currTime - lastTime));
+									window.setTimeout(callback, timeToCall);
+									element.__lastTime = currTime + timeToCall;
+							};
+					}();
+					window.isDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test((navigator.userAgent || navigator.vendor || window.opera).toLowerCase());
+					var loaded = false;
+					var init = function init() {
+							if (loaded) return;
+							loaded = true;
+							var mobile = window.isDevice;
+							var koef = 1;
+							var canvas = document.getElementById('heart');
+							var ctx = canvas.getContext('2d');
+							var width = canvas.width = koef * innerWidth;
+							var height = canvas.height = koef * innerHeight;
+							var rand = Math.random;
+							ctx.fillStyle = "rgba(0,0,0,1)";
+							ctx.fillRect(0, 0, width, height);
 
-/***/ },
+							var heartPosition = function heartPosition(rad) {
+									return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
+							};
+							var scaleAndTranslate = function scaleAndTranslate(pos, sx, sy, dx, dy) {
+									return [dx + pos[0] * sx, dy + pos[1] * sy];
+							};
 
-/***/ 43:
-/***/ function(module, exports) {
+							window.addEventListener('resize', function () {
+									width = canvas.width = koef * innerWidth;
+									height = canvas.height = koef * innerHeight;
+									ctx.fillStyle = "rgba(0,0,0,1)";
+									ctx.fillRect(0, 0, width, height);
+							});
 
-	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f13ce35=\"\">\n\t<defs _v-6f13ce35=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-6f13ce35=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-6f13ce35=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\n</svg>\n";
+							var traceCount = mobile ? 20 : 50;
+							var pointsOrigin = [];
+							var i;
+							var dr = mobile ? 0.3 : 0.1;
+							for (i = 0; i < Math.PI * 2; i += dr) {
+									pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
+							}for (i = 0; i < Math.PI * 2; i += dr) {
+									pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
+							}for (i = 0; i < Math.PI * 2; i += dr) {
+									pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+							}var heartPointsCount = pointsOrigin.length;
+
+							var targetPoints = [];
+							var pulse = function pulse(kx, ky) {
+									for (i = 0; i < pointsOrigin.length; i++) {
+											targetPoints[i] = [];
+											targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
+											targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
+									}
+							};
+
+							function createPoints() {}
+
+							var e = [];
+							for (i = 0; i < heartPointsCount; i++) {
+									var x = rand() * width;
+									var y = rand() * height;
+									e[i] = {
+											vx: 0,
+											vy: 0,
+											R: 2,
+											speed: rand() + 5,
+											q: ~~(rand() * heartPointsCount),
+											D: 2 * (i % 2) - 1,
+											force: 0.2 * rand() + 0.7,
+											f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+											trace: []
+									};
+									for (var k = 0; k < traceCount; k++) {
+											e[i].trace[k] = { x: x, y: y };
+									}
+							}
+
+							var config = {
+									traceK: 0.4,
+									timeDelta: 0.01
+							};
+
+							var time = 0;
+							var loop = function loop() {
+									var n = -Math.cos(time);
+									pulse((1 + n) * .5, (1 + n) * .5);
+									time += (Math.sin(time) < 0 ? 9 : n > 0.8 ? .2 : 1) * config.timeDelta;
+									ctx.fillStyle = "rgba(0,0,0,.1)";
+									ctx.fillRect(0, 0, width, height);
+									for (i = e.length; i--;) {
+											var u = e[i];
+											var q = targetPoints[u.q];
+											var dx = u.trace[0].x - q[0];
+											var dy = u.trace[0].y - q[1];
+											var length = Math.sqrt(dx * dx + dy * dy);
+											if (10 > length) {
+													if (0.95 < rand()) {
+															u.q = ~~(rand() * heartPointsCount);
+													} else {
+															if (0.99 < rand()) {
+																	u.D *= -1;
+															}
+															u.q += u.D;
+															u.q %= heartPointsCount;
+															if (0 > u.q) {
+																	u.q += heartPointsCount;
+															}
+													}
+											}
+											u.vx += -dx / length * u.speed;
+											u.vy += -dy / length * u.speed;
+											u.trace[0].x += u.vx;
+											u.trace[0].y += u.vy;
+											u.vx *= u.force;
+											u.vy *= u.force;
+											for (k = 0; k < u.trace.length - 1;) {
+													var T = u.trace[k];
+													var N = u.trace[++k];
+													N.x -= config.traceK * (N.x - T.x);
+													N.y -= config.traceK * (N.y - T.y);
+											}
+											ctx.fillStyle = u.f;
+											for (k = 0; k < u.trace.length; k++) {
+													ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
+											}
+									}
+
+
+									window.requestAnimationFrame(loop, canvas);
+							};
+							loop();
+					};
+
+					var s = document.readyState;
+					if (s === 'complete' || s === 'loaded' || s === 'interactive') init();else document.addEventListener('DOMContentLoaded', init, false);
+			}
+	};
 
 /***/ },
 
 /***/ 65:
 /***/ function(module, exports) {
 
-	'use strict';
-
-	function haha(el) {
-		// hyperstellar
-		var c = el;
-		var $ = c.getContext('2d');
-		var u = 0;
-
-		var go = function go() {
-			var sc,
-			    g,
-			    g1,
-			    i,
-			    j,
-			    p,
-			    x,
-			    y,
-			    z,
-			    w,
-			    a,
-			    cur,
-			    d = new Date() / 1000,
-			    rnd = shift(),
-			    rnd1 = d,
-			    rnd2 = 2.4,
-			    rnd3 = d * 0.2,
-			    rnd1c = Math.cos(rnd1),
-			    rnd1s = Math.sin(rnd1),
-			    rnd2c = Math.cos(rnd2),
-			    rnd2s = Math.sin(rnd2);
-
-			c.width = window.innerWidth;
-			c.height = window.innerHeight;
-			sc = Math.max(c.width, c.height);
-			$.translate(c.width * 0.5, c.height * 0.5);
-			$.scale(sc, sc);
-			g = $.createLinearGradient(-1, -2, 1, 2);
-			g.addColorStop(0.0, 'hsla(338, 95%, 25%, 1)');
-			g.addColorStop(0.5, 'hsla(260, 95%, 5%, 1)');
-			g.addColorStop(1.0, 'hsla(338, 95%, 30%, 1)');
-			$.fillStyle = g;
-			$.fillRect(-0.5, -0.5, 1, 1);
-			$.globalCompositeOperation = 'lighter';
-			$.rotate(rnd3 % Math.PI * 2);
-
-			for (i = 0; i < 50; i += 1) {
-				p = rnd();
-				x = (p & 0xff) / 128 - 1;
-				y = (p >>> 8 & 0xff) / 128 - 1;
-				z = (p >>> 16 & 0xff) / 128 - 1;
-				w = (p >>> 24 & 0xff) / 256;
-				z += d * 0.5;
-				z = (z + 1) % 2 - 1;
-				a = (z + 1) * 0.5;
-				if (a < 0.9) {
-					$.globalAlpha = a / 0.7;
-				} else {
-					a -= 0.9;
-					$.globalAlpha = 1 - a / 0.1;
-				}
-				cur = x * rnd1c + y * rnd1s;
-				y = x * rnd1s - y * rnd1c;
-				x = cur;
-				cur = y * rnd2c + z * rnd2s;
-				z = y * rnd2s - z * rnd2c;
-				y = cur;
-				z -= 0.65;
-				if (z >= 0) {
-					continue;
-				}
-				sc = 0.1 / z;
-				x *= sc;
-				y *= sc;
-				$.save();
-				// g1 = $.createRadialGradient(1, 1, 2, 1, 1, 1);
-				// g1.addColorStop(0.0, 'hsla('+i+', 70%, 40%,.8)');
-				// g1.addColorStop(0.5, 'hsla('+i+', 75%, 50%, 1)');
-				// g1.addColorStop(1.0, 'hsla('+i+', 80%, 60%, .8)');
-				$.fillStyle = 'white';
-				$.translate(x, y);
-				$.scale(sc * 0.017, sc * 0.017);
-				$.beginPath();
-				$.moveTo(2, 0);
-				for (j = 0; j < 10; j += 1) {
-					$.rotate(Math.PI * 2 * 0.1);
-					$.lineTo(j % 2 + 1, 0);
-				}
-				$.arc(10, 10, 2, 0, Math.PI * 2);
-				$.rotate(Math.PI * 2 * 0.1);
-				$.closePath();
-				$.fill();
-				$.restore();
-			}
-		};
-		/*
-	 Marsaglia's Xorshift128 PRG: http://en.wikipedia.org/wiki/Xorshift
-	 */
-		var shift = function shift(x, y, z, w) {
-			x = x || 123456789;
-			y = y || 362436069;
-			z = z || 521288629;
-			w = w || 88675123;
-
-			return function () {
-				var s = x ^ x << 11;
-				x = y;
-				y = z;
-				z = w;
-				w = w ^ w >>> 19 ^ (s ^ s >>> 8);
-				return w;
-			};
-		};
-		window.addEventListener('resize', function () {
-			c.width = window.innerWidth;
-			c.height = window.innerHeight;
-		}, false);
-
-		var run = function run() {
-			window.requestAnimationFrame(run);
-			go();
-		};
-		run();
-	};
-
-	module.exports = {
-		template: '\n\t<canvas ref="Blizzard" width="1000" height="1000"\n\tstyle="display:block;background:#0BA2FF;"></canvas>\n\t',
-		mounted: function mounted() {
-			haha(this.$refs.Blizzard);
-		}
-	};
-
-/***/ },
-
-/***/ 67:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	function Drop(cv) {
-		var self = this;
-		this.w = cv.$width;
-		this.ctx = cv.$ctx;
-		this.x = Math.random() * this.w;
-		this.y = -Math.random() * 800;
-		//this.lightness = 50;
-		this.a = 0.7 + Math.random() * 0.3;
-		this.minus = true;
-		this.color = 'rgba(0,94,255,' + this.a + ')'; //'hsl(250,100%,'+this.lightness+'%)';
-		this.speed = 4 + Math.random() * 10;
-		this.width = function () {
-			if (self.speed <= 5) {
-				return 1;
-			} else if (self.speed <= 12) {
-				return 2;
-			} else {
-				return 3;
-			}
-		}();
-		this.height = function () {
-			if (self.speed <= 5) {
-				return 2;
-			} else if (self.speed <= 12) {
-				return 4;
-			} else {
-				return 6;
-			}
-		}();
-	}
-	Drop.prototype = {
-		step: function step() {
-			this.y += this.speed;
-			// this.lightness -= 0.2;
-			// this.color = 'hsl(250,100%,'+this.lightness+'%)';
-			if (this.a >= 1) {
-				this.minus = true;
-			} else if (this.a <= 0.7) {
-				this.minus = false;
-			}
-			if (this.minus === true) {
-				this.a -= 0.05;
-			} else {
-				this.a += 0.05;
-			}
-			this.color = 'rgba(0,94,255,' + this.a + ')';
-		},
-		draw: function draw() {
-			this.ctx.beginPath();
-			this.ctx.fillStyle = this.color;
-			this.ctx.fillRect(this.x, this.y, this.width, this.height);
-		}
-	};
-
-	function Splash(x, y, cv) {
-		this.ctx = cv.$ctx;
-		this.x = x;
-		this.y = y;
-		this.r = 2;
-		this.speedX = Math.random() * 6 - 3;
-		this.speedY = -Math.random() * 3;
-		this.life = 30;
-		this.color = 'rgba(0,94,255,1)';
-	}
-	Splash.prototype = {
-		draw: function draw() {
-			this.ctx.beginPath();
-			this.ctx.fillStyle = this.color;
-			this.ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
-			this.ctx.fill();
-		},
-		step: function step() {
-			this.x += this.speedX;
-			this.y += this.speedY;
-			this.r += -0.05;
-			this.life--;
-		}
-	};
-
-	var Rain = Canvas.extend({
-		props: function props() {
-			return {
-				dropCount: 500
-			};
-		},
-		data: function data() {
-			return {
-				drops: [],
-				splashes: []
-			};
-		},
-		beforePlay: function beforePlay() {
-			this.createDrops();
-		},
-		render: function render() {
-			var self = this;
-			var ctx = this.$ctx;
-			ctx.globalCompositeOperation = 'source-over';
-			ctx.fillStyle = 'rgba(0,0,0,0.5)';
-			ctx.fillRect(0, 0, this.$width, this.$height);
-			ctx.globalCompositeOperation = 'lighter';
-
-			self.drops.forEach(function (drop, i) {
-				drop.draw();
-				drop.step();
-				if (drop.y > self.$height) {
-					self.drops[i] = new Drop(self);
-					self.splashes.push(new Splash(drop.x, self.$height, self));
-				}
-			});
-			self.splashes.forEach(function (splash, i) {
-				splash.draw();
-				splash.step();
-				if (splash.life <= 0) {
-					self.splashes.splice(i, 1);
-				}
-			});
-		},
-		methods: {
-			createDrops: function createDrops() {
-				for (var i = 0; i < this.dropCount; i++) {
-					this.drops[i] = new Drop(this);
-				}
-			}
-		}
-	});
-
-	module.exports = {
-		template: '<canvas id="Rain" width="1000" height="1000" ref="canvas" style="display:block;width:100%;"></canvas>',
-		mounted: function mounted() {
-			new Rain({
-				el: this.$refs.canvas,
-				props: {
-					dropCount: 500
-				}
-			});
-		}
-	};
+	module.exports = "\n<canvas id=\"heart\" _v-080b5318=\"\"></canvas>\n";
 
 /***/ }
 

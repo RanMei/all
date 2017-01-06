@@ -1,366 +1,158 @@
 webpackJsonp([8],{
 
-/***/ 56:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(57);
-	__vue_script__ = __webpack_require__(58);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\SmokyText.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(59);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-cee754da/SmokyText.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-
-/***/ 57:
-1,
-
 /***/ 58:
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		data: function data() {
+	var _Canvas = __webpack_require__(59);
+
+	function Drop(cv) {
+		var self = this;
+		this.cv = cv;
+		this.ctx = cv.$ctx;
+		this.spawn();
+	}
+	Drop.prototype = {
+		spawn: function spawn() {
+			this.x = Math.random() * this.cv.$width;
+			this.y = -Math.random() * 800;
+			//this.lightness = 50;
+			this.a = 0.7 + Math.random() * 0.3;
+			this.minus = true;
+			this.color = 'rgba(0,94,255,' + this.a + ')'; //'hsl(250,100%,'+this.lightness+'%)';
+			this.speed = _Canvas.Canvas.random(4, 14);
+			this.width = function () {
+				if (self.speed <= 5) {
+					return 1;
+					// }else if( self.speed<=12 ){
+					// 	return 2;
+				} else {
+					return 2;
+				}
+			}();
+			this.height = function () {
+				if (self.speed <= 5) {
+					return 2;
+				} else if (self.speed <= 12) {
+					return 4;
+				} else {
+					return 6;
+				}
+			}();
+		},
+		step: function step() {
+			this.y += this.speed;
+			// this.lightness -= 0.2;
+			// this.color = 'hsl(250,100%,'+this.lightness+'%)';
+			if (this.a >= 1) {
+				this.minus = true;
+			} else if (this.a <= 0.7) {
+				this.minus = false;
+			}
+			if (this.minus === true) {
+				this.a -= 0.05;
+			} else {
+				this.a += 0.05;
+			}
+			this.color = 'rgba(0,94,255,' + this.a + ')';
+		},
+		draw: function draw() {
+			this.ctx.beginPath();
+			this.ctx.fillStyle = this.color;
+			this.ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
+	};
+
+	function Splash(x, y, cv) {
+		this.ctx = cv.$ctx;
+		this.x = x;
+		this.y = y;
+		this.r = 2;
+		this.speedX = Math.random() * 6 - 3;
+		this.speedY = -Math.random() * 3;
+		this.life = 30;
+		this.color = 'rgba(0,94,255,1)';
+	}
+	Splash.prototype = {
+		draw: function draw() {
+			this.ctx.beginPath();
+			this.ctx.fillStyle = this.color;
+			this.ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+			this.ctx.fill();
+		},
+		step: function step() {
+			this.x += this.speedX;
+			this.y += this.speedY;
+			this.r += -0.05;
+			this.life--;
+		}
+	};
+
+	var Rain = _Canvas.Canvas.extend({
+		props: function props() {
 			return {
-				className: ''
+				dropCount: 200
 			};
 		},
-		mounted: function mounted() {},
+		data: function data() {
+			return {
+				drops: [],
+				splashes: []
+			};
+		},
+		beforePlay: function beforePlay() {
+			this.createDrops();
+		},
+		render: function render() {
+			var self = this;
+			var ctx = this.$ctx;
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.fillStyle = 'rgba(0,0,0,0.5)';
+			ctx.fillRect(0, 0, this.$width, this.$height);
+			ctx.globalCompositeOperation = 'lighter';
+
+			self.drops.forEach(function (drop, i) {
+				drop.step();
+				if (drop.y > self.$height) {
+					drop.spawn();
+					self.splashes.push(new Splash(drop.x, self.$height, self));
+				}
+				drop.draw();
+			});
+			self.splashes.forEach(function (splash, i) {
+				splash.draw();
+				splash.step();
+				if (splash.life <= 0) {
+					self.splashes.splice(i, 1);
+				}
+			});
+		},
 		methods: {
-			go: function go() {
-				this.className = this.className === '' ? 'active' : '';
+			createDrops: function createDrops() {
+				for (var i = 0; i < this.dropCount; i++) {
+					this.drops[i] = new Drop(this);
+				}
 			}
+		}
+	});
+
+	module.exports = {
+		template: '<canvas id="Rain" ref="canvas" style="display:block;"></canvas>',
+		mounted: function mounted() {
+			new Rain({
+				el: this.$refs.canvas,
+				props: {
+					dropCount: 500
+				},
+				responsive: true
+			});
 		}
 	};
 
 /***/ },
 
 /***/ 59:
-/***/ function(module, exports) {
-
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"SmokyText\" :class=\"className\"\n@click=\"go\">\n\t<p class=\"text\">\n\t\t<span>冬</span><span>牧</span><span>场</span><span>冬</span><span>牧</span><span>场</span><br/>\n\t\t<span>冬</span><span>牧</span><span>场</span><span>冬</span><span>牧</span><span>场</span><br/>\n\t</p>\n</div>\n";
-
-/***/ },
-
-/***/ 60:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(61);
-	__vue_script__ = __webpack_require__(62);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\vue\\src\\lib\\Farm.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(64);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-7ce41f43/Farm.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-
-/***/ 61:
-1,
-
-/***/ 62:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		components: {
-			Confetti: __webpack_require__(63),
-			SmokyText: __webpack_require__(56)
-		}
-	};
-
-/***/ },
-
-/***/ 63:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	function Confetti(cv) {
-		this.cv = cv;
-		//this.style = COLORS[~~range(0, 5)];
-		//this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
-		this.rgb = 'rgba(255,255,255';
-		//this.r = ~~range(2, 6);
-		this.r = ~~Canvas.random(2, 6);
-		this.r2 = 2 * this.r;
-		this.spawn();
-	}
-
-	Confetti.prototype = {
-		PI_2: 2 * Math.PI,
-		xpos: 0.5,
-		spawn: function spawn() {
-			this.opacity = 0;
-			this.dop = 0.03 * Canvas.random(1, 4);
-			this.x = Canvas.random(-this.r2, this.cv.$width - this.r2);
-			this.y = Canvas.random(-20, this.cv.$height - this.r2);
-			this.xmax = this.cv.$width - this.r;
-			this.ymax = this.cv.$height - this.r;
-			//this.vx = range(0, 2) + 8 * xpos - 5;
-			this.vx = Canvas.random(-3, 0);
-			//this.vy = 0.7 * this.r + range(-1, 1);
-			this.vy = 1 * this.r + Canvas.random(-1, 1);
-		},
-		draw: function draw() {
-			var ref;
-			this.x += this.vx;
-			this.y += this.vy;
-			this.opacity += this.dop;
-			if (this.opacity > 1) {
-				this.opacity = 1;
-				this.dop *= -1;
-			}
-			if (this.opacity < 0 || this.y > this.ymax) {
-				this.spawn();
-			}
-			if (!(0 < (ref = this.x) && ref < this.xmax)) {
-				this.x = (this.x + this.xmax) % this.xmax;
-			}
-			var ctx = this.cv.$ctx;
-			ctx.beginPath();
-			ctx.arc(this.x, this.y, this.r, 0, this.PI_2, false);
-			ctx.fillStyle = this.rgb + ',' + this.opacity + ')';
-			ctx.fill();
-		}
-	};
-
-	var HAHA = Canvas.extend({
-		props: function props() {
-			return {
-				count: 60,
-				COLORS: [[85, 71, 106], [174, 61, 99], [219, 56, 83], [244, 92, 68], [248, 182, 70]]
-			};
-		},
-		data: function data() {
-			return {
-				confetti: []
-			};
-		},
-		beforePlay: function beforePlay() {
-			var _this = this;
-
-			this.$setSize(window.innerWidth, window.innerHeight);
-			window.addEventListener('resize', function () {
-				_this.$setSize(window.innerWidth, window.innerHeight);
-			});
-			for (var i = 1, j = 1, ref = this.count; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
-				this.confetti.push(new Confetti(this));
-			}
-		},
-		render: function render() {
-			this.$ctx.clearRect(0, 0, this.$width, this.$height);
-			this.confetti.forEach(function (a) {
-				a.draw();
-			});
-		}
-	});
-
-	module.exports = {
-		template: '\n\t<canvas ref="confetti"\n\tstyle="display:block;background:url(../../img/cover.jpg);background-size:100% auto;"></canvas>\n\t',
-		mounted: function mounted() {
-			new HAHA({
-				el: this.$refs.confetti
-			});
-		}
-	};
-
-/***/ },
-
-/***/ 64:
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Farm\" _v-7ce41f43=\"\">\n\t<confetti _v-7ce41f43=\"\"></confetti>\n\t<smoky-text _v-7ce41f43=\"\"></smoky-text>\n</div>\n";
-
-/***/ },
-
-/***/ 68:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _Canvas = __webpack_require__(69);
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var Circle = function () {
-		function Circle(x, y, cv) {
-			_classCallCheck(this, Circle);
-
-			this.x = x;
-			this.y = y;
-			this.cv = cv;
-			this.r = Math.round(cv.circleMaxRadius * Math.random());
-			this.alpha = 1;
-			this.color = 'rgba(200,30,200,1)';
-			this.tick = 0;
-		}
-
-		_createClass(Circle, [{
-			key: 'step',
-			value: function step() {
-				this.x += Math.random() * 6 - 3;
-				this.y += Math.random() * 6 - 3;
-				this.alpha -= this.cv.circleFadingRate;
-				this.color = 'rgba(10,30,200,' + this.alpha + ')';
-				this.tick++;
-				if (this.alpha <= 0) {
-					//self.circles.splice(i,1);
-					this.x = this.cv.$width / 2;
-					this.y = this.cv.$height / 2;
-					this.r = Math.round(this.cv.circleMaxRadius * Math.random());
-					this.alpha = 1;
-					this.tick = 0;
-				}
-				this.draw();
-			}
-		}, {
-			key: 'draw',
-			value: function draw() {
-				var ctx = this.cv.$ctx;
-				ctx.beginPath();
-				ctx.strokeStyle = this.color;
-				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-				ctx.stroke();
-				ctx.closePath();
-			}
-		}]);
-
-		return Circle;
-	}();
-
-	var Circles = _Canvas.Canvas.extend({
-		props: function props() {
-			return {
-				circleCount: 15,
-				circleMaxRadius: 400,
-				circleFadingRate: 0.04,
-				lineWidth: 5
-			};
-		},
-		data: function data() {
-			return {
-				circles: []
-			};
-		},
-		beforePlay: function beforePlay() {
-			this.$ctx.lineWidth = this.lineWidth;
-			this.$ctx.lineCap = "round";
-			this.$ctx.lineJoin = "round";
-			//this.create();
-			this.listen();
-		},
-		render: function render() {
-			var self = this;
-			var ctx = this.$ctx;
-			if (this.circles.length < this.circleCount) {
-				this.circles.push(new Circle(this.$width / 2, this.$height / 2, this /*Math.random()*$w,Math.random()*$h*/));
-			};
-			ctx.globalCompositeOperation = 'source-over';
-			ctx.fillStyle = 'rgba(0,0,0,0.5)';
-			ctx.fillRect(0, 0, this.$width, this.$height);
-			ctx.globalCompositeOperation = 'lighter';
-
-			this.circles.forEach(function (a, i) {
-				a.step();
-			});
-		},
-		methods: {
-			listen: function listen() {
-				var self = this;
-				self.$el.addEventListener("mousedown", function (e) {
-					console.log(e);
-					var x = e.offsetX * 1000 / Number(document.defaultView.getComputedStyle(self.$el).width.replace(/px/, ''));
-					var y = e.offsetY * 1000 / Number(document.defaultView.getComputedStyle(self.$el).height.replace(/px/, ''));
-					self.circles.push(new Circle(x, y, self));
-				});
-			}
-		}
-	});
-
-	module.exports = {
-		template: '<canvas ref="cv" width="1000" height="1000"\n\tstyle="display:block;width:100%;"></canvas>',
-		mounted: function mounted() {
-			new Circles({
-				el: this.$refs.cv
-			});
-		}
-	};
-
-/***/ },
-
-/***/ 69:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -439,9 +231,9 @@ webpackJsonp([8],{
 			value: function _response() {
 				var _this = this;
 
+				this.$setSize(window.innerWidth, window.innerHeight);
 				window.addEventListener('resize', function () {
-					_this.$width = _this.$el.width = window.innerWidth;
-					_this.$height = _this.$el.height = window.innerHeight;
+					_this.$setSize(window.innerWidth, window.innerHeight);
 				});
 			}
 			//onResize(){}
@@ -549,6 +341,125 @@ webpackJsonp([8],{
 	window.Canvas = Canvas;
 
 	exports.Canvas = Canvas;
+
+/***/ },
+
+/***/ 60:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _Canvas = __webpack_require__(59);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Circle = function () {
+		function Circle(cv) {
+			_classCallCheck(this, Circle);
+
+			this.cv = cv;
+			this.spawn();
+		}
+
+		_createClass(Circle, [{
+			key: 'spawn',
+			value: function spawn() {
+				this.tick = 0;
+				this.x = this.cv.$width / 2;
+				this.y = this.cv.$height / 2;
+				this.r = Math.round(this.cv.circleMaxRadius * Math.random());
+				this.color = 'rgba(10,30,200,1)';
+				this.alpha = 1;
+				this.tick = 0;
+			}
+		}, {
+			key: 'step',
+			value: function step() {
+				this.x += _Canvas.Canvas.random(-2, 2);
+				this.y += _Canvas.Canvas.random(-2, 2);
+				this.alpha -= this.cv.circleFadingRate;
+				this.color = 'rgba(10,30,200,' + this.alpha + ')';
+				this.tick++;
+				if (this.alpha <= 0) {
+					this.spawn();
+				}
+				this.draw();
+			}
+		}, {
+			key: 'draw',
+			value: function draw() {
+				var ctx = this.cv.$ctx;
+				ctx.beginPath();
+				ctx.strokeStyle = this.color;
+				ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.closePath();
+			}
+		}]);
+
+		return Circle;
+	}();
+
+	var Circles = _Canvas.Canvas.extend({
+		props: function props() {
+			return {
+				circleCount: 50,
+				circleMaxRadius: 200,
+				circleFadingRate: 0.01,
+				lineWidth: 6
+			};
+		},
+		data: function data() {
+			return {
+				circles: []
+			};
+		},
+		beforePlay: function beforePlay() {
+			this.$ctx.lineWidth = this.lineWidth;
+			this.$ctx.lineCap = "round";
+			this.$ctx.lineJoin = "round";
+			//this.create();
+			this.listen();
+		},
+		render: function render() {
+			var self = this;
+			var ctx = this.$ctx;
+			if (this.circles.length < this.circleCount) {
+				this.circles.push(new Circle(this));
+			};
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.fillStyle = 'rgba(0,0,0,0.5)';
+			ctx.fillRect(0, 0, this.$width, this.$height);
+			ctx.globalCompositeOperation = 'lighter';
+
+			this.circles.forEach(function (a, i) {
+				a.step();
+			});
+		},
+		methods: {
+			listen: function listen() {
+				var self = this;
+				self.$el.addEventListener("mousedown", function (e) {
+					console.log(e);
+					var x = e.offsetX * 1000 / Number(document.defaultView.getComputedStyle(self.$el).width.replace(/px/, ''));
+					var y = e.offsetY * 1000 / Number(document.defaultView.getComputedStyle(self.$el).height.replace(/px/, ''));
+					self.circles.push(new Circle(x, y, self));
+				});
+			}
+		}
+	});
+
+	module.exports = {
+		template: '<canvas ref="cv"\n\tstyle="display:block;"></canvas>',
+		mounted: function mounted() {
+			new Circles({
+				el: this.$refs.cv,
+				responsive: true
+			});
+		}
+	};
 
 /***/ }
 

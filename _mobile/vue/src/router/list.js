@@ -90,27 +90,6 @@ var list = [{
 		});
 	}
 },{
-	path:'smokytext',
-	component: resolve => {
-		require.ensure( ['../lib/SmokyText.vue'], ()=>{
-			resolve( require('../lib/SmokyText.vue') );
-		});
-	}
-},{
-	path:'farm',
-	component: resolve => {
-		require.ensure( ['../lib/Farm.vue'], ()=>{
-			resolve( require('../lib/Farm.vue') );
-		});
-	}
-},{
-	path:'snowconfetti',
-	component: resolve => {
-		require.ensure( ['../canvas/SnowConfetti.js'], ()=>{
-			resolve( require('../canvas/SnowConfetti.js') );
-		});
-	}
-},{
 	path:'blizzard',
 	component: resolve => {
 		require.ensure( ['../canvas/Blizzard.js'], ()=>{

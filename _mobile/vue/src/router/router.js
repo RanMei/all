@@ -16,6 +16,9 @@ const routes = [{
 	path: '/item',
 	component: require('./RouteItem.vue'),
 	children: list
+},{
+	path: '/test',
+	component: require('./Test.vue')
 }];
 
 const router = new VueRouter({

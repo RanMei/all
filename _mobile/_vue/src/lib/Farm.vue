@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	export default {
 		components: {
-			Confetti: require('../canvas/SnowConfetti.js'),
+			Confetti: require('./SnowConfetti.js'),
 			SmokyText: require('./SmokyText.vue')
 		}
 	}

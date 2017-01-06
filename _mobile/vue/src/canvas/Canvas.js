@@ -54,9 +54,9 @@ class Canvas {
 		this._play();
 	}
 	_response(){
+		this.$setSize(window.innerWidth,window.innerHeight);
 		window.addEventListener('resize',()=>{
-			this.$width = this.$el.width = window.innerWidth;
-			this.$height = this.$el.height = window.innerHeight;
+			this.$setSize(window.innerWidth,window.innerHeight);
 		})
 	}
 	//onResize(){}

@@ -1,28 +1,26 @@
-import {Canvas} from './Canvas.js';
 
 class Circle {
-	constructor(x,y,cv){
-		this.x = x;
-		this.y = y;
+	constructor(cv){
 		this.cv = cv;
-		this.r = Math.round( cv.circleMaxRadius*Math.random() );
+		this.spawn();
+	}
+	spawn(){
+		this.tick = 0;
+		this.x = this.cv.$width/2;
+		this.y = this.cv.$height/2;
+		this.r = Math.round( this.cv.circleMaxRadius*Math.random() );
+		this.color = 'rgba(10,30,200,1)';
 		this.alpha = 1;
-		this.color = 'rgba(200,30,200,1)';
 		this.tick = 0;
 	}
 	step(){
-		this.x += Math.random()*6-3;
-		this.y += Math.random()*6-3;
+		this.x += Canvas.random(-2,2);
+		this.y += Canvas.random(-2,2);
 		this.alpha -= this.cv.circleFadingRate;
 		this.color = 'rgba(10,30,200,'+this.alpha+')';
 		this.tick++;
 		if( this.alpha<=0 ){
-			//self.circles.splice(i,1);
-			this.x = this.cv.$width/2;
-			this.y = this.cv.$height/2;
-			this.r = Math.round( this.cv.circleMaxRadius*Math.random() );
-			this.alpha = 1;
-			this.tick = 0;
+			this.spawn();
 		}
 		this.draw();
 	}
@@ -36,13 +34,15 @@ class Circle {
 	}
 }
 
+import {Canvas} from './Canvas.js';
+
 var Circles = Canvas.extend({
 	props: function(){
 		return {
-			circleCount: 15,
-			circleMaxRadius: 400,
-			circleFadingRate: 0.04,
-			lineWidth: 5
+			circleCount: 50,
+			circleMaxRadius: 200,
+			circleFadingRate: 0.01,
+			lineWidth: 6
 		}
 	},
 	data: function(){
@@ -52,8 +52,8 @@ var Circles = Canvas.extend({
 	},
 	beforePlay: function(){
 		this.$ctx.lineWidth = this.lineWidth;
-		this.$ctx.lineCap="round";
-		this.$ctx.lineJoin="round";
+		this.$ctx.lineCap = "round";
+		this.$ctx.lineJoin = "round";
 		//this.create();
 		this.listen();
 	},
@@ -61,7 +61,7 @@ var Circles = Canvas.extend({
 		var self = this;
 		var ctx = this.$ctx;
 		if( this.circles.length<this.circleCount ){
-			this.circles.push( new Circle( this.$width/2,this.$height/2,this/*Math.random()*$w,Math.random()*$h*/ ) );
+			this.circles.push( new Circle( this ) );
 		};
 		ctx.globalCompositeOperation = 'source-over';
 		ctx.fillStyle = 'rgba(0,0,0,0.5)';
@@ -87,11 +87,12 @@ var Circles = Canvas.extend({
 
 module.exports = {
 	template: 
-	`<canvas ref="cv" width="1000" height="1000"
-	style="display:block;width:100%;"></canvas>`,
+	`<canvas ref="cv"
+	style="display:block;"></canvas>`,
 	mounted: function(){
 		new Circles({
-			el: this.$refs.cv
+			el: this.$refs.cv,
+			responsive: true
 		})
 	}
 }

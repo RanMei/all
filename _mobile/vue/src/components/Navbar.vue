@@ -25,6 +25,7 @@
 		<ul>
 			<a href="#/home">Home</a>
 			<a href="#/list">List</a>
+			<a href="#/test">Test</a>
 		</ul>
 	</div>
 </template>

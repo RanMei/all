@@ -75,9 +75,9 @@ var Canvas = function () {
 		value: function _response() {
 			var _this = this;
 
+			this.$setSize(window.innerWidth, window.innerHeight);
 			window.addEventListener('resize', function () {
-				_this.$width = _this.$el.width = window.innerWidth;
-				_this.$height = _this.$el.height = window.innerHeight;
+				_this.$setSize(window.innerWidth, window.innerHeight);
 			});
 		}
 		//onResize(){}

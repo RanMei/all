@@ -229,12 +229,12 @@ const WEBPACK = [{
 	config: './desktop/presentation/webpack.config.js', 
 	watched: ['./desktop/presentation/src/*.*','./desktop/presentation/src/*/*.*']
 },{
-	name: 'webpack-canvas', 
-	src: './_canvas/src/index.js', 
-	dest: './_canvas/dist/', 
-	config: './_canvas/webpack.config.js', 
-	watched: ['./_canvas/src/*.*','./_canvas/src/**/*.*']
-},{
+// 	name: 'webpack-canvas', 
+// 	src: './_canvas/src/index.js', 
+// 	dest: './_canvas/dist/', 
+// 	config: './_canvas/webpack.config.js', 
+// 	watched: ['./_canvas/src/*.*','./_canvas/src/**/*.*']
+// },{
 	name: 'webpack-mobile-svg', 
 	src: './_mobile/svg/src/preloader.js', 
 	dest: './_mobile/svg/dist/', 
@@ -263,6 +263,12 @@ const WEBPACK = [{
 	src: './_mobile/h5/liv/src/main.js', 
 	config: './_mobile/h5/live/webpack.config.js', 
 	dest: './_mobile/h5/live/dist/'
+},{
+	name: 'webpack-mobile-_vue', 
+	watched: ['./_mobile/_vue/src/*.*','./_mobile/_vue/src/*/*.*'], 
+	src: './_mobile/_vue/src/_farm/index.js', 
+	config: './_mobile/_vue/webpack.config.js', 
+	dest: './_mobile/_vue/dist/'
 }];
 WEBPACK.forEach(function(item){
 	gulp.task( item.name,function(){
@@ -362,12 +368,28 @@ gulp.task('generate',()=>{
 var EJS = [{
 	name: 'ejs-vue',
 	src: './_mobile/vue/tpl/item.ejs',
+	watched: ['./_mobile/vue/tpl/item.ejs'],
 	data: require('./_mobile/vue/src/api/items.js'),
 	rename: '[name].html',
 	dest: './_mobile/vue/item/'
 },{
+	name: 'ejs-_vue',
+	src: './_mobile/_vue/src/tpl/page.ejs',
+	watched: ['./_mobile/_vue/src/tpl/page.ejs','./_mobile/_vue/src/tpl/items.js'],
+	data: require('./_mobile/_vue/src/tpl/items.js'),
+	rename: '[name].html',
+	dest: './_mobile/_vue/'
+},{
+	name: 'ejs-_canvas',
+	src: './_canvas/src/tpl/page.ejs',
+	watched: ['./_canvas/src/tpl/page.ejs','./_canvas/src/tpl/items.js'],
+	data: require('./_canvas/src/tpl/items.js'),
+	rename: '[name].html',
+	dest: './_canvas/'
+},{
 	name: 'ejs-wolf',
 	src: './desktop/_wolf/src/index.ejs',
+	watched: ['./desktop/_wolf/src/index.ejs'],
 	data: {img: '../../img/wolf'},
 	rename: 'index.html',
 	dest: './desktop/_wolf/'
@@ -375,7 +397,7 @@ var EJS = [{
 
 EJS.forEach(a=>{
 	gulp.task(a.name,()=>{
-		if(a.name==='ejs.vue'){
+		if(a.name!=='ejs-wolf'){
 			a.data.forEach(b=>{
 				gulp.src( a.src )
 					.pipe( ejs(b) )
@@ -393,7 +415,7 @@ EJS.forEach(a=>{
 
 gulp.task('watch',function(){
 	EJS.forEach(a=>{
-		gulp.watch( a.src,[a.name] );
+		gulp.watch( a.watched,[a.name] );
 	});
 
 	gulp.watch(['./_mobile/vue/src/api/items.js'],['generate']);

@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 75:
+/***/ 66:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10,7 +10,7 @@ webpackJsonp([9],{
 	});
 	exports.Scope = undefined;
 
-	var _Canvas = __webpack_require__(76);
+	var _Canvas = __webpack_require__(67);
 
 	var Scope = _Canvas.Canvas.extend({
 		data: function data() {
@@ -177,7 +177,7 @@ webpackJsonp([9],{
 
 /***/ },
 
-/***/ 76:
+/***/ 67:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -256,9 +256,9 @@ webpackJsonp([9],{
 			value: function _response() {
 				var _this = this;
 
+				this.$setSize(window.innerWidth, window.innerHeight);
 				window.addEventListener('resize', function () {
-					_this.$width = _this.$el.width = window.innerWidth;
-					_this.$height = _this.$el.height = window.innerHeight;
+					_this.$setSize(window.innerWidth, window.innerHeight);
 				});
 			}
 			//onResize(){}
