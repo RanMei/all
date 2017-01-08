@@ -32,7 +32,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-44c1c51d/Card.vue";
+	    var id = "_v-0dc2bc5e/Card.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -87,7 +87,7 @@ webpackJsonp([2],{
 /***/ 11:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-44c1c51d=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-44c1c51d=\"\">\n\t\t<div class=\"face front\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-44c1c51d=\"\">\n\t\t\t<p _v-44c1c51d=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-44c1c51d=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-0dc2bc5e=\"\">\n\t<div class=\"flipper\" :class=\"state\" @click=\"handleClick\" _v-0dc2bc5e=\"\">\n\t\t<div class=\"face front\" _v-0dc2bc5e=\"\">\n\t\t\t<p _v-0dc2bc5e=\"\">front</p>\n\t\t\t<img :src=\" '../../img/icons/iron_man.png' \" _v-0dc2bc5e=\"\">\n\t\t</div>\n\t\t<div class=\"face back\" _v-0dc2bc5e=\"\">\n\t\t\t<p _v-0dc2bc5e=\"\">back</p>\n\t\t\t<img :src=\" '../../img/icons/storm-trooper.png' \" _v-0dc2bc5e=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 
@@ -123,7 +123,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6f13ce35/StrokeCircle.vue";
+	    var id = "_v-36e41714/StrokeCircle.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -150,7 +150,7 @@ webpackJsonp([2],{
 /***/ 43:
 /***/ function(module, exports) {
 
-	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-6f13ce35=\"\">\n\t<defs _v-6f13ce35=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-6f13ce35=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-6f13ce35=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-6f13ce35=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-6f13ce35=\"\"></circle>\n\n</svg>\n";
+	module.exports = "\n<svg class=\"test\" viewBox=\"0,0,1000,1000\" pointer-events=\"all\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" _v-36e41714=\"\">\n\t<defs _v-36e41714=\"\">\n\t\t<linearGradient id=\"linearGradient-1\" x1=\"0%\" y1=\"100%\" x2=\"100%\" y2=\"100%\" _v-36e41714=\"\">\n\t\t\t<stop stop-color=\"#2090F8\" offset=\"0%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#01FCE4\" offset=\"41.7610013%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#0BFF8C\" offset=\"78.6870217%\" _v-36e41714=\"\"></stop>\n\t\t\t<stop stop-color=\"#51FF00\" offset=\"100%\" _v-36e41714=\"\"></stop>\n\t\t</linearGradient>\n\t</defs>\n\n\t<circle class=\"circle-red\" cx=\"500\" cy=\"500\" r=\"200\" stroke=\"url(#linearGradient-1)\" _v-36e41714=\"\"></circle>\n\t<circle class=\"circle-red-1\" cx=\"500\" cy=\"500\" r=\"100\" stroke=\"url(#linearGradient-1)\" _v-36e41714=\"\"></circle>\n\n</svg>\n";
 
 /***/ },
 
@@ -186,7 +186,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-e0ccbdda/MachineGunText.vue";
+	    var id = "_v-e1b989d8/MachineGunText.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {

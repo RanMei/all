@@ -32,7 +32,7 @@ webpackJsonp([6],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3eb24353/Orientation.vue";
+	    var id = "_v-0fac5e1c/Orientation.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -113,7 +113,7 @@ webpackJsonp([6],{
 /***/ 47:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"space\" _v-3eb24353=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-3eb24353=\"\">\n\t\t{{rotationRate.alpha}}<br _v-3eb24353=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"space\" _v-0fac5e1c=\"\">\n\t<div class=\"square\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-0fac5e1c=\"\">\n\t\t{{rotationRate.alpha}}<br _v-0fac5e1c=\"\">\n\t\t{{rotateY}}\n\t</div>\n</div>\n";
 
 /***/ },
 
@@ -177,11 +177,11 @@ webpackJsonp([6],{
 
 	  Confetti = function () {
 	    function Confetti() {
-	      this.style = COLORS[~~range(0, 5)];
+	      this.style = COLORS[~ ~range(0, 5)];
 	      //this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
 	      this.rgb = 'rgba(255,255,255';
 	      //this.r = ~~range(2, 6);
-	      this.r = ~~range(2, 6);
+	      this.r = ~ ~range(2, 6);
 	      this.r2 = 2 * this.r;
 	      this.replace();
 	    }
@@ -214,7 +214,7 @@ webpackJsonp([6],{
 	      if (!(0 < (ref = this.x) && ref < this.xmax)) {
 	        this.x = (this.x + this.xmax) % this.xmax;
 	      }
-	      return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
+	      return drawCircle(~ ~this.x, ~ ~this.y, this.r, this.rgb + "," + this.opacity + ")");
 	    };
 
 	    return Confetti;
@@ -285,7 +285,7 @@ webpackJsonp([6],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-080b5318/Heart.vue";
+	    var id = "_v-25667c4e/Heart.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -385,10 +385,10 @@ webpackJsonp([6],{
 											vy: 0,
 											R: 2,
 											speed: rand() + 5,
-											q: ~~(rand() * heartPointsCount),
+											q: ~ ~(rand() * heartPointsCount),
 											D: 2 * (i % 2) - 1,
 											force: 0.2 * rand() + 0.7,
-											f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
+											f: "hsla(0," + ~ ~(40 * rand() + 60) + "%," + ~ ~(60 * rand() + 20) + "%,.3)",
 											trace: []
 									};
 									for (var k = 0; k < traceCount; k++) {
@@ -416,7 +416,7 @@ webpackJsonp([6],{
 											var length = Math.sqrt(dx * dx + dy * dy);
 											if (10 > length) {
 													if (0.95 < rand()) {
-															u.q = ~~(rand() * heartPointsCount);
+															u.q = ~ ~(rand() * heartPointsCount);
 													} else {
 															if (0.99 < rand()) {
 																	u.D *= -1;
@@ -462,7 +462,7 @@ webpackJsonp([6],{
 /***/ 65:
 /***/ function(module, exports) {
 
-	module.exports = "\n<canvas id=\"heart\" _v-080b5318=\"\"></canvas>\n";
+	module.exports = "\n<canvas id=\"heart\" _v-25667c4e=\"\"></canvas>\n";
 
 /***/ }
 

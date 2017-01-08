@@ -19,6 +19,10 @@ class Canvas {
 		cv.$width = cv.$el.width||1000;
 		cv.$height = cv.$el.height||1000;
 
+		if( kkk.interval ){
+			cv._interval = kkk.interval;
+		}
+
 		// init props
 		var props = this._props?this._props():{};
 		for(var key in props){

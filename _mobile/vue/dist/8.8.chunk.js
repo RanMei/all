@@ -28,8 +28,8 @@ webpackJsonp([8],{
 					// }else if( self.speed<=12 ){
 					// 	return 2;
 				} else {
-					return 2;
-				}
+						return 2;
+					}
 			}();
 			this.height = function () {
 				if (self.speed <= 5) {
@@ -190,6 +190,10 @@ webpackJsonp([8],{
 
 				cv.$width = cv.$el.width || 1000;
 				cv.$height = cv.$el.height || 1000;
+
+				if (kkk.interval) {
+					cv._interval = kkk.interval;
+				}
 
 				// init props
 				var props = this._props ? this._props() : {};

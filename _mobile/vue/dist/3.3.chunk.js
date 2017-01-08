@@ -43,7 +43,7 @@ webpackJsonp([3],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-59cb1214/CardsTwo.vue";
+	    var id = "_v-8f483492/CardsTwo.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -137,7 +137,7 @@ webpackJsonp([3],[
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"CardsTwo\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" @touchcancel=\"touchend($event)\" _v-59cb1214=\"\">\n\t<div class=\"paper__\" :class=\"a.status\" v-for=\"(a,i) in papers\" _v-59cb1214=\"\">\n\t\t\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"CardsTwo\" @touchstart=\"touchstart($event)\" @touchmove=\"touchmove($event)\" @touchend=\"touchend($event)\" @touchcancel=\"touchend($event)\" _v-8f483492=\"\">\n\t<div class=\"paper__\" :class=\"a.status\" v-for=\"(a,i) in papers\" _v-8f483492=\"\">\n\t\t\n\t</div>\n</div>\n";
 
 /***/ },
 /* 16 */,
@@ -180,7 +180,7 @@ webpackJsonp([3],[
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-5c3a5813/3dCube.vue";
+	    var id = "_v-2e4af9d8/3dCube.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -250,7 +250,7 @@ webpackJsonp([3],[
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"CubeWhite\" _v-5c3a5813=\"\">\n\t<div class=\"space3d\" _v-5c3a5813=\"\">\n\t\t<div class=\"cube\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-5c3a5813=\"\">\n\t\t\t<div class=\"face face-front\" _v-5c3a5813=\"\"></div>\n\t\t\t<div class=\"face face-top\" _v-5c3a5813=\"\"></div>\n\t\t\t<div class=\"face face-bottom\" _v-5c3a5813=\"\"></div>\n\t\t\t<div class=\"face face-left\" _v-5c3a5813=\"\"></div>\n\t\t\t<div class=\"face face-right\" _v-5c3a5813=\"\"></div>\n\t\t\t<div class=\"face face-back\" _v-5c3a5813=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"CubeWhite\" _v-2e4af9d8=\"\">\n\t<div class=\"space3d\" _v-2e4af9d8=\"\">\n\t\t<div class=\"cube\" :class=\" recalibrating?'recalibrating':'' \" @click=\"recalibrate\" :style=\" 'transform: rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);-webkit-transform:rotateX('+rotateX+'deg) rotateY('+rotateY+'deg);'  \" _v-2e4af9d8=\"\">\n\t\t\t<div class=\"face face-front\" _v-2e4af9d8=\"\"></div>\n\t\t\t<div class=\"face face-top\" _v-2e4af9d8=\"\"></div>\n\t\t\t<div class=\"face face-bottom\" _v-2e4af9d8=\"\"></div>\n\t\t\t<div class=\"face face-left\" _v-2e4af9d8=\"\"></div>\n\t\t\t<div class=\"face face-right\" _v-2e4af9d8=\"\"></div>\n\t\t\t<div class=\"face face-back\" _v-2e4af9d8=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 ]);

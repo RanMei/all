@@ -1,3 +1,15 @@
+function Trail(){
+
+}
+Trail.prototype = {
+	spawn: function(){
+
+	},
+	draw: function(){
+		
+	}
+}
+
 var Scope = Canvas.extend({
 	data: function(){
 		return {

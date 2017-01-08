@@ -44,7 +44,7 @@ webpackJsonp([9],{
 		},
 		methods: {
 			rand: function rand(min, max) {
-				return ~~(Math.random() * (max - min + 1) + min);
+				return ~ ~(Math.random() * (max - min + 1) + min);
 			},
 			hitTest: function hitTest(x1, y1, w1, h1, x2, y2, w2, h2) {
 				return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
@@ -215,6 +215,10 @@ webpackJsonp([9],{
 
 				cv.$width = cv.$el.width || 1000;
 				cv.$height = cv.$el.height || 1000;
+
+				if (kkk.interval) {
+					cv._interval = kkk.interval;
+				}
 
 				// init props
 				var props = this._props ? this._props() : {};

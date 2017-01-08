@@ -446,7 +446,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-66d00aac/Home.vue";
+	    var id = "_v-6e353fcb/Home.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -650,7 +650,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-168eb930/Navbar.vue";
+	    var id = "_v-50595b0f/Navbar.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -676,7 +676,7 @@
 /* 78 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-168eb930=\"\">\n\t<ul _v-168eb930=\"\">\n\t\t<a href=\"#/home\" _v-168eb930=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-168eb930=\"\">List</a>\n\t\t<a href=\"#/test\" _v-168eb930=\"\">Test</a>\n\t</ul>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Navbar\" _v-50595b0f=\"\">\n\t<ul _v-50595b0f=\"\">\n\t\t<a href=\"#/home\" _v-50595b0f=\"\">Home</a>\n\t\t<a href=\"#/list\" _v-50595b0f=\"\">List</a>\n\t\t<a href=\"#/test\" _v-50595b0f=\"\">Test</a>\n\t</ul>\n</div>\n";
 
 /***/ },
 /* 79 */
@@ -711,7 +711,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-2340944d/Showcase.vue";
+	    var id = "_v-14ea3a6c/Showcase.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -776,7 +776,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-64b058be/List.vue";
+	    var id = "_v-1e27e65d/List.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -793,13 +793,13 @@
 /* 86 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"List\" _v-64b058be=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-64b058be=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-64b058be=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"List\" _v-1e27e65d=\"\">\n\t<div class=\"item__\" v-for=\"a in items\" _v-1e27e65d=\"\">\n\t\t<a :href=\" '#/item/'+a.name.toLowerCase() \" _v-1e27e65d=\"\">{{a.name}}</a>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 87 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-66d00aac=\"\">\n\t<router-view :items=\"items\" _v-66d00aac=\"\"></router-view>\n\t<navbar _v-66d00aac=\"\"></navbar>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n<div class=\"Home\" _v-6e353fcb=\"\">\n\t<router-view :items=\"items\" _v-6e353fcb=\"\"></router-view>\n\t<navbar _v-6e353fcb=\"\"></navbar>\n</div>\n";
 
 /***/ },
 /* 88 */
@@ -834,7 +834,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4308a7ff/RouteItem.vue";
+	    var id = "_v-8efa6380/RouteItem.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -866,7 +866,7 @@
 /* 91 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-4308a7ff=\"\">\n\t<div class=\"TOPBAR\" _v-4308a7ff=\"\">\n\t\t<span @click=\"back\" _v-4308a7ff=\"\">返回</span>\n\t</div>\n\t<router-view _v-4308a7ff=\"\"></router-view>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"RouteItem\" _v-8efa6380=\"\">\n\t<div class=\"TOPBAR\" _v-8efa6380=\"\">\n\t\t<span @click=\"back\" _v-8efa6380=\"\">返回</span>\n\t</div>\n\t<router-view _v-8efa6380=\"\"></router-view>\n</div>\n";
 
 /***/ },
 /* 92 */
@@ -901,7 +901,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3f7048df/Test.vue";
+	    var id = "_v-46d57dfe/Test.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -933,7 +933,7 @@
 /* 95 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n<div class=\"Test\" _v-3f7048df=\"\">\n\t1111\n</div>\n";
+	module.exports = "\n\n\n\n\n<div class=\"Test\" _v-46d57dfe=\"\">\n\t1111\n</div>\n";
 
 /***/ }
 /******/ ])));
