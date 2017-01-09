@@ -369,21 +369,27 @@ var EJS = [{
 	name: 'ejs-vue',
 	src: './_mobile/vue/tpl/item.ejs',
 	watched: ['./_mobile/vue/tpl/item.ejs'],
-	data: require('./_mobile/vue/src/api/items.js'),
+	data: function(){
+		return require('./_mobile/vue/src/api/items.js');
+	},
 	rename: '[name].html',
 	dest: './_mobile/vue/item/'
 },{
 	name: 'ejs-_vue',
 	src: './_mobile/_vue/src/tpl/page.ejs',
 	watched: ['./_mobile/_vue/src/tpl/page.ejs','./_mobile/_vue/src/tpl/items.js'],
-	data: require('./_mobile/_vue/src/tpl/items.js'),
+	data: function(){
+		return require('./_mobile/_vue/src/tpl/items.js');
+	},
 	rename: '[name].html',
 	dest: './_mobile/_vue/'
 },{
 	name: 'ejs-_canvas',
 	src: './_canvas/src/tpl/page.ejs',
 	watched: ['./_canvas/src/tpl/page.ejs','./_canvas/src/tpl/items.js'],
-	data: require('./_canvas/src/tpl/items.js'),
+	data: function(){
+		return require('./_canvas/src/tpl/items.js')
+	},
 	rename: '[name].html',
 	dest: './_canvas/'
 },{
@@ -398,7 +404,7 @@ var EJS = [{
 EJS.forEach(a=>{
 	gulp.task(a.name,()=>{
 		if(a.name!=='ejs-wolf'){
-			a.data.forEach(b=>{
+			a.data().forEach(b=>{
 				gulp.src( a.src )
 					.pipe( ejs(b) )
 					.pipe( rename(b.name+'.html') )
