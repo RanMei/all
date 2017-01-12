@@ -75,7 +75,7 @@
 
 	var _store = __webpack_require__(32);
 
-	__webpack_require__(41);
+	__webpack_require__(42);
 	//import {store} from './store/index.js';
 
 
@@ -207,7 +207,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-126118d4/Admin.vue";
+	    var id = "_v-118e04d5/Admin.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -265,7 +265,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-bd881224/NavbarRed.vue";
+	    var id = "_v-5db0d92d/NavbarRed.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -342,7 +342,7 @@
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarRed\" ref=\"bar\" _v-bd881224=\"\">\n\t<div class=\"inner\" :class=\" fixed?'fixed':'' \" _v-bd881224=\"\">\n\t\t<div class=\"container__\" _v-bd881224=\"\">\n\t\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-bd881224=\"\">\n\t\t\t\t<a v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" :href=\"a.href\" _v-bd881224=\"\">{{a.name}}</a>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarRed\" ref=\"bar\" _v-5db0d92d=\"\">\n\t<div class=\"inner\" :class=\" fixed?'fixed':'' \" _v-5db0d92d=\"\">\n\t\t<div class=\"container__\" _v-5db0d92d=\"\">\n\t\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-5db0d92d=\"\">\n\t\t\t\t<a v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" :href=\"a.href\" _v-5db0d92d=\"\">{{a.name}}</a>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 9 */
@@ -377,7 +377,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1fca1f5a/Navbar.vue";
+	    var id = "_v-935f6318/Navbar.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -422,7 +422,7 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Navbar\" _v-1fca1f5a=\"\">\n\t<div class=\"centered\" _v-1fca1f5a=\"\">\n\t\t<div class=\"tab\" v-for=\"a in tabs\" _v-1fca1f5a=\"\">\n\t\t\t<a class=\"link\" :href=\"a.href\" _v-1fca1f5a=\"\">{{a.name}}</a>\n\t\t\t<ul class=\"subs\" _v-1fca1f5a=\"\">\n\t\t\t\t<li v-for=\"b in a.subs\" _v-1fca1f5a=\"\">Ned</li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"Navbar\" _v-935f6318=\"\">\n\t<div class=\"centered\" _v-935f6318=\"\">\n\t\t<div class=\"tab\" v-for=\"a in tabs\" _v-935f6318=\"\">\n\t\t\t<a class=\"link\" :href=\"a.href\" _v-935f6318=\"\">{{a.name}}</a>\n\t\t\t<ul class=\"subs\" _v-935f6318=\"\">\n\t\t\t\t<li v-for=\"b in a.subs\" _v-935f6318=\"\">Ned</li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 13 */
@@ -463,7 +463,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-2eabaf4d/Items.vue";
+	    var id = "_v-8d9cede8/Items.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -592,7 +592,7 @@
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"ITEMS\" _v-2eabaf4d=\"\">\n\t<div class=\"panel panel-default\" _v-2eabaf4d=\"\">\n\t\t<div class=\"panel-body\" _v-2eabaf4d=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-2eabaf4d=\"\">\n\t\t<div class=\"panel-heading\" _v-2eabaf4d=\"\">\n\t\t\t<li _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\">id</li>\n\t\t\t<li _v-2eabaf4d=\"\">name</li>\n\t\t\t<li _v-2eabaf4d=\"\">desc_</li>\n\t\t\t<li _v-2eabaf4d=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-2eabaf4d=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-2eabaf4d=\"\">\n\t\t\t\t<li _v-2eabaf4d=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-2eabaf4d=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-2eabaf4d=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-2eabaf4d=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-2eabaf4d=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-2eabaf4d=\"\">\n\t\t\t<li _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\">{{item.id}}</li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-2eabaf4d=\"\"></li>\n\t\t\t<li _v-2eabaf4d=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-2eabaf4d=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-2eabaf4d=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-2eabaf4d=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"ITEMS\" _v-8d9cede8=\"\">\n\t<div class=\"panel panel-default\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-body\" _v-8d9cede8=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-heading\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">id</li>\n\t\t\t<li _v-8d9cede8=\"\">name</li>\n\t\t\t<li _v-8d9cede8=\"\">desc_</li>\n\t\t\t<li _v-8d9cede8=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-8d9cede8=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-8d9cede8=\"\">\n\t\t\t\t<li _v-8d9cede8=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-8d9cede8=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-8d9cede8=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-8d9cede8=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">{{item.id}}</li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-8d9cede8=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-8d9cede8=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-8d9cede8=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 21 */
@@ -627,7 +627,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-f99b7720/Signin.vue";
+	    var id = "_v-2edcfc22/Signin.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -741,7 +741,7 @@
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"Signin wrapper\" _v-f99b7720=\"\">\n\t<div class=\"shade__\" _v-f99b7720=\"\">\n\t\t<div _v-f99b7720=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-f99b7720=\"\">\n\t\t<div class=\"register\" _v-f99b7720=\"\">\n\t\t\t<div class=\"register-center\" _v-f99b7720=\"\">\n\t\t\t\t<div class=\"register-header\" _v-f99b7720=\"\">\n\t\t\t\t\t<h1 _v-f99b7720=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-f99b7720=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\">{{info.password}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" :class=\"state.password2\" @focus=\"onFocus('password2')\" @blur=\"check_password2\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\">{{info.password2}}</p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-f99b7720=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-f99b7720=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-f99b7720=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-f99b7720=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-f99b7720=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-f99b7720=\"\"></div>\n\t\t<div class=\"login\" _v-f99b7720=\"\">\n\t\t\t<div class=\"login-center\" _v-f99b7720=\"\">\n\t\t\t\t<div class=\"login-header\" _v-f99b7720=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-f99b7720=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-f99b7720=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" v-model=\"signin_form.id\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" v-model=\"signin_form.password\" _v-f99b7720=\"\">\n\t\t\t\t\t<p class=\"info\" _v-f99b7720=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-f99b7720=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-f99b7720=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-f99b7720=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-f99b7720=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" @click=\"LOGIN\" _v-f99b7720=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"Signin wrapper\" _v-2edcfc22=\"\">\n\t<div class=\"shade__\" _v-2edcfc22=\"\">\n\t\t<div _v-2edcfc22=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-2edcfc22=\"\">\n\t\t<div class=\"register\" _v-2edcfc22=\"\">\n\t\t\t<div class=\"register-center\" _v-2edcfc22=\"\">\n\t\t\t\t<div class=\"register-header\" _v-2edcfc22=\"\">\n\t\t\t\t\t<h1 _v-2edcfc22=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-2edcfc22=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\">{{info.password}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" :class=\"state.password2\" @focus=\"onFocus('password2')\" @blur=\"check_password2\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\">{{info.password2}}</p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-2edcfc22=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-2edcfc22=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-2edcfc22=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-2edcfc22=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-2edcfc22=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-2edcfc22=\"\"></div>\n\t\t<div class=\"login\" _v-2edcfc22=\"\">\n\t\t\t<div class=\"login-center\" _v-2edcfc22=\"\">\n\t\t\t\t<div class=\"login-header\" _v-2edcfc22=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-2edcfc22=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-2edcfc22=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" v-model=\"signin_form.id\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" v-model=\"signin_form.password\" _v-2edcfc22=\"\">\n\t\t\t\t\t<p class=\"info\" _v-2edcfc22=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-2edcfc22=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-2edcfc22=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-2edcfc22=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-2edcfc22=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" @click=\"LOGIN\" _v-2edcfc22=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 25 */
@@ -775,7 +775,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1da7e6f0/Test.vue";
+	    var id = "_v-ddf08822/Test.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -833,7 +833,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1b714f70/NavbarWeifeng.vue";
+	    var id = "_v-1bc60ba2/NavbarWeifeng.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -907,7 +907,7 @@
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-1b714f70=\"\">\n\t<div class=\"container__\" _v-1b714f70=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-1b714f70=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-1b714f70=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-1b714f70=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-1b714f70=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-1bc60ba2=\"\">\n\t<div class=\"container__\" _v-1bc60ba2=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-1bc60ba2=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-1bc60ba2=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-1bc60ba2=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-1bc60ba2=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 31 */
@@ -940,7 +940,11 @@
 
 	var _num = __webpack_require__(36);
 
-	var _actions = __webpack_require__(37);
+	var _base = __webpack_require__(37);
+
+	var _base2 = _interopRequireDefault(_base);
+
+	var _actions = __webpack_require__(38);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -948,6 +952,7 @@
 
 	var store = new Vuex.Store({
 		modules: {
+			base: _base2.default,
 			user: _user2.default,
 			items: _items2.default,
 			item: _item2.default,
@@ -1088,6 +1093,44 @@
 
 /***/ },
 /* 37 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var _root;
+	if (/^http/.test(location.href)) {
+		_root = location.origin + '/time';
+	} else {
+		_root = 'file:///D:/git/all/time';
+	}
+
+	var DIR = {
+		root: _root,
+		img: _root + '/../img/time',
+		//api: _root+'/../api/time',
+		api: 'http://localhost:80/api',
+
+		admin: _root + '/admin.html',
+
+		index: _root + '/index.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
+	};
+
+	var state = {
+		DIR: DIR
+	};
+
+	var mutations = {};
+
+	exports.default = { state: state, mutations: mutations };
+
+/***/ },
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1099,11 +1142,11 @@
 
 	var _config = __webpack_require__(1);
 
-	var _items = __webpack_require__(38);
+	var _items = __webpack_require__(39);
 
-	var _item = __webpack_require__(39);
+	var _item = __webpack_require__(40);
 
-	var _user = __webpack_require__(40);
+	var _user = __webpack_require__(41);
 
 	var actions = {
 
@@ -1128,7 +1171,7 @@
 	exports.actions = actions;
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1245,7 +1288,7 @@
 	exports.DELETE_ITEMS = DELETE_ITEMS;
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1283,7 +1326,7 @@
 	exports.GET_ITEM = GET_ITEM;
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1325,6 +1368,6 @@
 	exports.LOGIN = LOGIN;
 
 /***/ },
-/* 41 */
+/* 42 */
 6
 /******/ ])));

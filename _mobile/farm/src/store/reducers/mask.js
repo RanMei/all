@@ -1,5 +1,3 @@
-import {$$rootDir,$$phpDir} from '../common.jsx';
-
 function mask (state={
 	text: ''
 },action){

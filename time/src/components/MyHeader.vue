@@ -129,6 +129,9 @@
 
 <script>
 module.exports = {
-	props: ['dir']
+	props: ['dir'],
+	computed: {
+		
+	}
 };
 </script>

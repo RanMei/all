@@ -3,16 +3,13 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+	target: 'node',
 	entry: {
-		'index': './time/src/_index/index.js',
-		'item': './time/src/_item/item.js',
-		'cart': './time/src/_cart/cart.js',
-		'search': './time/src/_search/search.js',
-		'test': './time/src/_test/index.js',
-		'./_admin/admin': './time/src/_admin/index.js'
+		'server': './time/server_entry.js'
 	},
 	output: {
-		path: './time/dist/',
+		libraryTarget: 'commonjs2',
+		path: __dirname+'time/dist/',
 		publicPath: './dist/',
 		filename: '[name].chunk.js'
 	},
@@ -37,6 +34,7 @@ module.exports = {
 			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
+	externals: ['vue'],
 	postcss: function () {
         return [autoprefixer];
     },
@@ -50,15 +48,15 @@ module.exports = {
     	// 	name: 'common',
     	// 	minChunks: 2
     	// },['index','item','search','cart']),
-    	new webpack.optimize.LimitChunkCountPlugin({
-    		maxChunks: 10
-    	}),
-    	new webpack.optimize.DedupePlugin(),
-    	//new webpack.optimize.UglifyJsPlugin(),
-    	new webpack.optimize.CommonsChunkPlugin(
-    		'common.chunk.js',
-    		['index','item','search','cart']
-    	),
+    	// new webpack.optimize.LimitChunkCountPlugin({
+    	// 	maxChunks: 10
+    	// }),
+    	// new webpack.optimize.DedupePlugin(),
+    	// //new webpack.optimize.UglifyJsPlugin(),
+    	// new webpack.optimize.CommonsChunkPlugin(
+    	// 	'common.chunk.js',
+    	// 	['index','item','search','cart']
+    	// ),
     	new ExtractTextPlugin('[name].style.css',{
     		allChunks: true
     	})

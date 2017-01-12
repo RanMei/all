@@ -101,7 +101,7 @@
 
 	var _index = __webpack_require__(4);
 
-	var _App = __webpack_require__(13);
+	var _App = __webpack_require__(12);
 
 	var _Navbar = __webpack_require__(14);
 
@@ -240,11 +240,11 @@
 
 	var _mask = __webpack_require__(8);
 
-	var _homeSwiper = __webpack_require__(10);
+	var _homeSwiper = __webpack_require__(9);
 
-	var _items = __webpack_require__(11);
+	var _items = __webpack_require__(10);
 
-	var _item = __webpack_require__(12);
+	var _item = __webpack_require__(11);
 
 	var createStore = Redux.createStore;
 	var compose = Redux.compose;
@@ -400,17 +400,13 @@
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.mask = undefined;
-
-	var _common = __webpack_require__(9);
-
 	function mask() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			text: ''
@@ -438,25 +434,6 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var $$rootDir = "http://localhost/fytpy/react/";
-	var $$phpDir = "http://localhost/fytpy/php/";
-	var $$itemDir = "http://localhost/fytpy/items/";
-	var $$imgDir = "http://localhost/fytpy/images/";
-
-	exports.$$rootDir = $$rootDir;
-	exports.$$phpDir = $$phpDir;
-	exports.$$itemDir = $$itemDir;
-	exports.$$imgDir = $$imgDir;
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -478,7 +455,7 @@
 	exports.homeSwiper = homeSwiper;
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -502,7 +479,7 @@
 	exports.items = items;
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -534,7 +511,7 @@
 	exports.item = item;
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -546,7 +523,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(9);
+	var _common = __webpack_require__(13);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -987,6 +964,25 @@
 	exports.SearchBox = SearchBox;
 	exports.Footer = Footer;
 	exports.BackToTop = BackToTop;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var $$rootDir = "http://localhost/fytpy/react/";
+	var $$phpDir = "http://localhost/fytpy/php/";
+	var $$itemDir = "http://localhost/fytpy/items/";
+	var $$imgDir = "http://localhost/fytpy/images/";
+
+	exports.$$rootDir = $$rootDir;
+	exports.$$phpDir = $$phpDir;
+	exports.$$itemDir = $$itemDir;
+	exports.$$imgDir = $$imgDir;
 
 /***/ },
 /* 14 */
@@ -2536,7 +2532,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(9);
+	var _common = __webpack_require__(13);
 
 	var _CommentBox = __webpack_require__(44);
 
@@ -3620,7 +3616,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(9);
+	var _common = __webpack_require__(13);
 
 	var _Navbar = __webpack_require__(14);
 
@@ -4306,7 +4302,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(9);
+	var _common = __webpack_require__(13);
 
 	var _CommentBox = __webpack_require__(44);
 
@@ -4689,7 +4685,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _common = __webpack_require__(9);
+	var _common = __webpack_require__(13);
 
 	var _Navbar = __webpack_require__(14);
 

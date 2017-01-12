@@ -1,3 +1,98 @@
+.Focus[_v-6988d3bc] {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin: auto;
+  background: white;
+  overflow: hidden;
+}
+.Focus .item[_v-6988d3bc] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.Focus .item.active[_v-6988d3bc] {
+  display: block;
+}
+.Focus .item li[_v-6988d3bc] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.Focus .item img[_v-6988d3bc] {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+}
+.Focus .pagination[_v-6988d3bc] {
+  display: table;
+  margin: auto;
+  margin-top: 400px;
+  overflow: hidden;
+  z-index: 99;
+}
+.Focus .pagination .dot[_v-6988d3bc] {
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.Focus .pagination .dot.active[_v-6988d3bc] {
+  opacity: 0.99;
+}
+.Focus .focus-last[_v-6988d3bc] {
+  position: absolute;
+  left: 10px;
+  top: 200px;
+  width: 49px;
+  height: 104px;
+  background: black;
+  line-height: 104px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  z-index: 1;
+  opacity: 0.5;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.Focus .focus-last[_v-6988d3bc]:hover {
+  opacity: 0.7;
+}
+.Focus .focus-next[_v-6988d3bc] {
+  position: absolute;
+  right: 10px;
+  top: 200px;
+  width: 49px;
+  height: 104px;
+  background: black;
+  line-height: 104px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  z-index: 1;
+  opacity: 0.5;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.Focus .focus-next[_v-6988d3bc]:hover {
+  opacity: 0.7;
+}
 #ITEM {
   background: #127BAB;
   overflow: hidden;
@@ -142,35 +237,35 @@
   border: 1px solid #DD4A4D;
   color: #DD4A4D;
 }
-.TabbedBox[_v-591c853c] {
+.TabbedBox[_v-dfc8e40a] {
   width: 1000px;
   margin: 30px auto 40px auto;
 }
-.TabbedBox .tabs[_v-591c853c] {
+.TabbedBox .tabs[_v-dfc8e40a] {
   width: 100%;
   height: 60px;
   background: white;
   overflow: hidden;
   border-bottom: 1px solid #BABABA;
 }
-.TabbedBox .tabs li[_v-591c853c] {
+.TabbedBox .tabs li[_v-dfc8e40a] {
   float: left;
   margin: 20px;
   color: #127BAB;
   cursor: pointer;
 }
-.TabbedBox .tabs li.active[_v-591c853c] {
+.TabbedBox .tabs li.active[_v-dfc8e40a] {
   border-bottom: 4px solid orange;
 }
-.TabbedBox .content[_v-591c853c] {
+.TabbedBox .content[_v-dfc8e40a] {
   position: relative;
 }
-.TabbedBox .content > li[_v-591c853c] {
+.TabbedBox .content > li[_v-dfc8e40a] {
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
   background: white;
 }
-.TabbedBox .content img[_v-591c853c] {
+.TabbedBox .content img[_v-dfc8e40a] {
   margin-bottom: 20px;
 }

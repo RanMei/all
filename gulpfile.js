@@ -218,12 +218,17 @@ const WEBPACK = [{
 	src: './_mobile/vue/src/presentation.main.js', 
 	config: './_mobile/vue/webpack.config.js', 
 	dest: './_mobile/vue/dist/'
-},{
-	name: 'webpack-time', 
-	dest: './time/dist/', 
-	config: './time/webpack.config.js', 
-	watched: ['./time/src/*.*','./time/src/**/*.*']
+// },{
+// 	name: 'webpack-time', 
+// 	dest: './time/dist/', 
+// 	config: './time/webpack.config.js', 
+// 	watched: ['./time/src/*.*','./time/src/**/*.*']
 },{	
+	name: 'webpack-time-server', 
+	dest: './time/server/', 
+	config: './time/webpack.server.js', 
+	watched: ['./time/src/*.*','./time/src/**/*.*']
+},{
 	name: 'webpack-desktop-presentation', 
 	dest: './desktop/presentation/dist/', 
 	config: './desktop/presentation/webpack.config.js', 
@@ -337,17 +342,25 @@ gulp.task( 'browserify_fytpy',function(){
 	);
 });
 
+var WEBPACK2 = [{
+	name: 'webpack2-time',
+	config: './time/webpack.config.js',
+	watched: ['./time/src/*.*','./time/src/**/*.*']
+}]
 var gulputil = require('gulp-util')
-var webpackkk = require('webpack');
+var webpack2 = require('webpack');
 
-gulp.task('webpack',function(){
-	webpack(require('./_mobile/vue/webpack.config.js'),function(e,s){
-		if(e){throw new gulputil.PluginError('webpack',e)};
-		gulputil.log('[webpack]',s.toString({
-
-		}));
-	});
+WEBPACK2.forEach(a=>{
+	gulp.task( a.name,function(){
+		webpack2( require(a.config),function(e,s){
+			if(e){
+				throw new gulputil.PluginError('webpack',e)
+			};
+			// gulputil.log('[webpack]',s.toString({  }));
+		});
+	})
 })
+
 
 // concat
 gulp.task( "concat_angular",function(){
@@ -433,6 +446,9 @@ gulp.task('watch',function(){
 
 	WEBPACK.forEach(function(elem){
 		gulp.watch( elem.watched,[elem.name] );
+	});
+	WEBPACK2.forEach(function(a){
+		gulp.watch( a.watched,[a.name] );
 	});
 
 	BROWSERIFY.forEach(function(elem){

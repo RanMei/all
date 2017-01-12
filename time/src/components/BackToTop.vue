@@ -20,12 +20,15 @@
 </style>
 
 <script type="text/javascript">
-var body = document.querySelector('body');
+var body;
 export default {
 	data: function(){
 		return {
 			scrolling: false
 		}
+	},
+	mounted: function(){
+		body = document.querySelector('body');
 	},
 	methods: {
 		back: function(){

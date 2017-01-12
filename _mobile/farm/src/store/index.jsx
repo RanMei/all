@@ -1,10 +1,10 @@
-import {user} from './user.js';
-import {shoppingCart} from './shoppingCart.js';
-import {notice} from './notice.js';
-import {mask} from './mask.js';
-import {homeSwiper} from './homeSwiper.js';
-import {items} from './items.js';
-import {item} from './item.js';
+import {user} from './reducers/user.js';
+import {shoppingCart} from './reducers/shoppingCart.js';
+import {notice} from './reducers/notice.js';
+import {mask} from './reducers/mask.js';
+import {homeSwiper} from './reducers/homeSwiper.js';
+import {items} from './reducers/items.js';
+import {item} from './reducers/item.js';
 
 var createStore = Redux.createStore;
 var compose = Redux.compose;
