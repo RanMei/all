@@ -201,23 +201,23 @@ gulp.task('vueify',function(){
 })
 
 const WEBPACK = [{
-	name: 'webpack-mobile-farm', 
-	src: './_mobile/farm/src/main.jsx', 
-	dest: './_mobile/farm/dist/', 
-	config: './_mobile/farm/webpack.config.js', 
-	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/*/*.*']
-},{
+// 	name: 'webpack-mobile-farm', 
+// 	src: './_mobile/farm/src/main.jsx', 
+// 	dest: './_mobile/farm/dist/', 
+// 	config: './_mobile/farm/webpack.config.js', 
+// 	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/*/*.*']
+// },{
 	name: 'webpack-mobile-main', 
 	src: './_mobile/main/src/main.jsx', 
 	dest: './_mobile/main/dist/', 
 	config: './_mobile/main/webpack.config.js', 
 	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
-},{
-	name: 'webpack-mobile-vue', 
-	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*','./_mobile/vue/src/*/*/*.*'], 
-	src: './_mobile/vue/src/presentation.main.js', 
-	config: './_mobile/vue/webpack.config.js', 
-	dest: './_mobile/vue/dist/'
+// },{
+// 	name: 'webpack-mobile-vue', 
+// 	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*','./_mobile/vue/src/*/*/*.*'], 
+// 	src: './_mobile/vue/src/presentation.main.js', 
+// 	config: './_mobile/vue/webpack.config.js', 
+// 	dest: './_mobile/vue/dist/'
 // },{
 // 	name: 'webpack-time', 
 // 	dest: './time/dist/', 
@@ -343,9 +343,17 @@ gulp.task( 'browserify_fytpy',function(){
 });
 
 var WEBPACK2 = [{
+	name: 'webpack-mobile-farm',
+	config: './_mobile/farm/webpack.config.js', 
+	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*']
+},{
 	name: 'webpack2-time',
 	config: './time/webpack.config.js',
 	watched: ['./time/src/*.*','./time/src/**/*.*']
+},{
+	name: 'webpack-mobile-vue', 
+	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/**/*.*'],  
+	config: './_mobile/vue/webpack.config.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');

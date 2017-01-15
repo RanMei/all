@@ -388,7 +388,7 @@
 	if (/^http/.test(location.href)) {
 		_root = location.origin + '/time';
 	} else {
-		_root = 'file:///D:/git/all/time';
+		_root = 'file:///E:/git/all/time';
 	}
 
 	var DIR = {
@@ -659,84 +659,21 @@
 
 /***/ },
 /* 43 */,
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(45);
-	__vue_script__ = __webpack_require__(46);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(47);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-341844b6/MyHeader.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 45 */
-42,
+/* 44 */,
+/* 45 */,
 /* 46 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = {
-		props: ['dir'],
-		computed: {}
-	};
-
-/***/ },
-/* 47 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"MY-HEADER\" _v-341844b6=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<div class=\"search_box\" _v-341844b6=\"\">\n\t\t\t\t<form _v-341844b6=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-341844b6=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-341844b6=\"\"><i class=\"fa fa-search\" _v-341844b6=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-341844b6=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<p _v-341844b6=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-341844b6=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-341844b6=\"\">\n\t\t\t\t<li _v-341844b6=\"\"><a href=\"register.html\" class=\"a-signin login\" _v-341844b6=\"\">登录</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><a href=\"register.html\" class=\"a-signup register\" _v-341844b6=\"\">注册</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><i class=\"fa fa-file\" _v-341844b6=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-341844b6=\"\">我的订单</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-341844b6=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-341844b6=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-341844b6=\"\">我的购物车(<span class=\"quantityIn\" _v-341844b6=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-341844b6=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-341844b6=\"\"></div>\n\t\t</div>\n\t\t<!--\n\t\t<div class=\"banner container\">\n\t\t\t<ul>\n\t\t\t\t<a href=\"\" style=\"background:url(images/165404.24885127.jpg)\">\n\t\t\t\t\t<div class=\"label\">新品</div>\n\t\t\t\t\t<div>星球大战入耳式耳机</div>\n\t\t\t\t</a>\n\t\t\t</ul>\n\t\t</div>\n\t\t-->\n\t</div>\n</div>\n";
-
-/***/ },
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(53);
-	__vue_script__ = __webpack_require__(54);
+	__webpack_require__(47);
+	__vue_script__ = __webpack_require__(48);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(55);
+	__vue_template__ = __webpack_require__(49);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -756,7 +693,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-8f3a88d2/BackToTop.vue";
+	    var id = "_v-7b4f24f6/BackToTop.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -766,9 +703,9 @@
 	}
 
 /***/ },
-/* 53 */
+/* 47 */
 42,
-/* 54 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -811,25 +748,25 @@
 	};
 
 /***/ },
-/* 55 */
+/* 49 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-8f3a88d2=\"\"><i class=\"fa fa-angle-up\" _v-8f3a88d2=\"\"></i></div>\n";
+	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-7b4f24f6=\"\"><i class=\"fa fa-angle-up\" _v-7b4f24f6=\"\"></i></div>\n";
 
 /***/ },
-/* 56 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(57);
-	__vue_script__ = __webpack_require__(58);
+	__webpack_require__(51);
+	__vue_script__ = __webpack_require__(52);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(59);
+	__vue_template__ = __webpack_require__(53);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -849,7 +786,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-767d0c9a/MyFooter.vue";
+	    var id = "_v-69956734/MyHeader.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -859,9 +796,70 @@
 	}
 
 /***/ },
-/* 57 */
+/* 51 */
 42,
-/* 58 */
+/* 52 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+		props: ['dir'],
+		computed: {}
+	};
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"MY-HEADER\" _v-69956734=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<div class=\"search_box\" _v-69956734=\"\">\n\t\t\t\t<form _v-69956734=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-69956734=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-69956734=\"\"><i class=\"fa fa-search\" _v-69956734=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-69956734=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<p _v-69956734=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-69956734=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-69956734=\"\">\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signin login\" _v-69956734=\"\">登录</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signup register\" _v-69956734=\"\">注册</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><i class=\"fa fa-file\" _v-69956734=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-69956734=\"\">我的订单</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-69956734=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-69956734=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-69956734=\"\">我的购物车(<span class=\"quantityIn\" _v-69956734=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-69956734=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-69956734=\"\"></div>\n\t\t</div>\n\t\t<!--\n\t\t<div class=\"banner container\">\n\t\t\t<ul>\n\t\t\t\t<a href=\"\" style=\"background:url(images/165404.24885127.jpg)\">\n\t\t\t\t\t<div class=\"label\">新品</div>\n\t\t\t\t\t<div>星球大战入耳式耳机</div>\n\t\t\t\t</a>\n\t\t\t</ul>\n\t\t</div>\n\t\t-->\n\t</div>\n</div>\n";
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(55);
+	__vue_script__ = __webpack_require__(56);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(57);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-abfa2f18/MyFooter.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+/* 55 */
+42,
+/* 56 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -872,10 +870,10 @@
 	exports.default = {};
 
 /***/ },
-/* 59 */
+/* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-767d0c9a=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-767d0c9a=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-767d0c9a=\"\">\n\t\t<ul class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">新用户注册</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">购物流程</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">常见问题</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">发票制度</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">在线付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">余额付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">邮费说明</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送服务范围</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送速度查询</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">售后政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-767d0c9a=\"\">4006-118-118</p>\n\t\t\t\t<p _v-767d0c9a=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-767d0c9a=\"\">\n\t\t<div class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<p _v-767d0c9a=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-abfa2f18=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-abfa2f18=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-abfa2f18=\"\">\n\t\t<ul class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">新用户注册</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">购物流程</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">常见问题</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">发票制度</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">在线付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">余额付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">邮费说明</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送服务范围</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送速度查询</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">售后政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-abfa2f18=\"\">4006-118-118</p>\n\t\t\t\t<p _v-abfa2f18=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-abfa2f18=\"\">\n\t\t<div class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<p _v-abfa2f18=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 /******/ ])));

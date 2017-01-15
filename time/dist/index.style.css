@@ -1,4 +1,4 @@
-.Focus[_v-6988d3bc] {
+.Focus[_v-7eb276ca] {
   position: relative;
   width: 100%;
   height: 500px;
@@ -6,7 +6,7 @@
   background: white;
   overflow: hidden;
 }
-.Focus .item[_v-6988d3bc] {
+.Focus .item[_v-7eb276ca] {
   position: absolute;
   left: 0;
   top: 0;
@@ -14,15 +14,15 @@
   height: 100%;
   display: none;
 }
-.Focus .item.active[_v-6988d3bc] {
+.Focus .item.active[_v-7eb276ca] {
   display: block;
 }
-.Focus .item li[_v-6988d3bc] {
+.Focus .item li[_v-7eb276ca] {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.Focus .item img[_v-6988d3bc] {
+.Focus .item img[_v-7eb276ca] {
   display: block;
   position: absolute;
   left: 0;
@@ -32,14 +32,14 @@
   margin: auto;
   height: 100%;
 }
-.Focus .pagination[_v-6988d3bc] {
+.Focus .pagination[_v-7eb276ca] {
   display: table;
   margin: auto;
   margin-top: 400px;
   overflow: hidden;
   z-index: 99;
 }
-.Focus .pagination .dot[_v-6988d3bc] {
+.Focus .pagination .dot[_v-7eb276ca] {
   float: left;
   width: 15px;
   height: 15px;
@@ -50,10 +50,10 @@
   cursor: pointer;
   opacity: 0.5;
 }
-.Focus .pagination .dot.active[_v-6988d3bc] {
+.Focus .pagination .dot.active[_v-7eb276ca] {
   opacity: 0.99;
 }
-.Focus .focus-last[_v-6988d3bc] {
+.Focus .focus-last[_v-7eb276ca] {
   position: absolute;
   left: 10px;
   top: 200px;
@@ -70,10 +70,10 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.Focus .focus-last[_v-6988d3bc]:hover {
+.Focus .focus-last[_v-7eb276ca]:hover {
   opacity: 0.7;
 }
-.Focus .focus-next[_v-6988d3bc] {
+.Focus .focus-next[_v-7eb276ca] {
   position: absolute;
   right: 10px;
   top: 200px;
@@ -90,7 +90,7 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.Focus .focus-next[_v-6988d3bc]:hover {
+.Focus .focus-next[_v-7eb276ca]:hover {
   opacity: 0.7;
 }
 #home {

@@ -9,7 +9,7 @@ module.exports = {
 		'index': './_mobile/vue/src/index.js'
 	},
 	output: {
-		path: __dirname+'_mobile/vue/dist/',
+		path: __dirname+'/dist/',
 		publicPath: './dist/',
 		filename: '[name].chunk.js'
 	},

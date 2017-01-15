@@ -7,19 +7,19 @@ webpackJsonp([2],{
 
 	var _config = __webpack_require__(1);
 
-	var _MyHeader = __webpack_require__(44);
+	var _MyHeader = __webpack_require__(50);
 
 	var MyHeader = _interopRequireWildcard(_MyHeader);
 
-	var _Focus = __webpack_require__(48);
+	var _Focus = __webpack_require__(62);
 
 	var Focus = _interopRequireWildcard(_Focus);
 
-	var _BackToTop = __webpack_require__(52);
+	var _BackToTop = __webpack_require__(46);
 
 	var BackToTop = _interopRequireWildcard(_BackToTop);
 
-	var _MyFooter = __webpack_require__(56);
+	var _MyFooter = __webpack_require__(54);
 
 	var MyFooter = _interopRequireWildcard(_MyFooter);
 
@@ -28,7 +28,7 @@ webpackJsonp([2],{
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	__webpack_require__(42);
-	__webpack_require__(60);
+	__webpack_require__(66);
 
 
 	Vue.component('my-header', MyHeader);
@@ -40,7 +40,7 @@ webpackJsonp([2],{
 		el: '#root',
 		store: _store.store,
 		components: {
-			MyHeader: __webpack_require__(44).default
+			MyHeader: __webpack_require__(50).default
 		},
 		data: {
 			DIR: _config.DIR,
@@ -55,19 +55,19 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 48:
+/***/ 62:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(49);
-	__vue_script__ = __webpack_require__(50);
+	__webpack_require__(63);
+	__vue_script__ = __webpack_require__(64);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\Focus.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(51);
+	__vue_template__ = __webpack_require__(65);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -87,7 +87,7 @@ webpackJsonp([2],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6988d3bc/Focus.vue";
+	    var id = "_v-7eb276ca/Focus.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -98,10 +98,10 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 49:
+/***/ 63:
 42,
 
-/***/ 50:
+/***/ 64:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -147,14 +147,14 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 51:
+/***/ 65:
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"Focus wrapper\" _v-6988d3bc=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-6988d3bc=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-6988d3bc=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-6988d3bc=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-6988d3bc=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-left\" _v-6988d3bc=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-right\" _v-6988d3bc=\"\"></i></div>\t\t\n</ul>\n";
+	module.exports = "\n<ul class=\"Focus wrapper\" _v-7eb276ca=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-7eb276ca=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-7eb276ca=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-7eb276ca=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-7eb276ca=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-left\" _v-7eb276ca=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-7eb276ca=\"\"><i class=\"fa fa-angle-right\" _v-7eb276ca=\"\"></i></div>\t\t\n</ul>\n";
 
 /***/ },
 
-/***/ 60:
+/***/ 66:
 42
 
 });

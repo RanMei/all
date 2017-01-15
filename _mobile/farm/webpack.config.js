@@ -6,7 +6,7 @@ module.exports = {
 		'index': './_mobile/farm/src/main.jsx'
 	},
 	output: {
-		// path: './_mobile/farm/',
+		path: __dirname+'/dist/',
 		publicPath: './dist/',
 		filename: 'bundle.js'
 	},

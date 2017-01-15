@@ -59,7 +59,7 @@ webpackJsonp([1],{
 		function ShoppingCart(props) {
 			_classCallCheck(this, ShoppingCart);
 
-			var _this = _possibleConstructorReturn(this, (ShoppingCart.__proto__ || Object.getPrototypeOf(ShoppingCart)).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
 
 			console.log('<ShoppingCart/> constructing');
 			return _this;
@@ -173,17 +173,17 @@ webpackJsonp([1],{
 					React.createElement(
 						'div',
 						{ className: 'header c-topbar' },
-						'\u8D2D\u7269\u8F66',
+						'购物车',
 						React.createElement(
 							'span',
 							{ className: 'remove', onClick: this.remove.bind(this) },
-							'\u5220\u9664'
+							'删除'
 						)
 					),
 					this.props.items.length === 0 ? React.createElement(
 						'p',
 						{ className: '_info' },
-						'\u60A8\u7684\u8D2D\u7269\u8F66\u662F\u7A7A\u7684'
+						'您的购物车是空的'
 					) : null,
 					this.props.items.map(function (item, i) {
 						return React.createElement(
@@ -238,7 +238,7 @@ webpackJsonp([1],{
 								React.createElement(
 									'p',
 									{ className: 'price' },
-									'\uFFE5',
+									'￥',
 									item.price.toFixed(2)
 								),
 								React.createElement(
@@ -264,23 +264,23 @@ webpackJsonp([1],{
 							React.createElement(
 								'p',
 								{ className: 'text-all' },
-								'\u5168\u9009'
+								'全选'
 							),
 							React.createElement(
 								'a',
 								{ className: this.totalQuantity(this.props.items) > 0 ? 'pay' : 'pay disabled', href: '' },
-								'\u53BB\u7ED3\u7B97(',
+								'去结算(',
 								this.totalQuantity(this.props.items),
 								')'
 							),
 							React.createElement(
 								'p',
 								{ className: 'sum' },
-								'\u603B\u8BA1\uFF1A',
+								'总计：',
 								React.createElement(
 									'span',
 									{ className: 'money' },
-									'\uFFE5',
+									'￥',
 									this.getTotalPrice().toFixed(2)
 								)
 							)

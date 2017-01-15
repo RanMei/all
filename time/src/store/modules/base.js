@@ -2,7 +2,7 @@ var _root;
 if( /^http/.test(location.href) ){
 	_root = location.origin+'/time';
 }else{
-	_root = 'file:///D:/git/all/time';
+	_root = 'file:///E:/git/all/time';
 }
 
 const DIR = {

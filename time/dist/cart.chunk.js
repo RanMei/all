@@ -5,43 +5,17 @@ webpackJsonp([1],{
 
 	'use strict';
 
-	var _config = __webpack_require__(1);
-
 	__webpack_require__(42);
-
-	__webpack_require__(43);
-
-	var _MyHeader = __webpack_require__(44);
-
-	var MyHeader = _interopRequireWildcard(_MyHeader);
-
-	var _Focus = __webpack_require__(48);
-
-	var Focus = _interopRequireWildcard(_Focus);
-
-	var _BackToTop = __webpack_require__(52);
-
-	var BackToTop = _interopRequireWildcard(_BackToTop);
-
-	var _MyFooter = __webpack_require__(56);
-
-	var MyFooter = _interopRequireWildcard(_MyFooter);
 
 	var _store = __webpack_require__(32);
 
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	Vue.component('my-header', MyHeader);
-	Vue.component('focus', Focus);
-	Vue.component('back-to-top', BackToTop);
-	Vue.component('my-footer', MyFooter);
-
 	new Vue({
 		el: '#root',
-		store: _store.store,
-		data: {
-			DIR: _config.DIR
+		components: {
+			App: __webpack_require__(43)
 		},
+		template: '<app></app>',
+		store: _store.store,
 		methods: {
 			pick: function pick(n) {
 				this.current = n;
@@ -52,21 +26,18 @@ webpackJsonp([1],{
 /***/ },
 
 /***/ 43:
-42,
-
-/***/ 48:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(49);
-	__vue_script__ = __webpack_require__(50);
+	__webpack_require__(44);
+	__vue_script__ = __webpack_require__(45);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\Focus.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\_cart\\App.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(51);
+	__vue_template__ = __webpack_require__(61);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -86,7 +57,7 @@ webpackJsonp([1],{
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-6988d3bc/Focus.vue";
+	    var id = "_v-024bffcb/App.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -97,59 +68,86 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 49:
+/***/ 44:
 42,
 
-/***/ 50:
-/***/ function(module, exports) {
+/***/ 45:
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.default = {
-		props: {
-			dir: {},
-			items: {
-				default: [0, 1, 2, 3]
-			}
+		components: {
+			BackToTop: __webpack_require__(46),
+			MyHeader: __webpack_require__(50),
+			MyFooter: __webpack_require__(54),
+			ShoppingCart: __webpack_require__(58)
 		},
-		data: function data() {
-			return {
-				current: 0
-			};
-		},
-		watch: {
-			curernt: function curernt(val, prev_val) {}
-		},
-		methods: {
-			prev: function prev() {
-				if (this.current > 0) {
-					this.current--;
-				} else {
-					this.current = 3;
-				}
-			},
-			next: function next() {
-				if (this.current < 3) {
-					this.current++;
-				} else {
-					this.current = 0;
-				}
-			},
-			jump: function jump(i) {
-				this.current = i;
+		computed: {
+			dir: function dir() {
+				return this.$store.state.base.DIR;
 			}
 		}
 	};
 
 /***/ },
 
-/***/ 51:
+/***/ 58:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(59);
+	__vue_template__ = __webpack_require__(60);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-15768bb5/ShoppingCart.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+
+/***/ 59:
+42,
+
+/***/ 60:
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"Focus wrapper\" _v-6988d3bc=\"\">\n\t<a :href=\" dir.item \" class=\"item\" v-for=\"(a,i) in items\" :class=\" i===current?'active':'' \" _v-6988d3bc=\"\">\n\t\t<li :style=\" 'background:url('+dir.img+'/focus/'+(i)+'.jpg) no-repeat center;' \" _v-6988d3bc=\"\">\n\t\t</li>\n\t</a>\n\t<ul class=\"pagination\" _v-6988d3bc=\"\">\n\t\t<div class=\"dot\" v-for=\"(b,index) in items\" :class=\" index===current?'active':'' \" @click=\"jump(index)\" _v-6988d3bc=\"\"></div>\n\t</ul>\n\t<div class=\"focus-last\" @click=\"prev\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-left\" _v-6988d3bc=\"\"></i></div>\n\t<div class=\"focus-next\" @click=\"next\" _v-6988d3bc=\"\"><i class=\"fa fa-angle-right\" _v-6988d3bc=\"\"></i></div>\t\t\n</ul>\n";
+	module.exports = "\n<div class=\"shopping-cart wrapper\" _v-15768bb5=\"\">\n\t<div class=\"container\" _v-15768bb5=\"\">\n\t\t<div class=\"shopping-cart-header1\" _v-15768bb5=\"\">我的购物车</div>\n\t\t<div class=\"shopping-cart-header2\" _v-15768bb5=\"\">\n\t\t\t<input class=\"check\" type=\"checkbox\" _v-15768bb5=\"\">\n\t\t\t<div class=\"thumbnail\" _v-15768bb5=\"\">全选</div>\n\t\t\t<p class=\"name\" _v-15768bb5=\"\">商品</p>\n\t\t\t<p class=\"spec\" _v-15768bb5=\"\">规格</p>\n\t\t\t<p class=\"price\" _v-15768bb5=\"\">单价(元)</p>\n\t\t\t<div class=\"counter\" _v-15768bb5=\"\">数量</div>\n\t\t\t<div class=\"subtotal\" _v-15768bb5=\"\">小计(元)</div>\n\t\t\t<p class=\"manipulation\" _v-15768bb5=\"\">操作</p>\n\t\t</div>\n\t\t<div class=\"item\" _v-15768bb5=\"\">\n\t\t\t<input class=\"check\" type=\"checkbox\" _v-15768bb5=\"\">\n\t\t\t<div class=\"thumbnail\" _v-15768bb5=\"\"><img src=\"xxxHTMLLINKxxx0.96557984594255690.6037718190345913xxx\" _v-15768bb5=\"\"></div>\n\t\t\t<p class=\"name\" _v-15768bb5=\"\">--</p>\n\t\t\t<p class=\"spec\" _v-15768bb5=\"\">--</p>\n\t\t\t<p class=\"price\" _v-15768bb5=\"\">--</p>\n\t\t\t<div class=\"counter\" _v-15768bb5=\"\">\n\t\t\t\t<div class=\"minus\" _v-15768bb5=\"\">-</div>\n\t\t\t\t<div class=\"quantity\" _v-15768bb5=\"\">--</div>\n\t\t\t\t<div class=\"plus\" _v-15768bb5=\"\">+</div>\n\t\t\t</div>\n\t\t\t<div class=\"subtotal\" _v-15768bb5=\"\">--</div>\n\t\t\t<p class=\"manipulation\" _v-15768bb5=\"\">\n\t\t\t\t<span class=\"delete\" _v-15768bb5=\"\">删除</span><br _v-15768bb5=\"\">\n\t\t\t\t<span class=\"concern\" _v-15768bb5=\"\">移到我的关注</span>\n\t\t\t</p>\n\t\t</div>\n\t\t<div style=\"overflow:hidden;background:white;\" _v-15768bb5=\"\">\n\t\t\t<ul class=\"summary\" _v-15768bb5=\"\">\n\t\t\t\t<li _v-15768bb5=\"\">已选择<span class=\"totalQuantity\" _v-15768bb5=\"\">0</span>件商品</li>\n\t\t\t\t<li _v-15768bb5=\"\">总价（不含运费）：<span class=\"note\" _v-15768bb5=\"\">￥</span><span class=\"totalPrice\" _v-15768bb5=\"\">0</span></li>\n\t\t\t\t<li class=\"checkout\" _v-15768bb5=\"\">去结算</li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+
+/***/ 61:
+/***/ function(module, exports) {
+
+	module.exports = "\n<div id=\"root\" _v-024bffcb=\"\">\n\t<back-to-top _v-024bffcb=\"\"></back-to-top>\n\n\t<my-header :dir=\"dir\" _v-024bffcb=\"\"></my-header>\n\t\n\t<shopping-cart _v-024bffcb=\"\"></shopping-cart>\n\t\n\t<my-footer _v-024bffcb=\"\"></my-footer>\t\t\n</div>\n";
 
 /***/ }
 
