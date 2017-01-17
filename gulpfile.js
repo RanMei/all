@@ -414,6 +414,15 @@ var EJS = [{
 	rename: '[name].html',
 	dest: './_canvas/'
 },{
+	name: 'ejs-time',
+	src: './time/src/tpl/tpl.ejs',
+	watched: ['./time/src/tpl/*.*'],
+	data: function(){
+		return require('./time/src/tpl/config.js')
+	},
+	rename: '[name].html',
+	dest: './time/'
+},{
 	name: 'ejs-wolf',
 	src: './desktop/_wolf/src/index.ejs',
 	watched: ['./desktop/_wolf/src/index.ejs'],

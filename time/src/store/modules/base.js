@@ -1,8 +1,9 @@
 var _root;
+
 if( /^http/.test(location.href) ){
 	_root = location.origin+'/time';
 }else{
-	_root = 'file:///E:/git/all/time';
+	_root = location.href.replace( /time\/.+/,'time' );
 }
 
 const DIR = {
@@ -14,6 +15,7 @@ const DIR = {
 	admin: _root+'/admin.html',
 
 	index: _root+'/index.html',
+	signin: _root+'/signin.html',
 	cart: _root+'/cart.html',
 	item: _root+'/item.html',
 	search: _root+'/search.html'

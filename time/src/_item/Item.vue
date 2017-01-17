@@ -1,7 +1,49 @@
-@import (reference) '../common.less';
+<template>
+	<div class="Item">
+		<div class="item container">
+			<div class="header">
+				<p>
+					<a href="../">主页</a> > <a href="" class="item_class">--</a> > <a href="" class="sub_class">--</a>
+				</p>
+			</div>
+			<div class="images">
+				<div class="thumbnail">
+					<img src="">
+				</div>
+				<ul class="tabs">
+					<li><img src=""></li>
+					<li><img src=""></li>
+					<li><img src=""></li>
+					<li><img src=""></li>
+				</ul>
+			</div>		
+			<div class="information">
+				<p class="name">{{item.name}}</p>
+				<p class="description">{{item.description}}</p>
+				<p class="priceWrapper"><b>￥<span class="price">{{item.price.toFixed(2)}}</span></b></p>
+				<div class="shuliang">
+					<p>数量：</p>
+					<div class="counter">
+						<div class="minus" @click="minus">-</div>
+						<div class="quantity">{{quantity}}</div>
+						<div class="plus" @click="plus">+</div>
+					</div>
+				</div>
+				<div class="buy">立即购买</div>
+				<div class="toCart">放入购物车</div>
+				
+			</div>
+		</div>
+		
+		<tabbed-box></tabbed-box>
+	</div>
+</template>
 
-#ITEM {
-	background:#127BAB;overflow:hidden;
+<style lang="less" scoped>
+@import (reference) '../vars.less';
+.Item {
+	background: #127BAB;
+	overflow: hidden;
 
 	.itemID {display:none;}
 
@@ -106,3 +148,53 @@
 	}	
 
 }
+</style>
+
+<script type="text/javascript">
+	export default {
+		components: {
+			TabbedBox: require('./TabbedBox.vue')
+		},
+		data: function(){
+			return {
+				id: '',
+				query: '',
+				current: 0,
+				quantity: 1
+			};
+		},
+		mounted: function(){
+			//this.get_id();
+			this.get_query();
+			this.$store.dispatch( 'GET_ITEM',this.get_id() );
+		},
+		computed: {
+			item: function(){
+				return this.$store.state.item;
+			}
+		},
+		methods: {
+			get_id: function(){
+				var id = location.href.match(/id=.+/)[0].split(/&/)[0].replace(/id=/,'');
+				return id;
+			},
+			get_query: function(){
+				this.query = location.href.match(/\?.+/)[0];
+			},
+			get_item: function(){
+				var self = this;
+			},
+			plus: function(){
+				this.quantity++;
+			},
+			minus: function(){
+				if(this.quantity>1){
+					this.quantity--;
+				}
+			},
+			pick: function(n){
+				this.current = n;
+			}
+		}
+	}
+</script>
