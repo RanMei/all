@@ -1,3 +1,4 @@
+<<<<<<< HEAD:time/server/server.search.style.css
 a:link {
   text-decoration: none;
 }
@@ -85,163 +86,71 @@ body {
   border: 1px solid lightgrey;
   background: white;
   box-shadow: inset 0 2px 5px lightgrey;
+=======
+.TopbarBlack[_v-9450a536] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  padding-left: 20px;
+  background: #192332;
+>>>>>>> 60881f51b83c4e8b8500e4dc6fe5dd9ae0c7cd18:time/server/server.style.css
 }
-.searchbar .search_box input[_v-69956734] {
+.TopbarBlack a[_v-9450a536] {
+  display: block;
   float: left;
-  width: 400px;
-  height: 20px;
-  font-size: 17px;
-  line-height: 20px;
-  margin: 10px 0 0 40px;
-  color: grey;
-  border: none;
+  margin-right: 20px;
+  font-size: 14px;
+  line-height: 60px;
+  color: #c8c8c8;
 }
-.searchbar .search_box .search_btn[_v-69956734] {
-  float: right;
-  width: 50px;
-  height: 32px;
-  margin: 4px 20px 0 0;
-  border-radius: 16px;
-  font-size: 20px;
-  line-height: 32px;
-  text-align: center;
-  color: #B2B2B2;
+.TopbarBlack a[_v-9450a536]:visited {
+  color: #c8c8c8;
 }
-.searchbar .search_box .search_btn[_v-69956734]:visited {
-  color: #B2B2B2;
+.TopbarBlack a[_v-9450a536]:hover {
+  color: white;
 }
-.searchbar .search_box .search_btn[_v-69956734]:hover {
-  background: #ECE9D8;
-}
-/**/
-.shade[_v-69956734] {
+.NavbarWeifeng[_v-11360bc7] {
   width: 100%;
   min-width: 1000px;
-  box-shadow: 0 0 40px 35px grey;
+  background: #3D455F;
 }
-/**/
-.topbar[_v-69956734] {
-  position: relative;
-  background: #2378BA;
+.NavbarWeifeng .container__[_v-11360bc7] {
+  width: 1000px;
+  margin: auto;
+  background: #3D455F;
 }
-.topbar .container[_v-69956734] {
-  padding: 20px 0 20px 0;
-  background: #2378BA;
-  color: white;
-  font-size: 15px;
-}
-.topbar .container a[_v-69956734]:link {
-  color: white;
-}
-.topbar .container a[_v-69956734]:visited {
-  color: white;
-}
-.topbar .container > p[_v-69956734] {
-  float: left;
-  margin: 0 0 0 20px;
-}
-.topbar .container > ul[_v-69956734] {
-  float: right;
-  margin: 0 20px 0 0;
-}
-.topbar .container > ul > li[_v-69956734] {
-  float: left;
-  cursor: pointer;
-}
-.topbar .container > ul .separator[_v-69956734] {
-  float: left;
-  margin: 0 10px 0 10px;
-}
-.topbar .quantityIn[_v-69956734] {
-  color: #D2291E;
-}
-.topbar .my_cart[_v-69956734] {
-  position: relative;
-}
-.topbar .my_cart:hover .cart_panel[_v-69956734] {
-  display: block;
-}
-.topbar .cart_panel[_v-69956734] {
-  position: absolute;
-  right: 0;
-  top: 30px;
-  width: 100px;
-  padding: 15px;
-  color: black;
-  background: white;
-  border-radius: 4px;
-  display: none;
-  z-index: 99;
-}
-.footer .container[_v-abfa2f18] {
-  padding: 50px 0 50px 0;
-  background: #F2F2F2;
+.NavbarWeifeng .container__ .tabs[_v-11360bc7] {
+  padding: 10px 0 10px 0;
   overflow: hidden;
 }
-.footer .container a[_v-abfa2f18] {
-  margin: 0 0 0 40px;
-  font-size: 14px;
-  color: #999999;
-}
-.footer .container a[_v-abfa2f18]:link {
-  color: #999999;
-  text-decoration: none;
-}
-.footer .container a[_v-abfa2f18]:visited {
-  color: #999999;
-}
-.footer .container a[_v-abfa2f18]:hover {
-  color: #0081BC;
-}
-.footer .container a[_v-abfa2f18]:active {
-  color: #0081BC;
-}
-.footer .container > li[_v-abfa2f18] {
+.NavbarWeifeng .container__ .tabs li[_v-11360bc7] {
+  width: 83px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
   float: left;
-  width: 200px;
-}
-.footer .container > li > h4[_v-abfa2f18] {
-  margin: 0 0 20px 40px;
-  font-size: 14px;
-  color: black;
-  font-weight: normal;
-}
-.footer .container > li p[_v-abfa2f18] {
-  font-size: 14px;
-  color: #999999;
-}
-.footer .container > li:last-child h4[_v-abfa2f18] {
-  margin: 0 0 20px 0;
-}
-.footer .container .serviceTel[_v-abfa2f18] {
-  font-size: 20px;
-  color: black;
-}
-.copyright[_v-abfa2f18] {
-  background: #F2F2F2;
-  color: grey;
-  font-size: 14px;
-}
-.copyright .container[_v-abfa2f18] {
-  padding: 20px 0 20px 0;
-  border-top: 1px solid lightgrey;
-}
-.copyright p[_v-abfa2f18] {
-  width: 100%;
-  text-align: center;
-}
-.BACK-TO-TOP[_v-7b4f24f6] {
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  width: 50px;
-  height: 50px;
-  background: lightgrey;
-  z-index: 100;
-  font-size: 30px;
-  line-height: 50px;
-  text-align: center;
+  font-size: 15px;
+  color: white;
   cursor: pointer;
+}
+.NavbarWeifeng .container__ .tabs li[_v-11360bc7]:hover {
+  color: #00CCFF;
+}
+.NavbarWeifeng .container__ .bar-wrapper[_v-11360bc7] {
+  position: relative;
+  height: 3px;
+}
+.NavbarWeifeng .container__ .bar[_v-11360bc7] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 83px;
+  height: 3px;
+  background: #00CCFF;
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
 }
 #SEARCH[_v-29243af1] {
   height: 1000px;

@@ -17,8 +17,8 @@
 		<div class="container">
 			<p><a class="a_home" :href="dir.index">欢迎来到飞越太平洋海淘网站</a></p>
 			<ul>
-				<li><a href="register.html" class="a-signin login">登录</a></li><span class="separator">|</span>
-				<li><a href="register.html" class="a-signup register">注册</a></li><span class="separator">|</span>
+				<li><a :href=" dir.signin " class="a-signin login">登录</a></li><span class="separator">|</span>
+				<li><a :href=" dir.signin " class="a-signup register">注册</a></li><span class="separator">|</span>
 				<li><i class="fa fa-file"></i> <a class="a_my_orders" href="./orders.html">我的订单</a></li><span class="separator">|</span>
 				<li class="my_cart">
 					<i class="fa fa-shopping-cart"></i> <a class="a-cart" :href=" dir.cart ">我的购物车(<span class="quantityIn">0</span>)</a>
@@ -29,16 +29,6 @@
 			</ul>
 			<div class="clear"></div>
 		</div>
-		<!--
-		<div class="banner container">
-			<ul>
-				<a href="" style="background:url(images/165404.24885127.jpg)">
-					<div class="label">新品</div>
-					<div>星球大战入耳式耳机</div>
-				</a>
-			</ul>
-		</div>
-		-->
 	</div>
 </div>
 </template>

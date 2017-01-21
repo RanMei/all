@@ -69,440 +69,40 @@
 
 	'use strict';
 
-	var _router = __webpack_require__(1);
+	__webpack_require__(38);
 
 	var _store = __webpack_require__(27);
 
-	__webpack_require__(38);
-
-	var vm = new Vue({
+	new Vue({
 		el: '#root',
 		store: _store.store,
-		router: _router.router,
 		components: {
-			App: __webpack_require__(39)
+			App: __webpack_require__(98)
 		},
-		template: '<app></app>'
-	});
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	Vue.use(VueRouter);
-
-	var router = new VueRouter({
-		routes: [{
-			path: '/',
-			redirect: '/admin'
-		}, {
-			path: '/admin',
-			component: __webpack_require__(2),
-			redirect: '/admin/items',
-			children: [{
-				path: 'items',
-				component: __webpack_require__(13)
-			}, {
-				path: 'signin',
-				component: __webpack_require__(20)
-			}]
-		}, {
-			path: '/test',
-			component: __webpack_require__(24)
-		}]
-	});
-
-	exports.router = router;
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(3);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\_admin\\Admin.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(12);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-118e04d5/Admin.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		components: {
-			NavbarRed: __webpack_require__(4),
-			Navbar: __webpack_require__(8)
-		}
-	};
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(5);
-	__vue_script__ = __webpack_require__(6);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\components\\NavbarRed.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(7);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-5db0d92d/NavbarRed.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		props: {
-			items: {
-				default: function _default() {
-					return [{
-						name: 'Home',
-						href: './index.html'
-					}, {
-						name: 'Admin',
-						href: '#/admin'
-					}, {
-						name: 'Test',
-						href: '#/test'
-					}];
-				}
-			}
-		},
-		data: function data() {
-			return {
-				fixed: false,
-				current: 0
-			};
-		},
+		template: '<app></app>',
 		mounted: function mounted() {
-			var _this = this;
-
-			window.addEventListener('scroll', function () {
-				var a = document.body.scrollTop;
-				var b = _this.$refs.bar.scrollHeight;
-				if (a >= b) {
-					_this.fixed = true;
-				} else {
-					_this.fixed = false;
-				}
-			});
+			var self = this;
+			self.$store.dispatch('GET_ITEMS');
 		},
-		methods: {
-			mouseenter: function mouseenter(e, i) {
-				this.current = i;
-			},
-			mouseleave: function mouseleave() {
-				this.current = 0;
-			},
-			haha: function haha(e) {
-				console.log(e);
-			}
-		}
-	};
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarRed\" ref=\"bar\" _v-5db0d92d=\"\">\n\t<div class=\"inner\" :class=\" fixed?'fixed':'' \" _v-5db0d92d=\"\">\n\t\t<div class=\"container__\" _v-5db0d92d=\"\">\n\t\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-5db0d92d=\"\">\n\t\t\t\t<a v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" :href=\"a.href\" _v-5db0d92d=\"\">{{a.name}}</a>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(9);
-	__vue_script__ = __webpack_require__(10);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\components\\Navbar.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(11);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-935f6318/Navbar.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 9 */
-5,
-/* 10 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		data: function data() {
-			return {
-				tabs: [{
-					name: 'items',
-					href: '#/admin/items',
-					subs: []
-				}, {
-					name: 'signin',
-					href: '#/admin/signin',
-					subs: []
-				}]
-			};
-		},
-		computed: {
-			id: function id() {
-				return this.$store.state.user.id;
-			}
-		}
-	};
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Navbar\" _v-935f6318=\"\">\n\t<div class=\"centered\" _v-935f6318=\"\">\n\t\t<div class=\"tab\" v-for=\"a in tabs\" _v-935f6318=\"\">\n\t\t\t<a class=\"link\" :href=\"a.href\" _v-935f6318=\"\">{{a.name}}</a>\n\t\t\t<ul class=\"subs\" _v-935f6318=\"\">\n\t\t\t\t<li v-for=\"b in a.subs\" _v-935f6318=\"\">Ned</li>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Admin\">\n\t<navbar-red></navbar-red>\n\t<navbar></navbar>\n\t<router-view></router-view>\n</div>\n";
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(14);
-	__vue_script__ = __webpack_require__(15);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\components\\Items.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(19);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-8d9cede8/Items.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 14 */
-5,
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
+		methods: {}
 	});
 
-	var _stringify = __webpack_require__(16);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-		data: function data() {
-			return {
-				item: {
-					id: '',
-					name: '',
-					price: '',
-					desc_: '',
-					specs: '',
-					class_: '',
-					sub_class: ''
-				},
-				current: -1
-			};
-		},
-		computed: {
-			items: function items() {
-				return this.$store.state.items;
-			}
-		},
-		mounted: function mounted() {},
-		methods: {
-			reset: function reset() {
-				for (var key in this.item) {
-					this.item[key] = '';
-				}
-			},
-			TO_ITEM: function TO_ITEM(i) {
-				this.$store.commit('SET_ITEM', this.items[i]);
-				location.href = '#/item';
-			},
-			CHECK_TOGGLE: function CHECK_TOGGLE(i) {
-				this.$store.commit('CHECK_TOGGLE', i);
-			},
-			edit: function edit(i) {
-				for (var key in this.item) {
-					this.item[key] = this.items[i][key];
-				}
-				this.current = i;
-			},
-			SAVE_ITEM: function SAVE_ITEM() {
-				if (!this.item.id) {
-					this.item.id = new Date().getTime() + '';
-					this.$store.dispatch('ADD_ITEM', (0, _stringify2.default)(this.item));
-				} else {
-					this.$store.dispatch('SAVE_ITEM', (0, _stringify2.default)(this.item));
-				};
-				this.reset();
-			},
-			DELETE_ITEMS: function DELETE_ITEMS() {
-				var ids = [];
-				this.items.forEach(function (a) {
-					if (a.checked) {
-						ids.push(a.id);
-					}
-				});
-				this.$store.dispatch('DELETE_ITEMS', ids);
-			},
-			getTime: function getTime() {
-				var time = new Date();
-				var fullYear = time.getFullYear();
-				var month = time.getMonth() + 1;
-				time = fullYear + '-' + month;
-				return time;
-			}
-		}
-	};
-
 /***/ },
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -533,12 +133,7 @@
 	if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 /***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"ITEMS\" _v-8d9cede8=\"\">\n\t<div class=\"panel panel-default\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-body\" _v-8d9cede8=\"\">\n\t\t\t\n\t\t</div>\n\t</div>\n\t<div class=\"panel panel-info\" _v-8d9cede8=\"\">\n\t\t<div class=\"panel-heading\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">id</li>\n\t\t\t<li _v-8d9cede8=\"\">name</li>\n\t\t\t<li _v-8d9cede8=\"\">desc_</li>\n\t\t\t<li _v-8d9cede8=\"\">price</li>\n\t\t</div>\n\t\t<div class=\"list-group\" _v-8d9cede8=\"\">\n\t\t\t<div class=\"list-group-item\" :class=\" current===i?'':'' \" :style=\" a.checked?'background:#d9edf7':'background:white' \" v-for=\"(a,i) in items\" key=\"a.id\" _v-8d9cede8=\"\">\n\t\t\t\t<li _v-8d9cede8=\"\">\n\t\t\t\t\t<input type=\"checkbox\" class=\"checkbox i-checks\" :checked=\"a.checked\" @change=\"CHECK_TOGGLE(i)\" _v-8d9cede8=\"\">\n\t\t\t\t</li>\n\t\t\t\t<li @click=\"TO_ITEM(i)\" _v-8d9cede8=\"\">{{a.id}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.name}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.desc_}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\">{{a.price}}</li>\n\t\t\t\t<li _v-8d9cede8=\"\"><a class=\"edit\" @click=\"edit(i)\" _v-8d9cede8=\"\">edit</a></li>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"panel-footer _row\" _v-8d9cede8=\"\">\n\t\t\t<li _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\">{{item.id}}</li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"name\" class=\"form-control\" v-model=\"item.name\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"desc_\" class=\"form-control\" v-model=\"item.desc_\" _v-8d9cede8=\"\"></li>\n\t\t\t<li _v-8d9cede8=\"\"><input type=\"text\" placeholder=\"price\" class=\"form-control\" v-model=\"item.price\" _v-8d9cede8=\"\"></li>\n\t\t\t<a class=\"save btn btn-success m-b-xs w-xs\" @click=\"SAVE_ITEM\" _v-8d9cede8=\"\">save</a>\n\t\t\t<a class=\"delete btn btn-danger\" @click=\"DELETE_ITEMS\" _v-8d9cede8=\"\">delete</a>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
+/* 19 */,
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -582,7 +177,11 @@
 
 /***/ },
 /* 21 */
-5,
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -688,68 +287,9 @@
 	module.exports = "\n<div class=\"Signin wrapper\" _v-5580db24=\"\">\n\t<div class=\"shade__\" _v-5580db24=\"\">\n\t\t<div _v-5580db24=\"\"></div>\n\t</div>\n\t<div class=\"panel__\" _v-5580db24=\"\">\n\t\t<div class=\"register\" _v-5580db24=\"\">\n\t\t\t<div class=\"register-center\" _v-5580db24=\"\">\n\t\t\t\t<div class=\"register-header\" _v-5580db24=\"\">\n\t\t\t\t\t<h1 _v-5580db24=\"\">新会员注册</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"register-form\" _v-5580db24=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"mobile\" placeholder=\"请输入11位手机号\" v-model=\"signup_form.mobile\" :class=\"state.mobile\" @focus=\"onFocus('mobile')\" @blur=\"check_mobile\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\">{{info.mobile}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"密码（6-20位字母、数字与符号的组合）\" v-model=\"signup_form.password\" :class=\"state.password\" @focus=\"onFocus('password')\" @blur=\"check_password\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\">{{info.password}}</p>\n\t\t\t\t\t<input type=\"password\" name=\"password2\" placeholder=\"确认密码\" :class=\"state.password2\" @focus=\"onFocus('password2')\" @blur=\"check_password2\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\">{{info.password2}}</p>\n\t\t\t\t\t<input type=\"text\" name=\"verif\" placeholder=\"请输入验证码\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container agree\" _v-5580db24=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signup_form.agreed?'checked':'' \" @click=\"toggle\" _v-5580db24=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') \" _v-5580db24=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-5580db24=\"\">已同意《飞越太平洋服务条款》</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ register-button\" _v-5580db24=\"\">注 册</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"middle-line\" _v-5580db24=\"\"></div>\n\t\t<div class=\"login\" _v-5580db24=\"\">\n\t\t\t<div class=\"login-center\" _v-5580db24=\"\">\n\t\t\t\t<div class=\"login-header\" _v-5580db24=\"\">\n\t\t\t\t\t<h1 class=\"hydl\" _v-5580db24=\"\">会员登录</h1>\n\t\t\t\t</div>\n\t\t\t\t<form class=\"login-form\" _v-5580db24=\"\">\n\t\t\t\t\t<input type=\"text\" name=\"username\" placeholder=\"请输入您的用户名\" v-model=\"signin_form.id\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\"></p>\n\t\t\t\t\t<input type=\"password\" name=\"password\" placeholder=\"请输入您的密码\" v-model=\"signin_form.password\" _v-5580db24=\"\">\n\t\t\t\t\t<p class=\"info\" _v-5580db24=\"\"></p>\n\n\t\t\t\t\t<div class=\"check_b_container remember_me\" _v-5580db24=\"\">\n\t\t\t\t\t\t<div class=\"checkbox_\" :class=\" signin_form.remember_me?'checked':'' \" @click=\"toggle2\" _v-5580db24=\"\">\n\t\t\t\t\t\t\t<div class=\"square\" :style=\" 'transform:'+(signin_form.remember_me?'scale(1)':'scale(0)') \" _v-5580db24=\"\"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p _v-5580db24=\"\">下次自动登录</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"btn__ login-button\" @click=\"LOGIN\" _v-5580db24=\"\">登 录</div>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(25);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\_test\\Test.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(26);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-ddf08822/Test.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		components: {
-			NavbarRed: __webpack_require__(4)
-		}
-	};
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"Test\">\n\t<navbar-red></navbar-red>\n\t<div style=\"height:5000px\"></div>\n\t<router-view></router-view>\n</div>\t\n";
-
-/***/ },
+/* 24 */,
+/* 25 */,
+/* 26 */,
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1238,19 +778,30 @@
 
 /***/ },
 /* 38 */
-5,
-/* 39 */
+21,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(40);
+	__webpack_require__(50);
+	__vue_script__ = __webpack_require__(51);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_admin\\App.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(45);
+	__vue_template__ = __webpack_require__(52);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -1270,7 +821,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-e9607c82/App.vue";
+	    var id = "_v-8f3a88d2/BackToTop.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -1280,7 +831,258 @@
 	}
 
 /***/ },
-/* 40 */
+/* 50 */
+21,
+/* 51 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var body;
+	exports.default = {
+		data: function data() {
+			return {
+				scrolling: false
+			};
+		},
+		mounted: function mounted() {
+			body = document.querySelector('body');
+		},
+		methods: {
+			back: function back() {
+				var _this = this;
+
+				if (!this.scrolling) {
+					this.scrolling = true;
+					var duration = 300;
+					var distance = body.scrollTop;
+					var dy = 10 * distance / duration;
+					var interval = setInterval(function () {
+						if (body.scrollTop - dy > 0) {
+							body.scrollTop -= dy;
+						} else {
+							body.scrollTop = 0;
+							clearInterval(interval);
+							_this.scrolling = false;
+						}
+					}, 10);
+				}
+			}
+		}
+	};
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-8f3a88d2=\"\"><i class=\"fa fa-angle-up\" _v-8f3a88d2=\"\"></i></div>\n";
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(54);
+	__vue_script__ = __webpack_require__(55);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(56);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-341844b6/MyHeader.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+/* 54 */
+21,
+/* 55 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+		props: ['dir'],
+		computed: {}
+	};
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"MY-HEADER\" _v-341844b6=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<div class=\"search_box\" _v-341844b6=\"\">\n\t\t\t\t<form _v-341844b6=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-341844b6=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-341844b6=\"\"><i class=\"fa fa-search\" _v-341844b6=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-341844b6=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<p _v-341844b6=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-341844b6=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-341844b6=\"\">\n\t\t\t\t<li _v-341844b6=\"\"><a :href=\" dir.signin \" class=\"a-signin login\" _v-341844b6=\"\">登录</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><a :href=\" dir.signin \" class=\"a-signup register\" _v-341844b6=\"\">注册</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><i class=\"fa fa-file\" _v-341844b6=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-341844b6=\"\">我的订单</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-341844b6=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-341844b6=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-341844b6=\"\">我的购物车(<span class=\"quantityIn\" _v-341844b6=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-341844b6=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-341844b6=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(58);
+	__vue_script__ = __webpack_require__(59);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(60);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-767d0c9a/MyFooter.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+/* 58 */
+21,
+/* 59 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {};
+
+/***/ },
+/* 60 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-767d0c9a=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-767d0c9a=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-767d0c9a=\"\">\n\t\t<ul class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">新用户注册</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">购物流程</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">常见问题</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">发票制度</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">在线付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">余额付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">邮费说明</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送服务范围</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送速度查询</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">售后政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-767d0c9a=\"\">4006-118-118</p>\n\t\t\t\t<p _v-767d0c9a=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-767d0c9a=\"\">\n\t\t<div class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<p _v-767d0c9a=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__vue_script__ = __webpack_require__(99);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\_signin\\App.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(100);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-0c7a2f0c/App.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1290,99 +1092,26 @@
 	});
 	exports.default = {
 		components: {
-			TopbarBlack: __webpack_require__(41)
-		},
-		mounted: function mounted() {
-			this.$store.dispatch('GET_ITEMS');
-			this.$store.dispatch('PLUS');
+			MyHeader: __webpack_require__(53),
+			MyFooter: __webpack_require__(57),
+			BackToTop: __webpack_require__(49),
+			Signin: __webpack_require__(20)
 		},
 		computed: {
+			dir: function dir() {
+				return this.$store.state.base.DIR;
+			},
 			items: function items() {
 				return this.$store.state.items;
-			},
-			num: function num() {
-				return this.$store.state.num.num;
-			}
-		},
-		methods: {
-			act: function act() {}
-		}
-	};
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(42);
-	__vue_script__ = __webpack_require__(43);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\TopbarBlack.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(44);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-9450a536/TopbarBlack.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 42 */
-5,
-/* 43 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		props: {
-			items: {
-				default: function _default() {
-					return [{}];
-				}
 			}
 		}
 	};
 
 /***/ },
-/* 44 */
+/* 100 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"TopbarBlack\" _v-9450a536=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-9450a536=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-9450a536=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-9450a536=\"\">Admin</a>\n</div>\n";
-
-/***/ },
-/* 45 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div id=\"root\">\n\t<topbar-black></topbar-black>\n\t<router-view></router-view>\n</div>\n";
+	module.exports = "\n<div id=\"root\">\n\t<back-to-top></back-to-top>\n\t<my-header :dir=\"dir\"></my-header>\n\t\n\t<signin></signin>\n\t\n\t<my-footer></my-footer>\n</div>\n";
 
 /***/ }
 /******/ ])));

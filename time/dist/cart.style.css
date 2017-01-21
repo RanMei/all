@@ -1,13 +1,13 @@
-.shopping-cart[_v-15768bb5] {
+.shopping-cart[_v-c0073518] {
   background: #127BAB;
   overflow: hidden;
 }
-.shopping-cart .container[_v-15768bb5] {
+.shopping-cart .container[_v-c0073518] {
   margin: 40px auto 100px auto;
   color: grey;
   font-size: 80%;
 }
-.shopping-cart .shopping-cart-header1[_v-15768bb5] {
+.shopping-cart .shopping-cart-header1[_v-c0073518] {
   width: 100%;
   padding: 10px 0 10px 0px;
   text-indent: 20px;
@@ -15,54 +15,54 @@
   color: white;
   font-size: 18px;
 }
-.shopping-cart .shopping-cart-header2[_v-15768bb5] {
+.shopping-cart .shopping-cart-header2[_v-c0073518] {
   width: 100%;
   padding: 10px 0 10px 0;
   overflow: hidden;
   border-bottom: 1px solid lightgrey;
   background: white;
 }
-.shopping-cart .item[_v-15768bb5] {
+.shopping-cart .item[_v-c0073518] {
   width: 1000px;
   padding: 20px 0 20px 0;
   background: white;
   border-bottom: 1px solid lightgrey;
   overflow: hidden;
 }
-.shopping-cart .check[_v-15768bb5] {
+.shopping-cart .check[_v-c0073518] {
   float: left;
   margin: 0 10px 0 10px;
 }
-.shopping-cart .thumbnail[_v-15768bb5] {
+.shopping-cart .thumbnail[_v-c0073518] {
   float: left;
   width: 80px;
   margin: 0 10px 0 0;
 }
-.shopping-cart .thumbnail img[_v-15768bb5] {
+.shopping-cart .thumbnail img[_v-c0073518] {
   width: 80px;
 }
-.shopping-cart .name[_v-15768bb5] {
+.shopping-cart .name[_v-c0073518] {
   float: left;
   width: 200px;
   margin: 0 10px 0 0;
 }
-.shopping-cart .spec[_v-15768bb5] {
+.shopping-cart .spec[_v-c0073518] {
   float: left;
   width: 200px;
   margin: 0 10px 0 0;
   height: 100%;
 }
-.shopping-cart .price[_v-15768bb5] {
+.shopping-cart .price[_v-c0073518] {
   float: left;
   width: 100px;
   margin: 0 10px 0 0;
 }
-.shopping-cart .counter[_v-15768bb5] {
+.shopping-cart .counter[_v-c0073518] {
   float: left;
   width: 120px;
   margin: 0 10px 0 0;
 }
-.shopping-cart .counter .minus[_v-15768bb5] {
+.shopping-cart .counter .minus[_v-c0073518] {
   float: left;
   width: 28px;
   height: 28px;
@@ -74,7 +74,7 @@
   color: black;
   font-weight: bold;
 }
-.shopping-cart .counter .quantity[_v-15768bb5] {
+.shopping-cart .counter .quantity[_v-c0073518] {
   float: left;
   width: 50px;
   height: 28px;
@@ -83,7 +83,7 @@
   text-align: center;
   line-height: 28px;
 }
-.shopping-cart .counter .plus[_v-15768bb5] {
+.shopping-cart .counter .plus[_v-c0073518] {
   float: left;
   width: 28px;
   height: 28px;
@@ -95,58 +95,58 @@
   color: black;
   font-weight: bold;
 }
-.shopping-cart .subtotal[_v-15768bb5] {
+.shopping-cart .subtotal[_v-c0073518] {
   float: left;
   width: 100px;
   margin: 0 10px 0 0;
 }
-.shopping-cart .manipulation[_v-15768bb5] {
+.shopping-cart .manipulation[_v-c0073518] {
   float: left;
   width: 100px;
 }
-.shopping-cart .delete[_v-15768bb5] {
+.shopping-cart .delete[_v-c0073518] {
   cursor: pointer;
 }
-.shopping-cart .delete[_v-15768bb5]:hover {
+.shopping-cart .delete[_v-c0073518]:hover {
   color: #C81623;
 }
-.shopping-cart .concern[_v-15768bb5] {
+.shopping-cart .concern[_v-c0073518] {
   cursor: pointer;
 }
-.shopping-cart .concern[_v-15768bb5]:hover {
+.shopping-cart .concern[_v-c0073518]:hover {
   color: #C81623;
 }
-.shopping-cart .summary[_v-15768bb5] {
+.shopping-cart .summary[_v-c0073518] {
   float: right;
   padding: 10px 0 20px 0;
 }
-.shopping-cart .summary > li[_v-15768bb5] {
+.shopping-cart .summary > li[_v-c0073518] {
   float: left;
   height: 40px;
   margin: 0 0 0 20px;
 }
-.shopping-cart .summary > li[_v-15768bb5]:nth-child(1) {
+.shopping-cart .summary > li[_v-c0073518]:nth-child(1) {
   height: 48px;
   line-height: 48px;
   margin-top: 10px;
   font-size: 16px;
 }
-.shopping-cart .summary > li[_v-15768bb5]:nth-child(2) {
+.shopping-cart .summary > li[_v-c0073518]:nth-child(2) {
   height: 48px;
   line-height: 48px;
   margin-top: 10px;
   font-size: 16px;
 }
-.shopping-cart .totalQuantity[_v-15768bb5] {
+.shopping-cart .totalQuantity[_v-c0073518] {
   color: #C81623;
 }
-.shopping-cart .summary .note[_v-15768bb5] {
+.shopping-cart .summary .note[_v-c0073518] {
   color: #C81623;
 }
-.shopping-cart .totalPrice[_v-15768bb5] {
+.shopping-cart .totalPrice[_v-c0073518] {
   color: #C81623;
 }
-.shopping-cart .summary .checkout[_v-15768bb5] {
+.shopping-cart .summary .checkout[_v-c0073518] {
   width: 164px;
   height: 48px;
   margin: 10px 15px 0 15px;
@@ -158,6 +158,6 @@
   cursor: pointer;
   border-radius: 3px;
 }
-.shopping-cart .summary .checkout[_v-15768bb5]:hover {
+.shopping-cart .summary .checkout[_v-c0073518]:hover {
   background: #CC3134;
 }

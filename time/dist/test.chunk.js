@@ -63,91 +63,30 @@
 		}
 	}
 	return modules;
-}([
-/* 0 */
+}({
+
+/***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _config = __webpack_require__(1);
+	var _config = __webpack_require__(34);
 
-	var _store = __webpack_require__(32);
+	var _store = __webpack_require__(27);
 
-	__webpack_require__(42);
+	__webpack_require__(38);
 
 	new Vue({
 		el: '#root',
 		components: {
-			App: __webpack_require__(83)
+			App: __webpack_require__(101)
 		},
 		template: '<app></app>'
 	});
 
 /***/ },
-/* 1 */
-/***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _root;
-	if (/^http/.test(location.href)) {
-		_root = location.origin + '/time';
-	} else {
-		_root = 'file:///D:/git/all/time';
-	}
-
-	var DIR = {
-		root: _root,
-		img: _root + '/../img/time',
-		//api: _root+'/../api/time',
-		api: 'http://localhost:80/api',
-
-		admin: _root + '/admin.html',
-
-		index: _root + '/index.html',
-		cart: _root + '/cart.html',
-		item: _root + '/item.html',
-		search: _root + '/search.html'
-	};
-
-	exports.DIR = DIR;
-
-/***/ },
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */
+/***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -157,25 +96,25 @@
 	});
 	exports.store = undefined;
 
-	var _items = __webpack_require__(33);
+	var _items = __webpack_require__(28);
 
 	var _items2 = _interopRequireDefault(_items);
 
-	var _item = __webpack_require__(34);
+	var _item = __webpack_require__(29);
 
 	var _item2 = _interopRequireDefault(_item);
 
-	var _user = __webpack_require__(35);
+	var _user = __webpack_require__(30);
 
 	var _user2 = _interopRequireDefault(_user);
 
-	var _num = __webpack_require__(36);
+	var _num = __webpack_require__(31);
 
-	var _base = __webpack_require__(37);
+	var _base = __webpack_require__(32);
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _actions = __webpack_require__(38);
+	var _actions = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -195,7 +134,8 @@
 	exports.store = store;
 
 /***/ },
-/* 33 */
+
+/***/ 28:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -245,7 +185,8 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 34 */
+
+/***/ 29:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -274,7 +215,8 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 35 */
+
+/***/ 30:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -297,7 +239,8 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 36 */
+
+/***/ 31:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -323,7 +266,8 @@
 	exports.num = num;
 
 /***/ },
-/* 37 */
+
+/***/ 32:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -332,10 +276,11 @@
 		value: true
 	});
 	var _root;
+
 	if (/^http/.test(location.href)) {
 		_root = location.origin + '/time';
 	} else {
-		_root = 'file:///E:/git/all/time';
+		_root = location.href.replace(/time\/.+/, 'time');
 	}
 
 	var DIR = {
@@ -347,6 +292,7 @@
 		admin: _root + '/admin.html',
 
 		index: _root + '/index.html',
+		signin: _root + '/signin.html',
 		cart: _root + '/cart.html',
 		item: _root + '/item.html',
 		search: _root + '/search.html'
@@ -361,7 +307,8 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 38 */
+
+/***/ 33:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -371,13 +318,13 @@
 	});
 	exports.actions = undefined;
 
-	var _config = __webpack_require__(1);
+	var _config = __webpack_require__(34);
 
-	var _items = __webpack_require__(39);
+	var _items = __webpack_require__(35);
 
-	var _item = __webpack_require__(40);
+	var _item = __webpack_require__(36);
 
-	var _user = __webpack_require__(41);
+	var _user = __webpack_require__(37);
 
 	var actions = {
 
@@ -402,7 +349,42 @@
 	exports.actions = actions;
 
 /***/ },
-/* 39 */
+
+/***/ 34:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _root;
+	if (/^http/.test(location.href)) {
+		_root = location.origin + '/time';
+	} else {
+		_root = 'file:///D:/git/all/time';
+	}
+
+	var DIR = {
+		root: _root,
+		img: _root + '/../img/time',
+		//api: _root+'/../api/time',
+		api: 'http://localhost:80/api',
+
+		admin: _root + '/admin.html',
+
+		index: _root + '/index.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
+	};
+
+	exports.DIR = DIR;
+
+/***/ },
+
+/***/ 35:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -412,7 +394,7 @@
 	});
 	exports.DELETE_ITEMS = exports.ADD_ITEM = exports.SAVE_ITEM = exports.GET_ITEMS = undefined;
 
-	var _config = __webpack_require__(1);
+	var _config = __webpack_require__(34);
 
 	function GET_ITEMS(_ref) {
 		var commit = _ref.commit;
@@ -519,7 +501,8 @@
 	exports.DELETE_ITEMS = DELETE_ITEMS;
 
 /***/ },
-/* 40 */
+
+/***/ 36:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -529,7 +512,7 @@
 	});
 	exports.GET_ITEM = undefined;
 
-	var _config = __webpack_require__(1);
+	var _config = __webpack_require__(34);
 
 	function GET_ITEM(_ref, id) {
 		var commit = _ref.commit;
@@ -557,7 +540,8 @@
 	exports.GET_ITEM = GET_ITEM;
 
 /***/ },
-/* 41 */
+
+/***/ 37:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -567,7 +551,7 @@
 	});
 	exports.LOGIN = undefined;
 
-	var _config = __webpack_require__(1);
+	var _config = __webpack_require__(34);
 
 	function LOGIN(_ref, user_json) {
 		var commit = _ref.commit;
@@ -599,28 +583,27 @@
 	exports.LOGIN = LOGIN;
 
 /***/ },
-/* 42 */
+
+/***/ 38:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */
+
+/***/ 41:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(47);
-	__vue_script__ = __webpack_require__(48);
+	__webpack_require__(42);
+	__vue_script__ = __webpack_require__(43);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\components\\TopbarBlack.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(49);
+	__vue_template__ = __webpack_require__(44);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -640,7 +623,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-7b4f24f6/BackToTop.vue";
+	    var id = "_v-9450a536/TopbarBlack.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -650,216 +633,49 @@
 	}
 
 /***/ },
-/* 47 */
-42,
-/* 48 */
+
+/***/ 42:
+38,
+
+/***/ 43:
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var body;
 	exports.default = {
-		data: function data() {
-			return {
-				scrolling: false
-			};
-		},
-		mounted: function mounted() {
-			body = document.querySelector('body');
-		},
-		methods: {
-			back: function back() {
-				var _this = this;
-
-				if (!this.scrolling) {
-					this.scrolling = true;
-					var duration = 300;
-					var distance = body.scrollTop;
-					var dy = 10 * distance / duration;
-					var interval = setInterval(function () {
-						if (body.scrollTop - dy > 0) {
-							body.scrollTop -= dy;
-						} else {
-							body.scrollTop = 0;
-							clearInterval(interval);
-							_this.scrolling = false;
-						}
-					}, 10);
+		props: {
+			items: {
+				default: function _default() {
+					return [{}];
 				}
 			}
 		}
 	};
 
 /***/ },
-/* 49 */
+
+/***/ 44:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-7b4f24f6=\"\"><i class=\"fa fa-angle-up\" _v-7b4f24f6=\"\"></i></div>\n";
+	module.exports = "\n<div class=\"TopbarBlack\" _v-9450a536=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-9450a536=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-9450a536=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-9450a536=\"\">Admin</a>\n</div>\n";
 
 /***/ },
-/* 50 */
+
+/***/ 101:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(51);
-	__vue_script__ = __webpack_require__(52);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(53);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-69956734/MyHeader.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 51 */
-42,
-/* 52 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = {
-		props: ['dir'],
-		computed: {}
-	};
-
-/***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"MY-HEADER\" _v-69956734=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<div class=\"search_box\" _v-69956734=\"\">\n\t\t\t\t<form _v-69956734=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-69956734=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-69956734=\"\"><i class=\"fa fa-search\" _v-69956734=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-69956734=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<p _v-69956734=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-69956734=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-69956734=\"\">\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signin login\" _v-69956734=\"\">登录</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><a href=\"register.html\" class=\"a-signup register\" _v-69956734=\"\">注册</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><i class=\"fa fa-file\" _v-69956734=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-69956734=\"\">我的订单</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-69956734=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-69956734=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-69956734=\"\">我的购物车(<span class=\"quantityIn\" _v-69956734=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-69956734=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-69956734=\"\"></div>\n\t\t</div>\n\t\t<!--\n\t\t<div class=\"banner container\">\n\t\t\t<ul>\n\t\t\t\t<a href=\"\" style=\"background:url(images/165404.24885127.jpg)\">\n\t\t\t\t\t<div class=\"label\">新品</div>\n\t\t\t\t\t<div>星球大战入耳式耳机</div>\n\t\t\t\t</a>\n\t\t\t</ul>\n\t\t</div>\n\t\t-->\n\t</div>\n</div>\n";
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__webpack_require__(55);
-	__vue_script__ = __webpack_require__(56);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(57);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-abfa2f18/MyFooter.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-/* 55 */
-42,
-/* 56 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {};
-
-/***/ },
-/* 57 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-abfa2f18=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-abfa2f18=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-abfa2f18=\"\">\n\t\t<ul class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">新用户注册</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">购物流程</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">常见问题</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">发票制度</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">在线付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">余额付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">邮费说明</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送服务范围</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送速度查询</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">售后政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-abfa2f18=\"\">4006-118-118</p>\n\t\t\t\t<p _v-abfa2f18=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-abfa2f18=\"\">\n\t\t<div class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<p _v-abfa2f18=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(84);
+	__vue_script__ = __webpack_require__(102);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\_test\\App.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(85);
+	__vue_template__ = __webpack_require__(107);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -879,7 +695,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-66179186/App.vue";
+	    var id = "_v-4f1c7b3c/App.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -889,7 +705,8 @@
 	}
 
 /***/ },
-/* 84 */
+
+/***/ 102:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -899,17 +716,131 @@
 	});
 	exports.default = {
 		components: {
-			MyHeader: __webpack_require__(50),
-			MyFooter: __webpack_require__(54),
-			BackToTop: __webpack_require__(46)
+			TopbarBlack: __webpack_require__(41),
+			NavbarWeifeng: __webpack_require__(103)
 		}
 	};
 
 /***/ },
-/* 85 */
+
+/***/ 103:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(104);
+	__vue_script__ = __webpack_require__(105);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\components\\NavbarWeifeng.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(106);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-11360bc7/NavbarWeifeng.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+
+/***/ 104:
+38,
+
+/***/ 105:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div id=\"root\">\n\t<!-- <my-header></my-header> -->\n\t<my-footer></my-footer>\n\t<back-to-top></back-to-top>\n</div>\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		props: {
+			items: {
+				default: function _default() {
+					return [{
+						name: '首页'
+					}, {
+						name: '新手'
+					}, {
+						name: '游戏'
+					}, {
+						name: '新闻'
+					}, {
+						name: '锋科技'
+					}, {
+						name: '锋观点'
+					}, {
+						name: '评测'
+					}, {
+						name: '论坛'
+					}, {
+						name: '威锋源'
+					}, {
+						name: '威锋游戏'
+					}, {
+						name: '威锋商城'
+					}, {
+						name: '兔兔助手'
+					}];
+				}
+			}
+		},
+		data: function data() {
+			return {
+				current: 0
+			};
+		},
+		methods: {
+			mouseenter: function mouseenter(e, i) {
+				this.current = i;
+			},
+			mouseleave: function mouseleave() {
+				this.current = 0;
+			},
+			haha: function haha(e) {
+				console.log(e);
+			}
+		}
+	};
+
+/***/ },
+
+/***/ 106:
+/***/ function(module, exports) {
+
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-11360bc7=\"\">\n\t<div class=\"container__\" _v-11360bc7=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-11360bc7=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-11360bc7=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-11360bc7=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-11360bc7=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+
+/***/ 107:
+/***/ function(module, exports) {
+
+	module.exports = "\n<div id=\"root\">\n\t<topbar-black></topbar-black>\n\t<navbar-weifeng></navbar-weifeng>\n</div>\n";
 
 /***/ }
-/******/ ])));
+
+/******/ })));

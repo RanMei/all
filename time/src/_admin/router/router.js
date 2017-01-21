@@ -13,7 +13,7 @@ var router = new VueRouter({
 			component: require('../components/Items.vue')
 		},{
 			path: 'signin',
-			component: require('../_signin/Signin.vue')
+			component: require('../../components/Signin.vue')
 		}]
 	},{
 		path: '/test',

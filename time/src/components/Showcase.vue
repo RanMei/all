@@ -52,7 +52,7 @@
 		props: ['items'],
 		computed: {
 			DIR: function(){
-				return this.$root.$data.DIR;
+				return this.$store.state.base.DIR;
 			}
 		}
 	}
