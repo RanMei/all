@@ -1,4 +1,4 @@
-import {$$store} from '../store/index.jsx';
+import {$$store} from '../index.jsx';
 import {user} from './user.js';
 import {cart} from './cart.js';
 
@@ -7,7 +7,7 @@ var API = {};
 user( API,$$store );
 cart( API,$$store );
 
-API.INIT_HOME = function(){
+API.INIT = function(){
 	var user = {};
 	var shoppingCart = [];
 	if( sessionStorage.user ){
@@ -16,8 +16,8 @@ API.INIT_HOME = function(){
 	if( sessionStorage.shoppingCart ){
 		shoppingCart = JSON.parse( sessionStorage.shoppingCart );
 	};
-	var items = require('../data/items.js').dataItems;
-	var homeSwiper = require('../data/homeSwiper.js').default;
+	var items = require('../../api/items.js').dataItems;
+	var homeSwiper = require('../../api/homeSwiper.js').default;
 	// console.log(sessionStorage)
 	$$store.dispatch({
 		type: 'INIT',
@@ -28,7 +28,7 @@ API.INIT_HOME = function(){
 	})
 }
 
-API.ADD_TO_CART = function(item){
+API.ITEM_ADD_TO_CART = function(item){
 	if( sessionStorage.shoppingCart ){
 		var shoppingCart = JSON.parse( sessionStorage.shoppingCart );
 		shoppingCart.push( item )
@@ -46,9 +46,9 @@ API.ADD_TO_CART = function(item){
 	});
 }
 
-API.GET_ITEM = function(id){
+API.ITEM_GET = function(id){
 	var item = {};
-	var items = require('../data/items.js').dataItems;
+	var items = require('../../api/items.js').dataItems;
 	items.forEach((a)=>{
 		if( id===a.id ){
 			item = a;

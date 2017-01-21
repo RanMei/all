@@ -1,10 +1,10 @@
 require('./Signin.less');
 
 // import 'babel-polyfill';
-import {Notice} from './Notice.jsx';
-import {Navbar} from './Navbar.jsx';
+import {Notice} from '../components/Notice.jsx';
+import {Navbar} from '../components/Navbar.jsx';
 
-import {API} from '../API/API.js';
+import {API} from '../store/API/API.js';
 
 class Signin extends React.Component {
 	constructor(){
@@ -63,5 +63,10 @@ class Signin extends React.Component {
 		)
 	}
 }
+
+Signin = ReactRedux.connect(function(state){
+	return {
+	}
+})( Signin );
 
 export {Signin};

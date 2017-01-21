@@ -376,7 +376,7 @@ WEBPACK2.forEach(a=>{
 			if(e){
 				throw new gulputil.PluginError('webpack',e)
 			};
-			// gulputil.log('[webpack]',s.toString({  }));
+			gulputil.log('[webpack]',s.toString({  }));
 		});
 	})
 })

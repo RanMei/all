@@ -1,4 +1,6 @@
 require('./Mask.less');
+import {$$store} from '../store/index.jsx';
+import {API} from '../store/API/API.js';
 
 class Mask extends React.Component {
 	constructor(props){
@@ -8,17 +10,11 @@ class Mask extends React.Component {
 
 	}
 	cancel(){
-		this.props.act({
-			type: 'CLOSE_MASK'
-		})
+		$$store.dispatch('CLOSE_MASK');
 	}
 	confirm(){
-		this.props.act({
-			type: 'REMOVE'
-		})
-		this.props.act({
-			type: 'CLOSE_MASK'
-		})
+		$$store.dispatch('REMOVE');
+		$$store.dispatch('CLOSE_MASK');
 	}
 	render(){
 		var self = this;

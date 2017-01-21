@@ -31,4 +31,10 @@ Category.defaultProps = {
 	items: []
 }
 
+Category = ReactRedux.connect(function(state){
+	return {
+		items: state.items
+	}
+})( Category );
+
 export {Category};

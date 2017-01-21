@@ -1,12 +1,12 @@
 require('./Item.less');
 
 import {$$rootDir,$$itemDir,$$phpDir,$$imgDir} from '../common.jsx';
-import {CommentBox} from './CommentBox.jsx';
+import {CommentBox} from '../components/CommentBox.jsx';
 
-import {Topbar} from './Topbar.js';
-import {Swiper} from './Swiper.jsx';
+import {Topbar} from '../components/Topbar.js';
+import {Swiper} from '../components/Swiper.jsx';
 
-import {API} from '../API/API.js';
+import {API} from '../store/API/API.js';
 
 class Item extends React.Component {
 	constructor(){
@@ -24,7 +24,7 @@ class Item extends React.Component {
 	componentWillMount(){
 		var self = this;
 		var id = location.hash.match(/\?id=(\w+)/)[1];
-		API.GET_ITEM(id);
+		API.ITEM_GET(id);
 	}
 	componentWillReceiveProps(new_props){
 		var new_options = JSON.parse( JSON.stringify(this.state.options) )
@@ -83,7 +83,7 @@ class Item extends React.Component {
 		newItem.selected = false;
 		newItem.spec = this.getSpec(this.state.options);
 		// Perform an action.
-		API.ADD_TO_CART( newItem );
+		API.ITEM_ADD_TO_CART( newItem );
 	}
 	getSpec( options ){
 		var spec = '';
@@ -199,5 +199,12 @@ Item.defaultProps = {
 	},
 	inCart: 0
 }
+
+Item = ReactRedux.connect(function(state){
+	return {
+		inCart: state.shoppingCart.length,
+		item: state.item
+	}
+})( Item );
 
 export {Item};

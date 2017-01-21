@@ -21,7 +21,7 @@
 				<li><a :href=" dir.signin " class="a-signup register">注册</a></li><span class="separator">|</span>
 				<li><i class="fa fa-file"></i> <a class="a_my_orders" href="./orders.html">我的订单</a></li><span class="separator">|</span>
 				<li class="my_cart">
-					<i class="fa fa-shopping-cart"></i> <a class="a-cart" :href=" dir.cart ">我的购物车(<span class="quantityIn">0</span>)</a>
+					<i class="fa fa-shopping-cart"></i> <a class="a-cart" :href=" dir.cart ">我的购物车(<span class="quantityIn">{{quantity_in_cart||0}}</span>)</a>
 					<div class="cart_panel">
 						我的购物车
 					</div>
@@ -32,6 +32,17 @@
 	</div>
 </div>
 </template>
+
+<script>
+export default {
+	props: ['dir'],
+	computed: {
+		quantity_in_cart: function(){
+			return this.$store.state.cart.items.length;
+		}		
+	}
+}
+</script>
 
 <style lang="less" scoped>
 /* searchbar */
@@ -116,12 +127,3 @@
 	}
 }
 </style>
-
-<script>
-module.exports = {
-	props: ['dir'],
-	computed: {
-		
-	}
-};
-</script>

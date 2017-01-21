@@ -1,18 +1,10 @@
-import {$$store} from '../store/index.jsx';
-import {$$production} from '../config.js';
-
 import {Mask} from '../components/Mask.jsx';
 import {Notice} from '../components/Notice.jsx';
-import {NoticePretty} from '../components/NoticePretty.jsx';
+//import {NoticePretty} from '../components/NoticePretty.jsx';
 
-import {API} from '../API/API.js';
-
-function act(action){
-	switch(action.type){
-		default: 
-			$$store.dispatch(action);
-	}
-}
+import {$$store} from '../store/index.jsx';
+import {API} from '../store/API/API.js';
+import initHome from '../store/actions/initHome.js';
 
 class App extends React.Component {
 	constructor(){
@@ -20,13 +12,14 @@ class App extends React.Component {
 		console.debug('<App/> constructing');
 	}
 	componentDidMount(){
-		API.INIT_HOME();
+		API.INIT();
+		//$$store.dispatch(initHome());
 	}
 	render() {
 		console.debug( '<App/> rendering.' );
 		return (
 			<div>
-				<Mask mask={this.props.mask} act={act}/>
+				<Mask mask={this.props.mask}/>
 				<Notice notice={this.props.notice}/>
 				{this.props.children}
 			</div>
@@ -34,11 +27,11 @@ class App extends React.Component {
 	}
 }
 
-var AppContainer = ReactRedux.connect(function(state){
+App = ReactRedux.connect(function(state){
 	return {
 		mask: state.mask,
 		notice: state.notice
 	}
 })( App );
 
-export {AppContainer};
+export {App};

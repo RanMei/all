@@ -1,8 +1,8 @@
 require('./ShoppingCart.less');
 
-import {Navbar} from './Navbar.jsx';
+import {Navbar} from '../components/Navbar.jsx';
 
-import {API} from '../API/API.js';
+import {API} from '../store/API/API.js';
 
 class ShoppingCart extends React.Component {
 	constructor (props){
@@ -141,5 +141,11 @@ class ShoppingCart extends React.Component {
 ShoppingCart.defaultProps = {
 	items: []
 }
+
+ShoppingCart = ReactRedux.connect(function(state){
+	return {
+		items: state.shoppingCart
+	}
+})( ShoppingCart );
 
 export {ShoppingCart};

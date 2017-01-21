@@ -24,4 +24,4 @@ const actions = {
 	}
 }
 
-export {actions};
+export default actions;

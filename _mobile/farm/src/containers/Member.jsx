@@ -1,10 +1,8 @@
 require('./Member.less');
 
-import {$$imgDir} from '../common.jsx';
+import {Navbar} from '../components/Navbar.jsx';
 
-import {Navbar} from './Navbar.jsx';
-
-import {API} from '../API/API.js';
+import {API} from '../store/API/API.js';
 
 class Member extends React.Component {
 	constructor() {
@@ -55,5 +53,11 @@ class Member extends React.Component {
 		}
 	}
 }
+
+Member = ReactRedux.connect(function(state){
+	return {
+		user: state.user
+	}
+})( Member );
 
 export {Member};

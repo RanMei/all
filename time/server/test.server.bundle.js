@@ -48,30 +48,27 @@ module.exports =
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _vue = __webpack_require__(1);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _App = __webpack_require__(2);
-
-	var _App2 = _interopRequireDefault(_App);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } // server-entry.js 
+	//import {store} from '../store/store.js';
 
-
-	var app = new (Function.prototype.bind.apply(_vue2.default, [null].concat(_toConsumableArray(_App2.default))))();
-
-	// the default export should be a function 
-	// which will receive the context of the render call 
+	var app = new _vue2.default({
+		components: {
+			App: __webpack_require__(2)
+		},
+		template: '<app></app>'
+	});
 
 	exports.default = function (context) {
-	  // data pre-fetching 
-	  return app;
+		// data pre-fetching
+		return app;
 	};
 
 /***/ },
@@ -112,7 +109,7 @@ module.exports =
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-4f1c7b3c/App.vue";
+	    var id = "_v-66179186/App.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -170,7 +167,7 @@ module.exports =
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-9450a536/TopbarBlack.vue";
+	    var id = "_v-6f4f3b04/TopbarBlack.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -208,7 +205,7 @@ module.exports =
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"TopbarBlack\" _v-9450a536=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-9450a536=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-9450a536=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-9450a536=\"\">Admin</a>\n</div>\n";
+	module.exports = "\n<div class=\"TopbarBlack\" _v-6f4f3b04=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-6f4f3b04=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-6f4f3b04=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-6f4f3b04=\"\">Admin</a>\n</div>\n";
 
 /***/ },
 /* 8 */
@@ -243,7 +240,7 @@ module.exports =
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-11360bc7/NavbarWeifeng.vue";
+	    var id = "_v-4b00ada6/NavbarWeifeng.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -321,7 +318,7 @@ module.exports =
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-11360bc7=\"\">\n\t<div class=\"container__\" _v-11360bc7=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-11360bc7=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-11360bc7=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-11360bc7=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-11360bc7=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-4b00ada6=\"\">\n\t<div class=\"container__\" _v-4b00ada6=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-4b00ada6=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-4b00ada6=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-4b00ada6=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-4b00ada6=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 12 */

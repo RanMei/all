@@ -1,11 +1,9 @@
-require('./Home.less');
+import './Home.less';
 
-import {$$imgDir} from '../common.jsx';
-
-import {Navbar} from './Navbar.jsx';
-import {Swiper} from './Swiper.jsx';
-import {Showcase} from './Showcase.js';
-import {Showcase2} from './Showcase2.js';
+import {Navbar} from '../components/Navbar.jsx';
+import {Swiper} from '../components/Swiper.jsx';
+import {Showcase} from '../components/Showcase.js';
+import {Showcase2} from '../components/Showcase2.js';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -23,7 +21,7 @@ class Home extends React.Component {
 		//console.log(this.props)
 		window.scroll(0,0);
 		return (
-			<div className="HOME">
+			<div className="Home">
 				<div className="searchbar">
 					<div className="search">
 						<div className="icon">
@@ -63,5 +61,12 @@ Home.defaultProps = {
 	homeSwiper: [],
 	items: []
 }
+
+Home = ReactRedux.connect(function(state){
+	return {
+		homeSwiper: state.homeSwiper,
+		items: state.items
+	}
+})( Home );
 
 export {Home};

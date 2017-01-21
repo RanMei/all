@@ -11,8 +11,6 @@ if( !Object.assign ){
 	}
 };
 import './config.js';
-import {$$store} from './store/index.jsx';
-
 
 var PropTypes = React.PropTypes;
 
@@ -43,50 +41,43 @@ var IndexRoute = ReactRouter.IndexRoute;
 //   onDecrement: PropTypes.func.isRequired
 // }
 
-import {SearchBar,Topbar,List,SearchBox,Footer,BackToTop} from './components/App.jsx';
-import {Navbar} from './components/Navbar.jsx';
+// import {Signup} from './components/Signup.jsx';
 
-import {Signin} from './components/Signin.jsx';
-import {Signup} from './components/Signup.jsx';
+// import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 
-import {CategoryContainer} from './_category/CategoryContainer.jsx';
-
-import {ConfirmOrder} from './components/ConfirmOrder.jsx';
-import {DIManagement} from './components/DIManagement.jsx';
-
-import {AppContainer} from './containers/AppContainer.jsx';
-import {HomeContainer} from './containers/HomeContainer.jsx';
-import {ItemContainer} from './containers/ItemContainer.jsx';
-import {MemberContainer} from './containers/MemberContainer.jsx';
-import {SigninContainer} from './containers/SigninContainer.jsx';
-//import {ShoppingCartContainer} from './containers/ShoppingCartContainer.jsx';
+import {App} from './containers/App.jsx';
+import {Home} from './containers/Home.jsx';
+import {Item} from './containers/Item.jsx';
+import {Member} from './containers/Member.jsx';
+import {Signin} from './containers/Signin.jsx';
+import {ShoppingCart} from './containers/ShoppingCart.jsx';
+import {Category} from './containers/Category.jsx';
+import {DIManagement} from './containers/DIManagement.jsx';
 
 
 var Provider = ReactRedux.Provider;
 var connect = ReactRedux.connect;
 
-
+import {$$store} from './store/index.jsx';
 // The router.
 ReactDOM.render(
 	(
 		<Provider store={$$store}>		
 			<Router history={ hashHistory } >
-				<Route path="/" component={AppContainer}>
-					<Route path="/home" component={HomeContainer} />
-					<Route path="/category" component={CategoryContainer} />
+				<Route path="/" component={App}>
+					<IndexRoute path="/home" component={Home} />
+					<Route path="/home" component={Home} />
+					<Route path="/category" component={Category} />
+					<Route path="/item" component={Item} />
 					<Route path="/shopping_cart" getComponent={function(nextState, cb) {
 						require.ensure([], (require) => {
-							cb( null, require('./containers/ShoppingCartContainer.jsx').ShoppingCartContainer )
+							cb( null, require('./containers/ShoppingCart.jsx').ShoppingCart )
 						})
 					}} />
-					<Route path="/member" component={MemberContainer} />
-					<Route path="/di_management" component={DIManagement} />
 
-					<Route path="/signin" component={SigninContainer} />
-					<Route path="/signup" component={Signup} />
-					
-					<Route path="/item" component={ItemContainer} />
-					<IndexRoute path="/home" component={HomeContainer} />
+					<Route path="/member" component={Member} />
+					<Route path="/signin" component={Signin} />
+					<Route path="/di_management" component={DIManagement} />
 				</Route>
 			</Router>
 		</Provider>

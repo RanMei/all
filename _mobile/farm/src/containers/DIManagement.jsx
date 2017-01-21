@@ -1,6 +1,6 @@
 require('./DIManagement.less');
 
-import {Topbar} from './Topbar.js';
+import {Topbar} from '../components/Topbar.js';
 
 class DIManagement extends React.Component {
 	constructor(){

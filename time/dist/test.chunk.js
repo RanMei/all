@@ -70,23 +70,30 @@
 
 	'use strict';
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
-	var _store = __webpack_require__(27);
+	var _store = __webpack_require__(28);
 
-	__webpack_require__(38);
+	__webpack_require__(1);
 
 	new Vue({
 		el: '#root',
 		components: {
-			App: __webpack_require__(101)
+			App: __webpack_require__(103)
 		},
 		template: '<app></app>'
 	});
 
 /***/ },
 
-/***/ 27:
+/***/ 1:
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 28:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -96,25 +103,31 @@
 	});
 	exports.store = undefined;
 
-	var _items = __webpack_require__(28);
-
-	var _items2 = _interopRequireDefault(_items);
-
-	var _item = __webpack_require__(29);
-
-	var _item2 = _interopRequireDefault(_item);
-
-	var _user = __webpack_require__(30);
-
-	var _user2 = _interopRequireDefault(_user);
-
-	var _num = __webpack_require__(31);
-
-	var _base = __webpack_require__(32);
+	var _base = __webpack_require__(29);
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _actions = __webpack_require__(33);
+	var _cart = __webpack_require__(30);
+
+	var _cart2 = _interopRequireDefault(_cart);
+
+	var _items = __webpack_require__(31);
+
+	var _items2 = _interopRequireDefault(_items);
+
+	var _item = __webpack_require__(32);
+
+	var _item2 = _interopRequireDefault(_item);
+
+	var _user = __webpack_require__(33);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	var _num = __webpack_require__(34);
+
+	var _actions = __webpack_require__(35);
+
+	var _actions2 = _interopRequireDefault(_actions);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -123,19 +136,94 @@
 	var store = new Vuex.Store({
 		modules: {
 			base: _base2.default,
+			cart: _cart2.default,
 			user: _user2.default,
 			items: _items2.default,
 			item: _item2.default,
 			num: _num.num
 		},
-		actions: _actions.actions
+		actions: _actions2.default
 	});
 
 	exports.store = store;
 
 /***/ },
 
-/***/ 28:
+/***/ 29:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var _root;
+
+	if (/^http/.test(location.href)) {
+		_root = location.origin + '/time';
+	} else {
+		_root = location.href.replace(/time\/.+/, 'time');
+	}
+
+	var DIR = {
+		root: _root,
+		img: _root + '/../img/time',
+		//api: _root+'/../api/time',
+		api: 'http://localhost:80/api',
+
+		admin: _root + '/admin.html',
+
+		index: _root + '/index.html',
+		signin: _root + '/signin.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
+	};
+
+	var state = {
+		DIR: DIR
+	};
+
+	var mutations = {};
+
+	exports.default = { state: state, mutations: mutations };
+
+/***/ },
+
+/***/ 30:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var state = {
+		items: [{
+			name: 'iPhone7',
+			price: 6000,
+			quantity: 1
+		}, {
+			name: 'iPad mini',
+			price: 2000,
+			quantity: 1
+		}]
+	};
+
+	var mutations = {
+		'CART.REMOVE': function CARTREMOVE(state, i) {
+			state.items.splice(i, 1);
+		},
+		'CART.PLUS': function CARTPLUS(state, i) {
+			state.items[i].quantity++;
+		}
+	};
+
+	exports.default = { state: state, mutations: mutations };
+
+/***/ },
+
+/***/ 31:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -186,7 +274,7 @@
 
 /***/ },
 
-/***/ 29:
+/***/ 32:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -216,7 +304,7 @@
 
 /***/ },
 
-/***/ 30:
+/***/ 33:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -240,7 +328,7 @@
 
 /***/ },
 
-/***/ 31:
+/***/ 34:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -267,48 +355,7 @@
 
 /***/ },
 
-/***/ 32:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var _root;
-
-	if (/^http/.test(location.href)) {
-		_root = location.origin + '/time';
-	} else {
-		_root = location.href.replace(/time\/.+/, 'time');
-	}
-
-	var DIR = {
-		root: _root,
-		img: _root + '/../img/time',
-		//api: _root+'/../api/time',
-		api: 'http://localhost:80/api',
-
-		admin: _root + '/admin.html',
-
-		index: _root + '/index.html',
-		signin: _root + '/signin.html',
-		cart: _root + '/cart.html',
-		item: _root + '/item.html',
-		search: _root + '/search.html'
-	};
-
-	var state = {
-		DIR: DIR
-	};
-
-	var mutations = {};
-
-	exports.default = { state: state, mutations: mutations };
-
-/***/ },
-
-/***/ 33:
+/***/ 35:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -316,15 +363,14 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.actions = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
-	var _items = __webpack_require__(35);
+	var _items = __webpack_require__(37);
 
-	var _item = __webpack_require__(36);
+	var _item = __webpack_require__(38);
 
-	var _user = __webpack_require__(37);
+	var _user = __webpack_require__(39);
 
 	var actions = {
 
@@ -346,11 +392,11 @@
 		}
 	};
 
-	exports.actions = actions;
+	exports.default = actions;
 
 /***/ },
 
-/***/ 34:
+/***/ 36:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -384,7 +430,7 @@
 
 /***/ },
 
-/***/ 35:
+/***/ 37:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -394,7 +440,7 @@
 	});
 	exports.DELETE_ITEMS = exports.ADD_ITEM = exports.SAVE_ITEM = exports.GET_ITEMS = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function GET_ITEMS(_ref) {
 		var commit = _ref.commit;
@@ -502,7 +548,7 @@
 
 /***/ },
 
-/***/ 36:
+/***/ 38:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -512,7 +558,7 @@
 	});
 	exports.GET_ITEM = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function GET_ITEM(_ref, id) {
 		var commit = _ref.commit;
@@ -541,7 +587,7 @@
 
 /***/ },
 
-/***/ 37:
+/***/ 39:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -551,7 +597,7 @@
 	});
 	exports.LOGIN = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function LOGIN(_ref, user_json) {
 		var commit = _ref.commit;
@@ -584,26 +630,19 @@
 
 /***/ },
 
-/***/ 38:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 41:
+/***/ 42:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(42);
-	__vue_script__ = __webpack_require__(43);
+	__webpack_require__(43);
+	__vue_script__ = __webpack_require__(44);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\TopbarBlack.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(44);
+	__vue_template__ = __webpack_require__(45);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -623,7 +662,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-9450a536/TopbarBlack.vue";
+	    var id = "_v-6f4f3b04/TopbarBlack.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -634,10 +673,10 @@
 
 /***/ },
 
-/***/ 42:
-38,
-
 /***/ 43:
+1,
+
+/***/ 44:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -657,69 +696,10 @@
 
 /***/ },
 
-/***/ 44:
+/***/ 45:
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"TopbarBlack\" _v-9450a536=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-9450a536=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-9450a536=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-9450a536=\"\">Admin</a>\n</div>\n";
-
-/***/ },
-
-/***/ 101:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var __vue_script__, __vue_template__;
-	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(102);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_test\\App.vue: named exports in *.vue files are ignored.");
-	}
-	__vue_template__ = __webpack_require__(107);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-4f1c7b3c/App.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
-	}
-
-/***/ },
-
-/***/ 102:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		components: {
-			TopbarBlack: __webpack_require__(41),
-			NavbarWeifeng: __webpack_require__(103)
-		}
-	};
+	module.exports = "\n<div class=\"TopbarBlack\" _v-6f4f3b04=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-6f4f3b04=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-6f4f3b04=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-6f4f3b04=\"\">Admin</a>\n</div>\n";
 
 /***/ },
 
@@ -730,12 +710,11 @@
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(104);
-	__vue_script__ = __webpack_require__(105);
+	__vue_script__ = __webpack_require__(104);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\NavbarWeifeng.vue: named exports in *.vue files are ignored.");
+	  console.warn("[vue-loader] time\\src\\_test\\App.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(106);
+	__vue_template__ = __webpack_require__(109);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -755,7 +734,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-11360bc7/NavbarWeifeng.vue";
+	    var id = "_v-66179186/App.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -767,9 +746,69 @@
 /***/ },
 
 /***/ 104:
-38,
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		components: {
+			TopbarBlack: __webpack_require__(42),
+			NavbarWeifeng: __webpack_require__(105)
+		}
+	};
+
+/***/ },
 
 /***/ 105:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var __vue_script__, __vue_template__;
+	var __vue_styles__ = {};
+	__webpack_require__(106);
+	__vue_script__ = __webpack_require__(107);
+	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] time\\src\\components\\NavbarWeifeng.vue: named exports in *.vue files are ignored.");
+	}
+	__vue_template__ = __webpack_require__(108);
+	module.exports = __vue_script__ || {};
+	if (module.exports.__esModule) module.exports = module.exports.default;
+	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
+	if (__vue_template__) {
+	  __vue_options__.template = __vue_template__;
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {};
+	Object.keys(__vue_styles__).forEach(function (key) {
+	  var module = __vue_styles__[key];
+	  __vue_options__.computed[key] = function () {
+	    return module;
+	  };
+	});
+	if (false) {
+	  (function () {
+	    module.hot.accept();
+	    var hotAPI = require("vue-hot-reload-api");
+	    hotAPI.install(require("vue"), false);
+	    if (!hotAPI.compatible) return;
+	    var id = "_v-4b00ada6/NavbarWeifeng.vue";
+	    if (!module.hot.data) {
+	      hotAPI.createRecord(id, module.exports);
+	    } else {
+	      hotAPI.update(id, module.exports, __vue_template__);
+	    }
+	  })();
+	}
+
+/***/ },
+
+/***/ 106:
+1,
+
+/***/ 107:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -829,14 +868,14 @@
 
 /***/ },
 
-/***/ 106:
+/***/ 108:
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-11360bc7=\"\">\n\t<div class=\"container__\" _v-11360bc7=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-11360bc7=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-11360bc7=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-11360bc7=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-11360bc7=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-4b00ada6=\"\">\n\t<div class=\"container__\" _v-4b00ada6=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-4b00ada6=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-4b00ada6=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-4b00ada6=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-4b00ada6=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 
-/***/ 107:
+/***/ 109:
 /***/ function(module, exports) {
 
 	module.exports = "\n<div id=\"root\">\n\t<topbar-black></topbar-black>\n\t<navbar-weifeng></navbar-weifeng>\n</div>\n";

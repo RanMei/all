@@ -135,8 +135,41 @@
 		}
 	}
 	return modules;
-}(Array(27).concat([
-/* 27 */
+}([
+/* 0 */,
+/* 1 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -146,25 +179,31 @@
 	});
 	exports.store = undefined;
 
-	var _items = __webpack_require__(28);
-
-	var _items2 = _interopRequireDefault(_items);
-
-	var _item = __webpack_require__(29);
-
-	var _item2 = _interopRequireDefault(_item);
-
-	var _user = __webpack_require__(30);
-
-	var _user2 = _interopRequireDefault(_user);
-
-	var _num = __webpack_require__(31);
-
-	var _base = __webpack_require__(32);
+	var _base = __webpack_require__(29);
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _actions = __webpack_require__(33);
+	var _cart = __webpack_require__(30);
+
+	var _cart2 = _interopRequireDefault(_cart);
+
+	var _items = __webpack_require__(31);
+
+	var _items2 = _interopRequireDefault(_items);
+
+	var _item = __webpack_require__(32);
+
+	var _item2 = _interopRequireDefault(_item);
+
+	var _user = __webpack_require__(33);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	var _num = __webpack_require__(34);
+
+	var _actions = __webpack_require__(35);
+
+	var _actions2 = _interopRequireDefault(_actions);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -173,18 +212,91 @@
 	var store = new Vuex.Store({
 		modules: {
 			base: _base2.default,
+			cart: _cart2.default,
 			user: _user2.default,
 			items: _items2.default,
 			item: _item2.default,
 			num: _num.num
 		},
-		actions: _actions.actions
+		actions: _actions2.default
 	});
 
 	exports.store = store;
 
 /***/ },
-/* 28 */
+/* 29 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var _root;
+
+	if (/^http/.test(location.href)) {
+		_root = location.origin + '/time';
+	} else {
+		_root = location.href.replace(/time\/.+/, 'time');
+	}
+
+	var DIR = {
+		root: _root,
+		img: _root + '/../img/time',
+		//api: _root+'/../api/time',
+		api: 'http://localhost:80/api',
+
+		admin: _root + '/admin.html',
+
+		index: _root + '/index.html',
+		signin: _root + '/signin.html',
+		cart: _root + '/cart.html',
+		item: _root + '/item.html',
+		search: _root + '/search.html'
+	};
+
+	var state = {
+		DIR: DIR
+	};
+
+	var mutations = {};
+
+	exports.default = { state: state, mutations: mutations };
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var state = {
+		items: [{
+			name: 'iPhone7',
+			price: 6000,
+			quantity: 1
+		}, {
+			name: 'iPad mini',
+			price: 2000,
+			quantity: 1
+		}]
+	};
+
+	var mutations = {
+		'CART.REMOVE': function CARTREMOVE(state, i) {
+			state.items.splice(i, 1);
+		},
+		'CART.PLUS': function CARTPLUS(state, i) {
+			state.items[i].quantity++;
+		}
+	};
+
+	exports.default = { state: state, mutations: mutations };
+
+/***/ },
+/* 31 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -234,7 +346,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -263,7 +375,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -286,7 +398,7 @@
 	exports.default = { state: state, mutations: mutations };
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -312,47 +424,7 @@
 	exports.num = num;
 
 /***/ },
-/* 32 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var _root;
-
-	if (/^http/.test(location.href)) {
-		_root = location.origin + '/time';
-	} else {
-		_root = location.href.replace(/time\/.+/, 'time');
-	}
-
-	var DIR = {
-		root: _root,
-		img: _root + '/../img/time',
-		//api: _root+'/../api/time',
-		api: 'http://localhost:80/api',
-
-		admin: _root + '/admin.html',
-
-		index: _root + '/index.html',
-		signin: _root + '/signin.html',
-		cart: _root + '/cart.html',
-		item: _root + '/item.html',
-		search: _root + '/search.html'
-	};
-
-	var state = {
-		DIR: DIR
-	};
-
-	var mutations = {};
-
-	exports.default = { state: state, mutations: mutations };
-
-/***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -360,15 +432,14 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.actions = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
-	var _items = __webpack_require__(35);
+	var _items = __webpack_require__(37);
 
-	var _item = __webpack_require__(36);
+	var _item = __webpack_require__(38);
 
-	var _user = __webpack_require__(37);
+	var _user = __webpack_require__(39);
 
 	var actions = {
 
@@ -390,10 +461,10 @@
 		}
 	};
 
-	exports.actions = actions;
+	exports.default = actions;
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -426,7 +497,7 @@
 	exports.DIR = DIR;
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -436,7 +507,7 @@
 	});
 	exports.DELETE_ITEMS = exports.ADD_ITEM = exports.SAVE_ITEM = exports.GET_ITEMS = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function GET_ITEMS(_ref) {
 		var commit = _ref.commit;
@@ -543,7 +614,7 @@
 	exports.DELETE_ITEMS = DELETE_ITEMS;
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -553,7 +624,7 @@
 	});
 	exports.GET_ITEM = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function GET_ITEM(_ref, id) {
 		var commit = _ref.commit;
@@ -581,7 +652,7 @@
 	exports.GET_ITEM = GET_ITEM;
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -591,7 +662,7 @@
 	});
 	exports.LOGIN = undefined;
 
-	var _config = __webpack_require__(34);
+	var _config = __webpack_require__(36);
 
 	function LOGIN(_ref, user_json) {
 		var commit = _ref.commit;
@@ -623,13 +694,6 @@
 	exports.LOGIN = LOGIN;
 
 /***/ },
-/* 38 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 39 */,
 /* 40 */,
 /* 41 */,
 /* 42 */,
@@ -639,19 +703,20 @@
 /* 46 */,
 /* 47 */,
 /* 48 */,
-/* 49 */
+/* 49 */,
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(50);
-	__vue_script__ = __webpack_require__(51);
+	__webpack_require__(51);
+	__vue_script__ = __webpack_require__(52);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\BackToTop.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(52);
+	__vue_template__ = __webpack_require__(53);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -671,7 +736,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-8f3a88d2/BackToTop.vue";
+	    var id = "_v-7b4f24f6/BackToTop.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -681,9 +746,9 @@
 	}
 
 /***/ },
-/* 50 */
-38,
 /* 51 */
+1,
+/* 52 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -726,25 +791,25 @@
 	};
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-8f3a88d2=\"\"><i class=\"fa fa-angle-up\" _v-8f3a88d2=\"\"></i></div>\n";
+	module.exports = "\n<div class=\"BACK-TO-TOP\" @click=\"back\" _v-7b4f24f6=\"\"><i class=\"fa fa-angle-up\" _v-7b4f24f6=\"\"></i></div>\n";
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(54);
-	__vue_script__ = __webpack_require__(55);
+	__webpack_require__(55);
+	__vue_script__ = __webpack_require__(56);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\MyHeader.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(56);
+	__vue_template__ = __webpack_require__(57);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -764,7 +829,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-341844b6/MyHeader.vue";
+	    var id = "_v-69956734/MyHeader.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -774,38 +839,45 @@
 	}
 
 /***/ },
-/* 54 */
-38,
 /* 55 */
+1,
+/* 56 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	module.exports = {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
 		props: ['dir'],
-		computed: {}
+		computed: {
+			quantity_in_cart: function quantity_in_cart() {
+				return this.$store.state.cart.items.length;
+			}
+		}
 	};
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"MY-HEADER\" _v-341844b6=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<div class=\"search_box\" _v-341844b6=\"\">\n\t\t\t\t<form _v-341844b6=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-341844b6=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-341844b6=\"\"><i class=\"fa fa-search\" _v-341844b6=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-341844b6=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-341844b6=\"\">\n\t\t<div class=\"container\" _v-341844b6=\"\">\n\t\t\t<p _v-341844b6=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-341844b6=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-341844b6=\"\">\n\t\t\t\t<li _v-341844b6=\"\"><a :href=\" dir.signin \" class=\"a-signin login\" _v-341844b6=\"\">登录</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><a :href=\" dir.signin \" class=\"a-signup register\" _v-341844b6=\"\">注册</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li _v-341844b6=\"\"><i class=\"fa fa-file\" _v-341844b6=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-341844b6=\"\">我的订单</a></li><span class=\"separator\" _v-341844b6=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-341844b6=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-341844b6=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-341844b6=\"\">我的购物车(<span class=\"quantityIn\" _v-341844b6=\"\">0</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-341844b6=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-341844b6=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"MY-HEADER\" _v-69956734=\"\">\n\t<!-- searchbar -->\n\t<div class=\"searchbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<div class=\"search_box\" _v-69956734=\"\">\n\t\t\t\t<form _v-69956734=\"\">\n\t\t\t\t\t<input type=\"text\" placeholder=\"请输入您想搜索的商品名称\" _v-69956734=\"\">\n\t\t\t\t\t<a :href=\" dir.search \" class=\"a-search search_btn\" _v-69956734=\"\"><i class=\"fa fa-search\" _v-69956734=\"\"></i></a>\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"LINE wrapper\" _v-69956734=\"\"></div>\n\t<!-- topbar -->\n\t<div class=\"topbar wrapper\" _v-69956734=\"\">\n\t\t<div class=\"container\" _v-69956734=\"\">\n\t\t\t<p _v-69956734=\"\"><a class=\"a_home\" :href=\"dir.index\" _v-69956734=\"\">欢迎来到飞越太平洋海淘网站</a></p>\n\t\t\t<ul _v-69956734=\"\">\n\t\t\t\t<li _v-69956734=\"\"><a :href=\" dir.signin \" class=\"a-signin login\" _v-69956734=\"\">登录</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><a :href=\" dir.signin \" class=\"a-signup register\" _v-69956734=\"\">注册</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li _v-69956734=\"\"><i class=\"fa fa-file\" _v-69956734=\"\"></i> <a class=\"a_my_orders\" href=\"./orders.html\" _v-69956734=\"\">我的订单</a></li><span class=\"separator\" _v-69956734=\"\">|</span>\n\t\t\t\t<li class=\"my_cart\" _v-69956734=\"\">\n\t\t\t\t\t<i class=\"fa fa-shopping-cart\" _v-69956734=\"\"></i> <a class=\"a-cart\" :href=\" dir.cart \" _v-69956734=\"\">我的购物车(<span class=\"quantityIn\" _v-69956734=\"\">{{quantity_in_cart||0}}</span>)</a>\n\t\t\t\t\t<div class=\"cart_panel\" _v-69956734=\"\">\n\t\t\t\t\t\t我的购物车\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"clear\" _v-69956734=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	var __vue_script__, __vue_template__;
 	var __vue_styles__ = {};
-	__webpack_require__(58);
-	__vue_script__ = __webpack_require__(59);
+	__webpack_require__(59);
+	__vue_script__ = __webpack_require__(60);
 	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] time\\src\\components\\MyFooter.vue: named exports in *.vue files are ignored.");
 	}
-	__vue_template__ = __webpack_require__(60);
+	__vue_template__ = __webpack_require__(61);
 	module.exports = __vue_script__ || {};
 	if (module.exports.__esModule) module.exports = module.exports.default;
 	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
@@ -825,7 +897,7 @@
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-767d0c9a/MyFooter.vue";
+	    var id = "_v-abfa2f18/MyFooter.vue";
 	    if (!module.hot.data) {
 	      hotAPI.createRecord(id, module.exports);
 	    } else {
@@ -835,9 +907,9 @@
 	}
 
 /***/ },
-/* 58 */
-38,
 /* 59 */
+1,
+/* 60 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -848,10 +920,10 @@
 	exports.default = {};
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-767d0c9a=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-767d0c9a=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-767d0c9a=\"\">\n\t\t<ul class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">新用户注册</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">购物流程</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">常见问题</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">发票制度</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">在线付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">余额付款</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">邮费说明</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送服务范围</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">配送速度查询</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">售后政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货政策</a><br _v-767d0c9a=\"\">\n\t\t\t\t<a href=\"\" _v-767d0c9a=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-767d0c9a=\"\">\t\n\t\t\t\t<h4 _v-767d0c9a=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-767d0c9a=\"\">4006-118-118</p>\n\t\t\t\t<p _v-767d0c9a=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-767d0c9a=\"\">\n\t\t<div class=\"container\" _v-767d0c9a=\"\">\n\t\t\t<p _v-767d0c9a=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"MY-FOOTER wrapper\" _v-abfa2f18=\"\">\n\t<!-- footer -->\n\t<div class=\"LINE wrapper\" _v-abfa2f18=\"\"></div>\n\t<div class=\"footer wrapper\" style=\"background:#F2F2F2;\" _v-abfa2f18=\"\">\n\t\t<ul class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">购物指南</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">新用户注册</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">购物流程</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">常见问题</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">发票制度</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">联系我们</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">支付方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">在线付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">余额付款</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">优惠券使用说明</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">配送方式</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">邮费说明</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送服务范围</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">配送速度查询</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">验货与签收</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">售后服务</h4>\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">售后政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货政策</a><br _v-abfa2f18=\"\">\n\t\t\t\t<a href=\"\" _v-abfa2f18=\"\">退货流程</a>\n\t\t\t</li>\n\t\t\t<li _v-abfa2f18=\"\">\t\n\t\t\t\t<h4 _v-abfa2f18=\"\">客服电话</h4>\n\t\t\t\t<p class=\"serviceTel\" _v-abfa2f18=\"\">4006-118-118</p>\n\t\t\t\t<p _v-abfa2f18=\"\">周一至周日9:00~22:00</p>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"copyright wrapper\" _v-abfa2f18=\"\">\n\t\t<div class=\"container\" _v-abfa2f18=\"\">\n\t\t\t<p _v-abfa2f18=\"\">Copyright © 2015.FYTPY All rights reserved.</p>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
-/******/ ]))));
+/******/ ])));

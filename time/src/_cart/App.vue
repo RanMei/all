@@ -4,7 +4,7 @@
 
 		<my-header :dir="dir"></my-header>
 		
-		<shopping-cart></shopping-cart>
+		<shopping-cart :cart="cart"></shopping-cart>
 		
 		<my-footer></my-footer>		
 	</div>
@@ -25,7 +25,11 @@
 		computed: {
 			dir: function(){
 				return this.$store.state.base.DIR;
+			},
+			cart: function(){
+				return this.$store.state.cart;
 			}
-		}
+		},
+
 	}
 </script>

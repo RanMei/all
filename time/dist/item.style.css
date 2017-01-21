@@ -1,45 +1,45 @@
-.Item[_v-0e2adfb2] {
+.Item[_v-360a5446] {
   background: #127BAB;
   overflow: hidden;
 }
-.Item .itemID[_v-0e2adfb2] {
+.Item .itemID[_v-360a5446] {
   display: none;
 }
-.Item .item[_v-0e2adfb2] {
+.Item .item[_v-360a5446] {
   padding: 0 0 30px 0;
   margin-top: 30px;
   background: white;
   overflow: hidden;
 }
-.Item .item .header[_v-0e2adfb2] {
+.Item .item .header[_v-360a5446] {
   margin: 15px 20px 10px 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid lightgrey;
 }
-.Item .item .header a[_v-0e2adfb2]:link {
+.Item .item .header a[_v-360a5446]:link {
   color: black;
 }
-.Item .item .header a[_v-0e2adfb2]:visited {
+.Item .item .header a[_v-360a5446]:visited {
   color: black;
 }
-.Item .item .images[_v-0e2adfb2] {
+.Item .item .images[_v-360a5446] {
   float: left;
   margin: 0 0 0 20px;
 }
-.Item .item .images .thumbnail[_v-0e2adfb2] {
+.Item .item .images .thumbnail[_v-360a5446] {
   width: 464px;
   height: 464px;
   padding: 2px;
   border: 1px solid lightgrey;
 }
-.Item .item .images .thumbnail img[_v-0e2adfb2] {
+.Item .item .images .thumbnail img[_v-360a5446] {
   width: 100%;
 }
-.Item .item .images .tabs[_v-0e2adfb2] {
+.Item .item .images .tabs[_v-360a5446] {
   width: 256px;
   margin: auto;
 }
-.Item .item .images .tabs li[_v-0e2adfb2] {
+.Item .item .images .tabs li[_v-360a5446] {
   float: left;
   width: 54px;
   height: 54px;
@@ -47,34 +47,34 @@
   padding: 2px;
   border: 1px solid lightgrey;
 }
-.Item .item .images .tabs li img[_v-0e2adfb2] {
+.Item .item .images .tabs li img[_v-360a5446] {
   width: 100%;
 }
-.Item .item .images .tabs li[_v-0e2adfb2]:hover {
+.Item .item .images .tabs li[_v-360a5446]:hover {
   background: #DD4A4D;
 }
-.Item .information[_v-0e2adfb2] {
+.Item .information[_v-360a5446] {
   float: left;
   width: 470px;
   margin: 0 0 0 20px;
   overflow: hidden;
 }
-.Item .information .name[_v-0e2adfb2] {
+.Item .information .name[_v-360a5446] {
   padding: 15px 0 15px 0;
   font-size: 200%;
 }
-.Item .information .priceWrapper[_v-0e2adfb2] {
+.Item .information .priceWrapper[_v-360a5446] {
   padding: 10px 0 10px 0;
   border-bottom: 1px solid lightgrey;
   color: #DD4A4D;
   font-size: 40px;
   font-family: helvetica;
 }
-.Item .information .priceWrapper .price[_v-0e2adfb2] {
+.Item .information .priceWrapper .price[_v-360a5446] {
   font-size: 50px;
   color: #DF4949;
 }
-.Item .information .buy[_v-0e2adfb2] {
+.Item .information .buy[_v-360a5446] {
   float: left;
   width: 187px;
   height: 45px;
@@ -86,10 +86,10 @@
   color: white;
   border-radius: 5px;
 }
-.Item .information .buy[_v-0e2adfb2]:hover {
+.Item .information .buy[_v-360a5446]:hover {
   background: #CC3134;
 }
-.Item .information .toCart[_v-0e2adfb2] {
+.Item .information .toCart[_v-360a5446] {
   float: left;
   width: 183px;
   height: 41px;
@@ -101,24 +101,24 @@
   cursor: pointer;
   border-radius: 5px;
 }
-.Item .information .toCart[_v-0e2adfb2]:hover {
+.Item .information .toCart[_v-360a5446]:hover {
   color: #CC3134;
   border: 2px solid #CC3134;
 }
-.Item .shuliang[_v-0e2adfb2] {
+.Item .shuliang[_v-360a5446] {
   padding: 30px 0 30px 0;
 }
-.Item .shuliang p[_v-0e2adfb2] {
+.Item .shuliang p[_v-360a5446] {
   float: left;
   height: 30px;
   vertical-align: top;
   line-height: 30px;
 }
-.Item .shuliang .counter[_v-0e2adfb2] {
+.Item .shuliang .counter[_v-360a5446] {
   overflow: hidden;
 }
-.Item .shuliang .counter .minus[_v-0e2adfb2],
-.Item .shuliang .counter .plus[_v-0e2adfb2] {
+.Item .shuliang .counter .minus[_v-360a5446],
+.Item .shuliang .counter .plus[_v-360a5446] {
   float: left;
   width: 28px;
   height: 28px;
@@ -128,7 +128,7 @@
   background: #F4F4F4;
   cursor: pointer;
 }
-.Item .shuliang .counter .quantity[_v-0e2adfb2] {
+.Item .shuliang .counter .quantity[_v-360a5446] {
   float: left;
   width: 49px;
   height: 28px;
@@ -137,40 +137,40 @@
   line-height: 28px;
   text-align: center;
 }
-.Item .shuliang .counter .minus[_v-0e2adfb2]:hover,
-.Item .shuliang .counter .plus[_v-0e2adfb2]:hover {
+.Item .shuliang .counter .minus[_v-360a5446]:hover,
+.Item .shuliang .counter .plus[_v-360a5446]:hover {
   border: 1px solid #DD4A4D;
   color: #DD4A4D;
 }
-.TabbedBox[_v-dfc8e40a] {
+.TabbedBox[_v-591c853c] {
   width: 1000px;
   margin: 30px auto 40px auto;
 }
-.TabbedBox .tabs[_v-dfc8e40a] {
+.TabbedBox .tabs[_v-591c853c] {
   width: 100%;
   height: 60px;
   background: white;
   overflow: hidden;
   border-bottom: 1px solid #BABABA;
 }
-.TabbedBox .tabs li[_v-dfc8e40a] {
+.TabbedBox .tabs li[_v-591c853c] {
   float: left;
   margin: 20px;
   color: #127BAB;
   cursor: pointer;
 }
-.TabbedBox .tabs li.active[_v-dfc8e40a] {
+.TabbedBox .tabs li.active[_v-591c853c] {
   border-bottom: 4px solid orange;
 }
-.TabbedBox .content[_v-dfc8e40a] {
+.TabbedBox .content[_v-591c853c] {
   position: relative;
 }
-.TabbedBox .content > li[_v-dfc8e40a] {
+.TabbedBox .content > li[_v-591c853c] {
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
   background: white;
 }
-.TabbedBox .content img[_v-dfc8e40a] {
+.TabbedBox .content img[_v-591c853c] {
   margin-bottom: 20px;
 }
