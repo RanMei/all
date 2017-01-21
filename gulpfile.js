@@ -351,9 +351,21 @@ var WEBPACK2 = [{
 	config: './time/webpack.config.js',
 	watched: ['./time/src/*.*','./time/src/**/*.*']
 },{
+	name: 'webpack2-time-ssr',
+	config: './time/webpack.server.js',
+	watched: ['./time/src/*.*','./time/src/**/*.*']
+},{
 	name: 'webpack-mobile-vue', 
 	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/**/*.*'],  
 	config: './_mobile/vue/webpack.config.js'
+},{
+	name: 'webpack-ssr', 
+	watched: ['./ssr/src/*.*','./ssr/src/**/*.*'],  
+	config: './ssr/webpack.config.js'
+},{
+	name: 'webpack-ssr-ssr', 
+	watched: ['./ssr/src/*.*','./ssr/src/**/*.*'],  
+	config: './ssr/webpack.server.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');
@@ -369,6 +381,22 @@ WEBPACK2.forEach(a=>{
 	})
 })
 
+var GENERATE = [{
+	name: 'shell-ssr',
+	watched: ['./ssr/server_bundles/*.*'],
+	sh: 'node ssr/src/render.js'
+},{
+	name: 'node-vue-list',
+	watched: ['./_mobile/vue/src/api/items.js','./_mobile/vue/generate-list.js'],
+	sh: 'node ./_mobile/vue/generate-list.js'
+}]
+
+GENERATE.forEach(a=>{
+	gulp.task( a.name,function(){
+		return gulp.src('')
+			.pipe( shell(a.sh) );
+	} )
+})
 
 // concat
 gulp.task( "concat_angular",function(){
@@ -379,12 +407,6 @@ gulp.task( "concat_angular",function(){
 		.pipe( concat("bundle.js") )
 		.pipe( gulp.dest("./angular/public/js/") );
 });
-
-
-gulp.task('generate',()=>{
-	return gulp.src('./_mobile/vue/generate-list.js')
-		.pipe( shell('node ./_mobile/vue/generate-list.js') )
-})
 
 var EJS = [{
 	name: 'ejs-vue',
@@ -445,8 +467,9 @@ gulp.task('watch',function(){
 		gulp.watch( a.watched,[a.name] );
 	});
 
-	gulp.watch(['./_mobile/vue/src/api/items.js'],['generate']);
-	gulp.watch(['./_mobile/vue/generate-list.js'],['generate'])
+	GENERATE.forEach(a=>{
+		gulp.watch( a.watched,[a.name] );
+	});	
 
 	LESS.forEach(a=>{
 		gulp.watch( a.src,[a.name] );

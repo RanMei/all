@@ -1,15 +1,16 @@
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 module.exports = {
 	target: 'node',
 	entry: {
-		'server.search': './time/src/server_entry.js'
+		'server': './ssr/src/_index/index.server.js'
 	},
 	output: {
 		libraryTarget: 'commonjs2',
-		path: __dirname+'time/dist/',
+		path: path.resolve( __dirname,'server_bundles/' ),
 		publicPath: './dist/',
 		filename: '[name].chunk.js'
 	},

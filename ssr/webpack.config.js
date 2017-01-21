@@ -3,13 +3,11 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	target: 'node',
 	entry: {
-		'server.search': './time/src/server_entry.js'
+		'index': './ssr/src/_index/index.js',
 	},
 	output: {
-		libraryTarget: 'commonjs2',
-		path: __dirname+'time/dist/',
+		path: './ssr/dist/',
 		publicPath: './dist/',
 		filename: '[name].chunk.js'
 	},
@@ -34,7 +32,6 @@ module.exports = {
 			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
-	externals: ['vue'],
 	postcss: function () {
         return [autoprefixer];
     },
@@ -42,7 +39,8 @@ module.exports = {
     	new webpack.DefinePlugin({
 		  "process.env": {
 		    NODE_ENV: JSON.stringify("production")
-		  }
+		  },
+		  //'process.env.VUE_ENV': '"client"'
 		}),
     	// new webpack.optimize.CommonsChunkPlugin({
     	// 	name: 'common',
