@@ -92,7 +92,7 @@
 	// import LogMonitor from 'redux-devtools-log-monitor';
 	// import DockMonitor from 'redux-devtools-dock-monitor';
 	// var DevTools = createDevTools(
-	// 	<DockMonitor
+	// 	<DockMonitor 
 	// 		toggleVisibilityKey='ctrl-h'
 	// 		changePositionKey='ctrl-q'>
 	// 		<LogMonitor />
@@ -202,7 +202,7 @@
 		function App() {
 			_classCallCheck(this, App);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 			console.debug('<App/> constructing');
 			return _this;
@@ -271,7 +271,7 @@
 		function Mask(props) {
 			_classCallCheck(this, Mask);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this, props));
+			return _possibleConstructorReturn(this, (Mask.__proto__ || Object.getPrototypeOf(Mask)).call(this, props));
 		}
 
 		_createClass(Mask, [{
@@ -304,7 +304,7 @@
 							React.createElement(
 								'div',
 								{ className: '_header' },
-								'确认删除'
+								'\u786E\u8BA4\u5220\u9664'
 							),
 							React.createElement(
 								'p',
@@ -314,12 +314,12 @@
 							React.createElement(
 								'div',
 								{ className: 'btn cancel', onClick: this.cancel.bind(this) },
-								'取消'
+								'\u53D6\u6D88'
 							),
 							React.createElement(
 								'div',
 								{ className: 'btn confirm', onClick: this.confirm.bind(this) },
-								'确认'
+								'\u786E\u8BA4'
 							)
 						)
 					)
@@ -398,7 +398,7 @@
 		value: true
 	});
 	function user() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 		var action = arguments[1];
 
 
@@ -429,7 +429,7 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function shoppingCart() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -498,7 +498,7 @@
 		value: true
 	});
 	function notice() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? { tick: 0, text: '' } : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { tick: 0, text: '' };
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -525,9 +525,9 @@
 		value: true
 	});
 	function mask() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			text: ''
-		} : arguments[0];
+		};
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -557,7 +557,7 @@
 		value: true
 	});
 	function homeSwiper() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -581,7 +581,7 @@
 		value: true
 	});
 	function items() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 		var action = arguments[1];
 
 
@@ -605,12 +605,12 @@
 		value: true
 	});
 	function item() {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			id: '',
 			name: '--',
 			specs: {},
 			price: 0
-		} : arguments[0];
+		};
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -1267,7 +1267,7 @@
 		function Notice() {
 			_classCallCheck(this, Notice);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Notice).call(this));
+			var _this = _possibleConstructorReturn(this, (Notice.__proto__ || Object.getPrototypeOf(Notice)).call(this));
 
 			_this.state = {
 				show: false
@@ -1426,7 +1426,7 @@
 		function Home(props) {
 			_classCallCheck(this, Home);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
 			var self = _this;
 			console.log('<Home/> constructing');
@@ -1463,7 +1463,7 @@
 								{ className: 'icon' },
 								React.createElement('i', { className: 'fa fa-search' })
 							),
-							React.createElement('input', { type: 'text', name: '', placeholder: '请输入产品名称' })
+							React.createElement('input', { type: 'text', name: '', placeholder: '\u8BF7\u8F93\u5165\u4EA7\u54C1\u540D\u79F0' })
 						)
 					),
 					React.createElement(_Swiper.Swiper, {
@@ -1480,7 +1480,7 @@
 							'div',
 							{ className: 'block-header' },
 							React.createElement('i', { className: 'fa fa-heart-o' }),
-							' 猜你喜欢'
+							' \u731C\u4F60\u559C\u6B22'
 						),
 						React.createElement(_Showcase2.Showcase2, { items: this.props.items })
 					),
@@ -1576,7 +1576,7 @@
 		function Navbar() {
 			_classCallCheck(this, Navbar);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).call(this));
+			var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
 
 			_this.state = {};
 			return _this;
@@ -1602,7 +1602,7 @@
 							React.createElement(
 								"p",
 								null,
-								"首页"
+								"\u9996\u9875"
 							)
 						),
 						React.createElement(
@@ -1616,7 +1616,7 @@
 							React.createElement(
 								"p",
 								null,
-								"分类"
+								"\u5206\u7C7B"
 							)
 						),
 						React.createElement(
@@ -1630,7 +1630,7 @@
 							React.createElement(
 								"p",
 								null,
-								"购物车"
+								"\u8D2D\u7269\u8F66"
 							)
 						),
 						React.createElement(
@@ -1644,7 +1644,7 @@
 							React.createElement(
 								"p",
 								null,
-								"我"
+								"\u6211"
 							)
 						)
 					)
@@ -1723,7 +1723,7 @@
 		function Swiper(props) {
 			_classCallCheck(this, Swiper);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Swiper).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Swiper.__proto__ || Object.getPrototypeOf(Swiper)).call(this, props));
 
 			var self = _this;
 			_this.width = 0;
@@ -2116,7 +2116,7 @@
 		function Showcase() {
 			_classCallCheck(this, Showcase);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Showcase).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Showcase.__proto__ || Object.getPrototypeOf(Showcase)).apply(this, arguments));
 		}
 
 		_createClass(Showcase, [{
@@ -2141,7 +2141,7 @@
 								React.createElement(
 									"p",
 									{ className: "price" },
-									"￥",
+									"\uFFE5",
 									a.price.toFixed(2)
 								)
 							)
@@ -2227,7 +2227,7 @@
 		function Showcase2() {
 			_classCallCheck(this, Showcase2);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Showcase2).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Showcase2.__proto__ || Object.getPrototypeOf(Showcase2)).apply(this, arguments));
 		}
 
 		_createClass(Showcase2, [{
@@ -2257,7 +2257,7 @@
 								React.createElement(
 									'p',
 									{ className: 'price' },
-									'￥',
+									'\uFFE5',
 									item.price.toFixed(2)
 								)
 							)
@@ -2353,7 +2353,7 @@
 		function Item() {
 			_classCallCheck(this, Item);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this));
+			var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this));
 
 			_this.state = {
 				quantity: 1,
@@ -2436,7 +2436,7 @@
 			value: function ADD_TO_CART() {
 				for (var key in this.state.options) {
 					if (this.state.options[key] === '') {
-						_API.API.ALERT('请选择' + key + '!');
+						_API.API.ALERT('\u8BF7\u9009\u62E9' + key + '!');
 						return;
 					}
 				}
@@ -2490,7 +2490,7 @@
 				return React.createElement(
 					'div',
 					{ className: 'ITEM' },
-					React.createElement(_Topbar.Topbar, { name: '商品详情' }),
+					React.createElement(_Topbar.Topbar, { name: '\u5546\u54C1\u8BE6\u60C5' }),
 					React.createElement(_Swiper.Swiper, {
 						sticky: true, carousel: false,
 						autoplay: false,
@@ -2506,7 +2506,7 @@
 						React.createElement(
 							'p',
 							{ className: 'price' },
-							'￥',
+							'\uFFE5',
 							item.price.toFixed(2)
 						)
 					),
@@ -2539,7 +2539,7 @@
 						React.createElement(
 							'p',
 							null,
-							'购买数量'
+							'\u8D2D\u4E70\u6570\u91CF'
 						),
 						React.createElement(
 							'div',
@@ -2584,7 +2584,7 @@
 								React.createElement(
 									'p',
 									{ className: 'text-favor' },
-									'收藏'
+									'\u6536\u85CF'
 								)
 							),
 							React.createElement(
@@ -2599,19 +2599,19 @@
 								React.createElement(
 									'p',
 									{ className: 'text-favor' },
-									'购物车'
+									'\u8D2D\u7269\u8F66'
 								)
 							)
 						),
 						React.createElement(
 							'a',
 							{ className: 'to_cart', onClick: this.ADD_TO_CART.bind(this) },
-							'加入购物车'
+							'\u52A0\u5165\u8D2D\u7269\u8F66'
 						),
 						React.createElement(
 							'a',
 							{ className: 'to-buy', onClick: this.buyNow.bind(this) },
-							'立即购买'
+							'\u7ACB\u5373\u8D2D\u4E70'
 						)
 					)
 				);
@@ -2698,7 +2698,7 @@
 		function CommentList() {
 			_classCallCheck(this, CommentList);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentList).apply(this, arguments));
+			return _possibleConstructorReturn(this, (CommentList.__proto__ || Object.getPrototypeOf(CommentList)).apply(this, arguments));
 		}
 
 		_createClass(CommentList, [{
@@ -2736,7 +2736,7 @@
 		function CommentBox(props) {
 			_classCallCheck(this, CommentBox);
 
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentBox).call(this, props));
+			var _this2 = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this, props));
 
 			_this2.state = { //MODEL //this.state={}
 				comments: [{
@@ -2841,7 +2841,7 @@
 		function Topbar(props) {
 			_classCallCheck(this, Topbar);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Topbar).call(this, props));
+			return _possibleConstructorReturn(this, (Topbar.__proto__ || Object.getPrototypeOf(Topbar)).call(this, props));
 		}
 
 		_createClass(Topbar, [{
@@ -2993,7 +2993,7 @@
 		function Member() {
 			_classCallCheck(this, Member);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Member).call(this));
+			var _this = _possibleConstructorReturn(this, (Member.__proto__ || Object.getPrototypeOf(Member)).call(this));
 
 			console.log('<Member/> constructing');
 			return _this;
@@ -3047,7 +3047,7 @@
 								React.createElement(
 									'div',
 									{ className: 'row' },
-									'全部订单',
+									'\u5168\u90E8\u8BA2\u5355',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								)
 							),
@@ -3057,20 +3057,20 @@
 								React.createElement(
 									'div',
 									{ className: 'row' },
-									'修改密码',
+									'\u4FEE\u6539\u5BC6\u7801',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								),
 								React.createElement(
 									'div',
 									{ className: 'row', onClick: this.toDIManagement.bind(this) },
-									'收货地址管理',
+									'\u6536\u8D27\u5730\u5740\u7BA1\u7406',
 									React.createElement('i', { className: 'fa fa-angle-right' })
 								)
 							),
 							React.createElement(
 								'a',
 								{ className: 'logout', onClick: this.logout.bind(this) },
-								'退出登录'
+								'\u9000\u51FA\u767B\u5F55'
 							)
 						),
 						React.createElement(_Navbar.Navbar, { name: 'mine' })
@@ -3165,7 +3165,7 @@
 		function Signin() {
 			_classCallCheck(this, Signin);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Signin).call(this));
+			var _this = _possibleConstructorReturn(this, (Signin.__proto__ || Object.getPrototypeOf(Signin)).call(this));
 
 			_this.state = {
 				user: {
@@ -3217,20 +3217,20 @@
 					React.createElement(
 						'div',
 						{ className: 'header c-topbar' },
-						'登录',
+						'\u767B\u5F55',
 						React.createElement(
 							'span',
 							{ className: 'a-guest', onClick: this.loginAsGuest.bind(this) },
-							'游客登录 >'
+							'\u6E38\u5BA2\u767B\u5F55 >'
 						)
 					),
-					React.createElement('input', { type: 'text', name: 'user_id', placeholder: '手机号/邮箱',
+					React.createElement('input', { type: 'text', name: 'user_id', placeholder: '\u624B\u673A\u53F7/\u90AE\u7BB1',
 						onChange: this.setUserID.bind(this) }),
-					React.createElement('input', { type: 'password', name: 'password', placeholder: '密码', onChange: this.setPassword.bind(this) }),
+					React.createElement('input', { type: 'password', name: 'password', placeholder: '\u5BC6\u7801', onChange: this.setPassword.bind(this) }),
 					React.createElement(
 						'a',
 						{ className: 'login', onClick: this.login.bind(this) },
-						'登录'
+						'\u767B\u5F55'
 					),
 					React.createElement(
 						'div',
@@ -3238,12 +3238,12 @@
 						React.createElement(
 							'a',
 							{ className: 'a-signup', href: '#/signup' },
-							'注册账号'
+							'\u6CE8\u518C\u8D26\u53F7'
 						),
 						React.createElement(
 							'a',
 							{ className: 'a-retrive', href: 'retrive_password.html' },
-							'忘记密码'
+							'\u5FD8\u8BB0\u5BC6\u7801'
 						)
 					),
 					React.createElement(_Navbar.Navbar, { name: 'mine' })
@@ -3331,7 +3331,7 @@
 		function ShoppingCart(props) {
 			_classCallCheck(this, ShoppingCart);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ShoppingCart).call(this, props));
+			var _this = _possibleConstructorReturn(this, (ShoppingCart.__proto__ || Object.getPrototypeOf(ShoppingCart)).call(this, props));
 
 			console.log('<ShoppingCart/> constructing');
 			return _this;
@@ -3445,17 +3445,17 @@
 					React.createElement(
 						'div',
 						{ className: 'header c-topbar' },
-						'购物车',
+						'\u8D2D\u7269\u8F66',
 						React.createElement(
 							'span',
 							{ className: 'remove', onClick: this.remove.bind(this) },
-							'删除'
+							'\u5220\u9664'
 						)
 					),
 					this.props.items.length === 0 ? React.createElement(
 						'p',
 						{ className: '_info' },
-						'您的购物车是空的'
+						'\u60A8\u7684\u8D2D\u7269\u8F66\u662F\u7A7A\u7684'
 					) : null,
 					this.props.items.map(function (item, i) {
 						return React.createElement(
@@ -3510,7 +3510,7 @@
 								React.createElement(
 									'p',
 									{ className: 'price' },
-									'￥',
+									'\uFFE5',
 									item.price.toFixed(2)
 								),
 								React.createElement(
@@ -3536,23 +3536,23 @@
 							React.createElement(
 								'p',
 								{ className: 'text-all' },
-								'全选'
+								'\u5168\u9009'
 							),
 							React.createElement(
 								'a',
 								{ className: this.totalQuantity(this.props.items) > 0 ? 'pay' : 'pay disabled', href: '' },
-								'去结算(',
+								'\u53BB\u7ED3\u7B97(',
 								this.totalQuantity(this.props.items),
 								')'
 							),
 							React.createElement(
 								'p',
 								{ className: 'sum' },
-								'总计：',
+								'\u603B\u8BA1\uFF1A',
 								React.createElement(
 									'span',
 									{ className: 'money' },
-									'￥',
+									'\uFFE5',
 									this.getTotalPrice().toFixed(2)
 								)
 							)
@@ -3651,7 +3651,7 @@
 		function Category(props) {
 			_classCallCheck(this, Category);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Category).call(this, props));
+			var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this, props));
 
 			var self = _this;
 			console.log('<Home/> constructing', self.state);
@@ -3671,7 +3671,7 @@
 				return React.createElement(
 					'div',
 					{ className: 'CATEGORY' },
-					React.createElement(_Topbar.Topbar, { name: '商品分类' }),
+					React.createElement(_Topbar.Topbar, { name: '\u5546\u54C1\u5206\u7C7B' }),
 					React.createElement(_Showcase.Showcase, { items: this.props.items }),
 					React.createElement(_Navbar.Navbar, { name: 'category' })
 				);
@@ -3762,7 +3762,7 @@
 		function DIManagement() {
 			_classCallCheck(this, DIManagement);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DIManagement).call(this));
+			var _this = _possibleConstructorReturn(this, (DIManagement.__proto__ || Object.getPrototypeOf(DIManagement)).call(this));
 
 			_this.state = {};
 			//console.log('<ConfirmOrder/> creating',this.props,this.state);
@@ -3886,11 +3886,11 @@
 				return React.createElement(
 					'div',
 					{ className: 'DIMANAGEMENT' },
-					React.createElement(_Topbar.Topbar, { name: '收货地址管理' }),
+					React.createElement(_Topbar.Topbar, { name: '\u6536\u8D27\u5730\u5740\u7BA1\u7406' }),
 					React.createElement(
 						'div',
 						{ className: 'add' },
-						'新增收货地址'
+						'\u65B0\u589E\u6536\u8D27\u5730\u5740'
 					)
 				);
 			}
