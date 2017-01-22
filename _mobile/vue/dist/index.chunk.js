@@ -859,6 +859,9 @@
 			back: function back() {
 				history.go(-1);
 			}
+		},
+		mounted: function mounted() {
+			window.scroll(0, 0);
 		}
 	};
 

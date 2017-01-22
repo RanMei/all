@@ -33,6 +33,9 @@
 			back: function(){
 				history.go(-1);
 			}
+		},
+		mounted: function(){
+			window.scroll(0,0)
 		}
 	}
 </script>

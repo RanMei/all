@@ -12,6 +12,9 @@ const routes = [{
 },{
 	path: '/blog',
 	component: require('./Blog.vue')
+},{
+	path: '/post',
+	component: require('./Post.vue')
 }];
 // 	redirect: '/home',
 // 	children: [{

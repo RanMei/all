@@ -36,7 +36,7 @@
 	export default {
 		computed: {
 			list: function(){
-				return this.$store.state.posts;
+				return this.$store.state.posts.items;
 			}
 		}
 	}

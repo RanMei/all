@@ -207,11 +207,11 @@ const WEBPACK = [{
 // 	config: './_mobile/farm/webpack.config.js', 
 // 	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/*/*.*']
 // },{
-	name: 'webpack-mobile-main', 
-	src: './_mobile/main/src/main.jsx', 
-	dest: './_mobile/main/dist/', 
-	config: './_mobile/main/webpack.config.js', 
-	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
+// name: 'webpack-mobile-main', 
+// src: './_mobile/main/src/main.jsx', 
+// dest: './_mobile/main/dist/', 
+// config: './_mobile/main/webpack.config.js', 
+// watched: ['./_mobile/main/src/*.*','./_mobile/main/src/*/*.*','./_mobile/main/src_front_end/*.*']
 // },{
 // 	name: 'webpack-mobile-vue', 
 // 	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/*/*.*','./_mobile/vue/src/*/*/*.*'], 
@@ -223,7 +223,7 @@ const WEBPACK = [{
 // 	dest: './time/dist/', 
 // 	config: './time/webpack.config.js', 
 // 	watched: ['./time/src/*.*','./time/src/**/*.*']
-},{	
+// },{	
 	name: 'webpack-time-server', 
 	dest: './time/server/', 
 	config: './time/webpack.server.js', 
@@ -343,6 +343,10 @@ gulp.task( 'browserify_fytpy',function(){
 });
 
 var WEBPACK2 = [{
+	name: 'webpack-mobile-main',  
+	config: './_mobile/main/webpack.config.js', 
+	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/**/*.*','./_mobile/main/src_front_end/*.*']
+},{
 	name: 'webpack-mobile-farm',
 	config: './_mobile/farm/webpack.config.js', 
 	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*']
