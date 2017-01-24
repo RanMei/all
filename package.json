@@ -65,12 +65,15 @@
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.1.10",
     "vue-html-loader": "^1.2.3",
-    "vue-loader": "^8.5.2",
+    "vue-loader": "^10.0.2",
     "vue-server-renderer": "^2.1.10",
     "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.10",
     "vueify": "^8.7.0",
-    "vuex": "^2.0.0",
+    "vuex": "^2.1.1",
     "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.15.0",
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
