@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+* :focus {
+  outline: none;
+}
+html {
+  font-size: 100px;
+  font-family: 'Microsoft Yahei';
+}
+ul {
+  list-style: none;
+}
+img {
+  display: block;
+}
+.clearfix {
+  clear: both;
+}
+/* Media Queries */
+
+#app .box[data-v-3b790bcc] {
+  width: 100%;
+  background: yellow;
+}
+#app .box img[data-v-3b790bcc] {
+  width: 80%;
+  height: 2rem;
+}
+#app .box p[data-v-3b790bcc] {
+  font-size: 0.3rem;
+}
+
+.Navbar[data-v-21b95ddc] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.1rem;
+  margin: auto;
+  font-size: 0.26rem;
+  background: orange;
+}

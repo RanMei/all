@@ -112,41 +112,57 @@
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
+
+	/* styles */
 	__webpack_require__(14);
-	__vue_script__ = __webpack_require__(15);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\h5\\project\\src\\components\\Slider.vue: named exports in *.vue files are ignored.");
+
+	/* script */
+	__vue_exports__ = __webpack_require__(15);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(16);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(16);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
+	__vue_options__.__file = "D:\\git\\all\\_mobile\\h5\\project\\src\\components\\Slider.vue";
+	if (typeof __vue_options__.name === "undefined") {
+	  __vue_options__.name = "Slider";
+	}__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	__vue_options__._scopeId = "data-v-1a080ab6";
+
+	/* hot reload */
 	if (false) {
 	  (function () {
-	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-1a080ab6/Slider.vue";
+	    module.hot.accept();
 	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
+	      hotAPI.createRecord("data-v-1a080ab6", __vue_options__);
 	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
+	      hotAPI.reload("data-v-1a080ab6", __vue_options__);
 	    }
 	  })();
 	}
+	if (__vue_options__.functional && typeof __vue_template__ !== "undefined") {
+	  console.error("[vue-loader] Slider.vue: functional components are not supported with templates, they should use render functions.");
+	}
+
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 14 */
@@ -155,6 +171,42 @@
 /***/ function(module, exports) {
 
 	'use strict';
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 	var container = {
 		props: ['show'],
@@ -181,7 +233,7 @@
 			touchend: function touchend(e) {
 				this.Y2 = e.changedTouches[0].pageY;
 				var distance = this.Y2 - this.Y1;
-
+				//console.log(distance)
 				if (distance < 0) {
 					this.toNext();
 				} else if (distance > 0) {
@@ -201,9 +253,45 @@
 
 /***/ },
 /* 16 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"container\" v-show=\"show\" v-on:touchstart=\"touchstart($event)\" v-on:touchend=\"touchend($event)\" @keypress=\"keydown($event)\" _v-1a080ab6=\"\">\n\t<ul class=\"train\" :style=\" 'transform: translate3d(0,'+(-current*10)+'%,0)' \" _v-1a080ab6=\"\">\n\t\t<li class=\"item\" v-for=\"(item,i) in items\" :style=\" 'background:'+item \" _v-1a080ab6=\"\">{{i}}\n\t\t</li>\n\t</ul>\n</div>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    directives: [{
+	      name: "show",
+	      rawName: "v-show",
+	      value: (_vm.show),
+	      expression: "show"
+	    }],
+	    staticClass: "container",
+	    on: {
+	      "touchstart": function($event) {
+	        _vm.touchstart($event)
+	      },
+	      "touchend": function($event) {
+	        _vm.touchend($event)
+	      },
+	      "keypress": function($event) {
+	        _vm.keydown($event)
+	      }
+	    }
+	  }, [_c('ul', {
+	    staticClass: "train",
+	    style: ('transform: translate3d(0,' + (-_vm.current * 10) + '%,0)')
+	  }, _vm._l((_vm.items), function(item, i) {
+	    return _c('li', {
+	      staticClass: "item",
+	      style: ('background:' + item)
+	    }, [_vm._v(_vm._s(i) + "\r\n\t\t")])
+	  }))])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-1a080ab6", module.exports)
+	  }
+	}
 
 /***/ },
 /* 17 */
@@ -211,56 +299,68 @@
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(18);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\h5\\project\\src\\routes\\home.vue: named exports in *.vue files are ignored.");
+
+	/* script */
+	__vue_exports__ = __webpack_require__(18);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(19);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(22);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
+	__vue_options__.__file = "D:\\git\\all\\_mobile\\h5\\project\\src\\routes\\home.vue";
+	if (typeof __vue_options__.name === "undefined") {
+	  __vue_options__.name = "home";
+	}__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+
+	/* hot reload */
 	if (false) {
 	  (function () {
-	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-3cf91062/home.vue";
+	    module.hot.accept();
 	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
+	      hotAPI.createRecord("data-v-3cf91062", __vue_options__);
 	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
+	      hotAPI.reload("data-v-3cf91062", __vue_options__);
 	    }
 	  })();
 	}
+	if (__vue_options__.functional && typeof __vue_template__ !== "undefined") {
+	  console.error("[vue-loader] home.vue: functional components are not supported with templates, they should use render functions.");
+	}
+
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _stringify = __webpack_require__(19);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	//
+	//
+	//
+	//
+	//
 
 	exports.default = {
 		data: function data() {
@@ -295,9 +395,14 @@
 			submit: function submit() {
 				fetch('./php/register.php', {
 					method: 'POST',
-
-					headers: {},
-					body: (0, _stringify2.default)(this.user)
+					// mode: 'no-cors',
+					headers: {
+						//'Access-Control-Allow-Origin': 'http://madsoap.net/',
+						// 'Accept': 'application/json',
+						// 'Content-Type': 'application/json'
+						//'Content-Type':'application/x-www-form-urlencoded'
+					},
+					body: JSON.stringify(this.user)
 				}).then(function (res) {
 					return res.json();
 				}).then(function (data) {
@@ -313,30 +418,20 @@
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(20), __esModule: true };
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core  = __webpack_require__(21)
-	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return $JSON.stringify.apply($JSON, arguments);
-	};
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<slider \n:show=\"state==='container'\"></slider>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('slider', {
+	    attrs: {
+	      "show": _vm.state === 'container'
+	    }
+	  })
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-3cf91062", module.exports)
+	  }
+	}
 
 /***/ }
 /******/ ])));

@@ -3,27 +3,23 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-  context: __dirname,
-  entry: {
-    'index': [
-      // Add the client which connects to our middleware
-      // You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
-      // useful if you run your app from another point like django
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-      // And then the actual application
-      './src/index.js'
-    ]
-  },
-  output: {
-    path: path.resolve( __dirname,'dist' ),
-    publicPath: '/dist',
-    filename: 'bundle.js'
-  },
+var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+
+var base = JSON.parse( JSON.stringify(require('./webpack.config.base')) );
+
+// Add the client which connects to our middleware
+// You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
+// useful if you run your app from another point like django
+for( let key in base.entry ){
+  base.entry[key].push( hotMiddlewareScript );
+}
+
+module.exports = Object.assign( base,{
   module: {
     loaders: [{
       test: /\.js$/,
       loader: 'babel',
+      exclude: /node_modules/,
       query: {
         presets: ['react','es2015']
       }
@@ -42,14 +38,9 @@ module.exports = {
       //less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
     }
   },
-  resolve: {
-    alias: {
-      'vue': 'vue/dist/vue.min.js'
-    }
-  },
   postcss: function () {
-        return [autoprefixer];
-    },
+      return [autoprefixer];
+  },
   //devtool: '#source-map',
   plugins: [
     new ExtractTextPlugin('[name].style.css',{
@@ -59,4 +50,4 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-};
+});

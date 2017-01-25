@@ -4,7 +4,7 @@ var express = require('express');
 
 var app = express();
 
-//app.use(require('morgan')('short'));
+app.use(require('morgan')('short'));
 
 // ************************************
 // This is the real meat of the example
@@ -18,8 +18,12 @@ var app = express();
 
   // Step 2: Attach the dev middleware to the compiler & the server
   app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true, 
-    publicPath: webpackConfig.output.publicPath
+    //noInfo: true, 
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+      chunks: false
+    }
   }));
 
   // Step 3: Attach the hot middleware to the compiler & the server
@@ -32,17 +36,21 @@ var app = express();
 
 // Do anything you like with the rest of your express application.
 
-app.use( express.static(__dirname) );
+app.use( express.static(__dirname+'/../') );
 // app.get("/", function(req, res) {
 //   res.sendFile(__dirname + '/index.html');
 // });
-app.get("/multientry", function(req, res) {
-  res.sendFile(__dirname + '/index-multientry.html');
-});
+// app.get("/multientry", function(req, res) {
+//   res.sendFile(__dirname + '/index-multientry.html');
+// });
 
-if (require.main === module) {
-  var server = http.createServer(app);
-  server.listen(process.env.PORT || 1616, function() {
-    console.log("Listening on %j", server.address());
-  });
-}
+// if (require.main === module) {
+//   var server = http.createServer(app);
+//   server.listen(process.env.PORT || 80, function() {
+//     console.log("Listening on %j", server.address());
+//   });
+// }
+
+app.listen( 80, () => {
+  console.log(`Server listening on http://localhost:${80}, Ctrl+C to stop`)
+})

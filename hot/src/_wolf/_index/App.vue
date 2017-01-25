@@ -5,7 +5,7 @@
 </template>
 
 <script type="text/javascript">
-	import {data,act} from './store.js';
+	import {data,act} from '../store/store.js';
 	export default {
 		components: {
 			Slider: require('../components/Slider.vue')

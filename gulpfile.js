@@ -370,6 +370,10 @@ var WEBPACK2 = [{
 	name: 'webpack-ssr-ssr', 
 	watched: ['./ssr/src/*.*','./ssr/src/**/*.*'],  
 	config: './ssr/webpack.server.js'
+},{
+	name: 'webpack-hot', 
+	watched: ['./hot/src/*.*','./hot/src/**/*.*'],  
+	config: './hot/webpack.config.prod.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');
@@ -526,11 +530,12 @@ gulp.task('express',['watch','start_server'],function(){
 });
 
 gulp.task( 'default',['watch'],function(){
-	
+	gulp.src('').pipe( shell('node hot/server.js') )
 	//gulp.run( ['restart_server'] );
 	//gulp.watch( './express.js',['restart_server']);
 
 });
+
 gulp.task( 'build',['watch'],function(){
 	PRODUCTION = true;
 });

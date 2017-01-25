@@ -100,41 +100,57 @@
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
+
+	/* styles */
 	__webpack_require__(5);
-	__vue_script__ = __webpack_require__(6);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\h5\\carnival\\src\\components\\Chips.vue: named exports in *.vue files are ignored.");
+
+	/* script */
+	__vue_exports__ = __webpack_require__(6);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(7);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(7);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
+	__vue_options__.__file = "D:\\git\\all\\_mobile\\h5\\carnival\\src\\components\\Chips.vue";
+	if (typeof __vue_options__.name === "undefined") {
+	  __vue_options__.name = "Chips";
+	}__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	__vue_options__._scopeId = "data-v-290be0bc";
+
+	/* hot reload */
 	if (false) {
 	  (function () {
-	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-290be0bc/Chips.vue";
+	    module.hot.accept();
 	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
+	      hotAPI.createRecord("data-v-290be0bc", __vue_options__);
 	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
+	      hotAPI.reload("data-v-290be0bc", __vue_options__);
 	    }
 	  })();
 	}
+	if (__vue_options__.functional && typeof __vue_template__ !== "undefined") {
+	  console.error("[vue-loader] Chips.vue: functional components are not supported with templates, they should use render functions.");
+	}
+
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 5 */
@@ -147,6 +163,176 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 		props: {
 			img: {}
@@ -158,9 +344,27 @@
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"Chips\" _v-290be0bc=\"\">\n\t<img v-for=\"n in 7\" :class=\" 'chip'+(n-1) \" :src=\" img+'/chip'+(n-1)+'.png' \" _v-290be0bc=\"\">\n</div>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "Chips"
+	  }, _vm._l((7), function(n) {
+	    return _c('img', {
+	      class: 'chip' + (n - 1),
+	      attrs: {
+	        "src": _vm.img + '/chip' + (n - 1) + '.png'
+	      }
+	    })
+	  }))
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-290be0bc", module.exports)
+	  }
+	}
 
 /***/ },
 /* 8 */
@@ -168,41 +372,57 @@
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
+
+	/* styles */
 	__webpack_require__(9);
-	__vue_script__ = __webpack_require__(10);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] _mobile\\h5\\carnival\\src\\components\\ButtonOrange.vue: named exports in *.vue files are ignored.");
+
+	/* script */
+	__vue_exports__ = __webpack_require__(10);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(11);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(11);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
+	__vue_options__.__file = "D:\\git\\all\\_mobile\\h5\\carnival\\src\\components\\ButtonOrange.vue";
+	if (typeof __vue_options__.name === "undefined") {
+	  __vue_options__.name = "ButtonOrange";
+	}__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	__vue_options__._scopeId = "data-v-0995d3fb";
+
+	/* hot reload */
 	if (false) {
 	  (function () {
-	    module.hot.accept();
 	    var hotAPI = require("vue-hot-reload-api");
 	    hotAPI.install(require("vue"), false);
 	    if (!hotAPI.compatible) return;
-	    var id = "_v-0995d3fb/ButtonOrange.vue";
+	    module.hot.accept();
 	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
+	      hotAPI.createRecord("data-v-0995d3fb", __vue_options__);
 	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
+	      hotAPI.reload("data-v-0995d3fb", __vue_options__);
 	    }
 	  })();
 	}
+	if (__vue_options__.functional && typeof __vue_template__ !== "undefined") {
+	  console.error("[vue-loader] ButtonOrange.vue: functional components are not supported with templates, they should use render functions.");
+	}
+
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 9 */
@@ -215,6 +435,52 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 		props: {
 			img: {}
@@ -239,9 +505,55 @@
 
 /***/ },
 /* 11 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"ButtonOrange\" @touchstart=\"touchstart\" @touchmove=\"touchmove\" @touchend=\"touchend\" @touchcancel=\"touchend\" _v-0995d3fb=\"\">\n\t<img class=\"btn-img\" :src=\" pressed? img+'/btn_active.png':img+'/btn.png' \" _v-0995d3fb=\"\">\n\t<div class=\"btn-content\" _v-0995d3fb=\"\">\n\t\t<img class=\"logo\" :src=\" img+'/logo.png' \" _v-0995d3fb=\"\">\n\t\t<div class=\"arrows\" _v-0995d3fb=\"\">\n\t\t\t<img class=\"arrow arrow1\" :src=\" img+'/arrow.png' \" _v-0995d3fb=\"\">\n\t\t\t<img class=\"arrow arrow2\" :src=\" img+'/arrow.png' \" _v-0995d3fb=\"\">\n\t\t\t<img class=\"arrow arrow3\" :src=\" img+'/arrow.png' \" _v-0995d3fb=\"\">\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "ButtonOrange",
+	    on: {
+	      "touchstart": _vm.touchstart,
+	      "touchmove": _vm.touchmove,
+	      "touchend": _vm.touchend,
+	      "touchcancel": _vm.touchend
+	    }
+	  }, [_c('img', {
+	    staticClass: "btn-img",
+	    attrs: {
+	      "src": _vm.pressed ? _vm.img + '/btn_active.png' : _vm.img + '/btn.png'
+	    }
+	  }), _vm._v(" "), _c('div', {
+	    staticClass: "btn-content"
+	  }, [_c('img', {
+	    staticClass: "logo",
+	    attrs: {
+	      "src": _vm.img + '/logo.png'
+	    }
+	  }), _vm._v(" "), _c('div', {
+	    staticClass: "arrows"
+	  }, [_c('img', {
+	    staticClass: "arrow arrow1",
+	    attrs: {
+	      "src": _vm.img + '/arrow.png'
+	    }
+	  }), _vm._v(" "), _c('img', {
+	    staticClass: "arrow arrow2",
+	    attrs: {
+	      "src": _vm.img + '/arrow.png'
+	    }
+	  }), _vm._v(" "), _c('img', {
+	    staticClass: "arrow arrow3",
+	    attrs: {
+	      "src": _vm.img + '/arrow.png'
+	    }
+	  })])])])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-0995d3fb", module.exports)
+	  }
+	}
 
 /***/ }
 /******/ ])));

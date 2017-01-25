@@ -1,5 +1,5 @@
 var data = {
-	img: '../../../img/wolf'
+	img: '../img/wolf'
 
 }
 

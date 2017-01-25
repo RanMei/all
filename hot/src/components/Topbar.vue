@@ -1,17 +1,16 @@
 <template>
-	<div class="Bar">
-		{{text}}
+	<div class="Topbar">
 		{{text}}
 	</div>
 </template>
 
 <style lang="less" scoped>
-	.Bar {
-		width: 80%;
+	.Topbar {
+		box-sizing: border-box;
+		width: 100%;
 		padding: 10px;
 		margin: auto;
 		background: orange;
-
 	}
 </style>
 
@@ -19,7 +18,7 @@
 	export default {
 		data: function(){
 			return {
-				text: 'dogddddd'
+				text: 'hellodddddddddddd world'
 			}
 		}
 	}
