@@ -14,6 +14,10 @@ const DIR = {
 }
 
 const port = 80;
+var webpack = require('webpack');
+var dm = require('webpack-dev-middleware');
+var hm = require('webpack-hot-middleware');
+
 var app = express();
 
 app.use( express.static(DIR.root) );
