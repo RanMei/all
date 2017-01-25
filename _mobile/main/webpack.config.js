@@ -1,17 +1,18 @@
+const path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'index': './_mobile/main/src/index.js',
+		'index': ['./_mobile/main/src/index.js'],
 		// 'blog': './_mobile/main/src/blog/blog.jsx',
 		// 'post': './_mobile/main/src//blog/post.jsx',
 		//'front_end': './_mobile/main/src_front_end/main.js'
 	},
 	output: {
-		path: __dirname+'/dist/',
-		publicPath: './dist/',
+		path: path.resolve( __dirname,'dist/' ),
+		publicPath: '/_mobile/main/dist/',
 		filename: '[name].chunk.js'
 	},
 	module: {
@@ -70,6 +71,7 @@ module.exports = {
     	// 	//'swiper',
     	// 	'svg-qq'
     	// ]),
+    	new webpack.HotModuleReplacementPlugin(),
     	new ExtractTextPlugin('[name].style.css',{
     		allChunks: true
     	})

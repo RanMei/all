@@ -1,3 +1,5 @@
+//import Vuex from 'vuex';
+
 import base from './modules/base.js';
 import cart from './modules/cart.js';
 

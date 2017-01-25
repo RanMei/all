@@ -1,3 +1,5 @@
+import Vuex from 'vuex';
+
 import projects from './modules/projects.js';
 import posts from './modules/posts.js';
 import post from './modules/post.js';
