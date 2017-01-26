@@ -7,12 +7,14 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<link href="../vendor/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
-
-	<% if(name==='admin'){ %>
-		<link rel="stylesheet" type="text/css" href="dist/_admin/admin.style.css">
-	<% }else{ %>
-		<link rel="stylesheet" type="text/css" href="dist/common.chunk.js.style.css">
-		<link rel="stylesheet" type="text/css" href="dist/<%=name%>.style.css">
+	<% if(env==='production'){ %>
+		<% if(name==='admin'){ %>
+			<link rel="stylesheet" type="text/css" href="dist/common.style.css">
+			<link rel="stylesheet" type="text/css" href="dist/_admin/admin.style.css">
+		<% }else{ %>
+			<link rel="stylesheet" type="text/css" href="dist/common.style.css">
+			<link rel="stylesheet" type="text/css" href="dist/<%=name%>.style.css">
+		<% } %>
 	<% } %>
 
 </head>
@@ -23,11 +25,16 @@
 	</div>
 	
 	<script type="text/javascript" src="../vendor/fetch.js"></script>
-	<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
-	<script type="text/javascript" src="../vendor/vue2/vuex.min.js"></script>
+	<% if(env==='production'){ %>
+		<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
+		<script type="text/javascript" src="../vendor/vue2/vuex.min.js"></script>
+	<% } %>
 	
 	<% if(name==='admin'){ %>
+		<% if(env==='production'){ %>
 		<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>
+		<% } %>
+		<script type="text/javascript" src="./dist/common.chunk.js"></script>
 		<script type="text/javascript" src="./dist/_admin/admin.chunk.js"></script>
 	<% }else{ %>
 		<script type="text/javascript" src="./dist/common.chunk.js"></script>

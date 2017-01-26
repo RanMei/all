@@ -1,4 +1,4 @@
-module.exports = [{
+const config = [{
 	name: 'index'
 },{
 	name: 'signin'
@@ -9,7 +9,19 @@ module.exports = [{
 },{
 	name: 'search'
 },{
+	name: 'test'
+},{
 
 
 	name: 'admin'
-}]
+}];
+
+config.forEach(a=>{
+	if(process.env.NODE_ENV==='production'){
+		a.env = 'production';
+	}else{
+		a.env = 'development';
+	}
+})
+
+module.exports = config;

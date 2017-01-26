@@ -1,4 +1,5 @@
-//import Vuex from 'vuex';
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 import base from './modules/base.js';
 import cart from './modules/cart.js';
@@ -9,7 +10,7 @@ import user from './modules/user.js';
 import {num} from './modules/num.js';
 
 import actions from './actions/actions.js';
-//Vue.use( Vuex );
+Vue.use( Vuex );
 
 var store = new Vuex.Store({
 	modules: {

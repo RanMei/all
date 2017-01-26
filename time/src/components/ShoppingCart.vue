@@ -72,7 +72,8 @@
 				<p class="spec">--</p>
 				<p class="price">{{a.price.toFixed(2)}}</p>
 				<div class="counter">
-					<div class="minus">-</div>
+					<div class="minus"
+					@click="MINUS(i)">-</div>
 					<div class="quantity">{{a.quantity}}</div>
 					<div class="plus"
 					@click="PLUS(i)">+</div>
@@ -108,10 +109,13 @@
 		},
 		methods: {
 			REMOVE(i){
-				this.$store.commit('CART.REMOVE',i);
+				this.$store.commit('CART_REMOVE',i);
 			},
 			PLUS(i){
-				this.$store.commit('CART.PLUS',i);
+				this.$store.commit('CART_PLUS',i);
+			},
+			MINUS(i){
+				this.$store.commit('CART_MINUS',i);
 			}
 		}
 	}

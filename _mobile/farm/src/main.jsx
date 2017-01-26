@@ -10,6 +10,7 @@ if( !Object.assign ){
 		return dest;
 	}
 };
+import './rem.720.js';
 import './config.js';
 
 var PropTypes = React.PropTypes;

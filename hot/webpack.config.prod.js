@@ -5,6 +5,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var base = JSON.parse( JSON.stringify(require('./webpack.config.base')) );
 
+//process.env.NODE_ENV = 'production';
+
 module.exports = Object.assign(base,{
   module: {
     loaders: [{
@@ -40,12 +42,14 @@ module.exports = Object.assign(base,{
   //devtool: '#source-map',
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      //'process.env.NODE_ENV': JSON.stringify('production')
+      //__DEV: JSON.stringify('false'),
+      'process.env': {
+        NODE_ENV: JSON.stringify("production")
+      }
     }),
     new ExtractTextPlugin('[name].style.css',{
       allChunks: true
     })
   ],
 });
-
-console.log(process.env.NODE_ENV)

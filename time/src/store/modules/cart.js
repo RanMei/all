@@ -11,11 +11,16 @@ const state = {
 };
 
 const mutations = {
-	'CART.REMOVE': function(state,i){
+	CART_REMOVE: function(state,i){
 		state.items.splice(i,1);
 	},
-	'CART.PLUS': function(state,i){
+	CART_PLUS: function(state,i){
 		state.items[i].quantity++;
+	},
+	CART_MINUS: function(state,i){
+		if( state.items[i].quantity>1 ){
+			state.items[i].quantity--;
+		}
 	}
 }
 

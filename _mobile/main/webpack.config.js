@@ -11,8 +11,8 @@ module.exports = {
 		//'front_end': './_mobile/main/src_front_end/main.js'
 	},
 	output: {
-		path: path.resolve( __dirname,'dist/' ),
-		publicPath: '/_mobile/main/dist/',
+		path: path.resolve( __dirname,'../../public/dist/' ),
+		publicPath: '/dist/',
 		filename: '[name].chunk.js'
 	},
 	module: {
@@ -44,6 +44,11 @@ module.exports = {
 			vue: 'vue/dist/vue.min.js'
 		}
 	},
+	externals: {
+		'vue': 'window.Vue',
+		'vue-router': 'window.VueRouter',
+		'vuex': 'window.Vuex'
+	},
 	postcss: function () {
         return [autoprefixer];
     },
@@ -71,7 +76,7 @@ module.exports = {
     	// 	//'swiper',
     	// 	'svg-qq'
     	// ]),
-    	new webpack.HotModuleReplacementPlugin(),
+    	//new webpack.HotModuleReplacementPlugin(),
     	new ExtractTextPlugin('[name].style.css',{
     		allChunks: true
     	})

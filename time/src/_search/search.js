@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import '../common.less';
 
 import {store} from '../store/store.js';

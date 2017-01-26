@@ -380,7 +380,7 @@
 	.navbar {
 		position:relative;
 		height:60px;
-		background:#2378BA;
+		background: #2378BA;
 		.container {
 			position:relative;
 			height:60px;

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 var gulp = require('gulp'); 
 var nodemon = require('gulp-nodemon');
@@ -30,16 +31,6 @@ var PRODUCTION = false;
 
 // var concat = require("gulp-concat");
 var shell = require('gulp-shell');
-
-gulp.task( 'start_server',function(){
-	nodemon({
-		script: './express/main.js',
-		ext: 'js html',
-		env: {
-			'NODE_ENV': 'development'
-		}
-	});
-});
 
 var LESS = [
 	{ name: 'less-mobile', src: './_mobile/less/*.less', dest: './_mobile/css' },
@@ -224,11 +215,11 @@ const WEBPACK = [{
 // 	config: './time/webpack.config.js', 
 // 	watched: ['./time/src/*.*','./time/src/**/*.*']
 // },{	
-	name: 'webpack-time-server', 
-	dest: './time/server/', 
-	config: './time/webpack.server.js', 
-	watched: ['./time/src/*.*','./time/src/**/*.*']
-},{
+// 	name: 'webpack-time-server', 
+// 	dest: './time/server/', 
+// 	config: './time/webpack.server.js', 
+// 	watched: ['./time/src/*.*','./time/src/**/*.*']
+// },{
 	name: 'webpack-desktop-presentation', 
 	dest: './desktop/presentation/dist/', 
 	config: './desktop/presentation/webpack.config.js', 
@@ -345,19 +336,22 @@ gulp.task( 'browserify_fytpy',function(){
 var WEBPACK2 = [{
 	name: 'webpack-mobile-main',  
 	config: './_mobile/main/webpack.config.js', 
-	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/**/*.*','./_mobile/main/src_front_end/*.*']
+	watched: ['./_mobile/main/src/*.*','./_mobile/main/src/**/*.*','./_mobile/main/src_front_end/*.*'],
+	tpl: './_mobile/main/src/tpl/tpl.js'
 },{
 	name: 'webpack-mobile-farm',
 	config: './_mobile/farm/webpack.config.js', 
-	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*']
+	watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*'],
+	tpl: 'node _mobile/farm/src/tpl/tpl.js'
 },{
-	name: 'webpack2-time',
-	config: './time/webpack.config.js',
-	watched: ['./time/src/*.*','./time/src/**/*.*']
-},{
-	name: 'webpack2-time-ssr',
-	config: './time/webpack.server.js',
-	watched: ['./time/src/*.*','./time/src/**/*.*']
+	name: 'webpack-time',
+	config: './time/webpack.config.prod.js',
+	watched: ['./time/src/*.*','./time/src/**/*.*'],
+	tpl: 'node time/src/tpl/tpl.js'
+// },{
+// 	name: 'webpack2-time-ssr',
+// 	config: './time/webpack.server.js',
+// 	watched: ['./time/src/*.*','./time/src/**/*.*']
 },{
 	name: 'webpack-mobile-vue', 
 	watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/**/*.*'],  
@@ -373,19 +367,27 @@ var WEBPACK2 = [{
 },{
 	name: 'webpack-hot', 
 	watched: ['./hot/src/*.*','./hot/src/**/*.*'],  
-	config: './hot/webpack.config.prod.js'
+	config: './hot/webpack.config.prod.js',
+	tpl: 'node hot/src/tpl/tpl.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');
 
 WEBPACK2.forEach(a=>{
 	gulp.task( a.name,function(){
-		webpack2( require(a.config),function(e,s){
-			if(e){
-				throw new gulputil.PluginError('webpack',e)
-			};
-			gulputil.log('[webpack]',s.toString({  }));
-		});
+		console.log(process.env.NODE_ENV)
+		if(process.env.NODE_ENV==='production'){
+			webpack2( require(a.config),function(e,s){
+				if(e){
+					throw new gulputil.PluginError('webpack',e)
+				};
+				gulputil.log('[webpack]',s.toString({  }));
+			});
+		};
+		if( a.tpl ){
+			gulp.src('').pipe( shell(a.tpl));
+			console.log(`[${a.name}] ${process.env.NODE_ENV} html generated.`);
+		};
 	})
 })
 
@@ -443,15 +445,15 @@ var EJS = [{
 	},
 	rename: '[name].html',
 	dest: './_canvas/'
-},{
-	name: 'ejs-time',
-	src: './time/src/tpl/tpl.ejs',
-	watched: ['./time/src/tpl/*.*'],
-	data: function(){
-		return require('./time/src/tpl/config.js')
-	},
-	rename: '[name].html',
-	dest: './time/'
+// },{
+// 	name: 'ejs-time',
+// 	src: './time/src/tpl/tpl.ejs',
+// 	watched: ['./time/src/tpl/*.*'],
+// 	data: function(){
+// 		return require('./time/src/tpl/config.js')
+// 	},
+// 	rename: '[name].html',
+// 	dest: './public/time/'
 },{
 	name: 'ejs-wolf',
 	src: './desktop/_wolf/src/index.ejs',
@@ -525,19 +527,51 @@ gulp.task('watch',function(){
 	gulp.watch( './ts/ts/*.ts',['browserify_ts'] );
 })
 
-gulp.task('express',['watch','start_server'],function(){
+gulp.task( 'start_server',function(){
+	nodemon({
+		script: './server/server.js',
+		ext: 'js html',
+		env: {
+			'NODE_ENV': 'development'
+		}
+	});
+});
+gulp.task('server',['watch','start_server'],function(){
 
 });
 
-gulp.task( 'default',['watch'],function(){
-	gulp.src('').pipe( shell('node hot/server.js') )
+gulp.task( 'default',['watch'],()=>{
+	process.env.NODE_ENV = 'production';
+	//gulp.src('').pipe( shell('node hot/server.js') )
 	//gulp.run( ['restart_server'] );
 	//gulp.watch( './express.js',['restart_server']);
 
 });
+const DEV = [{
+	name: 'dev-hot',
+	WEBPACK_CONFIG: path.resolve(__dirname,'hot/webpack.config.dev.js'),
+},{
+	name: 'dev-time',
+	WEBPACK_CONFIG: path.resolve(__dirname,'time/webpack.config.js'),
+}]
+DEV.forEach(a=>{
+	gulp.task( a.name,['watch'],()=>{
+		process.env.NODE_ENV = 'development';
+		process.env.WEBPACK_CONFIG = a.WEBPACK_CONFIG;
+		gulp.src('')
+			//.pipe( shell(a.tpl) )
+			.pipe( shell('node server/server.hot.js') );
+	} )
+})
 
-gulp.task( 'build',['watch'],function(){
-	PRODUCTION = true;
+gulp.task( '__build',()=>{
+	process.env.NODE_ENV = 'production';
+})
+gulp.task( 'build',[
+	'__build',
+	'webpack2-time',
+	'webpack-hot'],
+	function(){
 });
 
 /*

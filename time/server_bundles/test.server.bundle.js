@@ -45,13 +45,20 @@ module.exports =
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 
-	var _vue = __webpack_require__(1);
+	var _vue = __webpack_require__(2);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
@@ -61,7 +68,7 @@ module.exports =
 
 	var app = new _vue2.default({
 		components: {
-			App: __webpack_require__(2)
+			App: __webpack_require__(3)
 		},
 		template: '<app></app>'
 	});
@@ -72,54 +79,50 @@ module.exports =
 	};
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports) {
 
 	module.exports = require("vue");
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
-	__vue_script__ = __webpack_require__(3);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\_test\\App.vue: named exports in *.vue files are ignored.");
+
+	/* script */
+	__vue_exports__ = __webpack_require__(4);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(11);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(12);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-66179186/App.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
+	__vue_options__.__file = "E:\\git\\all\\time\\src\\_test\\App.vue";
+	__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	if (__vue_options__.functional) {
+	  console.error("[vue-loader] App.vue: functional components are not supported and should be defined in plain js files using render functions.");
 	}
 
+	module.exports = __vue_exports__;
+
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -127,60 +130,60 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 		components: {
-			TopbarBlack: __webpack_require__(4),
+			TopbarBlack: __webpack_require__(5),
 			NavbarWeifeng: __webpack_require__(8)
 		}
 	};
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
-	__webpack_require__(5);
-	__vue_script__ = __webpack_require__(6);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\TopbarBlack.vue: named exports in *.vue files are ignored.");
+
+	/* styles */
+
+	/* script */
+	__vue_exports__ = __webpack_require__(6);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(7);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(7);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-6f4f3b04/TopbarBlack.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
+	__vue_options__.__file = "E:\\git\\all\\time\\src\\components\\TopbarBlack.vue";
+	__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	__vue_options__._scopeId = "data-v-6f4f3b04";
+	if (__vue_options__.functional) {
+	  console.error("[vue-loader] TopbarBlack.vue: functional components are not supported and should be defined in plain js files using render functions.");
 	}
 
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 6 */
@@ -191,6 +194,38 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 		props: {
 			items: {
@@ -205,7 +240,29 @@ module.exports =
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"TopbarBlack\" _v-6f4f3b04=\"\">\n\t<a class=\"li\" href=\"./index.html\" _v-6f4f3b04=\"\">Home</a>\n\t<a class=\"li\" href=\"./test.html\" _v-6f4f3b04=\"\">Test</a>\n\t<a class=\"li\" href=\"./admin.html\" _v-6f4f3b04=\"\">Admin</a>\n</div>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _vm._m(0)
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "TopbarBlack"
+	  }, [_c('a', {
+	    staticClass: "li",
+	    attrs: {
+	      "href": "./index.html"
+	    }
+	  }, [_vm._v("Home")]), _vm._v(" "), _c('a', {
+	    staticClass: "li",
+	    attrs: {
+	      "href": "./test.html"
+	    }
+	  }, [_vm._v("Test")]), _vm._v(" "), _c('a', {
+	    staticClass: "li",
+	    attrs: {
+	      "href": "./admin.html"
+	    }
+	  }, [_vm._v("Admin")])])
+	}]}
+	module.exports.render._withStripped = true
 
 /***/ },
 /* 8 */
@@ -213,50 +270,42 @@ module.exports =
 
 	"use strict";
 
-	var __vue_script__, __vue_template__;
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	var __vue_exports__, __vue_options__;
 	var __vue_styles__ = {};
-	__webpack_require__(9);
-	__vue_script__ = __webpack_require__(10);
-	if (__vue_script__ && __vue_script__.__esModule && Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] time\\src\\components\\NavbarWeifeng.vue: named exports in *.vue files are ignored.");
+
+	/* styles */
+
+	/* script */
+	__vue_exports__ = __webpack_require__(9);
+
+	/* template */
+	var __vue_template__ = __webpack_require__(10);
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {};
+	if (_typeof(__vue_exports__.default) === "object" || typeof __vue_exports__.default === "function") {
+	  if (Object.keys(__vue_exports__).some(function (key) {
+	    return key !== "default" && key !== "__esModule";
+	  })) {
+	    console.error("named exports are not supported in *.vue files.");
+	  }
+	  __vue_options__ = __vue_exports__ = __vue_exports__.default;
 	}
-	__vue_template__ = __webpack_require__(11);
-	module.exports = __vue_script__ || {};
-	if (module.exports.__esModule) module.exports = module.exports.default;
-	var __vue_options__ = typeof module.exports === "function" ? module.exports.options || (module.exports.options = {}) : module.exports;
-	if (__vue_template__) {
-	  __vue_options__.template = __vue_template__;
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options;
 	}
-	if (!__vue_options__.computed) __vue_options__.computed = {};
-	Object.keys(__vue_styles__).forEach(function (key) {
-	  var module = __vue_styles__[key];
-	  __vue_options__.computed[key] = function () {
-	    return module;
-	  };
-	});
-	if (false) {
-	  (function () {
-	    module.hot.accept();
-	    var hotAPI = require("vue-hot-reload-api");
-	    hotAPI.install(require("vue"), false);
-	    if (!hotAPI.compatible) return;
-	    var id = "_v-4b00ada6/NavbarWeifeng.vue";
-	    if (!module.hot.data) {
-	      hotAPI.createRecord(id, module.exports);
-	    } else {
-	      hotAPI.update(id, module.exports, __vue_template__);
-	    }
-	  })();
+	__vue_options__.__file = "E:\\git\\all\\time\\src\\components\\NavbarWeifeng.vue";
+	__vue_options__.render = __vue_template__.render;
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns;
+	__vue_options__._scopeId = "data-v-4b00ada6";
+	if (__vue_options__.functional) {
+	  console.error("[vue-loader] NavbarWeifeng.vue: functional components are not supported and should be defined in plain js files using render functions.");
 	}
+
+	module.exports = __vue_exports__;
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -264,6 +313,48 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
 	exports.default = {
 		props: {
 			items: {
@@ -315,16 +406,48 @@ module.exports =
 	};
 
 /***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "NavbarWeifeng"
+	  }, [_c('div', {
+	    staticClass: "container__"
+	  }, [_c('ul', {
+	    staticClass: "tabs",
+	    on: {
+	      "mouseleave": _vm.mouseleave
+	    }
+	  }, _vm._l((_vm.items), function(a, i) {
+	    return _c('li', {
+	      on: {
+	        "mouseenter": function($event) {
+	          _vm.mouseenter($event, i)
+	        }
+	      }
+	    }, [_vm._v(_vm._s(a.name))])
+	  })), _vm._v(" "), _c('div', {
+	    staticClass: "bar-wrapper"
+	  }, [_c('div', {
+	    staticClass: "bar",
+	    style: ('transform:translate3d(' + (_vm.current * 83) + 'px,0,0);')
+	  })])])])
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+
+/***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"NavbarWeifeng\" _v-4b00ada6=\"\">\n\t<div class=\"container__\" _v-4b00ada6=\"\">\n\t\t<ul class=\"tabs\" @mouseleave=\"mouseleave\" _v-4b00ada6=\"\">\n\t\t\t<li v-for=\"(a,i) in items\" @mouseenter=\"mouseenter($event,i)\" _v-4b00ada6=\"\">{{a.name}}</li>\n\t\t</ul>\n\t\t<div class=\"bar-wrapper\" _v-4b00ada6=\"\">\n\t\t\t<div class=\"bar\" :style=\" 'transform:translate3d('+(current*83)+'px,0,0);' \" _v-4b00ada6=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div id=\"root\">\n\t<topbar-black></topbar-black>\n\t<navbar-weifeng></navbar-weifeng>\n</div>\n";
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    attrs: {
+	      "id": "root"
+	    }
+	  }, [_c('topbar-black'), _vm._v(" "), _c('navbar-weifeng')], 1)
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
 
 /***/ }
 /******/ ]);

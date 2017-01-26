@@ -4,6 +4,7 @@
 		<div class="box">
 			<img :src=" '../img/cover.jpg' "/>
 			<p>{{count}} {{msg}}</p>
+			<div>i </div>
 		</div>
 	</div>
 </template>
@@ -12,9 +13,9 @@
 	#app {
 		.box {
 			width: 100%;
-			background: yellow;
+			background: blue;
 			img {
-				width: 80%; height: 2rem;
+				width: 20%; height: 2rem;
 			}
 			p {
 				font-size: 0.3rem;
