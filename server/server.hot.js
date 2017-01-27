@@ -63,6 +63,6 @@ app.use( express.static(__dirname+'/../public/') );
 //   });
 // }
 
-app.listen( 80, () => {
-  console.log(`[HMR]Server listening on http://localhost:${80}, Ctrl+C to stop`)
+app.listen( 8080, () => {
+  console.log(`[HMR]Server listening on http://localhost:${8080}, Ctrl+C to stop`)
 })

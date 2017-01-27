@@ -1,5 +1,7 @@
 import '../common.less';
 
+
+import Vue from 'vue'
 import {store} from '../store/store.js';
 
 new Vue({
