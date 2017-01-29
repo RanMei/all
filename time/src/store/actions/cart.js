@@ -1,4 +1,4 @@
-//import {DIR} from '../../config.js';
+import {DIR} from '../../config.js';
 
 function GET_ITEMS ({commit}) {
 	fetch( DIR.api+'/items/', {

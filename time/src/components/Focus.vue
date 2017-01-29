@@ -103,7 +103,9 @@ export default {
 	props: {
 		dir: {},
 		items: {
-			default: [0,1,2,3]
+			default: function(){
+				return [0,1,2,3]
+			}
 		}
 	},
 	data: function(){

@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
 import {list} from './list.js';
 Vue.use(VueRouter);
 

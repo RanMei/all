@@ -1,4 +1,4 @@
-import {Canvas} from './Canvas.js';
+//import {Canvas} from './Canvas.js';
 
 var Scope = Canvas.extend({
 	data: function(){

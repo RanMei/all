@@ -1,11 +1,12 @@
 
 const state = [];
 
+const actions = {
+}
+
 const mutations = {
-	GET_ITEMS: function(state,items){
-		items.forEach(a=>{
-			state.push(a)
-		})
+	ITEMS_PUSH: function(state,items){
+		state.push(...items);
 	},
 	SAVE_ITEM: function(state,item){
 		state.forEach(a=>{
@@ -37,4 +38,4 @@ const mutations = {
 	}
 }
 
-export default {state,mutations};
+export default {state,actions,mutations};

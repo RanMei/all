@@ -1,6 +1,8 @@
 import '../../common/common.js';
 import '../animations.less';
 
+import Vue from 'vue'
+
 new Vue({
 	el: '#root',
 	components: {

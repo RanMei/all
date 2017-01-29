@@ -34,7 +34,7 @@ class Circle {
 	}
 }
 
-import {Canvas} from './Canvas.js';
+//import {Canvas} from './Canvas.js';
 
 var Circles = Canvas.extend({
 	props: function(){

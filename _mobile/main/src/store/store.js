@@ -1,4 +1,8 @@
+import Vue from 'vue'
 import Vuex from 'vuex';
+if( process.env.NODE_ENV!=='production' ){
+	Vue.use(Vuex)
+}
 
 import projects from './modules/projects.js';
 import posts from './modules/posts.js';

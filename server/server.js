@@ -66,48 +66,11 @@ app.post('/api/user',function(req,res){
 	
 })
 
-require('./items.js')(app,db);
+require('./api.items.js')(app,db);
+require('./api.item.js')(app,db);
+require('./api.cart.js')(app,db,fs);
 
-app.get('/api/item',function(req,res){
-	var id = req.query.id;
-	var item = '{}';
-	item = db.get('items').find({id:id}).value();
-	res.set({
-		'Content-Type': 'application/json'
-	})
-	console.log('[GET] /api/item '+req.query.id);
-	console.log(db.get('items').value())
-	res.send( item );
-})
 
-app.post('/getShoppingCart',function(req,res){
-	var shoppingCart = JSON.parse( fs.readFileSync('./json/shopping_cart.json') );
-	res.set({
-		'Content-Type': 'application/json'
-	})
-	res.send( JSON.stringify(shoppingCart) );
-})
-
-app.post('/addToCart',function(req,res){
-	console.log('shit')
-	var itemID = req.body.itemID;
-	var quantity = req.body.quantity;
-	var items = {};
-	var shoppingCart = JSON.parse( fs.readFileSync('./json/shopping_cart.json') );
-	var items = JSON.parse( fs.readFileSync('./json/items-farm.json') );
-	items.forEach(function(elem){
-		if( elem.id===itemID ){
-			item = elem;
-		}
-	});
-	item.quantity = quantity;
-	shoppingCart.push( item );
-	fs.writeFile( './json/shopping_cart.json', JSON.stringify(shoppingCart) );
-	res.set({
-		'Content-Type': 'text/plain'
-	})
-	res.send( 'true' );
-})
 
 // app.post('/logout',function(req,res){
 // 	res.clearCookie('userID',{path:'/'});

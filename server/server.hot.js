@@ -1,5 +1,5 @@
 'use strict';
-
+var fs = require('fs');
 var http = require('http');
 var express = require('express');
 
@@ -9,6 +9,8 @@ var app = express();
 var low = require('lowdb');
 const db = low('./api/main.db');
 require('./api.items.js')(app,db);
+require('./api.item.js')(app,db);
+require('./api.cart.js')(app,db,fs);
 
 // ************************************
 // This is the real meat of the example

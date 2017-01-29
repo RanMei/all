@@ -16,6 +16,7 @@ list.forEach((a,i)=>{
 	text += 
 `{
 	path:'${a.path}',
+	//component: require('${a.file}')
 	component: resolve => {
 		require.ensure( ['${a.file}'], ()=>{
 			resolve( require('${a.file}') );

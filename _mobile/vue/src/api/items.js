@@ -51,6 +51,10 @@ module.exports = [{
 	component: 'MachineGunText',
 	path: '../lib/MachineGunText.vue'
 },{
+	name: 'Ribbon',
+	component: 'Ribbon',
+	path: '../lib/Ribbon.vue'
+},{
 
 
 

@@ -1,7 +1,7 @@
 import {DIR} from '../../config.js';
 
-function GET_ITEMS ({commit}) {
-	fetch( DIR.api+'/items/', {
+function ITEMS_$FETCH ({state,commit}) {
+	fetch( state.base.DIR.api+'/items/', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ function GET_ITEMS ({commit}) {
 			a.checked = false;
 		})
 		console.log(items)
-		commit('GET_ITEMS',items)
+		commit('ITEMS_PUSH',items)
 	}).catch(function(err) {
 		console.log(err);
 	});
@@ -91,8 +91,8 @@ function DELETE_ITEMS ({commit},ids){
 	});
 }
 
-export {
-	GET_ITEMS,
+export default {
+	ITEMS_$FETCH,
 	SAVE_ITEM,
 	ADD_ITEM,
 	DELETE_ITEMS

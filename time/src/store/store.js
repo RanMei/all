@@ -10,7 +10,7 @@ import user from './modules/user.js';
 import {num} from './modules/num.js';
 
 import actions from './actions/actions.js';
-Vue.use( Vuex );
+//Vue.use( Vuex );
 
 var store = new Vuex.Store({
 	modules: {

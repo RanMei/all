@@ -1,3 +1,9 @@
+Redux.createStore();
+Redux.combineReducers();
+
+store.dispatch()
+store.subscribe()
+
 // In redux, a reducer is actually a pure function that 
 // takes current state and an action to return next state
 Redux.createStore(reducer,initialState,enhancer)

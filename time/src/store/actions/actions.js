@@ -1,17 +1,12 @@
-import {DIR} from '../../config.js';
+//import {DIR} from '../../config.js';
 
-import {GET_ITEMS,SAVE_ITEM,DELETE_ITEMS,ADD_ITEM} from './items.js';
+import ITEMS from './items.js';
 
 import {GET_ITEM} from './item.js';
 
 import {LOGIN} from './user.js';
 
 const actions = {
-	
-	GET_ITEMS,
-	SAVE_ITEM,
-	ADD_ITEM,
-	DELETE_ITEMS,
 
 	GET_ITEM,
 
@@ -22,6 +17,9 @@ const actions = {
 			commit('PLUS');
 		},2000);
 	}
+}
+for(let key in ITEMS){
+	actions[key] = ITEMS[key];
 }
 
 export default actions;

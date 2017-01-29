@@ -10,8 +10,8 @@
 		components: {
 			TopbarBlack: require('../components/TopbarBlack.vue')
 		},
-		mounted: function(){
-			this.$store.dispatch('GET_ITEMS');
+		created: function(){
+			this.$store.dispatch('ITEMS_$FETCH');
 			this.$store.dispatch('PLUS');
 		},
 		computed: {

@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<navbar></navbar>
+		<ribbon-corner></ribbon-corner>
 		<div class="box">
 			<img :src=" '../img/cover.jpg' "/>
 			<p>{{count}} {{msg}}</p>
@@ -27,7 +28,8 @@
 <script type="text/javascript">
 	export default {
 		components: {
-			Navbar: require('../components/Navbar.vue')
+			Navbar: require('../components/Navbar.vue'),
+			RibbonCorner: require('../components/RibbonCorner.vue')
 		},
 		data: function(){
 			return {

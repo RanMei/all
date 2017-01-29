@@ -12,7 +12,7 @@ new Vue({
 	template: '<app></app>',
 	mounted: function(){
 		var self = this;
-		self.$store.dispatch('GET_ITEMS');
+		self.$store.dispatch('ITEMS_$FETCH');
 	},
 	methods: {
 	}

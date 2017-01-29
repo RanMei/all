@@ -79,9 +79,11 @@
 	export default {
 		props: {
 			tabs: {
-				default: [
-					'商品详情','评价晒单','购买须知'
-				]
+				default: function(){
+					return [
+						'商品详情','评价晒单','购买须知'
+					]
+				}
 			}
 		},
 		data: function(){

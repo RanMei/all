@@ -35,6 +35,7 @@ var Scope = Canvas.extend({
 		}
 	},
 	beforePlay: function(){
+		this.$setSize( window.innerWidth,window.innerHeight );
 		this.$ctx.lineWidth = .1;
 		this.$ctx.lineJoin = 'round';
 	},
@@ -185,5 +186,5 @@ canvas.style.background = 'black';
 
 new Scope({
 	el: canvas,
-	responsive: true
+	//responsive: true
 })

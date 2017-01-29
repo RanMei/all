@@ -6,6 +6,8 @@ var config = [{
 	name: 'wolf'
 },{
 	name: 'test'
+},{
+	name: 'carnival'
 }]
 
 console.log(process.env.NODE_ENV)

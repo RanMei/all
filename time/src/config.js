@@ -10,7 +10,7 @@ const DIR = {
 	root: _root,
 	img: _root+'/../img/time',
 	//api: _root+'/../api/time',
-	api: 'http://localhost:80/api',
+	api: location.origin+'/api',
 
 	admin: _root+'/admin.html',
 

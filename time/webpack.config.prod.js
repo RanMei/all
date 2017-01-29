@@ -29,11 +29,6 @@ module.exports = Object.assign(base,{
 			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
 		}
 	},
-  externals: {
-    'vue': 'window.Vue',
-    'vue-router': 'window.VueRouter',
-    'vuex': 'window.Vuex'
-  },
 	postcss: function () {
       return [autoprefixer];
   },

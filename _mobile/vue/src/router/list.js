@@ -1,5 +1,6 @@
 var list = [{
 	path:'preloader',
+	//component: require('../lib/Preloader.vue')
 	component: resolve => {
 		require.ensure( ['../lib/Preloader.vue'], ()=>{
 			resolve( require('../lib/Preloader.vue') );
@@ -7,6 +8,7 @@ var list = [{
 	}
 },{
 	path:'card',
+	//component: require('../lib/Card.vue')
 	component: resolve => {
 		require.ensure( ['../lib/Card.vue'], ()=>{
 			resolve( require('../lib/Card.vue') );
@@ -14,6 +16,7 @@ var list = [{
 	}
 },{
 	path:'cardstwo',
+	//component: require('../lib/CardsTwo.vue')
 	component: resolve => {
 		require.ensure( ['../lib/CardsTwo.vue'], ()=>{
 			resolve( require('../lib/CardsTwo.vue') );
@@ -21,6 +24,7 @@ var list = [{
 	}
 },{
 	path:'gooeymenu',
+	//component: require('../lib/GooeyMenu.vue')
 	component: resolve => {
 		require.ensure( ['../lib/GooeyMenu.vue'], ()=>{
 			resolve( require('../lib/GooeyMenu.vue') );
@@ -28,6 +32,7 @@ var list = [{
 	}
 },{
 	path:'wave',
+	//component: require('../lib/Wave.vue')
 	component: resolve => {
 		require.ensure( ['../lib/Wave.vue'], ()=>{
 			resolve( require('../lib/Wave.vue') );
@@ -35,6 +40,7 @@ var list = [{
 	}
 },{
 	path:'3dcube',
+	//component: require('../lib/3dCube.vue')
 	component: resolve => {
 		require.ensure( ['../lib/3dCube.vue'], ()=>{
 			resolve( require('../lib/3dCube.vue') );
@@ -42,6 +48,7 @@ var list = [{
 	}
 },{
 	path:'buttonripple',
+	//component: require('../lib/ButtonRipple.vue')
 	component: resolve => {
 		require.ensure( ['../lib/ButtonRipple.vue'], ()=>{
 			resolve( require('../lib/ButtonRipple.vue') );
@@ -49,6 +56,7 @@ var list = [{
 	}
 },{
 	path:'svgpenguin',
+	//component: require('../lib/SvgPenguin.vue')
 	component: resolve => {
 		require.ensure( ['../lib/SvgPenguin.vue'], ()=>{
 			resolve( require('../lib/SvgPenguin.vue') );
@@ -56,6 +64,7 @@ var list = [{
 	}
 },{
 	path:'carousel',
+	//component: require('../lib/Carousel.vue')
 	component: resolve => {
 		require.ensure( ['../lib/Carousel.vue'], ()=>{
 			resolve( require('../lib/Carousel.vue') );
@@ -63,6 +72,7 @@ var list = [{
 	}
 },{
 	path:'strokecircle',
+	//component: require('../lib/StrokeCircle.vue')
 	component: resolve => {
 		require.ensure( ['../lib/StrokeCircle.vue'], ()=>{
 			resolve( require('../lib/StrokeCircle.vue') );
@@ -70,6 +80,7 @@ var list = [{
 	}
 },{
 	path:'orientation',
+	//component: require('../lib/Orientation.vue')
 	component: resolve => {
 		require.ensure( ['../lib/Orientation.vue'], ()=>{
 			resolve( require('../lib/Orientation.vue') );
@@ -77,6 +88,7 @@ var list = [{
 	}
 },{
 	path:'morphingphones',
+	//component: require('../lib/MorphingPhones.vue')
 	component: resolve => {
 		require.ensure( ['../lib/MorphingPhones.vue'], ()=>{
 			resolve( require('../lib/MorphingPhones.vue') );
@@ -84,13 +96,23 @@ var list = [{
 	}
 },{
 	path:'machineguntext',
+	//component: require('../lib/MachineGunText.vue')
 	component: resolve => {
 		require.ensure( ['../lib/MachineGunText.vue'], ()=>{
 			resolve( require('../lib/MachineGunText.vue') );
 		});
 	}
 },{
+	path:'ribbon',
+	//component: require('../lib/Ribbon.vue')
+	component: resolve => {
+		require.ensure( ['../lib/Ribbon.vue'], ()=>{
+			resolve( require('../lib/Ribbon.vue') );
+		});
+	}
+},{
 	path:'blizzard',
+	//component: require('../canvas/Blizzard.js')
 	component: resolve => {
 		require.ensure( ['../canvas/Blizzard.js'], ()=>{
 			resolve( require('../canvas/Blizzard.js') );
@@ -98,6 +120,7 @@ var list = [{
 	}
 },{
 	path:'confetti',
+	//component: require('../canvas/Confetti.js')
 	component: resolve => {
 		require.ensure( ['../canvas/Confetti.js'], ()=>{
 			resolve( require('../canvas/Confetti.js') );
@@ -105,6 +128,7 @@ var list = [{
 	}
 },{
 	path:'rain',
+	//component: require('../canvas/Rain.js')
 	component: resolve => {
 		require.ensure( ['../canvas/Rain.js'], ()=>{
 			resolve( require('../canvas/Rain.js') );
@@ -112,6 +136,7 @@ var list = [{
 	}
 },{
 	path:'circles',
+	//component: require('../canvas/Circles.js')
 	component: resolve => {
 		require.ensure( ['../canvas/Circles.js'], ()=>{
 			resolve( require('../canvas/Circles.js') );
@@ -119,6 +144,7 @@ var list = [{
 	}
 },{
 	path:'snow',
+	//component: require('../canvas/Snow.js')
 	component: resolve => {
 		require.ensure( ['../canvas/Snow.js'], ()=>{
 			resolve( require('../canvas/Snow.js') );
@@ -126,6 +152,7 @@ var list = [{
 	}
 },{
 	path:'heart',
+	//component: require('../canvas/Heart.vue')
 	component: resolve => {
 		require.ensure( ['../canvas/Heart.vue'], ()=>{
 			resolve( require('../canvas/Heart.vue') );
@@ -133,6 +160,7 @@ var list = [{
 	}
 },{
 	path:'scope',
+	//component: require('../Canvas/Scope.js')
 	component: resolve => {
 		require.ensure( ['../Canvas/Scope.js'], ()=>{
 			resolve( require('../Canvas/Scope.js') );

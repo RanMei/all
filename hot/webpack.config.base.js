@@ -9,15 +9,10 @@ module.exports = {
     // 'vue': [
     //   'vue', 'vuex'
     // ],
-    'index': [
-      './src/_index/index.js',
-    ],
-    'test': [
-      './src/_test/app.js',
-    ],
-    'wolf': [
-      './src/_wolf/_index/index.js'
-    ]
+    'index': ['./src/_index/index.js',],
+    'test': ['./src/_test/app.js',],
+    'wolf': ['./src/_wolf/_index/index.js'],
+    'carnival': ['./src/_carnival/_index/index.js']
   },
   output: {
     path: path.resolve( __dirname,'../public/hot/dist' ),
