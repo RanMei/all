@@ -312,7 +312,7 @@ var WEBPACK2 = [{
   watched: ['./_mobile/main/src/*.*','./_mobile/main/src/**/*.*','./_mobile/main/src_front_end/*.*'],
   tpl: 'node ./_mobile/main/src/tpl/tpl.js'
 },{
-  name: 'webpack-mobile-farm',
+  name: 'webpack-farm',
   config: './_mobile/farm/webpack.config.js', 
   watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*'],
   tpl: 'node _mobile/farm/src/tpl/tpl.js'
@@ -495,6 +495,7 @@ gulp.task('watch',function(){
 })
 
 gulp.task( 'start_server',function(){
+  process.env.NODE_ENV = 'production';
   nodemon({
     script: './server/server.js',
     ext: 'js html',
@@ -518,6 +519,10 @@ const DEV = [{
   name: 'dev-main',
   WEBPACK_CONFIG: path.resolve(__dirname,'_mobile/main/webpack.config.dev.js'),
   tasks: ['webpack-main','watch']
+},{
+  name: 'dev-farm',
+  WEBPACK_CONFIG: path.resolve(__dirname,'_mobile/farm/webpack.config.dev.js'),
+  tasks: ['webpack-farm','watch']
 },{
   name: 'dev-hot',
   WEBPACK_CONFIG: path.resolve(__dirname,'hot/webpack.config.dev.js'),

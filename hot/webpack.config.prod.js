@@ -31,11 +31,6 @@ module.exports = Object.assign(base,{
       less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
     }
   },
-  externals: {
-    'vue': 'window.Vue',
-    'vuex': 'window.Vuex',
-    'vue-router': 'window.VueRouter'
-  },
   postcss: function () {
         return [autoprefixer];
     },
@@ -50,6 +45,14 @@ module.exports = Object.assign(base,{
     }),
     new ExtractTextPlugin('[name].style.css',{
       allChunks: true
-    })
+    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   // compress: {
+    //   //   warnings: false
+    //   // },
+    //   compress: false,
+    //   minimize: false,
+    //   mangle: false
+    // })
   ],
 });

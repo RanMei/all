@@ -9,11 +9,11 @@ var low = require('lowdb');
 const db = low('./api/main.db');
 
 const DIR = {
-	root: __dirname+'/../',
+	root: __dirname+'/../public/',
 	api: __dirname+'/../api/time_json/'
 }
 
-const port = 80;
+const port = 8080;
 var webpack = require('webpack');
 var dm = require('webpack-dev-middleware');
 var hm = require('webpack-hot-middleware');

@@ -1,13 +1,40 @@
 const fs = require('fs');
 
+const vue = `<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>`;
+const vue3 = 
+	`<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
+	<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>
+	<script type="text/javascript" src="../vendor/vue2/vuex.min.js"></script>`;
+
 var config = [{
-	name: 'index'
+	name: 'index',
+	dest: './public/index.html',
+	css: `<link rel="stylesheet" type="text/css" href="./vendor/font-awesome-4.4.0/css/font-awesome.min.css">`,
+	scripts: `<script type="text/javascript" src="./vendor/vue2/vue.min.js"></script>
+	<script type="text/javascript" src="./vendor/vue2/vue-router.min.js"></script>
+	<script type="text/javascript" src="./vendor/vue2/vuex.min.js"></script>`
 },{
-	name: 'wolf'
+
+	name: 'hot',
+	dest: './public/hot/hot.html',
+	scripts: vue3
 },{
-	name: 'test'
+	name: 'test',
+	dest: './public/hot/test.html',
+	scripts: vue
 },{
-	name: 'carnival'
+	name: 'front-end',
+	dest: './public/hot/front-end.html',
+	scripts: vue
+},{
+
+	name: 'wolf',
+	dest: './public/h5/wolf.html',
+	scripts: vue
+},{
+	name: 'carnival',
+	dest: './public/h5/carnival.html',
+	scripts: vue
 }]
 
 console.log(process.env.NODE_ENV)
@@ -22,6 +49,8 @@ config.forEach(a=>{
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>${a.name}</title>
+	
+	${a.css?a.css:''}
 	${process.env.NODE_ENV==='production'?
 	`<link rel="stylesheet" type="text/css" href="dist/${a.name}.style.css">`:''}
 </head>
@@ -29,21 +58,13 @@ config.forEach(a=>{
 <body>
 	<div id="${a.name==='wolf'?'root':'app'}">
 	</div>
-
-${process.env.NODE_ENV==='production'&&a.name==='wolf'?	
-'<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>':''
-}
-${process.env.NODE_ENV==='production'&&a.name!=='wolf'?
-'<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>'+
-'<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>'+
-'<script type="text/javascript" src="../vendor/vue2/vuex.min.js"></script>':
-''
-}
-<script type="text/javascript" src="dist/${a.name}.bundle.js"></script>
+	
+	${a.scripts}
+	<script type="text/javascript" src="dist/${a.name}.bundle.js"></script>
 
 </body>
 
 </html>
 `;
-	fs.writeFileSync( './public/hot/'+a.name+'.html',tpl );
+	fs.writeFileSync( a.dest,tpl );
 })
