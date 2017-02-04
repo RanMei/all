@@ -349,13 +349,20 @@ var webpack2 = require('webpack');
 
 WEBPACK2.forEach(a=>{
   gulp.task( a.name,function(){
-    console.log(process.env.NODE_ENV)
+    console.log( `[NODE_ENV] ${process.env.NODE_ENV}` )
     if(process.env.NODE_ENV==='production'){
-      webpack2( require(a.config),function(e,s){
+      webpack2( require(a.config),function(e,stats){
         if(e){
           throw new gulputil.PluginError('webpack',e)
         };
-        gulputil.log('[webpack]',s.toString({  }));
+        //if( stats.hasErrors() ){
+        //};
+        gulputil.log('[webpack]',stats.toString({
+          children: false,
+          chunks: false,
+          colors: true
+        }));
+        console.log('[webpack] bundling done.')
       });
     };
     if( a.tpl ){

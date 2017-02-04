@@ -5,7 +5,7 @@
 		<div class="box">
 			<img :src=" '../img/cover.jpg' "/>
 			<p>{{count}} {{msg}}</p>
-			<div>ijdsa</div>
+			<div>isaaaa</div>
 		</div>
 	</div>
 </template>
@@ -15,7 +15,7 @@
 		.box {
 			width: 80%;
 			margin: auto;
-			background: red;
+			background: green;
 			img {
 				width: 20%; height: 2rem;
 				margin: auto;
