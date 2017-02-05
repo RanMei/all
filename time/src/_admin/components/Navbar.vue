@@ -65,6 +65,10 @@
 		data: function(){
 			return {
 				tabs: [{
+					name: 'users',
+					href: '#/admin/users',
+					subs: []
+				},{
 					name: 'items',
 					href: '#/admin/items',
 					subs: []

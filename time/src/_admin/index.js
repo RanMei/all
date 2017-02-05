@@ -3,7 +3,7 @@ import '../common.less';
 import Vue from 'vue'
 
 import {router} from './router/router.js';
-import {store} from '../store/store.js';
+import store from 'store/store.admin.js';
 
 var vm = new Vue({
 	el: '#root',

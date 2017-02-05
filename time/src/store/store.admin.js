@@ -1,10 +1,13 @@
 import items from './modules/items.js';
-console.log(items)
 
 const store = new Vuex.Store({
+  state: {
+  },
   modules: {
     items
   }
 })
+
+//console.log(store.state)
 
 export default store;

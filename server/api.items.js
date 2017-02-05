@@ -21,6 +21,7 @@ module.exports = function(app,db){
 
 	app.delete('/api/items',function(req,res){
 		// req.body = []
+		console.log(req.body)
 		req.body.forEach(id=>{
 			db.get('items').remove({id:id}).value();	
 		})

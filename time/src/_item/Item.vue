@@ -20,7 +20,7 @@
 			<div class="information">
 				<p class="name">{{item.name}}</p>
 				<p class="description">{{item.description}}</p>
-				<p class="priceWrapper"><b>￥<span class="price">{{item.price.toFixed(2)}}</span></b></p>
+				<p class="priceWrapper"><b>￥<span class="price">{{Number(item.price).toFixed(2)}}</span></b></p>
 				<div class="shuliang">
 					<p>数量：</p>
 					<div class="counter">
@@ -166,7 +166,7 @@
 		mounted: function(){
 			//this.get_id();
 			this.get_query();
-			this.$store.dispatch( 'GET_ITEM',this.get_id() );
+			this.$store.dispatch( 'fetchItem',this.get_id() );
 		},
 		computed: {
 			item: function(){

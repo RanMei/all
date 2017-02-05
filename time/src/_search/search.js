@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import '../common.less';
 
-import {store} from '../store/store.js';
+import store from '../store/store.js';
 
 new Vue({
 	el: '#root',
@@ -12,7 +12,7 @@ new Vue({
 	template: '<app></app>',
 	mounted: function(){
 		var self = this;
-		self.$store.dispatch('ITEMS_$FETCH');
+		self.$store.dispatch('fetchItems');
 	},
 	methods: {
 	}

@@ -16,12 +16,13 @@ module.exports = {
     './_admin/admin': ['./time/src/_admin/index.js']
   },
   output: {
-    path: path.resolve( __dirname, '../public/time/dist/' ),//'/public/time/dist/',//path.resolve( __dirname, 'time/dist/' ),
+    path: path.resolve( __dirname, '../public/time/dist/' ),
     publicPath: '/time/dist/',
     filename: '[name].chunk.js'
   },
   resolve: {
     alias: {
+      'store': path.resolve( __dirname,'src/store/' ),
       'api': path.resolve( __dirname,'src/api/' ),
       'vue': 'vue/dist/vue.min.js',
       'vue-router': 'vue-router/dist/vue-router.min.js',

@@ -24,7 +24,7 @@
 		},
 		computed: {
 			dir: function(){
-				return this.$store.state.base.DIR;
+				return this.$store.state.dir;
 			},
 			cart: function(){
 				return this.$store.state.cart;

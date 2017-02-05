@@ -6,7 +6,8 @@ if( /^http/.test(location.href) ){
 	_root = location.href.replace( /time\/.+/,'time' );
 }
 
-const DIR = {
+const state = {
+	host: location.host,
 	root: _root,
 	img: _root+'/../img/time',
 	//api: _root+'/../api/time',
@@ -21,14 +22,4 @@ const DIR = {
 	search: _root+'/search.html'
 }
 
-const state = {
-	DIR: DIR,
-	host: location.host
-}
-console.log(location)
-
-const mutations = {
-}
-
-
-export default {state,mutations};
+export default {state};

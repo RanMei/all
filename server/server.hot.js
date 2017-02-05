@@ -2,8 +2,15 @@
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 var app = express();
+
+app.use( express.static(__dirname+'/../public/') );
+app.use( bodyParser.json() );
+app.use( cookieParser() );
+
 //app.use(require('morgan')('short'));
 
 var low = require('lowdb');
@@ -50,7 +57,6 @@ require('./api.cart.js')(app,db,fs);
 
 // Do anything you like with the rest of your express application.
 
-app.use( express.static(__dirname+'/../public/') );
 // app.get("/", function(req, res) {
 //   res.sendFile(__dirname + '/index.html');
 // });
