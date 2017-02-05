@@ -8,30 +8,65 @@ var base = JSON.parse( JSON.stringify(require('./webpack.config.base.js')) );
 
 module.exports = Object.assign(base,{
 	module: {
-		loaders: [{
-			test: /\.js$/,
-			loader: 'babel',
-			query: {
-				presets: ['react','es2015']
-			}
-		},{
-			test: /\.vue$/,
-			loader: 'babel!vue'
-		},{
-			test: /\.less$/,
-			//loader: 'style!css!less!postcss'
-			loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
-		}]
+		rules: [{
+      test: /\.js$/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['react','es2015']
+        }
+      }]
+    },{
+      test: /\.vue$/,
+      use: {
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            less: ExtractTextPlugin.extract({
+              fallback: 'vue-style-loader',
+              loader: [{
+                loader: 'css-loader'
+              },{
+                loader: 'postcss-loader'
+              },{
+                loader: 'less-loader'
+              }]
+            })
+          },
+          preserveWhitespace: false,
+          postcss: [
+            autoprefixer
+          ]
+        }
+      }
+    },{
+      test: /\.less$/,
+      //use: ['style-loader','css-loader','less-loader'],
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        loader: [{
+          loader: 'css-loader'
+        },{
+          loader: 'postcss-loader'
+        },{
+          loader: 'less-loader'
+        }]
+      })
+    },{
+      test: /\.scss$/,
+      //loader: ['style-loader','css-loader','sass-loader']
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        loader: [{
+          loader: 'css-loader'
+        },{
+          loader: 'postcss-loader'
+        },{
+          loader: 'sass-loader'
+        }]
+      })
+    }]
 	},
-	vue: {
-		loaders: {
-      //loader: 'style!css!less!postcss',
-			less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
-		}
-	},
-	postcss: function () {
-      return [autoprefixer];
-  },
   plugins: [
   	new webpack.DefinePlugin({
   	  "process.env": {
@@ -40,8 +75,9 @@ module.exports = Object.assign(base,{
   	}),
   	new webpack.optimize.CommonsChunkPlugin({
   		name: 'common',
+      names: ['index','item','search','cart'],
   		minChunks: 2
-  	},['index','item','search','cart']),
+  	}),
   	new webpack.optimize.LimitChunkCountPlugin({
   		maxChunks: 10
   	}),
@@ -51,7 +87,8 @@ module.exports = Object.assign(base,{
   	// 	'common.chunk.js',
   	// 	['index','item','search','cart']
   	// ),
-  	new ExtractTextPlugin('[name].style.css',{
+  	new ExtractTextPlugin({
+      filename: '[name].style.css',
   		allChunks: true
   	}),
   ]

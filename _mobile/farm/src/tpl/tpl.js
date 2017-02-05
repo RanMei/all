@@ -21,7 +21,6 @@ config.forEach(a=>{
 	<div id="app"></div>
 
 <!-- <script type="text/javascript" src="../vendor/debug.js"></script> -->
-<script type="text/javascript" src="../vendor/rem.js"></script>
 <script type="text/javascript" src="../../vendor/fetch.js"></script>
 
 <script type="text/javascript" src="../../vendor/react/react.min.js"></script>

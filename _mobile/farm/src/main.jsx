@@ -10,17 +10,6 @@ if( !Object.assign ){
 		return dest;
 	}
 };
-import './rem.720.js';
-import './config.js';
-
-var PropTypes = React.PropTypes;
-
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var Link = ReactRouter.Link;
-var hashHistory = ReactRouter.hashHistory;
-var IndexRoute = ReactRouter.IndexRoute;
-
 
 // import { createDevTools } from 'redux-devtools';
 // import LogMonitor from 'redux-devtools-log-monitor';
@@ -45,43 +34,26 @@ var IndexRoute = ReactRouter.IndexRoute;
 // import {Signup} from './components/Signup.jsx';
 
 // import {ConfirmOrder} from './components/ConfirmOrder.jsx';
+// import ReactDOM from 'react-dom';
+import './common/common.js';
+import { AppContainer } from 'react-hot-loader';
+import App from './App.js';
 
-import {App} from './containers/App.jsx';
-import {Home} from './containers/Home.jsx';
-import {Item} from './containers/Item.jsx';
-import {Member} from './containers/Member.jsx';
-import {Signin} from './containers/Signin.jsx';
-import {ShoppingCart} from './containers/ShoppingCart.jsx';
-import {Category} from './containers/Category.jsx';
-import {DIManagement} from './containers/DIManagement.jsx';
+const render = App=>{
+	ReactDOM.render(
+		(
+		<AppContainer>
+			<App/>
+		</AppContainer>
+		),
+		document.getElementById('app')
+	);
+}
 
+render(App);
 
-var Provider = ReactRedux.Provider;
-var connect = ReactRedux.connect;
-
-import {$$store} from './store/index.jsx';
-// The router.
-ReactDOM.render(
-	(
-		<Provider store={$$store}>		
-			<Router history={ hashHistory } >
-				<Route path="/" component={App}>
-					<IndexRoute path="/home" component={Home} />
-					<Route path="/home" component={Home} />
-					<Route path="/category" component={Category} />
-					<Route path="/item" component={Item} />
-					<Route path="/shopping_cart" getComponent={function(nextState, cb) {
-						require.ensure([], (require) => {
-							cb( null, require('./containers/ShoppingCart.jsx').ShoppingCart )
-						})
-					}} />
-
-					<Route path="/member" component={Member} />
-					<Route path="/signin" component={Signin} />
-					<Route path="/di_management" component={DIManagement} />
-				</Route>
-			</Router>
-		</Provider>
-	),
-	document.getElementById('app')
-);
+if (module.hot) {
+  module.hot.accept('./App.js', () => {
+    render( require('./App.js').default )
+  });
+}

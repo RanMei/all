@@ -1,19 +1,22 @@
 function mask (state={
-	text: ''
+  show: false,
+  text: ''
 },action){
-	switch (action.type) {
-		case 'CONFIRM':
-			var newState = {
-				text: action.text
-			}
-			return newState;
-		case 'CLOSE_MASK':
-			return {
-				text: ''
-			}
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case 'CONFIRM':
+      var newState = {
+        show: true,
+        text: action.text
+      }
+      return newState;
+    case 'CLOSE_MASK':
+      return {
+        show: false,
+        text: ''
+      }
+    default:
+      return state;
+  }
 }
 
 export {mask};

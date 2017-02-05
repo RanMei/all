@@ -536,7 +536,7 @@ const DEV = [{
   tasks: ['webpack-hot','watch']
 },{
   name: 'dev-time',
-  WEBPACK_CONFIG: path.resolve(__dirname,'time/webpack.config.js'),
+  WEBPACK_CONFIG: path.resolve(__dirname,'time/webpack.config.dev.js'),
   tasks: ['webpack-time','watch'] 
 },{
   name: 'dev-vue',

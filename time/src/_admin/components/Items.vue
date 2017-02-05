@@ -163,12 +163,12 @@
 				if(!this.item.id){
 					this.item.id = new Date().getTime()+'';
 					this.$store.dispatch(
-						'ADD_ITEM',
+						'addItem',
 						JSON.stringify(this.item)
 					);
 				}else{
 					this.$store.dispatch(
-						'SAVE_ITEM',
+						'saveItem',
 						JSON.stringify(this.item)
 					);
 				};
@@ -182,7 +182,7 @@
 					}
 				});
 				this.$store.dispatch(
-					'DELETE_ITEMS',ids
+					'deleteItems',ids
 				);
 			},
 			getTime: function(){

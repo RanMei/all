@@ -1,11 +1,11 @@
-import {$$store} from '../index.jsx';
+import store from '../store.js';
 import {user} from './user.js';
 import {cart} from './cart.js';
 
 var API = {};
 
-user( API,$$store );
-cart( API,$$store );
+user( API,store );
+cart( API,store );
 
 API.INIT = function(){
 	var user = {};

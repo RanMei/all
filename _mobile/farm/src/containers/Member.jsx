@@ -1,8 +1,10 @@
-require('./Member.less');
+import './Member.less';
 
 import {Navbar} from '../components/Navbar.jsx';
 
-import {API} from '../store/API/API.js';
+import dir from 'api/config.js';
+import store from 'store/store.js';
+import ac from 'store/actions/index.js';
 
 class Member extends React.Component {
 	constructor() {
@@ -10,7 +12,7 @@ class Member extends React.Component {
 		console.log('<Member/> constructing');
 	}
 	logout() {
-		API.LOGOUT();
+		store.dispatch( ac.logout() );
 	}
 	toDIManagement(){
 		location.hash = 'di_management';
@@ -27,7 +29,7 @@ class Member extends React.Component {
 						<div className="header">
 							<div className="outerRound">
 								<div className="innerRound">
-									<img src="img/avatar.png"/>
+									<img src={dir.img+'/avatar.png'}/>
 								</div>
 							</div>
 							<p className="account">{this.props.user.id}</p>

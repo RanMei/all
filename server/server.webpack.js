@@ -4,7 +4,8 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const path = require('path')
 
-var config = require("../hot/webpack.config.dev.js");
+// var config = require("../hot/webpack.config.dev.js");
+var config = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : './webpack.config');
 
 //config.entry.hmr.unshift("webpack-dev-server/client?http://localhost:8080", "webpack/hot/dev-server");
 for(let key in config.entry){

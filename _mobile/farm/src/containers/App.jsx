@@ -2,9 +2,8 @@ import {Mask} from '../components/Mask.jsx';
 import {Notice} from '../components/Notice.jsx';
 //import {NoticePretty} from '../components/NoticePretty.jsx';
 
-import {$$store} from '../store/index.jsx';
-import {API} from '../store/API/API.js';
-import initHome from '../store/actions/initHome.js';
+import store from 'store/store.js';
+import acs from 'store/actions/index.js';
 
 class App extends React.Component {
 	constructor(){
@@ -12,8 +11,7 @@ class App extends React.Component {
 		console.debug('<App/> constructing');
 	}
 	componentDidMount(){
-		API.INIT();
-		//$$store.dispatch(initHome());
+		store.dispatch( acs.init() );
 	}
 	render() {
 		console.debug( '<App/> rendering.' );

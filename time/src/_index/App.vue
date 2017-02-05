@@ -10,6 +10,12 @@
 	</div>
 </template>
 
+<style lang="less" scoped>
+	#root {
+		
+	}
+</style>
+
 <script type="text/javascript">
 	export default {
 		components: {

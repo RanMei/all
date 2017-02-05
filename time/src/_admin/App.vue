@@ -11,8 +11,8 @@
 			TopbarBlack: require('../components/TopbarBlack.vue')
 		},
 		created: function(){
-			this.$store.dispatch('ITEMS_$FETCH');
-			this.$store.dispatch('PLUS');
+			this.$store.dispatch('fetchItems');
+			//this.$store.dispatch('PLUS');
 		},
 		computed: {
 			items: function(){

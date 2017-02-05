@@ -1,53 +1,53 @@
-@import (reference) '../common.less';
+@import (reference) '../common/vars.less';
 
 .Home {
-	background: @grey-bg;
-	.searchbar {
-		position: fixed; left: 0; top: 0;
-		width: 100%; height: 0.8rem;
-		background: rgba(255,255,255,0.6);
-		overflow:hidden;
-		z-index: 10;
-		.search {
-			position: relative;
-			width: 6.20rem;
-			height: .60rem;
-			border-radius: .30rem;
-			background: white;
-			//box-shadow: 0 0 .15rem grey;
-			margin: auto;
-			margin-top: 0.1rem;
-			.icon {
-				float: left;
-				width: 1rem;
-				text-align: center;
-				color: @grey-text;
-				font-size: 0.3rem;
-				line-height: 0.6rem;
-			}
-			img {width:0.35rem;margin:.10rem .40rem 0 .20rem;float:left;}
-			input {
-				font-family: 'Microsoft Yahei';
-				display: block;
-				-webkit-appearance: none;
-				//padding: 0.15rem 0;
-				font-size: 0.26rem; line-height: 0.6rem; 
-				border: none;
-			}
-		}
-	}
+  background: @grey-bg;
+  .searchbar {
+    position: fixed; left: 0; top: 0;
+    width: 100%; height: 0.8rem;
+    background: rgba(255,255,255,0.6);
+    overflow: hidden;
+    z-index: 10;
+    .search {
+      position: relative;
+      width: 6.20rem;
+      height: .60rem;
+      border-radius: .30rem;
+      background: white;
+      //box-shadow: 0 0 .15rem grey;
+      margin: auto;
+      margin-top: 0.1rem;
+      .icon {
+        float: left;
+        width: 1rem;
+        text-align: center;
+        color: @grey-text;
+        font-size: 0.3rem;
+        line-height: 0.6rem;
+      }
+      img {width:0.35rem;margin:.10rem .40rem 0 .20rem;float:left;}
+      input {
+        font-family: 'Microsoft Yahei';
+        display: block;
+        -webkit-appearance: none;
+        //padding: 0.15rem 0;
+        font-size: 0.26rem; line-height: 0.6rem; 
+        border: none;
+      }
+    }
+  }
 
-	.block {
-		//border-bottom: 1px solid @grey-border;
-		overflow: hidden;
-		.block-header {
-			padding: 0.15rem 0;
-			font-size: 0.24rem;
-			color: @red;
-			background: white;
-			border-bottom: 1px solid @grey-border;
-			text-align: center;
-		}
-	}
+  .block {
+    //border-bottom: 1px solid @grey-border;
+    overflow: hidden;
+    .block-header {
+      padding: 0.15rem 0;
+      font-size: 0.24rem;
+      color: @red;
+      background: white;
+      border-bottom: 1px solid @grey-border;
+      text-align: center;
+    }
+  }
 
 }

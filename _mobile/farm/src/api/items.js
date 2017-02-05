@@ -1,4 +1,4 @@
-var dataItems = [{
+var items = [{
 	"id": "1609291750",
 	"className": "watch",
 	"name": "Issey Miyake/三宅一生 W系列三眼计时中性石英手表",
@@ -43,4 +43,4 @@ var dataItems = [{
 	"price": 789
 }];
 
-export {dataItems};
+export default items;
