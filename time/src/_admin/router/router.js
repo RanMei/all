@@ -8,19 +8,17 @@ var router = new VueRouter({
 		path: '/',
 		redirect: '/admin'
 	},{
+		// admin
 		path: '/admin',
-		component: require('../_admin/Admin.vue'),
-		redirect: '/admin/items',
+		component: require('./Admin.vue'),
+		redirect: '/admin/management',
 		children: [{
-			path: 'items',
-			component: require('../components/Items.vue')
+			path: 'management',
+			component: require('./Management.vue')
 		},{
 			path: 'signin',
 			component: require('../../components/Signin.vue')
 		}]
-	},{
-		path: '/test',
-		component: require('../_test/Test.vue')
 	}]
 });
 

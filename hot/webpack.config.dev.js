@@ -1,46 +1,51 @@
-'use strict';
+const path = require('path');
 
-var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var base = JSON.parse( JSON.stringify(require('./webpack.config.base')) );
+var base = JSON.parse( JSON.stringify(require('./webpack.config.base.js')) );
 
-module.exports = Object.assign( base,{
+module.exports = Object.assign(base,{
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules/,
-      query: {
+      loader: 'babel-loader',
+      options: {
         presets: ['react','es2015']
-      }
+      },
+      exclude: /node_modules/,
     },{
       test: /\.vue$/,
-      loader: 'babel!vue'
+      loader: 'vue-loader',
+      options: {
+        preserveWhitespace: false,
+        postcss: [
+          autoprefixer
+        ]
+      }
     },{
       test: /\.less$/,
-      loader: 'style!css!less!postcss'
-      //loader: ExtractTextPlugin.extract('style-loader','css-loader!less-loader!postcss-loader')
+      use: ['style-loader','css-loader','postcss-loader','less-loader'],
+    },{
+      test: /\.scss$/,
+      use: ['style-loader','css-loader','postcss-loader','sass-loader']
     }]
   },
-  vue: {
-    loaders: {
-      loader: 'style!css!less!postcss'
-      //less: ExtractTextPlugin.extract('vue-style-loader','css-loader!less-loader!postcss-loader')
-    }
-  },
-  postcss: function () {
-      return [autoprefixer];
-  },
-  //devtool: '#source-map',
   plugins: [
     new webpack.DefinePlugin({
-      __DEV: true
+      "process.env": {
+        NODE_ENV: JSON.stringify("development")
+      }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function () {
+          return [autoprefixer];
+        }
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
 });

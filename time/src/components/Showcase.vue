@@ -2,7 +2,7 @@
 	<div class="Showcase">
 		<a class="item__"
 		v-for="a in items"
-		:href=" DIR.root+'/item.html?id='+a.id ">
+		:href=" dir.root+'/item.html?id='+a.id ">
 			<img class="thumb"/>
 			<p class="price">￥{{a.price}}</p>
 			<p class="name">{{a.name||'--'}}</p>
@@ -51,8 +51,8 @@
 	export default {
 		props: ['items'],
 		computed: {
-			DIR: function(){
-				return this.$store.state.base.DIR;
+			dir: function(){
+				return this.$store.state.dir;
 			}
 		}
 	}

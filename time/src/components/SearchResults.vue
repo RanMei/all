@@ -1,5 +1,5 @@
 <template>
-	<div id="SEARCH">
+	<div class="SearchResults">
 		<div class="container">
 			<div class="center">
 				<div class="all">
@@ -32,15 +32,16 @@
 </template>
 
 <style lang="less" scoped>
-	#SEARCH {
-		height:1000px;
-		background:#127BAB;
-		overflow:hidden;
+	.SearchResults {
+		// height: 1000px;
+		padding-bottom: 100px;
+		background: #127BAB;
+		overflow: hidden;
 		.center {
-			width:970px;
-			background:white;
-			padding:0 15px 0 15px;
-			margin-top:80px;
+			width: 970px;
+			background: white;
+			padding: 0 15px 0 15px;
+			margin-top: 80px;
 			.all {
 				padding:20px 0 10px 0;
 				border-bottom:1px solid lightgrey;

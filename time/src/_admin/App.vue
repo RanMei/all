@@ -5,6 +5,10 @@
 	</div>
 </template>
 
+<style lang="less" scoped>
+	
+</style>
+
 <script type="text/javascript">
 	export default {
 		components: {

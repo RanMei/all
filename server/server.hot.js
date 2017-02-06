@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var app = express();
+const PORT = 80;
 
 app.use( express.static(__dirname+'/../public/') );
 app.use( bodyParser.json() );
@@ -71,6 +72,6 @@ require('./api.cart.js')(app,db,fs);
 //   });
 // }
 
-app.listen( 8080, () => {
-  console.log(`[HMR]Server listening on http://localhost:${8080}, Ctrl+C to stop`)
+app.listen( PORT, () => {
+  console.log(`[HMR]Server listening on http://localhost:${PORT}, Ctrl+C to stop`)
 })
