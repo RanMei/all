@@ -71,7 +71,6 @@ const actions = {
     });
   },
   deleteItems ({commit},ids) {
-    console.log(ids)
     fetch( dir.api+'/items/', {
       method: 'DELETE',
       headers: {
@@ -83,7 +82,7 @@ const actions = {
       if (res.status === 200) {
         //return res.json()
       } else {
-        //return Promise.reject(res.json())
+        return console.warn('111');
       }
     }).then(function(data) {
       commit('DELETE_ITEMS')

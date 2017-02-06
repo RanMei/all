@@ -24,3 +24,31 @@ var store = new Vuex.Store({
 })
 
 export default store;
+
+/*
+state = {
+  dir: {
+    root: '',
+    api: '',
+    img: '',
+  },
+  user: {
+    name: ''
+  },
+  items: [{
+    id: '',
+    price: 5000,
+  }],
+  cart: [{
+    id: '111',
+    name: 'iPhone 7',
+    price: 4000,
+    quantity: 1,
+    checked: false
+  }],
+  orders: [],
+  mask: {
+    show: false
+  }
+}
+ */
