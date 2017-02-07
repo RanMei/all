@@ -51,10 +51,10 @@ var BROWSERIFY = [
   files: './_mobile/time/jsx/*/*.jsx' 
 },{
   name: 'browserify-canvas',
-  main: './_mobile/vue/src/canvas/Canvas.js',
+  main: './_mobile/wheels/Canvas.js',
   output: 'canvas.js',
-  dest: './vendor',
-  files: './_mobile/vue/src/canvas/Canvas.js'
+  dest: './public/vendor',
+  files: './_mobile/wheels/Canvas.js'
 },{ 
   name: 'browserify-mobile-cards', 
   main: './_mobile/cards/src/index.js', 
@@ -313,7 +313,7 @@ var WEBPACK2 = [{
   tpl: 'node ./_mobile/main/src/tpl/tpl.js'
 },{
   name: 'webpack-farm',
-  config: './_mobile/farm/webpack.config.js', 
+  config: './_mobile/farm/webpack.config.prod.js', 
   watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*'],
   tpl: 'node _mobile/farm/src/tpl/tpl.js'
 },{

@@ -36,24 +36,34 @@ if( !Object.assign ){
 // import {ConfirmOrder} from './components/ConfirmOrder.jsx';
 // import ReactDOM from 'react-dom';
 import './common/common.js';
-import { AppContainer } from 'react-hot-loader';
 import App from './App.js';
 
-const render = App=>{
+if(process.env.NODE_ENV==='production'){
 	ReactDOM.render(
 		(
-		<AppContainer>
 			<App/>
-		</AppContainer>
 		),
 		document.getElementById('app')
 	);
-}
+}else{
+	const AppContainer = require('react-hot-loader').AppContainer;
 
-render(App);
+	const render = App=>{
+		ReactDOM.render(
+			(
+			<AppContainer>
+				<App/>
+			</AppContainer>
+			),
+			document.getElementById('app')
+		);
+	}
 
-if (module.hot) {
-  module.hot.accept('./App.js', () => {
-    render( require('./App.js').default )
-  });
+	render(App);
+
+	if (module.hot) {
+	  module.hot.accept('./App.js', () => {
+	    render( require('./App.js').default )
+	  });
+	}
 }

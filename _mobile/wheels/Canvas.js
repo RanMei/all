@@ -15,16 +15,16 @@ class Canvas {
       this[key] = opts.methods[key];
     }
   }
-  _init_cv(kkk){
+  _init_cv(cvOpts){
     var cv = this;
-    cv.$el = (typeof kkk.el==='string')?document.querySelector(kkk.el):kkk.el;
+    cv.$el = (typeof cvOpts.el==='string')?document.querySelector(cvOpts.el):cvOpts.el;
     cv.$ctx = cv.$el.getContext('2d');
 
     cv.$width = cv.$el.width||1000;
     cv.$height = cv.$el.height||1000;
 
-    if( kkk.interval ){
-      cv._interval = kkk.interval;
+    if( cvOpts.interval ){
+      cv._interval = cvOpts.interval;
     }
 
     // init props
@@ -32,9 +32,16 @@ class Canvas {
     for(var key in props){
       cv[key] = props[key];
     }
-    for(var key in kkk.props){
-      cv[key] = kkk.props[key];
+    for(var key in cvOpts.props){
+      cv[key] = cvOpts.props[key];
     }
+
+    if( cvOpts.useInterval ){
+      window.requestAnimationFrame = function(callback) {
+        window.setTimeout( callback, 1000 / cvOpts.useInterval );
+      };
+    }
+
     // init data
     var data = this._data();
     for(var key in data){
@@ -42,7 +49,7 @@ class Canvas {
     }
 
     this._listen();
-    if(kkk.responsive===true){
+    if(cvOpts.responsive===true){
       this._response();
     }
 
@@ -95,6 +102,14 @@ class Canvas {
       
     // })
   }
+  $fit(){
+    this.$el.width = window.innerWidth;
+    this.$el.height = window.innerHeight;
+    window.addEventListener('resize',()=>{
+      this.$el.width = window.innerWidth;
+      this.$el.height = window.innerHeight;
+    })
+  }
   $pause(){
     this._playing = false;
   }
@@ -118,8 +133,8 @@ class Canvas {
 
 // create a subclass of Canvas
 Canvas.extend = function(opts){
-  function Sub(kkk){
-    this._init_cv(kkk);
+  function Sub(cvOpts){
+    this._init_cv(cvOpts);
   }
   Sub.prototype = new Canvas(opts);
   return Sub;
@@ -127,6 +142,9 @@ Canvas.extend = function(opts){
 
 Canvas.random = function(min,max){
   return min + (max-min)*Math.random();
+}
+Canvas.randomInt = function(min,max){
+  return ~~(min + (max-min+1)*Math.random());
 }
 
 Canvas.prototype._renderFPS = function(){
@@ -141,10 +159,6 @@ Canvas.prototype._renderFPS = function(){
   this.$ctx.fillStyle = 'red';
   this.$ctx.font = '14px Microsoft Yahei';
   this.$ctx.fillText(this._fps+' FPS', 10,20,100);
-}
-
-Canvas.random = function(min,max){
-  return min + Math.random() * ( max - min );
 }
 
 window.Canvas = Canvas;
