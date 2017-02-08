@@ -176,15 +176,15 @@ var Canvas = function () {
   return Canvas;
 }();
 
-// create a subclass of Canvas
+// create a subclass of Canvas and return it
 
 
 Canvas.extend = function (opts) {
-  function Sub(cvOpts) {
+  function Subclass(cvOpts) {
     this._init_cv(cvOpts);
   }
-  Sub.prototype = new Canvas(opts);
-  return Sub;
+  Subclass.prototype = new Canvas(opts);
+  return Subclass;
 };
 
 Canvas.random = function (min, max) {
@@ -210,6 +210,6 @@ Canvas.prototype._renderFPS = function () {
 
 window.Canvas = Canvas;
 
-exports.Canvas = Canvas;
+exports.default = Canvas;
 
 },{}]},{},[1]);

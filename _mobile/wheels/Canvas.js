@@ -131,13 +131,13 @@ class Canvas {
   }
 }
 
-// create a subclass of Canvas
+// create a subclass of Canvas and return it
 Canvas.extend = function(opts){
-  function Sub(cvOpts){
+  function Subclass(cvOpts){
     this._init_cv(cvOpts);
   }
-  Sub.prototype = new Canvas(opts);
-  return Sub;
+  Subclass.prototype = new Canvas(opts);
+  return Subclass;
 }
 
 Canvas.random = function(min,max){
@@ -163,4 +163,4 @@ Canvas.prototype._renderFPS = function(){
 
 window.Canvas = Canvas;
 
-export {Canvas};
+export default Canvas;

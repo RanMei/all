@@ -12,37 +12,44 @@ module.exports = Object.assign(base,{
     filename: '[name].chunk.js'
   },
 	module: {
-		loaders: [{
-			test: /(\.js)|(\.jsx)$/,
-			loader: 'babel',
-			query: {
-				presets: ['react','es2015']
-			},
-			exclude: /node_modules/
-		},{
-			test: /\.vue$/,
-			loader: 'babel!vue'
-		},{
-			test: /\.less$/,
-			loader: 'style!css!less!postcss'
-		}]
-	},
-	vue: {
-		loaders: {
-			loader: 'style!css!less!postcss'
-		}
-	},
-	postcss: function () {
-    return [autoprefixer];
+    rules: [{
+      test: /\.js$/,
+      loader: 'babel-loader',
+      options: {
+        presets: ['react','es2015']
+      },
+      exclude: /node_modules/,
+    },{
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        preserveWhitespace: false,
+        postcss: [
+          autoprefixer
+        ]
+      }
+    },{
+      test: /\.less$/,
+      use: ['style-loader','css-loader','postcss-loader','less-loader'],
+    },{
+      test: /\.scss$/,
+      use: ['style-loader','css-loader','postcss-loader','sass-loader']
+    }]
   },
   plugins: [
-  	new webpack.DefinePlugin({
-  		'process.env': {
-  			NODE_ENV: '"production"'
-  		}
-  	}),
-  	new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("development")
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function () {
+          return [autoprefixer];
+        }
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
 });

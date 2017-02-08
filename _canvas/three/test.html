@@ -1,21 +1,8 @@
-const fs = require('fs');
-const path = require('path');
 
-var config = [{
-	name: 'cube'
-},{
-  name: 'test'
-},{
-  name: 'cloth'
-}]
-
-config.forEach(a=>{
-	var tpl =
-`
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>${a.name}</title>
+    <title>test</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style>
@@ -39,10 +26,7 @@ config.forEach(a=>{
 
     <script type="text/javascript" src="../../vendor/threejs/libs/stats.min.js"></script>
 
-    <script type="text/javascript" src="src/${a.name}.js"></script>
+    <script type="text/javascript" src="src/test.js"></script>
 
   </body>
 </html>
-`;
-fs.writeFileSync( path.resolve( __dirname,'../../'+a.name+'.html'),tpl );
-})
