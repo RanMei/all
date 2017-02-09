@@ -1,11 +1,14 @@
 <style lang="less" scoped>
 	#root {
 		width: 100%;
-	}
-	@media (min-width: 1000px) {
-		#root {
+		.main {
 			width: 1000px;
 			margin: auto;
+		}
+	}
+	@media (max-width: 1000px) {
+		.main {
+			width: 100%!important;
 		}
 	}
 </style>
@@ -14,7 +17,9 @@
 	<div id="root">
 		<Navbar></Navbar>
 		<Slider></Slider>
-		<router-view></router-view>
+		<div class="main">
+			<router-view></router-view>
+		</div>
 		<Footer></Footer>
 	</div>
 </template>

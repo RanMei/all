@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var mysql = require('mysql');
+// var mysql = require('mysql');
 var low = require('lowdb');
 
 const db = low('./api/main.db');
@@ -14,9 +14,9 @@ const DIR = {
 }
 
 const port = 8080;
-var webpack = require('webpack');
-var dm = require('webpack-dev-middleware');
-var hm = require('webpack-hot-middleware');
+// var webpack = require('webpack');
+// var dm = require('webpack-dev-middleware');
+// var hm = require('webpack-hot-middleware');
 
 var app = express();
 
@@ -117,8 +117,8 @@ require('./api.cart.js')(app,db,fs);
 // 	});
 // })
 
-app.listen(port,function(){
-	console.log( 'Server running at '+port+'.' );
+app.listen( port,function(){
+	console.log( '[server] Server running at '+port+'.' );
 });
 
 // process.on('beforeExit',function(){

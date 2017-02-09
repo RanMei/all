@@ -20,7 +20,7 @@
 		.box {
 			position: absolute; left: 0; top: 100%;
 			width: 100%;
-			border-top: 1px solid @grey-border;
+			//border-top: 1px solid @grey-border;
 			border-bottom: 1px solid @grey-border;
 			background: white;
 			font-size: 15px;
@@ -50,22 +50,22 @@
 
 <template>
 	<div class="Navbar">
-		<div class="navicon" @click="toggle">
-			<i class="fa fa-navicon"></i>
-		</div>
-		MadSoap
-		<div :class="show?'box _show':'box'" 
-		@click="hide">
-			<div class="section">
-				<div class="tab"><a href="#/home"><i class="fa fa-home"></i> Home</a></div>
-				<div class="tab"><a href="#/projects"><i class="fa fa-rocket"></i> Projects</a></div>
-				<div class="tab"><a href="#/animations"><i class="fa fa-cog fa-spin"></i> Animations</a></div>
-				<div class="tab"><a href="#/blog"><i class="fa fa-book"></i> Blog</a></div>
+		<div class="container">
+			<div class="navicon" @click="toggle">
+				<i class="fa fa-navicon"></i>
 			</div>
-			<div class="section-bottom">
-				<div class="tab"><a href="./farm/index.html" target="_blank"><i class="fa fa-money"></i> Farm</a></div>
-				<div class="tab"><a href="./front_end.html" target="_blank"><i class="fa fa-file-text"></i> Animation Library</a></div>
-				<div class="tab"><a href="./time/index.html" target="_blank"><i class="fa fa-file-text"></i> Time</a></div>
+			MadSoap
+			<div :class="show?'box _show':'box'" 
+			@click="hide">
+				<div class="section">
+					<div class="tab"><a href="#/home"><i class="fa fa-home"></i> Home</a></div>
+					<div class="tab"><a href="#/projects"><i class="fa fa-rocket"></i> Projects</a></div>
+					<div class="tab"><a href="#/animations"><i class="fa fa-cog fa-spin"></i> Animations</a></div>
+					<div class="tab"><a href="#/blog"><i class="fa fa-book"></i> Blog</a></div>
+				</div>
+				<div class="section-bottom">
+					<div class="tab"><a href="#/signin"><i class="fa fa-user"></i> Signin</a></div>
+				</div>
 			</div>
 		</div>
 	</div>

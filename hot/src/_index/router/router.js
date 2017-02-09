@@ -18,6 +18,9 @@ const routes = [{
 },{
 	path: '/post',
 	component: require('./Post.vue')
+},{
+	path: '/signin',
+	component: require('./Signin.vue')
 }];
 // 	redirect: '/home',
 // 	children: [{

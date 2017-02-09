@@ -73,11 +73,11 @@ module.exports = Object.assign(base,{
   	    NODE_ENV: JSON.stringify("production")
   	  }
   	}),
-  	new webpack.optimize.CommonsChunkPlugin({
-  		name: 'common',
-      names: ['index','item','search','cart'],
-  		minChunks: 2
-  	}),
+  	// new webpack.optimize.CommonsChunkPlugin({
+  	// 	name: 'common',
+   //    names: ['index','item','search','cart'],
+  	// 	minChunks: 2
+  	// }),
   	new webpack.optimize.LimitChunkCountPlugin({
   		maxChunks: 10
   	}),

@@ -11,7 +11,8 @@
     "build": "cross-env NODE_ENV=production browserify -e _mobile/vue/lib/main_swiper.js | uglifyjs -c warnings=false -m > dist/build.js",
     "kill": "taskkill /f /im node.exe",
     "express": "taskkill /f /im node.exe & gulp express",
-    "hot": "node hot/server.js"
+    "hot": "node hot/server.js",
+    "server": "node server/server.js"
   },
   "author": "soap",
   "license": "ISC",

@@ -15,13 +15,15 @@
 
 <template>
 	<div class="Slider">
-		<a href="#/home">Home</a>
-		<a href="#/projects">Projects</a>
-		<a href="#/animations">Animation</a>
-		<a href="#/blog">Blog</a>
-		<a href="./farm/index.html">Farm</a>
-		<a href="./vue/index.html">Vue</a>
-		<a href="./time/index.html">Time</a>
-		<a href="./time/admin.html">Admin</a>
+		<div class="container">
+			<a href="#/home">Home</a>
+			<a href="#/projects">Projects</a>
+			<a href="#/animations">Animation</a>
+			<a href="#/blog">Blog</a>
+			<a href="./farm/index.html">Farm</a>
+			<a href="./vue/index.html">Vue</a>
+			<a href="./time/index.html">Time</a>
+			<a href="./time/admin.html">Admin</a>
+		</div>
 	</div>
 </template>
