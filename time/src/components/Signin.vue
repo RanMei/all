@@ -10,41 +10,48 @@
 						<h1>新会员注册</h1>
 					</div>
 					<form class='register-form'>
+
 						<input type="text" name="mobile" placeholder="请输入11位手机号" 
-						v-model="signup_form.mobile"
-						:class="state.mobile"
-						@focus="onFocus('mobile')"
-						@blur="check_mobile"/>
-						<p class="info">{{info.mobile}}</p>
+						:class="signup.form.mobile.state"
+						@focus="SIGNUP_FOCUS('mobile')"
+						@blur="checkMobile($event)"/>
+						<p class="info">{{signup.form.mobile.info}}</p>
+
 						<input type="password" name="password" placeholder="密码（6-20位字母、数字与符号的组合）"
-						v-model="signup_form.password"
-						:class="state.password"
-						@focus="onFocus('password')"
-						@blur="check_password"/>
-						<p class="info">{{info.password}}</p>
+						:class="signup.form.password.state"
+						@focus="SIGNUP_FOCUS('password')"
+						@blur="CHECK_PASSWORD($event)"/>
+						<p class="info">{{signup.form.password.info}}</p>
+						
 						<input type="password" name="password2" placeholder="确认密码"
-						:class="state.password2"
-						@focus="onFocus('password2')"
-						@blur="check_password2"/>
-						<p class="info">{{info.password2}}</p>
-						<input type="text" name="verif" placeholder="请输入验证码"/>
+						:class="signup.form.password2.state"
+						@focus="SIGNUP_FOCUS('password2')"
+						@blur="CHECK_PASSWORD2($event)"/>
+						<p class="info">{{signup.form.password2.info}}</p>
+
+						<input type="text" name="verif" placeholder="请输入验证码"
+						:class="signup.form.verif.state"
+						@focus="SIGNUP_FOCUS('verif')"
+						@blur="CHECK_VERIF($event)"/>
 						<p class="info"></p>
 
 						<div class="check_b_container agree">
 							<div class="checkbox_"
-							:class=" signup_form.agreed?'checked':'' "
-							@click="toggle">
+							:class=" signup.form.agreed?'checked':'' "
+							@click="CHECK_AGREE">
 								<div class="square"
-								:style=" 'transform:'+(signup_form.agreed?'scale(1)':'scale(0)') "></div>
+								:style=" 'transform:'+(signup.form.agreed?'scale(1)':'scale(0)') "></div>
 							</div>
 							<p>已同意《飞越太平洋服务条款》</p>
 						</div>
 
-						<div class="btn__ register-button">注 册</div>
+						<div class="btn__ register-button"
+						@click="signup">注 册</div>
 					</form>
 				</div>
 			</div>
 			<div class="middle-line"></div>
+
 			<div class="login">
 				<div class="login-center">
 					<div class="login-header">
@@ -67,12 +74,13 @@
 							</div>
 							<p>下次自动登录</p>
 						</div>
-
+						<p class="signin_info" v-show="user.state==='failed'">您输入的用户名或密码有误</p>
 						<div class="btn__ login-button"
-						@click="LOGIN">登 录</div>
+						@click="login">{{user.state==='pending'?'登录中...':'登 录'}}</div>
 					</form>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </template>
@@ -140,7 +148,26 @@
 		background: linear-gradient(white,lightgrey,white);
 	}
 
+
+
+	.register {position:relative;width:50%;float:left;}
+	.register-center {width:380px;margin:auto;}
+	.register-header {width:100%;height:100px;overflow:hidden;}
+	.register-header>h1 {text-align:center;margin:20px 0 0 0;}
+
+
+	.login {
+		position: relative; width: 50%; float: left;
+		.signin_info {
+			margin-bottom: 8px;
+			text-align: center; color: @red;
+		}
+	}
+	.login-center {width:380px;margin:auto;}
+	.login-header {width:100%;height:100px;overflow:hidden;}
+	.login-header>h1 {text-align:center;margin:20px 0 0 0;}
 	.check_b_container {
+		margin-bottom: 8px;
 		overflow: hidden;
 		.checkbox_ {
 			float: left;
@@ -164,22 +191,11 @@
 			height: 20px; line-height: 20px;
 		}
 	}
-
-	.register {position:relative;width:50%;float:left;}
-	.register-center {width:380px;margin:auto;}
-	.register-header {width:100%;height:100px;overflow:hidden;}
-	.register-header>h1 {text-align:center;margin:20px 0 0 0;}
-
-
-	.login {position:relative;width:50%;float:left;}
-	.login-center {width:380px;margin:auto;}
-	.login-header {width:100%;height:100px;overflow:hidden;}
-	.login-header>h1 {text-align:center;margin:20px 0 0 0;}
 	.btn__ {
 		width: 257px;
 		height: 53px;
 		margin: auto;
-		margin-top: 20px;
+		margin-top: 14px;
 		border-radius: 26.5px;
 		background: @blue;
 		color: white; text-align: center; line-height: 53px;
@@ -197,23 +213,6 @@
 	export default {
 		data: function(){
 			return {
-				signup_form: {
-					mobile: '',
-					password: '',
-					password_2: '',
-					verif: '',
-					agreed: false
-				},
-				info: {
-					mobile: '',
-					password: '',
-					password2: ''
-				},
-				state: {
-					mobile: '',
-					password: '',
-					password2: ''
-				},
 				signin_form: {
 					id: '',
 					password: '',
@@ -223,18 +222,15 @@
 		},
 		mounted: function(){
 		},
+		computed: {
+			signup(){
+				return this.$store.state.signup;
+			},
+			user(){
+				return this.$store.state.user;
+			}
+		},
 		methods: {
-			onFocus: function(str){
-				this.state[str] = 'active';
-				this.info[str] = '';
-			},
-			toggle: function(){
-				if( this.signup_form.agreed===false ){
-					this.signup_form.agreed = true;
-				}else{
-					this.signup_form.agreed = false;
-				}
-			},
 			toggle2: function(){
 				if( this.signin_form.remember_me===false ){
 					this.signin_form.remember_me = true;
@@ -242,42 +238,33 @@
 					this.signin_form.remember_me = false;
 				}
 			},
-			check_mobile: function(){
-				if( /^1[3|4|5|8]\d{9}$/.test(this.signup_form.mobile) ){
-					this.state.mobile = 'success';
-				}else if( this.signup_form.mobile==='' ){
-					this.state.mobile = '';
-				}else{
-					this.state.mobile = 'error';
-					this.info.mobile = '手机号格式不正确';
-				}
+			SIGNUP_FOCUS(str){
+				this.$store.commit('SIGNUP_FOCUS',str);
 			},
-			check_password: function(){
-				if( /^\w{6,20}$/.test(this.signup_form.password) ){
-					this.state.password = 'success';
-				}else if( this.signup_form.password==='' ){
-					this.state.password = '';
-				}else{
-					this.state.password = 'error';
-					this.info.password = '密码格式不正确';
-				}
+			checkMobile(e){
+				this.$store.dispatch('checkMobile',e.target.value);
 			},
-			check_password2: function(){
-				if( this.signup_form.password2===this.signup_form.password ){
-					this.state.password2 = 'success';
-				}else if( this.signup_form.password2==='' ){
-					this.state.password2 = '';
-				}else{
-					this.state.password2 = 'error';
-					this.info.password2 = '两次输入的密码不一致';
-				}
+			CHECK_PASSWORD(e){
+				this.$store.commit('CHECK_PASSWORD',e.target.value);
 			},
-			LOGIN: function(){
-				this.$store.dispatch(
-					'LOGIN',
-					JSON.stringify(this.signin_form)
-				)
-			}
+			CHECK_PASSWORD2(e){
+				this.$store.commit('CHECK_PASSWORD2',e.target.value);
+			},
+			CHECK_VERIF(e){
+				this.$store.commit('CHECK_VERIF',e.target.value);
+			},
+			CHECK_AGREE(){
+				this.$store.commit('CHECK_AGREE');
+			},
+			signup(){
+				this.$store.dispatch('signup');
+			},
+			login(){
+				this.$store.dispatch('login',JSON.stringify({
+					name: this.signin_form.id,
+					password: this.signin_form.password
+				}));
+			},
 		}
 	}
 </script>

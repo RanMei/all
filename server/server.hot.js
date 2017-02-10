@@ -16,9 +16,8 @@ app.use( cookieParser() );
 
 var low = require('lowdb');
 const db = low('./api/main.db');
-require('./api.items.js')(app,db);
-require('./api.item.js')(app,db);
-require('./api.cart.js')(app,db,fs);
+
+require('./api/index.js')(app,db);
 
 // ************************************
 // This is the real meat of the example

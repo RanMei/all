@@ -15,12 +15,42 @@ var store = new Vuex.Store({
   // modules in Vuex are just like reducers in Redux
   modules: {
     dir,
+    signup: require('./modules/signup.js').default,
     user,
     cart,
     items,
     item
   },
-  actions: actions
+  actions: {
+    init(){
+      fetch( '/api/user/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: "cors"
+      }).then(function(res) {
+        if (res.status === 200) {
+          return res.json()
+        } else {
+          return ;
+        }
+      }).then(function(data) {
+        if(data.user.id){
+          ctx.commit('INIT',data.user);
+        }else{
+        }
+      }).catch(function(err) {
+        console.log(err);
+      });
+    }
+  },
+  mutations: {
+    INIT(state,user){
+      console.log(state)
+      state.user.name = user.name;
+    }
+  }
 })
 
 export default store;

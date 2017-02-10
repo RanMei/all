@@ -64,7 +64,9 @@
 					<div class="tab"><a href="#/blog"><i class="fa fa-book"></i> Blog</a></div>
 				</div>
 				<div class="section-bottom">
-					<div class="tab"><a href="#/signin"><i class="fa fa-user"></i> Signin</a></div>
+					<div class="tab" v-show="!user.name"><a href="#/signin"><i class="fa fa-user"></i> Signin</a></div>
+					<div class="tab" v-show="user.name"
+					@click="$store.commit('LOGOUT')"><a href="#/signin"><i class="fa fa-user"></i> Logout</a></div>
 				</div>
 			</div>
 		</div>
@@ -76,6 +78,11 @@
 		data: function(){
 			return {
 				show: false
+			}
+		},
+		computed: {
+			user(){
+				return this.$store.state.user;
 			}
 		},
 		methods: {

@@ -23,53 +23,59 @@ var app = express();
 app.use( express.static(DIR.root) );
 app.use( bodyParser.json() );
 app.use( cookieParser() );
+app.use( session({
+	secret: 'wind',
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		secure: false,
+		// maxAge: 30*1000
+	}
+}) )
 //app.use( '/api',express() )
 
-app.post('/api/state',function(req,res){
-	console.log( '[POST] '+req.url );
-	var id = req.body.id;
-	var pswd = req.body.password;
-	var user = db.get('users').find({
-		id: id,
-		password: pswd
-	}).value();
-	if( user ){
-		res.set({
-			'Content-Type': 'application/json'
-		})
-		res.send( JSON.stringify(user) );
-	}else{
-		res.set({
-			'Content-Type': 'text/plain'
-		})
-		res.send('false');
-	}
-})
+require('./api/index.js')(app,db);
 
-app.post('/api/user',function(req,res){
-	//console.log(req.body);
-	res.set({
-		'Content-Type': 'text/plain'
-	})
-	var users = JSON.parse(fs.readFileSync('./json/users.json'));
-	var ok = false;
-	users.forEach(function(elem){
-		if( req.body.userID===elem.userID&&req.body.password===elem.password ){
-			ok = true;
-		}
-	});
-	if( ok ){
-		res.send( 'true' );
-	}else{
-		res.send( 'false' );
-	}
+// app.post('/api/state',function(req,res){
+// 	console.log( '[POST] '+req.url );
+// 	var id = req.body.id;
+// 	var pswd = req.body.password;
+// 	var user = db.get('users').find({
+// 		id: id,
+// 		password: pswd
+// 	}).value();
+// 	if( user ){
+// 		res.set({
+// 			'Content-Type': 'application/json'
+// 		})
+// 		res.send( JSON.stringify(user) );
+// 	}else{
+// 		res.set({
+// 			'Content-Type': 'text/plain'
+// 		})
+// 		res.send('false');
+// 	}
+// })
+
+// app.post('/api/user',function(req,res){
+// 	//console.log(req.body);
+// 	res.set({
+// 		'Content-Type': 'text/plain'
+// 	})
+// 	var users = JSON.parse(fs.readFileSync('./json/users.json'));
+// 	var ok = false;
+// 	users.forEach(function(elem){
+// 		if( req.body.userID===elem.userID&&req.body.password===elem.password ){
+// 			ok = true;
+// 		}
+// 	});
+// 	if( ok ){
+// 		res.send( 'true' );
+// 	}else{
+// 		res.send( 'false' );
+// 	}
 	
-})
-
-require('./api.items.js')(app,db);
-require('./api.item.js')(app,db);
-require('./api.cart.js')(app,db,fs);
-
+// })
 
 
 // app.post('/logout',function(req,res){

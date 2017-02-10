@@ -32,6 +32,9 @@
 			items: function(){
 				return this.$store.state.items
 			}
+		},
+		created: function(){
+			this.$store.dispatch('init');
 		}
 	}
 </script>

@@ -29,12 +29,12 @@
 		},
 		computed: {
 			post: function(){
-				console.log(this.$store.state.post)
 				return this.$store.state.post;
 			}
 		},
 		mounted: function(){
-			this.$store.dispatch('$FETCH_POST');
+			var time = location.hash.match(/time=[\d|-]+/)[0].replace(/time=/,'');
+			this.$store.dispatch('fetchPost',time);
 		}
 	}
 </script>

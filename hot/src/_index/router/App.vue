@@ -32,7 +32,7 @@
 			Footer: require('../components/Footer.vue'),
 		},
 		mounted: function(){
-			this.$store.dispatch('$INIT');
+			this.$store.dispatch('init');
 		}
 	}
 </script>

@@ -1,50 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
-if( process.env.NODE_ENV!=='production' ){
-	Vue.use(Vuex)
-}
 
 var store = new Vuex.Store({
-	state: {
-		projects: [],
-		posts: {
-			items: []
-		},
-		post: {
-			title: '--',
-			time: '--',
-			body: []
-		}
+	modules: {
+		user: require('./modules/user.js').default,
+		posts: require('./modules/posts.js').default,
+		projects: require('./modules/projects.js').default,
+		post: require('./modules/post.js').default
 	},
-	mutations: {
-		INIT(state,pl){
-			console.log(pl)
-			state.projects.push(...pl.projects);
-			state.posts.items.push(...pl.posts);
-		},
-		FETCH_POST(state,pl){
-			if( pl ){
-				state.post = pl;
-			};
-		}
+	state: {
 	},
 	actions: {
-		$INIT({commit}){
-			var projects = JSON.parse( JSON.stringify(require('../api/projects').default) );
-			var posts = require('../api/posts').default;
-			commit('INIT',{projects,posts});
+		init(ctx){
+			ctx.dispatch('fetchPosts');
+			ctx.dispatch('fetchProjects');
 		},
-		$FETCH_POST({state,commit}){
-			console.log(state)
-			var newPost;
-			var time = location.hash.match(/time=[\d|-]+/)[0].replace(/time=/,'');
-			state.posts.items.forEach(a=>{
-				if(a.time===time){
-					newPost = a;
-				}
-			});
-			commit('FETCH_POST',newPost);
-		}
 	}
 })
 
