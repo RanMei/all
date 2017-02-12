@@ -22,9 +22,10 @@ var store = new Vuex.Store({
     item
   },
   actions: {
-    init(){
+    init(ctx){
       fetch( '/api/user/', {
-        method: 'POST',
+        credentials: 'include',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -36,8 +37,8 @@ var store = new Vuex.Store({
           return ;
         }
       }).then(function(data) {
-        if(data.user.id){
-          ctx.commit('INIT',data.user);
+        if(data.id){
+          ctx.commit('INIT',data);
         }else{
         }
       }).catch(function(err) {
@@ -47,7 +48,7 @@ var store = new Vuex.Store({
   },
   mutations: {
     INIT(state,user){
-      console.log(state)
+      state.user.loggedIn = true;
       state.user.name = user.name;
     }
   }

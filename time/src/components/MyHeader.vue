@@ -17,8 +17,13 @@
     <div class="container">
       <p><a class="a_home" :href="dir.index">欢迎来到飞越太平洋海淘网站</a></p>
       <ul>
-        <li><a :href=" dir.signin " class="a-signin login">登录</a></li><span class="separator">|</span>
-        <li><a :href=" dir.signin " class="a-signup register">注册</a></li><span class="separator">|</span>
+        <li v-show="!user.loggedIn"><a :href=" dir.signin " class="a-signin login">登录</a></li>
+        <li v-show="user.loggedIn">{{user.name}}<li/>
+        <span class="separator">|</span>
+        <li v-show="!user.loggedIn"><a :href=" dir.signin " class="a-signup register">注册</a></li>
+        <li v-show="user.loggedIn"
+        @click="$store.dispatch('logout')">注销</li>
+        <span class="separator">|</span>
         <li><i class="fa fa-file"></i> <a class="a_my_orders" href="./orders.html">我的订单</a></li><span class="separator">|</span>
         <li class="my_cart">
           <i class="fa fa-shopping-cart"></i> <a class="a-cart" :href=" dir.cart ">我的购物车(<span class="quantityIn">{{quantity_in_cart||0}}</span>)</a>
@@ -37,6 +42,9 @@
 export default {
   props: ['dir'],
   computed: {
+    user(){
+      return this.$store.state.user;
+    },
     quantity_in_cart: function(){
       return this.$store.state.cart.items.length;
     }   

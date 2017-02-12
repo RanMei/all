@@ -98,7 +98,7 @@ initGlobalAPI(Vue)
 
 
 // create a Vue instance
-Vue(options)
+new Vue(options)
   _init(options)
     vm._uid = uid++;
     vm.$options = mergeOptions(parent,options||{},vm)

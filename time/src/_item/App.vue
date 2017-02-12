@@ -20,7 +20,7 @@
 		},
 		computed: {
 			dir: function(){
-				return this.$store.state.base.DIR
+				return this.$store.state.dir;
 			},
 			items: function(){
 				return this.$store.state.items

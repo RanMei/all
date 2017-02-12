@@ -1,24 +1,36 @@
 module.exports = function(app,db){
 
-	app.get('/',(req,res)=>{
-
-	})
-
-	app.get('/dog',(req,res)=>{
-		console.log(req.sessionID)
-		if( !req.session.time ){
-			req.session.time = 1;
+	app.get('/api/user',(req,res)=>{
+		console.log(req.session)
+		if( req.session.user ){
+			res.send(JSON.stringify( req.session.user ));
 		}else{
-			req.session.time++;
+			res.send(JSON.stringify({}));
 		}
-		req.session.name = 'dog';
-		var time = req.session.time+'';
-		res.send(JSON.stringify(req.session));
 	})
 
-	app.get('/cat',(req,res)=>{
-		console.log(req.sessionID)
-		res.send(JSON.stringify(req.session));
+	app.post('/api/login',(req,res)=>{
+		var payload = req.body;
+		var user = db.get('users').find({id:payload.name}).value();
+		if( user&&payload.name===user.id&&payload.password===user.password ){
+			req.session.user = {
+				loggedIn: true,
+				id: payload.name,
+				name: payload.name
+			};
+			res.send(JSON.stringify({
+				state: 'successful'
+			}))
+		}else{
+			res.send(JSON.stringify({
+				state: 'failed'
+			}))
+		}
+	})
+
+	app.get('/api/logout',(req,res)=>{
+		req.session.destroy();
+
 	})
 
 	app.post('/api/checkMobile',function(req,res){
@@ -35,39 +47,12 @@ module.exports = function(app,db){
 		}
 	})
 
-	app.post('/api/user',(req,res)=>{
-		if( req.session.user ){
-			res.send(JSON.stringify( req.session.user ));
-		}else{
-			res.send(JSON.stringify({}));
-		}
-	})
-
-	app.post('/api/login',(req,res)=>{
-		var payload = req.body;
-		var user = db.get('users').find({id:payload.name}).value();
-		console.log(req.session)
-		if( user&&payload.name===user.id&&payload.password===user.password ){
-			req.session.user = {
-				id: payload.name,
-				name: payload.name
-			};
-			res.send(JSON.stringify({
-				state: 'successful'
-			}))
-		}else{
-			res.send(JSON.stringify({
-				state: 'failed'
-			}))
-		}
-	})
-
 	app.post('/api/signup',function(req,res){
 		
 		res.set({
 			'Content-Type': 'application/json'
 		})
-		res.send( db.get('items').value() );
+		
 	})
 
 	// app.post('/api/signin',function(req,res){
