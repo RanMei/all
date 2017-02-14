@@ -116,13 +116,15 @@ var Canvas = function () {
     value: function _listen() {
       var _this2 = this;
 
-      this.$el.addEventListener('click', function () {
-        if (_this2._playing) {
-          _this2.$pause();
-        } else {
-          _this2.$resume();
-        }
-      });
+      if (this.pausable) {
+        this.$el.addEventListener('click', function () {
+          if (_this2._playing) {
+            _this2.$pause();
+          } else {
+            _this2.$resume();
+          }
+        });
+      };
       // document.addEventListener('keydown',()=>{
       //  console.log(111)
       //  this._playing = false;
@@ -167,7 +169,9 @@ var Canvas = function () {
       if (this._playing) {
         requestAnimationFrame(this._play.bind(this));
         this.render();
-        this._renderFPS();
+        if (this.showFPS) {
+          this._renderFPS();
+        };
         //this._render();
       };
     }

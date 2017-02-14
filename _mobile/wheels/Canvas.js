@@ -86,13 +86,15 @@ class Canvas {
     this.$ctx.drawImage(this._cache, 0, 0);
   }
   _listen(){
-    this.$el.addEventListener('click',()=>{
-      if(this._playing){
-        this.$pause();
-      }else{
-        this.$resume();   
-      }
-    })
+    if(this.pausable){
+      this.$el.addEventListener('click',()=>{
+        if(this._playing){
+          this.$pause();
+        }else{
+          this.$resume();   
+        }
+      })
+    };
     // document.addEventListener('keydown',()=>{
     //  console.log(111)
     //  this._playing = false;
@@ -125,7 +127,9 @@ class Canvas {
     if( this._playing ){
       requestAnimationFrame( this._play.bind(this) );
       this.render();
-      this._renderFPS();
+      if( this.showFPS ){
+        this._renderFPS();
+      };
       //this._render();
     };
   }
