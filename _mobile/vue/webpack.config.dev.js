@@ -14,11 +14,12 @@ module.exports = Object.assign(base,{
 	module: {
     rules: [{
       test: /\.js$/,
+      exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
-        presets: ['react','es2015']
+        presets: ['react',['es2015',{modules:false}]],
+        plugins: ['syntax-dynamic-import']
       },
-      exclude: /node_modules/,
     },{
       test: /\.vue$/,
       loader: 'vue-loader',

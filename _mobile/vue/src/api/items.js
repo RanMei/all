@@ -47,43 +47,51 @@ module.exports = [{
 	component: 'MorphingPhones',
 	path: '../lib/MorphingPhones.vue'
 },{
-	name: 'MachineGunText',
-	component: 'MachineGunText',
-	path: '../lib/MachineGunText.vue'
+	name: 'TextMachineGun',
+	component: 'TextMachineGun',
+	path: '../lib/TextMachineGun.vue'
+},{
+	name: 'TextSmoky',
+	component: 'TextSmoky',
+	path: '../lib/TextSmoky.vue'
 },{
 	name: 'Ribbon',
 	component: 'Ribbon',
 	path: '../lib/Ribbon.vue'
 },{
+	name: 'CanvasCounter',
+	component: 'CanvasCounter',
+	path: '../lib/CanvasCounter.vue'
+// },{
 
 
 
-	name: 'Blizzard',
-	component: 'Blizzard',
-	path: '../canvas/Blizzard.js'
-},{
-	name: 'Confetti',
-	component: 'Confetti',
-	path: '../canvas/Confetti.js'
-},{
-	name: 'Rain',
-	component: 'Rain',
-	path: '../canvas/Rain.js'
-},{
-	name: 'Circles',
-	component: 'Circles',
-	path: '../canvas/Circles.js'
-},{
-	name: 'Snow',
-	component: 'Snow',
-	path: '../canvas/Snow.js'
-},{
-	name: 'Heart',
-	component: 'Heart',
-	path: '../canvas/Heart.vue'
-},{
-	name: 'Scope',
-	tags: ['canvas'],
-	component: 'Scope',
-	path: '../Canvas/Scope.js'
+// 	name: 'Blizzard',
+// 	component: 'Blizzard',
+// 	path: '../canvas/Blizzard.js'
+// },{
+// 	name: 'Confetti',
+// 	component: 'Confetti',
+// 	path: '../canvas/Confetti.js'
+// },{
+// 	name: 'Rain',
+// 	component: 'Rain',
+// 	path: '../canvas/Rain.js'
+// },{
+// 	name: 'Circles',
+// 	component: 'Circles',
+// 	path: '../canvas/Circles.js'
+// },{
+// 	name: 'Snow',
+// 	component: 'Snow',
+// 	path: '../canvas/Snow.js'
+// },{
+// 	name: 'Heart',
+// 	component: 'Heart',
+// 	path: '../canvas/Heart.vue'
+// },{
+// 	name: 'Scope',
+// 	tags: ['canvas'],
+// 	component: 'Scope',
+// 	path: '../Canvas/Scope.js'
 }]

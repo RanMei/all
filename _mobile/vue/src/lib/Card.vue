@@ -1,20 +1,26 @@
 <template>
-<div class="space">
-	<div class="flipper" :class="state"
-	@click="handleClick">
-		<div class="face front">
-			<p>front</p>
-			<img :src=" '../../img/icons/iron_man.png' "/>
-		</div>
-		<div class="face back">
-			<p>back</p>
-			<img :src=" '../../img/icons/storm-trooper.png' "/>
+<div class="CardContainer">
+	<div class="space">
+		<div class="flipper" :class="state"
+		@click="handleClick">
+			<div class="face front">
+				<p>front</p>
+				<img :src=" '../../img/icons/iron_man.png' "/>
+			</div>
+			<div class="face back">
+				<p>back</p>
+				<img :src=" '../../img/icons/storm-trooper.png' "/>
+			</div>
 		</div>
 	</div>
 </div>
 </template>
 
 <style lang="less" scoped>
+.CardContainer {
+	position: relative;
+	padding: 1rem 0;
+	background: #ECF0F1;
 	.space {
 		position: relative;
 		width: 5rem; height: 8rem;
@@ -66,6 +72,7 @@
 			}
 		}
 	}
+}
 </style>
 
 <script>

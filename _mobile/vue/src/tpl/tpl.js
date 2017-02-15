@@ -13,9 +13,9 @@ config.forEach(a=>{
 	<meta charset="UTF-8">
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	${process.env.NODE_ENV==='production'?
-  `<link rel="stylesheet" type="text/css" href="./dist/index.style.css">`:
-  ''}
+
+  ${process.env.NODE_ENV==='production'?
+  `<link rel="stylesheet" type="text/css" href="./dist/index.style.css">`:``}
 </head>
 
 <body>
@@ -24,10 +24,8 @@ config.forEach(a=>{
 
 <script type="text/javascript" src="./debug.js"></script>
 <script type="text/javascript" src="../vendor/rem.js"></script>
-${process.env.NODE_ENV==='production'?
-`<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
-<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>`
-:''}
+<script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
+<script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>
 
 <script type="text/javascript" src="../vendor/GSAP/TweenMax.min.js"></script>
 <script type="text/javascript" src="../vendor/canvas.js"></script>

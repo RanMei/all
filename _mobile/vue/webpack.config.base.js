@@ -11,5 +11,9 @@ module.exports = {
 		alias: {
 			'vue': 'vue/dist/vue.min.js'
 		}
-	}
+	},
+  externals: {
+    'vue': 'window.Vue',
+    'vue-router': 'window.VueRouter'
+  }
 };

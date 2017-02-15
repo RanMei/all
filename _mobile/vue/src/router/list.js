@@ -95,11 +95,19 @@ var list = [{
 		});
 	}
 },{
-	path:'machineguntext',
-	//component: require('../lib/MachineGunText.vue')
+	path:'textmachinegun',
+	//component: require('../lib/TextMachineGun.vue')
 	component: resolve => {
-		require.ensure( ['../lib/MachineGunText.vue'], ()=>{
-			resolve( require('../lib/MachineGunText.vue') );
+		require.ensure( ['../lib/TextMachineGun.vue'], ()=>{
+			resolve( require('../lib/TextMachineGun.vue') );
+		});
+	}
+},{
+	path:'textsmoky',
+	//component: require('../lib/TextSmoky.vue')
+	component: resolve => {
+		require.ensure( ['../lib/TextSmoky.vue'], ()=>{
+			resolve( require('../lib/TextSmoky.vue') );
 		});
 	}
 },{
@@ -111,59 +119,11 @@ var list = [{
 		});
 	}
 },{
-	path:'blizzard',
-	//component: require('../canvas/Blizzard.js')
+	path:'canvascounter',
+	//component: require('../lib/CanvasCounter.vue')
 	component: resolve => {
-		require.ensure( ['../canvas/Blizzard.js'], ()=>{
-			resolve( require('../canvas/Blizzard.js') );
-		});
-	}
-},{
-	path:'confetti',
-	//component: require('../canvas/Confetti.js')
-	component: resolve => {
-		require.ensure( ['../canvas/Confetti.js'], ()=>{
-			resolve( require('../canvas/Confetti.js') );
-		});
-	}
-},{
-	path:'rain',
-	//component: require('../canvas/Rain.js')
-	component: resolve => {
-		require.ensure( ['../canvas/Rain.js'], ()=>{
-			resolve( require('../canvas/Rain.js') );
-		});
-	}
-},{
-	path:'circles',
-	//component: require('../canvas/Circles.js')
-	component: resolve => {
-		require.ensure( ['../canvas/Circles.js'], ()=>{
-			resolve( require('../canvas/Circles.js') );
-		});
-	}
-},{
-	path:'snow',
-	//component: require('../canvas/Snow.js')
-	component: resolve => {
-		require.ensure( ['../canvas/Snow.js'], ()=>{
-			resolve( require('../canvas/Snow.js') );
-		});
-	}
-},{
-	path:'heart',
-	//component: require('../canvas/Heart.vue')
-	component: resolve => {
-		require.ensure( ['../canvas/Heart.vue'], ()=>{
-			resolve( require('../canvas/Heart.vue') );
-		});
-	}
-},{
-	path:'scope',
-	//component: require('../Canvas/Scope.js')
-	component: resolve => {
-		require.ensure( ['../Canvas/Scope.js'], ()=>{
-			resolve( require('../Canvas/Scope.js') );
+		require.ensure( ['../lib/CanvasCounter.vue'], ()=>{
+			resolve( require('../lib/CanvasCounter.vue') );
 		});
 	}
 }];

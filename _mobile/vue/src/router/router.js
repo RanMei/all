@@ -2,7 +2,43 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import {list} from './list.js';
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
+
+import items from '../api/items.js';
+// console.log(items)
+
+// var list2 = [{
+// 	path:'preloader',
+// 	component: resolve => {
+// 		require.ensure( [], (require)=>{
+// 			resolve( require('../lib/'+a) );
+// 		});
+// 	}
+// }]
+var list2 = [];
+// items.forEach((a)=>{
+// 	list2.push({
+// 		path: a.name.toLowerCase(),
+// 		component: resolve => {
+// 			// require.ensure( [], (require)=>{
+// 			// 	resolve( require('../lib/'+a.name+'.vue') );
+// 			// });
+// 			resolve(
+// 				import(a.path)
+// 			    .then( ()=>{console.log('success')} )
+// 			    .then(str => console.log(str))
+// 			    .catch(err => console.log('Failed to load moment', err))
+// 			);
+// 		}
+// 	});
+// })
+
+// var a = '../lib/Preloader.vue';
+// function dog(){
+
+// }
+// 	import('./list.js')
+// 	    .then( ()=>{console.log('success')} )
 
 const routes = [{
 	path: '/',
