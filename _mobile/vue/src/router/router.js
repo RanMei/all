@@ -15,7 +15,7 @@ import items from '../api/items.js';
 // 		});
 // 	}
 // }]
-var list2 = [];
+// var list2 = [];
 // items.forEach((a)=>{
 // 	list2.push({
 // 		path: a.name.toLowerCase(),
@@ -33,12 +33,8 @@ var list2 = [];
 // 	});
 // })
 
-// var a = '../lib/Preloader.vue';
-// function dog(){
-
-// }
-// 	import('./list.js')
-// 	    .then( ()=>{console.log('success')} )
+var a = './lib/Card.vue';
+import(a)
 
 const routes = [{
 	path: '/',

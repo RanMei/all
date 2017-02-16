@@ -6,11 +6,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var base = require('./webpack.config.base.js');
 
 module.exports = Object.assign(base,{
-  output: {
-    path: path.resolve( __dirname,'../../public/vue/dist/'),
-    publicPath: '/vue/dist/',
-    filename: '[name].chunk.js'
-  },
 	module: {
     rules: [{
       test: /\.js$/,

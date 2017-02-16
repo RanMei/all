@@ -379,7 +379,7 @@ var GENERATE = [{
 },{
   name: 'node-vue-list',
   watched: ['./_mobile/vue/src/api/items.js','./_mobile/vue/generate-list.js'],
-  sh: 'node ./_mobile/vue/generate-list.js'
+  sh: 'node ./_mobile/vue/build/generate-list.js'
 }]
 
 GENERATE.forEach(a=>{

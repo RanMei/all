@@ -180,9 +180,8 @@ var Canvas = function () {
   return Canvas;
 }();
 
+Canvas.version = '0.0.1';
 // create a subclass of Canvas and return it
-
-
 Canvas.extend = function (opts) {
   function Subclass(cvOpts) {
     this._init_cv(cvOpts);

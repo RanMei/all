@@ -1,6 +1,7 @@
 var fs = require('fs');
+const path = require('path');
 
-var items = require('./src/api/items.js');
+var items = require('../src/api/items.js');
 
 var list = [];
 items.forEach(a=>{
