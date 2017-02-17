@@ -36,33 +36,41 @@ require('./api/index.js')(app,db);
 
   // Step 1: Create & configure a webpack compiler
   var webpack = require('webpack');
-  var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : './webpack.config');
   var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
-  // Add the client which connects to our middleware
-  // You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
-  // useful if you run your app from another point like django
-  for( let key in webpackConfig.entry ){
-    webpackConfig.entry[key].push( hotMiddlewareScript );
-  }
+  var configs;
 
-  var compiler = webpack(webpackConfig);
+  configs = process.env.WEBPACK_CONFIG.split(/@@/);
+  console.log(configs)
 
-  // Step 2: Attach the dev middleware to the compiler & the server
-  app.use(require("webpack-dev-middleware")(compiler, {
-    //noInfo: true, 
-    publicPath: webpackConfig.output.publicPath,
-    stats: {
-      colors: true,
-      chunks: false
+  configs.forEach(a=>{
+    var webpackConfig = require(a);
+    // Add the client which connects to our middleware
+    // You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
+    // useful if you run your app from another point like django
+    for( let key in webpackConfig.entry ){
+      webpackConfig.entry[key].push( hotMiddlewareScript );
     }
-  }));
 
-  // Step 3: Attach the hot middleware to the compiler & the server
-  app.use(require("webpack-hot-middleware")(compiler, {
-    log: console.log, 
-    path: '/__webpack_hmr', 
-    heartbeat: 10 * 1000
-  }));
+    var compiler = webpack(webpackConfig);
+
+    // Step 2: Attach the dev middleware to the compiler & the server
+    app.use(require("webpack-dev-middleware")(compiler, {
+      //noInfo: true, 
+      publicPath: webpackConfig.output.publicPath,
+      stats: {
+        colors: true,
+        chunks: false
+      }
+    }));
+
+    // Step 3: Attach the hot middleware to the compiler & the server
+    app.use(require("webpack-hot-middleware")(compiler, {
+      log: console.log, 
+      path: '/__webpack_hmr', 
+      heartbeat: 10 * 1000
+    }));
+  })
+
 })();
 
 // Do anything you like with the rest of your express application.

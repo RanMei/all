@@ -33,8 +33,8 @@ import items from '../api/items.js';
 // 	});
 // })
 
-var a = './lib/Card.vue';
-import(a)
+// var a = './lib/Card.vue';
+// import(a)
 
 const routes = [{
 	path: '/',

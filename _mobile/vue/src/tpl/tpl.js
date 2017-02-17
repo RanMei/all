@@ -30,7 +30,9 @@ config.forEach(a=>{
 <script type="text/javascript" src="../vendor/GSAP/TweenMax.min.js"></script>
 <script type="text/javascript" src="../vendor/canvas.js"></script>
 
-<script type="text/javascript" src="./dist/index.chunk.js"></script>
+${process.env.NODE_ENV==='production'?
+`<script type="text/javascript" src="./dist/index.chunk.js"></script>`:
+`<script type="text/javascript" src="/vue/dist/index.chunk.js"></script>`}
 </body>
 </html>
 `;

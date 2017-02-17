@@ -146,7 +146,7 @@ new Vue(options)
                 vm._data[key] = val
               }
             })
-        // make data observable
+        // convert data into an observable
         // create an observer for data
         observe(data:value)
           // primitive-typed values need no observer

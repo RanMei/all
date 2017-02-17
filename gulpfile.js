@@ -553,6 +553,17 @@ DEV.forEach(a=>{
   } )
 })
 
+gulp.task( 'dev',()=>{
+  process.env.NODE_ENV = 'development';
+  process.env.WEBPACK_CONFIG = 
+    path.resolve(__dirname,'_mobile/vue/webpack.config.dev.js')+'@@'+
+    path.resolve(__dirname,'time/webpack.config.dev.js')+'@@'+
+    path.resolve(__dirname,'hot/webpack.config.dev.js');
+  gulp.src('')
+    //.pipe( shell(a.tpl) )
+    .pipe( shell('node server/server.hot.js') );
+})
+
 gulp.task( '__build',()=>{
   process.env.NODE_ENV = 'production';
 })
