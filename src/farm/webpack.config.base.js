@@ -4,7 +4,7 @@ var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
-    'index': ['./_mobile/farm/src/main.jsx']
+    'index': [path.resolve( __dirname,'src/main.jsx' )]
   },
   output: {
     path: path.resolve( __dirname,'../../public/farm/dist/'),

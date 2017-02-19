@@ -5,15 +5,16 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  context: __dirname,
   entry: {
-    'index': ['./time/src/_index/index.js'],
-    'signin': ['./time/src/_signin/index.js'],
+    'index': ['./src/_index/index.js'],
+    'signin': ['./src/_signin/index.js'],
 
-    'item': ['./time/src/_item/item.js'],
-    'cart': ['./time/src/_cart/cart.js'],
-    'search': ['./time/src/_search/search.js'],
-    'test': ['./time/src/_test/index.js'],
-    './_admin/admin': ['./time/src/_admin/index.js']
+    'item': ['./src/_item/item.js'],
+    'cart': ['./src/_cart/cart.js'],
+    'search': ['./src/_search/search.js'],
+    'test': ['./src/_test/index.js'],
+    './_admin/admin': ['./src/_admin/index.js']
   },
   output: {
     path: path.resolve( __dirname, '../public/time/dist/' ),

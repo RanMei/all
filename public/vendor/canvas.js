@@ -13,19 +13,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   Canvas.extend();
 */
 
+function noop() {}
+
 var Canvas = function () {
-  function Canvas(opts) {
+  function Canvas(options) {
     _classCallCheck(this, Canvas);
 
-    this._options = opts;
-    this._props = opts.props;
-    this._data = opts.data;
+    this._options = options;
+    this._props = options.props;
+    this._data = options.data;
 
-    this.beforePlay = opts.beforePlay;
-    this.render = opts.render;
+    this.beforePlay = options.beforePlay;
+    this.render = options.render;
 
-    for (var key in opts.methods) {
-      this[key] = opts.methods[key];
+    for (var key in options.methods) {
+      this[key] = options.methods[key];
     }
   }
 
@@ -36,12 +38,30 @@ var Canvas = function () {
       cv.$el = typeof cvOpts.el === 'string' ? document.querySelector(cvOpts.el) : cvOpts.el;
       cv.$ctx = cv.$el.getContext('2d');
 
-      cv.$width = cv.$el.width || 1000;
-      cv.$height = cv.$el.height || 1000;
-
-      if (cvOpts.interval) {
-        cv._interval = cvOpts.interval;
+      function proxy(key, thunk, setter) {
+        Object.defineProperty(cv, key, {
+          enumerable: true,
+          configurable: true,
+          // writable: elKey?true:false,
+          get: function get() {
+            return thunk();
+          },
+          set: setter
+        });
       }
+      proxy('$w', function () {
+        return cv.$el.width;
+      }, function (newVal) {
+        cv.$el.width = newVal;
+      });
+      proxy('$h', function () {
+        return cv.$el.height;
+      }, function (newVal) {
+        cv.$el.height = newVal;
+      });
+      proxy('$cx', function () {
+        return cv.$el.width / 2;
+      }, noop);
 
       // init props
       var props = this._props ? this._props() : {};
@@ -52,11 +72,33 @@ var Canvas = function () {
         cv[key] = cvOpts.props[key];
       }
 
-      if (cvOpts.useInterval) {
+      // init config
+      cv._config = {
+        renderFPS: true,
+        useInterval: false,
+        responsive: true,
+        pausable: true
+      };
+      for (var _key in cvOpts.config) {
+        cv._config[_key] = cvOpts.config[_key];
+      }
+      if (typeof cv._config.useInterval === 'number') {
         window.requestAnimationFrame = function (callback) {
-          window.setTimeout(callback, 1000 / cvOpts.useInterval);
+          window.setTimeout(callback, 1000 / cv._config.useInterval);
         };
       }
+      if (cv._config.responsive === true) {
+        cv.$fit();
+      }
+      if (cv._config.pausable === true) {
+        cv.$el.addEventListener('click', function () {
+          if (cv._playing) {
+            cv.$pause();
+          } else {
+            cv.$resume();
+          }
+        });
+      };
 
       // init data
       var data = this._data();
@@ -65,9 +107,6 @@ var Canvas = function () {
       }
 
       this._listen();
-      if (cvOpts.responsive === true) {
-        this._response();
-      }
 
       this._start();
     }
@@ -84,16 +123,6 @@ var Canvas = function () {
 
       this._playing = true;
       this._play();
-    }
-  }, {
-    key: '_response',
-    value: function _response() {
-      var _this = this;
-
-      this.$setSize(window.innerWidth, window.innerHeight);
-      window.addEventListener('resize', function () {
-        _this.$setSize(window.innerWidth, window.innerHeight);
-      });
     }
     //onResize(){}
 
@@ -114,17 +143,7 @@ var Canvas = function () {
   }, {
     key: '_listen',
     value: function _listen() {
-      var _this2 = this;
 
-      if (this.pausable) {
-        this.$el.addEventListener('click', function () {
-          if (_this2._playing) {
-            _this2.$pause();
-          } else {
-            _this2.$resume();
-          }
-        });
-      };
       // document.addEventListener('keydown',()=>{
       //  console.log(111)
       //  this._playing = false;
@@ -137,13 +156,13 @@ var Canvas = function () {
   }, {
     key: '$fit',
     value: function $fit() {
-      var _this3 = this;
+      var _this = this;
 
       this.$el.width = window.innerWidth;
       this.$el.height = window.innerHeight;
       window.addEventListener('resize', function () {
-        _this3.$el.width = window.innerWidth;
-        _this3.$el.height = window.innerHeight;
+        _this.$el.width = window.innerWidth;
+        _this.$el.height = window.innerHeight;
       });
     }
   }, {
@@ -160,8 +179,8 @@ var Canvas = function () {
   }, {
     key: '$setSize',
     value: function $setSize(width, height) {
-      this.$el.width = this.$width = width;
-      this.$el.height = this.$height = height;
+      this.$w = width;
+      this.$h = height;
     }
   }, {
     key: '_play',
@@ -169,7 +188,7 @@ var Canvas = function () {
       if (this._playing) {
         requestAnimationFrame(this._play.bind(this));
         this.render();
-        if (this.showFPS) {
+        if (this._config.renderFPS) {
           this._renderFPS();
         };
         //this._render();
@@ -194,7 +213,7 @@ Canvas.random = function (min, max) {
   return min + (max - min) * Math.random();
 };
 Canvas.randomInt = function (min, max) {
-  return ~~(min + (max - min + 1) * Math.random());
+  return ~ ~(min + (max - min + 1) * Math.random());
 };
 
 Canvas.prototype._renderFPS = function () {

@@ -11,26 +11,34 @@ module.exports = function(app,db){
 
 	app.post('/api/login',(req,res)=>{
 		var payload = req.body;
-		var user = db.get('users').find({id:payload.name}).value();
-		if( user&&payload.name===user.id&&payload.password===user.password ){
-			req.session.user = {
-				loggedIn: true,
-				id: payload.name,
-				name: payload.name
-			};
-			res.send(JSON.stringify({
-				state: 'successful'
-			}))
-		}else{
-			res.send(JSON.stringify({
-				state: 'failed'
-			}))
-		}
+		var pms = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve( db.get('users').find({id:payload.name}).value() );
+			},100)
+		});
+		pms.then((user)=>{
+			if( user&&payload.name===user.id&&payload.password===user.password ){
+				req.session.user = {
+					loggedIn: true,
+					id: payload.name,
+					name: payload.name
+				};
+				res.send(JSON.stringify({
+					state: 'successful'
+				}))
+			}else{
+				res.send(JSON.stringify({
+					state: 'failed'
+				}))
+			}
+		})
 	})
 
 	app.get('/api/logout',(req,res)=>{
 		req.session.destroy();
-
+		res.send(JSON.stringify({
+			state: 'successful'
+		}))
 	})
 
 	app.post('/api/checkMobile',function(req,res){

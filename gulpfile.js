@@ -42,24 +42,12 @@ LESS.forEach(function(a){
   });
 })
 
-var BROWSERIFY = [
-  // { name: 'browserify-mobile-farm', main: './_mobile/farm/src/main.jsx', dest: './_mobile/farm/dist', files: ['./_mobile/farm/src/*.jsx','./_mobile/farm/src/*/*.jsx'] },
-{
-  name: 'browserify-mobile-time', 
-  main: './_mobile/time/jsx/main.jsx', 
-  dest: './_mobile/time', 
-  files: './_mobile/time/jsx/*/*.jsx' 
-},{
+var BROWSERIFY = [{
   name: 'browserify-canvas',
-  main: './_mobile/wheels/Canvas.js',
+  main: './wheels/soap-canvas/src/Canvas.js',
   output: 'canvas.js',
   dest: './public/vendor',
-  files: './_mobile/wheels/Canvas.js'
-},{ 
-  name: 'browserify-mobile-cards', 
-  main: './_mobile/cards/src/index.js', 
-  dest: './_mobile/cards', 
-  files: './_mobile/cards/src/*.js' 
+  files: './wheels/soap-canvas/src/*.*'
 },
   // {  name: 'browserify-mobile-zeal', 
   //  main: './_mobile/wheels/zeal/src/zeal.main.js', 
@@ -313,23 +301,23 @@ var WEBPACK2 = [{
   tpl: 'node ./_mobile/main/src/tpl/tpl.js'
 },{
   name: 'webpack-farm',
-  config: './_mobile/farm/webpack.config.prod.js', 
-  watched: ['./_mobile/farm/src/*.*','./_mobile/farm/src/**/*.*'],
-  tpl: 'node _mobile/farm/src/tpl/tpl.js'
+  config: './src/farm/webpack.config.prod.js', 
+  watched: ['./src/farm/src/*.*','./src/farm/src/**/*.*'],
+  tpl: 'node src/farm/src/tpl/tpl.js'
 },{
   name: 'webpack-time',
-  config: './time/webpack.config.prod.js',
-  watched: ['./time/src/*.*','./time/src/**/*.*'],
-  tpl: 'node time/src/tpl/tpl.js'
+  config: './src/time/webpack.config.prod.js',
+  watched: ['./src/time/src/*.*','./src/time/src/**/*.*'],
+  tpl: 'node src/time/src/tpl/tpl.js'
 // },{
 //  name: 'webpack2-time-ssr',
 //  config: './time/webpack.server.js',
 //  watched: ['./time/src/*.*','./time/src/**/*.*']
 },{
-  name: 'webpack-mobile-vue', 
-  watched: ['./_mobile/vue/src/*.*','./_mobile/vue/src/**/*.*'],  
-  config: './_mobile/vue/webpack.config.prod.js',
-  tpl: 'node _mobile/vue/src/tpl/tpl.js'
+  name: 'webpack-vue', 
+  watched: ['./src/vue/src/*.*','./src/vue/src/**/*.*'],  
+  config: './src/vue/webpack.config.prod.js',
+  tpl: 'node src/vue/src/tpl/tpl.js'
 },{
   name: 'webpack-ssr', 
   watched: ['./ssr/src/*.*','./ssr/src/**/*.*'],  
@@ -340,9 +328,9 @@ var WEBPACK2 = [{
   config: './ssr/webpack.server.js'
 },{
   name: 'webpack-hot', 
-  watched: ['./hot/src/*.*','./hot/src/**/*.*'],  
-  config: './hot/webpack.config.prod.js',
-  tpl: 'node hot/src/tpl/tpl.js'
+  watched: ['./src/hot/src/*.*','./src/hot/src/**/*.*'],  
+  config: './src/hot/webpack.config.prod.js',
+  tpl: 'node src/hot/src/tpl/tpl.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');
@@ -528,19 +516,19 @@ const DEV = [{
   tasks: ['webpack-main','watch']
 },{
   name: 'dev-farm',
-  WEBPACK_CONFIG: path.resolve(__dirname,'_mobile/farm/webpack.config.dev.js'),
+  WEBPACK_CONFIG: path.resolve(__dirname,'src/farm/webpack.config.dev.js'),
   tasks: ['webpack-farm','watch']
 },{
   name: 'dev-hot',
-  WEBPACK_CONFIG: path.resolve(__dirname,'hot/webpack.config.dev.js'),
+  WEBPACK_CONFIG: path.resolve(__dirname,'src/hot/webpack.config.dev.js'),
   tasks: ['webpack-hot','watch']
 },{
   name: 'dev-time',
-  WEBPACK_CONFIG: path.resolve(__dirname,'time/webpack.config.dev.js'),
+  WEBPACK_CONFIG: path.resolve(__dirname,'src/time/webpack.config.dev.js'),
   tasks: ['webpack-time','watch'] 
 },{
   name: 'dev-vue',
-  WEBPACK_CONFIG: path.resolve(__dirname,'_mobile/vue/webpack.config.dev.js'),
+  WEBPACK_CONFIG: path.resolve(__dirname,'src/vue/webpack.config.dev.js'),
   tasks: []
 }]
 DEV.forEach(a=>{

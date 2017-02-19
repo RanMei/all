@@ -24,6 +24,7 @@ const actions = {
       }
     }).then(function(data) {
       if(data.state==='successful'){
+        location.href = ctx.rootState.dir.index;
         ctx.commit('LOGIN',user);
         //location.href = ctx.rootState.dir.index;
       }else{
@@ -49,12 +50,9 @@ const actions = {
         return ;
       }
     }).then(function(data) {
-      // if(data.state==='successful'){
-      //   ctx.commit('LOGIN',user);
-      //   //location.href = ctx.rootState.dir.index;
-      // }else{
-      //   ctx.commit('LOGIN_FAILED');
-      // }
+      if(data.state==='successful'){
+        ctx.commit('LOGOUT');
+      };
     }).catch(function(err) {
       console.log(err);
     });
@@ -74,6 +72,7 @@ const mutations = {
     state.state = 'resolved';
 	},
   LOGOUT(state){
+    state.loggedIn = false;
     state.name = '';
   }
 }

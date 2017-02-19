@@ -27,7 +27,7 @@ var Fireworks = Canvas.extend({
 		this.$ctx.globalCompositeOperation = 'destination-out';
 		// decrease the alpha property to create more prominent trails
 		this.$ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		this.$ctx.fillRect( 0, 0, this.$width, this.$height );
+		this.$ctx.fillRect( 0, 0, this.$w, this.$h );
 		// change the composite operation back to our main mode
 		// lighter creates bright highlight points as the fireworks and particles overlap each other
 		this.$ctx.globalCompositeOperation = 'lighter';

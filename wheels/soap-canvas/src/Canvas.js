@@ -2,17 +2,19 @@
   Canvas.extend();
 */
 
+function noop (){}
+
 class Canvas {
-  constructor(opts){
-    this._options = opts;
-    this._props = opts.props;
-    this._data = opts.data;
+  constructor(options){
+    this._options = options;
+    this._props = options.props;
+    this._data = options.data;
     
-    this.beforePlay = opts.beforePlay;
-    this.render = opts.render;
+    this.beforePlay = options.beforePlay;
+    this.render = options.render;
     
-    for( var key in opts.methods ){
-      this[key] = opts.methods[key];
+    for( var key in options.methods ){
+      this[key] = options.methods[key];
     }
   }
   _init_cv(cvOpts){
@@ -20,12 +22,29 @@ class Canvas {
     cv.$el = (typeof cvOpts.el==='string')?document.querySelector(cvOpts.el):cvOpts.el;
     cv.$ctx = cv.$el.getContext('2d');
 
-    cv.$width = cv.$el.width||1000;
-    cv.$height = cv.$el.height||1000;
-
-    if( cvOpts.interval ){
-      cv._interval = cvOpts.interval;
+    function proxy(key,thunk,setter){
+      Object.defineProperty(cv,key,{
+        enumerable: true,
+        configurable: true,
+        // writable: elKey?true:false,
+        get: function(){
+          return thunk();
+        },
+        set: setter
+      })
     }
+    proxy('$w',
+      ()=>{return cv.$el.width},
+      (newVal)=>{cv.$el.width=newVal}
+    );
+    proxy('$h',
+      ()=>{return cv.$el.height},
+      (newVal)=>{cv.$el.height=newVal}
+    );
+    proxy('$cx',
+      ()=>{return cv.$el.width/2},
+      noop
+    );
 
     // init props
     var props = this._props?this._props():{};
@@ -36,11 +55,33 @@ class Canvas {
       cv[key] = cvOpts.props[key];
     }
 
-    if( cvOpts.useInterval ){
+    // init config
+    cv._config = {
+      renderFPS: true,
+      useInterval: false,
+      responsive: true,
+      pausable: true
+    }
+    for( let key in cvOpts.config ){
+      cv._config[key] = cvOpts.config[key];
+    }
+    if( typeof cv._config.useInterval==='number' ){
       window.requestAnimationFrame = function(callback) {
-        window.setTimeout( callback, 1000 / cvOpts.useInterval );
+        window.setTimeout( callback, 1000 / cv._config.useInterval );
       };
     }
+    if( cv._config.responsive===true ){
+      cv.$fit();
+    }
+    if( cv._config.pausable===true ){
+      cv.$el.addEventListener('click',()=>{
+        if(cv._playing){
+          cv.$pause();
+        }else{
+          cv.$resume();   
+        }
+      })
+    };
 
     // init data
     var data = this._data();
@@ -49,9 +90,6 @@ class Canvas {
     }
 
     this._listen();
-    if(cvOpts.responsive===true){
-      this._response();
-    }
 
     this._start();
   }
@@ -68,12 +106,6 @@ class Canvas {
     this._playing = true;
     this._play();
   }
-  _response(){
-    this.$setSize(window.innerWidth,window.innerHeight);
-    window.addEventListener('resize',()=>{
-      this.$setSize(window.innerWidth,window.innerHeight);
-    })
-  }
   //onResize(){}
   _initCache(){
     this._cache = document.createElement('canvas');
@@ -86,15 +118,7 @@ class Canvas {
     this.$ctx.drawImage(this._cache, 0, 0);
   }
   _listen(){
-    if(this.pausable){
-      this.$el.addEventListener('click',()=>{
-        if(this._playing){
-          this.$pause();
-        }else{
-          this.$resume();   
-        }
-      })
-    };
+    
     // document.addEventListener('keydown',()=>{
     //  console.log(111)
     //  this._playing = false;
@@ -120,14 +144,14 @@ class Canvas {
     this._play();
   }
   $setSize( width,height ){
-    this.$el.width = this.$width = width;
-    this.$el.height = this.$height = height;
+    this.$w = width;
+    this.$h = height;
   }
   _play(){
     if( this._playing ){
       requestAnimationFrame( this._play.bind(this) );
       this.render();
-      if( this.showFPS ){
+      if( this._config.renderFPS ){
         this._renderFPS();
       };
       //this._render();

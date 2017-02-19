@@ -1,30 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var base = require('./webpack.config.base.js');
 
-for(let key in base.entry){
-  base.entry[key].unshift('react-hot-loader/patch');
-}
-
 module.exports = Object.assign(base,{
-  // debug: true,
-  // devtool: 'source-map', 
-  module: {
+	module: {
     rules: [{
-      test: /(\.jsx)|(\.js)$/,
+      test: /\.js$/,
+      exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
-        presets: [
-          ['es2015',{modules:false}],
-          'react'
-        ],
-        plugins: [
-          'react-hot-loader/babel'
-        ]
+        presets: ['react','es2015'],
+        // plugins: ['syntax-dynamic-import']
       },
-      exclude: /node_modules/,
     },{
       test: /\.vue$/,
       loader: 'vue-loader',
@@ -42,19 +32,20 @@ module.exports = Object.assign(base,{
       use: ['style-loader','css-loader','postcss-loader','sass-loader']
     }]
   },
-
   plugins: [
-      new webpack.DefinePlugin({
-        __DEV: true
-      }),
-      new webpack.LoaderOptionsPlugin({
-        options: {
-          postcss: function () {
-            return [autoprefixer];
-          }
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("development")
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function () {
+          return [autoprefixer];
         }
-      }),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
-    ],
+      }
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
 });

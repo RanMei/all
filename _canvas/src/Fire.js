@@ -71,7 +71,7 @@ SmokeParticle.prototype = {
 		this.speed = {x: -2.5+Math.random()*5, y: -15+Math.random()*3};
 
 		var locmin = (this.cv.$el.width/2)-this.cv.flamewidth/2; 
-		var locmax = (this.cv.$el.height/2)+this.cv.flamewidth/2;
+		var locmax = (this.cv.$el.width/2)+this.cv.flamewidth/2;
 		this.location = {
 			x: Math.random()*(locmax - locmin)+locmin,
 			y: 2*this.cv.$el.height/3
@@ -137,7 +137,6 @@ var Fire = Canvas.extend({
 	},
 	beforePlay: function(){
 		this.$el.style.background = 'black';
-		this.$fit();
 		this.addControl();
 		this.createParticles();
 	},
@@ -203,10 +202,13 @@ var Fire = Canvas.extend({
 	}
 })
 
-new Fire({
+console.log(new Fire({
 	el: document.querySelector('canvas'),
-	useInterval: 33
-})
+	config: {
+		useInterval: 33,
+		responsive: true
+	}
+}))
 
 // function Fire(config){
 // 	if( config.elem ){

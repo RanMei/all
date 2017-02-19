@@ -152,6 +152,7 @@ var NeonHexagons = Canvas.extend({
 	}
 })
 console.dir(NeonHexagons)
+
 new NeonHexagons({
 	el: document.querySelector('canvas')
 })
