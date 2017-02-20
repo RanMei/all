@@ -1,7 +1,7 @@
 module.exports = function(app,db){
 
 	app.get('/api/user',(req,res)=>{
-		console.log(req.session)
+		// console.log(req.session)
 		if( req.session.user ){
 			res.send(JSON.stringify( req.session.user ));
 		}else{
@@ -44,15 +44,22 @@ module.exports = function(app,db){
 	app.post('/api/checkMobile',function(req,res){
 		var mobile = req.body.mobile;
 
-		if( db.get('users').find({id:mobile}).value() ){
-			res.send(JSON.stringify({
-				state: true
-			}))
-		}else{
-			res.send(JSON.stringify({
-				state: false
-			}))
-		}
+		var pms = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve( db.get('users').find({id:mobile}).value() );
+			},100)
+		});
+		pms.then((mobileNumber)=>{
+			if( mobileNumber ){
+				res.send(JSON.stringify({
+					state: true
+				}))
+			}else{
+				res.send(JSON.stringify({
+					state: false
+				}))
+			}
+		})
 	})
 
 	app.post('/api/signup',function(req,res){
@@ -71,15 +78,6 @@ module.exports = function(app,db){
 	// 	}else{
 	// 		db.get('items').push(item).value();
 	// 	}
-	// 	res.send();
-	// })
-
-	// app.delete('/api/items',function(req,res){
-	// 	// req.body = []
-	// 	req.body.forEach(id=>{
-	// 		db.get('items').remove({id:id}).value();	
-	// 	})
-		
 	// 	res.send();
 	// })
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="NavLeft">
-		<a>Management</a>
+		<a v-for="a in tabs" :href="a.href">{{a.name}}</a>
 	</div>
 </template>
 
@@ -28,8 +28,8 @@
 		data: function(){
 			return {
 				tabs: [{
-					name: 'users',
-					href: '#/admin/users',
+					name: 'Management',
+					href: '#/admin/management',
 					subs: []
 				},{
 					name: 'items',

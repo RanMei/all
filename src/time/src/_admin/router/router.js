@@ -16,6 +16,9 @@ var router = new VueRouter({
 			path: 'management',
 			component: require('./Management.vue')
 		},{
+			path: 'editing',
+			component: require('./Editing.vue')
+		},{
 			path: 'signin',
 			component: require('../../components/Signin.vue')
 		}]

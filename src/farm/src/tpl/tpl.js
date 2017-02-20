@@ -29,8 +29,10 @@ config.forEach(a=>{
 <script type="text/javascript" src="../../vendor/react/redux.js"></script>
 <script type="text/javascript" src="../../vendor/react/react-redux.min.js"></script>
 <script type="text/javascript" src="../../vendor/react/redux-thunk.js"></script>
-
-<script type="text/javascript" src="./dist/bundle.js"></script>
+  
+  ${process.env.NODE_ENV==='production'?
+  `<script type="text/javascript" src="./dist/bundle.js"></script>`:
+  `<script type="text/javascript" src="/farm/dist/bundle.js"></script>`}
 </body>
 
 </html>

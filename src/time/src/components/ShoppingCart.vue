@@ -8,7 +8,22 @@
 		.shopping-cart-header1 {width:100%;padding:10px 0 10px 0px;text-indent:20px;background:#127BAB;color:white;font-size:18px;}
 		.shopping-cart-header2 {width:100%;padding:10px 0 10px 0;overflow:hidden;border-bottom:1px solid lightgrey;background:white;}
 
-		.item {width:1000px;padding:20px 0 20px 0;background:white;border-bottom:1px solid lightgrey;overflow:hidden;}
+		.empty {
+			padding: 20px 0;
+			border-bottom: 1px solid lightgrey;
+			background: white;
+			font-size: 20px;
+			text-align: center;
+
+		}
+
+		.item {
+			width: 1000px;
+			padding: 20px 0 20px 0;
+			background: white;
+			border-bottom: 1px solid lightgrey;
+			overflow: hidden;
+		}
 		.check {float:left;margin:0 10px 0 10px;}
 		.thumbnail {float:left;width:80px;margin:0 10px 0 0;}
 		.thumbnail img {width:80px;}
@@ -64,6 +79,9 @@
 				<div class="counter">数量</div>
 				<div class="subtotal">小计(元)</div>
 				<p class="manipulation">操作</p>
+			</div>
+			<div class="empty" v-show="cart.items.length===0">
+				您的购物车是空的
 			</div>
 			<div class="item" v-for="(a,i) in cart.items">
 				<input class="check" type="checkbox">

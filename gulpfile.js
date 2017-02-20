@@ -331,6 +331,11 @@ var WEBPACK2 = [{
   watched: ['./src/hot/src/*.*','./src/hot/src/**/*.*'],  
   config: './src/hot/webpack.config.prod.js',
   tpl: 'node src/hot/src/tpl/tpl.js'
+},{
+  name: 'webpack-rx', 
+  watched: ['./src/rx/src/*.*','./src/rx/src/**/*.*'],  
+  config: './src/rx/webpack.config.prod.js',
+  tpl: 'node src/rx/src/tpl/tpl.js'
 }]
 var gulputil = require('gulp-util')
 var webpack2 = require('webpack');
@@ -530,6 +535,10 @@ const DEV = [{
   name: 'dev-vue',
   WEBPACK_CONFIG: path.resolve(__dirname,'src/vue/webpack.config.dev.js'),
   tasks: []
+},{
+  name: 'dev-rx',
+  WEBPACK_CONFIG: path.resolve(__dirname,'src/rx/webpack.config.dev.js'),
+  tasks: []
 }]
 DEV.forEach(a=>{
   gulp.task( a.name,['watch'],()=>{
@@ -537,7 +546,7 @@ DEV.forEach(a=>{
     process.env.WEBPACK_CONFIG = a.WEBPACK_CONFIG;
     gulp.src('')
       //.pipe( shell(a.tpl) )
-      .pipe( shell('node server/server.hot.js') );
+      .pipe( shell('nodemon server/server.hot.js') );
   } )
 })
 

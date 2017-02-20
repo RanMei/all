@@ -32,7 +32,8 @@
 						<input type="text" name="verif" placeholder="请输入验证码"
 						:class="signup.form.verif.state"
 						@focus="SIGNUP_FOCUS('verif')"
-						@blur="CHECK_VERIF($event)"/>
+						@blur="CHECK_VERIF($event)">
+						</input>
 						<p class="info"></p>
 
 						<div class="check_b_container agree">
@@ -113,11 +114,15 @@
 		overflow: hidden;
 		input[type="text"],input[type="password"] {
 			box-sizing: border-box;
+			position: relative;
 			width: 380px; height: 52px;
 			border-radius: 5px;
 			border: 1px solid @grey;
 			text-indent: 10px;
 			font-size: 16px;
+			.verif_box {
+				position: absolute; right: 0; top: 0;
+			}
 		}
 		input {
 			outline: none;

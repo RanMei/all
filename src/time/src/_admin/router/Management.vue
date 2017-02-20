@@ -250,10 +250,15 @@
         this.$store.commit('CHECK_TOGGLE',i);
       },
       edit: function(i){
-        for(var key in this.item){
-          this.item[key] = this.items[i][key];
-        }
-        this.current = i;
+        console.log(this.$store)
+        this.$store.commit('FETCH_ITEM',JSON.parse(
+          JSON.stringify(this.items[i])
+        ));
+        location.href = '#/admin/editing';
+        // for(var key in this.item){
+        //   this.item[key] = this.items[i][key];
+        // }
+        // this.current = i;
       },
       SAVE_ITEM: function(){
         if(!this.item.id){
