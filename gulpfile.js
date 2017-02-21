@@ -371,8 +371,8 @@ var GENERATE = [{
   sh: 'node ssr/src/render.js'
 },{
   name: 'node-vue-list',
-  watched: ['./_mobile/vue/src/api/items.js','./_mobile/vue/generate-list.js'],
-  sh: 'node ./_mobile/vue/build/generate-list.js'
+  watched: ['./src/vue/src/api/items.js','./src/vue/generate-list.js'],
+  sh: 'node ./src/vue/build/generate-list.js'
 }]
 
 GENERATE.forEach(a=>{

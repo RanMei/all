@@ -21,7 +21,11 @@
     watch: {
       current(nv){
         if( nv>=0 ){
-          location.href = '#/item/'+this.items[nv].name.toLowerCase();
+          if( this.items[nv].url ){
+            location.href = '#/item/others';
+          }else{
+            location.href = '#/item/'+this.items[nv].name.toLowerCase();
+          }
         }else{
           location.href = '#/home';
         }

@@ -81,7 +81,7 @@
 </style>
 
 <template>
-	<div class="RouteItem">
+	<div class="RouteItem" v-if="current>-1">
 		<mask-info></mask-info>
 		<div class="cell">
 			<router-view></router-view>
@@ -143,8 +143,13 @@
 				this.$store.commit('SHOW','maskInfo')
 			}
 		},
+		created: function(){
+			if( this.current===-1 ){
+				location.href = '#/home';
+			}
+		},
 		mounted: function(){
-			window.scroll(0,0)
+			window.scroll(0,0);
 		}
 	}
 </script>

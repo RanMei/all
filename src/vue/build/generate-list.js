@@ -17,18 +17,18 @@ list.forEach((a,i)=>{
 	text += 
 `{
 	path:'${a.path}',
-	//component: require('${a.file}')
 	component: resolve => {
 		require.ensure( ['${a.file}'], ()=>{
 			resolve( require('${a.file}') );
 		});
 	}
-}`;
-	text += i===list.length-1?'':',';
+},`;
 })
 
-text.replace(/\,$/,'');
+text += `
+{
+	path: 'others',
+	component: require('../components/Others.vue')
+}];\nexport {list};`
 
-text += `];\nexport {list};`
-
-fs.writeFileSync( './_mobile/vue/src/router/list.js',text );
+fs.writeFileSync( './src/vue/src/router/list.js',text );

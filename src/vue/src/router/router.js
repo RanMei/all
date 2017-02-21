@@ -38,8 +38,8 @@ import items from '../api/items.js';
 
 const routes = [{
 	path: '/',
-	component: require('./Home.vue'),
-	redirect: '/list',
+	component: require('./RouteHome.vue'),
+	redirect: '/home',
 	children: [{
 		path: 'home',
 		component: require('../components/Showcase.vue')
@@ -53,7 +53,7 @@ const routes = [{
 	children: list
 },{
 	path: '/test',
-	component: require('./Test.vue')
+	component: require('./RouteTest.vue')
 }];
 
 const router = new VueRouter({

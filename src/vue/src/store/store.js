@@ -11,6 +11,8 @@ const store = new Vuex.Store({
   mutations: {
     FETCH_ITEMS(state){
       var items = JSON.parse( JSON.stringify(require('api/items.js')) );
+      var items_others = JSON.parse( JSON.stringify(require('api/items.others.js')) );
+      items = items.concat(items_others);
       items.sort((a,b)=>{
        if (a.name < b.name) {
          return -1;
