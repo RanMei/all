@@ -29,12 +29,12 @@
 import Rx from 'rxjs/Rx';
 
 var button = document.querySelector('button');
-Rx.Observable.fromEvent(button, 'click')
+
+const click$ = Rx.Observable.fromEvent(button, 'click')
   .throttleTime(1000)
   .scan(count => count + 1, 0)
   .subscribe(count => console.log(`Clickeded for ${count} times!`));
 
-console.log('cat')
 
 if(module.hot) {
   // accept itself

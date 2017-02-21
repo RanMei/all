@@ -4,8 +4,13 @@
 	.Blog {
 		.list {
 			.list-item {
-				padding: 15px;
-				border-bottom: 1px solid @grey-border;
+				box-sizing: border-box;
+				width: 700px;
+				margin: auto;
+				margin-top: 15px;
+				margin-bottom: 15px;
+				padding: 15px 20px;
+				border: 1px solid @grey-border;
 				.title {
 					font-size: 16px;
 				}

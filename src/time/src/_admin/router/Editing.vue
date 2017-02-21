@@ -1,5 +1,6 @@
 <style lang="less" scoped>
   .Editing {
+    margin-left: 200px;
     .row__ {
       border-bottom: 1px solid lightgrey;
       overflow: hidden;
@@ -18,6 +19,7 @@
 
 <template>
   <div class="Editing">
+    <title-bar :title="'Editing'"></title-bar>
     <div class="row__"
     v-for="(val,key) in item">
       <div class="key">
@@ -32,6 +34,9 @@
 
 <script type="text/javascript">
   export default {
+    components: {
+      TitleBar: require('../components/TitleBar.vue')
+    },
     data: function(){
       return {
         item: JSON.parse(JSON.stringify(this.$store.state.item))

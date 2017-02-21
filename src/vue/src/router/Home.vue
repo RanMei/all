@@ -6,38 +6,25 @@
 
 <template>
 	<div class="Home">
-		<router-view :items="items"></router-view>
+		<topbar></topbar>
+		<router-view></router-view>
 		<navbar></navbar>
 	</div>
 </template>
 
 <script type="text/javascript">
-	import items from '../api/items.js';
-	items.sort((a,b)=>{
-		if (a.name < b.name) {
-			return -1;
-		}
-		if (a.name > b.name) {
-			return 1;
-		}
-		return 0;
-	})
-
 	export default {
 		components: {
+			Topbar: require('../components/Topbar.vue'),
 			Navbar: require('../components/Navbar.vue'),
 			Showcase: require('../components/Showcase.vue'),
-			List: require('../components/List.vue')
 		},
 		data: function(){
 			return {
-				items: items,
-				list: []
 			}
 		},
 		mounted: function(){
-			this.list = JSON.parse( JSON.stringify(this.$root.$options.router.options.routes[1].children) );
-			//console.log(this.list);
+
 		}
 	}
 </script>

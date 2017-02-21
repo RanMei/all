@@ -1,6 +1,7 @@
 <style lang="less" scoped>
 	@import (reference) '../vars.less';
 	.Navbar {
+		@green-medium: #00ab6b;
 		box-sizing: border-box;
 		position: relative;
 		height: 44px;
@@ -16,6 +17,12 @@
 			font-size: 20px;
 			line-height: 44px; text-align: center;
 			cursor: pointer;
+		}
+		.right_part {
+			float: right;
+			margin-right: 20px;
+			font-size: 12px;
+			color: @green-medium;
 		}
 		.box {
 			position: absolute; left: 0; top: 100%;
@@ -55,6 +62,9 @@
 				<i class="fa fa-navicon"></i>
 			</div>
 			MadSoap
+			<div class="right_part">
+				<a href="#/signin">Signin</a>
+			</div>
 			<div :class="show?'box _show':'box'" 
 			@click="hide">
 				<div class="section">

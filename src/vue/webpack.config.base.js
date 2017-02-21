@@ -14,6 +14,7 @@ module.exports = {
   },
 	resolve: {
 		alias: {
+      'api': path.resolve( __dirname,'src/api/' ),
 			'vue': 'vue/dist/vue.min.js'
 		}
 	},

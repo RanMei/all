@@ -28,16 +28,16 @@
 		data: function(){
 			return {
 				tabs: [{
-					name: 'Management',
+					name: 'Items',
 					href: '#/admin/management',
 					subs: []
 				},{
-					name: 'items',
-					href: '#/admin/items',
+					name: 'Posts',
+					href: '#/admin/posts',
 					subs: []
 				},{
-					name: 'signin',
-					href: '#/admin/signin',
+					name: 'Tables',
+					href: '#/admin/tables',
 					subs: []
 				}]
 			}

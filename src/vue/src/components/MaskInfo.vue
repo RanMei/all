@@ -1,0 +1,142 @@
+<style lang="less" scoped>
+  .MaskInfo {
+    position: fixed; left: 0; top: 0;
+    width: 100%; height: 100vh;
+    z-index: 999;
+    background: rgba(255,255,255,0.9);
+    .name {
+      padding: 0.54rem 0.83rem;
+      font-size: 0.36rem; color: #1d79a4;
+    }
+    .comments {
+      padding: 0 0.83rem;
+      margin-bottom: 0.3rem;
+      .title__ {
+        height: 0.36rem;
+        margin-bottom: 0.1rem;
+        overflow: hidden;
+        img {
+          float: left;
+          height: 0.36rem;
+          margin-right: 0.12rem;
+        }
+        p {
+          float: left;
+          height: 0.36rem;
+          font-size: 0.26rem; line-height: 0.36rem;
+        }
+      }
+      .text__ {
+        font-size: 0.24rem; line-height: 0.46rem;
+        color: #666666;
+      }
+    }
+    .tags {
+      padding: 0 0.83rem;
+      margin-bottom: 0.3rem;
+      .title__ {
+        font-size: 0.24rem;
+        // color: #404040;
+      }
+      .text__ {
+        font-size: 0.24rem; line-height: 0.46rem;
+        color: #666666;
+      }
+    }
+    .examples {
+      padding: 0 0.83rem;
+      margin-bottom: 0.3rem;
+      .title__ {
+        font-size: 0.24rem;
+        // color: #404040;
+      }
+      .text__ {
+        font-size: 0.24rem; line-height: 0.46rem;
+        color: #666666;
+      }
+    }
+    .bar__ {
+      display: table;
+      position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 0.78rem;
+      background: white;
+      .cell {
+        display: table-cell;
+        width: 100%; height: 100%;
+        vertical-align: middle;
+        img {
+          width: 0.25rem;
+          margin: auto;
+        }
+      }
+    }
+  }
+</style>
+
+<template>
+  <div class="MaskInfo"
+  v-show="maskInfo.show">
+    <div class="name">{{item.name}}</div>
+
+    <div class="comments" v-if="true">
+      <div class="title__">
+        <img :src=" img+'/cloud.png' "/>
+        <p>设计说</p>
+      </div>
+      <div class="text__">
+        {{item.comments&&item.comments.designer?item.comments.designer:'[暂无评论]'}}
+      </div>
+    </div>
+
+    <div class="comments" v-if="true">
+      <div class="title__">
+        <img :src=" img+'/cloud.png' "/>
+        <p>开发说</p>
+      </div>
+      <div class="text__">
+        {{item.comments&&item.comments.developer?item.comments.developer:'[暂无评论]'}}
+      </div>
+    </div>
+
+    <div class="tags">
+      <div class="title__">
+        标签
+      </div>
+      <div class="text__">
+        <span v-if="item.tags" v-for="(a,i) in item.tags">{{i===0?'':'、'}}{{a}}</span>
+      </div>
+    </div>
+
+    <div class="examples">
+      <div class="title__">
+        应用示例
+      </div>
+      <div class="text__">
+        [暂无示例]
+      </div>
+    </div>
+
+    <div class="bar__">
+      <div class="cell">
+        <img class="cross" :src="img+'/cross.png'"
+        @click="$store.commit('HIDE','maskInfo')"/>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script type="text/javascript">
+  export default {
+    computed: {
+      img(){
+        return this.$store.state.img;
+      },
+      maskInfo(){
+        return this.$store.state.maskInfo;
+      },
+      item(){
+        return this.$store.state.items[this.$store.state.current>=0?this.$store.state.current:0];
+      }
+    }
+  }
+</script>

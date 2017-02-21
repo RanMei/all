@@ -8,6 +8,7 @@ const vue3 =
 
 var config = [{
 	name: 'index',
+	title: 'MadSoap',
 	dest: './public/index.html',
 	css: `<link rel="stylesheet" type="text/css" href="./vendor/font-awesome-4.4.0/css/font-awesome.min.css">`,
 	scripts: `<script type="text/javascript" src="./vendor/vue2/vue.min.js"></script>
@@ -48,7 +49,7 @@ config.forEach(a=>{
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>${a.name}</title>
+	<title>${a.title?a.title:a.name}</title>
 	
 	${a.css?a.css:''}
 	${process.env.NODE_ENV==='production'?

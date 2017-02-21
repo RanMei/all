@@ -8,7 +8,10 @@
 			float: left;
 			padding: 10px;
 			font-size: 14px;
-
+			color: rgba(0,0,0,.44);
+			&:hover {
+				color: grey;
+			}
 		}
 	}
 </style>

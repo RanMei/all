@@ -1,8 +1,6 @@
 <template>
 <div class="Items">
-  <div class="header--">
-    Management
-  </div>
+  <title-bar :title="'Items'"></title-bar>
   <div class="form__">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -215,6 +213,9 @@
 
 <script type="text/javascript">
   export default {
+    components: {
+      TitleBar: require('../components/TitleBar.vue')
+    },
     data: function(){
       return {
         item: {

@@ -11,9 +11,10 @@ config.forEach(a=>{
 <html >
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>YUX动效库</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+  
+  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.4.0/css/font-awesome.min.css">
   ${process.env.NODE_ENV==='production'?
   `<link rel="stylesheet" type="text/css" href="./dist/index.style.css">`:``}
 </head>
@@ -23,8 +24,9 @@ config.forEach(a=>{
 	</div>
 
 <script type="text/javascript" src="./debug.js"></script>
-<script type="text/javascript" src="../vendor/rem.js"></script>
+
 <script type="text/javascript" src="../vendor/vue2/vue.min.js"></script>
+<script type="text/javascript" src="../vendor/vue2/vuex.min.js"></script>
 <script type="text/javascript" src="../vendor/vue2/vue-router.min.js"></script>
 
 <script type="text/javascript" src="../vendor/GSAP/TweenMax.min.js"></script>

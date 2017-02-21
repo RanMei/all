@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',function(){
 		var w = Number( document.defaultView.getComputedStyle( $screen ).width.replace(/px/,'') );
 		var h = Number( document.defaultView.getComputedStyle( $screen ).height.replace(/px/,'') );
 		$screen.style.display = 'none';
-		$html.style.fontSize = 100*w/720+'px';
+		$html.style.fontSize = 100*w/750+'px';
 		//document.getElementsByClassName('container')[0].style.height = h+'px';
 		console.debug( 'rem: Rem reset. Size of the viewport is '+w+'*'+h+'.' );
 	}

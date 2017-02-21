@@ -31,7 +31,7 @@
 		border-radius: 100%;
 		color: white;
 		text-align: center;
-		line-height: 80px;
+		line-height: 20vw;
 	}
 	.menu-open-button {
 		z-index: 2;

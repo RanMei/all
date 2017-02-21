@@ -19,8 +19,8 @@ var router = new VueRouter({
 			path: 'editing',
 			component: require('./Editing.vue')
 		},{
-			path: 'signin',
-			component: require('../../components/Signin.vue')
+			path: 'tables',
+			component: require('./TableRoute.vue')
 		}]
 	}]
 });
