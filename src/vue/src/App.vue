@@ -1,5 +1,9 @@
 <style lang="less" scoped>
-  
+  #root {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
 </style>
 
 <template>
@@ -16,6 +20,9 @@
       },
       items(){
         return this.$store.state.items;
+      },
+      example(){
+        return this.$store.state.example;
       }
     },
     watch: {
@@ -29,6 +36,11 @@
         }else{
           location.href = '#/home';
         }
+      },
+      example(nv){
+        if( nv!=='' ){
+          location.href = '#/example';
+        };
       }
     },
     mounted: function(){

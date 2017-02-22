@@ -7,6 +7,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var base = JSON.parse( JSON.stringify(require('./webpack.config.base.js')) );
 
 module.exports = Object.assign(base,{
+  output: {
+    path: path.resolve( __dirname,'../../public/vue/dist/'),
+    publicPath: './dist/',
+    filename: '[name].chunk.js'
+  },
 	module: {
 		rules: [{
       test: /\.js$/,
@@ -72,6 +77,13 @@ module.exports = Object.assign(base,{
   	    NODE_ENV: JSON.stringify("production")
   	  }
   	}),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function () {
+          return [autoprefixer];
+        }
+      }
+    }),
   	new webpack.optimize.LimitChunkCountPlugin({
   		maxChunks: 10
   	}),

@@ -213,7 +213,7 @@ Canvas.random = function (min, max) {
   return min + (max - min) * Math.random();
 };
 Canvas.randomInt = function (min, max) {
-  return ~ ~(min + (max - min + 1) * Math.random());
+  return ~~(min + (max - min + 1) * Math.random());
 };
 
 Canvas.prototype._renderFPS = function () {

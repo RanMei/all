@@ -6,7 +6,8 @@ const store = new Vuex.Store({
     maskInfo: {
       show: false
     },
-    items: []
+    items: [],
+    example: 'http://www.baidu.com'
   },
   mutations: {
     FETCH_ITEMS(state){
@@ -42,6 +43,9 @@ const store = new Vuex.Store({
       if( state.current<state.items.length-1 ){
         state.current++;
       }
+    },
+    TO_EXAMPLE(state,url){
+      state.example = url;
     },
     SHOW(state,what){
       state[what].show = true;

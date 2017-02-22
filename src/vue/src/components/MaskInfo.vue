@@ -1,7 +1,8 @@
 <style lang="less" scoped>
   .MaskInfo {
     position: fixed; left: 0; top: 0;
-    width: 100%; height: 100vh;
+    width: 100%; height: 100%;
+    overflow: scroll;
     z-index: 999;
     background: rgba(255,255,255,0.9);
     .name {
@@ -35,6 +36,7 @@
       padding: 0 0.83rem;
       margin-bottom: 0.3rem;
       .title__ {
+        margin-bottom: 0.2rem;
         font-size: 0.24rem;
         // color: #404040;
       }
@@ -47,17 +49,28 @@
       padding: 0 0.83rem;
       margin-bottom: 0.3rem;
       .title__ {
+        margin-bottom: 0.2rem;
         font-size: 0.24rem;
         // color: #404040;
+      }
+      .scroller112 {
+        .cover_ {
+          box-sizing: border-box;
+          width: 1.9rem; height: 3.06rem;
+          background: grey;
+        }
       }
       .text__ {
         font-size: 0.24rem; line-height: 0.46rem;
         color: #666666;
       }
     }
+    .bar_shadow {
+      width: 100%; height: 0.9rem;
+    }
     .bar__ {
       display: table;
-      position: absolute; left: 0; bottom: 0;
+      position: fixed; left: 0; bottom: 0;
       width: 100%; height: 0.78rem;
       background: white;
       .cell {
@@ -76,7 +89,7 @@
 <template>
   <div class="MaskInfo"
   v-show="maskInfo.show">
-    <div class="name">{{item.name}}</div>
+    <div class="name">{{item.name_}}</div>
 
     <div class="comments" v-if="true">
       <div class="title__">
@@ -102,6 +115,9 @@
       <div class="title__">
         标签
       </div>
+      <div class="text__" v-if="!item.tags">
+        [暂无标签]
+      </div>
       <div class="text__">
         <span v-if="item.tags" v-for="(a,i) in item.tags">{{i===0?'':'、'}}{{a}}</span>
       </div>
@@ -111,10 +127,17 @@
       <div class="title__">
         应用示例
       </div>
-      <div class="text__">
+      <div class="scroller112" v-if="item.examples">
+        <div class="cover_" v-for="a in item.examples"
+        @click="$store.commit('TO_EXAMPLE',a)">
+        </div>
+      </div>
+      <div class="text__" v-if="!item.examples">
         [暂无示例]
       </div>
     </div>
+
+    <div class="bar_shadow"></div>
 
     <div class="bar__">
       <div class="cell">

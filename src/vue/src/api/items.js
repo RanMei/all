@@ -1,72 +1,76 @@
-module.exports = [{
+const items = [{
 	name: 'Preloader',
-	component: 'Preloader',
+	name_: 'Preloader',
 	path: '../lib/Preloader.vue',
 	tags: ['图标','动画'],
 	comments: {
 		designer: '作为一种思维的方式，它被普遍认为具有综合处理能力的性质，能够理解问题产生的背景、能够催生洞察力及解决方法，并能够理性地分析和找出最合适的解决方案。',
 		developer: '作为一种思维的方式，它被普遍认为具有综合处理能力的性质，能够理解问题产生的背景、能够催生洞察力及解决方法，并能够理性地分析和找出最合适的解决方案。'
-	}
+	},
+	examples: [
+		'https://ptsolomo.reader.qq.com/book_res/event/act170201/adr/farm.html?tf=1'
+	]
 },{
 	name: 'Card',
-	component: 'Card',
+	name_: '卡片翻转',
 	path: '../lib/Card.vue'
 },{
 	name: 'CardsTwo',
-	component: 'CardsTwo',
+	name_: '卡片切换',
 	path: '../lib/CardsTwo.vue'
 },{
 	name: 'GooeyMenu',
-	component: 'GooeyMenu',
+	name_: 'GooeyMenu',
 	path: '../lib/GooeyMenu.vue'
 },{
 	name: 'Wave',
-	component: 'Wave',
+	name_: 'Wave',
 	path: '../lib/Wave.vue'
 },{
 	name: '3dCube',
-	component: '3dCube',
+	name_: '3dCube',
 	path: '../lib/3dCube.vue'
 },{
 	name: 'ButtonRipple',
-	component: 'ButtonRipple',
+	name_: 'ButtonRipple',
 	path: '../lib/ButtonRipple.vue'
 },{
 	name: 'SvgPenguin',
-	component: 'SvgPenguin',
+	name_: 'QQ阅读LOGO描边动画',
 	path: '../lib/SvgPenguin.vue'
 },{
 	name: 'Carousel',
-	component: 'Carousel',
+	name_: 'Carousel',
 	path: '../lib/Carousel.vue'
 },{
 	name: 'StrokeCircle',
-	component: 'StrokeCircle',
+	name_: 'StrokeCircle',
 	path: '../lib/StrokeCircle.vue'
 },{
-	name: 'Orientation',
-	component: 'Orientation',
-	path: '../lib/Orientation.vue'
-},{
 	name: 'MorphingPhones',
-	component: 'MorphingPhones',
+	name_: 'MorphingPhones',
 	path: '../lib/MorphingPhones.vue'
 },{
-	name: 'TextMachineGun',
-	component: 'TextMachineGun',
-	path: '../lib/TextMachineGun.vue'
-},{
 	name: 'TextSmoky',
-	component: 'TextSmoky',
+	name_: 'TextSmoky',
 	path: '../lib/TextSmoky.vue'
 },{
 	name: 'Ribbon',
-	component: 'Ribbon',
+	name_: 'Ribbon',
 	path: '../lib/Ribbon.vue'
-},{
-	name: 'CanvasCounter',
-	component: 'CanvasCounter',
-	path: '../lib/CanvasCounter.vue'
+
+// },{
+// 	name: 'Orientation',
+// 	component: 'Orientation',
+// 	path: '../lib/Orientation.vue'
+// },{
+// 	name: 'TextMachineGun',
+// 	component: 'TextMachineGun',
+// 	path: '../lib/TextMachineGun.vue'
+// },{
+// 	name: 'CanvasCounter',
+// 	component: 'CanvasCounter',
+// 	path: '../lib/CanvasCounter.vue'
 // },{
 
 
@@ -99,4 +103,12 @@ module.exports = [{
 // 	tags: ['canvas'],
 // 	component: 'Scope',
 // 	path: '../Canvas/Scope.js'
-}]
+}];
+
+items.forEach(a=>{
+	if( a.examples===undefined ){
+		a.examples = ['https://ptsolomo.reader.qq.com/book_res/event/act170201/adr/farm.html?tf=1'];
+	}
+})
+
+module.exports = items;

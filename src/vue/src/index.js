@@ -1,5 +1,5 @@
-import './common.less';
-import './rem.750.js';
+import './common/common.js';
+
 import Vue from 'vue';
 import store from './store/store.js';
 import {router} from './router/router.js';

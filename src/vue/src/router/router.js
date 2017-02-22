@@ -52,8 +52,8 @@ const routes = [{
 	component: require('./RouteItem.vue'),
 	children: list
 },{
-	path: '/test',
-	component: require('./RouteTest.vue')
+	path: '/example',
+	component: require('./RouteExample.vue')
 }];
 
 const router = new VueRouter({

@@ -52,10 +52,10 @@
 		v-for="(a,i) in items"
 		@click="toItem(i)">
 			<div class="img">
-				<img :src=" '../../img/vue/GooeyMenu.png' "/>
+				<img :src=" img+'/gooey_menu.png' "/>
 			</div>
 			<div class="lower__">
-				<p class="name">{{a.name}}</p>
+				<p class="name">{{a.name_}}</p>
 				<p class="tags">
 					<span v-if="a.tags===undefined">--</span>
 					<span v-for="b in a.tags">{{b}} </span>
@@ -70,6 +70,9 @@
 		props: {
 		},
 		computed: {
+			img(){
+				return this.$store.state.img;
+			},
 			items(){
 				return this.$store.state.items;
 			}

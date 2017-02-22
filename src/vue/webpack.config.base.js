@@ -7,11 +7,6 @@ module.exports = {
 	entry: {
 		'index': ['./src/vue/src/index.js']
 	},
-  output: {
-    path: path.resolve( __dirname,'../../public/vue/dist/'),
-    publicPath: '/vue/dist/',
-    filename: '[name].chunk.js'
-  },
 	resolve: {
 		alias: {
       'api': path.resolve( __dirname,'src/api/' ),

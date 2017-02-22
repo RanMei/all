@@ -69,24 +69,10 @@ var list = [{
 		});
 	}
 },{
-	path:'orientation',
-	component: resolve => {
-		require.ensure( ['../lib/Orientation.vue'], ()=>{
-			resolve( require('../lib/Orientation.vue') );
-		});
-	}
-},{
 	path:'morphingphones',
 	component: resolve => {
 		require.ensure( ['../lib/MorphingPhones.vue'], ()=>{
 			resolve( require('../lib/MorphingPhones.vue') );
-		});
-	}
-},{
-	path:'textmachinegun',
-	component: resolve => {
-		require.ensure( ['../lib/TextMachineGun.vue'], ()=>{
-			resolve( require('../lib/TextMachineGun.vue') );
 		});
 	}
 },{
@@ -101,13 +87,6 @@ var list = [{
 	component: resolve => {
 		require.ensure( ['../lib/Ribbon.vue'], ()=>{
 			resolve( require('../lib/Ribbon.vue') );
-		});
-	}
-},{
-	path:'canvascounter',
-	component: resolve => {
-		require.ensure( ['../lib/CanvasCounter.vue'], ()=>{
-			resolve( require('../lib/CanvasCounter.vue') );
 		});
 	}
 },

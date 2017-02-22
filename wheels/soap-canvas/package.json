@@ -1,0 +1,12 @@
+{
+  "name": "soap-canvas",
+  "version": "0.0.1",
+  "description": "A simple JavaScript canvas library.",
+  "main": "src/Canvas.js",
+  "scripts": {
+    "build": "rollup src/Canvas.js --output dist/soap-canvas.js",
+    "babel": "rollup --config"
+  },
+  "author": "Louis Chao",
+  "license": "ISC"
+}

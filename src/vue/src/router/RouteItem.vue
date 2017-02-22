@@ -15,7 +15,7 @@
 		position: fixed; left: 0; bottom: 0;
 		width: 100%; height: 0.8rem;
 		// padding: 10px 10px;
-		// border-bottom: 1px solid lightgrey;
+		border-top: 1px solid #e6e6e6;
 		overflow: hidden;
 		font-size: 18px;
 		background: white;
@@ -25,8 +25,8 @@
 			box-sizing: border-box;
 			float: left;
 			width: 16%; height: 100%;
-			border-right: 1px solid #e3e3e6;
-			background: #f9f9f9;
+			// border-right: 1px solid #e3e3e6;
+			// background: #f9f9f9;
 			.back_arrow {
 				width: 0.13rem;
 				margin: auto;
@@ -69,8 +69,8 @@
 			box-sizing: border-box;
 			float: left;
 			width: 16%; height: 100%;
-			border-left: 1px solid #e3e3e6;
-			background: #f9f9f9;
+			// border-left: 1px solid #e3e3e6;
+			// background: #f9f9f9;
 			.info_img {
 				width: 0.46rem;
 				margin: auto;
@@ -149,6 +149,7 @@
 			}
 		},
 		mounted: function(){
+			this.$store.commit('TO_EXAMPLE','')
 			window.scroll(0,0);
 		}
 	}
