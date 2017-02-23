@@ -4,9 +4,12 @@
   "description": "A simple JavaScript canvas library.",
   "main": "src/Canvas.js",
   "scripts": {
-    "build": "rollup src/Canvas.js --output dist/soap-canvas.js",
-    "babel": "rollup --config"
+    "build": "node build/build.js"
   },
   "author": "Louis Chao",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0"
+  }
 }

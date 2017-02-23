@@ -9,12 +9,13 @@
 			box-sizing: border-box;
 			float: left;
 			width: 3.2rem;
+			margin-right: 0.3rem;
 			margin-bottom: 0.28rem;
 			background: #ffffff;
 			// border-right: 1px solid lightgrey;
 			// border-bottom: 1px solid lightgrey;
 			&:nth-child(2n+1) {
-				margin-right: 0.3rem;
+				clear: left;
 			}
 			&:link {
 				text-decoration: none;
@@ -37,6 +38,9 @@
 				.name {
 					font-size: 0.24rem; line-height: 0.46rem;
 					color: #444444;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 				.tags {
 					font-size: 0.2rem; color: #cfcfcf;

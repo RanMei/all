@@ -3,15 +3,20 @@
     .fixedbar {
       position: fixed; left: 0; top: 0;
       width: 100%; height: 0.86rem;
-      background: white;
+      background: rgba(255,255,255,0.6);
       font-size: 0.34rem;
       line-height: 0.86rem;
       overflow: hidden;
       i {
+        position: absolute; left: 0.4rem; top: 0;
         display: block;
-        margin-left: 0.4rem;
         font-size: 0.38rem;
         line-height: 0.86rem;
+      }
+      .title004 {
+        display: table;
+        margin: auto; height: 0.86rem;
+        font-size: 0.28rem; line-height: 0.86rem;
       }
     }
     .container118 {
@@ -25,9 +30,12 @@
     <div class="fixedbar">
       <i class="fa fa-angle-left"
       @click="back"></i>
+      <div class="title004">
+        {{example.name}}
+      </div>
     </div>
     <div class="container118" ref="container">
-      <iframe ref="iframe" :src=" example " width="100%" height="100%" seamless frameborder="0"></iframe>
+      <iframe ref="iframe" :src=" example.url " width="100%" height="100%" seamless frameborder="0"></iframe>
     </div>
   </div>
 </template>

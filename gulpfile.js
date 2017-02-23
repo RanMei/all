@@ -21,9 +21,6 @@ var babelify = require('babelify');
 var vueify = require('vueify');
 var tsify = require('tsify');
 
-var rollup = require('rollup-stream');
-var gulp_rollup = require('gulp-rollup');
-
 var uglify = require('gulp-uglify');
 
 //console.log(process.env)
@@ -42,13 +39,17 @@ LESS.forEach(function(a){
   });
 })
 
-var BROWSERIFY = [{
-  name: 'browserify-canvas',
-  main: './wheels/soap-canvas/src/Canvas.js',
-  output: 'canvas.js',
-  dest: './public/vendor',
-  files: './wheels/soap-canvas/src/*.*'
-},
+var BROWSERIFY = [
+// {
+//   name: 'browserify-canvas',
+//   main: './wheels/soap-canvas/src/Canvas.js',
+//   output: 'canvas.js',
+//   dest: './public/vendor',
+//   files: './wheels/soap-canvas/src/*.*',
+//   opts: {
+//     standalone: 'Canvas'
+//   }
+// },
   // {  name: 'browserify-mobile-zeal', 
   //  main: './_mobile/wheels/zeal/src/zeal.main.js', 
   //  dest: './_mobile/wheels/zeal/dist/', 
@@ -87,48 +88,53 @@ BROWSERIFY.forEach(function(item){
 })
 
 var ROLLUP = [{
-  name: 'rollup-zeal',
-  watch: ['./_mobile/wheels/zeal/src/*.js'],
-  entry: './_mobile/wheels/zeal/src/zeal.main.js',
-  output: 'zeal.js',
-  dest: './_mobile/wheels/zeal/dist/'
+  name: 'rollup-soap-rem',
+  moduleName: 'REM',
+  watch: ['./wheels/soap-rem/src/*.*'],
+  entry: './wheels/soap-rem/src/index.js',
+  dest: [
+    './wheels/soap-rem/dist/soap-rem.js',
+  ]
 },{
-  name: 'rollup-vue',
-  watch: ['./_mobile/wheels/vue/src/*.js'],
-  entry: './_mobile/wheels/vue/src/index.js',
-  output: 'vue.js',
-  dest: './_mobile/wheels/vue/dist/'
-// },{
-//  name: 'rollup-canvas',
-//  watch: ['./_mobile/vue/src/canvas/Canvas.js'],
-//  entry: './_mobile/vue/src/canvas/Canvas.js',
-//  output: 'canvas.js',
-//  dest: './vendor/'
-}]
+  name: 'rollup-soap-canvas',
+  moduleName: 'Canvas',
+  watch: ['./wheels/soap-canvas/src/*.*'],
+  entry: './wheels/soap-canvas/src/Canvas.js',
+  dest: [
+    './wheels/soap-canvas/dist/soap-canvas.js',
+    './public/vendor/soap-canvas.js'
+  ]
+},{
+  name: 'rollup-soap-zeal',
+  moduleName: 'Zeal',
+  watch: ['./wheels/soap-zeal/src/*.*'],
+  entry: './wheels/soap-zeal/src/Zeal.js',
+  dest: [
+    './wheels/soap-zeal/dist/soap-zeal.js',
+  ]
+}];
+const rollup = require('rollup');
+const rollup_buble = require('rollup-plugin-buble');
 ROLLUP.forEach((a)=>{
   gulp.task(a.name,function(){
-    if(!PRODUCTION){
-      return (
-        rollup({
-          entry: a.entry,
-          format: 'umd',// 'cjs', 'umd'
-          plugins: [require('rollup-plugin-babel')({})]
-        })
-        .pipe( source(a.output) )
-        .pipe( gulp.dest(a.dest) )
-      )
-    }else{
-      return (
-        rollup({
-          entry: a.entry,
-          format: 'umd'// 'cjs', 'umd'
-        })
-        .pipe( source(a.output) )
-        .pipe( buffer() )
-        .pipe( uglify({}) )
-        .pipe( gulp.dest(a.dest) )
-      )
-    }
+
+    return rollup.rollup({
+      entry: a.entry,
+      plugins: [
+        rollup_buble()
+      ],
+    })
+    .then(function (bundle) {
+      a.dest.forEach(dest=>{
+        bundle.write({
+          format: 'umd',
+          moduleName: a.moduleName,
+          dest: dest,
+          sourceMap: false
+        });
+      });
+    });
+    
   });
 });
 // gulp.src(['./_mobile/wheels/zeal/src/zeal.main.js','./_mobile/wheels/_/src/*.*'])
@@ -464,12 +470,12 @@ gulp.task('watch',function(){
     gulp.watch( a.src,[a.name] );
   });
 
-  WEBPACK.forEach(function(elem){
-    gulp.watch( elem.watched,[elem.name] );
+  WEBPACK.forEach(a=>{
+    gulp.watch( a.watched,[a.name] );
   });
 
-  BROWSERIFY.forEach(function(elem){
-    gulp.watch( elem.files,[elem.name] );
+  BROWSERIFY.forEach(a=>{
+    gulp.watch( a.files,[a.name] );
   });
 
   ROLLUP.forEach(a=>{

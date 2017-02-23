@@ -1,11 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(factory());
+	(global.Zeal = factory());
 }(this, (function () { 'use strict';
-
-var toString = Object.prototype.toString;
-var OBJECT_STRING = '[object Object]';
 
 /**
  * Extend an object.
@@ -24,6 +21,14 @@ function extend ( target,src,deep ){
 	return target;
 }
 
+function clone(target,src,deep){
+	return extend(target,src,deep);
+}
+
+// Functions to process strings.
+function trim( str ){
+	return str.replace(/(^\s+)|(\s+$)/g,'');
+}
 /**
  * Make a string camelcased.
  * @param  {string} string
@@ -66,6 +71,21 @@ function bubbleSort(arr){
 	return arr;
 }
 
+
+
+var _ = {
+	bubbleSort: bubbleSort,
+	
+	trim: trim,
+	camelCase: camelCase,
+
+	extend: extend,
+	clone: clone,
+
+	forEach: forEach
+	//map
+};
+
 // Module: core
 var arr = [];
 // This is a factory function to create a Zeal object.
@@ -77,7 +97,7 @@ var Zeal = function( selector,context ){
 Zeal.fn = Zeal.prototype = {
 	length: 0,
 	each: function( callback ){
-		forEach(this,callback);
+		_.forEach(this,callback);
 	},
 	eq: function(i){
 		return Zeal( this[i] );
@@ -102,14 +122,14 @@ Zeal.fn = Zeal.prototype = {
 };
 
 Zeal.extend = Zeal.fn.extend = function(src){
-	extend( this,src );
+	_.extend( this,src );
 };
 
 Zeal.extend({
 	isArray: Array.isArray,
 	//copy: _.copy,
-	camelCase: camelCase,
-	bubbleSort: bubbleSort
+	camelCase: _.camelCase,
+	bubbleSort: _.bubbleSort
 });
 
 /**
@@ -118,6 +138,8 @@ Zeal.extend({
  * @param {object|string} selector
  */
 var init = Zeal.prototype.init = function( selector,context ){
+	var this$1 = this;
+
 	if( !context ){
 		var context = document;
 	}
@@ -128,7 +150,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 		//if( Array.isArray(selector) ){
 		if( selector.length ){
 			for( var i=0;i<selector.length;i++ ){
-				this[i] = selector[i];
+				this$1[i] = selector[i];
 			}
 			this.length = selector.length;
 		}else{
@@ -157,7 +179,7 @@ var init = Zeal.prototype.init = function( selector,context ){
 		
 		if( elems.length ){
 			for( var i=0;i<elems.length;i++ ){
-				this[i] = elems[i];
+				this$1[i] = elems[i];
 			}
 		}else{
 			this[0] = elems;
@@ -477,12 +499,16 @@ Zeal.ajax = function( obj ){
     xhr.send( obj.data||null );		
 };
 
-if( window.$===undefined ){
-	window.$ = Zeal;
-	console.warn('Zeal: window.$ is window.Zeal.');
-}else{
-	console.warn('Zeal: $ is already occupied.');
-	window.Zeal = Zeal;
-}
+
+
+// if( window.$===undefined ){
+// 	window.$ = Zeal;
+// 	console.warn('Zeal: window.$ is window.Zeal.');
+// }else{
+// 	console.warn('Zeal: $ is already occupied.');
+// 	window.Zeal = Zeal;
+// }
+
+return Zeal;
 
 })));

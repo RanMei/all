@@ -1,2 +1,2 @@
 import './common.less';
-import './rem.750.js';
+import 'soap-rem';

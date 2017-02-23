@@ -1,4 +1,4 @@
-import * as _ from '../../_/src/index.js';
+import _ from './util/index.js';
 
 // Module: core
 var arr = [];
@@ -411,10 +411,12 @@ Zeal.ajax = function( obj ){
     xhr.send( obj.data||null );		
 };
 
-if( window.$===undefined ){
-	window.$ = Zeal;
-	console.warn('Zeal: window.$ is window.Zeal.');
-}else{
-	console.warn('Zeal: $ is already occupied.');
-	window.Zeal = Zeal;
-}
+export default Zeal;
+
+// if( window.$===undefined ){
+// 	window.$ = Zeal;
+// 	console.warn('Zeal: window.$ is window.Zeal.');
+// }else{
+// 	console.warn('Zeal: $ is already occupied.');
+// 	window.Zeal = Zeal;
+// }

@@ -33,7 +33,7 @@ config.forEach(a=>{
 
 <body>
 	<canvas id="canvas" style="display:block"></canvas>
-	<script type="text/javascript" src="../public/vendor/canvas.js"></script>
+	<script type="text/javascript" src="../public/vendor/soap-canvas.js"></script>
 	<script type="text/javascript" src="src/${a.name}.js"></script>
 </body>
 </html>

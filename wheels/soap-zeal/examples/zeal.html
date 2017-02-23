@@ -3,8 +3,14 @@
 
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>An Example for Zeal</title>
 	<style>
+		.test_field {
+			width: 100%;
+			background: grey;
+			overflow: hidden;
+		}
 		.dog {
 			width: 100px;
 			height: 100px;
@@ -20,26 +26,30 @@
 	</style>
 </head>
 
-<body>	
-	<div class="dog" style="opacity: 0.2;"></div>
-	<div class="dog"></div>
-	<div class="dog"></div>
+<body>
+	<div class="test_field">
+		<div class="dog" style="opacity: 0.2;"></div>
+		<div class="dog"></div>
+		<div class="dog"></div>
 
-	<div class="two">
-		<div class="cat">
-			<div class="claw">
+		<div class="two">
+			<div class="cat">
+				<div class="claw">
+				</div>
 			</div>
+			<div class="cat"></div>
 		</div>
-		<div class="cat"></div>
-	</div>
 
-	<div class="animal">
-		<div class="cat"></div>
-		<div class="cat"></div>
-		<div id="jim"></div>
+		<div class="animal">
+			<div class="cat"></div>
+			<div class="cat"></div>
+			<div id="jim"></div>
+		</div>
 	</div>
-	<script type="text/javascript" src="../dist/zeal.js"></script>
+	<script type="text/javascript" src="../dist/soap-zeal.js"></script>
 	<script>
+
+		window.$ = Zeal;
 
 		$(document).ready(function(){
 
@@ -48,13 +58,13 @@
 				height: "50px",
 				background: "red",
 				'padding-left': "50px"
-			}).html("fuck").addClass("fuck").removeClass("fuck");
+			}).html("fish").addClass("fish").removeClass("fish");
 
-			$(".dog").attr('fuck','11111').eq(0).fadeIn(500);
+			$(".dog").attr('fish','11111').eq(0).fadeIn(500);
 
 			console.log( $(".dog").on("click",function(e){
 				$(this).animate({width:'-50',height:'100'},200);
-			}).attr('fuck') );
+			}).attr('fish') );
 			console.log(Object);
 			console.log( $('.two') );
 
@@ -75,9 +85,9 @@
 
 			// console.log(a);
 
-			$('.animal').find('.cat').attr('fuck','shit').on('click',function(e){
+			$('.animal').find('.cat').attr('fish','food').on('click',function(e){
 				console.log( $(this) );
-				console.log('fuck');
+				console.log('fish');
 			});
 			console.log( $('.animal').find('.cat') )
 			console.log( $('.animal>.cat') )

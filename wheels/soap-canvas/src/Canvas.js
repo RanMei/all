@@ -190,6 +190,4 @@ Canvas.prototype._renderFPS = function(){
   this.$ctx.fillText(this._fps+' FPS', 10,20,100);
 }
 
-window.Canvas = Canvas;
-
 export default Canvas;

@@ -48,7 +48,7 @@ function bubbleSort(arr){
 
 
 
-export {
+export default {
 	bubbleSort,
 	
 	trim,
