@@ -1,43 +1,78 @@
 import api from 'api/api.js';
 
+function add(module,target){
+  for(let part in module){
+    for(let key in part){
+      if(target[part][key]!==undefined){
+        throw Error('dog');
+      }else{
+        target[part][key] = module[part][key];
+      }
+    }
+  }
+}
+
 const store = new Vuex.Store({
+  modules: {
+    navbar: require('./modules/navbar.js').default,
+    items: require('./modules/items.js').default,
+    item: require('./modules/item.js').default,
+  },
   state: {
+    initialized: false,
     img: '../img/vue',
-    currentTab: 0,
-    current: -1,
+
+    topbar: {
+      tabs: [
+        ['按钮','图标','图片','文字',],
+        [],
+        [],
+        []
+      ],
+      current: 0,
+    },
+    
     maskInfo: {
       show: false
     },
-    items: [],
+
     example: {
       name: 'baidu', 
       url: 'http://www.baidu.com'
     }
   },
+  actions: {
+    init(ctx){
+      if( ctx.rootState.initialized===false ){
+        ctx.commit('INIT');
+        ctx.dispatch('fetchItems',{
+          tag: '按钮'
+        });
+      };
+    },
+    topbarToTab(ctx,{i,name}){
+      ctx.commit('TOPBAR_TO_TAB',i);
+      if( name==='全部' ){
+        ctx.dispatch('fetchItems');
+      }else{
+        ctx.dispatch('fetchItems',{
+          tag: name
+        })
+      }
+    }
+  },
   mutations: {
-    FETCH_ITEMS(state){
-      var items = api.getItems({tag:'SVG'});      
-      state.items.push(...items);
+    INIT(state){
+      state.initialized = true;
     },
-    TO_TAB(state,i){
-      state.currentTab = i;
+
+    TOPBAR_TO_TAB(state,i){
+      state.topbar.current = i;
     },
-    TO_HOME(state,i){
-      state.current = -1;
-    },
-    TO_ITEM(state,i){
-      state.current = i;
-    },
-    TO_PREV_ITEM(state){
-      if( state.current>0 ){
-        state.current--;
-      }
-    },
-    TO_NEXT_ITEM(state){
-      if( state.current<state.items.length-1 ){
-        state.current++;
-      }
-    },
+
+    
+
+
     TO_EXAMPLE(state,url){
       state.example = url;
     },

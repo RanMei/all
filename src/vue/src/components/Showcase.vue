@@ -1,5 +1,6 @@
-<style lang="less">
+<style lang="less" scoped>
 	.Showcase {
+		box-sizing: border-box;
 		position: relative;
 		overflow: hidden;
 		padding: 0.5rem 0 0.1rem 0.4rem;
@@ -78,6 +79,7 @@
 				return this.$store.state.img;
 			},
 			items(){
+				// console.log(this.$store.state)
 				return this.$store.state.items;
 			}
 		},

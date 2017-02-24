@@ -14,7 +14,7 @@
 	export default {
 		computed: {
 			url(){
-				return this.$store.state.items[this.$store.state.current].url;
+				return this.$store.state.items[this.$store.state.item.current].url;
 			}
 		}
 	}

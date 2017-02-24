@@ -104,7 +104,7 @@
 				<div class="next__">
 					<div class="btn"
 					:class=" current===length-1?'disabled':'' "
-					@click="$store.commit('TO_NEXT_ITEM')">
+					@click="$store.dispatch('toNextItem')">
 						下一页 <i class="fa fa-angle-down"/>
 					</div>
 				</div>
@@ -129,7 +129,7 @@
 				return this.$store.state.img;
 			},
 			current(){
-				return this.$store.state.current;
+				return this.$store.state.item.current;
 			},
 			length(){
 				return this.$store.state.items.length;

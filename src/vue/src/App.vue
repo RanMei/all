@@ -1,4 +1,7 @@
-<style lang="less" scoped>
+<style lang="less">
+  body {
+    background: #e3e3e6;
+  }
   #root {
     position: relative;
     width: 100%;
@@ -16,7 +19,7 @@
   export default {
     computed: {
       current(){
-        return this.$store.state.current;
+        return this.$store.state.item.current;
       },
       items(){
         return this.$store.state.items;
@@ -44,7 +47,7 @@
       }
     },
     mounted: function(){
-      this.$store.commit('FETCH_ITEMS')
+      this.$store.dispatch('init')
     }
   }
 </script>

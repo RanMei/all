@@ -50,12 +50,12 @@
 	<div class="Navbar">
 		<ul>
 			<a href="#/home"
-			v-for="(a,i) in tabs"
-			@click="$store.commit('TO_TAB',i)">
+			v-for="(a,i) in navbar.tabs"
+			@click="change(i)">
 				<div class="upper">
-					<img class="element" :src="img+'/tab_'+i+(currentTab===i?'_active':'')+'.png'"/>
+					<img class="element" :src="img+'/tab_'+i+(navbar.current===i?'_active':'')+'.png'"/>
 				</div>
-				<p :class="currentTab===i?'active':''">{{a.name}}</p>
+				<p :class="navbar.current===i?'active':''">{{a.name}}</p>
 			</a>
 		</ul>
 	</div>
@@ -65,27 +65,22 @@
 	export default {
 		data: function(){
 			return {
-				tabs: [{
-					class_: 'element',
-					name: '元素'
-				},{
-					class_: 'component',
-					name: '组件'
-				},{
-					class_: 'tpl',
-					name: '活动模板'
-				},{
-					class_: 'scene',
-					name: '场景'
-				}]
 			}
 		},
 		computed: {
 			img(){
 				return this.$store.state.img;
 			},
-			currentTab(){
-				return this.$store.state.currentTab;
+			navbar(){
+				return this.$store.state.navbar;
+			}
+		},
+		methods: {
+			change(i){
+				this.$store.commit('TO_CLASS',i);
+				this.$store.dispatch('fetchItems',{
+					class_: this.navbar.tabs[i].name
+				})
 			}
 		}
 	}

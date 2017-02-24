@@ -171,7 +171,7 @@
         return this.$store.state.maskInfo;
       },
       item(){
-        return this.$store.state.items[this.$store.state.current>=0?this.$store.state.current:0];
+        return this.$store.state.items[this.$store.state.item.current>=0?this.$store.state.item.current:0];
       }
     },
     watch: {

@@ -2,8 +2,8 @@
 	<div class="Topbar">
 		<div class="scroller">
 			<div class="tab"
-			v-for="(a,i) in tabs[0]"
-			@click="change(i)"
+			v-for="(a,i) in tabs"
+			@click="change({i:i,name:a})"
 			:class=" i===current?'active':'' ">
 				{{a}}
 				<div class="bar_"
@@ -50,17 +50,25 @@
 
 <script type="text/javascript">
 	export default {
+		props: {
+			tabs: {
+				default: function(){
+					return ['全部','CSS3','SVG','Canvas'];
+				}
+			}
+		},
 		data: function(){
 			return {
-				tabs: [
-					['按钮','图标','图片','文字',]
-				],
-				current: 0
+			}
+		},
+		computed: {
+			current(){
+				return this.$store.state.topbar.current;
 			}
 		},
 		methods: {
-			change(i){
-				this.current = i;
+			change(pl){
+				this.$store.dispatch('topbarToTab',pl);
 			}
 		}
 	}

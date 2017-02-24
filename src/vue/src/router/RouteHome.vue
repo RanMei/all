@@ -6,7 +6,7 @@
 
 <template>
 	<div class="Home">
-		<topbar></topbar>
+		<topbar :tabs="tabs"></topbar>
 		<router-view></router-view>
 		<navbar></navbar>
 	</div>
@@ -21,6 +21,11 @@
 		},
 		data: function(){
 			return {
+			}
+		},
+		computed: {
+			tabs(){
+				return this.$store.state.topbar.tabs[this.$store.state.navbar.current];
 			}
 		},
 		mounted: function(){

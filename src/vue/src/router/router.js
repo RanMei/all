@@ -48,6 +48,9 @@ const routes = [{
 		component: require('../components/List.vue')
 	}]
 },{
+	path: '/all',
+	component: require('./RouteAll.vue')
+},{
 	path: '/item',
 	component: require('./RouteItem.vue'),
 	children: list

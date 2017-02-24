@@ -1,9 +1,10 @@
 module.exports = [{
-	name: 'SnowFalling',
-	name_: '飘雪效果',
-	url: 'https://www.baidu.com',
+	name: 'Iframe',
+	name_: 'iframe测试',
+	url: 'http://www.huaban.com',
 	date: '2017-02-22 08:09:04',
-	tags: ['图标','动画'],
+  class_: '场景',
+	tags: ['动画'],
 	comments: {
 		designer: '作为一种思维的方式，它被普遍认为具有综合处理能力的性质，能够理解问题产生的背景、能够催生洞察力及解决方法，并能够理性地分析和找出最合适的解决方案。',
 		developer: '作为一种思维的方式，它被普遍认为具有综合处理能力的性质，能够理解问题产生的背景、能够催生洞察力及解决方法，并能够理性地分析和找出最合适的解决方案。'
