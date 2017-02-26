@@ -15,6 +15,12 @@ export default {
     }],
     current: 0
   },
+  actions: {
+    toClass(ctx,i){
+      ctx.commit('TO_CLASS',i);
+      ctx.dispatch('topbarToTab',0);
+    }
+  },
   mutations: {
     TO_CLASS(state,i){
       state.current = i;

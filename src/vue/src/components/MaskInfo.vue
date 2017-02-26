@@ -141,7 +141,7 @@
         </div>
         <div class="scroller112" v-if="item.examples">
           <div class="cover_" v-for="a in item.examples"
-          @click="$store.commit('TO_EXAMPLE',a)">
+          @click="$store.dispatch('toExample',a)">
           </div>
         </div>
         <div class="text__" v-if="!item.examples">

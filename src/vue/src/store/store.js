@@ -14,32 +14,22 @@ function add(module,target){
 
 const store = new Vuex.Store({
   modules: {
+    // app
+    // user
     navbar: require('./modules/navbar.js').default,
+    topbar: require('./modules/topbar.js').default,
     items: require('./modules/items.js').default,
     item: require('./modules/item.js').default,
+    example: require('./modules/example.js').default,
   },
   state: {
     initialized: false,
     img: '../img/vue',
-
-    topbar: {
-      tabs: [
-        ['按钮','图标','图片','文字',],
-        [],
-        [],
-        []
-      ],
-      current: 0,
-    },
     
     maskInfo: {
       show: false
     },
 
-    example: {
-      name: 'baidu', 
-      url: 'http://www.baidu.com'
-    }
   },
   actions: {
     init(ctx){
@@ -50,32 +40,12 @@ const store = new Vuex.Store({
         });
       };
     },
-    topbarToTab(ctx,{i,name}){
-      ctx.commit('TOPBAR_TO_TAB',i);
-      if( name==='全部' ){
-        ctx.dispatch('fetchItems');
-      }else{
-        ctx.dispatch('fetchItems',{
-          tag: name
-        })
-      }
-    }
   },
   mutations: {
     INIT(state){
       state.initialized = true;
-    },
+    },   
 
-    TOPBAR_TO_TAB(state,i){
-      state.topbar.current = i;
-    },
-
-    
-
-
-    TO_EXAMPLE(state,url){
-      state.example = url;
-    },
     SHOW(state,what){
       state[what].show = true;
     },

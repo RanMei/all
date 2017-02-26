@@ -3,11 +3,21 @@ export default {
     current: -1
   },
   actions: {
-    toNextItem(ctx){
-      if( ctx.state.current<ctx.rootState.items.length-1 ){
-        ctx.commit('TO_NEXT_ITEM');
-      }
-    }
+    toItem(ctx,i){
+      var items = ctx.rootState.items;
+      if(i>=0&&i<=items.length-1){
+        ctx.commit('TO_ITEM',i);
+        if( items[i].url ){
+          location.href = '#/item/others';
+        }else{
+          location.href = '#/item/'+items[i].name.toLowerCase();
+        }
+      };
+    },
+    toHome(ctx){
+      location.href = '#/home';
+      ctx.commit('TO_HOME');
+    },
   },
   mutations: {
     TO_HOME(state,i){
@@ -15,14 +25,6 @@ export default {
     },
     TO_ITEM(state,i){
       state.current = i;
-    },
-    TO_PREV_ITEM(state){
-      if( state.current>0 ){
-        state.current--;
-      }
-    },
-    TO_NEXT_ITEM(state){
-      state.current++;
     }
   }
 }

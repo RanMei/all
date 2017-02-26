@@ -55,7 +55,7 @@
 	<div class="Showcase">
 		<a class="item__"
 		v-for="(a,i) in items"
-		@click="toItem(i)">
+		@click="$store.dispatch('toItem',i)">
 			<div class="img">
 				<img :src=" img+'/gooey_menu.png' "/>
 			</div>
@@ -84,9 +84,7 @@
 			}
 		},
 		methods: {
-			toItem(i){
-				this.$store.commit('TO_ITEM',i);
-			}
+
 		}
 	}
 </script>

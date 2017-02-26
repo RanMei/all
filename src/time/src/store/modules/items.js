@@ -79,7 +79,7 @@ const actions = {
       mode: "cors",
       body: JSON.stringify(ids)
     }).then(function(res) {
-      if (res.status === 200) {
+      if (res.status === 204) {
         //return res.json()
       } else {
         return console.warn('111');

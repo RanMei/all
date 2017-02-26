@@ -77,10 +77,7 @@
 		},
 		methods: {
 			change(i){
-				this.$store.commit('TO_CLASS',i);
-				this.$store.dispatch('fetchItems',{
-					class_: this.navbar.tabs[i].name
-				})
+				this.$store.dispatch('toClass',i);
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 		<div class="scroller">
 			<div class="tab"
 			v-for="(a,i) in tabs"
-			@click="change({i:i,name:a})"
+			@click="change(i)"
 			:class=" i===current?'active':'' ">
 				{{a}}
 				<div class="bar_"
@@ -67,8 +67,8 @@
 			}
 		},
 		methods: {
-			change(pl){
-				this.$store.dispatch('topbarToTab',pl);
+			change(i){
+				this.$store.dispatch('topbarToTab',i);
 			}
 		}
 	}

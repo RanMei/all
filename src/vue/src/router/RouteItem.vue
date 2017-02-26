@@ -97,14 +97,14 @@
 				<div class="prev__">
 					<div class="btn"
 					:class=" current===0?'disabled':'' "
-					@click="$store.commit('TO_PREV_ITEM')">
+					@click="$store.dispatch('toItem',current-1)">
 						上一页 <i class="fa fa-angle-up"/>
 					</div>
 				</div>
 				<div class="next__">
 					<div class="btn"
 					:class=" current===length-1?'disabled':'' "
-					@click="$store.dispatch('toNextItem')">
+					@click="$store.dispatch('toItem',current+1)">
 						下一页 <i class="fa fa-angle-down"/>
 					</div>
 				</div>
@@ -137,7 +137,7 @@
 		},
 		methods: {
 			back: function(){
-				this.$store.commit('TO_HOME');
+				this.$store.dispatch('toHome');
 			},
 			to_info(){
 				this.$store.commit('SHOW','maskInfo')
@@ -149,7 +149,6 @@
 			}
 		},
 		mounted: function(){
-			this.$store.commit('TO_EXAMPLE','')
 			window.scroll(0,0);
 		}
 	}
