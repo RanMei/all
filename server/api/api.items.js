@@ -12,6 +12,7 @@ module.exports = function(app,db){
 		})
 		res.status(200).send( items );
 	})
+
 	app.get('/api/items/:id',function(req,res){
 		res.set({
 			'Content-Type': 'application/json'
@@ -44,8 +45,6 @@ module.exports = function(app,db){
 	})
 
 	app.delete('/api/items',function(req,res){
-		// req.body = []
-		console.log(req.body)
 		req.body.forEach(id=>{
 			db.get('items').remove({id:id}).value();	
 		})

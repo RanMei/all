@@ -1,3 +1,5 @@
+import api from 'api/api.js';
+
 export function init(){
   var user = {};
   var shoppingCart = [];
@@ -7,7 +9,7 @@ export function init(){
   if( sessionStorage.shoppingCart ){
     shoppingCart = JSON.parse( sessionStorage.shoppingCart );
   };
-  var items = require('api/items.js').default;
+  var items = api.getItems();
   var homeSwiper = require('api/homeSwiper.js').default;
   return dispatch=>{
     dispatch({

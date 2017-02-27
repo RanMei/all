@@ -19,4 +19,4 @@ function mask (state={
   }
 }
 
-export {mask};
+export default mask;

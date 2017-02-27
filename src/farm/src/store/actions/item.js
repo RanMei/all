@@ -1,13 +1,8 @@
+import api from 'api/api.js';
+
 export function fetch_item(id){
   return dispatch=>{
-    var item = {};
-    var items = require('api/items.js').default;
-    items.forEach((a)=>{
-      if( id===a.id ){
-        item = a;
-        item.quantity = 1;
-      }
-    })
+    var item = api.getItem(id);
     dispatch({
       type: 'SET_ITEM',
       item

@@ -15,12 +15,13 @@
 
 <template>
 	<div id="root">
-		<Navbar></Navbar>
-		<Slider></Slider>
+		<navbar></navbar>
+		<slider></slider>
 		<div class="main">
 			<router-view></router-view>
 		</div>
-		<Footer></Footer>
+		<my-footer></my-footer>
+		<!-- <panel-comments></panel-comments> -->
 	</div>
 </template>
 
@@ -29,7 +30,9 @@
 		components: {
 			Navbar: require('../components/Navbar.vue'),
 			Slider: require('../components/Slider.vue'),
-			Footer: require('../components/Footer.vue'),
+			MyFooter: require('../components/Footer.vue'),
+
+			PanelComments: require('../components/PanelComments.vue')
 		},
 		mounted: function(){
 			this.$store.dispatch('init');

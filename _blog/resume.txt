@@ -1,0 +1,20 @@
+Github主页：github.com/403177368/all
+发布过的npm packages: 
+soap-rem 一个用来计算并设置移动端rem单位的类库。
+soap-canvas 一个受到vue.js启发的底层canvas类库。
+vix 一个模仿vuex的简易状态管理器，在公司项目中使用。
+
+2015.6~2016.4供职于途灵岛（北京）信息技术有限公司，主要开发名为“全麦商旅”的webapp。
+“全麦商旅”后端使用node.js，技术栈为angular、angular-ui-router等。
+2016.5~至今供职于QQ阅读（阅文集团旗下）前端团队，主要开发QQ阅读APP内的网页。
+工作中主要使用webpack+vue+vue-router+vuex技术栈。
+
+阅读过部分jQuery源码，并开发过一个名为zeal.js的兼容部分jQuery API的简易类库，并曾在部分正式页面中使用过。
+
+个人项目“多利农庄微商城”，使用webpack2+hmr+react+react-router+redux技术栈。
+
+使用过php和mysql数据库。
+
+个人网站，后端使用了node.js、express和lowdb。
+
+制作过一些canvas实例，研究并使用过Three.js和matter.js等canvas库。

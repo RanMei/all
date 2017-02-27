@@ -196,6 +196,23 @@ new Vue(options)
         var computed = vm.$options.computed;
         if (computed) {
           for (var key in computed) {
+            var userDef = computed[key];
+            if (typeof userDef === 'function') {
+              computedSharedDefinition.get = makeComputedGetter(userDef, vm);
+                var watcher = new Watcher(owner, getter, noop, {
+                  lazy: true
+                });
+                return function computedGetter () {
+                  if (watcher.dirty) {
+                    watcher.evaluate();
+                  }
+                  if (Dep.target) {
+                    watcher.depend();
+                  }
+                  return watcher.value
+                }
+              computedSharedDefinition.set = noop;
+            }
             Object.defineProperty(vm, key, computedSharedDefinition);
           };
         };
@@ -277,15 +294,15 @@ new Vue(options)
                 }
                 return vm;
 
+// when data[key] was changed
 vm[key] = val;
   proxySetter(val);
     vm._data[key] = val;
+  // the setter of data[key] was invoked
   reactiveSetter( newVal );
     if (newVal === value) {
       return
     }
-    // when data[key] was changed
-    // the setter of data[key] was invoked
     // create a new observer to replace the old one
     // but nothing will happen if newVal is primitive-typed
     childObserver = observe(newVal);
@@ -318,9 +335,16 @@ vm[key] = val;
                 // call the render-function
                 // vm._renderProxy is actually vm?
                 vnode = render.call(vm._renderProxy, vm.$createElement)
+              // update vm!!!!!
               vm._update( vnode, hydrating )
+                if (vm._isMounted) {
+                  callHook(vm, 'beforeUpdate');
+                }
+                var prevEl = vm.$el;
+                var prevVnode = vm._vnode;
                 vm._vnode = vnode;
                 // perform DOM manipulations
+                // Vue.prototype.__patch__ = 
                 vm.$el = vm.__patch__(prevVnode, vnode);
 
               // if the watcher is vm._watchers[i]

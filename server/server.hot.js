@@ -25,7 +25,7 @@ app.use( session({
 //app.use(require('morgan')('short'));
 
 var low = require('lowdb');
-const db = low('./api/main.db');
+const db = low('./server/lowdb/main.db');
 
 require('./api/index.js')(app,db);
 

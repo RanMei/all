@@ -64,4 +64,4 @@ function shoppingCart (state=[],action){
   }
 }
 
-export {shoppingCart};
+export default shoppingCart;

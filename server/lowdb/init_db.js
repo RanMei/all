@@ -1,6 +1,6 @@
 var low = require('lowdb');
 
-const db = low('./api/main.db');
+const db = low('./main.db');
 
 db.defaults({
 	users: [],

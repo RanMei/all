@@ -92,6 +92,14 @@ const items = [{
 	date: '2016-12-03 08:09:04',
 	class_: '元素',
 	tags: ['文字','CSS3']
+},{
+	name: 'Fader',
+	name_: 'Fader',
+	path: '../lib/Fader.vue',
+	date: '2017-02-27 08:09:04',
+	class_: '组件',
+	tags: ['轮播']
+
 // },{
 // 	name: 'Ribbon',
 // 	name_: 'Ribbon',

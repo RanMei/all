@@ -6,7 +6,7 @@ var items = require('../src/api/items.js');
 var list = [];
 items.forEach(a=>{
 	list.push({
-		path: a.component.toLowerCase(),
+		path: a.name.toLowerCase(),
 		file: a.path
 	})
 })

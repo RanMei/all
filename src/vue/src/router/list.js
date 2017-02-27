@@ -83,10 +83,10 @@ var list = [{
 		});
 	}
 },{
-	path:'ribbon',
+	path:'fader',
 	component: resolve => {
-		require.ensure( ['../lib/Ribbon.vue'], ()=>{
-			resolve( require('../lib/Ribbon.vue') );
+		require.ensure( ['../lib/Fader.vue'], ()=>{
+			resolve( require('../lib/Fader.vue') );
 		});
 	}
 },

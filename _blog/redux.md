@@ -21,12 +21,12 @@ then the listeners were executed one by one.
 var currentState;
 var isDispatching = false;
 function dispatch(action) {
-	isDispatching = true;
-	currentState = currentReducer(currentState,action);
-	isDispatching = false;
-	currentListeners.forEach(a=>{
-		a();
-	})
+  isDispatching = true;
+  currentState = currentReducer(currentState,action);
+  isDispatching = false;
+  currentListeners.forEach(a=>{
+    a();
+  })
 }
 ```
 applyMiddleware
@@ -37,11 +37,11 @@ A state tree in Redux is like this:
 
 ```javascript
 var state = {
-	items: [{
-		id: 0
-	},{
-		id: 1
-	}]
+  items: [{
+    id: 0
+  },{
+    id: 1
+  }]
 }
 ```
 
