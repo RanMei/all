@@ -306,7 +306,7 @@ vm[key] = val;
     // create a new observer to replace the old one
     // but nothing will happen if newVal is primitive-typed
     childObserver = observe(newVal);
-    // notify all the subscribers of this dep to update view
+    // notify all the subscribers(watchers) of this dep to update view
     dep.notify()
       var subs = dep.subs.slice();
       // do nothing if dep.subs is empty
@@ -314,71 +314,132 @@ vm[key] = val;
       // for every watcher depending on data[key]
       var watcher = subs[i];
       watcher.update();
-        watcher.run();
-          // evaluate this watcher
-          // get the new value of the watcher
-          var value = watcher.get();
-            // the current watcher is the target
-            // var targetStack = [];
-            pushTarget(watcher);
-              if (Dep.target) { targetStack.push(Dep.target) }
-              Dep.target = watcher;
-            // get the new value of this watcher
-            // and all the deps of current watcher will be recollected
-            // into watcher.newDeps in this process
-            var value = watcher.getter.call(watcher.vm, watcher.vm);
+        if (watcher.lazy) {
+          watcher.dirty = true;
+        } else if (watcher.sync) {
+          watcher.run();
+        } else {
+          queueWatcher( watcher );
+            if (!flushing) {
+              queue.push(watcher);
+            } else {
+              // if a flushing is in process
+              // if already flushing, splice the watcher based on its id
+              // if already past its id, it will be run next immediately.
+              var i = queue.length - 1;
+              while (i >= 0 && queue[i].id > watcher.id) {
+                i--;
+              }
+              queue.splice(Math.max(i, index) + 1, 0, watcher);
+            }
+            if (!waiting) {
+              waiting = true;
+              // the next flushing will happen when the execution stack is empty
+              nextTick(flushSchedulerQueue);
+            }
+        }
 
-              // if the watcher is vm._watcher
-              // regenerate the virtual DOM every time
-              // vnode is just a plain old object
-              var vnode = vm._render();
-                // call the render-function
-                // vm._renderProxy is actually vm?
-                vnode = render.call(vm._renderProxy, vm.$createElement)
-              // update vm!!!!!
-              vm._update( vnode, hydrating )
-                if (vm._isMounted) {
-                  callHook(vm, 'beforeUpdate');
-                }
-                var prevEl = vm.$el;
-                var prevVnode = vm._vnode;
-                vm._vnode = vnode;
-                // perform DOM manipulations
-                // Vue.prototype.__patch__ = 
-                vm.$el = vm.__patch__(prevVnode, vnode);
+{
+  var queue = [];
+  var has$1 = {};
+  var circular = {};
+  var waiting = false;
+  var flushing = false;
+  var index = 0;
+}
 
-              // if the watcher is vm._watchers[i]
-              // 
+nextTickHandler()
+  pending = false;
+  var copies = callbacks.slice(0);
+  callbacks.length = 0;
+  for (var i = 0; i < copies.length; i++) {
+    copies[i]();
+  }
 
-              // for all the values used in the evaluation
-              proxyGetter();
-              reactiveGetter();
-                // when data[key] was used
-                // if a watcher is currently being evaluated
+flushSchedulerQueue()
+  flushing = true;
+  // root_computed_watcher, root_watch_watcher, root_render_watcher, 
+  // child_computed_watcher
+  queue.sort(function (a, b) { return a.id - b.id; });
+  for (index = 0; index < queue.length; index++) {
+    watcher = queue[index];
+    id = watcher.id;
+    has$1[id] = null;
+    watcher.run();
+      // evaluate this watcher
+      // get the new value of the watcher
+      var value = watcher.get();
+        // the current watcher is the target
+        // var targetStack = [];
+        pushTarget(watcher);
+          if (Dep.target) { targetStack.push(Dep.target) }
+          Dep.target = watcher;
+        // get the new value of this watcher
+        // and all the deps of current watcher will be recollected
+        // into watcher.newDeps in this process
+        var value = watcher.getter.call(watcher.vm, watcher.vm);
+
+          // if the watcher is a computed_watcher or a watch_watcher
+          // for example:
+          return this.$store.state.user;
+
+          // if the watcher is vm._watcher/(a render watcher)
+          // call vm._render to get the new vnode
+          // vnode is just a plain old object
+          var vnode = vm._render();
+            // call the render-function
+            // vm._renderProxy is actually vm?
+            vnode = render.call(vm._renderProxy, vm.$createElement)
+          // update vm!!!!!
+          vm._update( vnode, hydrating )
+            if (vm._isMounted) {
+              callHook(vm, 'beforeUpdate');
+            }
+            var prevEl = vm.$el;
+            var prevVnode = vm._vnode;
+            vm._vnode = vnode;
+            // perform DOM manipulations on watcher.vm.$el
+            // Vue.prototype.__patch__ = 
+            vm.$el = vm.__patch__(prevVnode, vnode);
+
+          // ********** 
+
+          // for all the values used in the evaluation
+          proxyGetter();
+          reactiveGetter();
+            // when data[key] was used
+            // if a watcher is currently being evaluated
+            if (Dep.target) {
+              // which means that data[key] is a dependency of current watcher
+              dep.depend()
                 if (Dep.target) {
-                  // which means that data[key] is a dependency of current watcher
-                  dep.depend()
-                    if (Dep.target) {
-                      var watcher = Dep.target
-                      
-                      watcher.addDep(dep:dep)
-                        var id = dep.id
-                        // push dep into current watcher's watcher.deps
-                        // if it is not in it
-                        if (!watcher.newDepIds.has(id)) {
-                          watcher.newDepIds.add(id)
-                          watcher.newDeps.push(dep)
-                          if (!watcher.depIds.has(id)) {
-                            dep.addSub(watcher)
-                              dep.subs.push(watcher)
-                          }
-                        }
-            popTarget();
-              // Dep.target will be undefined if targetStack is already empty
-              // which means that evaluation of watchers is over
-              Dep.target = targetStack.pop();
-            // 
-            watcher.cleanupDeps();
-              watcher.deps = watcher.newDeps;
-            return value;
-          watcher.callback.call(wathcer.vm, value, oldValue)
+                  var watcher = Dep.target
+                  
+                  watcher.addDep(dep:dep)
+                    var id = dep.id
+                    // push dep into current watcher's watcher.deps
+                    // if it is not in it
+                    if (!watcher.newDepIds.has(id)) {
+                      watcher.newDepIds.add(id)
+                      watcher.newDeps.push(dep)
+                      if (!watcher.depIds.has(id)) {
+                        dep.addSub(watcher)
+                          dep.subs.push(watcher)
+                      }
+                    }
+        popTarget();
+          // Dep.target will be undefined if targetStack is already empty
+          // which means that evaluation of watchers is over
+          Dep.target = targetStack.pop();
+        // 
+        watcher.cleanupDeps();
+          watcher.deps = watcher.newDeps;
+        return value;
+      watcher.callback.call(wathcer.vm, value, oldValue)
+  resetSchedulerState();
+    // clear the queue
+    queue.length = 0;
+    has$1 = {};
+    circular = {};
+    // and this flushing is complete.
+    waiting = flushing = false;
